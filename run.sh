@@ -216,7 +216,11 @@ else
 	if [ -z "$MODULE" ] || [ "$MODULE" = printf ]; then
 		for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do CHOIX+=("$p"); NOMS+=("printf"); done
 	fi
-	if [ ${#CHOIX[@]} -eq 0 ]; then
+	if [ -z "$MODULE" ] && [ ${#CHOIX[@]} -ne 1 ]; then
+		CHOIX+=("")
+		NOMS+=("exam")
+	fi
+	if [ ${#CHOIX[@]} -eq 0 ] || { [ ${#CHOIX[@]} -eq 1 ] && [ "${NOMS[0]}" = exam ] && ! { [ -t 0 ] && [ -t 1 ]; }; }; then
 		cat <<EOF
 Le testeur des fous $TDF_VERSION
 
@@ -228,20 +232,28 @@ Aucun projet trouvé. Le testeur se clone à côté de tes projets :
   └── ft_printf/
 
 Ou donne le chemin : bash $TDF_NOM/run.sh --projet CHEMIN
+
+L'exam en C, lui, n'a besoin d'aucun projet : bash $TDF_NOM/run.sh exam
 EOF
 		exit 1
-	elif [ ${#CHOIX[@]} -eq 1 ]; then
+	elif [ ${#CHOIX[@]} -eq 1 ] && [ "${NOMS[0]}" != exam ]; then
 		PROJET="${CHOIX[0]}"
 		MODULE="${NOMS[0]}"
 	elif [ -t 0 ] && [ -t 1 ]; then
 		printf '\n  Le testeur des fous %s\n\n' "$TDF_VERSION"
+		[ "${NOMS[0]}" = exam ] && printf '  Aucun projet trouvé à côté du testeur (libft/, ft_printf/...).\n\n'
 		i=0
 		while [ $i -lt ${#CHOIX[@]} ]; do
 			case "${NOMS[$i]}" in
 				libft) etiquette="Libft" ;;
+				exam) etiquette="Exam en C" ;;
 				*) etiquette="ft_printf" ;;
 			esac
-			printf '  %d  %-10s %s\n' $((i + 1)) "$etiquette" "$(court "${CHOIX[$i]}")"
+			if [ -n "${CHOIX[$i]}" ]; then
+				printf '  %d  %-10s %s\n' $((i + 1)) "$etiquette" "$(court "${CHOIX[$i]}")"
+			else
+				printf '  %d  %s\n' $((i + 1)) "$etiquette"
+			fi
 			i=$((i + 1))
 		done
 		printf '  q  quitter\n\n  > '
@@ -260,7 +272,11 @@ EOF
 		echo "Plusieurs projets trouvés, précise lequel :"
 		i=0
 		while [ $i -lt ${#CHOIX[@]} ]; do
-			printf '  bash %s/run.sh %s --projet %s\n' "$TDF_NOM" "${NOMS[$i]}" "${CHOIX[$i]}"
+			if [ -n "${CHOIX[$i]}" ]; then
+				printf '  bash %s/run.sh %s --projet %s\n' "$TDF_NOM" "${NOMS[$i]}" "${CHOIX[$i]}"
+			else
+				printf '  bash %s/run.sh exam\n' "$TDF_NOM"
+			fi
 			i=$((i + 1))
 		done
 		exit 2
