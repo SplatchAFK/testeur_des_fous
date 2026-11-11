@@ -24,7 +24,7 @@ const t_phase	g_phases[NPHASE] = {
 	{"Makefile, en-tête et README", "Makefile, header and README", "", "Makefile|ft_printf.h|README.md"},
 	{"Fonctions interdites", "Forbidden functions", "", "fonctions externes"},
 	{"Mélanges et valeur de retour", "Mixes and return value", "mix,ret", ""},
-	{"Cas limites et write en échec", "Edge cases and failing write", "limites,write", ""},
+	{"Bonus : cas limites et write en échec", "Bonus: edge cases and failing write", "limites,write", ""},
 	{"malloc qui échoue", "Failing malloc", "malloc", ""},
 	{"Le Dévoreur : 10 000 appels", "The Devourer: 10,000 calls", "stress", ""},
 };

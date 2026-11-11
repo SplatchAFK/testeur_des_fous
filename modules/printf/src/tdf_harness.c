@@ -120,6 +120,7 @@ typedef struct s_cat
 	int		warn;
 	int		shown_ko;
 	int		shown_warn;
+	int		bonus;
 	t_buf	details;
 }	t_cat;
 
@@ -857,7 +858,8 @@ void	tdf_category(const char *key, const char *title)
 	causes_reset();
 	memset(&g_cat, 0, sizeof(g_cat));
 	snprintf(g_cat.key, sizeof(g_cat.key), "%s", key);
-	snprintf(g_cat.title, sizeof(g_cat.title), "%s", title);
+	g_cat.bonus = !strcmp(key, "limites") || !strcmp(key, "write");
+	snprintf(g_cat.title, sizeof(g_cat.title), "%s%s", g_cat.bonus ? "bonus · " : "", title);
 	g_cat_open = tdf_selected(key);
 }
 
@@ -899,6 +901,13 @@ static void	record(int ko, int warn, const char *file, int line,
 	{
 		g_cat.ok++;
 		return ;
+	}
+	if (ko && g_cat.bonus)
+	{
+		ko = 0;
+		warn = 1;
+		if (msg)
+			tdf_bprintf(msg, "          (bonus : le sujet ne l'exige pas, ça ne compte pas pour le rendu)\n");
 	}
 	if (ko)
 		g_cat.ko++;
