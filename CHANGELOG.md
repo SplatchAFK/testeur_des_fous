@@ -6,6 +6,18 @@ Le numéro de version est dans `moteur/version.h`.
 
 Un seul testeur réunit le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1), et ajoute un examshell en C.
 
+### get_next_line
+
+- `run.sh gnl`, détection d'un dossier get_next_line à côté du testeur, entrée get_next_line du menu Tester ;
+- d'après le sujet v1.3 : les 3 fichiers à la racine, prototype, compilation avec et sans `-D BUFFER_SIZE`, seulement `read`, `malloc` et `free` (`lseek` interdit), aucune variable globale, Norme, README ;
+- 22 tests lancés avec 7 BUFFER_SIZE (1 à 10 000 000) et sans `-D` : fichiers vides, sans `\n` final, lignes autour de BUFFER_SIZE, très longues lignes, gros fichiers, NULL après la fin, entrée standard, tubes, fd invalides, dossier, read qui échoue, chaque malloc qui échoue, lecture minimale ;
+- erreurs mémoire et fuites avec le fichier et la ligne (AddressSanitizer quand il est là) ; BUFFER_SIZE=0 et négatif, et plusieurs fd en alternance, pour info seulement ;
+- résultats dans les Stats et le journal de debug.
+
+### Printf
+
+- cas limites et write en échec passent en bonus : affichés, sans faire échouer le run.
+
 ### Lancement, debug et stats
 
 - barre de progression pendant la préparation ; l'interface se compile en parallèle et reste en cache (environ 3 fois plus rapide sur le disque Windows) ;

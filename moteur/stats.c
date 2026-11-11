@@ -24,7 +24,7 @@ typedef struct s_sitem
 
 typedef struct s_sdata
 {
-	int		runs[3];
+	int		runs[4];
 	long	first;
 	long	last;
 	int		days;
@@ -315,7 +315,7 @@ static void	stats_load(void)
 			}
 			g_sd.ratio[g_sd.nratio] = (float)ok / tot;
 			g_sd.rt[g_sd.nratio] = t;
-			g_sd.rmod[g_sd.nratio] = !strcmp(mod, "printf") ? 1 : !strcmp(mod, "exam") ? 2 : 0;
+			g_sd.rmod[g_sd.nratio] = !strcmp(mod, "printf") ? 1 : !strcmp(mod, "exam") ? 2 : !strcmp(mod, "gnl") ? 3 : 0;
 			g_sd.rok[g_sd.nratio] = (short)ok;
 			g_sd.rtot[g_sd.nratio] = (short)tot;
 			g_sd.day[g_sd.nratio++] = day_of(t);
@@ -539,7 +539,7 @@ static void	spark(int x, int y, int w, int mod, const char *label)
 
 static int	weak(int x, int y, int maxy, int mod, int max)
 {
-	static const char	*mods[3] = {"libft", "printf", "exam"};
+	static const char	*mods[4] = {"libft", "printf", "exam", "gnl"};
 	char				tmp[220];
 	char				when[40];
 	t_sitem				*it;
@@ -759,7 +759,7 @@ static void	page_exam(int x, int y, int maxy)
 
 static void	page_histo(int x, int y, int maxy)
 {
-	static const char	*mods[3] = {"Libft ", "printf", "Exam  "};
+	static const char	*mods[4] = {"Libft ", "printf", "Exam  ", "GNL   "};
 	char				tmp[200];
 	char				d[40];
 	time_t				tt;
@@ -772,7 +772,7 @@ static void	page_histo(int x, int y, int maxy)
 	{
 		tt = (time_t)g_sd.rt[i];
 		strftime(d, sizeof(d), "%d/%m %H:%M", localtime(&tt));
-		snprintf(tmp, sizeof(tmp), "%s  %s  %3d/%-3d", d, mods[(int)g_sd.rmod[i] % 3], g_sd.rok[i], g_sd.rtot[i]);
+		snprintf(tmp, sizeof(tmp), "%s  %s  %3d/%-3d", d, mods[(int)g_sd.rmod[i] % 4], g_sd.rok[i], g_sd.rtot[i]);
 		text_at(x, y, theme()->text, tmp);
 		bar(x + 32, y, 20, g_sd.ratio[i], g_sd.ratio[i] >= 0.999f ? vert() : orange(), g_sd.ratio[i] >= 0.999f ? vert() : rgb(255, 215, 0));
 		snprintf(tmp, sizeof(tmp), "%3d %%", (int)(g_sd.ratio[i] * 100 + 0.5f));

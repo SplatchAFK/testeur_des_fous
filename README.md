@@ -8,6 +8,7 @@
 bash testeur_des_fous/run.sh              # détecter tes projets et lancer le testeur
 bash testeur_des_fous/run.sh libft        # tester ta Libft
 bash testeur_des_fous/run.sh printf       # tester ton ft_printf
+bash testeur_des_fous/run.sh gnl          # tester ton get_next_line
 bash testeur_des_fous/run.sh exam         # passer l'exam en C (4 niveaux, grademe)
 bash testeur_des_fous/run.sh --menu       # le menu sans lancer de tests (stats, chevalier, lore)
 bash testeur_des_fous/run.sh debug        # le journal de la dernière session (debug aide : tout)
@@ -49,7 +50,7 @@ Ta progression est dans `~/.testeur_des_fous/save.txt`, hors du dossier du teste
 | ft_printf | intégré : conversions, retour, `malloc` en échec, stress |
 | Exam (C) | intégré : 57 exercices sur 4 niveaux, chronomètre de 3 h, `grademe` |
 | Banque d'exercices | à venir |
-| get_next_line | plus tard |
+| get_next_line | intégré : 7 BUFFER_SIZE et sans -D, stdin, tubes, fd invalides, read et malloc qui échouent, fuites, Norme, README |
 | push_swap | plus tard |
 
 Le testeur ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te dit où regarder.

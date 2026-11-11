@@ -11,6 +11,16 @@ if [ ! -f "$VERSION_H" ]; then
 	exit 1
 fi
 
+MANQUE_OUTILS=""
+for outil in cc make awk sed grep nm tar; do
+	command -v "$outil" >/dev/null 2>&1 || MANQUE_OUTILS="$MANQUE_OUTILS $outil"
+done
+if [ -n "$MANQUE_OUTILS" ]; then
+	echo "testeur des fous : il manque sur cette machine :$MANQUE_OUTILS"
+	echo "Ces outils sont présents sur les postes 42. Ailleurs, installe-les avec le gestionnaire de paquets."
+	exit 1
+fi
+
 lire_version() {
 	sed -n "s/^# *define $1 \"\(.*\)\"/\1/p" "$VERSION_H" | head -1
 }
@@ -29,6 +39,7 @@ Créé et vibe-codé par Splatch (romasant)
   bash $TDF_NOM/run.sh                  détecter tes projets et lancer le testeur
   bash $TDF_NOM/run.sh libft            tester ta Libft
   bash $TDF_NOM/run.sh printf           tester ton ft_printf
+  bash $TDF_NOM/run.sh gnl              tester ton get_next_line
   bash $TDF_NOM/run.sh exam             passer un exam en C (4 niveaux, grademe)
   bash $TDF_NOM/run.sh --menu           ouvrir le menu sans lancer de tests (stats, chevalier...)
   bash $TDF_NOM/run.sh debug            le journal de la dernière session (debug aide : tout)
@@ -55,8 +66,13 @@ est_libft() {
 	return 0
 }
 
+est_gnl() {
+	[ -f "$1/get_next_line.c" ] && [ -f "$1/get_next_line.h" ]
+}
+
 LIBFTS=()
 PRINTFS=()
+GNLS=()
 VUS="|"
 
 examiner() {
@@ -70,6 +86,8 @@ examiner() {
 		PRINTFS+=("$d")
 	elif est_libft "$d"; then
 		LIBFTS+=("$d")
+	elif est_gnl "$d"; then
+		GNLS+=("$d")
 	fi
 }
 
@@ -172,7 +190,7 @@ while [ $# -gt 0 ]; do
 	shift
 	case "$a" in
 		--menu) MENU=1 ;;
-		libft|printf|exam)
+		libft|printf|exam|gnl)
 			if [ -z "$MODULE" ]; then MODULE="$a"; else SUITE+=("$a"); fi
 			;;
 		--version|-V)
@@ -218,6 +236,8 @@ elif [ -n "$PROJET" ]; then
 		[ -n "$MODULE" ] || MODULE="printf"
 	elif est_libft "$PROJET"; then
 		[ -n "$MODULE" ] || MODULE="libft"
+	elif est_gnl "$PROJET"; then
+		[ -n "$MODULE" ] || MODULE="gnl"
 	elif [ -z "$MODULE" ]; then
 		echo "Je ne reconnais ni une Libft ni un ft_printf dans : $PROJET"
 		echo "Précise le module : bash $TDF_NOM/run.sh libft --projet $PROJET"
@@ -226,10 +246,12 @@ elif [ -n "$PROJET" ]; then
 else
 	detecter
 	if [ -z "$MODULE" ]; then
-		if [ ${#LIBFTS[@]} -gt 0 ] && [ ${#PRINTFS[@]} -eq 0 ]; then
+		if [ ${#LIBFTS[@]} -gt 0 ] && [ ${#PRINTFS[@]} -eq 0 ] && [ ${#GNLS[@]} -eq 0 ]; then
 			MODULE="libft"
-		elif [ ${#PRINTFS[@]} -gt 0 ] && [ ${#LIBFTS[@]} -eq 0 ]; then
+		elif [ ${#PRINTFS[@]} -gt 0 ] && [ ${#LIBFTS[@]} -eq 0 ] && [ ${#GNLS[@]} -eq 0 ]; then
 			MODULE="printf"
+		elif [ ${#GNLS[@]} -gt 0 ] && [ ${#LIBFTS[@]} -eq 0 ] && [ ${#PRINTFS[@]} -eq 0 ]; then
+			MODULE="gnl"
 		fi
 	fi
 	CHOIX=()
@@ -239,6 +261,9 @@ else
 	fi
 	if [ -z "$MODULE" ] || [ "$MODULE" = printf ]; then
 		for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do CHOIX+=("$p"); NOMS+=("printf"); done
+	fi
+	if [ -z "$MODULE" ] || [ "$MODULE" = gnl ]; then
+		for p in ${GNLS[@]+"${GNLS[@]}"}; do CHOIX+=("$p"); NOMS+=("gnl"); done
 	fi
 	if [ -z "$MODULE" ] && [ ${#CHOIX[@]} -ne 1 ]; then
 		CHOIX+=("" "")
@@ -272,6 +297,7 @@ EOF
 			case "${NOMS[$i]}" in
 				libft) etiquette="Libft" ;;
 				exam) etiquette="Exam en C" ;;
+				gnl) etiquette="GNL" ;;
 				menu) etiquette="Menu seul : stats, chevalier, lore (sans tester)" ;;
 				*) etiquette="ft_printf" ;;
 			esac
@@ -328,19 +354,20 @@ fi
 proteger_sauvegarde
 appliquer_anim
 
-[ ${#LIBFTS[@]} -eq 0 ] && [ ${#PRINTFS[@]} -eq 0 ] && detecter
+[ ${#LIBFTS[@]} -eq 0 ] && [ ${#PRINTFS[@]} -eq 0 ] && [ ${#GNLS[@]} -eq 0 ] && detecter
 TDF_DISPO="$MODULE exam"
 RETOUR_MODULE=""
 RETOUR_PROJET=""
 [ ${#LIBFTS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO libft"
 [ ${#PRINTFS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO printf"
+[ ${#GNLS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO gnl"
 export TDF_DISPO
 export TDF_NOM
 export TDF_RACINE
 
 debug_ouvrir ${ARGS_ORIG[@]+"${ARGS_ORIG[@]}"}
 TDF_JOURNAL_MOD="lanceur"
-tdf_journal "projets trouvés : libft ${#LIBFTS[@]}, ft_printf ${#PRINTFS[@]} · module $MODULE · projet ${PROJET:-aucun}"
+tdf_journal "projets trouvés : libft ${#LIBFTS[@]}, ft_printf ${#PRINTFS[@]}, gnl ${#GNLS[@]} · module $MODULE · projet ${PROJET:-aucun}"
 trap 'tdf_journal "interrompu (Ctrl+C)"; debug_fermer "interrompu"; exit 130' INT
 trap 'debug_fermer "arrêté"; exit 143' TERM HUP
 
@@ -355,10 +382,11 @@ while :; do
 	if [ "$code" != 0 ] && [ "$code" != 1 ] && [ "$code" != 45 ] && [ "$code" != 130 ]; then
 		tdf_journal "ERREUR : le module $MODULE s'est arrêté avec le code $code"
 	fi
-	if [ "$MODULE" = exam ] && [ -n "$RETOUR_MODULE" ]; then
+	if { [ "$MODULE" = exam ] || [ "$MODULE" = gnl ]; } && [ -n "$RETOUR_MODULE" ]; then
 		MODULE="$RETOUR_MODULE"
 		PROJET="$RETOUR_PROJET"
 		RETOUR_MODULE=""
+		unset TDF_RETOUR
 		SUITE=()
 		[ "$SANS_ANIM" = 1 ] && SUITE+=(--fast)
 		export TDF_NO_UPDATE=1
@@ -375,6 +403,8 @@ while :; do
 		libft) [ ${#LIBFTS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }; PROJET="${LIBFTS[0]}" ;;
 		printf) [ ${#PRINTFS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }; PROJET="${PRINTFS[0]}" ;;
 		exam) RETOUR_MODULE="$MODULE"; RETOUR_PROJET="$PROJET"; PROJET="" ;;
+		gnl) [ ${#GNLS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }
+			RETOUR_MODULE="$MODULE"; RETOUR_PROJET="$PROJET"; PROJET="${GNLS[0]}"; export TDF_RETOUR=1 ;;
 		*) debug_fermer "code 0"; exit 0 ;;
 	esac
 	MODULE="$suivant"
