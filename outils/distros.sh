@@ -5,9 +5,15 @@ TDF_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 LISTE="${TDF_DISTROS:-Ubuntu FedoraLinux-45 FedoraLinux-44 Debian archlinux}"
 
 if ! command -v wsl.exe >/dev/null 2>&1; then
-	echo "distros : wsl.exe introuvable, ce script se lance depuis WSL." >&2
+	echo "distros : wsl.exe introuvable, ce script se lance depuis Git Bash sous Windows." >&2
 	exit 1
 fi
+
+case "$TDF_DIR" in
+	/mnt/*) ;;
+	/[a-zA-Z]/*) TDF_DIR="/mnt/$(printf '%s' "${TDF_DIR:1:1}" | tr 'A-Z' 'a-z')${TDF_DIR:2}" ;;
+esac
+export MSYS_NO_PATHCONV=1
 
 if [ $# -eq 0 ]; then
 	set -- bash outils/banc.sh
