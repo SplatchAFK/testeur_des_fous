@@ -1,0 +1,10 @@
+*.o
+a.out
+fous
+__pycache__/
+.build/
+.banc/
+entrainement/
+rendu/
+sujet/
+traces/
