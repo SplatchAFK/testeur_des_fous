@@ -715,13 +715,18 @@ void			story_libft_finale(void);
 void			scene_play(t_scene_out *g, int boss, int replay);
 int				scene_child(int boss, int replay);
 
-# ifdef TDF_PRINTF
+# if defined(TDF_PRINTF) || defined(TDF_EXAM)
+#  define TDF_SECTION
 #  define game_kv tdf_game_kv
 #  define game_text tdf_game_text
 #  define game_reset tdf_game_reset
+#  define game_hold tdf_game_hold
 void			game_kv(const char *k, const char *v);
 void			game_text(char *b, size_t n);
 void			game_reset(void);
+void			game_hold(int restore);
+# endif
+# ifdef TDF_PRINTF
 #  include "pf.h"
 # endif
 

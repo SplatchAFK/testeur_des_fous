@@ -99,7 +99,7 @@ int	tdf_menu_tester(const char *train, const char *other, const char *other_labe
 	items[1] = L("Résultats détaillés", "Detailed results");
 	items[2] = train;
 	items[3] = sw;
-	items[4] = L("~Exam en C               (bientôt)", "~C exam                  (soon)");
+	items[4] = L("Exam en C", "C exam");
 	items[5] = L("~Banque d'exercices      (bientôt)", "~Exercise bank           (soon)");
 	items[6] = L("~get_next_line           (plus tard)", "~get_next_line           (later)");
 	items[7] = L("~push_swap               (plus tard)", "~push_swap               (later)");
@@ -112,6 +112,8 @@ int	tdf_menu_tester(const char *train, const char *other, const char *other_labe
 			return (i + 1);
 		if (i == 3 && dispo)
 			return (module_switch(other));
+		if (i == 4)
+			return (module_switch("exam"));
 		if (i == 3)
 			not_yet(L("range ce projet à côté du testeur, puis relance", "put that project next to the tester, then relaunch"));
 		else

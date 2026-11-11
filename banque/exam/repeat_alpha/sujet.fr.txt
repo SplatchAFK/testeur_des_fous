@@ -1,0 +1,27 @@
+Exercice           : repeat_alpha
+Fichiers attendus  : repeat_alpha.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche en répétant chaque
+lettre autant de fois que son rang dans l'alphabet, puis un retour à la
+ligne.
+
+'a' est affiché une fois, 'b' deux fois, 'c' trois fois, et ainsi de suite
+jusqu'à 'z', vingt-six fois. La casse est conservée. Les caractères qui ne
+sont pas des lettres sont affichés une seule fois.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./repeat_alpha "abc" | cat -e
+abbccc$
+$> ./repeat_alpha "Marvin." | cat -e
+MMMMMMMMMMMMMarrrrrrrrrrrrrrrrrrvvvvvvvvvvvvvvvvvvvvvviiiiiiiiinnnnnnnnnnnnnn.$
+$> ./repeat_alpha "moulinette 42!" | cat -e
+mmmmmmmmmmmmmooooooooooooooouuuuuuuuuuuuuuuuuuuuulllllllllllliiiiiiiiinnnnnnnnnnnnnneeeeetttttttttttttttttttttttttttttttttttttttteeeee 42!$
+$> ./repeat_alpha | cat -e
+$
+$>

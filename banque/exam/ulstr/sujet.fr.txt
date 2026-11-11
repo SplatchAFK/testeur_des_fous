@@ -1,0 +1,22 @@
+Exercice           : ulstr
+Fichiers attendus  : ulstr.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche en inversant la casse
+de chaque lettre, puis un retour à la ligne. Les minuscules deviennent des
+majuscules, les majuscules des minuscules. Les autres caractères ne
+changent pas.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./ulstr "Le TeSTeuR dEs fOUs cAsSe toN cOde eT te diT oU reGarDer." | cat -e
+lE tEstEUr DeS FouS CaSsE TOn CoDE Et TE DIt Ou REgARdER.$
+$> ./ulstr "3:21 uN peU de ToUt, 42 fOiS" | cat -e
+3:21 Un PEu DE tOuT, 42 FoIs$
+$> ./ulstr | cat -e
+$
+$>

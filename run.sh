@@ -26,6 +26,7 @@ Créé et vibe-codé par Splatch (romasant)
   bash $TDF_NOM/run.sh                  détecter tes projets et lancer le testeur
   bash $TDF_NOM/run.sh libft            tester ta Libft
   bash $TDF_NOM/run.sh printf           tester ton ft_printf
+  bash $TDF_NOM/run.sh exam             passer un exam en C (4 niveaux, grademe)
   bash $TDF_NOM/run.sh --projet CHEMIN  tester le projet de ce dossier
   bash $TDF_NOM/run.sh --no-lore        les tests seuls, sans histoire
   bash $TDF_NOM/run.sh -a               sans animations pour ce lancement
@@ -158,7 +159,7 @@ while [ $# -gt 0 ]; do
 	a="$1"
 	shift
 	case "$a" in
-		libft|printf)
+		libft|printf|exam)
 			if [ -z "$MODULE" ]; then MODULE="$a"; else SUITE+=("$a"); fi
 			;;
 		--version|-V)
@@ -185,7 +186,10 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-if [ -n "$PROJET" ]; then
+if [ "$MODULE" = exam ]; then
+	PROJET=""
+	detecter
+elif [ -n "$PROJET" ]; then
 	if est_printf "$PROJET"; then
 		[ -n "$MODULE" ] || MODULE="printf"
 	elif est_libft "$PROJET"; then
@@ -272,7 +276,9 @@ proteger_sauvegarde
 appliquer_anim
 
 [ ${#LIBFTS[@]} -eq 0 ] && [ ${#PRINTFS[@]} -eq 0 ] && detecter
-TDF_DISPO="$MODULE"
+TDF_DISPO="$MODULE exam"
+RETOUR_MODULE=""
+RETOUR_PROJET=""
 [ ${#LIBFTS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO libft"
 [ ${#PRINTFS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO printf"
 export TDF_DISPO
@@ -283,12 +289,22 @@ while :; do
 	export TDF_PROJET="$PROJET"
 	bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"}
 	code=$?
+	if [ "$MODULE" = exam ] && [ -n "$RETOUR_MODULE" ]; then
+		MODULE="$RETOUR_MODULE"
+		PROJET="$RETOUR_PROJET"
+		RETOUR_MODULE=""
+		SUITE=()
+		[ "$SANS_ANIM" = 1 ] && SUITE+=(--fast)
+		export TDF_NO_UPDATE=1
+		continue
+	fi
 	[ "$code" = 45 ] || exit "$code"
 	suivant="$(head -1 "$DOSSIER/suivant" 2>/dev/null)"
 	rm -f "$DOSSIER/suivant"
 	case "$suivant" in
 		libft) [ ${#LIBFTS[@]} -gt 0 ] || exit 0; PROJET="${LIBFTS[0]}" ;;
 		printf) [ ${#PRINTFS[@]} -gt 0 ] || exit 0; PROJET="${PRINTFS[0]}" ;;
+		exam) RETOUR_MODULE="$MODULE"; RETOUR_PROJET="$PROJET"; PROJET="" ;;
 		*) exit 0 ;;
 	esac
 	MODULE="$suivant"

@@ -1,0 +1,22 @@
+Assignment name    : ulstr
+Expected files     : ulstr.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes a string and displays it with the case of every
+letter reversed, followed by a newline. Lowercase letters become
+uppercase, uppercase letters become lowercase. Other characters are
+unchanged.
+
+If the program does not receive exactly one argument, it only displays a
+newline.
+
+Examples:
+
+$> ./ulstr "Le TeSTeuR dEs fOUs cAsSe toN cOde eT te diT oU reGarDer." | cat -e
+lE tEstEUr DeS FouS CaSsE TOn CoDE Et TE DIt Ou REgARdER.$
+$> ./ulstr "3:21 uN peU de ToUt, 42 fOiS" | cat -e
+3:21 Un PEu DE tOuT, 42 FoIs$
+$> ./ulstr | cat -e
+$
+$>

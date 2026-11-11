@@ -1,0 +1,29 @@
+Assignment name    : fizzbuzz
+Expected files     : fizzbuzz.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that displays the numbers from 1 to 100, one per line.
+
+Three rules replace some of the numbers:
+- a multiple of 3 is replaced by "fizz";
+- a multiple of 5 is replaced by "buzz";
+- a multiple of both 3 and 5 is replaced by "fizzbuzz".
+
+The program ignores its arguments.
+
+Start of the expected output:
+
+$> ./fizzbuzz
+1
+2
+fizz
+4
+buzz
+fizz
+7
+[...]
+14
+fizzbuzz
+16
+[...]

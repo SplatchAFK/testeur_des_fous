@@ -1,0 +1,4 @@
+niveau=1
+type=programme
+fichiers=fizzbuzz.c
+autorise=write

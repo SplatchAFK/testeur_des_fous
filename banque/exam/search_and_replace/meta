@@ -1,0 +1,4 @@
+niveau=1
+type=programme
+fichiers=search_and_replace.c
+autorise=write

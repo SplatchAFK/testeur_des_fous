@@ -1,0 +1,13 @@
+Exercice           : ft_strlen
+Fichiers attendus  : ft_strlen.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui renvoie la longueur d'une chaîne, c'est-à-dire le
+nombre de caractères qui précèdent le caractère nul final.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_strlen(char *str);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

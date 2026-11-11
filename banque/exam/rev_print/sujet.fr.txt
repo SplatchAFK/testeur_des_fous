@@ -1,0 +1,20 @@
+Exercice           : rev_print
+Fichiers attendus  : rev_print.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche à l'envers, suivie
+d'un retour à la ligne.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./rev_print "kayak" | cat -e
+kayak$
+$> ./rev_print "Le Testeur" | cat -e
+ruetseT eL$
+$> ./rev_print | cat -e
+$
+$>

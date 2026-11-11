@@ -1,0 +1,20 @@
+Assignment name    : rev_print
+Expected files     : rev_print.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes a string and displays it in reverse, followed
+by a newline.
+
+If the program does not receive exactly one argument, it only displays a
+newline.
+
+Examples:
+
+$> ./rev_print "kayak" | cat -e
+kayak$
+$> ./rev_print "Le Testeur" | cat -e
+ruetseT eL$
+$> ./rev_print | cat -e
+$
+$>

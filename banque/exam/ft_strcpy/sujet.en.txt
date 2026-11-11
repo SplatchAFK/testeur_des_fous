@@ -1,0 +1,15 @@
+Assignment name    : ft_strcpy
+Expected files     : ft_strcpy.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that copies the string s2 into s1, terminating null
+included, and returns s1. It behaves like strcpy (man strcpy).
+
+The area pointed to by s1 is always large enough.
+
+Your function must have this prototype:
+
+char	*ft_strcpy(char *s1, char *s2);
+
+The tester calls it from its own main: do not submit one.

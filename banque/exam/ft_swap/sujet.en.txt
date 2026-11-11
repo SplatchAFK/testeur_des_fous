@@ -1,0 +1,13 @@
+Assignment name    : ft_swap
+Expected files     : ft_swap.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that swaps the values of the two integers whose addresses
+it receives.
+
+Your function must have this prototype:
+
+void	ft_swap(int *a, int *b);
+
+The tester calls it from its own main: do not submit one.

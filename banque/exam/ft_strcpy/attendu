@@ -1,0 +1,8 @@
+#239
+copie=[bonjour] retour=s1 nul=1 suite=XX
+copie=[] retour=s1 nul=1 suite=XX
+copie=[a] retour=s1 nul=1 suite=XX
+copie=[une phrase plus longue, avec de la ponctuation !] retour=s1 nul=1 suite=XX
+copie=[tab	et
+retour] retour=s1 nul=1 suite=XX
+

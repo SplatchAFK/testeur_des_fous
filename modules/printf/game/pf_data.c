@@ -145,6 +145,16 @@ const t_pexo	g_pexos[NPEXO] = {
 		"Like dprintf with only %c, %s and %d: writes to fd. Return the number of bytes written, -1 if write fails.", "dprintf"},
 };
 
+void	game_hold(int restore)
+{
+	static t_psave	keep;
+
+	if (restore)
+		g_pf = keep;
+	else
+		keep = g_pf;
+}
+
 void	game_reset(void)
 {
 	memset(&g_pf, 0, sizeof(g_pf));

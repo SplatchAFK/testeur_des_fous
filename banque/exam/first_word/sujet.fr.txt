@@ -1,0 +1,27 @@
+Exercice           : first_word
+Fichiers attendus  : first_word.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et affiche son premier mot, suivi
+d'un retour à la ligne.
+
+Un mot est une suite de caractères délimitée par des espaces, des
+tabulations, ou par le début et la fin de la chaîne.
+
+Si le programme ne reçoit pas exactement un argument, ou si la chaîne ne
+contient aucun mot, il affiche seulement un retour à la ligne.
+
+Exemples :
+
+$> ./first_word "PREMIER mot" | cat -e
+PREMIER$
+$> ./first_word "un        ...       test avec, des    espaces" | cat -e
+un$
+$> ./first_word "   " | cat -e
+$
+$> ./first_word "a" "b" | cat -e
+$
+$> ./first_word "  deux,mots  " | cat -e
+deux,mots$
+$>

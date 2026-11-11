@@ -1,0 +1,25 @@
+Assignment name    : rot_13
+Expected files     : rot_13.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes a string and displays it, replacing each letter
+by the one thirteen ranks further in the alphabet, followed by a newline.
+
+After 'z' it wraps to 'a', after 'Z' it wraps to 'A'. Case is kept. Other
+characters are unchanged.
+
+If the program does not receive exactly one argument, it only displays a
+newline.
+
+Examples:
+
+$> ./rot_13 "abc" | cat -e
+nop$
+$> ./rot_13 "Mon chat est Gris." | cat -e
+Zba pung rfg Tevf.$
+$> ./rot_13 "ZyxwA aBCDEf , 42z " | cat -e
+MlkjN nOPQRs , 42m $
+$> ./rot_13 | cat -e
+$
+$>

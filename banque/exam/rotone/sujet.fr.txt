@@ -1,0 +1,25 @@
+Exercice           : rotone
+Fichiers attendus  : rotone.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche en remplaçant chaque
+lettre par la suivante dans l'alphabet, puis un retour à la ligne.
+
+'z' devient 'a' et 'Z' devient 'A'. La casse est conservée. Les autres
+caractères ne changent pas.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./rotone "abc" | cat -e
+bcd$
+$> ./rotone "Le chevalier monte la tour sans se retourner." | cat -e
+Mf difwbmjfs npouf mb upvs tbot tf sfupvsofs.$
+$> ./rotone "ZyxwA aBCDEf , 42z " | cat -e
+AzyxB bCDEFg , 42a $
+$> ./rotone | cat -e
+$
+$>

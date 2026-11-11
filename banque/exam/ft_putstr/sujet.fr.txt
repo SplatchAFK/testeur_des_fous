@@ -1,0 +1,13 @@
+Exercice           : ft_putstr
+Fichiers attendus  : ft_putstr.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris une fonction qui affiche une chaîne de caractères sur la sortie
+standard. Elle n'ajoute rien après la chaîne.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_putstr(char *str);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

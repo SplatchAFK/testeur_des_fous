@@ -1,0 +1,4 @@
+niveau=1
+type=programme
+fichiers=rot_13.c
+autorise=write

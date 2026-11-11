@@ -1,0 +1,4 @@
+niveau=1
+type=fonction
+fichiers=ft_putstr.c
+autorise=write

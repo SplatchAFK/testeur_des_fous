@@ -55,7 +55,7 @@ static char		g_probe_unk[4000];
 static char		*g_cur_unk;
 static unsigned long	g_hp;
 static unsigned long	g_hl;
-#ifdef TDF_PRINTF
+#ifdef TDF_SECTION
 static unsigned long	g_hg;
 #endif
 
@@ -383,7 +383,7 @@ static int	parse_file(const char *path, t_save *out, char *other, size_t on, cha
 	g_cur_unk = unk;
 	g_hp = 1469598103934665603UL;
 	g_hl = 1469598103934665603UL;
-#ifdef TDF_PRINTF
+#ifdef TDF_SECTION
 	g_hg = 1469598103934665603UL;
 	game_reset();
 #endif
@@ -391,7 +391,7 @@ static int	parse_file(const char *path, t_save *out, char *other, size_t on, cha
 	while (fgets(line, sizeof(line), f))
 	{
 		line[strcspn(line, "\r\n")] = '\0';
-#ifdef TDF_PRINTF
+#ifdef TDF_SECTION
 		if (!strncmp(line, TDF_GAME ".", strlen(TDF_GAME) + 1) && strchr(line, '='))
 		{
 			eq = strchr(line, '=');
@@ -440,7 +440,7 @@ static int	parse_file(const char *path, t_save *out, char *other, size_t on, cha
 		return (-2);
 	if (pres.libft && pres.want_l != g_hl)
 		return (-2);
-#ifdef TDF_PRINTF
+#ifdef TDF_SECTION
 	if (pres.game && pres.want_g != g_hg)
 		return (-2);
 #endif
@@ -503,16 +503,14 @@ static void	other_refresh(void)
 	static char		unk[sizeof(g_unk)];
 	char			keep[sizeof(g_other)];
 
-#ifdef TDF_PRINTF
-	t_psave			pf;
-
-	pf = g_pf;
+#ifdef TDF_SECTION
+	game_hold(0);
 #endif
 	memcpy(keep, g_other, sizeof(keep));
 	if (parse_file(save_path(), &tmp, g_other, sizeof(g_other), unk) == -1)
 		memcpy(g_other, keep, sizeof(g_other));
-#ifdef TDF_PRINTF
-	g_pf = pf;
+#ifdef TDF_SECTION
+	game_hold(1);
 #endif
 }
 
@@ -546,7 +544,7 @@ static void	write_file(int refresh)
 		g_save.cfg.col256, g_save.cfg.help, g_save.cfg.tmo, g_save.cfg.asan,
 		g_save.cfg.ubsan, g_save.cfg.valg, g_save.cfg.norm, g_save.cfg.audit,
 		g_save.cfg.sound, g_save.cfg.lang, g_save.cfg.keys, g_save.cfg.lore, hp, hl);
-#ifdef TDF_PRINTF
+#ifdef TDF_SECTION
 	game_text(b, sizeof(b));
 	fputs(b, f);
 	fprintf(f, "sum_%s=%lx\n", TDF_GAME, hash_of(b));

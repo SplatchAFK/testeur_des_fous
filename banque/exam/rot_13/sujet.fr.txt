@@ -1,0 +1,26 @@
+Exercice           : rot_13
+Fichiers attendus  : rot_13.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche en remplaçant chaque
+lettre par celle située treize rangs plus loin dans l'alphabet, puis un
+retour à la ligne.
+
+Après 'z' on repart de 'a', après 'Z' on repart de 'A'. La casse est
+conservée. Les autres caractères ne changent pas.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./rot_13 "abc" | cat -e
+nop$
+$> ./rot_13 "Mon chat est Gris." | cat -e
+Zba pung rfg Tevf.$
+$> ./rot_13 "ZyxwA aBCDEf , 42z " | cat -e
+MlkjN nOPQRs , 42m $
+$> ./rot_13 | cat -e
+$
+$>

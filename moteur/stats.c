@@ -23,7 +23,7 @@ typedef struct s_sitem
 
 typedef struct s_sdata
 {
-	int		runs[2];
+	int		runs[3];
 	long	first;
 	long	last;
 	int		days;
@@ -135,6 +135,8 @@ void	tdf_stats_end(int ok, int total)
 	fclose(g_sf);
 	g_sf = NULL;
 }
+
+#ifndef TDF_STATS_SEUL
 
 static long	day_of(long t)
 {
@@ -283,7 +285,7 @@ static void	stats_load(void)
 	{
 		if (sscanf(line, "R %ld %11s %d %d", &t, mod, &ok, &tot) == 4 && tot > 0)
 		{
-			g_sd.runs[strcmp(mod, "printf") == 0]++;
+			g_sd.runs[!strcmp(mod, "printf") ? 1 : !strcmp(mod, "exam") ? 2 : 0]++;
 			if (!g_sd.first || t < g_sd.first)
 				g_sd.first = t;
 			if (t > g_sd.last)
@@ -524,3 +526,5 @@ void	tdf_screen_stats(void)
 	}
 	cls();
 }
+
+#endif

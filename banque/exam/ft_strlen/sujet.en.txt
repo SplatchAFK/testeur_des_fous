@@ -1,0 +1,13 @@
+Assignment name    : ft_strlen
+Expected files     : ft_strlen.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that returns the length of a string, that is the number
+of characters before the terminating null.
+
+Your function must have this prototype:
+
+int	ft_strlen(char *str);
+
+The tester calls it from its own main: do not submit one.

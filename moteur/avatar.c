@@ -117,16 +117,6 @@ void	cv_print(const t_canvas *c, int sx, int sy, t_rgb bg)
 	bgc(theme()->bg);
 }
 
-int	item_find(const char *id)
-{
-	int	i;
-
-	for (i = 0; i < g_nitems; i++)
-		if (!strcmp(g_items[i].id, id))
-			return (i);
-	return (-1);
-}
-
 t_rgb	item_color(int item, int col)
 {
 	if (item < 0)
@@ -134,20 +124,6 @@ t_rgb	item_color(int item, int col)
 	if (col <= 0 || col >= 10)
 		return (g_items[item].base);
 	return (g_swatch[col]);
-}
-
-void	look_default(t_look *lk)
-{
-	static const char	*def[NSLOT] = {"fond_aucun", "cape_classique",
-		"jambes_jambieres", "armure_cotte", "casque_rond", "yeux_points",
-		"deco_aucun", "arme_epee", "main_bouclier", "familier_aucun", "aura_aucune"};
-	int					i;
-
-	for (i = 0; i < NSLOT; i++)
-	{
-		lk->eq[i] = item_find(def[i]);
-		lk->col[i] = 0;
-	}
 }
 
 static void	aura(t_canvas *c, int x, int y, int item, t_rgb col, long t)

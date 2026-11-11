@@ -1,0 +1,4 @@
+niveau=1
+type=programme
+fichiers=rev_print.c
+autorise=write

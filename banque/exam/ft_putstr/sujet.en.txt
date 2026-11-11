@@ -1,0 +1,13 @@
+Assignment name    : ft_putstr
+Expected files     : ft_putstr.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a function that displays a string on the standard output. It adds
+nothing after the string.
+
+Your function must have this prototype:
+
+void	ft_putstr(char *str);
+
+The tester calls it from its own main: do not submit one.

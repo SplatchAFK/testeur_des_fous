@@ -1,0 +1,15 @@
+Exercice           : ft_strcpy
+Fichiers attendus  : ft_strcpy.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui copie la chaîne s2 dans s1, caractère nul compris,
+et qui renvoie s1. Elle se comporte comme strcpy (man strcpy).
+
+La zone pointée par s1 est toujours assez grande.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_strcpy(char *s1, char *s2);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

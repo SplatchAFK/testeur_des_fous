@@ -1,0 +1,25 @@
+Assignment name    : rotone
+Expected files     : rotone.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes a string and displays it, replacing each letter
+by the next one in the alphabet, followed by a newline.
+
+'z' becomes 'a' and 'Z' becomes 'A'. Case is kept. Other characters are
+unchanged.
+
+If the program does not receive exactly one argument, it only displays a
+newline.
+
+Examples:
+
+$> ./rotone "abc" | cat -e
+bcd$
+$> ./rotone "Le chevalier monte la tour sans se retourner." | cat -e
+Mf difwbmjfs npouf mb upvs tbot tf sfupvsofs.$
+$> ./rotone "ZyxwA aBCDEf , 42z " | cat -e
+AzyxB bCDEFg , 42a $
+$> ./rotone | cat -e
+$
+$>

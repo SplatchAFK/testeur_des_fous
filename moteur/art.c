@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stddef.h>
 #include "fous.h"
 
@@ -1754,3 +1755,27 @@ const t_idef	g_items[] = {
 	{"casque_pourcent", "Casque pourcent", "Percent helmet", 4, 120, {200, 120, 255}, {14, 13, 7, 3, g_it35}}
 };
 const int	g_nitems = 120;
+
+int	item_find(const char *id)
+{
+	int	i;
+
+	for (i = 0; i < g_nitems; i++)
+		if (!strcmp(g_items[i].id, id))
+			return (i);
+	return (-1);
+}
+
+void	look_default(t_look *lk)
+{
+	static const char	*def[NSLOT] = {"fond_aucun", "cape_classique",
+		"jambes_jambieres", "armure_cotte", "casque_rond", "yeux_points",
+		"deco_aucun", "arme_epee", "main_bouclier", "familier_aucun", "aura_aucune"};
+	int					i;
+
+	for (i = 0; i < NSLOT; i++)
+	{
+		lk->eq[i] = item_find(def[i]);
+		lk->col[i] = 0;
+	}
+}
