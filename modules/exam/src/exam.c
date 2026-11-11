@@ -71,6 +71,7 @@ typedef struct s_xsave
 	int		cheats;
 	long	lastreward;
 	char	done[2400];
+	char	code[600];
 }	t_xsave;
 
 static t_xexo	g_bank[XMAXEXO];
@@ -126,13 +127,15 @@ void	game_kv(const char *k, const char *v)
 		g_xs.lastreward = atol(v);
 	else if (!strcmp(k, "done"))
 		snprintf(g_xs.done, sizeof(g_xs.done), "%s", v);
+	else if (!strcmp(k, "code"))
+		snprintf(g_xs.code, sizeof(g_xs.code), "%s", v);
 }
 
 void	game_text(char *b, size_t n)
 {
 	snprintf(b, n, "exam.runs=%d\nexam.best=%d\nexam.passed=%d\nexam.besttime=%ld\nexam.cheats=%d\n"
-		"exam.lastreward=%ld\nexam.done=%s\n", g_xs.runs, g_xs.best, g_xs.passed, g_xs.besttime,
-		g_xs.cheats, g_xs.lastreward, g_xs.done);
+		"exam.lastreward=%ld\nexam.done=%s\nexam.code=%s\n", g_xs.runs, g_xs.best, g_xs.passed, g_xs.besttime,
+		g_xs.cheats, g_xs.lastreward, g_xs.done, g_xs.code);
 }
 
 static const char	*col(const char *code)
@@ -1162,9 +1165,29 @@ static int	do_grademe(void)
 	return (0);
 }
 
+int	tdf_code_ok(const char *login, const char *code);
+
 static int	code_ok(void)
 {
-	return (0);
+	return (g_xs.code[0] && tdf_code_ok(g_save.login, g_xs.code));
+}
+
+static void	enter_code(const char *c)
+{
+	if (!c)
+	{
+		printf("  usage : code TON_CODE (à demander à splatch_afk sur Discord, pour ton login : %s)\n", g_save.login);
+		return ;
+	}
+	if (!tdf_code_ok(g_save.login, c))
+	{
+		printf("  %scode refusé%s : il ne correspond pas au login %s.\n", C_KO, C_R, g_save.login);
+		return ;
+	}
+	snprintf(g_xs.code, sizeof(g_xs.code), "%s", c);
+	save_write();
+	printf("  %scode accepté%s : skip, reroll et trace sont débloqués pour %s.\n", C_OK, C_R, g_save.login);
+	printf("  %sun exam passé avec un cheat ne rapporte aucun Octet.%s\n", C_D, C_R);
 }
 
 static int	do_cheat(const char *cmd)
@@ -1207,13 +1230,13 @@ static void	show_help(void)
 	printf("  %ssujet%s     relire le sujet (sujet en : en anglais, sujet fr : en français)\n", C_B, C_R);
 	printf("  %sfinish%s    terminer la session maintenant\n", C_B, C_R);
 	printf("  %shelp%s      cette aide\n", C_B, C_R);
-	printf("  %sskip, reroll, trace : avec un code%s\n\n", C_D, C_R);
+	printf("  %sskip, reroll, trace : avec un code (commande : code TON_CODE)%s\n\n", C_D, C_R);
 	printf("  Écris ton code dans un autre terminal ou dans ton éditeur, dans le dossier rendu/.\n\n");
 }
 
 static void	shell(void)
 {
-	char	line[200];
+	char	line[1000];
 	char	t[32];
 	char	*cmd;
 	int		end;
@@ -1256,6 +1279,8 @@ static void	shell(void)
 			show_help();
 		else if (!strcmp(cmd, "skip") || !strcmp(cmd, "reroll") || !strcmp(cmd, "trace"))
 			end = do_cheat(cmd);
+		else if (!strcmp(cmd, "code"))
+			enter_code(strtok(NULL, " \t\r\n"));
 		else if (!strcmp(cmd, "finish") || !strcmp(cmd, "exit") || !strcmp(cmd, "quit"))
 		{
 			printf("  Terminer la session ? (o/n) ");

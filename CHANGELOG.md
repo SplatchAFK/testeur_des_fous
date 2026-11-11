@@ -6,6 +6,15 @@ Le numéro de version est dans `moteur/version.h`.
 
 Un seul testeur réunit le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1), et ajoute un examshell en C.
 
+### Exam
+
+- `run.sh exam` ou Tester, puis Exam en C : un examshell en C, sans Python ;
+- 57 exercices sur 4 niveaux (12, 20, 15, 10), énoncés en français et en anglais, 25 points par niveau, 100 pour valider ;
+- session réglable : examen ou entraînement, chronomètre de 3 h, attente après un échec, trace, langue, conditions réelles ;
+- `grademe` : fichiers attendus, compilation, fonctions autorisées, sortie comparée octet par octet, 5 s par test, puis contrôle mémoire à titre d'information ;
+- `skip`, `reroll`, `trace` avec un code personnel, lié au login ; un exam passé avec un cheat ne rapporte rien ;
+- Octets et XP selon la réussite ; l'exam alimente l'écran Stats.
+
 ### Menu et Stats
 
 - le menu passe de 13 boutons à 6 : Tester, Chevalier, Lore, Stats, Paramètres, Quitter ; tout ce qui existait reste accessible dans les sous-menus ;

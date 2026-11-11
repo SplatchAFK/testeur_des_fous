@@ -40,10 +40,10 @@ done
 mkdir -p "$BUILD" "$DOSSIER" 2>/dev/null
 chmod 700 "$DOSSIER" 2>/dev/null
 
-SOURCES=("$ICI/src/exam.c" "$MOT/save.c" "$MOT/data.c" "$MOT/art.c" "$MOT/stats.c")
-EMPREINTE="$(cat "${SOURCES[@]}" "$MOT"/*.h 2>/dev/null | cksum | cut -d' ' -f1)"
+SOURCES=("$ICI/src/exam.c" "$ICI/src/code.c" "$MOT/save.c" "$MOT/data.c" "$MOT/art.c" "$MOT/stats.c")
+EMPREINTE="$(cat "${SOURCES[@]}" "$MOT"/*.h "$ICI"/src/*.h 2>/dev/null | cksum | cut -d' ' -f1)"
 if [ ! -x "$BUILD/exam" ] || [ "$(cat "$BUILD/empreinte" 2>/dev/null)" != "$EMPREINTE" ]; then
-	if ! "$CC" -O2 -w -DTDF_EXAM -DTDF_STATS_SEUL -I "$MOT" "${SOURCES[@]}" -lm -o "$BUILD/exam" 2> "$BUILD/exam.err"; then
+	if ! "$CC" -O2 -w -DTDF_EXAM -DTDF_STATS_SEUL -I "$MOT" -I "$ICI/src" "${SOURCES[@]}" -lm -o "$BUILD/exam" 2> "$BUILD/exam.err"; then
 		echo "exam : le moteur ne compile pas sur cette machine."
 		head -5 "$BUILD/exam.err"
 		exit 1
