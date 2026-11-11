@@ -700,8 +700,12 @@ static int	sym_ok(const t_xexo *x, const char *s, const char *defined)
 		if (!strcmp(s, sys[i]))
 			return (1);
 	for (i = 0; i < x->nallowed; i++)
+	{
 		if (!strcmp(s, x->allowed[i]))
 			return (1);
+		if (!strcmp(x->allowed[i], "printf") && (!strcmp(s, "puts") || !strcmp(s, "putchar")))
+			return (1);
+	}
 	snprintf(pat, sizeof(pat), "\n%s\n", s);
 	return (strstr(defined, pat) != NULL);
 }
@@ -771,7 +775,7 @@ static int	build(const t_xexo *x, const char *srcdir, const char *maindir, int s
 	{
 		if (strcmp(x->files[i] + strlen(x->files[i]) - 2, ".c"))
 			continue ;
-		r = sh("cc -Wall -Wextra -Werror %s -I %s -c %s/%s -o %s/u_%d.o 2> %s",
+		r = sh("cc -std=gnu17 -Wall -Wextra -Werror %s -I %s -c %s/%s -o %s/u_%d.o 2> %s",
 				san ? "-g -fsanitize=address,undefined -fno-omit-frame-pointer" : "",
 				q(srcdir), q(srcdir), x->files[i], q(g_build), i, q(errf));
 		if (r != 0)
@@ -793,7 +797,7 @@ static int	build(const t_xexo *x, const char *srcdir, const char *maindir, int s
 		r = sh("cc %s %s -o %s/bin%s 2> %s", san ? "-fsanitize=address,undefined" : "", objs, q(g_build),
 				san ? "_san" : "", q(errf));
 	else
-		r = sh("cc -w %s -I %s %s/%s/main.c %s -o %s/bin%s 2> %s", san ? "-fsanitize=address,undefined" : "",
+		r = sh("cc -std=gnu17 -w %s -I %s %s/%s/main.c %s -o %s/bin%s 2> %s", san ? "-fsanitize=address,undefined" : "",
 				q(srcdir), q(maindir), x->name, objs, q(g_build), san ? "_san" : "", q(errf));
 	if (r != 0)
 	{

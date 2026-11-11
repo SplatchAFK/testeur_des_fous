@@ -1,0 +1,17 @@
+Assignment name    : ft_strcmp
+Expected files     : ft_strcmp.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that compares the strings s1 and s2, like strcmp
+(man strcmp). It returns a negative number if s1 comes before s2, zero if
+they are equal, and a positive number otherwise. The comparison is made
+character by character.
+
+The tester only looks at the sign of the result.
+
+Your function must have this prototype:
+
+int	ft_strcmp(char *s1, char *s2);
+
+The tester calls it from its own main: do not submit one.

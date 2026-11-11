@@ -1,0 +1,21 @@
+Exercice           : ft_list_size
+Fichiers attendus  : ft_list_size.c, ft_list.h
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui renvoie le nombre d'éléments de la liste chaînée
+qui commence à begin_list.
+
+Rends aussi le fichier ft_list.h, qui déclare la structure suivante :
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_list_size(t_list *begin_list);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

@@ -1,0 +1,4 @@
+niveau=4
+type=programme
+fichiers=rostring.c
+autorise=write malloc free

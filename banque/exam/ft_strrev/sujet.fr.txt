@@ -1,0 +1,12 @@
+Exercice           : ft_strrev
+Fichiers attendus  : ft_strrev.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui inverse la chaîne str sur place et qui renvoie str.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_strrev(char *str);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

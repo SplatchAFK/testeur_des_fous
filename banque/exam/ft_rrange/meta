@@ -1,0 +1,4 @@
+niveau=3
+type=fonction
+fichiers=ft_rrange.c
+autorise=malloc

@@ -1,0 +1,18 @@
+Exercice           : ft_atoi_base
+Fichiers attendus  : ft_atoi_base.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui convertit la chaîne str, écrite dans la base
+str_base (de 2 à 16), en int.
+
+Les chiffres sont 0 à 9 puis les lettres a à f, en minuscules ou en
+majuscules. Un seul '-' au début rend le nombre négatif. La lecture
+s'arrête au premier caractère qui n'est pas un chiffre valide de la base.
+Le testeur ne donne que des nombres qui tiennent dans un int.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_atoi_base(const char *str, int str_base);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

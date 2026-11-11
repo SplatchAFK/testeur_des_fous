@@ -1,0 +1,26 @@
+Exercice           : alpha_mirror
+Fichiers attendus  : alpha_mirror.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche en remplaçant chaque
+lettre par son miroir dans l'alphabet, puis un retour à la ligne.
+
+'a' devient 'z', 'b' devient 'y', 'c' devient 'x', et ainsi de suite ; de
+même 'A' devient 'Z'. La casse est conservée. Les autres caractères ne
+changent pas.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./alpha_mirror "abc" | cat -e
+zyx$
+$> ./alpha_mirror "Le Chat Gris" | cat -e
+Ov Xszg Tirh$
+$> ./alpha_mirror "miroir, 42 !" | cat -e
+nrilri, 42 !$
+$> ./alpha_mirror | cat -e
+$
+$>

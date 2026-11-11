@@ -1,0 +1,12 @@
+Assignment name    : ft_strrev
+Expected files     : ft_strrev.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that reverses the string str in place and returns str.
+
+Your function must have this prototype:
+
+char	*ft_strrev(char *str);
+
+The tester calls it from its own main: do not submit one.

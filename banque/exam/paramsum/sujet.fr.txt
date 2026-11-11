@@ -1,0 +1,17 @@
+Exercice           : paramsum
+Fichiers attendus  : paramsum.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui affiche le nombre d'arguments qu'il reçoit, suivi
+d'un retour à la ligne. Sans argument, il affiche 0.
+
+Exemples :
+
+$> ./paramsum | cat -e
+0$
+$> ./paramsum "1" "2" "3" | cat -e
+3$
+$> ./paramsum "le testeur" "des fous" | cat -e
+2$
+$>

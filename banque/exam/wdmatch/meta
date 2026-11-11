@@ -1,0 +1,4 @@
+niveau=2
+type=programme
+fichiers=wdmatch.c
+autorise=write

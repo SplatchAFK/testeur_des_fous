@@ -1,0 +1,23 @@
+Assignment name    : inter
+Expected files     : inter.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes two strings and displays, without duplicates,
+the characters that appear in both, in the order they appear in the first
+one, followed by a newline.
+
+If the program does not receive exactly two arguments, it only displays a
+newline.
+
+Examples:
+
+$> ./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$> ./inter "le testeur" "des fous" | cat -e
+e su$
+$> ./inter "rien" "zzz" | cat -e
+$
+$> ./inter "seul" | cat -e
+$
+$>

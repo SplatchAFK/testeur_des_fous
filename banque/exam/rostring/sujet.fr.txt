@@ -1,0 +1,26 @@
+Exercice           : rostring
+Fichiers attendus  : rostring.c
+Fonctions permises : write, malloc, free
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche en déplaçant son
+premier mot à la fin, puis un retour à la ligne. Les mots sont séparés
+par un seul espace dans l'affichage, sans espace au début ni à la fin.
+
+Un mot est une suite de caractères délimitée par des espaces ou des
+tabulations.
+
+Si le programme reçoit plusieurs arguments, il ne traite que le premier.
+Sans argument, il affiche seulement un retour à la ligne.
+
+Exemples :
+
+$> ./rostring "le testeur des fous" | cat -e
+testeur des fous le$
+$> ./rostring "  Marvin   monte la tour  " | cat -e
+monte la tour Marvin$
+$> ./rostring "unseul" | cat -e
+unseul$
+$> ./rostring | cat -e
+$
+$>

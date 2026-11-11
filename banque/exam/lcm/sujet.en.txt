@@ -1,0 +1,14 @@
+Assignment name    : lcm
+Expected files     : lcm.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that returns the least common multiple of a and b, that
+is the smallest non-zero integer divisible by both a and b. If a or b is
+0, it returns 0.
+
+Your function must have this prototype:
+
+unsigned int	lcm(unsigned int a, unsigned int b);
+
+The tester calls it from its own main: do not submit one.

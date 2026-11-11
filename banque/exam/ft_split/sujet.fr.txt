@@ -1,0 +1,17 @@
+Exercice           : ft_split
+Fichiers attendus  : ft_split.c
+Fonctions permises : malloc
+--------------------------------------------------------------
+
+Écris une fonction qui découpe la chaîne str en mots et renvoie un tableau
+de chaînes, terminé par NULL, alloué avec malloc. Chaque mot est lui aussi
+alloué avec malloc.
+
+Les mots sont séparés par des espaces, des tabulations ou des retours à la
+ligne.
+
+Ta fonction doit avoir ce prototype :
+
+char	**ft_split(char *str);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

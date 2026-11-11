@@ -1,0 +1,14 @@
+Exercice           : lcm
+Fichiers attendus  : lcm.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui renvoie le plus petit commun multiple de a et b,
+c'est-à-dire le plus petit entier non nul divisible à la fois par a et par
+b. Si a ou b vaut 0, elle renvoie 0.
+
+Ta fonction doit avoir ce prototype :
+
+unsigned int	lcm(unsigned int a, unsigned int b);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

@@ -1,0 +1,4 @@
+niveau=4
+type=programme
+fichiers=rev_wstr.c
+autorise=write malloc free

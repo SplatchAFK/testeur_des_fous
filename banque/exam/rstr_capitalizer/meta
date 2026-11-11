@@ -1,0 +1,4 @@
+niveau=3
+type=programme
+fichiers=rstr_capitalizer.c
+autorise=write

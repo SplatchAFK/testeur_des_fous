@@ -1,0 +1,17 @@
+Assignment name    : ft_atoi
+Expected files     : ft_atoi.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that converts the start of the string str to an int, like
+atoi (man atoi).
+
+It skips leading whitespace (space, \t, \n, \v, \f, \r), accepts a single
+'+' or '-' sign, then reads digits up to the first character that is not
+one. The tester only gives numbers that fit in an int.
+
+Your function must have this prototype:
+
+int	ft_atoi(const char *str);
+
+The tester calls it from its own main: do not submit one.

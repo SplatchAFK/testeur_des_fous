@@ -1,0 +1,22 @@
+Exercice           : print_hex
+Fichiers attendus  : print_hex.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit un entier positif écrit en base 10 et
+l'affiche en base 16, en minuscules, suivi d'un retour à la ligne.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./print_hex "10" | cat -e
+a$
+$> ./print_hex "255" | cat -e
+ff$
+$> ./print_hex "5156454" | cat -e
+4eae66$
+$> ./print_hex | cat -e
+$
+$>

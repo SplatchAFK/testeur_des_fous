@@ -1,0 +1,19 @@
+Assignment name    : ft_rrange
+Expected files     : ft_rrange.c
+Allowed functions  : malloc
+--------------------------------------------------------------
+
+Write a function that allocates with malloc an array of integers, fills it
+with the consecutive values going from end to start, both included, and
+returns that array.
+
+The array always starts with end.
+
+For example: (1, 3) gives 3, 2, 1; (-1, 2) gives 2, 1, 0, -1;
+(0, -3) gives -3, -2, -1, 0.
+
+Your function must have this prototype:
+
+int	*ft_rrange(int start, int end);
+
+The tester calls it from its own main: do not submit one.

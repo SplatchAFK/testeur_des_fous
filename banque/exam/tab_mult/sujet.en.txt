@@ -1,0 +1,29 @@
+Assignment name    : tab_mult
+Expected files     : tab_mult.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes a strictly positive integer and displays its
+multiplication table from 1 to 9, one line per product, in the form
+"1 x 7 = 7".
+
+The tester only gives numbers whose table fits in an int.
+
+If the program does not receive exactly one argument, it only displays a
+newline.
+
+Examples:
+
+$> ./tab_mult "9" | cat -e
+1 x 9 = 9$
+2 x 9 = 18$
+3 x 9 = 27$
+4 x 9 = 36$
+5 x 9 = 45$
+6 x 9 = 54$
+7 x 9 = 63$
+8 x 9 = 72$
+9 x 9 = 81$
+$> ./tab_mult | cat -e
+$
+$>

@@ -1,0 +1,4 @@
+niveau=4
+type=programme
+fichiers=fprime.c
+autorise=printf atoi

@@ -1,0 +1,26 @@
+Assignment name    : flood_fill
+Expected files     : flood_fill.c, t_point.h
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that "fills" an area of a two-dimensional array of
+characters.
+
+tab has size.y rows and size.x columns. The area starts at the cell begin
+(column begin.x, row begin.y) and holds every cell that has the same
+character and can be reached by moving horizontally or vertically, never
+diagonally. Each cell of the area is replaced by 'F'.
+
+Also submit the file t_point.h, which declares:
+
+typedef struct  s_point
+{
+    int         x;
+    int         y;
+}               t_point;
+
+Your function must have this prototype:
+
+void	flood_fill(char **tab, t_point size, t_point begin);
+
+The tester calls it from its own main: do not submit one.

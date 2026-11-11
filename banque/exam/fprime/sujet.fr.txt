@@ -1,0 +1,28 @@
+Exercice           : fprime
+Fichiers attendus  : fprime.c
+Fonctions permises : printf, atoi
+--------------------------------------------------------------
+
+Écris un programme qui reçoit un entier strictement positif et affiche sa
+décomposition en facteurs premiers, du plus petit au plus grand, séparés
+par '*', suivie d'un retour à la ligne. Pour 1, il affiche 1.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne. Le testeur ne donne que des nombres qui tiennent dans
+un int.
+
+Exemples :
+
+$> ./fprime "225225" | cat -e
+3*3*5*5*7*11*13$
+$> ./fprime "8333325" | cat -e
+3*3*5*5*7*11*13*37$
+$> ./fprime "9539" | cat -e
+9539$
+$> ./fprime "42" | cat -e
+2*3*7$
+$> ./fprime "1" | cat -e
+1$
+$> ./fprime | cat -e
+$
+$>

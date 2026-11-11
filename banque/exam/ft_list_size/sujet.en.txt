@@ -1,0 +1,21 @@
+Assignment name    : ft_list_size
+Expected files     : ft_list_size.c, ft_list.h
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that returns the number of elements of the linked list
+that starts at begin_list.
+
+Also submit the file ft_list.h, which declares the following structure:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Your function must have this prototype:
+
+int	ft_list_size(t_list *begin_list);
+
+The tester calls it from its own main: do not submit one.

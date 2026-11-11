@@ -1,0 +1,13 @@
+Exercice           : sort_int_tab
+Fichiers attendus  : sort_int_tab.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui trie les size entiers du tableau tab par ordre
+croissant, sur place. Les doublons sont gardés.
+
+Ta fonction doit avoir ce prototype :
+
+void	sort_int_tab(int *tab, unsigned int size);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

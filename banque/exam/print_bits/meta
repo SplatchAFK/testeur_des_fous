@@ -1,0 +1,4 @@
+niveau=2
+type=fonction
+fichiers=print_bits.c
+autorise=write

@@ -1,0 +1,20 @@
+Exercice           : ft_range
+Fichiers attendus  : ft_range.c
+Fonctions permises : malloc
+--------------------------------------------------------------
+
+Écris une fonction qui alloue avec malloc un tableau d'entiers, le remplit
+avec les valeurs consécutives qui vont de start à end, bornes comprises, et
+renvoie ce tableau.
+
+Le tableau commence toujours par start. Si start est plus grand que end,
+les valeurs descendent.
+
+Par exemple : (1, 3) donne 1, 2, 3 ; (-1, 2) donne -1, 0, 1, 2 ;
+(0, -3) donne 0, -1, -2, -3.
+
+Ta fonction doit avoir ce prototype :
+
+int	*ft_range(int start, int end);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

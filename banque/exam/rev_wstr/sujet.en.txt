@@ -1,0 +1,25 @@
+Assignment name    : rev_wstr
+Expected files     : rev_wstr.c
+Allowed functions  : write, malloc, free
+--------------------------------------------------------------
+
+Write a program that takes a string and displays its words in reverse
+order, separated by a single space, followed by a newline.
+
+A word is a run of characters delimited by spaces or tabs. There is never
+a space or a tab at the start or the end of the output.
+
+If the program does not receive exactly one argument, it only displays a
+newline.
+
+Examples:
+
+$> ./rev_wstr "le testeur des fous" | cat -e
+fous des testeur le$
+$> ./rev_wstr "Marvin monte la tour" | cat -e
+tour la monte Marvin$
+$> ./rev_wstr "unseul" | cat -e
+unseul$
+$> ./rev_wstr | cat -e
+$
+$>

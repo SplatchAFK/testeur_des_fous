@@ -1,0 +1,13 @@
+Assignment name    : ft_strpbrk
+Expected files     : ft_strpbrk.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that returns a pointer to the first character of s1 that
+belongs to s2, or NULL if there is none, like strpbrk (man strpbrk).
+
+Your function must have this prototype:
+
+char	*ft_strpbrk(const char *s1, const char *s2);
+
+The tester calls it from its own main: do not submit one.

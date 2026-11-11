@@ -1,0 +1,4 @@
+niveau=4
+type=fonction
+fichiers=ft_list_foreach.c ft_list.h
+autorise=

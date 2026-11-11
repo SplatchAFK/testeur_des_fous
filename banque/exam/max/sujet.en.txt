@@ -1,0 +1,13 @@
+Assignment name    : max
+Expected files     : max.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that returns the largest of the len integers of the array
+tab. If len is 0, it returns 0.
+
+Your function must have this prototype:
+
+int	max(int *tab, unsigned int len);
+
+The tester calls it from its own main: do not submit one.

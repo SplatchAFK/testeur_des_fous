@@ -1,0 +1,15 @@
+Assignment name    : swap_bits
+Expected files     : swap_bits.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that swaps the two halves of octet: the 4 high bits take
+the place of the 4 low bits, and the other way round.
+
+For example, 01000001 becomes 00010100.
+
+Your function must have this prototype:
+
+unsigned char	swap_bits(unsigned char octet);
+
+The tester calls it from its own main: do not submit one.

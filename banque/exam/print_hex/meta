@@ -1,0 +1,4 @@
+niveau=3
+type=programme
+fichiers=print_hex.c
+autorise=write

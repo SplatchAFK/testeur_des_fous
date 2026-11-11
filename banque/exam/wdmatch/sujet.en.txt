@@ -1,0 +1,26 @@
+Assignment name    : wdmatch
+Expected files     : wdmatch.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes two strings and checks that every character of
+the first one can be found in the second one, in the same order (not
+necessarily side by side).
+
+If it is possible, it displays the first string followed by a newline.
+Otherwise, it only displays a newline.
+
+If the program does not receive exactly two arguments, it only displays a
+newline.
+
+Examples:
+
+$> ./wdmatch "chat" "le chevalier a trouve" | cat -e
+chat$
+$> ./wdmatch "tour" "ta tour est en haut" | cat -e
+tour$
+$> ./wdmatch "zzz" "zz" | cat -e
+$
+$> ./wdmatch "seul" | cat -e
+$
+$>

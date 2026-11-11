@@ -1,0 +1,25 @@
+Assignment name    : camel_to_snake
+Expected files     : camel_to_snake.c
+Allowed functions  : malloc, free, realloc, write
+--------------------------------------------------------------
+
+Write a program that takes a string written in lowerCamelCase and displays
+it in snake_case, followed by a newline.
+
+Each uppercase letter becomes a '_' followed by the same letter in
+lowercase. The rest is unchanged.
+
+If the program does not receive exactly one argument, it only displays a
+newline.
+
+Examples:
+
+$> ./camel_to_snake "leTesteurDesFous" | cat -e
+le_testeur_des_fous$
+$> ./camel_to_snake "unMotSimple" | cat -e
+un_mot_simple$
+$> ./camel_to_snake "dejaenminuscule" | cat -e
+dejaenminuscule$
+$> ./camel_to_snake | cat -e
+$
+$>

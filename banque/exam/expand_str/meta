@@ -1,0 +1,4 @@
+niveau=3
+type=programme
+fichiers=expand_str.c
+autorise=write

@@ -1,0 +1,13 @@
+Assignment name    : is_power_of_2
+Expected files     : is_power_of_2.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that returns 1 if n is a power of 2, and 0 otherwise.
+0 is not a power of 2.
+
+Your function must have this prototype:
+
+int	is_power_of_2(unsigned int n);
+
+The tester calls it from its own main: do not submit one.

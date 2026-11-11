@@ -1,0 +1,24 @@
+Assignment name    : add_prime_sum
+Expected files     : add_prime_sum.c
+Allowed functions  : write, exit
+--------------------------------------------------------------
+
+Write a program that takes a strictly positive integer and displays the sum
+of all prime numbers lower than or equal to it, followed by a newline.
+
+If the program does not receive exactly one argument, or if the number is
+not strictly positive, it displays 0 followed by a newline.
+
+atoi is not allowed: write your own conversion.
+
+Examples:
+
+$> ./add_prime_sum "5" | cat -e
+10$
+$> ./add_prime_sum "7" | cat -e
+17$
+$> ./add_prime_sum | cat -e
+0$
+$> ./add_prime_sum "-5" | cat -e
+0$
+$>

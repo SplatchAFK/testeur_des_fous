@@ -1,0 +1,26 @@
+Exercice           : wdmatch
+Fichiers attendus  : wdmatch.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit deux chaînes et vérifie qu'on peut retrouver
+tous les caractères de la première dans la seconde, dans le même ordre (pas
+forcément côte à côte).
+
+Si c'est possible, il affiche la première chaîne suivie d'un retour à la
+ligne. Sinon, il affiche seulement un retour à la ligne.
+
+Si le programme ne reçoit pas exactement deux arguments, il affiche
+seulement un retour à la ligne.
+
+Exemples :
+
+$> ./wdmatch "chat" "le chevalier a trouve" | cat -e
+chat$
+$> ./wdmatch "tour" "ta tour est en haut" | cat -e
+tour$
+$> ./wdmatch "zzz" "zz" | cat -e
+$
+$> ./wdmatch "seul" | cat -e
+$
+$>

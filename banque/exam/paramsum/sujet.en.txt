@@ -1,0 +1,17 @@
+Assignment name    : paramsum
+Expected files     : paramsum.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that displays the number of arguments it receives,
+followed by a newline. Without arguments, it displays 0.
+
+Examples:
+
+$> ./paramsum | cat -e
+0$
+$> ./paramsum "1" "2" "3" | cat -e
+3$
+$> ./paramsum "le testeur" "des fous" | cat -e
+2$
+$>

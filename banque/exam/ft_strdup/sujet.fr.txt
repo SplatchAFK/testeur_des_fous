@@ -1,0 +1,14 @@
+Exercice           : ft_strdup
+Fichiers attendus  : ft_strdup.c
+Fonctions permises : malloc
+--------------------------------------------------------------
+
+Écris une fonction qui renvoie une copie de la chaîne src, dans une zone
+allouée avec malloc, comme strdup (man strdup). Si l'allocation échoue,
+elle renvoie NULL.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_strdup(char *src);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

@@ -1,0 +1,21 @@
+Assignment name    : ft_list_foreach
+Expected files     : ft_list_foreach.c, ft_list.h
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that applies the function f to the data of every element
+of the list that starts at begin_list, in list order.
+
+Also submit the file ft_list.h, which declares the following structure:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Your function must have this prototype:
+
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
+
+The tester calls it from its own main: do not submit one.

@@ -1,0 +1,23 @@
+Exercice           : inter
+Fichiers attendus  : inter.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit deux chaînes et affiche, sans doublon, les
+caractères qui apparaissent dans les deux, dans l'ordre où ils apparaissent
+dans la première, puis un retour à la ligne.
+
+Si le programme ne reçoit pas exactement deux arguments, il affiche
+seulement un retour à la ligne.
+
+Exemples :
+
+$> ./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$> ./inter "le testeur" "des fous" | cat -e
+e su$
+$> ./inter "rien" "zzz" | cat -e
+$
+$> ./inter "seul" | cat -e
+$
+$>

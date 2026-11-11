@@ -1,0 +1,13 @@
+Exercice           : max
+Fichiers attendus  : max.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui renvoie le plus grand des len entiers du tableau
+tab. Si len vaut 0, elle renvoie 0.
+
+Ta fonction doit avoir ce prototype :
+
+int	max(int *tab, unsigned int len);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

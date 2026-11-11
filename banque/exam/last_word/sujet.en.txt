@@ -1,0 +1,25 @@
+Assignment name    : last_word
+Expected files     : last_word.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes a string and displays its last word, followed
+by a newline.
+
+A word is a run of characters delimited by spaces, tabs, or by the start
+and the end of the string.
+
+If the program does not receive exactly one argument, or if the string
+holds no word, it only displays a newline.
+
+Examples:
+
+$> ./last_word "le dernier mot" | cat -e
+mot$
+$> ./last_word "   espaces a la fin   " | cat -e
+fin$
+$> ./last_word "   " | cat -e
+$
+$> ./last_word "a" "b" | cat -e
+$
+$>

@@ -1,0 +1,27 @@
+Exercice           : flood_fill
+Fichiers attendus  : flood_fill.c, t_point.h
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui « remplit » une zone d'un tableau de caractères à
+deux dimensions.
+
+tab a size.y lignes et size.x colonnes. La zone part de la case
+begin (colonne begin.x, ligne begin.y) et comprend toutes les cases qui ont
+le même caractère qu'elle et qu'on atteint en se déplaçant à l'horizontale
+ou à la verticale, jamais en diagonale. Chaque case de la zone est
+remplacée par 'F'.
+
+Rends aussi le fichier t_point.h, qui déclare :
+
+typedef struct  s_point
+{
+    int         x;
+    int         y;
+}               t_point;
+
+Ta fonction doit avoir ce prototype :
+
+void	flood_fill(char **tab, t_point size, t_point begin);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

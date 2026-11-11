@@ -1,0 +1,26 @@
+Assignment name    : do_op
+Expected files     : do_op.c
+Allowed functions  : atoi, printf, write
+--------------------------------------------------------------
+
+Write a program that takes three arguments: a number, an operator and
+another number. It displays the result of the operation, followed by a
+newline.
+
+The operators are '+', '-', '*', '/' and '%'. The numbers fit in an int,
+and the tester never divides by zero.
+
+If the program does not receive exactly three arguments, it only displays
+a newline.
+
+Examples:
+
+$> ./do_op "123" "*" "456" | cat -e
+56088$
+$> ./do_op "9828" "/" "234" | cat -e
+42$
+$> ./do_op "10" "+" "-43" | cat -e
+-33$
+$> ./do_op | cat -e
+$
+$>

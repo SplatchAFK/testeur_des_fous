@@ -1,0 +1,24 @@
+Exercice           : union
+Fichiers attendus  : union.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit deux chaînes et affiche, sans doublon, tous
+les caractères de l'une ou de l'autre, dans l'ordre où ils apparaissent :
+d'abord la première chaîne, puis la seconde. Il termine par un retour à la
+ligne.
+
+Si le programme ne reçoit pas exactement deux arguments, il affiche
+seulement un retour à la ligne.
+
+Exemples :
+
+$> ./union "zpadinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+zpadintoqefwjy$
+$> ./union "le testeur" "des fous" | cat -e
+le tsurdfo$
+$> ./union "rien" "" | cat -e
+rien$
+$> ./union "seul" | cat -e
+$
+$>

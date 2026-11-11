@@ -1,0 +1,31 @@
+Exercice           : sort_list
+Fichiers attendus  : sort_list.c, list.h
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui trie la liste lst selon la fonction cmp et renvoie
+un pointeur sur le premier élément de la liste triée.
+
+cmp(a, b) renvoie une valeur non nulle quand a et b sont dans le bon ordre,
+et 0 sinon. Par exemple, pour un tri croissant :
+
+int ascending(int a, int b)
+{
+    return (a <= b);
+}
+
+Rends aussi le fichier list.h, qui déclare :
+
+typedef struct s_list t_list;
+
+struct s_list
+{
+    int     data;
+    t_list  *next;
+};
+
+Ta fonction doit avoir ce prototype :
+
+t_list	*sort_list(t_list *lst, int (*cmp)(int, int));
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

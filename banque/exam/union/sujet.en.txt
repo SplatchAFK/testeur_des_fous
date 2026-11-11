@@ -1,0 +1,23 @@
+Assignment name    : union
+Expected files     : union.c
+Allowed functions  : write
+--------------------------------------------------------------
+
+Write a program that takes two strings and displays, without duplicates,
+every character of either one, in the order they appear: first the first
+string, then the second. It ends with a newline.
+
+If the program does not receive exactly two arguments, it only displays a
+newline.
+
+Examples:
+
+$> ./union "zpadinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+zpadintoqefwjy$
+$> ./union "le testeur" "des fous" | cat -e
+le tsurdfo$
+$> ./union "rien" "" | cat -e
+rien$
+$> ./union "seul" | cat -e
+$
+$>

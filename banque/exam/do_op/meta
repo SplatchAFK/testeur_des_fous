@@ -1,0 +1,4 @@
+niveau=2
+type=programme
+fichiers=do_op.c
+autorise=atoi printf write

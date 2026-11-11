@@ -1,0 +1,29 @@
+Exercice           : tab_mult
+Fichiers attendus  : tab_mult.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit un entier strictement positif et affiche sa
+table de multiplication de 1 à 9, une ligne par multiplication, sous la
+forme « 1 x 7 = 7 ».
+
+Le testeur ne donne que des nombres dont la table tient dans un int.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./tab_mult "9" | cat -e
+1 x 9 = 9$
+2 x 9 = 18$
+3 x 9 = 27$
+4 x 9 = 36$
+5 x 9 = 45$
+6 x 9 = 54$
+7 x 9 = 63$
+8 x 9 = 72$
+9 x 9 = 81$
+$> ./tab_mult | cat -e
+$
+$>

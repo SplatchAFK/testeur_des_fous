@@ -1,0 +1,26 @@
+Exercice           : expand_str
+Fichiers attendus  : expand_str.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et l'affiche avec exactement trois
+espaces entre chaque mot, sans espace ni tabulation au début ou à la fin,
+puis un retour à la ligne.
+
+Un mot est une suite de caractères délimitée par des espaces, des
+tabulations, ou par le début et la fin de la chaîne.
+
+Si le programme ne reçoit pas exactement un argument, il affiche seulement
+un retour à la ligne.
+
+Exemples :
+
+$> ./expand_str "  le   testeur	 des    fous  " | cat -e
+le   testeur   des   fous$
+$> ./expand_str "un mot" | cat -e
+un   mot$
+$> ./expand_str "   " | cat -e
+$
+$> ./expand_str | cat -e
+$
+$>

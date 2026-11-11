@@ -1,0 +1,26 @@
+Exercice           : rstr_capitalizer
+Fichiers attendus  : rstr_capitalizer.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une ou plusieurs chaînes et, pour chacune,
+met en majuscule la dernière lettre de chaque mot et toutes les autres
+lettres en minuscules, puis affiche le résultat suivi d'un retour à la
+ligne.
+
+Un mot est une suite de caractères délimitée par des espaces, des
+tabulations, ou par le début et la fin de la chaîne. Si le dernier
+caractère d'un mot n'est pas une lettre, il ne change pas.
+
+Sans argument, le programme affiche seulement un retour à la ligne.
+
+Exemples :
+
+$> ./rstr_capitalizer "le TESTEUR des fous" | cat -e
+lE testeuR deS fouS$
+$> ./rstr_capitalizer "une PHRASE " "Deux Phrases	avec tab" | cat -e
+unE phrasE $
+deuX phraseS^IaveC taB$
+$> ./rstr_capitalizer | cat -e
+$
+$>

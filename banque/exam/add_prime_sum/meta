@@ -1,0 +1,4 @@
+niveau=3
+type=programme
+fichiers=add_prime_sum.c
+autorise=write exit

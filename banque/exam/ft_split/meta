@@ -1,0 +1,4 @@
+niveau=4
+type=fonction
+fichiers=ft_split.c
+autorise=malloc

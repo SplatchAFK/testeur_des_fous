@@ -1,0 +1,19 @@
+Exercice           : ft_rrange
+Fichiers attendus  : ft_rrange.c
+Fonctions permises : malloc
+--------------------------------------------------------------
+
+Écris une fonction qui alloue avec malloc un tableau d'entiers, le remplit
+avec les valeurs consécutives qui vont de end à start, bornes comprises, et
+renvoie ce tableau.
+
+Le tableau commence toujours par end.
+
+Par exemple : (1, 3) donne 3, 2, 1 ; (-1, 2) donne 2, 1, 0, -1 ;
+(0, -3) donne -3, -2, -1, 0.
+
+Ta fonction doit avoir ce prototype :
+
+int	*ft_rrange(int start, int end);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.

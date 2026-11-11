@@ -1,0 +1,27 @@
+Assignment name    : fprime
+Expected files     : fprime.c
+Allowed functions  : printf, atoi
+--------------------------------------------------------------
+
+Write a program that takes a strictly positive integer and displays its
+prime factorization, from the smallest factor to the largest, separated by
+'*', followed by a newline. For 1, it displays 1.
+
+If the program does not receive exactly one argument, it only displays a
+newline. The tester only gives numbers that fit in an int.
+
+Examples:
+
+$> ./fprime "225225" | cat -e
+3*3*5*5*7*11*13$
+$> ./fprime "8333325" | cat -e
+3*3*5*5*7*11*13*37$
+$> ./fprime "9539" | cat -e
+9539$
+$> ./fprime "42" | cat -e
+2*3*7$
+$> ./fprime "1" | cat -e
+1$
+$> ./fprime | cat -e
+$
+$>

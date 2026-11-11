@@ -1,0 +1,24 @@
+Exercice           : pgcd
+Fichiers attendus  : pgcd.c
+Fonctions permises : printf, atoi, malloc, free
+--------------------------------------------------------------
+
+Écris un programme qui reçoit deux entiers strictement positifs et affiche
+leur plus grand commun diviseur, suivi d'un retour à la ligne.
+
+Si le programme ne reçoit pas exactement deux arguments, il affiche
+seulement un retour à la ligne.
+
+Exemples :
+
+$> ./pgcd "42" "10" | cat -e
+2$
+$> ./pgcd "42" "12" | cat -e
+6$
+$> ./pgcd "14" "77" | cat -e
+7$
+$> ./pgcd "17" "3" | cat -e
+1$
+$> ./pgcd | cat -e
+$
+$>

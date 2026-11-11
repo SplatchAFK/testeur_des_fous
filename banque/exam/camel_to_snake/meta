@@ -1,0 +1,4 @@
+niveau=2
+type=programme
+fichiers=camel_to_snake.c
+autorise=malloc free realloc write

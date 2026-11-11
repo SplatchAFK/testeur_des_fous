@@ -1,0 +1,13 @@
+Assignment name    : ft_itoa
+Expected files     : ft_itoa.c
+Allowed functions  : malloc
+--------------------------------------------------------------
+
+Write a function that returns a string, allocated with malloc, that writes
+nbr in base 10. It handles every int, including the smallest one.
+
+Your function must have this prototype:
+
+char	*ft_itoa(int nbr);
+
+The tester calls it from its own main: do not submit one.

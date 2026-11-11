@@ -1,0 +1,25 @@
+Exercice           : last_word
+Fichiers attendus  : last_word.c
+Fonctions permises : write
+--------------------------------------------------------------
+
+Écris un programme qui reçoit une chaîne et affiche son dernier mot, suivi
+d'un retour à la ligne.
+
+Un mot est une suite de caractères délimitée par des espaces, des
+tabulations, ou par le début et la fin de la chaîne.
+
+Si le programme ne reçoit pas exactement un argument, ou si la chaîne ne
+contient aucun mot, il affiche seulement un retour à la ligne.
+
+Exemples :
+
+$> ./last_word "le dernier mot" | cat -e
+mot$
+$> ./last_word "   espaces a la fin   " | cat -e
+fin$
+$> ./last_word "   " | cat -e
+$
+$> ./last_word "a" "b" | cat -e
+$
+$>

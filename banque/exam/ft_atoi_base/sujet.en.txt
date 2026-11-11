@@ -1,0 +1,18 @@
+Assignment name    : ft_atoi_base
+Expected files     : ft_atoi_base.c
+Allowed functions  : none
+--------------------------------------------------------------
+
+Write a function that converts the string str, written in base str_base
+(from 2 to 16), to an int.
+
+The digits are 0 to 9 then the letters a to f, lowercase or uppercase. A
+single leading '-' makes the number negative. Reading stops at the first
+character that is not a valid digit of the base. The tester only gives
+numbers that fit in an int.
+
+Your function must have this prototype:
+
+int	ft_atoi_base(const char *str, int str_base);
+
+The tester calls it from its own main: do not submit one.

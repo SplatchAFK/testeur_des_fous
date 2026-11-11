@@ -1,0 +1,17 @@
+Exercice           : ft_strcmp
+Fichiers attendus  : ft_strcmp.c
+Fonctions permises : aucune
+--------------------------------------------------------------
+
+Écris une fonction qui compare les chaînes s1 et s2, comme strcmp
+(man strcmp). Elle renvoie un nombre négatif si s1 vient avant s2, zéro si
+elles sont égales, et un nombre positif sinon. La comparaison se fait
+caractère par caractère.
+
+Le testeur ne regarde que le signe du résultat.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_strcmp(char *s1, char *s2);
+
+Le testeur l'appelle avec son propre main : n'en rends pas.
