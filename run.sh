@@ -108,15 +108,37 @@ proteger_sauvegarde() {
 	return 0
 }
 
+ecrire_anim() {
+	local save="$DOSSIER/save.txt"
+	[ -f "$save" ] || return 1
+	if grep -q '^cfg_anim=' "$save"; then
+		sed "s/^cfg_anim=.*/cfg_anim=$1/" "$save" > "$save.anim" && cat "$save.anim" > "$save"
+		rm -f "$save.anim"
+	else
+		printf 'cfg_anim=%s\n' "$1" >> "$save"
+	fi
+	return 0
+}
+
+appliquer_anim() {
+	[ -f "$DOSSIER/anim_off" ] || return 0
+	if ecrire_anim 2; then
+		rm -f "$DOSSIER/anim_off"
+	else
+		SUITE+=(--fast)
+	fi
+}
+
 regler_anim() {
 	mkdir -p "$DOSSIER" 2>/dev/null
 	case "$1" in
 		off|non|0)
-			: > "$DOSSIER/anim_off"
+			ecrire_anim 2 || : > "$DOSSIER/anim_off"
 			echo "animations : coupées (--anim on pour les remettre)"
 			;;
 		on|oui|1)
 			rm -f "$DOSSIER/anim_off"
+			ecrire_anim 0
 			echo "animations : activées"
 			;;
 		*)
@@ -130,6 +152,7 @@ regler_anim() {
 MODULE=""
 PROJET=""
 SUITE=()
+SANS_ANIM=0
 
 while [ $# -gt 0 ]; do
 	a="$1"
@@ -156,7 +179,7 @@ while [ $# -gt 0 ]; do
 			[ $# -gt 0 ] || { echo "--anim : on ou off"; exit 2; }
 			regler_anim "$1"
 			;;
-		-a) SUITE+=(--fast) ;;
+		-a|--fast|--no-anim) SUITE+=(--fast); SANS_ANIM=1 ;;
 		--no-lord) SUITE+=(--no-lore) ;;
 		*) SUITE+=("$a") ;;
 	esac
@@ -246,9 +269,30 @@ if [ ! -f "$TDF_RACINE/modules/$MODULE/run.sh" ]; then
 fi
 
 proteger_sauvegarde
+appliquer_anim
 
-[ -f "$DOSSIER/anim_off" ] && SUITE+=(--fast)
-
-export TDF_PROJET="$PROJET"
+[ ${#LIBFTS[@]} -eq 0 ] && [ ${#PRINTFS[@]} -eq 0 ] && detecter
+TDF_DISPO="$MODULE"
+[ ${#LIBFTS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO libft"
+[ ${#PRINTFS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO printf"
+export TDF_DISPO
 export TDF_NOM
-exec bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"}
+
+while :; do
+	rm -f "$DOSSIER/suivant"
+	export TDF_PROJET="$PROJET"
+	bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"}
+	code=$?
+	[ "$code" = 45 ] || exit "$code"
+	suivant="$(head -1 "$DOSSIER/suivant" 2>/dev/null)"
+	rm -f "$DOSSIER/suivant"
+	case "$suivant" in
+		libft) [ ${#LIBFTS[@]} -gt 0 ] || exit 0; PROJET="${LIBFTS[0]}" ;;
+		printf) [ ${#PRINTFS[@]} -gt 0 ] || exit 0; PROJET="${PRINTFS[0]}" ;;
+		*) exit 0 ;;
+	esac
+	MODULE="$suivant"
+	SUITE=()
+	[ "$SANS_ANIM" = 1 ] && SUITE+=(--fast)
+	export TDF_NO_UPDATE=1
+done

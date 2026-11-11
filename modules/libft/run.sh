@@ -346,7 +346,7 @@ build_game() {
 	for o in "$BUILD"/plain/*.o; do [ -f "$o" ] && objs+=("$o"); done
 	local GSRC=("$SRC"/main.c "$SRC"/screens.c "$MOT"/ui.c "$SRC"/train.c "$SRC"/scene.c
 		"$MOT"/save.c "$MOT"/data.c "$MOT"/avatar.c "$MOT"/art.c "$MOT"/term.c
-		"$MOT"/font.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$SRC"/story.c)
+		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$SRC"/story.c)
 	local GX="" GOBJ="" key g ok=1
 	[ "$OS" = Darwin ] && GX="-Wl,-undefined,dynamic_lookup"
 	if [ -n "$CACHE" ]; then
@@ -1110,7 +1110,7 @@ grand_terminal() {
 		printf 'rm -f -- "$0"\n'
 		printf 'cd %q || exit 1\n' "$PWD"
 		printf 'export TDF_PROJET=%q TDF_NOM=%q\n' "$ROOT" "${TDF_NOM:-}"
-		printf 'TDF_FENETRE=1 bash %q' "$HERE/run.sh"
+		printf 'TDF_FENETRE=1 bash %q libft --projet %q' "$UPD_DIR/run.sh" "$ROOT"
 		for a in ${ORIG_ARGS[@]+"${ORIG_ARGS[@]}"}; do printf ' %q' "$a"; done
 		printf '\nprintf "\\n  (Entrée pour fermer la fenêtre) "; read -r _\n'
 	} > "$lanceur" || return 0

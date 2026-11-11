@@ -124,31 +124,27 @@ static int	menu_loop(void)
 	while (1)
 	{
 		i = pf_menu();
+		if (i == 100)
+			return (42);
 		if (i == 0)
-			return (42);
-		else if (i == 1 && (r = pf_dlc_menu()) == 43)
-			return (43);
+		{
+			r = tdf_menu_tester(L("DLC · flags et entraînement", "DLC · flags and training"), "libft", "Libft");
+			if (r == 1 || r == 45)
+				return (r == 1 ? 42 : 45);
+			if (r == 2 && pf_results(0) == 42)
+				return (42);
+			if (r == 3 && pf_dlc_menu() == 43)
+				return (43);
+		}
+		else if (i == 1)
+			tdf_menu_chevalier(pf_profile);
 		else if (i == 2)
-			pf_boss_menu();
+			tdf_menu_lore(pf_boss_menu);
 		else if (i == 3)
-			screen_shop(0);
+			tdf_menu_stats();
 		else if (i == 4)
-			screen_shop(1);
+			tdf_menu_params(pf_credits);
 		else if (i == 5)
-			pf_profile();
-		else if (i == 6)
-			screen_holy();
-		else if (i == 7)
-			screen_save();
-		else if (i == 8)
-			screen_help_us();
-		else if (i == 9 && pf_results(0) == 42)
-			return (42);
-		else if (i == 10)
-			screen_settings();
-		else if (i == 11)
-			pf_credits();
-		else if (i == 12)
 			return (0);
 	}
 }
@@ -272,7 +268,7 @@ int	main(int ac, char **av)
 		code = menu_loop();
 	save_write();
 	term_end();
-	if (code == 42 || code == 43)
+	if (code == 42 || code == 43 || code == 45)
 		return (code);
 	summary();
 	return (results && !pf_all_ok() ? 1 : 0);

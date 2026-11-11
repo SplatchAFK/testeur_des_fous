@@ -3,54 +3,6 @@
 #include <string.h>
 #include "fous.h"
 
-static int	list_menu(const char *title, const char **items, int n, int *sel, const char *foot)
-{
-	int		k;
-	int		i;
-	int		x;
-	long	t;
-
-	cls();
-	while (1)
-	{
-		t = now_ms();
-		x = (term_cols() - 60) / 2;
-		if (x < 0)
-			x = 0;
-		bgc(theme()->bg);
-		frame();
-		stars_draw();
-		center(2, theme()->accent2, title);
-		for (i = 0; i < n; i++)
-		{
-			at(x, 5 + i * 2);
-			if (i == *sel)
-			{
-				bgc(mix(theme()->bg, theme()->accent, 0.18 + 0.08 * sin(t / 150.0)));
-				fg(theme()->accent2);
-			}
-			else
-				fg(items[i][0] == '~' ? theme()->dim : theme()->text);
-			outf(" %s %-54s ", i == *sel ? "▶" : " ", items[i][0] == '~' ? items[i] + 1 : items[i]);
-			bgc(theme()->bg);
-		}
-		if (foot)
-			text_wrap(x, 6 + n * 2, term_rows() - 2, 60, theme()->dim, foot);
-		foot_line(x, L("▲ ▼ choisir   Entrée : valider   Échap : retour",
-				"▲ ▼ pick   Enter: confirm   Esc: back"));
-		flush();
-		k = key_dir(key_read(40));
-		if (key_quit(k) || k == 127 || k == 8)
-			return (cls(), -1);
-		if (k == 1000)
-			*sel = (*sel + n - 1) % n;
-		else if (k == 1001)
-			*sel = (*sel + 1) % n;
-		else if (k == '\r' || k == '\n' || k == ' ')
-			return (cls(), *sel);
-	}
-}
-
 int	pf_menu(void)
 {
 	static int	sel;
@@ -65,18 +17,11 @@ int	pf_menu(void)
 	long		t;
 
 	n = 0;
-	items[n++] = L("Relancer les tests      (r)", "Run the tests again     (r)");
-	items[n++] = L("DLC · flags et entraînement", "DLC · flags and training");
-	items[n++] = L("Boss et cinématiques", "Bosses and cutscenes");
-	items[n++] = L("Boutique", "Shop");
-	items[n++] = L("Avatar (garde-robe)", "Avatar (wardrobe)");
-	items[n++] = L("Profil et succès", "Profile and achievements");
-	items[n++] = L("Badges et holygraph 42 Next", "Badges and 42 Next holygraph");
-	items[n++] = L("Sauvegarde et connexion", "Save and login");
-	items[n++] = L("Nous aider", "Help us");
-	items[n++] = L("Résultats détaillés", "Detailed results");
+	items[n++] = L("Tester                  (r)", "Test                    (r)");
+	items[n++] = L("Chevalier", "Knight");
+	items[n++] = L("Lore", "Lore");
+	items[n++] = L("Stats", "Stats");
 	items[n++] = L("Paramètres", "Settings");
-	items[n++] = L("Crédits", "Credits");
 	items[n++] = L("Quitter", "Quit");
 	cls();
 	while (1)
@@ -99,11 +44,11 @@ int	pf_menu(void)
 			outf("%c", "LE TESTEUR DES FOUS"[i]);
 		}
 		text_at(x + 34 + 20, y + 1, theme()->dim, "v" TDF_VERSION);
-		text_at(x + 34, y + 2, theme()->dim, L("version printf · créé et vibe-codé par Splatch",
-				"printf edition · created and vibe-coded by Splatch"));
+		text_at(x + 34, y + 2, theme()->dim, L("ft_printf · créé et vibe-codé par Splatch",
+				"ft_printf · created and vibe-coded by Splatch"));
 		for (i = 0; i < n; i++)
 		{
-			at(x + 34, y + 4 + i * (term_rows() >= 34 ? 2 : 1));
+			at(x + 34, y + 4 + i * 2);
 			if (i == sel)
 			{
 				bgc(mix(theme()->bg, theme()->accent, 0.18 + 0.08 * sin(t / 150.0)));
@@ -121,7 +66,7 @@ int	pf_menu(void)
 			c += g_pf.chains[i] == '1';
 		snprintf(tmp, sizeof(tmp), L("chaînes %d/9 · ft_printf %s · entr. %d/16", "chains %d/9 · ft_printf %s · train %d/16"),
 			c, g_pf.big ? "✓" : "✗", pf_exo_done());
-		text_at(x + 34, y + 5 + n * (term_rows() >= 34 ? 2 : 1), theme()->dim, tmp);
+		text_at(x + 34, y + 5 + n * 2, theme()->dim, tmp);
 		flush();
 		k = key_dir(key_read(40));
 		if (k == 1000)
@@ -136,7 +81,7 @@ int	pf_menu(void)
 		else if (k == 'r' || k == 'R')
 		{
 			cls();
-			return (0);
+			return (100);
 		}
 		else if (key_quit(k))
 			sel = n - 1;
@@ -159,7 +104,7 @@ int	pf_dlc_menu(void)
 	items[2] = L("Retour", "Back");
 	while (1)
 	{
-		r = list_menu(L("D L C", "D L C"), items, 3, &sel, L("Le monde des flags teste ce que le sujet v1.1 ne demande pas "
+		r = tdf_list_menu(L("D L C", "D L C"), items, 3, &sel, L("Le monde des flags teste ce que le sujet v1.1 ne demande pas "
 				"(flags, largeur, précision), contre le vrai printf. Il s'ouvre après ft_printf, ou tout de suite pour "
 				"les Vétérans de la Libft. L'entraînement montre les notions du projet et celles que le sujet ne montre pas.",
 				"The flag world tests what subject v1.1 does not ask for (flags, width, precision), against the real "
@@ -197,7 +142,7 @@ void	pf_boss_menu(void)
 	items[6] = L("Retour", "Back");
 	while (1)
 	{
-		r = list_menu(L("B O S S   E T   C I N É M A T I Q U E S", "B O S S E S   A N D   C U T S C E N E S"),
+		r = tdf_list_menu(L("B O S S   E T   C I N É M A T I Q U E S", "B O S S E S   A N D   C U T S C E N E S"),
 				items, 7, &sel, L("Les lignes grises se débloquent en avançant.", "Grey lines unlock as you progress."));
 		if (r < 0 || r == 6)
 			return ;

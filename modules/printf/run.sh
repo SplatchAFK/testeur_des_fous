@@ -279,7 +279,7 @@ grand_terminal() {
 		printf 'rm -f -- "$0"\n'
 		printf 'cd %q || exit 1\n' "$PWD"
 		printf 'export TDF_PROJET=%q TDF_NOM=%q\n' "$PROJECT" "${TDF_NOM:-}"
-		printf 'TDF_FENETRE=1 bash %q' "$TDF_DIR/run.sh"
+		printf 'TDF_FENETRE=1 bash %q printf --projet %q' "$UPD_DIR/run.sh" "$PROJECT"
 		for a in ${SAVED_ARGS[@]+"${SAVED_ARGS[@]}"}; do printf ' %q' "$a"; done
 		printf '\nprintf "\\n  (Entrée pour fermer la fenêtre) "; read -r _\n'
 	} > "$lanceur" || return 0

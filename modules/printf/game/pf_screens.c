@@ -481,6 +481,23 @@ int	pf_results(int after)
 	return (0);
 }
 
+static void	stats_push(void)
+{
+	int	i;
+	int	ok;
+
+	ok = 0;
+	tdf_stats_begin("printf");
+	for (i = 0; i < g_pr.ncat; i++)
+	{
+		if (g_pr.cat[i].ko == 0)
+			ok++;
+		else
+			tdf_stats_fail(g_pr.cat[i].key, "KO");
+	}
+	tdf_stats_end(ok, g_pr.ncat);
+}
+
 static int	gains(int *news, int *bigfirst)
 {
 	time_t	now;
@@ -501,6 +518,7 @@ static int	gains(int *news, int *bigfirst)
 		*bigfirst = 1;
 	}
 	g_pf.runs++;
+	stats_push();
 	g_save.xp += *news * 60 + *bigfirst * 500;
 	g_save.octets += *news * 30 + *bigfirst * 250;
 	run = 0;

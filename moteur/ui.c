@@ -93,18 +93,11 @@ int	screen_menu(void)
 	char		tmp[200];
 
 	n = 0;
-	items[n++] = L("Relancer les tests      (r)", "Run the tests again     (r)");
-	items[n++] = L("DLC · entraînement (21 niveaux)", "DLC · training (21 levels)");
-	items[n++] = L("Boss", "Bosses");
-	items[n++] = L("Boutique", "Shop");
-	items[n++] = L("Avatar (garde-robe)", "Avatar (wardrobe)");
-	items[n++] = L("Profil et succès", "Profile and achievements");
-	items[n++] = L("Badges et holygraph 42 Next", "Badges and 42 Next holygraph");
-	items[n++] = L("Sauvegarde et connexion", "Save and login");
-	items[n++] = L("Nous aider", "Help us");
-	items[n++] = L("Résultats détaillés", "Detailed results");
+	items[n++] = L("Tester                  (r)", "Test                    (r)");
+	items[n++] = L("Chevalier", "Knight");
+	items[n++] = L("Lore", "Lore");
+	items[n++] = L("Stats", "Stats");
 	items[n++] = L("Paramètres", "Settings");
-	items[n++] = L("Crédits", "Credits");
 	items[n++] = L("Quitter", "Quit");
 	cls();
 	while (1)
@@ -126,11 +119,11 @@ int	screen_menu(void)
 			outf("%c", "LE TESTEUR DES FOUS"[i]);
 		}
 		text_at(x + 34 + 20, y + 1, theme()->dim, "v" TDF_VERSION);
-		text_at(x + 34, y + 2, theme()->dim, L("version libft · créé et vibe-codé par Splatch",
-				"libft edition · created and vibe-coded by Splatch"));
+		text_at(x + 34, y + 2, theme()->dim, L("Libft · créé et vibe-codé par Splatch",
+				"Libft · created and vibe-coded by Splatch"));
 		for (i = 0; i < n; i++)
 		{
-			at(x + 34, y + 4 + i * (term_rows() >= 34 ? 2 : 1));
+			at(x + 34, y + 4 + i * 2);
 			if (i == sel)
 			{
 				bgc(mix(theme()->bg, theme()->accent, 0.18 + 0.08 * sin(t / 150.0)));
@@ -150,7 +143,7 @@ int	screen_menu(void)
 				"test: %d/43 · boss %d/3 · train %d/21"), k,
 			g_save.boss[0] + g_save.boss[1] + g_save.boss[2],
 			exo_done_count());
-		text_at(x + 34, y + 5 + n * (term_rows() >= 34 ? 2 : 1), theme()->dim, tmp);
+		text_at(x + 34, y + 5 + n * 2, theme()->dim, tmp);
 		flush();
 		k = key_dir(key_read(40));
 		if (k == 1000)
@@ -165,7 +158,7 @@ int	screen_menu(void)
 		else if (k == 'r' || k == 'R')
 		{
 			cls();
-			return (0);
+			return (100);
 		}
 		else if (key_quit(k))
 			sel = n - 1;

@@ -63,35 +63,32 @@ static void	version_notice(void)
 static int	menu_loop(void)
 {
 	int	i;
+	int	r;
 
 	while (1)
 	{
 		i = screen_menu();
+		if (i == 100)
+			return (42);
 		if (i == 0)
-			return (42);
+		{
+			r = tdf_menu_tester(L("Entraînement (21 niveaux)", "Training (21 levels)"), "printf", "ft_printf");
+			if (r == 1 || r == 45)
+				return (r == 1 ? 42 : 45);
+			if (r == 2 && g_run.loaded && screen_results(0) == 42)
+				return (42);
+			if (r == 3)
+				screen_train();
+		}
 		else if (i == 1)
-			screen_train();
+			tdf_menu_chevalier(screen_profile);
 		else if (i == 2)
-			screen_boss_menu();
+			tdf_menu_lore(screen_boss_menu);
 		else if (i == 3)
-			screen_shop(0);
+			tdf_menu_stats();
 		else if (i == 4)
-			screen_shop(1);
+			tdf_menu_params(screen_credits);
 		else if (i == 5)
-			screen_profile();
-		else if (i == 6)
-			screen_holy();
-		else if (i == 7)
-			screen_save();
-		else if (i == 8)
-			screen_help_us();
-		else if (i == 9 && g_run.loaded && screen_results(0) == 42)
-			return (42);
-		else if (i == 10)
-			screen_settings();
-		else if (i == 11)
-			screen_credits();
-		else if (i == 12)
 			return (0);
 	}
 }
@@ -194,8 +191,8 @@ int	main(int ac, char **av)
 		code = menu_loop();
 	save_write();
 	term_end();
-	if (code == 42)
-		return (42);
+	if (code == 42 || code == 45)
+		return (code);
 	summary();
 	bad = 0;
 	for (i = 0; i < NFN; i++)

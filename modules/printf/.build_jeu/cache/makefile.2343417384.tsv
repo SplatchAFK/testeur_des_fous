@@ -1,3 +1,0 @@
-S	OK	Makefile (règles, NAME, flags, cc, ar, relink, clean/fclean/re)	
-S	OK	Makefile : la libft est compilée par son propre Makefile (make -C libft)	
-S	OK	ft_printf.h et prototype	

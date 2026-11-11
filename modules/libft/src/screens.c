@@ -1118,6 +1118,23 @@ static void	fireworks(int ms)
 	}
 }
 
+static void	stats_push(void)
+{
+	int	i;
+	int	ok;
+
+	ok = 0;
+	tdf_stats_begin("libft");
+	for (i = 0; i < NFN; i++)
+	{
+		if (st_pass(g_run.fn[i].st))
+			ok++;
+		else if (st_bad(g_run.fn[i].st))
+			tdf_stats_fail(g_fn_name[i], st_label(g_run.fn[i].st));
+	}
+	tdf_stats_end(ok, NFN);
+}
+
 int	record_progress(void)
 {
 	int		i;
@@ -1139,6 +1156,7 @@ int	record_progress(void)
 		}
 	}
 	g_save.runs++;
+	stats_push();
 	g_save.xp += news * 40;
 	g_save.octets += news * 20;
 	now = time(NULL);
@@ -1266,6 +1284,7 @@ void	screen_rewards(void)
 	y = 3;
 	center(1, theme()->accent2, L("R É C O M P E N S E S", "R E W A R D S"));
 	g_save.runs++;
+	stats_push();
 	roll(x, y++, L("XP des fonctions réussies pour la 1re fois", "XP for first-time clean functions"),
 		0, news * 40, rgb(255, 230, 120));
 	roll(x, y++, L("Octets des premières victoires", "Octets for first wins"), 0, news * 20, theme()->accent);
