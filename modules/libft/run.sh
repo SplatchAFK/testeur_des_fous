@@ -347,7 +347,7 @@ build_game() {
 	local objs=() o f pids=() n=0 nft=0
 	local GSRC=("$SRC"/main.c "$SRC"/screens.c "$MOT"/ui.c "$SRC"/train.c "$SRC"/scene.c
 		"$MOT"/save.c "$MOT"/data.c "$MOT"/avatar.c "$MOT"/art.c "$MOT"/term.c
-		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$SRC"/story.c)
+		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$MOT"/rendu.c "$SRC"/story.c)
 	local GX="" GOBJ="" key g ok=1
 	for f in "$ROOT"/ft_*.c; do [ -f "$f" ] && nft=$((nft + 1)); done
 	tdf_ch_debut "préparation" $((nft + ${#GSRC[@]} + 1))
@@ -387,14 +387,14 @@ build_game() {
 		fi
 	fi
 	if [ -n "$GOBJ" ]; then
-		$CC "$GOBJ"/*.o ${objs[@]+"${objs[@]}"} -lm $GX -o "$BUILD/fous" 2> "$BUILD/game.err" && { tdf_ch_fin; return 0; }
-		$CC "$GOBJ"/*.o ${objs[@]+"${objs[@]}"} -lm $GX -Wl,--allow-multiple-definition -o "$BUILD/fous" \
+		$CC "$GOBJ"/*.o ${objs[@]+"${objs[@]}"} -lm -ldl $GX -o "$BUILD/fous" 2> "$BUILD/game.err" && { tdf_ch_fin; return 0; }
+		$CC "$GOBJ"/*.o ${objs[@]+"${objs[@]}"} -lm -ldl $GX -Wl,--allow-multiple-definition -o "$BUILD/fous" \
 			2>> "$BUILD/game.err" && { tdf_ch_fin; return 0; }
 	fi
 	tdf_ch_fin "secours"
-	$CC -O2 -w -I "$SRC" -I "$MOT" "${GSRC[@]}" ${objs[@]+"${objs[@]}"} -lm $GX -o "$BUILD/fous" \
+	$CC -O2 -w -I "$SRC" -I "$MOT" "${GSRC[@]}" ${objs[@]+"${objs[@]}"} -lm -ldl $GX -o "$BUILD/fous" \
 		2> "$BUILD/game.err" && return 0
-	$CC -O2 -w -I "$SRC" -I "$MOT" "${GSRC[@]}" ${objs[@]+"${objs[@]}"} -lm $GX \
+	$CC -O2 -w -I "$SRC" -I "$MOT" "${GSRC[@]}" ${objs[@]+"${objs[@]}"} -lm -ldl $GX \
 		-Wl,--allow-multiple-definition -o "$BUILD/fous" 2>> "$BUILD/game.err"
 }
 

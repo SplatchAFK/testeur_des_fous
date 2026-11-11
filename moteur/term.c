@@ -163,6 +163,7 @@ static int		g_cx;
 static int		g_cy;
 static int		g_inval;
 static int		g_sync;
+static int		g_gen;
 static t_cell	g_pen;
 static char		g_ob[1 << 16];
 static size_t	g_on;
@@ -591,6 +592,7 @@ static void	vs_present(const t_cell *src)
 		for (i = 0; i < g_vw * g_vh; i++)
 			g_fr[i] = blank(0);
 		g_inval = 0;
+		g_gen++;
 	}
 	for (y = 0; y < g_vh; y++)
 		for (x = 0; x < g_vw; x++)
@@ -622,6 +624,44 @@ static void	vs_present(const t_cell *src)
 void	term_invalidate(void)
 {
 	g_inval = 1;
+}
+
+int	term_gen(void)
+{
+	return (g_gen);
+}
+
+void	term_raw(const char *s, size_t n)
+{
+	size_t	o;
+	ssize_t	w;
+
+	raw_flush();
+	o = 0;
+	while (o < n)
+	{
+		w = write(1, s + o, n - o);
+		if (w < 0 && errno == EINTR)
+			continue ;
+		if (w <= 0)
+			break ;
+		o += w;
+	}
+	g_rx = -1;
+	g_ry = -1;
+}
+
+void	term_dirty(int x, int y, int w, int h)
+{
+	int	i;
+	int	j;
+
+	if (!g_fr)
+		return ;
+	for (j = y; j < y + h && j < g_vh; j++)
+		for (i = x; i < x + w && i < g_vw; i++)
+			if (i >= 0 && j >= 0)
+				g_fr[j * g_vw + i].ch = 0xFFFFFFFFu;
 }
 
 static void	size_guard(void)
@@ -702,6 +742,7 @@ void	term_init(void)
 	sigaction(SIGTERM, &sa, NULL);
 	sigaction(SIGHUP, &sa, NULL);
 	term_resume();
+	rendu_sonde();
 }
 
 void	term_pause(void)
@@ -717,6 +758,7 @@ void	term_pause(void)
 
 void	term_end(void)
 {
+	rendu_fin();
 	term_pause();
 }
 
@@ -869,10 +911,12 @@ void	flush(void)
 	if (!g_raw || g_forked || !g_bk)
 		return ;
 	vs_present(g_bk);
+	rendu_apres_flush();
 }
 
 void	frame(void)
 {
+	rendu_frame();
 	drain();
 	if (!g_raw || g_forked || !g_bk)
 		return ;

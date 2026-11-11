@@ -158,7 +158,7 @@ build_jeu() {
 	mkdir -p "$JEU"
 	empreinte=$(cat "$TDF_DIR"/game/*.c "$TDF_DIR"/game/*.h "$MOT"/*.c "$MOT"/*.h 2>/dev/null | cksum | cut -d' ' -f1)
 	tdf_compiler "$JEU/fous" "$JEU/jeu.err" "$empreinte" -O2 -w -DTDF_PRINTF -I "$TDF_DIR/game" -I "$MOT" -- \
-		"$TDF_DIR"/game/*.c "$MOT"/*.c -- -lm
+		"$TDF_DIR"/game/*.c "$MOT"/*.c -- -lm -ldl
 }
 ver_gt() {
 	[ "$1" != "$2" ] && [ "$(printf '%s\n%s\n' "$1" "$2" | sort -t. -k1,1n -k2,2n -k3,3n | tail -1)" = "$1" ]

@@ -221,10 +221,10 @@ static void	read_look(const char *v, int *tab)
 static int	*cfg_field(const char *k)
 {
 	static const char	*n[] = {"anim", "col256", "aide", "tmo", "asan", "ubsan",
-		"valg", "norm", "audit", "sound", "lang", "keys", "lore"};
+		"valg", "norm", "audit", "sound", "lang", "keys", "lore", "rendu"};
 	int					i;
 
-	for (i = 0; i < 13; i++)
+	for (i = 0; i < 14; i++)
 		if (!strcmp(k, n[i]))
 			return (&((int *)&cur->cfg)[i]);
 	return (NULL);
@@ -360,6 +360,8 @@ static void	save_fix(t_save *s)
 		s->cfg.tmo = 30;
 	if (s->cfg.lore < 0 || s->cfg.lore > 2)
 		s->cfg.lore = 0;
+	if (s->cfg.rendu < 0 || s->cfg.rendu > 4)
+		s->cfg.rendu = 0;
 	if (s->cfg.help < 0 || s->cfg.help > 2)
 		s->cfg.help = 2;
 }
@@ -540,10 +542,10 @@ static void	write_file(int refresh)
 	hl = hash_of(b);
 	fprintf(f, "cfg_anim=%d\ncfg_col256=%d\ncfg_aide=%d\ncfg_tmo=%d\ncfg_asan=%d\n"
 		"cfg_ubsan=%d\ncfg_valg=%d\ncfg_norm=%d\ncfg_audit=%d\ncfg_sound=%d\n"
-		"cfg_lang=%d\ncfg_keys=%d\ncfg_lore=%d\nsum_profile=%lx\nsum_libft=%lx\n", g_save.cfg.anim,
+		"cfg_lang=%d\ncfg_keys=%d\ncfg_lore=%d\ncfg_rendu=%d\nsum_profile=%lx\nsum_libft=%lx\n", g_save.cfg.anim,
 		g_save.cfg.col256, g_save.cfg.help, g_save.cfg.tmo, g_save.cfg.asan,
 		g_save.cfg.ubsan, g_save.cfg.valg, g_save.cfg.norm, g_save.cfg.audit,
-		g_save.cfg.sound, g_save.cfg.lang, g_save.cfg.keys, g_save.cfg.lore, hp, hl);
+		g_save.cfg.sound, g_save.cfg.lang, g_save.cfg.keys, g_save.cfg.lore, g_save.cfg.rendu, hp, hl);
 #ifdef TDF_SECTION
 	game_text(b, sizeof(b));
 	fputs(b, f);

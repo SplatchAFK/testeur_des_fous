@@ -108,7 +108,14 @@ static void	present_real(t_hd *d)
 				outn(b, color_seq(b, c, 1));
 			lf = k >> 24;
 			lb = k & 0xffffff;
-			out("▀");
+			if (rendu_palier() == 3)
+			{
+				bgc(mix(a, c, 0.5));
+				lb = UINT64_MAX;
+				out(" ");
+			}
+			else
+				out("▀");
 			lx = x + 1;
 			ly = y;
 		}

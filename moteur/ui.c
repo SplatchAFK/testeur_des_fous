@@ -522,6 +522,12 @@ static const char	*opt_val(int i, char *buf)
 		return (g_save.login);
 	if (i == 15)
 		return (g_save.cfg.lore == 2 ? L("non", "no") : L("oui", "yes"));
+	if (i == 16 && !g_save.cfg.rendu)
+		return (sprintf(buf, "auto (%s)", rendu_nom(rendu_palier())), buf);
+	if (i == 16)
+		return (rendu_nom(rendu_palier()));
+	if (i == 17)
+		return (sprintf(buf, "%d %%", rendu_deploiement(NULL)), buf);
 	return ("");
 }
 
@@ -569,6 +575,14 @@ static void	opt_change(int i, int d)
 		g_save.cfg.audit = (g_save.cfg.audit + 3 + d) % 3;
 	else if (i == 15)
 		g_save.cfg.lore = g_save.cfg.lore == 2 ? 1 : 2;
+	else if (i == 16)
+	{
+		k = g_save.cfg.rendu;
+		do
+			k = (k + 5 + d) % 5;
+		while (k && !rendu_dispo(k - 1));
+		g_save.cfg.rendu = k;
+	}
 }
 
 int	confirm(const char *q)
@@ -586,9 +600,9 @@ int	confirm(const char *q)
 
 void	screen_settings(void)
 {
-	static const int	ids[16] = {0, 1, 2, 3, 4, 5, 15, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+	static const int	ids[18] = {0, 1, 16, 17, 2, 3, 4, 5, 15, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 	static int			row;
-	const char			*lab[16];
+	const char			*lab[18];
 	char				buf[64];
 	int					k;
 	int					r;
@@ -615,6 +629,8 @@ void	screen_settings(void)
 		lab[13] = L("Pseudo", "Nickname");
 		lab[14] = L("Remettre la sauvegarde à zéro", "Reset the save");
 		lab[15] = L("Histoire et cinématiques", "Story and cutscenes");
+		lab[16] = L("Rendu des images", "Image rendering");
+		lab[17] = L("Déploiement graphique", "Graphics deployment");
 		x = (term_cols() - 72) / 2;
 		if (x < 0)
 			x = 0;
@@ -622,7 +638,7 @@ void	screen_settings(void)
 		frame();
 		center(1, theme()->accent2, L("P A R A M È T R E S", "S E T T I N G S"));
 		sel = ids[row];
-		for (r = 0; r < 16; r++)
+		for (r = 0; r < 18; r++)
 		{
 			i = ids[r];
 			at(x, 3 + r);
@@ -631,19 +647,23 @@ void	screen_settings(void)
 			fg(i == 14 ? rgb(255, 120, 120) : theme()->text);
 			outf(" %s %s%*s", i == sel ? "▶" : " ", lab[i], 33 - ulen(lab[i]), "");
 			fg(theme()->accent);
-			if (i < 13 || i == 15)
+			if (i < 13 || i == 15 || i == 16)
 				outf("◀ %s ▶", opt_val(i, buf));
+			else if (i == 17)
+				outf("%s  (Entrée : détail)", opt_val(i, buf));
 			else if (i == 13)
 				outf("%s  (Entrée)", opt_val(i, buf));
 			outf("   ");
 			bgc(theme()->bg);
 		}
-		text_at(x, 19, theme()->dim, L("Les réglages des tests (temps, sanitizers, valgrind, audit)",
+		text_at(x, 21, theme()->dim, L("Les réglages des tests (temps, sanitizers, valgrind, audit)",
 				"Test settings (time, sanitizers, valgrind, audit)"));
-		text_at(x, 20, theme()->dim, L("s'appliquent au prochain « Relancer les tests ».",
-				"apply to the next \"Run the tests again\"."));
-		text_at(x, 21, theme()->dim, L("La Norme reste obligatoire à l'entraînement.",
-				"The Norm stays required in training."));
+		if (sel == 11)
+			text_at(x, 22, theme()->dim, L("La Norme reste obligatoire à l'entraînement.",
+					"The Norm stays required in training."));
+		else
+			text_at(x, 22, theme()->dim, L("s'appliquent au prochain « Relancer les tests ».",
+					"apply to the next \"Run the tests again\"."));
 		foot_line(x, L("▲ ▼ choisir   ◀ ▶ changer   Échap : retour",
 				"▲ ▼ pick   ◀ ▶ change   Esc: back"));
 		flush();
@@ -651,13 +671,18 @@ void	screen_settings(void)
 		if (key_quit(k) || k == 127 || k == 8)
 			break ;
 		if (k == 1000)
-			row = (row + 15) % 16;
+			row = (row + 17) % 18;
 		else if (k == 1001)
-			row = (row + 1) % 16;
-		else if ((k == 1002 || k == 1003) && (sel < 13 || sel == 15))
+			row = (row + 1) % 18;
+		else if ((k == 1002 || k == 1003) && (sel < 13 || sel == 15 || sel == 16))
 		{
 			opt_change(sel, k == 1002 ? 1 : -1);
 			save_write();
+			cls();
+		}
+		else if ((k == '\r' || k == '\n' || k == ' ') && sel == 17)
+		{
+			screen_rendu();
 			cls();
 		}
 		else if ((k == '\r' || k == '\n' || k == ' ') && sel == 13)

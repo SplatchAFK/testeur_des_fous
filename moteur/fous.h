@@ -173,6 +173,20 @@
 # define term_fast tdf_term_fast
 # define term_forked tdf_term_forked
 # define term_invalidate tdf_term_invalidate
+# define term_gen tdf_term_gen
+# define term_raw tdf_term_raw
+# define term_dirty tdf_term_dirty
+# define g_caps tdf_g_caps
+# define rendu_sonde tdf_rendu_sonde
+# define rendu_dispo tdf_rendu_dispo
+# define rendu_palier tdf_rendu_palier
+# define rendu_nom tdf_rendu_nom
+# define rendu_deploiement tdf_rendu_deploiement
+# define rendu_image tdf_rendu_image
+# define rendu_frame tdf_rendu_frame
+# define rendu_apres_flush tdf_rendu_apres_flush
+# define rendu_fin tdf_rendu_fin
+# define screen_rendu tdf_screen_rendu
 # define term_pause tdf_term_pause
 # define term_poll tdf_term_poll
 # define term_resume tdf_term_resume
@@ -383,7 +397,25 @@ typedef struct s_cfg
 	int	lang;
 	int	keys;
 	int	lore;
+	int	rendu;
 }	t_cfg;
+
+typedef struct s_caps
+{
+	int	sonde;
+	int	couleurs;
+	int	utf8;
+	int	sixel;
+	int	kitty;
+	int	x11_lib;
+	int	x11;
+	int	cell_w;
+	int	cell_h;
+	int	win_w;
+	int	win_h;
+}	t_caps;
+
+extern t_caps	g_caps;
 
 # define TDF_DISCORD "https://discord.gg/SwAmfRcXCH"
 # define DISCORD_W 46
@@ -524,6 +556,19 @@ void			outf(const char *fmt, ...) __attribute__((format(printf, 1, 2)));
 void			flush(void);
 void			frame(void);
 void			term_invalidate(void);
+int				term_gen(void);
+void			term_raw(const char *s, size_t n);
+void			term_dirty(int x, int y, int w, int h);
+void			rendu_sonde(void);
+int				rendu_dispo(int p);
+int				rendu_palier(void);
+const char		*rendu_nom(int p);
+int				rendu_deploiement(int *det);
+void			rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw, int ch);
+void			rendu_frame(void);
+void			rendu_apres_flush(void);
+void			rendu_fin(void);
+void			screen_rendu(void);
 void			term_fast(int on);
 void			at(int x, int y);
 void			fg(t_rgb c);
