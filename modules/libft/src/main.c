@@ -27,7 +27,6 @@ static void	summary(void)
 		TDF_DISCORD);
 }
 
-/* première fois qu'une nouvelle version est lancée : un petit message */
 static void	version_notice(void)
 {
 	char	path[600];

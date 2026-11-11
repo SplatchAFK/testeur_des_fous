@@ -24,16 +24,8 @@ static pid_t					g_child;
 static int						g_forked;
 static long						g_ctrlc_at;
 
-/* posé par le gestionnaire de signal, lu par la boucle du jeu (term_poll) */
 volatile sig_atomic_t			g_quit_requested;
 
-/*
-** Gestionnaire de signal : il ne fait QUE poser un drapeau. Aucune écriture
-** par le tampon du jeu (g_buf n'est pas réentrant), aucun appel interdit dans
-** un gestionnaire. Le vrai nettoyage se fait dans term_poll(), depuis le jeu.
-** Seule exception : un 2e signal alors que le 1er n'a pas été traité (jeu
-** bloqué) : sortie d'urgence avec write, tcsetattr et _exit, tous permis ici.
-*/
 static void	on_signal(int s)
 {
 	if (g_quit_requested)
@@ -48,13 +40,11 @@ static void	on_signal(int s)
 	g_quit_requested = s;
 }
 
-/* processus lancé par le jeu (test, scène) à tuer si on quitte ; < 0 : groupe */
 void	term_child(int pid)
 {
 	g_child = pid;
 }
 
-/* à appeler dans un fils qui continue à faire tourner le code du jeu */
 void	term_forked(void)
 {
 	g_forked = 1;
@@ -64,10 +54,6 @@ void	term_forked(void)
 	signal(SIGHUP, SIG_DFL);
 }
 
-/*
-** Appelé à chaque tour des boucles du jeu (key_read, sleep_ms) : si un signal
-** a demandé l'arrêt, on tue le test en cours, on rend le terminal, on sort.
-*/
 void	term_poll(void)
 {
 	int	s;
@@ -86,11 +72,6 @@ void	term_poll(void)
 	_exit(128 + s);
 }
 
-/*
-** Touches de sortie, les mêmes partout. Ctrl+C est lu comme Échap.
-** key_quit : écrans à flèches (q ne compte pas s'il sert de direction, ZQSD).
-** key_stop : écrans sans direction (analyse, test en cours, combat) : q arrête.
-*/
 int	key_quit(int k)
 {
 	if (k == 27)
@@ -103,8 +84,6 @@ int	key_stop(int k)
 	return (k == 27 || k == 'q' || k == 'Q');
 }
 
-/* ---------------------------------------------------------------- taille */
-
 #define MINW 80
 #define MINH 24
 
@@ -116,7 +95,6 @@ static int	g_col16;
 
 static int	read_byte(int timeout_ms);
 
-/* la taille est lue une fois par image (et non à chaque term_cols()) */
 static int	size_refresh(void)
 {
 	struct winsize	w;
@@ -159,20 +137,10 @@ static long	real_ms(void)
 	return (t.tv_sec * 1000L + t.tv_nsec / 1000000L);
 }
 
-/* l'horloge du jeu s'arrête pendant que l'écran « agrandis ton terminal » est affiché */
 long	now_ms(void)
 {
 	return (real_ms() - g_paused);
 }
-
-/* ---------------------------------------------------------------- écran virtuel
-**
-** Le jeu n'écrit jamais directement dans le terminal. Tout ce qu'il dessine
-** (out, at, fg, bgc...) est rejoué dans une grille de cases (g_bk). À chaque
-** flush(), la grille est comparée à ce que le terminal affiche déjà (g_fr) et
-** seules les cases qui ont changé sont envoyées : aucun effacement complet,
-** donc aucune saccade, et un écran qui ne bouge pas n'envoie rien du tout.
-*/
 
 typedef struct s_cell
 {
@@ -554,12 +522,6 @@ static int	col_seq(char *b, uint32_t c, int bg)
 	return (sprintf(b, ";%d", bg ? 49 : 39));
 }
 
-/*
-** Mise à jour synchronisée (mode privé 2026) : le terminal attend la fin de
-** l'image avant de l'afficher, plus de lignes à moitié dessinées. Envoyée
-** seulement s'il y a quelque chose à dessiner ; un terminal qui ne la connaît
-** pas l'ignore.
-*/
 static void	sync_begin(void)
 {
 	if (!g_sync)
@@ -614,7 +576,6 @@ static void	emit_cell(int x, int y, const t_cell *c)
 		g_rx = -1;
 }
 
-/* envoie au terminal uniquement les cases de src qui diffèrent de l'affichage */
 static void	vs_present(const t_cell *src)
 {
 	int	x;
@@ -658,13 +619,11 @@ static void	vs_present(const t_cell *src)
 	raw_flush();
 }
 
-/* après un fils ou un programme qui a écrit tout seul : tout sera redessiné */
 void	term_invalidate(void)
 {
 	g_inval = 1;
 }
 
-/* terminal trop petit : message clair, le jeu attend (son horloge aussi) */
 static void	size_guard(void)
 {
 	char	b[400];
@@ -690,7 +649,7 @@ static void	size_guard(void)
 					"  %d x %d minimum  (%s %d x %d)\033[%d;1H\033[2m  %s\033[0m", y,
 					L("AGRANDIS TON TERMINAL", "MAKE YOUR TERMINAL BIGGER"), y + 1, MINW, MINH,
 					L("actuel :", "now:"), lc, lr, y + 2,
-					L("le jeu reprend tout seul  ·  Q : quitter", "the game resumes by itself  ·  Q: quit"));
+					L("le testeur reprend tout seul  ·  Q : quitter", "the tester resumes by itself  ·  Q: quit"));
 			(void)!write(1, b, c);
 		}
 		term_poll();
@@ -705,8 +664,6 @@ static void	size_guard(void)
 	g_paused += real_ms() - t0;
 	g_inval = 1;
 }
-
-/* ---------------------------------------------------------------- terminal */
 
 void	term_resume(void)
 {
@@ -763,7 +720,6 @@ void	term_end(void)
 	term_pause();
 }
 
-/* --fast / --no-anim : aucune animation ni cinématique pour ce lancement */
 void	term_fast(int on)
 {
 	g_fast = on;
@@ -815,10 +771,8 @@ int	key_read(int timeout_ms)
 	term_poll();
 	if (c == 3)
 	{
-		/* Ctrl+C = Échap partout ; deux fois de suite : on quitte le testeur */
 		if (g_ctrlc_at && now_ms() - g_ctrlc_at < 450)
 		{
-			/* dans un fils (combat) : c'est le jeu, son père, qui doit tout arrêter */
 			if (g_forked)
 			{
 				kill(getppid(), SIGINT);
@@ -849,7 +803,6 @@ int	key_read(int timeout_ms)
 	return (-1);
 }
 
-/* vide le tampon : dans la grille en jeu, tel quel sinon (hors jeu, fils) */
 static void	drain(void)
 {
 	size_t	i;
@@ -904,7 +857,6 @@ void	outf(const char *fmt, ...)
 		outn(tmp, (size_t)n < sizeof(tmp) ? (size_t)n : sizeof(tmp) - 1);
 }
 
-/* fin d'une image : seules les cases modifiées partent vers le terminal */
 void	flush(void)
 {
 	if (g_raw && !g_forked)
@@ -919,11 +871,6 @@ void	flush(void)
 	vs_present(g_bk);
 }
 
-/*
-** Début d'une image animée : la grille repart du fond courant et le curseur
-** revient en haut à gauche. Rien n'est effacé dans le terminal : flush()
-** n'enverra que les différences avec l'image précédente.
-*/
 void	frame(void)
 {
 	drain();
@@ -945,7 +892,6 @@ int	color_seq(char *buf, t_rgb c, int bg)
 
 	if (g_col16)
 	{
-		/* repli 16 couleurs (console Linux, vieux terminaux) : la plus proche */
 		i = (c.r > 110) | (c.g > 110) << 1 | (c.b > 110) << 2;
 		if (c.r > 200 || c.g > 200 || c.b > 200)
 			i += 60;
@@ -1076,7 +1022,6 @@ int	ulen(const char *s)
 	return (n);
 }
 
-/* écrit au plus maxw colonnes (UTF-8), avec « … » si c'est coupé */
 void	text_clip(int x, int y, t_rgb c, const char *s, int maxw)
 {
 	char	buf[1024];
@@ -1108,8 +1053,6 @@ void	text_clip(int x, int y, t_rgb c, const char *s, int maxw)
 	text_at(x, y, c, buf);
 }
 
-/* coupe s en lignes de largeur w (aux espaces, puis aux \n) ;
-** dessine à partir de y sans dépasser maxy ; renvoie la ligne suivante */
 int	text_wrap(int x, int y, int maxy, int w, t_rgb c, const char *s)
 {
 	char		buf[1024];

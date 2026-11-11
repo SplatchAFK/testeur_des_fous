@@ -21,8 +21,6 @@ BAYER = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
 OUTLINE = (24, 20, 34, 255)
 
 
-# ------------------------------------------------------------------ outils
-
 def new(w, h, col=(0, 0, 0, 0)):
     return Image.new("RGBA", (w, h), col)
 
@@ -151,8 +149,6 @@ def text3(img, x, y, s, c):
         x += 4
 
 
-# ------------------------------------------------------------------ Moulinette
-
 CAT_PAL = {
     "K": (36, 34, 48), "D": (96, 98, 114), "G": (148, 150, 164), "L": (190, 192, 206),
     "W": (246, 242, 234), "P": (255, 150, 176), "E": (110, 222, 122), "e": (18, 18, 24),
@@ -192,21 +188,17 @@ def cat_frames():
         return grid(["".join(r) for r in rows], CAT_PAL)
 
     f_idle = build(base)
-    # respiration : la tête descend d'un pixel
     breathe = [list("." * 24)] + [r[:] for r in base[:12]] + [r[:] for r in base[13:]]
     f_breathe = build(breathe)
-    # clignement
     blink = [r[:] for r in base]
     blink[6] = list(".KGGGGGGGGGGGGGGGGGGGGK.")
     blink[7] = list(".KGGKKKKGGGGGGGGKKKKGGK.")
     f_blink = build(blink)
-    # contente : yeux en ^ ^
     happy = [r[:] for r in base]
     happy[6] = list(".KGGGKKGGGGGGGGGGKKGGGK.")
     happy[7] = list(".KGGKGGKGGGGGGGGKGGKGGK.")
     happy[8] = list(".KGGGGGGGGGWWGGGGGGGGGK.")
     f_happy = build(happy)
-    # surprise : bouche ouverte
     surp = [r[:] for r in base]
     surp[10] = list("..KGGGGGWWKPPKWWGGGGGK..")
     surp[11] = list("...KGGGGWWKPPKWWGGGGK...")
@@ -226,12 +218,10 @@ def cat_face(blink=False):
     img = new(112, 84)
     d = ImageDraw.Draw(img)
     fur = [(70, 72, 88), (120, 122, 138), (158, 160, 174), (196, 198, 210)]
-    # oreilles
     for s in (-1, 1):
         cx = 56 + s * 34
         d.polygon([(cx - s * 18, 34), (cx + s * 6, 0), (cx + s * 16, 30)], fill=fur[1] + (255,))
         d.polygon([(cx - s * 10, 30), (cx + s * 5, 8), (cx + s * 11, 28)], fill=(255, 160, 186, 255))
-    # tête avec ombrage tramé (lumière en haut à gauche)
     for y in range(10, 84):
         for x in range(0, 112):
             dx, dy = (x - 56) / 52, (y - 52) / 40
@@ -239,17 +229,14 @@ def cat_face(blink=False):
             if r <= 1:
                 light = 0.75 - 0.45 * ((x - 30) / 112 + (y - 20) / 84) - r * 0.25
                 img.putpixel((x, y), dither_pick(fur, light, x, y))
-    # rayures du front
     for k in (-1, 0, 1):
         d.line([(56 + k * 9, 14), (56 + k * 7, 26)], fill=fur[0] + (255,), width=2)
-    # museau blanc
     for y in range(48, 84):
         for x in range(28, 84):
             dx, dy = (x - 56) / 26, (y - 66) / 18
             if dx * dx + dy * dy <= 1:
                 img.putpixel((x, y), dither_pick([(214, 210, 204), (246, 242, 234), (255, 252, 248)],
                                                  0.8 - (y - 48) / 60, x, y))
-    # yeux
     for s in (-1, 1):
         ex, ey = 56 + s * 21, 42
         if blink:
@@ -267,7 +254,6 @@ def cat_face(blink=False):
         d.ellipse([ex - 3, ey - 9, ex + 3, ey + 9], fill=(16, 16, 22, 255))
         d.ellipse([ex - 7, ey - 7, ex - 3, ey - 3], fill=(255, 255, 255, 255))
         put(img, ex + 4, ey + 5, (255, 255, 255))
-    # nez, bouche, joues, moustaches
     d.polygon([(51, 60), (61, 60), (56, 66)], fill=(255, 140, 170, 255))
     d.line([(56, 66), (51, 71), (47, 70)], fill=(110, 70, 70, 255), width=1)
     d.line([(56, 66), (61, 71), (65, 70)], fill=(110, 70, 70, 255), width=1)
@@ -277,8 +263,6 @@ def cat_face(blink=False):
             d.line([(56 + s * 18, 62 + k * 3), (56 + s * 54, 58 + k * 7)], fill=(250, 250, 255, 255), width=1)
     return img
 
-
-# ------------------------------------------------------------------ petits sprites
 
 def plush_frames():
     pal = {"K": (36, 34, 48), "P": (255, 170, 200), "W": (240, 236, 228), "G": (90, 190, 110),
@@ -442,8 +426,6 @@ def torch_frames():
     return sheet(out)
 
 
-# ------------------------------------------------------------------ décors printf
-
 def wall_bricks(img, box, base, mortar, rows=5, seed=1):
     random.seed(seed)
     x0, y0, x1, y1 = box
@@ -472,7 +454,6 @@ def splash_bg():
             put(img, x, H - 20, (90, 40, 120))
     glow(img, W / 2, 26, 46, (255, 80, 200), 0.55)
     glow(img, W / 2, H - 14, 34, (180, 90, 255), 0.35)
-    # vignette
     for y in range(H):
         for x in range(W):
             d = math.hypot((x - W / 2) / (W / 2), (y - H / 2) / (H / 2))
@@ -487,19 +468,16 @@ def previously_bg():
     glow(img, 98, 52, 26, (255, 220, 150), 0.6)
     d = ImageDraw.Draw(img)
     d.ellipse([88, 42, 108, 62], fill=(255, 226, 160, 255))
-    # collines en trois plans
     for k, (col, base, amp) in enumerate([((120, 76, 70), 50, 5), ((94, 60, 58), 56, 4), ((72, 48, 46), 62, 3)]):
         for x in range(W):
             y = int(base + math.sin(x / (14 + k * 6) + k) * amp + math.sin(x / 5.3 + k * 2) * 1.2)
             for yy in range(y, H):
                 img.putpixel((x, yy), col + (255,))
-    # la tour au loin (à gauche)
     d.rectangle([12, 14, 26, 60], fill=(56, 38, 40, 255))
     for i in range(4):
         d.rectangle([11 + i * 4, 10, 13 + i * 4, 14], fill=(56, 38, 40, 255))
     for y in (24, 36, 48):
         d.rectangle([18, y, 20, y + 3], fill=(255, 200, 110, 255))
-    # chemin
     vgrad(img, (0, 66, W, H), [(84, 62, 48), (64, 46, 38)])
     for x in range(W):
         for y in range(66, H):
@@ -514,7 +492,6 @@ def machine_bg():
     for y in range(0, 64):
         for x in range(W):
             blend(img, x, y, (10, 6, 18), 0.55 * (1 - y / 64))
-    # tuyaux
     d = ImageDraw.Draw(img)
     for py, col in ((10, (120, 108, 96)), (52, (104, 94, 86))):
         d.rectangle([0, py, W, py + 3], fill=col + (255,))
@@ -522,7 +499,6 @@ def machine_bg():
         d.line([(0, py + 3), (W, py + 3)], fill=mix(col, (0, 0, 0), 0.4))
         for x in range(8, W, 30):
             d.rectangle([x, py - 1, x + 3, py + 4], fill=mix(col, (0, 0, 0), 0.25))
-    # la Machine de la Norminette : grand cadre de fer riveté
     d.rectangle([36, 4, 104, 62], fill=(52, 50, 64, 255))
     d.rectangle([40, 8, 100, 58], fill=(30, 26, 40, 255))
     for x in range(36, 105, 6):
@@ -531,20 +507,16 @@ def machine_bg():
     for y in range(5, 62, 6):
         put(img, 37, y, (170, 170, 190))
         put(img, 103, y, (170, 170, 190))
-    # plaque
     d.rectangle([48, 0, 92, 8], fill=(150, 120, 70, 255))
     d.rectangle([48, 0, 92, 0], fill=(200, 170, 110, 255))
     text3(img, 51, 2, "NORMINETTE", (60, 40, 20))
-    # voyants sur les montants du cadre (loin des chaînes)
     for i, gy in enumerate((16, 24, 32, 40, 48)):
         put(img, 38, gy, (255, 60, 70) if i % 2 else (90, 255, 120))
         put(img, 102, gy, (255, 60, 70) if i % 2 == 0 else (90, 255, 120))
-    # règle « 25 » au mur
     d.rectangle([4, 20, 30, 24], fill=(200, 182, 120, 255))
     for i in range(26):
         d.line([(4 + i, 20), (4 + i, 21 if i % 5 else 22)], fill=(100, 84, 50, 255))
     text3(img, 12, 26, "25", (200, 182, 120))
-    # sol en planches
     vgrad(img, (0, 64, W, H), [(70, 50, 52), (50, 36, 40), (34, 24, 30)])
     for y in (64, 69, 75, 82):
         d.line([(0, y), (W, y)], fill=(30, 20, 26, 255))
@@ -557,19 +529,16 @@ def machine_bg():
 
 def restaurant_bg():
     img = new(W, H)
-    # papier peint à rayures
     for y in range(0, 50):
         for x in range(W):
             stripe = (x // 4) % 2
             base = (150, 84, 64) if stripe else (134, 74, 58)
             img.putpixel((x, y), dither_pick([mix(base, (0, 0, 0), 0.3), base], y / 50 + 0.2, x, y))
-    # lambris
     vgrad(img, (0, 50, W, 62), [(110, 66, 40), (86, 50, 32)])
     d = ImageDraw.Draw(img)
     for x in range(0, W, 14):
         d.line([(x, 50), (x, 61)], fill=(66, 38, 26, 255))
     d.line([(0, 50), (W, 50)], fill=(170, 110, 70, 255))
-    # fenêtre : nuit, lumières de la ville
     wx0, wy0, wx1, wy1 = 92, 8, 132, 46
     vgrad(img, (wx0, wy0, wx1, wy1), [(18, 24, 50), (30, 40, 80), (50, 60, 100)])
     random.seed(9)
@@ -580,18 +549,15 @@ def restaurant_bg():
     d.rectangle([wx0 - 1, wy0 - 1, wx1, wy1], outline=(110, 72, 44, 255))
     d.line([((wx0 + wx1) // 2, wy0), ((wx0 + wx1) // 2, wy1)], fill=(150, 100, 60, 255))
     d.line([(wx0, (wy0 + wy1) // 2), (wx1, (wy0 + wy1) // 2)], fill=(150, 100, 60, 255))
-    # rideaux
     for cx in (wx0 - 6, wx1 + 2):
         for y in range(wy0 - 4, wy1 + 6):
             for x in range(cx, cx + 6):
                 fold = (x - cx) % 3
                 img.putpixel((x, y), [(170, 40, 50, 255), (200, 60, 70, 255), (140, 30, 44, 255)][fold])
-    # lampe suspendue et halo
     d.line([(46, 0), (46, 8)], fill=(40, 30, 30, 255))
     d.polygon([(38, 14), (54, 14), (50, 8), (42, 8)], fill=(220, 170, 90, 255))
     d.line([(38, 14), (54, 14)], fill=(255, 220, 140, 255))
     glow(img, 46, 18, 40, (255, 210, 140), 0.45)
-    # table au premier plan
     vgrad(img, (0, 62, W, H), [(176, 116, 70), (140, 90, 54), (104, 66, 40)])
     d.line([(0, 62), (W, 62)], fill=(210, 150, 96, 255))
     random.seed(4)
@@ -601,8 +567,6 @@ def restaurant_bg():
         d.line([(x, y), (x + random.randint(10, 30), y)], fill=(120, 76, 46, 255))
     return img
 
-
-# ------------------------------------------------------------------ décors libft
 
 def sky(img, box, cols, seed, stars=60, moon=None):
     vgrad(img, box, cols)
@@ -640,12 +604,10 @@ def tower_bg():
     sky(img, (0, 0, W, th), [(14, 10, 40), (32, 20, 70), (40, 34, 96), (30, 44, 100)], seed=5, stars=110,
         moon=(112, 20, 6))
     d = ImageDraw.Draw(img)
-    # montagnes lointaines
     for x in range(W):
         y = int(206 + math.sin(x / 13) * 6 + math.sin(x / 5.7) * 2)
         for yy in range(y, th):
             img.putpixel((x, yy), (30, 34, 70, 255))
-    # tour
     tx0, tx1, top = 52, 88, 66
     stone(img, (tx0, top, tx1, 242), (104, 96, 132), seed=7)
     for i in range(10):
@@ -653,19 +615,16 @@ def tower_bg():
         if i % 2 == 0:
             stone(img, (x, top - 6, x + 4, top), (104, 96, 132), seed=8 + i)
     d.rectangle([tx0 - 3, top - 1, tx1 + 2, top + 1], fill=(80, 74, 104, 255))
-    # fenêtres éclairées
     for wy in (90, 150, 196):
         d.rectangle([68, wy, 72, wy + 7], fill=(255, 206, 110, 255))
         d.ellipse([68, wy - 2, 72, wy + 2], fill=(255, 206, 110, 255))
         put(img, 70, wy + 3, (255, 240, 190))
         glow(img, 70, wy + 3, 9, (255, 200, 110), 0.35)
-    # balcon des gardiens
     d.rectangle([22, 124, 118, 127], fill=(84, 78, 108, 255))
     d.line([(22, 124), (118, 124)], fill=(130, 124, 160, 255))
     for x in range(24, 118, 6):
         d.line([(x, 117), (x, 123)], fill=(84, 78, 108, 255))
     d.line([(22, 117), (118, 117)], fill=(84, 78, 108, 255))
-    # sol, herbe, chemin, porte
     vgrad(img, (0, 240, W, th), [(36, 80, 54), (26, 60, 42), (18, 40, 30)])
     random.seed(11)
     for x in range(0, W, 2):
@@ -691,22 +650,18 @@ def room_bg():
         for x in range(W):
             blend(img, x, y, (6, 4, 10), 0.4 * (1 - y / 58) + 0.25 * abs(x - W / 2) / (W / 2))
     d = ImageDraw.Draw(img)
-    # arche centrale
     d.rectangle([52, 18, 88, 58], fill=(14, 10, 18, 255))
     d.ellipse([52, 4, 88, 34], fill=(14, 10, 18, 255))
     for a in range(0, 181, 12):
         r = math.radians(a)
         put(img, int(70 + math.cos(r) * 19), int(19 - math.sin(r) * 16), (120, 110, 130))
-    # bannières
     for bx in (34, 100):
         d.rectangle([bx, 8, bx + 8, 30], fill=(120, 30, 50, 255))
         d.polygon([(bx, 30), (bx + 4, 26), (bx + 8, 30), (bx + 8, 34), (bx + 4, 30), (bx, 34)], fill=(120, 30, 50, 255))
         d.line([(bx - 1, 8), (bx + 9, 8)], fill=(200, 170, 90, 255))
         put(img, bx + 4, 16, (240, 210, 110))
-    # supports de torches
     for tx in (18, 120):
         d.rectangle([tx - 1, 34, tx + 2, 36], fill=(60, 56, 64, 255))
-    # sol en dalles
     vgrad(img, (0, 58, W, H), [(64, 56, 70), (48, 42, 56), (32, 28, 40)])
     for y in (58, 63, 70, 79):
         d.line([(0, y), (W, y)], fill=(26, 22, 32, 255))
@@ -726,8 +681,6 @@ def towertop_bg():
     return img
 
 
-# ------------------------------------------------------------------ ft_printf
-
 def colossus_frames():
     """ft_printf : un colosse encapuchonné fait de conversions qui défilent"""
     fw, fh = 60, 66
@@ -737,16 +690,13 @@ def colossus_frames():
         img = new(fw, fh)
         d = ImageDraw.Draw(img)
         body = (64, 20, 84, 255)
-        # robe large, épaules, capuche
         d.polygon([(10, 22), (50, 22), (58, 65), (2, 65)], fill=body)
         d.ellipse([12, 16, 48, 32], fill=body)
         d.polygon([(30, 0), (44, 10), (46, 24), (14, 24), (16, 10)], fill=body)
-        # bras
         d.polygon([(6, 24), (14, 24), (12, 48), (4, 48)], fill=body)
         d.polygon([(46, 24), (54, 24), (56, 48), (48, 48)], fill=body)
         d.ellipse([2, 45, 13, 54], fill=(80, 26, 100, 255))
         d.ellipse([47, 45, 58, 54], fill=(80, 26, 100, 255))
-        # volume : tramage sombre en bas, lumière rose à gauche
         for y in range(fh):
             for x in range(fw):
                 pp = img.getpixel((x, y))
@@ -754,24 +704,19 @@ def colossus_frames():
                     continue
                 light = 0.75 - y / fh * 0.55 - (x - 18) / fw * 0.35
                 img.putpixel((x, y), dither_pick([(26, 8, 40), (52, 16, 72), (86, 28, 112), (128, 46, 150)], light, x, y))
-        # intérieur de la capuche
         d.ellipse([20, 7, 40, 23], fill=(14, 4, 22, 255))
-        # conversions qui défilent dans le corps
         random.seed(100 + k)
         glyphs = "%SDCPUXI"
         for gy in range(26 + (k * 2) % 6, fh - 6, 7):
             for gx in range(8 + (gy * 3 + k * 5) % 9, fw - 8, 9):
                 if img.getpixel((gx, gy))[3] and img.getpixel((gx + 2, gy + 4))[3] and random.random() < 0.7:
                     text3(img, gx, gy, random.choice(glyphs), pal_glyph[(gx + gy + k) % 3])
-        # yeux : deux petits % lumineux
         for ex in (24, 33):
             for (dx, dy) in ((0, 0), (3, 3), (2, 0), (1, 1), (1, 2), (0, 3)):
                 put(img, ex + dx, 12 + dy, (255, 240, 255) if k != 1 else (255, 200, 245))
         frames.append(outline(img, (14, 4, 20, 255)))
     return sheet(frames)
 
-
-# ------------------------------------------------------------------ export
 
 def save(img, out, name):
     img.save(os.path.join(out, name + ".png"))

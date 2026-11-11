@@ -1,4 +1,3 @@
-/* Le testeur des fous · version printf - macros de test */
 #ifndef TDF_TESTS_H
 # define TDF_TESTS_H
 # include "tdf.h"
@@ -13,8 +12,6 @@
 # pragma GCC diagnostic ignored "-Wunknown-warning-option"
 # pragma GCC diagnostic ignored "-Wnonnull"
 
-/* Partie exécutée dans le fils : format copié au bord d'une page protégée,
-   traceur armé uniquement pendant l'appel. */
 # define TDF_FT(fmt, ...) do { \
 		const char *_tf = tdf_edge(fmt); \
 		int _tr; \
@@ -35,10 +32,6 @@
 		} \
 	} while (0)
 
-/* T  : comparaison stricte avec printf (sortie octet par octet + retour)
-   TU : comportement indéfini -> différence = avertissement
-   TW : write en échec (1 = fd fermé, 2 = /dev/full) : retour -1 attendu
-   TM : injection d'échec de malloc (chaque malloc, l'un après l'autre) */
 # define T(fmt, ...)  TDF_RUN(SEV_STRICT, fmt, ##__VA_ARGS__)
 # define TU(fmt, ...) TDF_RUN(SEV_UB, fmt, ##__VA_ARGS__)
 # define TW(mode, fmt, ...) do { \

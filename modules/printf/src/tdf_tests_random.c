@@ -1,4 +1,3 @@
-/* Le testeur des fous · version printf - stress aléatoire (graine affichée) et bonus */
 #include "tdf_tests.h"
 #include <stdlib.h>
 #include <string.h>
@@ -146,9 +145,6 @@ void	tdf_tests_stress(void)
 	free(cases);
 }
 
-/* ------------------------------------------------------------------ */
-/* BONUS : flags - 0 . # + espace, largeur, précision                   */
-/* ------------------------------------------------------------------ */
 #define F_MINUS 1
 #define F_ZERO 2
 #define F_HASH 4
@@ -157,8 +153,6 @@ void	tdf_tests_stress(void)
 #define F_WIDTH 32
 #define F_PREC 64
 
-/* Comportement indéfini selon C11 7.21.6.1 (on reste prudent : jamais de KO
-   sur un cas discutable). */
 static int	is_ub(int fl, int wp, char cv, int null_str)
 {
 	int	prec;
@@ -179,7 +173,6 @@ static int	is_ub(int fl, int wp, char cv, int null_str)
 	return (0);
 }
 
-/* Sonde : quelles fonctionnalités bonus la lib gère-t-elle ? */
 static int	probe(const char *fmt, int v)
 {
 	int		ok;
@@ -277,8 +270,6 @@ static void	gen_values(char cv, int *k, t_val *vals, int *nv, int *local)
 		*nv = 1;
 }
 
-
-/* DLC : chaque flag testé seul, une catégorie par boss (pas d'attribution ambiguë) */
 static void	bonus_one(const char *key, const char *title, const char **flags, int fl,
 				const char **wd, const char **pr, const char *convs)
 {

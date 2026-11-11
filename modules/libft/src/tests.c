@@ -12,15 +12,6 @@
 #include <unistd.h>
 #include "libft.h"
 
-/*
-** Moteur de tests du testeur des fous.
-** Chaque fonction est testée dans son propre binaire (-DT_nom).
-** Ta libft est compilée avec -include tdf_hook.h : chacun de tes malloc et
-** free passe par le traqueur ci-dessous, qui connaît la taille de chaque
-** bloc, son propriétaire et le cas de test en cours. Ça marche partout
-** (Linux, macOS, avec ou sans sanitizers), sans --wrap ni dlsym.
-*/
-
 #define MAX_SHOWN 8
 #define MAX_WARN 4
 #define COUNT(a) ((int)(sizeof(a) / sizeof((a)[0])))
@@ -78,10 +69,6 @@ static void	setcase(const char *fmt, ...)
 	va_end(ap);
 	g_case_seq++;
 }
-
-/* ------------------------------------------------------------------ */
-/* Traqueur de mémoire                                                  */
-/* ------------------------------------------------------------------ */
 
 #define TSZ (1 << 18)
 #define OWN_STU 1
@@ -174,7 +161,6 @@ static void	blk_add(void *p, size_t n, int own)
 	g_tab[i].lab = own == OWN_STU ? lab_now() : -1;
 }
 
-/* ton malloc */
 void	*tdf_malloc_s(size_t n)
 {
 	void	*p;
@@ -202,7 +188,6 @@ static void	bad_free(const char *who, const void *p)
 			" l'argument ?)  · cas : %s\n", p, g_case);
 }
 
-/* ton free */
 void	tdf_free_s(void *p)
 {
 	int	i;
@@ -227,7 +212,6 @@ void	tdf_free_s(void *p)
 	free(p);
 }
 
-/* malloc et free du testeur */
 static void	*tst_malloc(size_t n)
 {
 	void	*p;
@@ -260,13 +244,11 @@ static void	tst_free(void *p)
 
 #define free(p) tst_free(p)
 
-/* le bloc est-il encore vivant (alloué et pas libéré) ? */
 static int	tst_alive(const void *p)
 {
 	return (p != NULL && blk_find(p) >= 0);
 }
 
-/* taille exacte du bloc rendu : trop petit ou trop grand = faux */
 static int	size_is(const void *p, size_t want, const char *what)
 {
 	int	i;
@@ -308,7 +290,6 @@ static int	inject_off(void)
 	return (g_inj_cnt >= g_inj_at);
 }
 
-/* blocs alloués par ta fonction et jamais libérés */
 static void	leak_report(void)
 {
 	size_t	i;
@@ -341,10 +322,6 @@ static void	leak_report(void)
 	if (nb)
 		printf("@@L %ld %ld\n", nb, bytes);
 }
-
-/* ------------------------------------------------------------------ */
-/* Crash, boucle infinie : on dit quel cas tournait                     */
-/* ------------------------------------------------------------------ */
 
 static void	say_case(const char *tag)
 {
@@ -392,10 +369,6 @@ static void	guard_init(void)
 	sec = t ? atoi(t) : 20;
 	alarm(sec > 0 ? (unsigned)sec : 20);
 }
-
-/* ------------------------------------------------------------------ */
-/* Outils                                                               */
-/* ------------------------------------------------------------------ */
 
 static const char	*show(const void *p, size_t n)
 {
@@ -461,12 +434,6 @@ static void	*xbytes(const void *s, size_t n)
 	return (p);
 }
 
-/* ------------------------------------------------------------------ */
-/* Partie 1                                                             */
-/* ------------------------------------------------------------------ */
-
-/* La libc renvoie « non nul » pour vrai (souvent 1024, 2048...) :
-** seul le vrai/faux compte, comme pour tripouille et la moulinette. */
 static void	ctype_bool(const char *n, int (*mine)(int), int (*real)(int))
 {
 	int	c;
@@ -1199,10 +1166,6 @@ static void	run_test(void)
 	free(s);
 }
 #endif
-
-/* ------------------------------------------------------------------ */
-/* Partie 2                                                             */
-/* ------------------------------------------------------------------ */
 
 #ifdef T_substr
 static void	run_test(void)
@@ -1976,10 +1939,6 @@ static void	run_test(void)
 	ft_putnbr_fd(42, -1);
 }
 #endif
-
-/* ------------------------------------------------------------------ */
-/* Partie 3                                                             */
-/* ------------------------------------------------------------------ */
 
 #if defined(T_lstnew) || defined(T_lstadd_front) || defined(T_lstsize) \
 	|| defined(T_lstlast) || defined(T_lstadd_back) || defined(T_lstdelone) \

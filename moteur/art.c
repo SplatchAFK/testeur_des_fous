@@ -168,7 +168,6 @@ const t_spr	g_boss_spr[3] = {
 	{39, 36, 1, 0, g_boss2}
 };
 
-
 static const char *const g_it1[] = {
 	"QQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
 	"QQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
@@ -413,7 +412,6 @@ static const char *const g_it7[] = {
 	"ffFfffFfffFfffFfffFfffFfffFf",
 	"fFfffFfffFfffFfffFfffFfffFff"
 };
-
 
 static const char *const g_it9[] = {
 	"....KKKKKKKKKK....",
@@ -991,7 +989,6 @@ static const char *const g_it54[] = {
 	"................EEE"
 };
 
-
 static const char *const g_it56[] = {
 	".1.1.",
 	"11y11",
@@ -1111,7 +1108,6 @@ static const char *const g_it70[] = {
 	"royv.bbppppppbb.vyor",
 	"royvbpp......ppbvyor"
 };
-
 
 static const char *const g_it72[] = {
 	"..KK..",
@@ -1390,7 +1386,6 @@ static const char *const g_it83[] = {
 	"...KKKK..."
 };
 
-
 static const char *const g_it85[] = {
 	"KKKKKKKK",
 	"K33y111K",
@@ -1529,7 +1524,6 @@ static const char *const g_it94[] = {
 	"...ll...."
 };
 
-
 static const char *const g_it96[] = {
 	"1....",
 	"11...",
@@ -1636,14 +1630,6 @@ static const char *const g_it105[] = {
 	"........",
 	"..q.q.q."
 };
-
-
-
-
-
-
-
-
 
 const t_idef	g_items[] = {
 	{"fond_aucun", "Aucun", "None", 0, 0, {0, 0, 0}, {0, 0, 0, 0, NULL}},

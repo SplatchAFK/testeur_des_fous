@@ -91,7 +91,6 @@ static int	split_tab(char *s, char **f, int max)
 	return (n);
 }
 
-/* coupe proprement un texte UTF-8 tronqué par snprintf */
 static void	utf8_fix(char *s)
 {
 	size_t			n;
@@ -316,7 +315,6 @@ static void	tile(int x, int y, int i, long now)
 		: (r->proto == 1 ? rgb(80, 230, 140) : theme()->dim));
 	out(r->proto ? "▌" : " ");
 	fg(c);
-	/* libellé de la case : formaté une fois, pas à chaque image */
 	if (!names[i][0])
 		snprintf(names[i], sizeof(names[i]), "%-13.13s", g_fn_name[i]);
 	out(names[i]);
@@ -753,7 +751,6 @@ static void	fiche_add(char lines[][220], int *kind, int *n, int w, int k, const 
 	}
 }
 
-/* niveau d'aide 0 : « ft_x.c:42 » devient « ft_x.c » (on garde le fichier, pas la ligne) */
 static void	hide_lines(char *s)
 {
 	char	*p;
@@ -777,7 +774,6 @@ static void	hide_lines(char *s)
 	}
 }
 
-/* un conseil par type de problème (jamais de code à ta place) */
 static const char	*fiche_hint(int st, const char *all, int which)
 {
 	static const char	*fr[] = {
@@ -992,7 +988,6 @@ static int	screen_fiche(int fn)
 	return (fn);
 }
 
-/* after : juste après un run ; 42 = relancer les tests (touche r) */
 int	screen_results(int after)
 {
 	int		sel;
@@ -1123,7 +1118,6 @@ static void	fireworks(int ms)
 	}
 }
 
-/* --no-lore : mêmes gains que l'écran des récompenses, sans affichage */
 int	record_progress(void)
 {
 	int		i;
@@ -1159,7 +1153,6 @@ int	record_progress(void)
 	return (clean);
 }
 
-/* succès liés à un run (écran des récompenses ou run sans nouveauté) */
 static void	rewards_achs(int clean, int all_tested, int noleak, int allproto)
 {
 	int	i;
@@ -1188,7 +1181,6 @@ static void	rewards_achs(int clean, int all_tested, int noleak, int allproto)
 	save_write();
 }
 
-/* une fonction est propre pour la première fois : l'écran des récompenses vaut le coup */
 int	rewards_news(void)
 {
 	int	i;
@@ -1199,7 +1191,6 @@ int	rewards_news(void)
 	return (0);
 }
 
-/* mêmes gains que l'écran des récompenses, sans l'afficher ni attendre */
 void	rewards_quiet(void)
 {
 	int	i;
@@ -1335,7 +1326,6 @@ void	screen_rewards(void)
 	cls();
 }
 
-/* toutes les fonctions de la partie p passent : le combat sera gagné */
 static int	boss_ready(int p)
 {
 	int	f;
@@ -1346,10 +1336,6 @@ static int	boss_ready(int p)
 	return (part_clean(p));
 }
 
-/*
-** only : un seul boss (0..2), tous (-1, premier run ou menu) ou seulement
-** ceux qu'on bat pour la 1re fois (-2) : relancer après une correction reste rapide.
-*/
 void	boss_battles(int only)
 {
 	t_scene_out	g;
@@ -1541,7 +1527,7 @@ void	screen_credits(void)
 	l[n++] = L("Discord · le serveur des fous", "Discord · the fous server");
 	l[n++] = TDF_DISCORD;
 	l[n++] = "";
-	l[n++] = L("Merci d'avoir joué !", "Thanks for playing!");
+	l[n++] = L("Merci d'avoir testé !", "Thanks for testing!");
 	t0 = now_ms();
 	while (1)
 	{

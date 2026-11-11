@@ -5,13 +5,6 @@
 #include <string.h>
 #include "fous.h"
 
-/*
-** Bannière et photo de profil, sans aucune dépendance :
-** un décodeur PNG (inflate maison) et un décodeur JPEG « baseline ».
-** L'image est réduite en pixel art (bannière 60 x 16, photo 16 x 16) et
-** rangée dans save.txt (3 chiffres hexa par pixel) : elle suit l'export.
-*/
-
 typedef struct s_img
 {
 	int				w;
@@ -47,8 +40,6 @@ static unsigned char	*read_all(const char *path, size_t *n)
 	*n = sz;
 	return (b);
 }
-
-/* ---------------------------------------------------------------- inflate */
 
 typedef struct s_bits
 {
@@ -234,7 +225,6 @@ static int	dynamic(t_bits *b, t_huff *lt, t_huff *dt)
 	return (b->bad ? -1 : 0);
 }
 
-/* zlib : 2 octets d'en-tête, des blocs deflate, puis l'adler32 (non vérifié) */
 static int	inflate_z(const unsigned char *in, size_t n, unsigned char *out, size_t cap, size_t *got)
 {
 	t_bits			b;
@@ -302,8 +292,6 @@ static int	inflate_z(const unsigned char *in, size_t n, unsigned char *out, size
 	*got = o;
 	return (b.bad ? -1 : 0);
 }
-
-/* ---------------------------------------------------------------- PNG */
 
 static unsigned int	be32(const unsigned char *p)
 {
@@ -452,8 +440,6 @@ static int	png_decode(const unsigned char *d, size_t n, t_img *im, const char **
 	free(raw);
 	return (0);
 }
-
-/* ---------------------------------------------------------------- JPEG baseline */
 
 typedef struct s_jh
 {
@@ -797,9 +783,6 @@ static int	jpg_decode(const unsigned char *d, size_t n, t_img *im, const char **
 	return (im->px ? 0 : -1);
 }
 
-/* ---------------------------------------------------------------- pixel art */
-
-/* recadre au centre au bon rapport, réduit par moyenne, 3 chiffres hexa par pixel */
 static void	to_hex(const t_img *im, int tw, int th, char *dst)
 {
 	static const char	*hx = "0123456789abcdef";
@@ -846,8 +829,6 @@ static void	to_hex(const t_img *im, int tw, int th, char *dst)
 	dst[tw * th * 3] = '\0';
 }
 
-/* ---------------------------------------------------------------- dessins du jeu */
-
 typedef struct s_slot
 {
 	char	name[48];
@@ -858,7 +839,6 @@ typedef struct s_slot
 static t_slot	g_pics[48];
 static int		g_npics;
 
-/* assets/<nom>.png, avec transparence ; NULL si l'image manque (le jeu s'en passe) */
 const t_pic	*art_pic(const char *name)
 {
 	char			path[700];
@@ -894,7 +874,6 @@ const t_pic	*art_pic(const char *name)
 	return (&g_pics[i].pic);
 }
 
-/* dessine l'image fw de large n° frame (planche horizontale), agrandie k fois, miroir si flip */
 void	hd_pic(t_hd *d, const t_pic *p, int fw, int frame, int x, int y, int k, int flip)
 {
 	int				i;
@@ -933,7 +912,6 @@ void	hd_pic(t_hd *d, const t_pic *p, int fw, int frame, int x, int y, int k, int
 		}
 }
 
-/* charge un fichier PNG ou JPG ; 0 si tout va bien, sinon *err explique */
 int	image_import(const char *path, int banner, const char **err)
 {
 	unsigned char	*d;
@@ -971,7 +949,6 @@ static int	hexv(char c)
 	return (c >= 'a' ? c - 'a' + 10 : c - '0');
 }
 
-/* dessine une image du profil (w x h pixels, 2 pixels par case en hauteur) */
 void	image_draw(const char *hex, int w, int h, int cx, int cy)
 {
 	int		x;
@@ -998,7 +975,6 @@ void	image_draw(const char *hex, int w, int h, int cx, int cy)
 	bgc(theme()->bg);
 }
 
-/* photo et bannière en haut du profil ; renvoie le nombre de lignes utilisées */
 int	profile_header(int x, int y)
 {
 	if (!g_save.banner[0] && !g_save.pfp[0])

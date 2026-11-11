@@ -117,7 +117,6 @@ void	big_text(int x, int y, const char *s, double t, int mode)
 	}
 }
 
-/* même dessin que big_text, mais dans la couche de texte d'une cinématique */
 void	hd_big(t_hd *d, int x, int y, const char *s, double t, int mode)
 {
 	const char	**g;

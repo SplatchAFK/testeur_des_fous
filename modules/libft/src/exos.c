@@ -37,7 +37,6 @@ static int	g_inj_on;
 static int	g_inj_cnt;
 static int	g_inj_at;
 
-/* malloc et free de ton code passent ici (cc -include tdf_hook.h) */
 void	*tdf_malloc_s(size_t n)
 {
 	if (g_inj_on && ++g_inj_cnt == g_inj_at)

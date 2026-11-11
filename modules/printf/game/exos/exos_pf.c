@@ -1,9 +1,3 @@
-/*
-** Tests des 16 niveaux d'entraînement du testeur des fous printf.
-** Compilé avec le fichier du joueur et -DLEVEL=n par run.sh --exo.
-** Sortie : lignes « D\tdétail » puis « X\tok|ko\tnombre_de_vérifications ».
-** Aucune solution ici : seulement les cas et les résultats attendus.
-*/
 #pragma GCC diagnostic ignored "-Wunused-function"
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #pragma GCC diagnostic ignored "-Wformat-truncation"
@@ -80,7 +74,6 @@ static void	cap_end(void)
 	close(g_pipe[0]);
 }
 
-/* compare la sortie capturée et la valeur de retour */
 static void	expect(const char *what, const char *exp, int exp_len, int ret, int exp_ret)
 {
 	g_checks++;
@@ -91,7 +84,6 @@ static void	expect(const char *what, const char *exp, int exp_len, int ret, int 
 		fail("%s : renvoie %d, attendu %d", what, ret, exp_ret);
 }
 
-/* écrire vers une sortie fermée : write échoue, on attend -1 */
 static int	closed_begin(void)
 {
 	int	fd;
@@ -115,7 +107,6 @@ static void	ret_only(const char *what, int ret, int exp)
 		fail("%s : renvoie %d, attendu %d", what, ret, exp);
 }
 
-/* copie la chaîne tout au bout d'un bloc : lire après le '\0' = erreur ASan */
 static char	*edge(const char *s)
 {
 	char	*p;

@@ -5,12 +5,6 @@
 #include <sys/utsname.h>
 #include "fous.h"
 
-/*
-** Socle commun aux testeurs des fous : badges (profil partagé), holygraph
-** 42 Next, profil modifiable et « Nous aider ». Les badges vivent dans la
-** section profil de save.txt : ils se voient dans toutes les versions.
-*/
-
 const t_badge	g_badges[NBADGE] = {
 	{"Libft validée", "Libft validated", "43/43 en local et les 3 boss battus",
 		"43/43 locally and the 3 bosses beaten", {80, 230, 140}},
@@ -63,7 +57,6 @@ static int	norm_ok(void)
 	return (0);
 }
 
-/* conditions propres à la version libft, vérifiées après chaque run */
 void	badges_update(int quiet)
 {
 	int		i;
@@ -112,9 +105,6 @@ void	badges_update(int quiet)
 }
 #endif
 
-/* ---------------------------------------------------------------- Discord */
-
-/* carte du serveur : cadre arrondi aux couleurs de Discord, DISCORD_W x 4 */
 void	discord_card(int x, int y)
 {
 	t_rgb	b;
@@ -131,7 +121,6 @@ void	discord_card(int x, int y)
 	bgc(theme()->bg);
 }
 
-/* version sur une ligne, centrée : pastille DISCORD puis le lien */
 void	discord_line(int y)
 {
 	int	x;
@@ -146,9 +135,6 @@ void	discord_line(int y)
 	out(" " TDF_DISCORD);
 }
 
-/* ---------------------------------------------------------------- premier lancement */
-
-/* « veux-tu l'histoire ? » : une seule fois, pour les deux testeurs (profil commun) */
 void	lore_setup(void)
 {
 	int	k;
@@ -181,9 +167,9 @@ void	lore_setup(void)
 				"No: straight to the point, no cutscenes"));
 		bgc(theme()->bg);
 		text_wrap(x, 15, 19, 70, theme()->dim, L("Ce choix vaut pour toutes les versions du testeur des fous. "
-				"Tu peux le changer quand tu veux dans Paramètres. Pour les tests seuls, sans jeu du tout : "
+				"Tu peux le changer quand tu veux dans Paramètres. Pour les tests seuls, sans histoire : "
 				"bash run.sh --no-lore.", "This choice applies to every version of the tester. You can change "
-				"it anytime in Settings. For tests only, no game at all: bash run.sh --no-lore."));
+				"it anytime in Settings. For tests only, no story: bash run.sh --no-lore."));
 		foot_line(x, L("▲ ▼ choisir   Entrée : valider", "▲ ▼ pick   Enter: confirm"));
 		flush();
 		k = key_dir(key_read(80));
@@ -200,8 +186,6 @@ void	lore_setup(void)
 	save_write();
 	cls();
 }
-
-/* ---------------------------------------------------------------- holygraph */
 
 typedef struct s_holy
 {
@@ -235,7 +219,6 @@ static int	holy_count(int m)
 }
 
 #ifndef TDF_PRINTF
-/* version libft : la preuve se fait ici, en local */
 int	game_holy(const char *p, char *why, size_t n)
 {
 	int	ok;
@@ -275,7 +258,6 @@ int	game_holy(const char *p, char *why, size_t n)
 }
 #endif
 
-/* 2 validé (preuve), 1 commencé, 0 verrouillé ; why reçoit ce qui manque */
 static int	holy_state(const char *p, char *why, size_t n)
 {
 	int	k;
@@ -405,8 +387,6 @@ void	screen_holy(void)
 	cls();
 }
 
-/* ---------------------------------------------------------------- Nous aider */
-
 #ifndef TDF_PRINTF
 void	game_trace(void *fp)
 {
@@ -473,8 +453,8 @@ void	screen_help_us(void)
 				"The testeur des fous gets better thanks to you. Whether your tests pass or not, your trace "
 				"helps find false positives, missing cases and tester bugs.")) + 1;
 		text_at(x, y++, theme()->accent, L("Comment faire", "How"));
-		text_at(x, y++, theme()->text, L("1. Appuie sur t : le jeu crée ta trace dans ton dossier personnel.",
-				"1. Press t: the game writes your trace in your home folder."));
+		text_at(x, y++, theme()->text, L("1. Appuie sur t : le testeur crée ta trace dans ton dossier personnel.",
+				"1. Press t: the tester writes your trace in your home folder."));
 		text_at(x, y++, theme()->text, L("2. Envoie-la en message privé à @splatch_afk (serveur 42 Next).",
 				"2. Send it as a direct message to @splatch_afk (42 Next server)."));
 		text_at(x, y++, theme()->text, L("   Ou dépose-la sur le Discord des fous : " TDF_DISCORD,
@@ -508,8 +488,6 @@ void	screen_help_us(void)
 	}
 	cls();
 }
-
-/* ---------------------------------------------------------------- profil */
 
 t_rgb	pseudo_color(void)
 {

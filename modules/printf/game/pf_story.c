@@ -4,17 +4,6 @@
 #include <string.h>
 #include "fous.h"
 
-/*
-** Lore de la version printf : à peine libérée de la Tour de la Libft,
-** Moulinette est capturée par ft_printf et enchaînée dans la Machine de la
-** Norminette. Neuf chaînes, une par conversion. Marvin les brise une à une,
-** puis affronte ft_printf, qui vérifie tout. Victoire : un chocolat chaud.
-**
-** Les décors et Moulinette sont de vrais dessins (images PNG du dossier assets, faites par
-** tools/dessins.py). Chaque scène fait 140 x 84 pixels, agrandie sans
-** déformation sur les grands terminaux (voir stage_fit dans cine.c).
-*/
-
 #define CAT_W 24
 
 static int		g_res[NCHAIN];
@@ -33,7 +22,6 @@ static double	ease(double a, double b, double t)
 	return (a + (b - a) * t);
 }
 
-/* bulle de dialogue accrochée à un point de la scène */
 static void	bubble(t_hd *d, const t_stage *s, double x, double y, const char *str)
 {
 	int	cx;
@@ -57,7 +45,6 @@ static void	ctext(t_hd *d, int y, t_rgb c, const char *s)
 	hd_text(d, x, y, c, d->px[(y * 2 + 1) * d->w + (x < d->w ? x : 0)], s);
 }
 
-/* Moulinette : 0 assise, 1 respire, 2 cligne, 3 contente, 4 surprise */
 static int	cat_idle(double t)
 {
 	if (fmod(t, 3.3) > 3.05)
@@ -72,7 +59,6 @@ static void	cat(t_hd *d, const t_stage *s, double x, double y, int frame, int zo
 	stage_pic(d, s, "chat", CAT_W, frame, x, y, zoom);
 }
 
-/* le symbole % (les yeux de ft_printf), en coordonnées de scène */
 static void	percent(t_hd *d, const t_stage *s, double x, double y, double r, t_rgb c)
 {
 	double	cx;
@@ -92,7 +78,6 @@ static void	percent(t_hd *d, const t_stage *s, double x, double y, double r, t_r
 		hd_line(d, cx + r * 0.75 + k, cy - r, cx - r * 0.75 + k, cy + r, c);
 }
 
-/* une chaîne de maillons entre deux points de la scène ; cut = trou au milieu */
 static void	chain_line(t_hd *d, const t_stage *s, double x0, double y0, double x1, double y1, t_rgb c,
 	double cut)
 {
@@ -123,7 +108,6 @@ static void	chain_line(t_hd *d, const t_stage *s, double x0, double y0, double x
 	}
 }
 
-/* l'atelier : le décor de la Machine et ses engrenages qui tournent */
 static void	workshop(t_hd *d, const t_stage *s, double t, double speed)
 {
 	int	f;
@@ -136,7 +120,6 @@ static void	workshop(t_hd *d, const t_stage *s, double t, double speed)
 	stage_pic(d, s, "engrenage_petit", 24, f % 4, 116, 44, 1);
 }
 
-/* point d'accroche de la chaîne i sur le cadre de la Machine */
 static void	anchor(int i, int n, double *x, double *y)
 {
 	double	a;
@@ -201,8 +184,6 @@ static void	chain_labels(t_hd *d, const t_stage *s, int n, int resolved)
 	}
 }
 
-/* ---------------------------------------------------------------- titre */
-
 static int	sc_splash(t_hd *d, double t)
 {
 	t_stage	s;
@@ -249,8 +230,6 @@ static int	sc_splash(t_hd *d, double t)
 	return (0);
 }
 
-/* ---------------------------------------------------------------- précédemment */
-
 static int	sc_previously(t_hd *d, double t)
 {
 	t_stage	s;
@@ -261,7 +240,6 @@ static int	sc_previously(t_hd *d, double t)
 
 	stage_fit(d, &s, t > 4.2 && t < 4.6 ? (int)(sin(t * 70) * 1.5) : 0);
 	stage_bg(d, &s, "scene_avant", 0, rgb(60, 44, 40), rgb(110, 84, 64));
-	/* souvenir : les trois gardiens vaincus, fantômes dans le ciel */
 	k = t < 4.2 ? fmin(0.38, t * 0.3) : fmax(0, 0.38 - (t - 4.2));
 	for (p = 0; p < 3; p++)
 		if (k > 0)
@@ -295,8 +273,6 @@ static int	sc_previously(t_hd *d, double t)
 		bubble(d, &s, cx + 12, 50, L("Miaou ?!", "Meow?!"));
 	return (0);
 }
-
-/* ---------------------------------------------------------------- l'atelier */
 
 static int	sc_intro(t_hd *d, double t)
 {
@@ -337,7 +313,6 @@ static int	sc_intro(t_hd *d, double t)
 	return (0);
 }
 
-/* barre en haut : mini-boss puis big boss */
 static void	topbar(t_hd *d, int done, int n, int stage)
 {
 	char	tmp[200];
@@ -431,13 +406,6 @@ static int	sc_freed(t_hd *d, double t)
 	return (0);
 }
 
-/* ---------------------------------------------------------------- ft_printf */
-
-/*
-** ft_printf : colosse encapuchonné fait de conversions qui défilent (dessin
-** ft_printf.png, 3 images de 60 x 66). (x, y) = milieu des pieds ; rise =
-** nombre de pixels encore sous le sol ; flash = blanc ; fade = opacité.
-*/
 static void	colossus(t_hd *d, const t_stage *s, double x, double y, double t, double rise, double flash,
 	double fade)
 {
@@ -562,9 +530,6 @@ static int	sc_bigboss(t_hd *d, double t)
 	return (0);
 }
 
-/* ---------------------------------------------------------------- victoire */
-
-/* restaurant, vue subjective : pluie dans la fenêtre, deux chocolats chauds */
 static int	sc_victory(t_hd *d, double t)
 {
 	t_stage	s;
@@ -608,8 +573,6 @@ static int	sc_victory(t_hd *d, double t)
 	return (0);
 }
 
-/* ---------------------------------------------------------------- appels */
-
 void	story_splash(void)
 {
 	cine_play(sc_splash, 5.5);
@@ -625,7 +588,6 @@ void	story_printf_intro(void)
 	cine_play(sc_intro, 13.0);
 }
 
-/* renvoie le nombre de chaînes (ou de boss du DLC) brisées */
 int	story_chains(int dlc)
 {
 	int	i;

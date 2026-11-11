@@ -1,9 +1,3 @@
-/*
-** Le testeur des fous · version printf : contrôle rapide de la libft copiée
-** dans libft/ (preuve locale pour le holygraph). Cas fixes ou comparaison avec
-** la libc, chaque fonction dans un processus fils. Aucune solution ici.
-** Sortie : « F nom OK|KO|ABSENTE|CRASH détail », puis « T ok total ».
-*/
 #include <ctype.h>
 #include <limits.h>
 #include <stdio.h>
@@ -418,7 +412,6 @@ static int	t_striteri(void)
 	return (0);
 }
 
-/* capture ce que la fonction écrit sur un fd */
 static int	fd_out(int which, char *buf, size_t n)
 {
 	int		p[2];

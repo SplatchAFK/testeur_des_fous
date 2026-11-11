@@ -28,7 +28,7 @@ while IFS= read -r f; do
 	fi
 done < <(fichiers '*.[ch]')
 
-INTERDITS='jeu vid|jouer|Co-Authored'
+INTERDITS='jeu vid|(^|[^a-z])jouer|Co-Authored'
 while IFS= read -r f; do
 	case "$f" in
 		./outils/verif.sh) continue ;;

@@ -1,11 +1,6 @@
 #ifndef FOUS_H
 # define FOUS_H
 
-/*
-** Les fonctions et variables globales du jeu sont préfixées par tdf_ :
-** une fonction d aide de ta libft qui s appelle fill, reset ou box ne
-** peut plus entrer en collision avec celles du jeu.
-*/
 # define ask_text tdf_ask_text
 # define badge_give tdf_badge_give
 # define badge_has tdf_badge_has
@@ -390,7 +385,6 @@ typedef struct s_cfg
 	int	lore;
 }	t_cfg;
 
-/* le serveur Discord des testeurs des fous */
 # define TDF_DISCORD "https://discord.gg/SwAmfRcXCH"
 # define DISCORD_W 46
 
@@ -409,7 +403,6 @@ typedef struct s_badge
 	t_rgb		c;
 }	t_badge;
 
-/* images du profil : bannière 60 x 16 et photo 16 x 16, 3 chiffres hexa par pixel */
 # define BAN_W 60
 # define BAN_H 16
 # define PFP_W 16
@@ -652,7 +645,6 @@ typedef struct s_pic
 	unsigned char	*a;
 }	t_pic;
 
-/* scène dessinée : 140 x 84 pixels agrandis k fois, centrés (ox, oy) */
 typedef struct s_stage
 {
 	int	k;

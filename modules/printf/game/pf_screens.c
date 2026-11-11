@@ -6,8 +6,6 @@
 #include <time.h>
 #include "fous.h"
 
-/* ---------------------------------------------------------------- communs */
-
 void	toast(const char *title, const char *msg, t_rgb c)
 {
 	long	t0;
@@ -105,8 +103,6 @@ static const char	*lab_of(int ko, int warn, int seen)
 	return ("OK");
 }
 
-/* ---------------------------------------------------------------- connexion */
-
 void	pf_grant_veteran(void)
 {
 	static const char	*ids[3] = {"cape_veteran", "casque_veteran", "fam_moulinette"};
@@ -156,8 +152,8 @@ void	pf_connect_screen(void)
 		center(1, theme()->accent2, L("C O N N E X I O N", "L O G   I N"));
 		y = 3;
 		y = text_wrap(x, y, y + 3, 76, theme()->text, L("Aucune sauvegarde du testeur des fous libft n'a été trouvée. "
-				"Tu peux jouer tout de suite : tous les tests et tous les combats sont là.",
-				"No libft tester save was found. You can play right away: every test and every fight is here.")) + 1;
+				"Tu peux commencer tout de suite : tous les tests et tous les combats sont là.",
+				"No libft tester save was found. You can start right away: every test and every fight is here.")) + 1;
 		text_at(x, y++, rgb(255, 200, 80), L("Installe d'abord le testeur des fous libft pour avoir tout le lore :",
 				"Install the libft tester first to get the full lore:"));
 		text_at(x, y++, theme()->text, L("  ★ « Précédemment, dans la Libft » et la fin secrète",
@@ -195,8 +191,6 @@ void	pf_connect_screen(void)
 	cls();
 }
 
-/* ---------------------------------------------------------------- analyse */
-
 static void	scan_draw(long t, int dead)
 {
 	char	tmp[200];
@@ -230,7 +224,6 @@ static void	scan_draw(long t, int dead)
 	n = g_pr.ncat;
 	if (g_pr.ptot > 0 && g_pr.pcur < g_pr.ptot && !g_pr.done && !dead)
 	{
-		/* lot long en cours (stress) : il avance à l'écran au lieu de le figer */
 		snprintf(tmp, sizeof(tmp), "%s %-8.8s %6d/%-6d %3d %%", (const char *[4]){"◐", "◓", "◑", "◒"}[(t / 120) % 4],
 			g_pr.plabel, g_pr.pcur, g_pr.ptot, (int)((long)g_pr.pcur * 100 / g_pr.ptot));
 		text_at(x, term_rows() - 3, theme()->accent2, tmp);
@@ -242,7 +235,6 @@ static void	scan_draw(long t, int dead)
 				"[ Q / Esc / Ctrl+C: stop the scan ]"));
 }
 
-/* renvoie 1 si le joueur a arrêté l'analyse (Échap, q ou Ctrl+C), 0 sinon */
 int	pf_scan(const char *path, int pid)
 {
 	long	off;
@@ -297,8 +289,6 @@ int	pf_scan(const char *path, int pid)
 	cls();
 	return (0);
 }
-
-/* ---------------------------------------------------------------- résultats */
 
 static int	detail_lines(int sel, char lines[][240], t_rgb *col, int max)
 {
@@ -406,7 +396,6 @@ static void	detail_view(int sel)
 	cls();
 }
 
-/* after : ouvert juste après un run (curseur sur le 1er KO) ; 42 = relancer */
 int	pf_results(int after)
 {
 	static int	sel;
@@ -491,8 +480,6 @@ int	pf_results(int after)
 	cls();
 	return (0);
 }
-
-/* ---------------------------------------------------------------- récompenses */
 
 static int	gains(int *news, int *bigfirst)
 {
@@ -658,8 +645,6 @@ void	pf_rewards(void)
 		;
 	cls();
 }
-
-/* ---------------------------------------------------------------- profil */
 
 void	pf_profile(void)
 {

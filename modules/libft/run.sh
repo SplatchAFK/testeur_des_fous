@@ -1,6 +1,4 @@
 #!/bin/bash
-# Le testeur des fous · Version Libft
-# Compatible bash 3.2 (macOS) à 5.x (Linux, WSL), gcc ou clang.
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ORIG_ARGS=("$@")
@@ -114,7 +112,6 @@ fi
 [ -n "$EXO" ] || { [ -t 0 ] && [ -t 1 ]; } || CI=1
 case "$CFG_AIDE" in 0|1|2) ;; *) echo "--aide : 0, 1 ou 2"; exit 2 ;; esac
 [ "$DEBUG" = 1 ] && CFG_AIDE=2
-# aide 0 en mode texte : on garde le fichier, on cache la ligne (ft_x.c:42 devient ft_x.c)
 if [ "$CI" = 1 ] && [ "$CFG_AIDE" = 0 ] && [ -z "${TDF_FILTRE:-}" ] && [ -z "$EXO" ]; then
 	TDF_FILTRE=1 bash "$0" ${ORIG_ARGS[@]+"${ORIG_ARGS[@]}"} | sed -E 's/(\.c):[0-9]+(:[0-9]+)?/\1/g'
 	exit "${PIPESTATUS[0]}"
@@ -136,7 +133,6 @@ for s in ${SELECT[@]+"${SELECT[@]}"}; do
 	case "$ALL" in *" $s "*) ;; *) echo "fonction inconnue : ft_$s"; exit 2 ;; esac
 done
 
-# bash 3.2 n'a pas de tableaux associatifs : un case fait l'affaire
 proto_of() {
 	case "$1" in
 		isalpha|isdigit|isalnum|isascii|isprint|toupper|tolower) echo "int ft_$1(int c);" ;;
@@ -219,17 +215,12 @@ RES="$BUILD/results"
 : > "$RES"
 mkdir -p "$BUILD/obj" "$BUILD/bin" "$BUILD/log" "$BUILD/plain" "$BUILD/proto" "$BUILD/vg"
 
-# Ce qui ne dépend pas de tes .c (le jeu, les tests du testeur, le comportement
-# du Makefile) est gardé entre deux lancements : corriger puis relancer ne refait
-# que l'utile. TDF_CACHE=0 bash run.sh pour tout refaire.
 CACHE="$HERE/.build/cache"
 { [ "${TDF_CACHE:-1}" = 1 ] && mkdir -p "$CACHE" 2>/dev/null; } || CACHE=""
-fingerprint() {   # fingerprint fichiers... -> empreinte (système, compilateur, contenus)
+fingerprint() {
 	{ printf '%s|%s\n' "$OS" "$CC"; cat "$@" 2>/dev/null; } | cksum | cut -d' ' -f1
 }
 
-# Tue un processus et toute sa descendance : quitter en plein run (Échap, q,
-# Ctrl+C, fenêtre fermée) ne laisse aucun test tourner en arrière-plan.
 kill_tree() {
 	local p="$1" k
 	[ -n "$p" ] || return 0
@@ -250,7 +241,6 @@ trap cleanup EXIT
 
 emit() { printf '%s\n' "$*" | tr -d '\r' >> "$RES"; }
 
-# bash 4.3+ : wait -n ; bash 3.2 (macOS) : petite attente
 HAVE_WAITN=0
 if [ "${BASH_VERSINFO[0]}" -gt 4 ] || { [ "${BASH_VERSINFO[0]}" = 4 ] && [ "${BASH_VERSINFO[1]}" -ge 3 ]; }; then
 	HAVE_WAITN=1
@@ -263,7 +253,6 @@ wait_slot() {
 	done
 }
 
-# filet de sécurité : le binaire de test s'arrête seul (alarm), timeout en plus si présent
 TOCMD=""
 command -v timeout >/dev/null 2>&1 && TOCMD="timeout"
 [ -z "$TOCMD" ] && command -v gtimeout >/dev/null 2>&1 && TOCMD="gtimeout"
@@ -315,7 +304,6 @@ compile_vg() {
 		2> /dev/null || rm -f "$BUILD/vg/$b.o"
 }
 
-# comme la moulinette : on lie une archive, seuls les .o utiles sont pris
 make_archive() {
 	local dir="$1" out="$2" objs=() o
 	for o in "$dir"/*.o; do [ -f "$o" ] && objs+=("$o"); done
@@ -324,7 +312,7 @@ make_archive() {
 }
 
 TESTS_OBJ=""
-tests_objs_prepare() {   # dossier des tests.c déjà compilés (dépend du testeur et de ton libft.h)
+tests_objs_prepare() {
 	local key
 	TESTS_OBJ=""
 	[ -n "$CACHE" ] || return 0
@@ -562,7 +550,6 @@ audit_line() {
 	[ -n "$detail" ] && printf '            %s%s%s\n' "$D" "$detail" "$R"
 }
 
-# symboles (sur macOS, nm préfixe tout par « _ »)
 undef_syms() {
 	nm -u "$@" 2>/dev/null | awk 'NF >= 1 && $NF !~ /:$/ {print $NF}' \
 		| sed -e 's/^_\(.*\)/\1/' | sort -u
@@ -581,7 +568,6 @@ def_syms() {
 }
 LIBC_OK='^(malloc|free|write|_GLOBAL_OFFSET_TABLE_|__stack_chk_fail|__stack_chk_guard|dyld_stub_binder)$'
 
-# ------------------------------------------------------------------ norminette
 NORM_CMD=""
 if command -v norminette >/dev/null 2>&1; then NORM_CMD="norminette"
 elif python3 -m norminette --version >/dev/null 2>&1; then NORM_CMD="python3 -m norminette"
@@ -682,8 +668,6 @@ run_audit() {
 	fi
 	audit_line ok "make crée libft.a à la racine"
 
-	# relink, libft.h, fclean, re : ne dépendent que du Makefile, de libft.h et des noms
-	# de fichiers ; gardés en cache (le « sleep 1 » du test de relink coûte cher)
 	key=$(fingerprint "$ROOT/Makefile" "$ROOT/libft.h" <(cd "$ROOT" && ls ft_*.c 2>/dev/null))
 	if [ -n "$CACHE" ] && [ -f "$CACHE/makefile.$key" ]; then
 		while IFS=$'\t' read -r mst mlabel mdetail; do
@@ -764,8 +748,6 @@ run_audit() {
 	emit "AD"
 }
 
-# fichiers rendus en trop : avec git, ceux qui sont suivis ; sans git, ceux du dossier
-# (le testeur lui-même, les .o et libft.a ne comptent pas : ils ne sont pas rendus)
 list_extra_files() {
 	local f
 	if (cd "$ROOT" && git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
@@ -1005,16 +987,10 @@ if [ -n "$EXO" ]; then
 	exit $?
 fi
 
-# ---------------------------------------------------------------- mise à jour
-# Au lancement du jeu : on regarde si une version plus récente existe sur GitHub
-# (étiquettes git, sinon version.h lu en ligne). 2 s au plus, jamais bloquant :
-# sans réseau le testeur démarre normalement. Rien n'est envoyé, rien n'est
-# installé sans ton accord. Pour s'en passer : --no-update, TDF_NO_UPDATE=1,
-# ou --update off (définitif, --update on pour revenir).
-ver_gt() {   # ver_gt A B : A est-elle plus récente que B ?
+ver_gt() {
 	[ "$1" != "$2" ] && [ "$(printf '%s\n%s\n' "$1" "$2" | sort -t. -k1,1n -k2,2n -k3,3n | tail -1)" = "$1" ]
 }
-update_remote() {   # écrit la version distante (rien si elle est inconnue)
+update_remote() {
 	local v="" w="" t="" raw="https://raw.githubusercontent.com/$UPD_REPO/HEAD/$UPD_VH"
 	command -v timeout >/dev/null 2>&1 && t="timeout 2"
 	[ -z "$t" ] && command -v gtimeout >/dev/null 2>&1 && t="gtimeout 2"
@@ -1044,7 +1020,6 @@ update_check() {
 		last=0; what=""
 		read -r last what < "$st"
 		case "$last" in ''|*[!0-9]*) last=0 ;; esac
-		# déjà demandé il y a moins de 6 h, ou réseau absent il y a moins d'1 h : on ne redemande pas
 		if [ "$what" = "-" ]; then
 			[ $((now - last)) -lt 3600 ] && return 0
 		else
@@ -1097,7 +1072,7 @@ update_check() {
 	sleep 1
 	TDF_NO_UPDATE=1 exec bash "$UPD_DIR/run.sh" libft ${UPD_ARGS[@]+"${UPD_ARGS[@]}"}
 }
-update_setting() {   # --update off|on : réglage gardé d'un lancement à l'autre
+update_setting() {
 	mkdir -p "$HOME/.testeur_des_fous" 2>/dev/null
 	case "$1" in
 		off|non|0) : > "$HOME/.testeur_des_fous/no_update"; echo "recherche de mise à jour : coupée (--update on pour la remettre)" ;;
@@ -1109,7 +1084,7 @@ update_setting() {   # --update off|on : réglage gardé d'un lancement à l'aut
 UPD_DIR="$(cd "$HERE/../.." && pwd)"; UPD_VER="$VERSION"; UPD_GAME="testeur"; UPD_NAME="Libft"
 UPD_REPO="SplatchAFK/testeur_des_fous"; UPD_VH="moteur/version.h"
 UPD_ARGS=(${ORIG_ARGS[@]+"${ORIG_ARGS[@]}"})
-upd_build_ok() {   # la version reçue compile-t-elle ? (le jeu, sans ta libft)
+upd_build_ok() {
 	local f
 	bash -n "$HERE/run.sh" || return 1
 	for f in "$SRC"/*.c "$MOT"/*.c; do
@@ -1119,8 +1094,6 @@ upd_build_ok() {   # la version reçue compile-t-elle ? (le jeu, sans ta libft)
 }
 [ -n "$UPDATE_SET" ] && update_setting "$UPDATE_SET"
 
-# cinématiques prévues pour 120 x 36 : si le terminal est plus petit, le testeur
-# s'ouvre tout seul dans une nouvelle fenêtre de 140 x 42 (WSL, Linux, macOS)
 grand_terminal() {
 	local c l t term lanceur a
 	c=$(tput cols 2>/dev/null || echo 80)
@@ -1212,8 +1185,6 @@ while :; do
 			exit 1
 		fi
 	fi
-	# les tests tournent en arrière-plan ; si le jeu les arrête (kill TPID), le
-	# sous-shell tue toute leur descendance avant de sortir
 	(
 		RPID=
 		trap 'kill_tree "$RPID"; exit 143' TERM INT HUP

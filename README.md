@@ -5,7 +5,9 @@
 ## Commandes
 
 ```bash
-bash testeur_des_fous/run.sh              # lancer le testeur
+bash testeur_des_fous/run.sh              # détecter tes projets et lancer le testeur
+bash testeur_des_fous/run.sh libft        # tester ta Libft
+bash testeur_des_fous/run.sh printf       # tester ton ft_printf
 bash testeur_des_fous/run.sh --no-lore    # les tests seuls, sans histoire
 bash testeur_des_fous/run.sh -a           # sans animations pour ce lancement
 bash testeur_des_fous/run.sh --anim off   # couper les animations pour de bon (on pour les remettre)
@@ -28,14 +30,20 @@ ton_dossier/
 └── ft_printf/
 ```
 
-Il te faut `cc`, `make` et `bash`. Rien à installer, aucun `sudo`.
+Le testeur trouve tout seul les projets rangés à côté de lui. Sinon : `--projet CHEMIN`.
+
+Il te faut `cc`, `make` et `bash`. Rien à installer, aucun `sudo`. `norminette` et `valgrind` sont utilisés s'ils sont là.
+
+Chaque module a ses options : `bash testeur_des_fous/run.sh libft --help` ou `printf --help`.
+
+Ta progression est dans `~/.testeur_des_fous/save.txt`, hors du dossier du testeur. Une sauvegarde des anciens testeurs est reprise telle quelle, et une copie en est gardée.
 
 ## Ce qu'il teste
 
 | Module | État |
 |---|---|
-| Libft | en cours d'intégration |
-| ft_printf | en cours d'intégration |
+| Libft | intégré : 43 fonctions, mémoire, Norme, audit du Makefile |
+| ft_printf | intégré : conversions, retour, `malloc` en échec, stress |
 | Exam (C) | à venir |
 | Banque d'exercices | à venir |
 | get_next_line | plus tard |

@@ -143,7 +143,6 @@ int	pf_menu(void)
 	}
 }
 
-/* 43 : relancer les tests avec --bonus (monde des flags) ; 0 sinon */
 int	pf_dlc_menu(void)
 {
 	static int	sel;
@@ -199,12 +198,12 @@ void	pf_boss_menu(void)
 	while (1)
 	{
 		r = list_menu(L("B O S S   E T   C I N É M A T I Q U E S", "B O S S E S   A N D   C U T S C E N E S"),
-				items, 7, &sel, L("Les lignes grises se débloquent en jouant.", "Grey lines unlock as you play."));
+				items, 7, &sel, L("Les lignes grises se débloquent en avançant.", "Grey lines unlock as you progress."));
 		if (r < 0 || r == 6)
 			return ;
 		if (items[r][0] == '~')
 		{
-			toast(L("PAS ENCORE", "NOT YET"), L("continue à jouer pour la débloquer", "keep playing to unlock it"),
+			toast(L("PAS ENCORE", "NOT YET"), L("continue à avancer pour la débloquer", "keep going to unlock it"),
 				rgb(255, 200, 70));
 			continue ;
 		}

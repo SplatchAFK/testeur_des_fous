@@ -1,4 +1,3 @@
-/* Le testeur des fous · version printf - partie obligatoire */
 #include "tdf_tests.h"
 #include <stdlib.h>
 #include <string.h>

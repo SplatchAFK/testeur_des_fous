@@ -3,16 +3,6 @@
 #include <string.h>
 #include "fous.h"
 
-/*
-** Lore de la version libft : Moulinette, la chatte de 42, est enfermée en
-** haut de la Tour de la Libft. Les trois gardiens tiennent chacun une salle.
-** Marvin, le chevalier du joueur, monte salle par salle pour la libérer.
-**
-** Les décors et Moulinette sont de vrais dessins (images PNG du dossier assets, faites par
-** outils/dessins.py). Chaque scène fait 140 x 84 pixels, agrandie sans
-** déformation sur les grands terminaux (voir stage_fit dans cine.c).
-*/
-
 #define CAT_W 24
 
 static int	g_room;
@@ -52,7 +42,6 @@ static void	center_text(t_hd *d, int y, t_rgb c, const char *s)
 	hd_text(d, x, y, c, bg, s);
 }
 
-/* Moulinette : 0 assise, 1 respire, 2 cligne, 3 contente, 4 surprise */
 static int	cat_idle(double t)
 {
 	if (fmod(t, 3.3) > 3.05)
@@ -67,7 +56,6 @@ static void	cat(t_hd *d, const t_stage *s, double x, double y, int frame, int zo
 	stage_pic(d, s, "chat", CAT_W, frame, x, y, zoom);
 }
 
-/* une torche murale qui crépite ; (x, y) = haut de la flamme */
 static void	torch(t_hd *d, const t_stage *s, double x, double y, double t, int seed)
 {
 	int	f;
@@ -77,12 +65,6 @@ static void	torch(t_hd *d, const t_stage *s, double x, double y, double t, int s
 	stage_pic(d, s, "torche", 9, f, x, y, 1);
 }
 
-/* ---------------------------------------------------------------- la tour */
-
-/*
-** Le décor « tour » fait 140 x 260 : la caméra part du sommet (cage), descend
-** au balcon des gardiens, puis au pied de la tour où attend Marvin.
-*/
 static int	sc_tower(t_hd *d, double t)
 {
 	t_stage	s;
@@ -94,17 +76,14 @@ static int	sc_tower(t_hd *d, double t)
 	stage_fit(d, &s, 0);
 	cam = t < 3.4 ? 0 : (t < 6.8 ? ease(0, 66, (t - 3.4) / 1.4) : ease(66, 176, (t - 6.8) / 1.4));
 	stage_bg(d, &s, "tour", (int)cam, rgb(38, 18, 66), rgb(24, 40, 92));
-	/* sommet : Moulinette dans sa cage */
 	cat(d, &s, 58, 44 - cam, t > 0.6 && t < 3.3 ? 4 : cat_idle(t), 1, 0);
 	lift = 0;
 	stage_pic(d, &s, "cage", 28, lift, 56, 36 - cam, 1);
-	/* balcon des trois gardiens */
 	for (p = 0; p < 3; p++)
 	{
 		stage_shadow(d, &s, 28 + p * 42, 123 - cam, 12, 0.4);
 		stage_boss(d, &s, p, 8 + p * 42, 87 - cam + (t > 4.7 && t < 6.8 ? -fabs(sin(t * 4 + p)) * 2 : 0), 1);
 	}
-	/* au pied de la tour : Marvin */
 	stage_marvin(d, &s, 24, 208 - cam, t);
 	if (t < 0.8)
 		stage_fade(d, rgb(0, 0, 0), 1 - t / 0.8);
@@ -129,8 +108,6 @@ static int	sc_tower(t_hd *d, double t)
 	}
 	return (0);
 }
-
-/* ---------------------------------------------------------------- une salle */
 
 static int	sc_room(t_hd *d, double t)
 {
@@ -157,9 +134,6 @@ static int	sc_room(t_hd *d, double t)
 	return (0);
 }
 
-/* ---------------------------------------------------------------- final */
-
-/* les deux pattes de Moulinette qui arrivent sur toi */
 static void	paws(t_hd *d, const t_stage *s, double k)
 {
 	int		side;

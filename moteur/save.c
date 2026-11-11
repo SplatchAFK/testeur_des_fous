@@ -48,7 +48,6 @@ static struct
 	int				game;
 	unsigned long	want_g;
 }				pres;
-/* lignes du jeu voisin (printf.*, sum_printf), gardées telles quelles */
 static char		g_other[6000];
 static char		g_probe_other[6000];
 static char		g_unk[4000];
@@ -85,7 +84,6 @@ static unsigned long	hash_line(unsigned long h, const char *k, const char *v)
 	return ((h ^ (unsigned char)'\n') * 1099511628211UL + 0x2a);
 }
 
-/* ancien format (v2.0.0) : un seul hash pour tout le fichier */
 static unsigned long	sum_legacy(const t_save *s)
 {
 	char	tmp[2400];
@@ -101,7 +99,6 @@ static unsigned long	sum_legacy(const t_save *s)
 	return (hash_of(tmp));
 }
 
-/* section profil : commune aux deux jeux */
 static void	profile_text(char *b, size_t sz, const t_save *s)
 {
 	size_t	n;
@@ -118,7 +115,6 @@ static void	profile_text(char *b, size_t sz, const t_save *s)
 		n += snprintf(b + n, sz - n, "%d%s", s->look.col[i], i + 1 < NSLOT ? "," : "\n");
 }
 
-/* section libft : propre à ce jeu */
 static void	libft_text(char *b, size_t sz, const t_save *s)
 {
 	snprintf(b, sz, "runs=%d\ncleared=%s\nboss=%d%d%d\nexo=%s\nach=%s\nlastreward=%ld\n"
@@ -175,7 +171,6 @@ static void	set_bits(char *dst, const char *v, int n)
 		dst[i] = v[i] == '1' ? '1' : '0';
 }
 
-/* texte libre : caractères imprimables seulement, sans retour à la ligne */
 static void	clean_text(char *dst, size_t n, const char *v)
 {
 	size_t	i;
@@ -369,11 +364,6 @@ static void	save_fix(t_save *s)
 		s->cfg.help = 2;
 }
 
-/*
-** Lit un fichier de sauvegarde dans out.
-**   0 : lu, sommes correctes   -1 : illisible   -2 : somme fausse (modifié)
-** other reçoit les lignes du jeu voisin, telles quelles.
-*/
 static int	parse_file(const char *path, t_save *out, char *other, size_t on, char *unk)
 {
 	FILE		*f;
@@ -507,7 +497,6 @@ void	save_load(void)
 	save_fix(&g_save);
 }
 
-/* relit le fichier juste avant d écrire : l autre jeu a pu y écrire entre-temps */
 static void	other_refresh(void)
 {
 	static t_save	tmp;
@@ -573,7 +562,6 @@ void	save_write(void)
 	write_file(1);
 }
 
-/* lit un fichier sans rien changer (connexion) : 0 ok, -1 illisible, -2 modifié */
 #ifdef TDF_PRINTF
 static t_psave	g_probe_pf;
 #endif
@@ -617,7 +605,6 @@ static int	copy_file(const char *from, const char *to)
 	return (0);
 }
 
-/* adopte la sauvegarde lue par save_probe ; l ancienne est gardée en save.txt.bak */
 void	save_adopt(const t_save *s)
 {
 	t_cfg	keep;
@@ -638,7 +625,6 @@ void	save_adopt(const t_save *s)
 	write_file(0);
 }
 
-/* copie la sauvegarde ailleurs : 0 ok, -1 erreur, -2 le fichier existe déjà */
 int	save_export(const char *dest, int force)
 {
 	FILE	*f;

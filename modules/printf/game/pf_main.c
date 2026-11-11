@@ -56,12 +56,6 @@ static void	summary(void)
 		TDF_DISCORD);
 }
 
-/*
-** les combats : 9 chaînes ensemble, puis ft_printf ; DLC : les 6 flags.
-** Toutes les cinématiques au tout premier run ; ensuite seulement quand il se
-** passe quelque chose (chaîne brisée pour la 1re fois, ft_printf battu, boss
-** du DLC vaincu) : corriger puis relancer reste rapide.
-*/
 static void	battles(int dlc, int first, const char *dlc0)
 {
 	int	i;
@@ -107,7 +101,6 @@ static void	battles(int dlc, int first, const char *dlc0)
 	}
 }
 
-/* DLC : le moteur teste chaque flag seul (catégories bonus_minus, bonus_zero...) */
 static void	dlc_results(void)
 {
 	char	key[32];
@@ -261,7 +254,6 @@ int	main(int ac, char **av)
 			story_previously();
 		story_printf_intro();
 	}
-	/* analyse arrêtée par le joueur : ni combats ni récompenses sur un run incomplet */
 	if (results && pf_scan(results, pid))
 		results = NULL;
 	if (results)

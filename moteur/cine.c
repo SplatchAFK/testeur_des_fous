@@ -5,13 +5,6 @@
 #include <string.h>
 #include "fous.h"
 
-/*
-** Moteur de cinématiques « HD » : tout le terminal devient une image de
-** term_cols() x 2 * term_rows() pixels (demi-blocs ▀, couleurs 24 bits).
-** Seules les cases qui changent sont réécrites : une scène fluide reste
-** légère même dans une grande fenêtre.
-*/
-
 static uint64_t	pack(t_rgb a, t_rgb b)
 {
 	return (((uint64_t)a.r << 40) | ((uint64_t)a.g << 32) | ((uint64_t)a.b << 24)
@@ -48,7 +41,6 @@ void	hd_end(t_hd *d)
 	cls();
 }
 
-/* gardé pour compatibilité : le texte est maintenant fusionné à l'image */
 void	hd_dirty(t_hd *d, int cx, int cy, int w, int h)
 {
 	(void)d;
@@ -71,7 +63,6 @@ static uint64_t	ovl_key(t_hd *d, int i)
 	return (h | 1ULL << 63);
 }
 
-/* une image : les pixels (demi-blocs) et, par-dessus, la couche de texte */
 static void	present_real(t_hd *d)
 {
 	static char	b[32];
@@ -227,7 +218,6 @@ void	hd_tri(t_hd *d, double ax, double ay, double bx, double by, double cx, doub
 		}
 }
 
-/* copie un canevas (avatar, boss) avec un facteur d'échelle */
 void	hd_canvas(t_hd *d, const t_canvas *c, double x, double y, double s, double fade)
 {
 	int	i;
@@ -247,7 +237,6 @@ void	hd_canvas(t_hd *d, const t_canvas *c, double x, double y, double s, double 
 		}
 }
 
-/* sprite en caractères : chaque lettre est une couleur de la palette */
 void	hd_art(t_hd *d, const char *const *rows, const t_key *pal, double x, double y, double s)
 {
 	int		i;
@@ -288,7 +277,6 @@ void	hd_stars(t_hd *d, double t, int ymax, unsigned seed)
 	}
 }
 
-/* une case de texte : un caractère UTF-8, sa couleur et son fond */
 static void	ovl_put(t_hd *d, int x, int y, const char *ch, int n, t_rgb c, t_rgb bg)
 {
 	int	i;
@@ -314,7 +302,6 @@ static int	u8len(unsigned char c)
 	return (1);
 }
 
-/* texte fusionné à l'image (coordonnées en cases) */
 void	hd_text(t_hd *d, int cx, int cy, t_rgb c, t_rgb bg, const char *s)
 {
 	int	n;
@@ -328,7 +315,6 @@ void	hd_text(t_hd *d, int cx, int cy, t_rgb c, t_rgb bg, const char *s)
 	}
 }
 
-/* fond de la case : la couleur du pixel du bas */
 static t_rgb	under(t_hd *d, int x, int y)
 {
 	if (x < 0 || y < 0 || x >= d->cw || y >= d->ch)
@@ -336,7 +322,6 @@ static t_rgb	under(t_hd *d, int x, int y)
 	return (d->px[(y * 2 + 1) * d->w + x]);
 }
 
-/* bulle de dialogue façon jeu vidéo ; (cx, cy) = case pointée par la queue */
 void	hd_bubble(t_hd *d, int cx, int cy, const char *s, t_rgb ink)
 {
 	char		lines[4][160];
@@ -381,10 +366,6 @@ void	hd_bubble(t_hd *d, int cx, int cy, const char *s, t_rgb ink)
 	hd_text(d, cx, y + n + 2, paper, under(d, cx, y + n + 2), "▼");
 }
 
-/*
-** Joue une scène : scene(d, t) dessine l'image au temps t (en secondes).
-** Une touche passe la cinématique. Renvoie 1 si elle a été passée.
-*/
 int	cine_play(int (*scene)(t_hd *, double), double dur)
 {
 	t_hd	d;
@@ -421,13 +402,6 @@ int	cine_play(int (*scene)(t_hd *, double), double dur)
 	return (k >= 0);
 }
 
-/* ---------------------------------------------------------------- mise en scène */
-
-/*
-** Toutes les cinématiques sont dessinées pour 140 x 84 pixels (la fenêtre de
-** 140 x 42 que le testeur ouvre). Plus grand : on agrandit d'un facteur
-** entier, jamais déformé. Plus petit : on coupe les bords, centré.
-*/
 void	stage_fit(t_hd *d, t_stage *s, int shake)
 {
 	s->k = d->w / 140 < d->h / 84 ? d->w / 140 : d->h / 84;
@@ -442,7 +416,6 @@ static int	clampi(int v, int lo, int hi)
 	return (v < lo ? lo : (v > hi ? hi : v));
 }
 
-/* décor plein écran ; sy = première ligne de l'image (décors hauts qui défilent) */
 void	stage_bg(t_hd *d, const t_stage *s, const char *name, int sy, t_rgb top, t_rgb bot)
 {
 	const t_pic		*p;
@@ -489,14 +462,12 @@ int	stage_row(const t_stage *s, double y)
 	return ((s->oy + (int)floor(y * s->k)) / 2);
 }
 
-/* image (ou case fw de large d'une planche) en coordonnées de scène ; zoom entier */
 void	stage_pic(t_hd *d, const t_stage *s, const char *name, int fw, int frame, double x, double y, int zoom)
 {
 	hd_pic(d, art_pic(name), fw, frame, s->ox + (int)floor(x * s->k), s->oy + (int)floor(y * s->k),
 		s->k * (zoom < 1 ? 1 : zoom), 0);
 }
 
-/* ombre douce au sol, sous un personnage */
 void	stage_shadow(t_hd *d, const t_stage *s, double cx, double cy, double rx, double k)
 {
 	int		x;
@@ -518,7 +489,6 @@ void	stage_shadow(t_hd *d, const t_stage *s, double cx, double cy, double rx, do
 		}
 }
 
-/* le perso du joueur, sans son fond de profil, avec une ombre ; (x, y) = coin haut gauche */
 void	stage_marvin(t_hd *d, const t_stage *s, double x, double y, double t)
 {
 	t_canvas	cv;
@@ -533,7 +503,6 @@ void	stage_marvin(t_hd *d, const t_stage *s, double x, double y, double t)
 	cv_free(&cv);
 }
 
-/* un gardien (41 x 37) à taille entière */
 void	stage_boss(t_hd *d, const t_stage *s, int p, double x, double y, double fade)
 {
 	t_canvas	cv;
@@ -549,7 +518,6 @@ void	stage_glow(t_hd *d, const t_stage *s, double x, double y, double r, t_rgb c
 	hd_glow(d, s->ox + x * s->k, s->oy + y * s->k, r * s->k, c, k);
 }
 
-/* tout l'écran vers une couleur (fondu au noir, flash blanc) */
 void	stage_fade(t_hd *d, t_rgb c, double k)
 {
 	int	i;
@@ -561,7 +529,6 @@ void	stage_fade(t_hd *d, t_rgb c, double k)
 		d->px[i] = mix(d->px[i], c, k);
 }
 
-/* gerbe d'étincelles qui retombent ; age en secondes */
 void	stage_sparks(t_hd *d, const t_stage *s, double x, double y, double age, t_rgb c, int seed)
 {
 	int			i;

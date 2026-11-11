@@ -17,26 +17,26 @@ C	X	%X  hexadécimal MAJUSCULE	29	0	0
 C	%	%  pourcent	15	0	0
 C	mix	mélanges, format vide/long	21	0	0
 C	ret	valeur de retour (avec \\0, gros volumes)	14	0	0
-R	limites	WARN	tdf_tests_edge.c:19	ft_printf(NULL)	          plante (erreur) : comportement indéfini, le printf de macOS plante aussi (glibc renvoie -1)\n
-R	limites	WARN	tdf_tests_edge.c:57	ft_printf("%")	          attendu : ""  ret=-1\n          obtenu  : "%"  ret=1\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
-R	limites	WARN	tdf_tests_edge.c:58	ft_printf("abc%")	          attendu : ""  ret=-1\n          obtenu  : "abc%"  ret=4\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
-R	limites	WARN	tdf_tests_edge.c:59	ft_printf("%d%", 42)	          attendu : ""  ret=-1\n          obtenu  : "42%"  ret=3\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
-R	limites	WARN	tdf_tests_edge.c:60	ft_printf("%%%")	          attendu : ""  ret=-1\n          obtenu  : "%%"  ret=2\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
-R	limites	WARN	tdf_tests_edge.c:61	ft_printf("%s%", "x")	          attendu : ""  ret=-1\n          obtenu  : "x%"  ret=2\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
-R	limites	WARN	tdf_tests_edge.c:62	ft_printf("%c%", 'c')	          attendu : ""  ret=-1\n          obtenu  : "c%"  ret=2\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
-R	limites	WARN	tdf_tests_edge.c:63	ft_printf("%k")	          attendu : "%k"  ret=2\n          obtenu  : ""  ret=0\n          (comportement indéfini : simple avertissement)\n
-R	limites	WARN	tdf_tests_edge.c:64	ft_printf("%k%d", 42)	          attendu : "%k42"  ret=4\n          obtenu  : "42"  ret=2\n          (comportement indéfini : simple avertissement)\n
-R	limites	WARN	tdf_tests_edge.c:65	ft_printf("a%yb")	          attendu : "a%yb"  ret=4\n          obtenu  : "ab"  ret=2\n          (comportement indéfini : simple avertissement)\n
-R	limites	WARN	tdf_tests_edge.c:66	ft_printf("%v%s", "s")	          attendu : "%vs"  ret=3\n          obtenu  : "s"  ret=1\n          (comportement indéfini : simple avertissement)\n
-R	limites	WARN	tdf_tests_edge.c:67	ft_printf("%!")	          attendu : "%!"  ret=2\n          obtenu  : ""  ret=0\n          (comportement indéfini : simple avertissement)\n
-R	limites	WARN	tdf_tests_edge.c:68	ft_printf("%K%c", 'z')	          attendu : "%Kz"  ret=3\n          obtenu  : "z"  ret=1\n          (comportement indéfini : simple avertissement)\n
-R	limites	WARN	tdf_tests_edge.c:69	ft_printf("%r%r%r")	          attendu : "%r%r%r"  ret=6\n          obtenu  : ""  ret=0\n          (comportement indéfini : simple avertissement)\n
-R	limites	WARN	tdf_tests_edge.c:70	ft_printf("[%y]")	          attendu : "[%y]"  ret=4\n          obtenu  : "[]"  ret=2\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:16	ft_printf(NULL)	          plante (erreur) : comportement indéfini, le printf de macOS plante aussi (glibc renvoie -1)\n
+R	limites	WARN	tdf_tests_edge.c:54	ft_printf("%")	          attendu : ""  ret=-1\n          obtenu  : "%"  ret=1\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
+R	limites	WARN	tdf_tests_edge.c:55	ft_printf("abc%")	          attendu : ""  ret=-1\n          obtenu  : "abc%"  ret=4\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
+R	limites	WARN	tdf_tests_edge.c:56	ft_printf("%d%", 42)	          attendu : ""  ret=-1\n          obtenu  : "42%"  ret=3\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
+R	limites	WARN	tdf_tests_edge.c:57	ft_printf("%%%")	          attendu : ""  ret=-1\n          obtenu  : "%%"  ret=2\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
+R	limites	WARN	tdf_tests_edge.c:58	ft_printf("%s%", "x")	          attendu : ""  ret=-1\n          obtenu  : "x%"  ret=2\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
+R	limites	WARN	tdf_tests_edge.c:59	ft_printf("%c%", 'c')	          attendu : ""  ret=-1\n          obtenu  : "c%"  ret=2\n          (comportement indéfini : simple avertissement ; glibc renvoie -1 sans rien écrire)\n
+R	limites	WARN	tdf_tests_edge.c:60	ft_printf("%k")	          attendu : "%k"  ret=2\n          obtenu  : ""  ret=0\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:61	ft_printf("%k%d", 42)	          attendu : "%k42"  ret=4\n          obtenu  : "42"  ret=2\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:62	ft_printf("a%yb")	          attendu : "a%yb"  ret=4\n          obtenu  : "ab"  ret=2\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:63	ft_printf("%v%s", "s")	          attendu : "%vs"  ret=3\n          obtenu  : "s"  ret=1\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:64	ft_printf("%!")	          attendu : "%!"  ret=2\n          obtenu  : ""  ret=0\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:65	ft_printf("%K%c", 'z')	          attendu : "%Kz"  ret=3\n          obtenu  : "z"  ret=1\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:66	ft_printf("%r%r%r")	          attendu : "%r%r%r"  ret=6\n          obtenu  : ""  ret=0\n          (comportement indéfini : simple avertissement)\n
+R	limites	WARN	tdf_tests_edge.c:67	ft_printf("[%y]")	          attendu : "[%y]"  ret=4\n          obtenu  : "[]"  ret=2\n          (comportement indéfini : simple avertissement)\n
 C	limites	cas limites (NULL, % final, conversion inconnue)	0	0	15
 C	write	write en échec (fd fermé, /dev/full) : retour -1	21	0	0
 C	malloc	malloc qui échoue (chaque malloc, un par un)	14	0	0
 P	stress	0	10000
-P	stress	6535	10000
+P	stress	6606	10000
 P	stress	10000	10000
 C	stress	stress aléatoire : 10000 appels, graine 42	10000	0	0
 T	asan+ubsan	10310	0	15

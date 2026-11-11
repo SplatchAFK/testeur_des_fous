@@ -1,11 +1,6 @@
 #ifndef PF_H
 # define PF_H
 
-/*
-** Le testeur des fous · version printf : données propres à ce jeu.
-** Inclus par fous.h quand TDF_PRINTF est défini.
-*/
-
 # define NCHAIN 9
 # define NDLC 6
 # define NPEXO 16
@@ -90,7 +85,6 @@ typedef struct s_pstat
 	char	detail[400];
 }	t_pstat;
 
-/* résultats du moteur (fichier --machine) */
 typedef struct s_prun
 {
 	t_pcat		cat[24];
@@ -114,7 +108,6 @@ typedef struct s_prun
 	int			truncated;
 }	t_prun;
 
-/* section printf de save.txt */
 typedef struct s_psave
 {
 	int		runs;

@@ -1,4 +1,3 @@
-/* Le testeur des fous · version printf - cas limites, write en échec, malloc qui échoue */
 #include "tdf_tests.h"
 #include <stdlib.h>
 #include <string.h>
@@ -7,8 +6,6 @@
 
 #define TL(fmt, ...) TDF_RUN(SEV_LONE, fmt, ##__VA_ARGS__)
 
-/* ft_printf(NULL) : le vrai printf plante (macOS) ou renvoie -1 (glibc).
-   On vérifie seulement que ft_printf ne boucle pas à l'infini. */
 static void	test_null_format(void)
 {
 	t_buf	msg;

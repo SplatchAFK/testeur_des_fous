@@ -10,7 +10,6 @@
 
 const char	*g_tester_dir = ".";
 
-/* nom du dossier du testeur, quel qu il soit */
 const char	*tester_name(void)
 {
 	const char	*s;

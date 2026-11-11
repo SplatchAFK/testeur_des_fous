@@ -4,12 +4,6 @@
 #include <string.h>
 #include "fous.h"
 
-/*
-** Fond étoilé commun aux deux testeurs. Le champ (position, vitesse, couleur,
-** glyphe) est calculé une seule fois, puis seulement si le thème change ; à
-** chaque image il ne reste qu'une colonne à déduire du temps écoulé, sans
-** hasard ni mélange de couleurs. Indépendant du nombre d'images par seconde.
-*/
 typedef struct s_star
 {
 	float		x;
@@ -56,7 +50,6 @@ void	stars_draw(void)
 	}
 }
 
-/* pied d'écran : toujours sur la dernière ligne, coupé proprement s'il dépasse */
 void	foot_line(int x, const char *s)
 {
 	text_clip(x, term_rows() - 1, theme()->dim, s, term_cols() - x - 1);
@@ -700,7 +693,6 @@ void	screen_settings(void)
 	cls();
 }
 
-/* champ de texte : 1 si validé (Entrée), 0 si annulé (Échap) */
 int	ask_text(const char *q, const char *hint, char *buf, int size)
 {
 	const char	*shown;
@@ -742,7 +734,6 @@ int	ask_text(const char *q, const char *hint, char *buf, int size)
 	}
 }
 
-/* « ~/ » devient le dossier personnel */
 static void	path_expand(const char *in, char *out, size_t sz)
 {
 	const char	*h;
@@ -754,7 +745,6 @@ static void	path_expand(const char *in, char *out, size_t sz)
 		snprintf(out, sz, "%s", in);
 }
 
-/* 0 connecté, 1 annulé, -1 illisible, -2 modifié à la main, -3 autre login */
 static int	connect_file(const char *path, int ask)
 {
 	static t_save	p;
@@ -803,7 +793,6 @@ static void	connect_report(int r, const char *login)
 	}
 }
 
-/* run.sh --reco <fichier> : connexion au lancement */
 int	save_connect_cli(const char *path)
 {
 	static t_save	p;

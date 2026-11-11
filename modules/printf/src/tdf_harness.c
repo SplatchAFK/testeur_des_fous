@@ -1,4 +1,3 @@
-/* Le testeur des fous · version printf - moteur : fork, capture, comparaison, rapport */
 #include "tdf.h"
 #include <stdlib.h>
 #include <string.h>
@@ -42,9 +41,6 @@ static const char	*g_cur_file;
 static int			g_cur_line;
 static const char	*g_cur_desc;
 
-/* ------------------------------------------------------------------ */
-/* tampons                                                             */
-/* ------------------------------------------------------------------ */
 void	buf_add(t_buf *b, const void *p, size_t n)
 {
 	if (b->len + n + 1 > b->cap)
@@ -115,9 +111,6 @@ void	tdf_escape(t_buf *dst, const char *s, size_t n, size_t max)
 		bprintf(dst, C_DIM "…(+%zu octets)" C_RST, n - max);
 }
 
-/* ------------------------------------------------------------------ */
-/* catégories et compteurs                                             */
-/* ------------------------------------------------------------------ */
 typedef struct s_cat
 {
 	char	key[16];
@@ -182,10 +175,6 @@ static int	pad_width(const char *s, int w)
 	return (n < w ? w - n : 0);
 }
 
-
-/* ------------------------------------------------------------------ */
-/* regroupement des KO par cause (affichage lisible)                    */
-/* ------------------------------------------------------------------ */
 #define MAX_CAUSE 12
 #define MAX_GCAUSE 48
 #define MAX_LN 48
@@ -235,10 +224,6 @@ static int		g_cause_over;
 static t_gcause	g_gc[MAX_GCAUSE];
 static int		g_ngc;
 
-/* ------------------------------------------------------------------ */
-/* sortie « machine » : une ligne par événement, champs séparés par \t  */
-/* (lue par le jeu ; les couleurs ANSI, \t et \n sont neutralisés)      */
-/* ------------------------------------------------------------------ */
 static int	g_mfd = -1;
 
 static void	m_field(t_buf *b, const char *s)
@@ -295,7 +280,6 @@ static void	m_open(void)
 		g_mfd = open(g_opt.machine, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, 0644);
 }
 
-/* niveau d'aide 0 : on retire « → ligne du bug » des détails */
 static void	help_filter(t_buf *dst, const char *p, size_t len)
 {
 	const char	*e;
@@ -313,7 +297,6 @@ static void	help_filter(t_buf *dst, const char *p, size_t len)
 	}
 }
 
-/* titre de cause sans « — fichier:ligne » si l'aide est à 0 */
 static void	title_print(const char *t, char *dst, size_t n)
 {
 	const char	*w;
@@ -414,7 +397,6 @@ static int	find_starts(t_ln *l, int n, const char *pre)
 	return (-1);
 }
 
-/* copie s en coupant au premier délimiteur trouvé après 'skip' octets */
 static void	copy_cut(char *dst, size_t dn, const char *s, size_t skip)
 {
 	static const char	*const delims[] = {" (", ":", " of size", " at 0x", NULL};
@@ -906,7 +888,6 @@ int	tdf_summary(void)
 	return (g_tot_ko ? 1 : 0);
 }
 
-/* Ajoute un résultat. msg = détail déjà formaté (peut être vide). */
 static void	record(int ko, int warn, const char *file, int line,
 		const char *desc, t_buf *msg)
 {
@@ -978,9 +959,6 @@ void	tdf_result(int ko, int warn, const char *file, int line, const char *desc,
 	free(msg.p);
 }
 
-/* ------------------------------------------------------------------ */
-/* préparation                                                          */
-/* ------------------------------------------------------------------ */
 static int	mktmp(void)
 {
 	FILE	*f;
@@ -997,12 +975,6 @@ static int	mktmp(void)
 	return (fd);
 }
 
-/*
-** Arrêt propre. Le gestionnaire de signal ne fait que poser un drapeau (rien
-** d'autre n'est sûr dans un gestionnaire) ; les boucles d'attente appellent
-** tdf_quit_check(), qui tue le test en cours et rend la main sans laisser de
-** processus orphelin. Un 2e signal non traité force la sortie (_exit).
-*/
 volatile sig_atomic_t	g_quit_requested;
 
 static void	on_quit(int s)
@@ -1032,11 +1004,6 @@ void	tdf_quit_check(pid_t child)
 	_exit(128 + s);
 }
 
-/*
-** Un lot long (10 000 appels de stress) tourne dans un seul fils : sans ceci,
-** l'écran restait figé plusieurs secondes. Dix fois par seconde au plus, on
-** redessine une barre (mode texte) et on écrit une ligne « P » que le jeu lit.
-*/
 static double	now(void);
 
 void	tdf_progress(const char *label, int cur, int total, int end)
@@ -1075,7 +1042,6 @@ void	tdf_progress(const char *label, int cur, int total, int end)
 	shown = !end;
 }
 
-/* un fils de test : signaux par défaut, et il meurt avec son père (Linux) */
 void	tdf_in_child(void)
 {
 	signal(SIGINT, SIG_DFL);
@@ -1136,9 +1102,6 @@ static void	read_fd_all(int fd, t_buf *b, size_t max)
 		buf_add(b, "", 0);
 }
 
-/* ------------------------------------------------------------------ */
-/* déroulé d'un test                                                    */
-/* ------------------------------------------------------------------ */
 int	tdf_begin(const char *file, int line, const char *fmt, const char *args,
 		int sev)
 {
@@ -1173,7 +1136,6 @@ void	tdf_cur_where(const char **file, int *line)
 	*line = g_cur_line;
 }
 
-/* Le vrai printf écrit dans un fichier temporaire (ou fd fermé, /dev/full). */
 void	tdf_exp_start(void)
 {
 	fflush(stdout);
@@ -1212,7 +1174,6 @@ static double	now(void)
 	return (ts.tv_sec + ts.tv_nsec / 1e9);
 }
 
-/* Attend la fin du fils en lisant sa sortie (pas de limite de taille). */
 static void	collect(pid_t pid, int rfd, double timeout)
 {
 	double			deadline;
@@ -1319,7 +1280,6 @@ void	tdf_child_end(int ret)
 	exit(0);
 }
 
-/* Place le format juste avant une page PROT_NONE : lire après le '\0' = SIGSEGV. */
 const char	*tdf_edge(const char *fmt)
 {
 	static char	*page;
@@ -1342,9 +1302,6 @@ const char	*tdf_edge(const char *fmt)
 	return (page + need - len);
 }
 
-/* ------------------------------------------------------------------ */
-/* analyse des plantages et rapports de sanitizers / valgrind           */
-/* ------------------------------------------------------------------ */
 static const char	*g_srcs[512];
 static int			g_nsrcs;
 
@@ -1371,7 +1328,6 @@ static void	load_srcs(void)
 	fclose(f);
 }
 
-/* Le chemin appartient-il aux sources de l'étudiant ? Renvoie le chemin relatif. */
 static const char	*student_path(const char *path, size_t len)
 {
 	int			i;
@@ -1403,7 +1359,6 @@ static const char	*student_path(const char *path, size_t len)
 	return (NULL);
 }
 
-/* ASan : "#3 0x4f in ft_putnbr /chemin/ft_utils.c:42:7" */
 static int	asan_student_frame(const char *start, const char *end, t_buf *msg)
 {
 	const char	*l;
@@ -1533,7 +1488,6 @@ static void	explain_sanitizer(t_buf *msg)
 	}
 }
 
-/* valgrind : lit le journal du fils (--log-file=dir/vg.%p) */
 static int	explain_valgrind(t_buf *msg)
 {
 	char		path[4096];
@@ -1632,7 +1586,6 @@ void	tdf_symbolize(uintptr_t off, char *dst, size_t n)
 	pclose(f);
 }
 
-/* Problèmes relevés par le traceur d'allocations (tous modes). */
 void	tdf_memreport(t_buf *msg, int *ko, int *warn)
 {
 	char	where[2600];
@@ -1736,7 +1689,6 @@ static const char	*signame(int sig)
 	return (strsignal(sig));
 }
 
-/* Décrit l'état anormal du fils (crash, timeout, sanitizer). 1 si anormal. */
 static int	crash_desc(t_buf *msg)
 {
 	int	code;
@@ -1847,7 +1799,6 @@ static void	show_diff(t_buf *msg)
 	bprintf(msg, "\n");
 }
 
-/* Fin d'un test standard : verdict. */
 void	tdf_finish(void)
 {
 	t_buf	msg;

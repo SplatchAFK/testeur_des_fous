@@ -3,16 +3,6 @@
 #include <string.h>
 #include "fous.h"
 
-/*
-** Lecture du fichier écrit par le moteur (run.sh --machine) :
-**   S  OK|KO|~~  titre  détail        contrôle statique
-**   D  détail                          détail du contrôle précédent
-**   C  clé  titre  ok  ko  avert.      fin de catégorie
-**   R  clé  KO|WARN  où  cas  message  un cas en échec ou en avertissement
-**   K  clé  titre  ligne  nombre  conseil  une cause regroupée
-**   T  mode  ok  ko  avert.            fin des tests
-*/
-
 static void	unescape(char *s)
 {
 	char	*w;
@@ -129,7 +119,6 @@ static void	parse(char *line)
 		g_pr.done = 1;
 }
 
-/* lit la suite du fichier depuis *off (le moteur peut encore écrire) */
 void	pf_load(const char *path, long *off)
 {
 	FILE		*f;

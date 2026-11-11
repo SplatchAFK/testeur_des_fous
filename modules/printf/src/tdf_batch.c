@@ -1,4 +1,3 @@
-/* Le testeur des fous · version printf - moteur par lots (stress, bonus) et malloc qui échoue */
 #include "tdf.h"
 #include <stdlib.h>
 #include <string.h>
@@ -12,9 +11,6 @@
 # include <valgrind/memcheck.h>
 #endif
 
-/* ------------------------------------------------------------------ */
-/* malloc qui échoue                                                    */
-/* ------------------------------------------------------------------ */
 static t_buf	g_mfmsg;
 static int		g_mf_ko;
 static int		g_mf_warn;
@@ -80,9 +76,6 @@ void	tdf_mf_end(int nalloc)
 	tdf_record_cur(g_mf_ko, g_mf_warn && !g_mf_ko, &g_mfmsg);
 }
 
-/* ------------------------------------------------------------------ */
-/* description d'un cas                                                 */
-/* ------------------------------------------------------------------ */
 void	tdf_bc_desc(t_bc *c, t_buf *dst)
 {
 	int	i;
@@ -109,9 +102,6 @@ void	tdf_bc_desc(t_bc *c, t_buf *dst)
 	buf_add(dst, ")", 1);
 }
 
-/* ------------------------------------------------------------------ */
-/* lots                                                                 */
-/* ------------------------------------------------------------------ */
 static double	now(void)
 {
 	struct timespec	ts;

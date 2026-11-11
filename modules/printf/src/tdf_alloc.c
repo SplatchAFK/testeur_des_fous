@@ -1,19 +1,3 @@
-/* Le testeur des fous · version printf - traceur d'allocations
- *
- * Seuls les appels à malloc/free/calloc/realloc faits PAR LA LIB testée sont
- * redirigés ici (édition de liens avec -Wl,--wrap=malloc,...).
- *
- * - Les pointeurs sont stockés « brouillés » (XOR avec une clé non canonique) :
- *   la table ne rend donc aucun bloc atteignable aux yeux de LeakSanitizer ou
- *   de valgrind, et le traceur ne masque aucune fuite.
- * - Tout bloc encore vivant quand ft_printf revient est une fuite, MÊME s'il
- *   est encore référencé par une variable globale/statique de la lib.
- * - Chaque bloc est rempli d'un motif : à la libération on mesure la partie
- *   réellement utilisée (allocation trop grande = avertissement).
- * - En mode sans sanitizer : garde de 32 octets après chaque bloc (débordement),
- *   quarantaine des blocs libérés remplis de 0xDD (use-after-free / double free).
- * - Injection d'échec : g_fail_at = n  => le n-ième malloc renvoie NULL.
- */
 #include "tdf.h"
 #include <stdlib.h>
 #include <string.h>
@@ -43,11 +27,11 @@ void	*__real_realloc(void *p, size_t n);
 
 typedef struct s_blk
 {
-	uintptr_t	sp;      /* pointeur brouillé */
+	uintptr_t	sp;
 	size_t		size;
 	uintptr_t	site;
-	int			state;   /* 1 vivant, 2 libéré */
-	uintptr_t	map;     /* mode garde : début du mapping (brouillé) */
+	int			state;
+	uintptr_t	map;
 	size_t		maplen;
 }	t_blk;
 
@@ -147,9 +131,6 @@ static void	check_guard(t_blk *b)
 
 #if TDF_GUARD
 
-/* Mode garde (sans sanitizer) : chaque bloc sur ses propres pages, collé à une
-   page PROT_NONE ; au free, tout le mapping devient PROT_NONE (quarantaine).
-   => débordement et use-after-free (lecture ou écriture) = SIGSEGV immédiat. */
 static void	*guard_alloc(size_t n, uintptr_t *map, size_t *maplen)
 {
 	static long		psz;
@@ -384,7 +365,6 @@ void	tdf_track_arm(void)
 	g_armed = 1;
 }
 
-/* Appelé juste après le retour de ft_printf : tout bloc vivant = fuite. */
 void	tdf_track_disarm(void)
 {
 	int				i;
@@ -413,7 +393,7 @@ void	tdf_track_disarm(void)
 	g_nb = 0;
 }
 
-#else /* pas de --wrap (macOS) : traceur désactivé */
+#else
 
 int			g_fail_at;
 uintptr_t	g_exe_base;

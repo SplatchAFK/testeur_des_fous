@@ -362,13 +362,6 @@ static t_list	*fb_lstmap(t_list *l, void *(*f)(void *), void (*d)(void *))
 	return (r);
 }
 
-
-/*
-** Définitions faibles : si ta libft définit ft_x, c'est la tienne qui
-** est liée. Si elle manque ou ne compile pas, la version de secours la
-** remplace, y compris quand une autre de tes fonctions l'appelle :
-** le jeu se lance toujours.
-*/
 #define WEAK __attribute__((weak))
 
 WEAK int	ft_isalpha(int c)
@@ -586,8 +579,6 @@ WEAK t_list	*ft_lstmap(t_list *l, void *(*f)(void *), void (*d)(void *))
 	return (fb_lstmap(l, f, d));
 }
 
-/* absente = fichier manquant (skip sans détail) ou qui ne compile pas ;
-** une fonction juste « non sélectionnée » reste la tienne */
 #define PICK(f) do { \
 	g_absent[E_##f] = (g_run.fn[E_##f].st == ST_BUILD \
 		|| (g_run.fn[E_##f].st == ST_SKIP && g_run.fn[E_##f].nd == 0)); \

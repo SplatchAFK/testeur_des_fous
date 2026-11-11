@@ -7,7 +7,6 @@
 t_prun	g_pr;
 t_psave	g_pf;
 
-/* les 9 chaînes qui retiennent Moulinette : une par conversion du sujet */
 const t_chain	g_chains[NCHAIN] = {
 	{"c", "%c", "le Caractère solitaire", "the Lonely Character", {120, 220, 255}},
 	{"s", "%s", "la Longue Chaîne", "the Long String", {255, 210, 90}},
@@ -20,7 +19,6 @@ const t_chain	g_chains[NCHAIN] = {
 	{"%", "%%", "le Pourcent", "the Percent", {255, 120, 220}},
 };
 
-/* les phases du big boss ft_printf : il vérifie TOUT */
 const t_phase	g_phases[NPHASE] = {
 	{"La Norme", "The Norm", "", "norminette"},
 	{"Makefile, en-tête et README", "Makefile, header and README", "", "Makefile|ft_printf.h|README.md"},
@@ -31,7 +29,6 @@ const t_phase	g_phases[NPHASE] = {
 	{"Le Dévoreur : 10 000 appels", "The Devourer: 10,000 calls", "stress", ""},
 };
 
-/* DLC : les 6 boss des flags (testés avec --bonus, hors sujet v1.1) */
 const t_chain	g_dlcb[NDLC] = {
 	{"minus", "-", "le Gaucher", "the Left-hander", {255, 150, 90}},
 	{"zero", "0", "le Remplisseur", "the Filler", {200, 200, 210}},
@@ -97,7 +94,6 @@ const char	*g_pach_en[NPACH][2] = {
 	{"Golden holygraph", "Libft and Printf validated."},
 };
 
-/* entraînement : les notions du projet, puis celles que le sujet ne montre pas */
 const t_pexo	g_pexos[NPEXO] = {
 	{"ft_putchar_count", "int\tft_putchar_count(char c);",
 		"Écris le caractère c sur la sortie standard. Renvoie le nombre d'octets écrits (1), ou -1 si write échoue.",
@@ -149,8 +145,6 @@ const t_pexo	g_pexos[NPEXO] = {
 		"Like dprintf with only %c, %s and %d: writes to fd. Return the number of bytes written, -1 if write fails.", "dprintf"},
 };
 
-/* ---------------------------------------------------------------- save.txt */
-
 void	game_reset(void)
 {
 	memset(&g_pf, 0, sizeof(g_pf));
@@ -201,8 +195,6 @@ void	game_text(char *b, size_t n)
 		"printf.seen=%d\n", g_pf.runs, g_pf.chains, g_pf.big, g_pf.dlc, g_pf.exo, g_pf.ach,
 		g_pf.lastreward, g_pf.crashes, g_pf.vet, g_pf.secret, g_pf.seen);
 }
-
-/* ---------------------------------------------------------------- état */
 
 t_pcat	*pf_cat(const char *key)
 {
@@ -291,7 +283,6 @@ int	pf_all_ok(void)
 	return (1);
 }
 
-/* libft validée : badge gagné en local dans le testeur libft, ou section libft complète */
 int	pf_libft_done(void)
 {
 	int	i;
@@ -325,8 +316,6 @@ int	pf_ach(int i)
 	toast(L("SUCCÈS DÉBLOQUÉ  +50 ◈", "ACHIEVEMENT UNLOCKED  +50 ◈"), tmp, theme()->accent2);
 	return (1);
 }
-
-/* ---------------------------------------------------------------- socle commun */
 
 static int	stat_state(const char *kw)
 {

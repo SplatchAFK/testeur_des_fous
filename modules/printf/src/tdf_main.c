@@ -1,4 +1,3 @@
-/* Le testeur des fous · version printf - point d'entrée du programme de test */
 #include "tdf.h"
 #include <stdlib.h>
 #include <string.h>
