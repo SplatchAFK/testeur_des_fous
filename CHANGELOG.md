@@ -6,6 +6,15 @@ Le numéro de version est dans `moteur/version.h`.
 
 Un seul testeur réunit le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1), et ajoute un examshell en C.
 
+### Lancement, debug et stats
+
+- barre de progression pendant la préparation ; l'interface se compile en parallèle et reste en cache (environ 3 fois plus rapide sur le disque Windows) ;
+- l'analyse de ft_printf ne recopie plus les anciens testeurs rangés dans le projet ;
+- `--menu`, ou « Menu seul » au lancement : stats, chevalier et lore sans lancer de tests, même sans aucun projet ;
+- l'exam se lance sans projet à côté ;
+- journal de chaque session dans `~/.testeur_des_fous/debug/` et commandes `run.sh debug` (`liste`, `N`, `suivre`, `paquet`, `effacer`) ;
+- Stats en 5 pages (Résumé, Libft, ft_printf, Exam, Historique) : graphique des derniers lancements, plus longue série, fonctions pas encore validées, conversions et flags, exercices de l'exam réussis par niveau, historique détaillé.
+
 ### Exam
 
 - `run.sh exam` ou Tester, puis Exam en C : un examshell en C, sans Python ;

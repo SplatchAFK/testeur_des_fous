@@ -9,6 +9,8 @@ bash testeur_des_fous/run.sh              # détecter tes projets et lancer le t
 bash testeur_des_fous/run.sh libft        # tester ta Libft
 bash testeur_des_fous/run.sh printf       # tester ton ft_printf
 bash testeur_des_fous/run.sh exam         # passer l'exam en C (4 niveaux, grademe)
+bash testeur_des_fous/run.sh --menu       # le menu sans lancer de tests (stats, chevalier, lore)
+bash testeur_des_fous/run.sh debug        # le journal de la dernière session (debug aide : tout)
 bash testeur_des_fous/run.sh --no-lore    # les tests seuls, sans histoire
 bash testeur_des_fous/run.sh -a           # sans animations pour ce lancement
 bash testeur_des_fous/run.sh --anim off   # couper les animations pour de bon (on pour les remettre)
@@ -61,6 +63,19 @@ Avant de commencer, tu règles ta session : examen ou entraînement sur un nivea
 - dans l'examshell : `grademe` corrige, `status` donne le temps restant, `sujet` relit le sujet, `finish` termine.
 
 La correction compile avec `cc -Wall -Wextra -Werror`, refuse les fonctions non autorisées et compare ta sortie octet par octet, comme le vrai. En plus, elle te signale les erreurs mémoire et les fuites. `skip`, `reroll` et `trace` demandent un code, à demander à splatch_afk sur Discord.
+
+## Un problème ?
+
+Chaque lancement est noté dans `~/.testeur_des_fous/debug/` : ta machine, chaque étape avec sa durée, les erreurs.
+
+```bash
+bash testeur_des_fous/run.sh debug          # la dernière session, erreurs en rouge
+bash testeur_des_fous/run.sh debug liste    # les 15 dernières sessions
+bash testeur_des_fous/run.sh debug suivre   # en direct, depuis un 2e terminal
+bash testeur_des_fous/run.sh debug paquet   # un fichier à envoyer (sans ton code ni ton login)
+```
+
+Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests et ouvre le menu.
 
 ## Discord
 

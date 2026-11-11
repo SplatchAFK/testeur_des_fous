@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <dirent.h>
 #include <sys/stat.h>
 #include "fous.h"
 
@@ -31,8 +32,13 @@ typedef struct s_sdata
 	int		recent;
 	int		before;
 	int		nratio;
+	int		best;
 	float	ratio[SMAXRUN];
 	long	day[SMAXRUN];
+	long	rt[SMAXRUN];
+	char	rmod[SMAXRUN];
+	short	rok[SMAXRUN];
+	short	rtot[SMAXRUN];
 	t_sitem	it[SMAXITEM];
 	int		nit;
 	char	kind[SMAXKIND][16];
@@ -241,11 +247,18 @@ static void	stats_days(void)
 
 	g_sd.days = 0;
 	g_sd.streak = 0;
+	g_sd.best = 0;
 	prev = -1;
+	today = 0;
 	for (i = 0; i < g_sd.nratio; i++)
 	{
 		if (g_sd.day[i] != prev)
+		{
 			g_sd.days++;
+			today = (prev >= 0 && g_sd.day[i] - prev == 1) ? today + 1 : 1;
+			if (today > g_sd.best)
+				g_sd.best = (int)today;
+		}
 		prev = g_sd.day[i];
 	}
 	if (!g_sd.nratio)
@@ -294,9 +307,17 @@ static void	stats_load(void)
 			{
 				memmove(g_sd.ratio, g_sd.ratio + 1, sizeof(float) * (SMAXRUN - 1));
 				memmove(g_sd.day, g_sd.day + 1, sizeof(long) * (SMAXRUN - 1));
+				memmove(g_sd.rt, g_sd.rt + 1, sizeof(long) * (SMAXRUN - 1));
+				memmove(g_sd.rmod, g_sd.rmod + 1, SMAXRUN - 1);
+				memmove(g_sd.rok, g_sd.rok + 1, sizeof(short) * (SMAXRUN - 1));
+				memmove(g_sd.rtot, g_sd.rtot + 1, sizeof(short) * (SMAXRUN - 1));
 				g_sd.nratio--;
 			}
 			g_sd.ratio[g_sd.nratio] = (float)ok / tot;
+			g_sd.rt[g_sd.nratio] = t;
+			g_sd.rmod[g_sd.nratio] = !strcmp(mod, "printf") ? 1 : !strcmp(mod, "exam") ? 2 : 0;
+			g_sd.rok[g_sd.nratio] = (short)ok;
+			g_sd.rtot[g_sd.nratio] = (short)tot;
 			g_sd.day[g_sd.nratio++] = day_of(t);
 		}
 		else if (sscanf(line, "K %ld %11s %39s %15s", &t, mod, name, kind) == 4)
@@ -461,68 +482,364 @@ static void	draw_activity(int x, int y)
 	text_at(x, y++, theme()->dim, tmp);
 }
 
-static void	draw_weak(int x, int y, int maxy)
-{
-	char	tmp[220];
-	char	when[40];
-	t_sitem	*it;
-	int		i;
-	int		k;
-	int		best;
-	size_t	n;
+static const char	*g_lf[NFN] = {
+	"isalpha", "isdigit", "isalnum", "isascii", "isprint", "strlen",
+	"memset", "bzero", "memcpy", "memmove", "strlcpy", "strlcat",
+	"toupper", "tolower", "strchr", "strrchr", "strncmp", "memchr",
+	"memcmp", "strnstr", "atoi", "calloc", "strdup",
+	"substr", "strjoin", "strtrim", "split", "itoa", "strmapi", "striteri",
+	"putchar_fd", "putstr_fd", "putendl_fd", "putnbr_fd",
+	"lstnew", "lstadd_front", "lstsize", "lstlast", "lstadd_back",
+	"lstdelone", "lstclear", "lstiter", "lstmap"
+};
 
-	text_at(x, y++, theme()->accent2, L("FAIBLESSES · ce qui échoue le plus souvent", "WEAK SPOTS · what fails most often"));
-	if (!g_sd.nit)
+static t_rgb	vert(void)
+{
+	return (rgb(120, 230, 150));
+}
+
+static t_rgb	orange(void)
+{
+	return (rgb(255, 150, 90));
+}
+
+static void	title(int x, int y, const char *s)
+{
+	text_at(x, y, theme()->accent2, s);
+}
+
+static void	spark(int x, int y, int w, int mod, const char *label)
+{
+	static const char	*b[8] = {"▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"};
+	int					idx[200];
+	int					n;
+	int					i;
+	int					k;
+	float				r;
+
+	n = 0;
+	for (i = g_sd.nratio - 1; i >= 0 && n < w && n < 200; i--)
+		if (mod < 0 || g_sd.rmod[i] == mod)
+			idx[n++] = i;
+	text_at(x, y, theme()->text, label);
+	if (!n)
 	{
-		text_at(x, y, theme()->dim, g_sd.nratio
-			? L("Aucun échec enregistré. Rien à signaler.", "No failure recorded. Nothing to report.")
-			: L("Lance des tests : cet écran se remplit à chaque lancement.",
-				"Run the tests: this screen fills up at every run."));
+		text_at(x, y + 1, theme()->dim, L("pas encore de lancement", "no run yet"));
 		return ;
 	}
-	for (i = 0; i < g_sd.nit && y < maxy - 2; i++)
+	at(x, y + 1);
+	for (k = n - 1; k >= 0; k--)
+	{
+		r = g_sd.ratio[idx[k]];
+		fg(r >= 0.999f ? vert() : r >= 0.75f ? rgb(255, 215, 0) : orange());
+		outf("%s", b[(int)(r * 7.0f + 0.5f)]);
+	}
+	text_at(x, y + 2, theme()->dim, L("ancien  →  récent  (hauteur : part de réussite)", "older  →  newer  (height: success share)"));
+}
+
+static int	weak(int x, int y, int maxy, int mod, int max)
+{
+	static const char	*mods[3] = {"libft", "printf", "exam"};
+	char				tmp[220];
+	char				when[40];
+	t_sitem				*it;
+	int					i;
+	int					k;
+	int					best;
+	int					shown;
+
+	title(x, y++, L("CE QUI ÉCHOUE LE PLUS", "WHAT FAILS MOST"));
+	shown = 0;
+	for (i = 0; i < g_sd.nit && y < maxy && shown < max; i++)
 	{
 		it = &g_sd.it[i];
+		if (mod >= 0 && strcmp(it->mod, mods[mod]))
+			continue ;
+		if (!strcmp(it->name, "niveau"))
+			continue ;
 		best = 0;
 		for (k = 1; k < it->nk; k++)
 			if (it->kn[k] > it->kn[best])
 				best = k;
 		ago(it->last, when, sizeof(when));
-		snprintf(tmp, sizeof(tmp), L("%-7s %-18s %3d échec(s) · surtout %-7s · %s",
-				"%-7s %-18s %3d failure(s) · mostly %-7s · %s"), it->mod, it->name, it->fails, it->kind[best], when);
-		text_at(x, y++, i < 3 ? rgb(255, 150, 90) : theme()->text, tmp);
+		snprintf(tmp, sizeof(tmp), L("%-18s %3d échec(s) · surtout %-7s · %s", "%-18s %3d failure(s) · mostly %-7s · %s"),
+			it->name, it->fails, it->kind[best], when);
+		if (mod < 0)
+			snprintf(tmp, sizeof(tmp), L("%-7s %-18s %3d échec(s) · %s", "%-7s %-18s %3d failure(s) · %s"),
+				it->mod, it->name, it->fails, when);
+		text_at(x, y++, shown < 3 ? orange() : theme()->text, tmp);
+		shown++;
 	}
-	n = snprintf(tmp, sizeof(tmp), "%s", L("Types d'échec : ", "Failure types: "));
-	for (k = 0; k < g_sd.nk && n < sizeof(tmp) - 30; k++)
-		n += snprintf(tmp + n, sizeof(tmp) - n, "%s%s %d", k ? " · " : "", g_sd.kind[k], g_sd.kn[k]);
-	text_at(x, y + (y < maxy - 1), theme()->dim, tmp);
+	if (!shown)
+		text_at(x, y++, theme()->dim, L("Aucun échec enregistré.", "No failure recorded."));
+	return (y);
+}
+
+static void	page_resume(int x, int y, int maxy)
+{
+	char	tmp[200];
+	int		yy;
+
+	yy = draw_progress(x, y);
+	draw_activity(x + 42, y);
+	snprintf(tmp, sizeof(tmp), L("Plus longue série : %d j · lancements suivis : %d", "Longest streak: %d d · tracked runs: %d"),
+		g_sd.best, g_sd.nratio);
+	text_at(x + 42, y + 9, theme()->text, tmp);
+	spark(x, yy + 1, 70, -1, L("TES 70 DERNIERS LANCEMENTS (tous modules)", "YOUR LAST 70 RUNS (all modules)"));
+	weak(x, yy + 5, maxy, -1, 6);
+}
+
+static void	page_libft(int x, int y, int maxy)
+{
+	static const int	part[4] = {0, 23, 34, 43};
+	static const char	*pn[3] = {"Partie 1 · libc", "Partie 2 · ajouts", "Partie 3 · listes"};
+	char				tmp[400];
+	size_t				n;
+	int					p;
+	int					i;
+	int					c;
+	int					yy;
+
+	title(x, y++, L("FONCTIONS VALIDÉES (au moins une fois)", "FUNCTIONS CLEARED (at least once)"));
+	for (p = 0; p < 3; p++)
+	{
+		for (c = 0, i = part[p]; i < part[p + 1]; i++)
+			c += g_save.cleared[i] == '1';
+		line_bar(x, y++, pn[p], c, part[p + 1] - part[p]);
+	}
+	line_bar(x, y++, L("Boss battus", "Bosses beaten"), g_save.boss[0] + g_save.boss[1] + g_save.boss[2], 3);
+	line_bar(x, y++, L("Entraînement", "Training"), ones(g_save.exo), NEXO);
+	y++;
+	title(x, y++, L("PAS ENCORE VALIDÉES", "NOT CLEARED YET"));
+	n = 0;
+	tmp[0] = '\0';
+	for (i = 0; i < NFN; i++)
+		if (g_save.cleared[i] != '1' && n < sizeof(tmp) - 20)
+			n += snprintf(tmp + n, sizeof(tmp) - n, "%sft_%s", n ? ", " : "", g_lf[i]);
+	yy = text_wrap(x, y, y + 4, 78, n ? orange() : vert(), n ? tmp : L("Toutes ! Bravo.", "All of them! Well done."));
+	y = (yy > y ? yy : y + 1) + 1;
+	spark(x + 42, 3, 34, 0, L("TES LANCEMENTS LIBFT", "YOUR LIBFT RUNS"));
+	weak(x, y, maxy, 0, 8);
+}
+
+static void	page_printf(int x, int y, int maxy)
+{
+	static const char	*conv[9] = {"%c", "%s", "%p", "%d", "%i", "%u", "%x", "%X", "%%"};
+	static const char	*flags[6] = {"-", "0", "largeur", ".", "#", "+ et espace"};
+	char				v[300];
+	char				tmp[200];
+	int					i;
+
+	title(x, y++, L("CONVERSIONS (chaînes brisées)", "CONVERSIONS (chains broken)"));
+	save_key("printf.chains", v, sizeof(v));
+	for (i = 0; i < 9; i++)
+	{
+		if (i == 0 || i == 5)
+			at(x, y++);
+		fg(v[i] == '1' ? vert() : theme()->dim);
+		outf("%s %s   ", v[i] == '1' ? "✓" : "·", conv[i]);
+	}
+	save_key("printf.big", v, sizeof(v));
+	text_at(x, y++, atoi(v) ? vert() : theme()->dim, atoi(v) ? L("✓ ft_printf vaincu", "✓ ft_printf beaten") : L("· ft_printf pas encore vaincu", "· ft_printf not beaten yet"));
+	y++;
+	title(x, y++, L("DLC · FLAGS", "DLC · FLAGS"));
+	save_key("printf.dlc", v, sizeof(v));
+	for (i = 0; i < 6; i++)
+	{
+		if (i == 0 || i == 4)
+			at(x, y++);
+		fg(v[i] == '1' ? vert() : theme()->dim);
+		outf("%s %s   ", v[i] == '1' ? "✓" : "·", flags[i]);
+	}
+	save_key("printf.exo", v, sizeof(v));
+	line_bar(x, y++, L("Entraînement", "Training"), ones(v), 16);
+	save_key("printf.runs", v, sizeof(v));
+	snprintf(tmp, sizeof(tmp), L("Lancements printf : %s", "printf runs: %s"), v[0] ? v : "0");
+	text_at(x, y++, theme()->text, tmp);
+	spark(x + 42, 3, 34, 1, L("TES LANCEMENTS PRINTF", "YOUR PRINTF RUNS"));
+	weak(x, y + 1, maxy, 1, 8);
+}
+
+static int	bank_level(const char *name)
+{
+	FILE		*f;
+	char		path[900];
+	const char	*r;
+	int			lv;
+
+	r = getenv("TDF_RACINE");
+	if (!r)
+		return (0);
+	snprintf(path, sizeof(path), "%s/banque/exam/%s/meta", r, name);
+	f = fopen(path, "r");
+	if (!f)
+		return (0);
+	lv = 0;
+	while (fscanf(f, " niveau=%d", &lv) != 1 && fgetc(f) != EOF)
+		;
+	fclose(f);
+	return (lv);
+}
+
+static void	bank_counts(int *tot)
+{
+	DIR				*d;
+	struct dirent	*e;
+	char			path[900];
+	const char		*r;
+	int				lv;
+
+	memset(tot, 0, sizeof(int) * 5);
+	r = getenv("TDF_RACINE");
+	if (!r)
+		return ;
+	snprintf(path, sizeof(path), "%s/banque/exam", r);
+	d = opendir(path);
+	while (d && (e = readdir(d)))
+	{
+		if (e->d_name[0] == '.')
+			continue ;
+		lv = bank_level(e->d_name);
+		if (lv >= 1 && lv <= 4)
+			tot[lv]++;
+	}
+	if (d)
+		closedir(d);
+}
+
+static void	page_exam(int x, int y, int maxy)
+{
+	char	v[2600];
+	char	tmp[200];
+	char	*tok;
+	int		tot[5];
+	int		got[5];
+	int		lv;
+	long	bt;
+
+	title(x, y++, L("EXAM EN C", "C EXAM"));
+	save_key("exam.runs", v, sizeof(v));
+	snprintf(tmp, sizeof(tmp), L("Exams passés : %d", "Exams taken: %d"), atoi(v));
+	text_at(x, y++, theme()->text, tmp);
+	save_key("exam.passed", v, sizeof(v));
+	snprintf(tmp, sizeof(tmp), L("Exams validés (100/100) : %d", "Exams passed (100/100): %d"), atoi(v));
+	text_at(x, y++, atoi(v) ? vert() : theme()->text, tmp);
+	save_key("exam.best", v, sizeof(v));
+	snprintf(tmp, sizeof(tmp), L("Meilleure note : %d/100", "Best score: %d/100"), atoi(v));
+	text_at(x, y++, theme()->text, tmp);
+	save_key("exam.besttime", v, sizeof(v));
+	bt = atol(v);
+	if (bt > 0)
+		snprintf(tmp, sizeof(tmp), L("Meilleur temps validé : %ld h %02ld min", "Best passing time: %ld h %02ld min"), bt / 3600, bt / 60 % 60);
+	else
+		snprintf(tmp, sizeof(tmp), "%s", L("Meilleur temps validé : -", "Best passing time: -"));
+	text_at(x, y++, theme()->text, tmp);
+	save_key("exam.cheats", v, sizeof(v));
+	snprintf(tmp, sizeof(tmp), L("Cheats utilisés : %d", "Cheats used: %d"), atoi(v));
+	text_at(x, y++, theme()->dim, tmp);
+	y++;
+	title(x, y++, L("EXERCICES RÉUSSIS AU MOINS UNE FOIS", "EXERCISES SOLVED AT LEAST ONCE"));
+	bank_counts(tot);
+	memset(got, 0, sizeof(got));
+	save_key("exam.done", v, sizeof(v));
+	for (tok = strtok(v, ","); tok; tok = strtok(NULL, ","))
+	{
+		lv = bank_level(tok);
+		if (lv >= 1 && lv <= 4)
+			got[lv]++;
+	}
+	for (lv = 1; lv <= 4; lv++)
+	{
+		snprintf(tmp, sizeof(tmp), L("Niveau %d", "Level %d"), lv);
+		line_bar(x, y++, tmp, got[lv], tot[lv]);
+	}
+	spark(x + 42, 3, 34, 2, L("TES PASSAGES (corrections et exams)", "YOUR ATTEMPTS (gradings and exams)"));
+	weak(x, y + 1, maxy, 2, 8);
+}
+
+static void	page_histo(int x, int y, int maxy)
+{
+	static const char	*mods[3] = {"Libft ", "printf", "Exam  "};
+	char				tmp[200];
+	char				d[40];
+	time_t				tt;
+	int					i;
+
+	title(x, y++, L("HISTORIQUE · les derniers lancements", "HISTORY · latest runs"));
+	if (!g_sd.nratio)
+		text_at(x, y, theme()->dim, L("Rien pour l'instant : lance des tests.", "Nothing yet: run some tests."));
+	for (i = g_sd.nratio - 1; i >= 0 && y < maxy; i--)
+	{
+		tt = (time_t)g_sd.rt[i];
+		strftime(d, sizeof(d), "%d/%m %H:%M", localtime(&tt));
+		snprintf(tmp, sizeof(tmp), "%s  %s  %3d/%-3d", d, mods[(int)g_sd.rmod[i] % 3], g_sd.rok[i], g_sd.rtot[i]);
+		text_at(x, y, theme()->text, tmp);
+		bar(x + 32, y, 20, g_sd.ratio[i], g_sd.ratio[i] >= 0.999f ? vert() : orange(), g_sd.ratio[i] >= 0.999f ? vert() : rgb(255, 215, 0));
+		snprintf(tmp, sizeof(tmp), "%3d %%", (int)(g_sd.ratio[i] * 100 + 0.5f));
+		text_at(x + 54, y++, theme()->dim, tmp);
+	}
 }
 
 void	tdf_screen_stats(void)
 {
-	int	x;
-	int	y;
-	int	k;
+	static int	page;
+	const char	*noms[5];
+	int			x;
+	int			i;
+	int			k;
 
+	noms[0] = L("Résumé", "Summary");
+	noms[1] = "Libft";
+	noms[2] = "ft_printf";
+	noms[3] = "Exam";
+	noms[4] = L("Historique", "History");
 	save_write();
 	stats_load();
 	cls();
 	while (1)
 	{
-		x = (term_cols() - 78) / 2;
+		x = (term_cols() - 80) / 2;
 		if (x < 0)
 			x = 0;
 		bgc(theme()->bg);
 		frame();
-		center(1, theme()->accent, L("STATS", "STATS"));
-		y = draw_progress(x, 3);
-		draw_activity(x + 42, 3);
-		draw_weak(x, y + 1, term_rows() - 1);
-		foot_line(x, L("Échap : retour", "Esc: back"));
+		at(x, 1);
+		for (i = 0; i < 5; i++)
+		{
+			if (i == page)
+			{
+				bgc(mix(theme()->bg, theme()->accent, 0.3));
+				fg(theme()->accent2);
+			}
+			else
+				fg(theme()->dim);
+			outf(" %s ", noms[i]);
+			bgc(theme()->bg);
+			outf("  ");
+		}
+		if (page == 0)
+			page_resume(x, 3, term_rows() - 2);
+		else if (page == 1)
+			page_libft(x, 3, term_rows() - 2);
+		else if (page == 2)
+			page_printf(x, 3, term_rows() - 2);
+		else if (page == 3)
+			page_exam(x, 3, term_rows() - 2);
+		else
+			page_histo(x, 3, term_rows() - 2);
+		foot_line(x, L("◀ ▶ changer de page   Échap : retour", "◀ ▶ change page   Esc: back"));
 		flush();
 		k = key_dir(key_read(200));
-		if (key_quit(k) || k == 127 || k == 8 || k == '\r' || k == '\n')
+		if (k == 1003)
+			page = (page + 4) % 5;
+		else if (k == 1002)
+			page = (page + 1) % 5;
+		else if (k >= '1' && k <= '5')
+			page = k - '1';
+		else if (key_quit(k) || k == 127 || k == 8 || k == '\r' || k == '\n')
 			break ;
+		if (k > 0)
+			cls();
 	}
 	cls();
 }

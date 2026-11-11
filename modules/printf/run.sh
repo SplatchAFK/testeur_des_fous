@@ -5,6 +5,9 @@ TDF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT="${TDF_PROJET:-$(dirname "$TDF_DIR")}"
 MOT="$(cd "$TDF_DIR/../../moteur" && pwd)"
 TDF_AFF="${TDF_NOM:-$(basename "$TDF_DIR")}"
+TDF_JOURNAL_MOD="printf"
+. "$MOT/chargement.sh"
+MENU_SEUL=0
 MODE="asan+ubsan"
 ONLY=""
 SEED=""
@@ -88,6 +91,7 @@ while [ $# -gt 0 ]; do
 		--no-update) NO_UPDATE=1 ;;
 		--update) shift; UPDATE_SET="${1:-}" ;;
 		--debug) DEBUG=1 ;;
+		--menu) MENU_SEUL=1 ;;
 		--exo) shift; EXO="${1:-}" ;;
 		--out) shift; EXO_OUT="${1:-}" ;;
 		--reco) shift; RECO="${1:-}" ;;
@@ -153,11 +157,8 @@ build_jeu() {
 	local empreinte
 	mkdir -p "$JEU"
 	empreinte=$(cat "$TDF_DIR"/game/*.c "$TDF_DIR"/game/*.h "$MOT"/*.c "$MOT"/*.h 2>/dev/null | cksum | cut -d' ' -f1)
-	if [ -x "$JEU/fous" ] && [ "$(cat "$JEU/empreinte" 2>/dev/null)" = "$empreinte" ]; then
-		return 0
-	fi
-	cc -O2 -w -DTDF_PRINTF -I "$TDF_DIR/game" -I "$MOT" "$TDF_DIR"/game/*.c "$MOT"/*.c -lm -o "$JEU/fous" 2> "$JEU/jeu.err" || return 1
-	printf '%s\n' "$empreinte" > "$JEU/empreinte"
+	tdf_compiler "$JEU/fous" "$JEU/jeu.err" "$empreinte" -O2 -w -DTDF_PRINTF -I "$TDF_DIR/game" -I "$MOT" -- \
+		"$TDF_DIR"/game/*.c "$MOT"/*.c -- -lm
 }
 ver_gt() {
 	[ "$1" != "$2" ] && [ "$(printf '%s\n%s\n' "$1" "$2" | sort -t. -k1,1n -k2,2n -k3,3n | tail -1)" = "$1" ]
@@ -313,10 +314,21 @@ grand_terminal() {
 if [ -z "${TDF_ENGINE:-}" ] && [ "$NOLORE" = 0 ] && [ "$DEBUG" = 0 ] && [ -z "$VERBOSE" ] && [ -z "$ONLY" ] \
 	&& [ -z "$MACHINE" ] && [ -t 0 ] && [ -t 1 ]; then
 	grand_terminal
+	tdf_chrono_debut maj "recherche de mise à jour"
 	update_check
-	printf '\n  \033[38;5;213mLe testeur des fous\033[0m · printf · préparation...'
+	tdf_chrono_fin maj "recherche de mise à jour"
+	tdf_chrono_debut jeu "compilation de l'interface"
 	if build_jeu; then
-		printf '\r\033[K'
+		tdf_chrono_fin jeu "compilation de l'interface"
+		if [ "$MENU_SEUL" = 1 ]; then
+			GARGS=(--dir "$TDF_DIR")
+			[ "$FAST" = 1 ] && GARGS+=(--fast)
+			tdf_journal "menu seul, sans tests"
+			"$JEU/fous" "${GARGS[@]}" 2>> "${TDF_JOURNAL:-/dev/null}"
+			code=$?
+			tdf_journal "fin de l'interface (code $code)"
+			exit $code
+		fi
 		first=1
 		dlc=0
 		while :; do
@@ -328,13 +340,17 @@ if [ -z "${TDF_ENGINE:-}" ] && [ "$NOLORE" = 0 ] && [ "$DEBUG" = 0 ] && [ -z "$V
 			[ -n "$STRESS" ] && EARGS+=(--stress "$STRESS")
 			[ -n "$TIMEOUT" ] && EARGS+=(--timeout "$TIMEOUT")
 			{ [ "$dlc" = 1 ] || [ "$BONUS_OPT" = "--bonus" ]; } && EARGS+=(--bonus)
+			tdf_journal "tests lancés en arrière-plan (graine $SEED, mode $MODE)"
 			(
 				MPID=
 				trap 'kill_tree "$MPID"; exit 143' TERM INT HUP
+				t0=$(tdf_ms)
 				TDF_ENGINE=1 bash "$TDF_DIR/run.sh" "${EARGS[@]}" > "$JEU/moteur.log" 2>&1 < /dev/null &
 				MPID=$!
 				wait "$MPID"
+				rc=$?
 				printf 'E\n' >> "$RES"
+				tdf_journal "tests terminés (code $rc, $(( ($(tdf_ms) - t0) / 1000 )) s)"
 			) &
 			EPID=$!
 			trap 'kill "$EPID" 2>/dev/null' EXIT
@@ -343,10 +359,13 @@ if [ -z "${TDF_ENGINE:-}" ] && [ "$NOLORE" = 0 ] && [ "$DEBUG" = 0 ] && [ -z "$V
 			[ "$FAST" = 1 ] && GARGS+=(--fast)
 			[ "$dlc" = 1 ] && GARGS+=(--dlc)
 			[ "$first" = 1 ] && [ -n "${RECO:-}" ] && GARGS+=(--reco "$RECO")
-			"$JEU/fous" "${GARGS[@]}"
+			tdf_journal "interface ouverte"
+			"$JEU/fous" "${GARGS[@]}" 2>> "${TDF_JOURNAL:-/dev/null}"
 			code=$?
+			tdf_journal "interface fermée (code $code)"
 			kill "$EPID" 2>/dev/null
 			wait "$EPID" 2>/dev/null
+			[ -n "${TDF_JOURNAL:-}" ] && cp "$JEU/moteur.log" "$(dirname "$TDF_JOURNAL")/printf_moteur.log" 2>/dev/null
 			first=0
 			dlc=0
 			[ "$code" = 43 ] && { dlc=1; continue; }
@@ -356,6 +375,9 @@ if [ -z "${TDF_ENGINE:-}" ] && [ "$NOLORE" = 0 ] && [ "$DEBUG" = 0 ] && [ -z "$V
 	fi
 	printf '\r\033[K  le menu ne compile pas, passage en mode texte :\n'
 	sed 's/^/    /' "$JEU/jeu.err" | head -5
+	tdf_journal "ERREUR : l'interface ne compile pas, passage en mode texte"
+	[ -n "${TDF_JOURNAL:-}" ] && cp "$JEU/jeu.err" "$(dirname "$TDF_JOURNAL")/printf_compilation.err" 2>/dev/null
+	[ "$MENU_SEUL" = 1 ] && exit 1
 fi
 if [ "$NOLORE" = 1 ] && [ -z "${TDF_ENGINE:-}" ] && [ -z "$MACHINE" ]; then
 	mkdir -p "$JEU"
@@ -452,7 +474,9 @@ rm -rf "$BUILD"
 mkdir -p "$COPY" "$BUILD/obj" "$BUILD/obj_bonus" "$BUILD/vg"
 EXCL=()
 case "$TDF_DIR/" in "$PROJECT/"*) EXCL+=(--exclude="./${TDF_DIR#$PROJECT/}");; esac
-tar -C "$PROJECT" "${EXCL[@]}" --exclude=./.git -cf - . 2>/dev/null | tar -C "$COPY" -xf -
+tar -C "$PROJECT" "${EXCL[@]}" --exclude=./.git --exclude='testeur_des_fous*' --exclude='francinette' \
+	--exclude='printfTester*' --exclude='ft_printf_tester*' --exclude='printf-tester*' --exclude='.build*' \
+	-cf - . 2>/dev/null | tar -C "$COPY" -xf -
 ( cd "$COPY" && make fclean >/dev/null 2>&1 )
 
 TESTER_DIRS='printfTester|testeur_des_fous|francinette|ft_printf_tester|printf-tester|tester'

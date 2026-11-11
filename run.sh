@@ -17,6 +17,9 @@ lire_version() {
 
 TDF_VERSION="$(lire_version TDF_VERSION)"
 TDF_DATE="$(lire_version TDF_DATE)"
+. "$TDF_RACINE/moteur/chargement.sh"
+. "$TDF_RACINE/moteur/debug.sh"
+ARGS_ORIG=("$@")
 
 usage() {
 	cat <<EOF
@@ -27,6 +30,8 @@ Créé et vibe-codé par Splatch (romasant)
   bash $TDF_NOM/run.sh libft            tester ta Libft
   bash $TDF_NOM/run.sh printf           tester ton ft_printf
   bash $TDF_NOM/run.sh exam             passer un exam en C (4 niveaux, grademe)
+  bash $TDF_NOM/run.sh --menu           ouvrir le menu sans lancer de tests (stats, chevalier...)
+  bash $TDF_NOM/run.sh debug            le journal de la dernière session (debug aide : tout)
   bash $TDF_NOM/run.sh --projet CHEMIN  tester le projet de ce dossier
   bash $TDF_NOM/run.sh --no-lore        les tests seuls, sans histoire
   bash $TDF_NOM/run.sh -a               sans animations pour ce lancement
@@ -154,11 +159,19 @@ MODULE=""
 PROJET=""
 SUITE=()
 SANS_ANIM=0
+MENU=0
+
+if [ "${1:-}" = debug ]; then
+	shift
+	debug_commande "$@"
+	exit $?
+fi
 
 while [ $# -gt 0 ]; do
 	a="$1"
 	shift
 	case "$a" in
+		--menu) MENU=1 ;;
 		libft|printf|exam)
 			if [ -z "$MODULE" ]; then MODULE="$a"; else SUITE+=("$a"); fi
 			;;
@@ -186,7 +199,18 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-if [ "$MODULE" = exam ]; then
+if [ "$MENU" = 1 ] && [ "$MODULE" != exam ]; then
+	detecter
+	if [ -z "$MODULE" ]; then
+		MODULE="libft"
+		[ ${#PRINTFS[@]} -gt 0 ] && [ ${#LIBFTS[@]} -eq 0 ] && MODULE="printf"
+	fi
+	if [ -z "$PROJET" ]; then
+		[ "$MODULE" = libft ] && [ ${#LIBFTS[@]} -gt 0 ] && PROJET="${LIBFTS[0]}"
+		[ "$MODULE" = printf ] && [ ${#PRINTFS[@]} -gt 0 ] && PROJET="${PRINTFS[0]}"
+	fi
+	SUITE+=(--menu)
+elif [ "$MODULE" = exam ]; then
 	PROJET=""
 	detecter
 elif [ -n "$PROJET" ]; then
@@ -217,10 +241,10 @@ else
 		for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do CHOIX+=("$p"); NOMS+=("printf"); done
 	fi
 	if [ -z "$MODULE" ] && [ ${#CHOIX[@]} -ne 1 ]; then
-		CHOIX+=("")
-		NOMS+=("exam")
+		CHOIX+=("" "")
+		NOMS+=("exam" "menu")
 	fi
-	if [ ${#CHOIX[@]} -eq 0 ] || { [ ${#CHOIX[@]} -eq 1 ] && [ "${NOMS[0]}" = exam ] && ! { [ -t 0 ] && [ -t 1 ]; }; }; then
+	if [ ${#CHOIX[@]} -eq 0 ] || { [ ${#CHOIX[@]} -eq 2 ] && [ "${NOMS[0]}" = exam ] && ! { [ -t 0 ] && [ -t 1 ]; }; }; then
 		cat <<EOF
 Le testeur des fous $TDF_VERSION
 
@@ -234,6 +258,7 @@ Aucun projet trouvé. Le testeur se clone à côté de tes projets :
 Ou donne le chemin : bash $TDF_NOM/run.sh --projet CHEMIN
 
 L'exam en C, lui, n'a besoin d'aucun projet : bash $TDF_NOM/run.sh exam
+Le menu (stats, chevalier...) non plus      : bash $TDF_NOM/run.sh --menu
 EOF
 		exit 1
 	elif [ ${#CHOIX[@]} -eq 1 ] && [ "${NOMS[0]}" != exam ]; then
@@ -247,6 +272,7 @@ EOF
 			case "${NOMS[$i]}" in
 				libft) etiquette="Libft" ;;
 				exam) etiquette="Exam en C" ;;
+				menu) etiquette="Menu seul : stats, chevalier, lore (sans tester)" ;;
 				*) etiquette="ft_printf" ;;
 			esac
 			if [ -n "${CHOIX[$i]}" ]; then
@@ -268,14 +294,25 @@ EOF
 		fi
 		PROJET="${CHOIX[$((rep - 1))]}"
 		MODULE="${NOMS[$((rep - 1))]}"
+		if [ "$MODULE" = menu ]; then
+			MODULE="libft"
+			PROJET="${LIBFTS[0]:-}"
+			if [ -z "$PROJET" ] && [ ${#PRINTFS[@]} -gt 0 ]; then
+				MODULE="printf"
+				PROJET="${PRINTFS[0]}"
+			fi
+			SUITE+=(--menu)
+		fi
 	else
 		echo "Plusieurs projets trouvés, précise lequel :"
 		i=0
 		while [ $i -lt ${#CHOIX[@]} ]; do
 			if [ -n "${CHOIX[$i]}" ]; then
 				printf '  bash %s/run.sh %s --projet %s\n' "$TDF_NOM" "${NOMS[$i]}" "${CHOIX[$i]}"
-			else
+			elif [ "${NOMS[$i]}" = exam ]; then
 				printf '  bash %s/run.sh exam\n' "$TDF_NOM"
+			else
+				printf '  bash %s/run.sh --menu\n' "$TDF_NOM"
 			fi
 			i=$((i + 1))
 		done
@@ -299,12 +336,25 @@ RETOUR_PROJET=""
 [ ${#PRINTFS[@]} -gt 0 ] && TDF_DISPO="$TDF_DISPO printf"
 export TDF_DISPO
 export TDF_NOM
+export TDF_RACINE
+
+debug_ouvrir ${ARGS_ORIG[@]+"${ARGS_ORIG[@]}"}
+TDF_JOURNAL_MOD="lanceur"
+tdf_journal "projets trouvés : libft ${#LIBFTS[@]}, ft_printf ${#PRINTFS[@]} · module $MODULE · projet ${PROJET:-aucun}"
+trap 'tdf_journal "interrompu (Ctrl+C)"; debug_fermer "interrompu"; exit 130' INT
+trap 'debug_fermer "arrêté"; exit 143' TERM HUP
 
 while :; do
 	rm -f "$DOSSIER/suivant"
 	export TDF_PROJET="$PROJET"
+	tdf_journal "lancement du module $MODULE ${SUITE[*]:-}"
+	tdf_chrono_debut mod "module $MODULE"
 	bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"}
 	code=$?
+	tdf_chrono_fin mod "module $MODULE" "code $code"
+	if [ "$code" != 0 ] && [ "$code" != 1 ] && [ "$code" != 45 ] && [ "$code" != 130 ]; then
+		tdf_journal "ERREUR : le module $MODULE s'est arrêté avec le code $code"
+	fi
 	if [ "$MODULE" = exam ] && [ -n "$RETOUR_MODULE" ]; then
 		MODULE="$RETOUR_MODULE"
 		PROJET="$RETOUR_PROJET"
@@ -314,14 +364,18 @@ while :; do
 		export TDF_NO_UPDATE=1
 		continue
 	fi
-	[ "$code" = 45 ] || exit "$code"
+	if [ "$code" != 45 ]; then
+		debug_fermer "code $code"
+		exit "$code"
+	fi
 	suivant="$(head -1 "$DOSSIER/suivant" 2>/dev/null)"
 	rm -f "$DOSSIER/suivant"
+	tdf_journal "changement de module : $MODULE vers ${suivant:-?}"
 	case "$suivant" in
-		libft) [ ${#LIBFTS[@]} -gt 0 ] || exit 0; PROJET="${LIBFTS[0]}" ;;
-		printf) [ ${#PRINTFS[@]} -gt 0 ] || exit 0; PROJET="${PRINTFS[0]}" ;;
+		libft) [ ${#LIBFTS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }; PROJET="${LIBFTS[0]}" ;;
+		printf) [ ${#PRINTFS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }; PROJET="${PRINTFS[0]}" ;;
 		exam) RETOUR_MODULE="$MODULE"; RETOUR_PROJET="$PROJET"; PROJET="" ;;
-		*) exit 0 ;;
+		*) debug_fermer "code 0"; exit 0 ;;
 	esac
 	MODULE="$suivant"
 	SUITE=()

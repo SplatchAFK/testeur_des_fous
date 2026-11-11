@@ -7,6 +7,8 @@ MOT="$RACINE/moteur"
 BUILD="$RACINE/exam/.build"
 DOSSIER="$HOME/.testeur_des_fous"
 CC="${CC:-cc}"
+TDF_JOURNAL_MOD="exam"
+. "$MOT/chargement.sh"
 
 usage() {
 	cat <<EOF
@@ -42,13 +44,18 @@ chmod 700 "$DOSSIER" 2>/dev/null
 
 SOURCES=("$ICI/src/exam.c" "$ICI/src/code.c" "$MOT/save.c" "$MOT/data.c" "$MOT/art.c" "$MOT/stats.c")
 EMPREINTE="$(cat "${SOURCES[@]}" "$MOT"/*.h "$ICI"/src/*.h 2>/dev/null | cksum | cut -d' ' -f1)"
-if [ ! -x "$BUILD/exam" ] || [ "$(cat "$BUILD/empreinte" 2>/dev/null)" != "$EMPREINTE" ]; then
-	if ! "$CC" -O2 -w -DTDF_EXAM -DTDF_STATS_SEUL -I "$MOT" -I "$ICI/src" "${SOURCES[@]}" -lm -o "$BUILD/exam" 2> "$BUILD/exam.err"; then
-		echo "exam : le moteur ne compile pas sur cette machine."
-		head -5 "$BUILD/exam.err"
-		exit 1
-	fi
-	printf '%s\n' "$EMPREINTE" > "$BUILD/empreinte"
+if ! tdf_compiler "$BUILD/exam" "$BUILD/exam.err" "$EMPREINTE" -O2 -w -DTDF_EXAM -DTDF_STATS_SEUL -I "$MOT" -I "$ICI/src" -- \
+	"${SOURCES[@]}" -- -lm; then
+	echo "exam : le moteur ne compile pas sur cette machine."
+	head -5 "$BUILD/exam.err"
+	[ -n "${TDF_JOURNAL:-}" ] && cp "$BUILD/exam.err" "$(dirname "$TDF_JOURNAL")/exam_compilation.err" 2>/dev/null
+	exit 1
 fi
 
-exec "$BUILD/exam" --racine "$RACINE" --home "$DOSSIER" ${SUITE[@]+"${SUITE[@]}"}
+tdf_journal "examshell ouvert"
+"$BUILD/exam" --racine "$RACINE" --home "$DOSSIER" ${SUITE[@]+"${SUITE[@]}"}
+code=$?
+tdf_journal "examshell fermé (code $code)"
+[ -n "${TDF_JOURNAL:-}" ] && [ -f "$RACINE/exam/etat" ] && cp "$RACINE/exam/etat" "$(dirname "$TDF_JOURNAL")/exam_etat.txt" 2>/dev/null
+[ -n "${TDF_JOURNAL:-}" ] && ls -1 "$RACINE"/exam/traces/*.txt >/dev/null 2>&1 && cat "$RACINE"/exam/traces/*.txt > "$(dirname "$TDF_JOURNAL")/exam_traces.txt" 2>/dev/null
+exit $code

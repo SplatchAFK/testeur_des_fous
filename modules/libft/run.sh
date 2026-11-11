@@ -8,6 +8,9 @@ TDF_ICI="$TDF_DIR"
 [ -n "${TDF_NOM:-}" ] && TDF_ICI="$TDF_NOM/modules/libft"
 SRC="$HERE/src"
 MOT="$(cd "$HERE/../../moteur" && pwd)"
+TDF_JOURNAL_MOD="libft"
+. "$MOT/chargement.sh"
+MENU_SEUL=0
 DEDANS=0
 case "$HERE/" in "$ROOT"/*) DEDANS=1 ;; esac
 VERSION="$(sed -n 's/^# *define TDF_VERSION "\(.*\)"/\1/p' "$MOT/version.h" 2>/dev/null | head -1)"
@@ -96,6 +99,7 @@ while [ $# -gt 0 ]; do
 		--reco) RECO="$1"; shift ;;
 		--no-lore|--lore-off) NOLORE=1; CI=1 ;;
 		--debug) DEBUG=1; CI=1; VERBOSE=1; VALG=1; FORCEAUDIT=1 ;;
+		--menu) MENU_SEUL=1 ;;
 		--aide) CFG_AIDE="$1"; shift ;;
 		-h|--help) usage; exit 0 ;;
 		-V|--version) echo "Le testeur des fous v$VERSION"; exit 0 ;;
@@ -340,14 +344,24 @@ build_bin() {
 }
 
 build_game() {
-	local objs=() o f
-	for f in "$ROOT"/ft_*.c; do [ -f "$f" ] && compile_plain "$f" & done
-	wait
-	for o in "$BUILD"/plain/*.o; do [ -f "$o" ] && objs+=("$o"); done
+	local objs=() o f pids=() n=0 nft=0
 	local GSRC=("$SRC"/main.c "$SRC"/screens.c "$MOT"/ui.c "$SRC"/train.c "$SRC"/scene.c
 		"$MOT"/save.c "$MOT"/data.c "$MOT"/avatar.c "$MOT"/art.c "$MOT"/term.c
 		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$SRC"/story.c)
 	local GX="" GOBJ="" key g ok=1
+	for f in "$ROOT"/ft_*.c; do [ -f "$f" ] && nft=$((nft + 1)); done
+	tdf_ch_debut "préparation" $((nft + ${#GSRC[@]} + 1))
+	for f in "$ROOT"/ft_*.c; do
+		[ -f "$f" ] || continue
+		compile_plain "$f" &
+		pids+=($!)
+	done
+	for o in ${pids[@]+"${pids[@]}"}; do
+		wait "$o"
+		n=$((n + 1))
+		tdf_ch_pas "tes fonctions $n/$nft"
+	done
+	for o in "$BUILD"/plain/*.o; do [ -f "$o" ] && objs+=("$o"); done
 	[ "$OS" = Darwin ] && GX="-Wl,-undefined,dynamic_lookup"
 	if [ -n "$CACHE" ]; then
 		key=$(fingerprint "${GSRC[@]}" "$SRC"/*.h "$MOT"/*.h)
@@ -355,19 +369,29 @@ build_game() {
 		if [ ! -f "$GOBJ/ok" ]; then
 			rm -rf "$CACHE"/jeu.*
 			mkdir -p "$GOBJ"
+			pids=()
 			for g in "${GSRC[@]}"; do
 				$CC -O2 -w -I "$SRC" -I "$MOT" -c "$g" -o "$GOBJ/$(basename "$g" .c).o" 2>> "$BUILD/game.err" &
+				pids+=($!)
 			done
-			wait
+			n=0
+			for o in "${pids[@]}"; do
+				wait "$o"
+				n=$((n + 1))
+				tdf_ch_pas "interface $n/${#GSRC[@]}"
+			done
 			for g in "${GSRC[@]}"; do [ -f "$GOBJ/$(basename "$g" .c).o" ] || ok=0; done
 			if [ "$ok" = 1 ]; then : > "$GOBJ/ok"; else GOBJ=""; fi
+		else
+			tdf_ch_pas "interface en cache" "${#GSRC[@]}"
 		fi
 	fi
 	if [ -n "$GOBJ" ]; then
-		$CC "$GOBJ"/*.o ${objs[@]+"${objs[@]}"} -lm $GX -o "$BUILD/fous" 2> "$BUILD/game.err" && return 0
+		$CC "$GOBJ"/*.o ${objs[@]+"${objs[@]}"} -lm $GX -o "$BUILD/fous" 2> "$BUILD/game.err" && { tdf_ch_fin; return 0; }
 		$CC "$GOBJ"/*.o ${objs[@]+"${objs[@]}"} -lm $GX -Wl,--allow-multiple-definition -o "$BUILD/fous" \
-			2>> "$BUILD/game.err" && return 0
+			2>> "$BUILD/game.err" && { tdf_ch_fin; return 0; }
 	fi
+	tdf_ch_fin "secours"
 	$CC -O2 -w -I "$SRC" -I "$MOT" "${GSRC[@]}" ${objs[@]+"${objs[@]}"} -lm $GX -o "$BUILD/fous" \
 		2> "$BUILD/game.err" && return 0
 	$CC -O2 -w -I "$SRC" -I "$MOT" "${GSRC[@]}" ${objs[@]+"${objs[@]}"} -lm $GX \
@@ -1142,16 +1166,37 @@ grand_terminal() {
 	exit 0
 }
 
+if [ "$MENU_SEUL" = 1 ] && [ "$CI" = 1 ]; then
+	echo "le menu a besoin d'un vrai terminal"
+	exit 2
+fi
+
 if [ "$CI" = 0 ]; then
 	grand_terminal
+	tdf_chrono_debut maj "recherche de mise à jour"
 	update_check
-	printf '\n  \e[38;5;213mLe testeur des fous\e[0m · préparation...'
+	tdf_chrono_fin maj "recherche de mise à jour"
+	tdf_chrono_debut jeu "compilation de l'interface"
 	if ! build_game; then
 		printf '\r\e[K  le menu ne compile pas, passage en mode texte\n'
 		sed 's/^/    /' "$BUILD/game.err" | head -5
+		tdf_journal "ERREUR : l'interface ne compile pas, passage en mode texte"
+		[ -n "${TDF_JOURNAL:-}" ] && cp "$BUILD/game.err" "$(dirname "$TDF_JOURNAL")/libft_compilation.err" 2>/dev/null
+		[ "$MENU_SEUL" = 1 ] && exit 1
 		CI=1
+	else
+		tdf_chrono_fin jeu "compilation de l'interface"
 	fi
 	printf '\r\e[K'
+	if [ "$MENU_SEUL" = 1 ]; then
+		ARGS=(--dir "$HERE")
+		[ "$FAST" = 1 ] && ARGS+=(--fast)
+		tdf_journal "menu seul, sans tests"
+		"$BUILD/fous" "${ARGS[@]}" 2>> "${TDF_JOURNAL:-/dev/null}"
+		code=$?
+		tdf_journal "fin de l'interface (code $code)"
+		exit $code
+	fi
 fi
 
 if [ "$CI" = 1 ]; then
@@ -1185,22 +1230,29 @@ while :; do
 			exit 1
 		fi
 	fi
+	tdf_journal "tests lancés en arrière-plan"
 	(
 		RPID=
 		trap 'kill_tree "$RPID"; exit 143' TERM INT HUP
+		t0=$(tdf_ms)
 		run_all > "$BUILD/run.log" 2>&1 &
 		RPID=$!
 		wait "$RPID"
+		rc=$?
+		tdf_journal "tests terminés (code $rc, $(( ($(tdf_ms) - t0) / 1000 )) s)"
 	) &
 	TPID=$!
 	ARGS=(--results "$RES" --pid "$TPID" --dir "$HERE")
 	[ "$first" = 0 ] && ARGS+=(--relance)
 	[ "$FAST" = 1 ] && ARGS+=(--fast)
 	[ "$first" = 1 ] && [ -n "$RECO" ] && ARGS+=(--reco "$RECO")
-	"$BUILD/fous" "${ARGS[@]}"
+	tdf_journal "interface ouverte"
+	"$BUILD/fous" "${ARGS[@]}" 2>> "${TDF_JOURNAL:-/dev/null}"
 	code=$?
+	tdf_journal "interface fermée (code $code)"
 	kill "$TPID" 2>/dev/null
 	wait "$TPID" 2>/dev/null
+	[ -n "${TDF_JOURNAL:-}" ] && { cp "$BUILD/run.log" "$(dirname "$TDF_JOURNAL")/libft_tests.log"; cp "$RES" "$(dirname "$TDF_JOURNAL")/libft_resultats.tsv"; } 2>/dev/null
 	TPID=
 	[ "$code" = 42 ] || break
 	first=0
