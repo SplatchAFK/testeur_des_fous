@@ -23,7 +23,7 @@ while IFS= read -r f; do
 done < <(fichiers '*.sh')
 
 while IFS= read -r f; do
-	if sed 's#://##g' "$f" | grep -nE '//|/\*' >/dev/null; then
+	if sed -e 's/\\"//g' -e 's/"[^"]*"//g' "$f" | grep -nE '//|/\*' >/dev/null; then
 		signaler "commentaire dans : $f"
 	fi
 done < <(fichiers '*.[ch]')
