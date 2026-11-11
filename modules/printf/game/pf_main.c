@@ -128,7 +128,7 @@ static int	menu_loop(void)
 			return (42);
 		if (i == 0)
 		{
-			r = tdf_menu_tester(L("DLC · flags et entraînement", "DLC · flags and training"), "libft", "Libft");
+			r = tdf_menu_tester(L("DLC · flags et entraînement|Les flags du bonus (- 0 . # + espace) et 16 niveaux d'entraînement.", "DLC · flags and training|The bonus flags (- 0 . # + space) and 16 training levels."), "libft", "Libft");
 			if (r == 1 || r == 45)
 				return (r == 1 ? 42 : 45);
 			if (r == 2 && pf_results(0) == 42)

@@ -67,6 +67,7 @@ int	pf_menu(void)
 		snprintf(tmp, sizeof(tmp), L("chaînes %d/9 · ft_printf %s · entr. %d/16", "chains %d/9 · ft_printf %s · train %d/16"),
 			c, g_pf.big ? "✓" : "✗", pf_exo_done());
 		text_at(x + 34, y + 5 + n * 2, theme()->dim, tmp);
+		tdf_menu_aide(x + 34, y + 7 + n * 2, sel);
 		flush();
 		k = key_dir(key_read(40));
 		if (k == 1000)

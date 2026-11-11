@@ -72,7 +72,7 @@ static int	menu_loop(void)
 			return (42);
 		if (i == 0)
 		{
-			r = tdf_menu_tester(L("Entraînement (21 niveaux)", "Training (21 levels)"), "printf", "ft_printf");
+			r = tdf_menu_tester(L("Entraînement (21 niveaux)|Des fonctions nouvelles, hors Libft, pour t'entraîner. Débloquées par les boss.", "Training (21 levels)|New functions, beyond Libft, to train. Unlocked by bosses."), "printf", "ft_printf");
 			if (r == 1 || r == 45)
 				return (r == 1 ? 42 : 45);
 			if (r == 2 && g_run.loaded && screen_results(0) == 42)

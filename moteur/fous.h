@@ -621,6 +621,7 @@ void			badges_update(int quiet);
 void			screen_holy(void);
 int				tdf_list_menu(const char *title, const char **items, int n, int *sel, const char *foot);
 int				tdf_menu_tester(const char *train, const char *other, const char *other_label);
+void			tdf_menu_aide(int x, int y, int sel);
 void			tdf_menu_chevalier(void (*profile)(void));
 void			tdf_menu_lore(void (*boss)(void));
 void			tdf_menu_stats(void);

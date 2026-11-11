@@ -144,6 +144,7 @@ int	screen_menu(void)
 			g_save.boss[0] + g_save.boss[1] + g_save.boss[2],
 			exo_done_count());
 		text_at(x + 34, y + 5 + n * 2, theme()->dim, tmp);
+		tdf_menu_aide(x + 34, y + 7 + n * 2, sel);
 		flush();
 		k = key_dir(key_read(40));
 		if (k == 1000)
@@ -173,6 +174,7 @@ typedef struct s_shopst
 	int	sel;
 	int	top;
 	int	wardrobe;
+	int	jump;
 }	t_shopst;
 
 #define NTAB (NSLOT + 2)
@@ -322,12 +324,20 @@ void	screen_shop(int wardrobe)
 
 	memset(&s, 0, sizeof(s));
 	s.wardrobe = wardrobe;
+	s.jump = 1;
 	shake = 0;
 	cls();
 	while (1)
 	{
 		t = now_ms();
 		n = list_items(&s, ids, NTITLE);
+		if (s.jump)
+		{
+			s.jump = 0;
+			for (i = 0; i < n; i++)
+				if (equipped(&s, ids[i]))
+					s.sel = i;
+		}
 		if (s.sel >= n)
 			s.sel = n ? n - 1 : 0;
 		rows = term_rows() - 9;
@@ -392,6 +402,12 @@ void	screen_shop(int wardrobe)
 			text_at(x, 4, theme()->dim, L("Rien ici pour l'instant. Passe à la boutique !",
 					"Nothing here yet. Visit the shop!"));
 		avatar_panel(x + 50, 3, &lk, title, t);
+		if (id >= 0 && tab_slot(s.tab) >= 0 && !equipped(&s, id))
+			text_at(x + 50, 24 > term_rows() - 3 ? term_rows() - 3 : 24, rgb(255, 200, 80),
+				L("Aperçu : pas encore équipé (Entrée)", "Preview: not equipped yet (Enter)"));
+		else if (id >= 0 && tab_slot(s.tab) >= 0)
+			text_at(x + 50, 24 > term_rows() - 3 ? term_rows() - 3 : 24, rgb(80, 230, 140),
+				L("Ton chevalier, tel qu'il est équipé", "Your knight, as equipped"));
 		if (s.tab == NSLOT && id >= 0)
 		{
 			for (i = 0; i < 6; i++)
@@ -413,12 +429,14 @@ void	screen_shop(int wardrobe)
 			s.tab = (s.tab + 1) % NTAB;
 			s.sel = 0;
 			s.top = 0;
+			s.jump = 1;
 		}
 		else if (k == 1003)
 		{
 			s.tab = (s.tab + NTAB - 1) % NTAB;
 			s.sel = 0;
 			s.top = 0;
+			s.jump = 1;
 		}
 		else if (k == 1000 && s.sel > 0)
 			s.sel--;

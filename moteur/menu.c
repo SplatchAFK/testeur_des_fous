@@ -4,11 +4,34 @@
 #include <string.h>
 #include "fous.h"
 
+static void	label_of(const char *item, char *b, size_t n)
+{
+	const char	*s;
+	size_t		l;
+
+	s = item[0] == '~' ? item + 1 : item;
+	l = strcspn(s, "|");
+	if (l >= n)
+		l = n - 1;
+	memcpy(b, s, l);
+	b[l] = '\0';
+}
+
+static const char	*desc_of(const char *item)
+{
+	const char	*p;
+
+	p = strchr(item, '|');
+	return (p ? p + 1 : NULL);
+}
+
 int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const char *foot)
 {
+	char	lab[160];
 	int		k;
 	int		i;
 	int		x;
+	int		y;
 	long	t;
 
 	cls();
@@ -32,11 +55,19 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 			}
 			else
 				fg(items[i][0] == '~' ? theme()->dim : theme()->text);
-			outf(" %s %-54s ", i == *sel ? "▶" : " ", items[i][0] == '~' ? items[i] + 1 : items[i]);
+			label_of(items[i], lab, sizeof(lab));
+			outf(" %s %s", i == *sel ? "▶" : " ", lab);
+			outf("%*s", 55 - ulen(lab) > 0 ? 55 - ulen(lab) : 1, "");
 			bgc(theme()->bg);
 		}
+		y = 6 + n * 2;
+		if (desc_of(items[*sel]))
+		{
+			fill(x, y, 60, 2, theme()->bg);
+			y = text_wrap(x + 3, y, y + 2, 56, theme()->accent, desc_of(items[*sel])) + 1;
+		}
 		if (foot)
-			text_wrap(x, 6 + n * 2, term_rows() - 2, 60, theme()->dim, foot);
+			text_wrap(x, y, term_rows() - 2, 60, theme()->dim, foot);
 		foot_line(x, L("▲ ▼ choisir   Entrée : valider   Échap : retour",
 				"▲ ▼ pick   Enter: confirm   Esc: back"));
 		flush();
@@ -50,6 +81,26 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 		else if (k == '\r' || k == '\n' || k == ' ')
 			return (cls(), *sel);
 	}
+}
+
+void	tdf_menu_aide(int x, int y, int sel)
+{
+	const char	*d[6];
+
+	d[0] = L("Lancer les tests de ton projet, voir les résultats, l'entraînement et l'exam.",
+			"Run your project's tests, see results, training and the exam.");
+	d[1] = L("Habiller ton chevalier, la boutique, ton profil et tes succès.",
+			"Dress your knight, the shop, your profile and achievements.");
+	d[2] = L("Revoir les boss et les cinématiques débloqués.", "Replay the bosses and cutscenes you unlocked.");
+	d[3] = L("Ta progression, ce qui échoue le plus, ton historique.", "Your progress, what fails most, your history.");
+	d[4] = L("Réglages, sauvegarde, nous aider, crédits.", "Settings, save, help us, credits.");
+	d[5] = L("Fermer le testeur. Ta progression est déjà enregistrée.", "Close the tester. Your progress is already saved.");
+	if (sel < 0 || sel > 5)
+		return ;
+	fill(x, y, 44, 3, theme()->bg);
+	text_wrap(x, y, y + 3, 44, theme()->accent, d[sel]);
+	foot_line(x - 34 > 0 ? x - 34 : 0, L("▲ ▼ choisir   Entrée : ouvrir   r : lancer les tests   Échap : quitter",
+			"▲ ▼ pick   Enter: open   r: run the tests   Esc: quit"));
 }
 
 static int	module_dispo(const char *name)
@@ -89,17 +140,19 @@ int	tdf_menu_tester(const char *train, const char *other, const char *other_labe
 {
 	static int	sel;
 	const char	*items[8];
-	char		sw[120];
+	char		sw[300];
 	int			dispo;
 	int			i;
 
 	dispo = module_dispo(other);
-	snprintf(sw, sizeof(sw), "%s%s%s", dispo ? "" : "~", L("Passer à ", "Switch to "), other_label);
-	items[0] = L("Relancer les tests      (r)", "Run the tests again     (r)");
-	items[1] = L("Résultats détaillés", "Detailed results");
+	snprintf(sw, sizeof(sw), "%s%s%s%s", dispo ? "" : "~", L("Passer à ", "Switch to "), other_label,
+		dispo ? L("|Change de projet sans quitter le testeur.", "|Switch project without leaving the tester.")
+		: L("|Range ce projet à côté du testeur pour l'activer.", "|Put that project next to the tester to enable it."));
+	items[0] = L("Lancer les tests        (r)|Recompile ton projet et le teste en entier.", "Run the tests           (r)|Rebuilds your project and tests all of it.");
+	items[1] = L("Résultats détaillés|Chaque fonction ou catégorie, avec le cas qui échoue et une piste.", "Detailed results|Every function or category, with the failing case and a hint.");
 	items[2] = train;
 	items[3] = sw;
-	items[4] = L("Exam en C", "C exam");
+	items[4] = L("Exam en C|L'exam du rang 02 en ligne de commande, comme le vrai : grademe, 4 niveaux, 3 h.", "C exam|The rank 02 exam on the command line, like the real one: grademe, 4 levels, 3 h.");
 	items[5] = L("~Banque d'exercices      (bientôt)", "~Exercise bank           (soon)");
 	items[6] = L("~get_next_line           (plus tard)", "~get_next_line           (later)");
 	items[7] = L("~push_swap               (plus tard)", "~push_swap               (later)");
@@ -127,9 +180,9 @@ void	tdf_menu_chevalier(void (*profile)(void))
 	const char	*items[3];
 	int			i;
 
-	items[0] = L("Avatar (garde-robe)", "Avatar (wardrobe)");
-	items[1] = L("Boutique", "Shop");
-	items[2] = L("Profil et succès", "Profile and achievements");
+	items[0] = L("Avatar (garde-robe)|Équipe les objets que tu possèdes et choisis leurs couleurs.", "Avatar (wardrobe)|Equip the items you own and pick their colours.");
+	items[1] = L("Boutique|Dépense tes Octets : objets, thèmes, titres. Les Octets se gagnent en validant.", "Shop|Spend your Octets: items, themes, titles. You earn Octets by passing tests.");
+	items[2] = L("Profil et succès|Bannière, photo, bio et tous tes succès.", "Profile and achievements|Banner, picture, bio and all your achievements.");
 	while (1)
 	{
 		i = tdf_list_menu(L("CHEVALIER", "KNIGHT"), items, 3, &sel, NULL);
@@ -150,7 +203,7 @@ void	tdf_menu_lore(void (*boss)(void))
 	const char	*items[2];
 	int			i;
 
-	items[0] = L("Boss et cinématiques", "Bosses and cutscenes");
+	items[0] = L("Boss et cinématiques|Revois les combats et les cinématiques déjà débloqués.", "Bosses and cutscenes|Replay the fights and cutscenes you unlocked.");
 	items[1] = L("~Carte du monde           (bientôt)", "~World map               (soon)");
 	while (1)
 	{
@@ -170,8 +223,8 @@ void	tdf_menu_stats(void)
 	const char	*items[2];
 	int			i;
 
-	items[0] = L("Mes stats", "My stats");
-	items[1] = L("Badges et holygraph 42 Next", "Badges and 42 Next holygraph");
+	items[0] = L("Mes stats|Ta progression, ce qui échoue le plus, ton historique. ◀ ▶ pour changer de page.", "My stats|Your progress, what fails most, your history. ◀ ▶ to change page.");
+	items[1] = L("Badges et holygraph 42 Next|Tes badges et les projets du Common Core, avec ce qui manque.", "Badges and 42 Next holygraph|Your badges and the Common Core projects, with what is missing.");
 	while (1)
 	{
 		i = tdf_list_menu(L("STATS", "STATS"), items, 2, &sel, NULL);
@@ -190,9 +243,9 @@ void	tdf_menu_params(void (*credits)(void))
 	const char	*items[4];
 	int			i;
 
-	items[0] = L("Réglages", "Settings");
-	items[1] = L("Sauvegarde et connexion", "Save and login");
-	items[2] = L("Nous aider", "Help us");
+	items[0] = L("Réglages|Langue, animations, histoire, niveau d'aide, outils de test.", "Settings|Language, animations, story, help level, test tools.");
+	items[1] = L("Sauvegarde et connexion|Exporter ta progression ou la retrouver sur un autre poste.", "Save and login|Export your progress or get it back on another computer.");
+	items[2] = L("Nous aider|Crée une trace (ni code, ni login) à envoyer à splatch_afk.", "Help us|Create a trace (no code, no login) to send to splatch_afk.");
 	items[3] = L("Crédits", "Credits");
 	while (1)
 	{
