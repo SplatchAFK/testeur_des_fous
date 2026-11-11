@@ -1,0 +1,13 @@
+Exercice           : ft_strjoin_n
+Fichiers attendus  : ft_strjoin_n.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Renvoie une nouvelle chaîne (malloc de la taille exacte) qui colle les n chaînes qui suivent n. NULL si malloc échoue.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_strjoin_n(int n, ...);
+
+Notion : deux passages sur les arguments
+Norme obligatoire. Pas de libft ici.

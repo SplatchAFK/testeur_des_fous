@@ -1,0 +1,14 @@
+Exercice           : ft_strrev
+Fichiers attendus  : ft_strrev.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Inverse la chaîne s sur place (sans malloc) et renvoie s.
+Exemple : "abc" devient "cba". La chaîne vide reste vide.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_strrev(char *s);
+
+Notion : échange en place, deux index
+Norme obligatoire. Les fonctions d'aide doivent être static.

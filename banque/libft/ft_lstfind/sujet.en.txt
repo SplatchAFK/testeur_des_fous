@@ -1,0 +1,14 @@
+Assignment name    : ft_lstfind
+Expected files     : ft_lstfind.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Return the first node where cmp(content, ref) == 0, else NULL.
+
+Your function must have this prototype:
+
+t_list	*ft_lstfind(t_list *lst, const void *ref,
+			int (*cmp)(const void *, const void *));
+
+Notion : callback avec contexte
+Norme obligatoire. Les fonctions d'aide doivent être static.

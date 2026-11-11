@@ -1,0 +1,6 @@
+source=libft
+niveau=8
+type=fonction
+fichiers=ft_strndup.c
+autorise=malloc, free, write, ta libft
+notion=taille d'allocation exacte

@@ -1,0 +1,6 @@
+source=printf
+niveau=11
+type=fonction
+fichiers=ft_strjoin_n.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=deux passages sur les arguments

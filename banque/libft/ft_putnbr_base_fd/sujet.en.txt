@@ -1,0 +1,13 @@
+Assignment name    : ft_putnbr_base_fd
+Expected files     : ft_putnbr_base_fd.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Write n in base on fd. Invalid base writes nothing. Handle LONG_MIN.
+
+Your function must have this prototype:
+
+void	ft_putnbr_base_fd(long n, const char *base, int fd);
+
+Notion : récursion et write
+Norme obligatoire. Les fonctions d'aide doivent être static.

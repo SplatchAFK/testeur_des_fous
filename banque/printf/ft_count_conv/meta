@@ -1,0 +1,6 @@
+source=printf
+niveau=8
+type=fonction
+fichiers=ft_count_conv.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=le '%' final

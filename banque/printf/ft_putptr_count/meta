@@ -1,0 +1,6 @@
+source=printf
+niveau=6
+type=fonction
+fichiers=ft_putptr_count.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=pointeurs et unsigned long

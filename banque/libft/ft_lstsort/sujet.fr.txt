@@ -1,0 +1,14 @@
+Exercice           : ft_lstsort
+Fichiers attendus  : ft_lstsort.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Trie la liste par ordre croissant selon cmp (cmp(a, b) > 0 : a va après b).
+Tu peux déplacer les maillons ou échanger les content.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_lstsort(t_list **lst, int (*cmp)(const void *, const void *));
+
+Notion : trier une liste chaînée
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,6 @@
+source=printf
+niveau=1
+type=fonction
+fichiers=ft_putchar_count.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=write et sa valeur de retour

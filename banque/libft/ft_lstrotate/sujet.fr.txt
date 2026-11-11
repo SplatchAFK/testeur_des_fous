@@ -1,0 +1,15 @@
+Exercice           : ft_lstrotate
+Fichiers attendus  : ft_lstrotate.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Fait tourner la liste de n crans : n > 0 envoie les n premiers maillons à la fin,
+n < 0 envoie les |n| derniers au début. n peut être plus grand que la liste
+(et peut valoir INT_MIN). Liste vide ou NULL : ne rien faire.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_lstrotate(t_list **lst, int n);
+
+Notion : modulo, négatifs, relier la queue
+Norme obligatoire. Les fonctions d'aide doivent être static.

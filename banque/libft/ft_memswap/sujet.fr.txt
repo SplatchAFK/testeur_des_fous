@@ -1,0 +1,14 @@
+Exercice           : ft_memswap
+Fichiers attendus  : ft_memswap.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Échange octet par octet les n premiers octets de a et de b.
+Les zones ne se chevauchent pas. Doit marcher pour n'importe quel type.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_memswap(void *a, void *b, size_t n);
+
+Notion : void * et octets
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,13 @@
+Assignment name    : ft_puthex_count
+Expected files     : ft_puthex_count.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Write n in hexadecimal, uppercase if upper is 1. Return the number of characters written.
+
+Your function must have this prototype:
+
+int	ft_puthex_count(unsigned int n, int upper);
+
+Notion : hexadécimal et casse
+Norme obligatoire. Pas de libft ici.

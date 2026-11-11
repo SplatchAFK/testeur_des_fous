@@ -10,6 +10,7 @@ bash testeur_des_fous/run.sh libft        # tester ta Libft
 bash testeur_des_fous/run.sh printf       # tester ton ft_printf
 bash testeur_des_fous/run.sh gnl          # tester ton get_next_line
 bash testeur_des_fous/run.sh exam         # passer l'exam en C (4 niveaux, grademe)
+bash testeur_des_fous/run.sh banque       # la banque d'exercices : exam, Libft, printf
 bash testeur_des_fous/run.sh --menu       # le menu sans lancer de tests (stats, chevalier, lore)
 bash testeur_des_fous/run.sh debug        # le journal de la dernière session (debug aide : tout)
 bash testeur_des_fous/run.sh --no-lore    # les tests seuls, sans histoire
@@ -49,7 +50,7 @@ Ta progression est dans `~/.testeur_des_fous/save.txt`, hors du dossier du teste
 | Libft | intégré : 43 fonctions, mémoire, Norme, audit du Makefile |
 | ft_printf | intégré : conversions, retour, `malloc` en échec, stress |
 | Exam (C) | intégré : 57 exercices sur 4 niveaux, chronomètre de 3 h, `grademe` |
-| Banque d'exercices | à venir |
+| Banque d'exercices | intégré : 94 exercices (57 de l'exam, 21 d'entraînement Libft, 16 d'entraînement printf), au choix |
 | get_next_line | intégré : 7 BUFFER_SIZE et sans -D, stdin, tubes, fd invalides, read et malloc qui échouent, fuites, Norme, README |
 | push_swap | plus tard |
 

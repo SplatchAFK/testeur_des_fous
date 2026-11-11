@@ -1,0 +1,6 @@
+source=printf
+niveau=14
+type=fonction
+fichiers=ft_utoa_base.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=malloc de taille exacte

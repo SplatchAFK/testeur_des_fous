@@ -1,0 +1,14 @@
+Exercice           : ft_strndup
+Fichiers attendus  : ft_strndup.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Duplique au plus n caractères de s dans une nouvelle chaîne terminée par '\0'.
+Alloue exactement ce qu'il faut. Renvoie NULL si malloc échoue.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_strndup(const char *s, size_t n);
+
+Notion : taille d'allocation exacte
+Norme obligatoire. Les fonctions d'aide doivent être static.

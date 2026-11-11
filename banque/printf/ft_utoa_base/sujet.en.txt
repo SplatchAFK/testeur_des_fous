@@ -1,0 +1,13 @@
+Assignment name    : ft_utoa_base
+Expected files     : ft_utoa_base.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Return n written in base, in a string allocated to the exact size. NULL if malloc fails.
+
+Your function must have this prototype:
+
+char	*ft_utoa_base(unsigned long n, const char *base);
+
+Notion : malloc de taille exacte
+Norme obligatoire. Pas de libft ici.

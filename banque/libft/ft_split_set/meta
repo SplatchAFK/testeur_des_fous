@@ -1,0 +1,6 @@
+source=libft
+niveau=11
+type=fonction
+fichiers=ft_split_set.c
+autorise=malloc, free, write, ta libft
+notion=split généralisé

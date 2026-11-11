@@ -1,0 +1,13 @@
+Assignment name    : ft_sort_strs
+Expected files     : ft_sort_strs.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Sort a NULL-terminated array in place using cmp. Swap pointers only.
+
+Your function must have this prototype:
+
+void	ft_sort_strs(char **tab, int (*cmp)(const char *, const char *));
+
+Notion : pointeurs sur fonction et tri
+Norme obligatoire. Les fonctions d'aide doivent être static.

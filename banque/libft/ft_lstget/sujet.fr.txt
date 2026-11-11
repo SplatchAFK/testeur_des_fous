@@ -1,0 +1,13 @@
+Exercice           : ft_lstget
+Fichiers attendus  : ft_lstget.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Renvoie le maillon numéro index (le premier est 0), ou NULL s'il n'existe pas.
+
+Ta fonction doit avoir ce prototype :
+
+t_list	*ft_lstget(t_list *lst, size_t index);
+
+Notion : parcours et bornes
+Norme obligatoire. Les fonctions d'aide doivent être static.

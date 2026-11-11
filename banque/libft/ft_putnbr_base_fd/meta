@@ -1,0 +1,6 @@
+source=libft
+niveau=13
+type=fonction
+fichiers=ft_putnbr_base_fd.c
+autorise=malloc, free, write, ta libft
+notion=récursion et write

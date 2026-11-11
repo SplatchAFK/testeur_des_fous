@@ -1,0 +1,13 @@
+Exercice           : ft_putchar_count
+Fichiers attendus  : ft_putchar_count.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Écris le caractère c sur la sortie standard. Renvoie le nombre d'octets écrits (1), ou -1 si write échoue.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_putchar_count(char c);
+
+Notion : write et sa valeur de retour
+Norme obligatoire. Pas de libft ici.

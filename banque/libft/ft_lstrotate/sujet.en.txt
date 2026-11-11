@@ -1,0 +1,13 @@
+Assignment name    : ft_lstrotate
+Expected files     : ft_lstrotate.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Rotate the list by n (negative goes backwards, n may exceed the size or be INT_MIN).
+
+Your function must have this prototype:
+
+void	ft_lstrotate(t_list **lst, int n);
+
+Notion : modulo, négatifs, relier la queue
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,13 @@
+Assignment name    : ft_split_set
+Expected files     : ft_split_set.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Like ft_split, but splits on any character of set.
+
+Your function must have this prototype:
+
+char	**ft_split_set(char const *s, char const *set);
+
+Notion : split généralisé
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,13 @@
+Assignment name    : ft_strjoin_n
+Expected files     : ft_strjoin_n.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Return a new string (malloc of the exact size) joining the n strings after n. NULL if malloc fails.
+
+Your function must have this prototype:
+
+char	*ft_strjoin_n(int n, ...);
+
+Notion : deux passages sur les arguments
+Norme obligatoire. Pas de libft ici.

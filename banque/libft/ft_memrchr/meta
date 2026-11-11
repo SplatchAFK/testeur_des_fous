@@ -1,0 +1,6 @@
+source=libft
+niveau=3
+type=fonction
+fichiers=ft_memrchr.c
+autorise=malloc, free, write, ta libft
+notion=boucle à l'envers avec un size_t

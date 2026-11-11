@@ -72,6 +72,7 @@ typedef struct s_xsave
 	long	lastreward;
 	char	done[2400];
 	char	code[600];
+	char	bdone[2400];
 }	t_xsave;
 
 static t_xexo	g_bank[XMAXEXO];
@@ -129,13 +130,15 @@ void	game_kv(const char *k, const char *v)
 		snprintf(g_xs.done, sizeof(g_xs.done), "%s", v);
 	else if (!strcmp(k, "code"))
 		snprintf(g_xs.code, sizeof(g_xs.code), "%s", v);
+	else if (!strcmp(k, "bdone"))
+		snprintf(g_xs.bdone, sizeof(g_xs.bdone), "%s", v);
 }
 
 void	game_text(char *b, size_t n)
 {
 	snprintf(b, n, "exam.runs=%d\nexam.best=%d\nexam.passed=%d\nexam.besttime=%ld\nexam.cheats=%d\n"
-		"exam.lastreward=%ld\nexam.done=%s\nexam.code=%s\n", g_xs.runs, g_xs.best, g_xs.passed, g_xs.besttime,
-		g_xs.cheats, g_xs.lastreward, g_xs.done, g_xs.code);
+		"exam.lastreward=%ld\nexam.done=%s\nexam.code=%s\nexam.bdone=%s\n", g_xs.runs, g_xs.best, g_xs.passed, g_xs.besttime,
+		g_xs.cheats, g_xs.lastreward, g_xs.done, g_xs.code, g_xs.bdone);
 }
 
 static const char	*col(const char *code)
@@ -1551,6 +1554,496 @@ static int	check(const char *soldir, int ac, char **av)
 	return (bad != 0);
 }
 
+typedef struct s_bexo
+{
+	char	src[8];
+	char	name[48];
+	int		niv;
+	int		ex;
+	char	notion[120];
+}	t_bexo;
+
+static t_bexo	g_b[260];
+static int		g_nb;
+static int		g_vue[260];
+static int		g_nvue;
+static int		g_bcur = -1;
+static int		g_blang;
+
+static int	b_done(const t_bexo *b)
+{
+	char		key[64];
+	const char	*p;
+	size_t		n;
+
+	snprintf(key, sizeof(key), "%s:%s", b->src, b->name);
+	n = strlen(key);
+	for (p = g_xs.bdone; (p = strstr(p, key)); p += n)
+		if ((p == g_xs.bdone || p[-1] == ',') && (p[n] == ',' || p[n] == '\0'))
+			return (1);
+	return (!strcmp(b->src, "exam") && done_has(b->name));
+}
+
+static void	b_mark(const t_bexo *b)
+{
+	size_t	n;
+
+	if (b_done(b) && strcmp(b->src, "exam"))
+		return ;
+	if (!strcmp(b->src, "exam"))
+	{
+		done_add(b->name);
+		return ;
+	}
+	n = strlen(g_xs.bdone);
+	if (n + strlen(b->name) + 12 < sizeof(g_xs.bdone))
+		snprintf(g_xs.bdone + n, sizeof(g_xs.bdone) - n, "%s%s:%s", n ? "," : "", b->src, b->name);
+}
+
+static void	b_load_ext(const char *src)
+{
+	DIR				*d;
+	struct dirent	*e;
+	FILE			*f;
+	char			path[1300];
+	char			line[400];
+	t_bexo			*b;
+
+	snprintf(path, sizeof(path), "%s/banque/%s", g_root, src);
+	d = opendir(path);
+	while (d && (e = readdir(d)) && g_nb < 260)
+	{
+		if (e->d_name[0] == '.')
+			continue ;
+		snprintf(path, sizeof(path), "%s/banque/%s/%s/meta", g_root, src, e->d_name);
+		f = fopen(path, "r");
+		if (!f)
+			continue ;
+		b = &g_b[g_nb];
+		memset(b, 0, sizeof(*b));
+		snprintf(b->src, sizeof(b->src), "%s", src);
+		snprintf(b->name, sizeof(b->name), "%s", e->d_name);
+		b->ex = -1;
+		while (fgets(line, sizeof(line), f))
+		{
+			line[strcspn(line, "\n")] = '\0';
+			if (!strncmp(line, "niveau=", 7))
+				b->niv = atoi(line + 7);
+			else if (!strncmp(line, "notion=", 7))
+				snprintf(b->notion, sizeof(b->notion), "%s", line + 7);
+		}
+		fclose(f);
+		g_nb++;
+	}
+	if (d)
+		closedir(d);
+}
+
+static int	b_cmp(const void *a, const void *b)
+{
+	const t_bexo	*x = a;
+	const t_bexo	*y = b;
+	int				r;
+
+	r = strcmp(x->src, y->src);
+	if (r)
+		return (r);
+	if (x->niv != y->niv)
+		return (x->niv - y->niv);
+	return (strcmp(x->name, y->name));
+}
+
+static void	b_load(void)
+{
+	int	i;
+
+	for (i = 0; i < g_nbank && g_nb < 260; i++)
+	{
+		memset(&g_b[g_nb], 0, sizeof(t_bexo));
+		snprintf(g_b[g_nb].src, sizeof(g_b[g_nb].src), "exam");
+		snprintf(g_b[g_nb].name, sizeof(g_b[g_nb].name), "%s", g_bank[i].name);
+		g_b[g_nb].niv = g_bank[i].level;
+		g_b[g_nb].ex = i;
+		snprintf(g_b[g_nb].notion, sizeof(g_b[g_nb].notion), "%s", g_bank[i].prog ? "programme" : "fonction");
+		g_nb++;
+	}
+	b_load_ext("libft");
+	b_load_ext("printf");
+	qsort(g_b, g_nb, sizeof(t_bexo), b_cmp);
+	for (i = 0; i < g_nb; i++)
+		if (!strcmp(g_b[i].src, "exam"))
+			g_b[i].ex = exo_find(g_b[i].name);
+}
+
+static const char	*b_srcname(const char *src)
+{
+	if (!strcmp(src, "exam"))
+		return ("Exam");
+	if (!strcmp(src, "libft"))
+		return ("Libft");
+	return ("printf");
+}
+
+static void	b_entete(const char *titre)
+{
+	int	tot;
+	int	ok;
+	int	i;
+
+	for (tot = 0, ok = 0, i = 0; i < g_nb; i++)
+	{
+		tot++;
+		ok += b_done(&g_b[i]);
+	}
+	ecran();
+	printf("\n  %s═════════════════════ BANQUE D'EXERCICES ══════════════════════%s\n", C_AC, C_R);
+	printf("   %s%s%s", C_B, titre, C_R);
+	printf("   %s%d/%d réussis%s\n", C_D, ok, tot, C_R);
+	printf("  %s════════════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
+}
+
+static void	b_commandes(void)
+{
+	printf("\n  %sliste%s [exam|libft|printf] [niveau]   %scherche%s MOT   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n",
+		C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R);
+}
+
+static void	b_accueil(void)
+{
+	static const char	*src[3] = {"exam", "libft", "printf"};
+	int					s;
+	int					lv;
+	int					t;
+	int					o;
+	int					i;
+
+	b_entete("Tous les exercices du testeur, à faire dans l'ordre que tu veux");
+	for (s = 0; s < 3; s++)
+	{
+		for (t = 0, o = 0, i = 0; i < g_nb; i++)
+			if (!strcmp(g_b[i].src, src[s]))
+			{
+				t++;
+				o += b_done(&g_b[i]);
+			}
+		printf("   %s%-8s%s %3d exercices   %s%d réussis%s", C_B, b_srcname(src[s]), C_R, t, o == t && t ? C_OK : C_D, o, C_R);
+		if (s == 0)
+		{
+			printf("   ");
+			for (lv = 1; lv <= XLEVELS; lv++)
+			{
+				for (t = 0, o = 0, i = 0; i < g_nb; i++)
+					if (!strcmp(g_b[i].src, "exam") && g_b[i].niv == lv)
+					{
+						t++;
+						o += b_done(&g_b[i]);
+					}
+				printf(" %sniv.%d%s %d/%d", level_color(lv), lv, C_R, o, t);
+			}
+		}
+		printf("\n");
+	}
+	printf("\n   %sExemples : « liste exam 2 », « cherche split », « ouvre 3 », puis « grademe ».%s\n", C_D, C_R);
+	if (g_bcur >= 0)
+		printf("   Exercice ouvert : %s%s%s (%s)\n", C_AC, g_b[g_bcur].name, C_R, b_srcname(g_b[g_bcur].src));
+	b_commandes();
+}
+
+static void	b_liste(const char *src, int niv, const char *mot)
+{
+	char	titre[200];
+	int		i;
+
+	g_nvue = 0;
+	for (i = 0; i < g_nb; i++)
+	{
+		if (src && strcmp(g_b[i].src, src))
+			continue ;
+		if (niv > 0 && g_b[i].niv != niv)
+			continue ;
+		if (mot && !strstr(g_b[i].name, mot) && !strstr(g_b[i].notion, mot))
+			continue ;
+		g_vue[g_nvue++] = i;
+	}
+	if (mot)
+		snprintf(titre, sizeof(titre), "Recherche « %s » : %d résultat(s)", mot, g_nvue);
+	else
+		snprintf(titre, sizeof(titre), "%s%s%s", src ? b_srcname(src) : "Tout", niv > 0 ? " · niveau " : "",
+			niv > 0 ? (const char *[]){"", "1", "2", "3", "4", "5", "6", "7", "8", "9"}[niv < 10 ? niv : 0] : "");
+	b_entete(titre);
+	for (i = 0; i < g_nvue; i++)
+	{
+		t_bexo	*b;
+
+		b = &g_b[g_vue[i]];
+		printf("   %s%3d%s  %s%-22s%s %-7s niv. %-2d  %s%s%s\n", C_AC, i + 1, C_R, b_done(b) ? C_OK : "", b->name,
+			C_R, b_srcname(b->src), b->niv, C_D, b->notion, C_R);
+	}
+	if (!g_nvue)
+		printf("   rien ne correspond\n");
+	b_commandes();
+}
+
+static void	b_workdir(const t_bexo *b, char *p, size_t n)
+{
+	snprintf(p, n, "%s/banque_travail/%s/%s", g_root, b->src, b->name);
+}
+
+static void	b_sujet(void)
+{
+	t_bexo	*b;
+	char	path[1300];
+	char	*txt;
+	char	*s;
+	char	*e;
+
+	if (g_bcur < 0)
+	{
+		printf("  aucun exercice ouvert : « ouvre N » après une liste\n");
+		return ;
+	}
+	b = &g_b[g_bcur];
+	b_entete(b->name);
+	b_workdir(b, path, sizeof(path));
+	printf("   Ton rendu : %s%s/", C_B, rel(path));
+	if (!strcmp(b->src, "exam") && b->ex >= 0)
+	{
+		int	i;
+
+		for (i = 0; i < g_bank[b->ex].nfiles; i++)
+			printf("%s%s", i ? ", " : "", g_bank[b->ex].files[i]);
+	}
+	else
+		printf("%s.c", b->name);
+	printf("%s\n", C_R);
+	printf("   %sÉcris ton code dans un autre terminal, puis tape grademe ici.%s\n\n", C_D, C_R);
+	snprintf(path, sizeof(path), "%s/banque/%s/%s/sujet.%s.txt", g_root, b->src, b->name, g_blang ? "en" : "fr");
+	txt = slurp(path, NULL);
+	for (s = txt; s && *s; s = *e ? e + 1 : e)
+	{
+		e = strchr(s, '\n');
+		if (!e)
+			e = s + strlen(s);
+		printf("   %.*s\n", (int)(e - s), s);
+	}
+	free(txt);
+	b_commandes();
+}
+
+static void	b_ouvre(const char *arg)
+{
+	char	path[1300];
+	int		i;
+	int		k;
+
+	k = -1;
+	if (arg && arg[0] >= '0' && arg[0] <= '9')
+	{
+		i = atoi(arg) - 1;
+		if (i >= 0 && i < g_nvue)
+			k = g_vue[i];
+	}
+	for (i = 0; arg && k < 0 && i < g_nb; i++)
+		if (!strcmp(g_b[i].name, arg))
+			k = i;
+	if (k < 0)
+	{
+		printf("  exercice introuvable : %s (fais d'abord « liste » ou « cherche »)\n", arg ? arg : "");
+		return ;
+	}
+	g_bcur = k;
+	b_workdir(&g_b[k], path, sizeof(path));
+	sh("mkdir -p %s && cp %s/banque/%s/%s/sujet.*.txt %s/ 2>/dev/null; true", q(path), q(g_root), g_b[k].src, g_b[k].name, q(path));
+	b_sujet();
+}
+
+static int	b_ext_grade(const t_bexo *b)
+{
+	char	work[1300];
+	char	dest[1300];
+	char	res[1300];
+	char	line[600];
+	FILE	*f;
+	int		ok;
+
+	b_workdir(b, work, sizeof(work));
+	snprintf(dest, sizeof(dest), "%s/modules/%s/entrainement/niveau_%02d", g_root, b->src, b->niv);
+	snprintf(res, sizeof(res), "%s/banque_res.txt", g_build);
+	snprintf(line, sizeof(line), "%s/%s.c", work, b->name);
+	if (access(line, R_OK) != 0)
+	{
+		printf("  fichier attendu introuvable : %s\n", rel(line));
+		return (0);
+	}
+	sh("mkdir -p %s && cp %s %s/", q(dest), q(line), q(dest));
+	if (!strcmp(b->src, "libft") && !getenv("TDF_LIBFT"))
+		printf("  %s(pas de libft trouvée à côté du testeur : seules tes fonctions de ce fichier sont utilisables)%s\n", C_D, C_R);
+	sh("rm -f %s; TDF_PROJET=%s bash %s/modules/%s/run.sh --exo %02d --out %s >/dev/null 2>&1", q(res),
+		q(getenv("TDF_LIBFT") ? getenv("TDF_LIBFT") : g_root), q(g_root), b->src, b->niv, q(res));
+	f = fopen(res, "r");
+	ok = 0;
+	while (f && fgets(line, sizeof(line), f))
+	{
+		line[strcspn(line, "\n")] = '\0';
+		if (!strncmp(line, "X\t", 2))
+		{
+			static const char	*k[][2] = {{"ko", "résultat faux"}, {"norme", "Norme non respectée"},
+				{"build", "ne compile pas"}, {"crash", "plantage ou erreur mémoire"}, {"leak", "fuite mémoire"},
+				{"fuite", "fuite mémoire"}, {"time", "aucune réponse : boucle infinie ?"},
+				{"ub", "comportement indéfini"}, {"interdit", "fonction interdite"}, {"absent", "fichier absent"}};
+			size_t				j;
+			size_t				l;
+
+			ok = !strncmp(line + 2, "ok", 2);
+			l = strcspn(line + 2, "\t");
+			for (j = 0; !ok && j < sizeof(k) / sizeof(k[0]); j++)
+				if (strlen(k[j][0]) == l && !strncmp(line + 2, k[j][0], l))
+					break ;
+			if (!ok)
+				printf("   %s%s%s\n", C_KO, j < sizeof(k) / sizeof(k[0]) ? k[j][1] : line + 2, C_R);
+		}
+		else if (!strncmp(line, "D\t", 2))
+			printf("   %s\n", line + 2);
+	}
+	if (f)
+		fclose(f);
+	else
+		printf("  le testeur %s n'a rien renvoyé\n", b->src);
+	return (ok);
+}
+
+static void	b_grademe(void)
+{
+	t_bexo	*b;
+	char	src[1300];
+	int		ok;
+	int		first;
+
+	if (g_bcur < 0)
+	{
+		printf("  aucun exercice ouvert : « ouvre N » après une liste\n");
+		return ;
+	}
+	b = &g_b[g_bcur];
+	b_entete(b->name);
+	printf("   Correction de %s%s%s en cours...\n", C_AC, b->name, C_R);
+	fflush(stdout);
+	if (!strcmp(b->src, "exam"))
+	{
+		b_workdir(b, src, sizeof(src));
+		g_st.trace = 2;
+		g_st.exo = b->ex;
+		ok = b->ex >= 0 && grade(&g_bank[b->ex], src, 0) == 0;
+		if (!ok)
+			trace_show(&g_bank[b->ex]);
+	}
+	else
+		ok = b_ext_grade(b);
+	if (ok)
+	{
+		printf("\n  %s╔══════════════════════════════╗%s\n", C_OK, C_R);
+		printf("  %s║           SUCCESS            ║%s\n", C_OK, C_R);
+		printf("  %s╚══════════════════════════════╝%s\n\n", C_OK, C_R);
+		first = !b_done(b);
+		b_mark(b);
+		if (first)
+			reward(10 + 5 * b->niv, "nouvel exercice de la banque");
+		save_write();
+	}
+	else
+	{
+		printf("\n  %s╔══════════════════════════════╗%s\n", C_KO, C_R);
+		printf("  %s║           FAILURE            ║%s\n", C_KO, C_R);
+		printf("  %s╚══════════════════════════════╝%s\n", C_KO, C_R);
+	}
+	b_commandes();
+}
+
+static void	b_aide(void)
+{
+	b_entete("Aide");
+	printf("   %sliste%s                 tous les exercices\n", C_B, C_R);
+	printf("   %sliste exam 2%s          l'exam, niveau 2 (aussi : liste libft, liste printf)\n", C_B, C_R);
+	printf("   %scherche MOT%s           par nom ou par notion (ex. : cherche lst, cherche bits)\n", C_B, C_R);
+	printf("   %souvre N%s               ouvre l'exercice n°N de la dernière liste (ou son nom)\n", C_B, C_R);
+	printf("   %sgrademe%s               corrige l'exercice ouvert\n", C_B, C_R);
+	printf("   %ssujet%s                 relire le sujet (sujet en : en anglais)\n", C_B, C_R);
+	printf("   %sfait%s                  ce que tu as déjà réussi\n", C_B, C_R);
+	printf("   %squitter%s               revenir\n\n", C_B, C_R);
+	printf("   Les exercices Libft et printf sont corrigés par leur propre testeur :\n");
+	printf("   Norme obligatoire, sanitizers, échecs de malloc.\n");
+	b_commandes();
+}
+
+static int	banque(void)
+{
+	char	line[400];
+	char	*cmd;
+	char	*a1;
+	char	*a2;
+
+	b_load();
+	sh("mkdir -p %s/banque_travail %s/traces", q(g_root), q(g_work));
+	g_blang = g_cfg.lang;
+	b_accueil();
+	while (1)
+	{
+		printf("%sbanque%s> ", C_AC, C_R);
+		fflush(stdout);
+		if (!fgets(line, sizeof(line), stdin))
+			break ;
+		cmd = strtok(line, " \t\r\n");
+		if (!cmd)
+			continue ;
+		a1 = strtok(NULL, " \t\r\n");
+		a2 = strtok(NULL, " \t\r\n");
+		if (!strcmp(cmd, "liste") || !strcmp(cmd, "ls"))
+		{
+			if (a1 && a1[0] >= '0' && a1[0] <= '9')
+				b_liste(NULL, atoi(a1), NULL);
+			else
+				b_liste(a1, a2 ? atoi(a2) : 0, NULL);
+		}
+		else if (!strcmp(cmd, "cherche"))
+			b_liste(NULL, 0, a1 ? a1 : "");
+		else if (!strcmp(cmd, "ouvre") || !strcmp(cmd, "ouvrir"))
+			b_ouvre(a1);
+		else if (!strcmp(cmd, "grademe"))
+			b_grademe();
+		else if (!strcmp(cmd, "sujet") || !strcmp(cmd, "subject"))
+		{
+			if (a1)
+				g_blang = !strcmp(a1, "en");
+			b_sujet();
+		}
+		else if (!strcmp(cmd, "fait"))
+		{
+			int	i;
+
+			g_nvue = 0;
+			for (i = 0; i < g_nb; i++)
+				if (b_done(&g_b[i]))
+					g_vue[g_nvue++] = i;
+			b_entete("Déjà réussis");
+			for (i = 0; i < g_nvue; i++)
+				printf("   %s%3d%s  %s%-22s%s %s\n", C_AC, i + 1, C_R, C_OK, g_b[g_vue[i]].name, C_R, b_srcname(g_b[g_vue[i]].src));
+			if (!g_nvue)
+				printf("   rien pour l'instant\n");
+			b_commandes();
+		}
+		else if (!strcmp(cmd, "aide") || !strcmp(cmd, "help"))
+			b_aide();
+		else if (!strcmp(cmd, "accueil") || !strcmp(cmd, "clear"))
+			b_accueil();
+		else if (!strcmp(cmd, "quitter") || !strcmp(cmd, "exit") || !strcmp(cmd, "quit") || !strcmp(cmd, "q"))
+			break ;
+		else
+			printf("  commande inconnue : %s (aide pour la liste)\n", cmd);
+	}
+	save_write();
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	static char	savedir[1000];
@@ -1592,6 +2085,8 @@ int	main(int ac, char **av)
 	if (g_save.valid == -1)
 		printf("  %ssauvegarde modifiée à la main : remise à zéro (ancienne copie : save.txt.triche)%s\n", C_KO, C_R);
 	cfg_load();
+	if (i < ac && !strcmp(av[i], "--banque"))
+		return (banque());
 	if (state_load())
 	{
 		printf("\n  Une session est en cours (%s, niveau %d). La reprendre ? (o/n) ", g_bank[g_st.exo].name, g_st.level);

@@ -1,0 +1,6 @@
+source=libft
+niveau=21
+type=fonction
+fichiers=ft_lstrotate.c
+autorise=malloc, free, write, ta libft
+notion=modulo, négatifs, relier la queue

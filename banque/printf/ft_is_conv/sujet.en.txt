@@ -1,0 +1,13 @@
+Assignment name    : ft_is_conv
+Expected files     : ft_is_conv.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Return 1 if c is a conversion from the subject (cspdiuxX%), 0 otherwise.
+
+Your function must have this prototype:
+
+int	ft_is_conv(char c);
+
+Notion : lecture du format
+Norme obligatoire. Pas de libft ici.

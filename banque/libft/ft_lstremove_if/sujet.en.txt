@@ -1,0 +1,14 @@
+Assignment name    : ft_lstremove_if
+Expected files     : ft_lstremove_if.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Remove every node where cmp(content, ref) == 0 (del then free).
+
+Your function must have this prototype:
+
+void	ft_lstremove_if(t_list **lst, const void *ref,
+			int (*cmp)(const void *, const void *), void (*del)(void *));
+
+Notion : supprimer en parcourant, t_list **
+Norme obligatoire. Les fonctions d'aide doivent être static.

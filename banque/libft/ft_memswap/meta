@@ -1,0 +1,6 @@
+source=libft
+niveau=5
+type=fonction
+fichiers=ft_memswap.c
+autorise=malloc, free, write, ta libft
+notion=void * et octets

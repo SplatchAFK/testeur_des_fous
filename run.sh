@@ -41,6 +41,7 @@ Créé et vibe-codé par Splatch (romasant)
   bash $TDF_NOM/run.sh printf           tester ton ft_printf
   bash $TDF_NOM/run.sh gnl              tester ton get_next_line
   bash $TDF_NOM/run.sh exam             passer un exam en C (4 niveaux, grademe)
+  bash $TDF_NOM/run.sh banque           la banque d'exercices (exam, Libft, printf)
   bash $TDF_NOM/run.sh --menu           ouvrir le menu sans lancer de tests (stats, chevalier...)
   bash $TDF_NOM/run.sh debug            le journal de la dernière session (debug aide : tout)
   bash $TDF_NOM/run.sh --projet CHEMIN  tester le projet de ce dossier
@@ -190,6 +191,9 @@ while [ $# -gt 0 ]; do
 	shift
 	case "$a" in
 		--menu) MENU=1 ;;
+		banque)
+			if [ -z "$MODULE" ]; then MODULE=exam; SUITE+=(--banque); else SUITE+=("$a"); fi
+			;;
 		libft|printf|exam|gnl)
 			if [ -z "$MODULE" ]; then MODULE="$a"; else SUITE+=("$a"); fi
 			;;
@@ -266,10 +270,10 @@ else
 		for p in ${GNLS[@]+"${GNLS[@]}"}; do CHOIX+=("$p"); NOMS+=("gnl"); done
 	fi
 	if [ -z "$MODULE" ] && [ ${#CHOIX[@]} -ne 1 ]; then
-		CHOIX+=("" "")
-		NOMS+=("exam" "menu")
+		CHOIX+=("" "" "")
+		NOMS+=("exam" "banque" "menu")
 	fi
-	if [ ${#CHOIX[@]} -eq 0 ] || { [ ${#CHOIX[@]} -eq 2 ] && [ "${NOMS[0]}" = exam ] && ! { [ -t 0 ] && [ -t 1 ]; }; }; then
+	if [ ${#CHOIX[@]} -eq 0 ] || { [ ${#CHOIX[@]} -eq 3 ] && [ "${NOMS[0]}" = exam ] && ! { [ -t 0 ] && [ -t 1 ]; }; }; then
 		cat <<EOF
 Le testeur des fous $TDF_VERSION
 
@@ -297,6 +301,7 @@ EOF
 			case "${NOMS[$i]}" in
 				libft) etiquette="Libft" ;;
 				exam) etiquette="Exam en C" ;;
+				banque) etiquette="Banque d'exercices : exam, Libft, printf" ;;
 				gnl) etiquette="GNL" ;;
 				menu) etiquette="Menu seul : stats, chevalier, lore (sans tester)" ;;
 				*) etiquette="ft_printf" ;;
@@ -320,6 +325,10 @@ EOF
 		fi
 		PROJET="${CHOIX[$((rep - 1))]}"
 		MODULE="${NOMS[$((rep - 1))]}"
+		if [ "$MODULE" = banque ]; then
+			MODULE="exam"
+			SUITE+=(--banque)
+		fi
 		if [ "$MODULE" = menu ]; then
 			MODULE="libft"
 			PROJET="${LIBFTS[0]:-}"
@@ -335,8 +344,8 @@ EOF
 		while [ $i -lt ${#CHOIX[@]} ]; do
 			if [ -n "${CHOIX[$i]}" ]; then
 				printf '  bash %s/run.sh %s --projet %s\n' "$TDF_NOM" "${NOMS[$i]}" "${CHOIX[$i]}"
-			elif [ "${NOMS[$i]}" = exam ]; then
-				printf '  bash %s/run.sh exam\n' "$TDF_NOM"
+			elif [ "${NOMS[$i]}" = exam ] || [ "${NOMS[$i]}" = banque ]; then
+				printf '  bash %s/run.sh %s\n' "$TDF_NOM" "${NOMS[$i]}"
 			else
 				printf '  bash %s/run.sh --menu\n' "$TDF_NOM"
 			fi
@@ -364,6 +373,8 @@ RETOUR_PROJET=""
 export TDF_DISPO
 export TDF_NOM
 export TDF_RACINE
+export TDF_LIBFT="${LIBFTS[0]:-}"
+[ -n "$TDF_LIBFT" ] || unset TDF_LIBFT
 
 debug_ouvrir ${ARGS_ORIG[@]+"${ARGS_ORIG[@]}"}
 TDF_JOURNAL_MOD="lanceur"
@@ -402,13 +413,17 @@ while :; do
 	case "$suivant" in
 		libft) [ ${#LIBFTS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }; PROJET="${LIBFTS[0]}" ;;
 		printf) [ ${#PRINTFS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }; PROJET="${PRINTFS[0]}" ;;
-		exam) RETOUR_MODULE="$MODULE"; RETOUR_PROJET="$PROJET"; PROJET="" ;;
+		exam|banque) RETOUR_MODULE="$MODULE"; RETOUR_PROJET="$PROJET"; PROJET="" ;;
 		gnl) [ ${#GNLS[@]} -gt 0 ] || { debug_fermer "code 0"; exit 0; }
 			RETOUR_MODULE="$MODULE"; RETOUR_PROJET="$PROJET"; PROJET="${GNLS[0]}"; export TDF_RETOUR=1 ;;
 		*) debug_fermer "code 0"; exit 0 ;;
 	esac
 	MODULE="$suivant"
 	SUITE=()
+	if [ "$MODULE" = banque ]; then
+		MODULE="exam"
+		SUITE+=(--banque)
+	fi
 	[ "$SANS_ANIM" = 1 ] && SUITE+=(--fast)
 	export TDF_NO_UPDATE=1
 done

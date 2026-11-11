@@ -1,0 +1,13 @@
+Assignment name    : ft_dprintf_mini
+Expected files     : ft_dprintf_mini.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Like dprintf with only %c, %s and %d: writes to fd. Return the number of bytes written, -1 if write fails.
+
+Your function must have this prototype:
+
+int	ft_dprintf_mini(int fd, const char *fmt, ...);
+
+Notion : dprintf
+Norme obligatoire. Pas de libft ici.

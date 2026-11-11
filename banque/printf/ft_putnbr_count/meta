@@ -1,0 +1,6 @@
+source=printf
+niveau=3
+type=fonction
+fichiers=ft_putnbr_count.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=INT_MIN sans dépassement

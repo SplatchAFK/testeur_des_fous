@@ -1,0 +1,13 @@
+Assignment name    : ft_sum_twice
+Expected files     : ft_sum_twice.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Read the n integers twice with va_copy: return (sum of the n integers) times (number of even integers).
+
+Your function must have this prototype:
+
+int	ft_sum_twice(int n, ...);
+
+Notion : va_copy
+Norme obligatoire. Pas de libft ici.

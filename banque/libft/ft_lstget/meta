@@ -1,0 +1,6 @@
+source=libft
+niveau=15
+type=fonction
+fichiers=ft_lstget.c
+autorise=malloc, free, write, ta libft
+notion=parcours et bornes

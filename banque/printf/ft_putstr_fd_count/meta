@@ -1,0 +1,6 @@
+source=printf
+niveau=13
+type=fonction
+fichiers=ft_putstr_fd_count.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=descripteurs et erreurs

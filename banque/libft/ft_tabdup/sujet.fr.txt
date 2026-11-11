@@ -1,0 +1,15 @@
+Exercice           : ft_tabdup
+Fichiers attendus  : ft_tabdup.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Duplique un tableau de chaînes terminé par NULL (le tableau ET chaque chaîne).
+Si un malloc échoue en route, libère tout ce qui a déjà été alloué et renvoie NULL.
+ft_tabdup(NULL) renvoie NULL.
+
+Ta fonction doit avoir ce prototype :
+
+char	**ft_tabdup(char **tab);
+
+Notion : tableau 2D et libération partielle
+Norme obligatoire. Les fonctions d'aide doivent être static.

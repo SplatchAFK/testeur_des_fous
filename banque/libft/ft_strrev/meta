@@ -1,0 +1,6 @@
+source=libft
+niveau=1
+type=fonction
+fichiers=ft_strrev.c
+autorise=malloc, free, write, ta libft
+notion=échange en place, deux index

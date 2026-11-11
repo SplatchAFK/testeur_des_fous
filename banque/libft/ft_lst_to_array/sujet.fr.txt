@@ -1,0 +1,15 @@
+Exercice           : ft_lst_to_array
+Fichiers attendus  : ft_lst_to_array.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Renvoie un tableau alloué contenant les pointeurs content de la liste, dans l'ordre,
+terminé par NULL (pour une liste vide : un tableau qui contient juste NULL).
+Ne copie pas les contenus. NULL si malloc échoue.
+
+Ta fonction doit avoir ce prototype :
+
+void	**ft_lst_to_array(t_list *lst);
+
+Notion : liste vers tableau
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,13 @@
+Assignment name    : ft_putnbr_count
+Expected files     : ft_putnbr_count.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Write n in base 10 (INT_MIN included, no undefined behavior). Return the number of characters written.
+
+Your function must have this prototype:
+
+int	ft_putnbr_count(int n);
+
+Notion : INT_MIN sans dépassement
+Norme obligatoire. Pas de libft ici.

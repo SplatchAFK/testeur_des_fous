@@ -1,0 +1,14 @@
+Exercice           : ft_strspn
+Fichiers attendus  : ft_strspn.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Renvoie la longueur du début de s fait uniquement de caractères présents dans accept.
+Même comportement que strspn(3) : ft_strspn("hello", "leh") vaut 4.
+
+Ta fonction doit avoir ce prototype :
+
+size_t	ft_strspn(const char *s, const char *accept);
+
+Notion : recherche imbriquée, comme la libc
+Norme obligatoire. Les fonctions d'aide doivent être static.

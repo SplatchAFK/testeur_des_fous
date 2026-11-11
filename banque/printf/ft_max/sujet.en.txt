@@ -1,0 +1,13 @@
+Assignment name    : ft_max
+Expected files     : ft_max.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Return the largest of the n integers after n (n >= 1).
+
+Your function must have this prototype:
+
+int	ft_max(int n, ...);
+
+Notion : va_arg en boucle
+Norme obligatoire. Pas de libft ici.

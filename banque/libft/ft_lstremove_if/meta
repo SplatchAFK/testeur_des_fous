@@ -1,0 +1,6 @@
+source=libft
+niveau=18
+type=fonction
+fichiers=ft_lstremove_if.c
+autorise=malloc, free, write, ta libft
+notion=supprimer en parcourant, t_list **

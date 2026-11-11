@@ -1,0 +1,15 @@
+Exercice           : ft_putnbr_base_fd
+Fichiers attendus  : ft_putnbr_base_fd.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Écrit n dans la base donnée sur le file descriptor fd.
+Base invalide (moins de 2 caractères, doublon, '+' ou '-') : n'écrit rien.
+Doit gérer LONG_MIN. Seule fonction d'écriture autorisée : write.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_putnbr_base_fd(long n, const char *base, int fd);
+
+Notion : récursion et write
+Norme obligatoire. Les fonctions d'aide doivent être static.

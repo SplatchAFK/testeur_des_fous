@@ -1,0 +1,6 @@
+source=libft
+niveau=17
+type=fonction
+fichiers=ft_lstfind.c
+autorise=malloc, free, write, ta libft
+notion=callback avec contexte

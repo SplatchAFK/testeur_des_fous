@@ -1,0 +1,6 @@
+source=libft
+niveau=14
+type=fonction
+fichiers=ft_sort_strs.c
+autorise=malloc, free, write, ta libft
+notion=pointeurs sur fonction et tri

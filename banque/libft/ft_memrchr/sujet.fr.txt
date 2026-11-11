@@ -1,0 +1,15 @@
+Exercice           : ft_memrchr
+Fichiers attendus  : ft_memrchr.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Cherche la DERNIÈRE occurrence de l'octet c (converti en unsigned char)
+dans les n premiers octets de s. Renvoie son adresse, ou NULL.
+Piège : n vaut parfois 0, et un size_t ne descend jamais sous 0.
+
+Ta fonction doit avoir ce prototype :
+
+void	*ft_memrchr(const void *s, int c, size_t n);
+
+Notion : boucle à l'envers avec un size_t
+Norme obligatoire. Les fonctions d'aide doivent être static.

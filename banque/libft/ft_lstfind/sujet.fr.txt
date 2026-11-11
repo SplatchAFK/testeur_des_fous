@@ -1,0 +1,14 @@
+Exercice           : ft_lstfind
+Fichiers attendus  : ft_lstfind.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Renvoie le PREMIER maillon tel que cmp(maillon->content, ref) vaut 0, sinon NULL.
+
+Ta fonction doit avoir ce prototype :
+
+t_list	*ft_lstfind(t_list *lst, const void *ref,
+			int (*cmp)(const void *, const void *));
+
+Notion : callback avec contexte
+Norme obligatoire. Les fonctions d'aide doivent être static.

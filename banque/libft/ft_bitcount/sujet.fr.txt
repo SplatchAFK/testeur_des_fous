@@ -1,0 +1,14 @@
+Exercice           : ft_bitcount
+Fichiers attendus  : ft_bitcount.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Renvoie le nombre de bits à 1 dans n.
+Exemple : ft_bitcount(7) vaut 3.
+
+Ta fonction doit avoir ce prototype :
+
+int		ft_bitcount(unsigned int n);
+
+Notion : opérateurs binaires
+Norme obligatoire. Les fonctions d'aide doivent être static.

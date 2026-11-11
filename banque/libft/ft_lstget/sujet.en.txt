@@ -1,0 +1,13 @@
+Assignment name    : ft_lstget
+Expected files     : ft_lstget.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Return the node at index (0 is the first), or NULL.
+
+Your function must have this prototype:
+
+t_list	*ft_lstget(t_list *lst, size_t index);
+
+Notion : parcours et bornes
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,15 @@
+Exercice           : ft_strcasecmp
+Fichiers attendus  : ft_strcasecmp.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Compare s1 et s2 sans tenir compte des majuscules.
+Renvoie un nombre < 0, 0 ou > 0, avec le même signe que strcasecmp(3).
+Les octets se comparent en unsigned char.
+
+Ta fonction doit avoir ce prototype :
+
+int		ft_strcasecmp(const char *s1, const char *s2);
+
+Notion : unsigned char et tolower
+Norme obligatoire. Les fonctions d'aide doivent être static.

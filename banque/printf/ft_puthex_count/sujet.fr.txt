@@ -1,0 +1,13 @@
+Exercice           : ft_puthex_count
+Fichiers attendus  : ft_puthex_count.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Écris n en hexadécimal, en majuscules si upper vaut 1. Renvoie le nombre de caractères écrits.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_puthex_count(unsigned int n, int upper);
+
+Notion : hexadécimal et casse
+Norme obligatoire. Pas de libft ici.

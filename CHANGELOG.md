@@ -6,6 +6,13 @@ Le numéro de version est dans `moteur/version.h`.
 
 Un seul testeur réunit le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1), et ajoute un examshell en C.
 
+### Banque d'exercices
+
+- `run.sh banque`, ou Tester puis Banque d'exercices : les 94 exercices du testeur (57 de l'exam, 21 d'entraînement Libft, 16 d'entraînement printf), dans l'ordre que tu veux ;
+- `liste [exam|libft|printf] [niveau]`, `cherche MOT` (nom ou notion), `ouvre N`, `grademe`, `sujet`, `fait`, `aide` ;
+- tu codes dans `testeur_des_fous/banque_travail/<source>/<exercice>/` ; l'exam est corrigé comme à l'exam, Libft et printf par leur propre testeur (Norme, sanitizers, échecs de malloc) ;
+- Octets et XP au premier succès, progression gardée dans la sauvegarde.
+
 ### get_next_line
 
 - `run.sh gnl`, détection d'un dossier get_next_line à côté du testeur, entrée get_next_line du menu Tester ;

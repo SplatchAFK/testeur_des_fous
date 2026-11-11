@@ -1,0 +1,6 @@
+source=printf
+niveau=12
+type=fonction
+fichiers=ft_sum_twice.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=va_copy

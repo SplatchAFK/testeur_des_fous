@@ -1,0 +1,13 @@
+Exercice           : ft_max
+Fichiers attendus  : ft_max.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Renvoie le plus grand des n entiers qui suivent n (n >= 1).
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_max(int n, ...);
+
+Notion : va_arg en boucle
+Norme obligatoire. Pas de libft ici.

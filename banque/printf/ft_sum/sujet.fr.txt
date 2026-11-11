@@ -1,0 +1,13 @@
+Exercice           : ft_sum
+Fichiers attendus  : ft_sum.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Renvoie la somme des n entiers qui suivent n. Utilise va_start, va_arg et va_end.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_sum(int n, ...);
+
+Notion : fonctions variadiques
+Norme obligatoire. Pas de libft ici.

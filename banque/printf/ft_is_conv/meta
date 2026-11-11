@@ -1,0 +1,6 @@
+source=printf
+niveau=7
+type=fonction
+fichiers=ft_is_conv.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=lecture du format

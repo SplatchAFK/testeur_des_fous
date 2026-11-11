@@ -1,0 +1,13 @@
+Assignment name    : ft_atoi_base
+Expected files     : ft_atoi_base.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Convert str written in base to int. Invalid base returns 0.
+
+Your function must have this prototype:
+
+int		ft_atoi_base(const char *str, const char *base);
+
+Notion : conversion de base et validation
+Norme obligatoire. Les fonctions d'aide doivent être static.

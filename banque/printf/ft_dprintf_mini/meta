@@ -1,0 +1,6 @@
+source=printf
+niveau=16
+type=fonction
+fichiers=ft_dprintf_mini.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=dprintf

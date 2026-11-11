@@ -1,0 +1,13 @@
+Exercice           : ft_putstr_count
+Fichiers attendus  : ft_putstr_count.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Écris s. Si s vaut NULL, écris "(null)" comme printf sous Linux. Renvoie le nombre d'octets écrits, -1 si write échoue.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_putstr_count(char *s);
+
+Notion : chaîne NULL
+Norme obligatoire. Pas de libft ici.

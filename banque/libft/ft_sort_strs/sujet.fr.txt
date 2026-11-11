@@ -1,0 +1,15 @@
+Exercice           : ft_sort_strs
+Fichiers attendus  : ft_sort_strs.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Trie sur place un tableau de chaînes terminé par NULL, dans l'ordre croissant
+donné par cmp (cmp(a, b) > 0 veut dire que a va après b).
+Échange les pointeurs, ne recopie jamais les chaînes.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_sort_strs(char **tab, int (*cmp)(const char *, const char *));
+
+Notion : pointeurs sur fonction et tri
+Norme obligatoire. Les fonctions d'aide doivent être static.

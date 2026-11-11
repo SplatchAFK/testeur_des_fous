@@ -1,0 +1,6 @@
+source=printf
+niveau=15
+type=fonction
+fichiers=ft_vprintf_mini.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=passer une va_list

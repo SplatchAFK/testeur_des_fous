@@ -1,0 +1,15 @@
+Exercice           : ft_itoa_base
+Fichiers attendus  : ft_itoa_base.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Écrit n dans la base donnée, dans une chaîne allouée.
+Base invalide (moins de 2 caractères, doublon, '+' ou '-') : renvoie NULL.
+Doit gérer LONG_MIN. Renvoie NULL si malloc échoue.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_itoa_base(long n, const char *base);
+
+Notion : LONG_MIN, comptage de chiffres, malloc exact
+Norme obligatoire. Les fonctions d'aide doivent être static.

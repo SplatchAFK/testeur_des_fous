@@ -1,0 +1,14 @@
+Exercice           : ft_lstreverse
+Fichiers attendus  : ft_lstreverse.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Retourne la liste sur place : le dernier maillon devient le premier.
+Réutilise les maillons existants, aucun malloc. *lst pointe sur la nouvelle tête.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_lstreverse(t_list **lst);
+
+Notion : jongler avec trois pointeurs
+Norme obligatoire. Les fonctions d'aide doivent être static.

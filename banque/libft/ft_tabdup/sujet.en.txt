@@ -1,0 +1,13 @@
+Assignment name    : ft_tabdup
+Expected files     : ft_tabdup.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Deep copy a NULL-terminated array of strings. Free everything if a malloc fails.
+
+Your function must have this prototype:
+
+char	**ft_tabdup(char **tab);
+
+Notion : tableau 2D et libération partielle
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -153,7 +153,8 @@ int	tdf_menu_tester(const char *train, const char *other, const char *other_labe
 	items[2] = train;
 	items[3] = sw;
 	items[4] = L("Exam en C|L'exam du rang 02 en ligne de commande, comme le vrai : grademe, 4 niveaux, 3 h.", "C exam|The rank 02 exam on the command line, like the real one: grademe, 4 levels, 3 h.");
-	items[5] = L("~Banque d'exercices      (bientôt)", "~Exercise bank           (soon)");
+	items[5] = L("Banque d'exercices|Les 94 exercices du testeur (exam, Libft, printf) : cherche, ouvre, grademe.",
+			"Exercise bank|All 94 exercises of the tester (exam, Libft, printf): search, open, grademe.");
 	items[6] = module_dispo("gnl")
 		? L("get_next_line|Teste ton get_next_line avec 7 BUFFER_SIZE, stdin, tubes, erreurs de read et de malloc.",
 			"get_next_line|Tests your get_next_line with 7 BUFFER_SIZE values, stdin, pipes, read and malloc errors.")
@@ -171,6 +172,8 @@ int	tdf_menu_tester(const char *train, const char *other, const char *other_labe
 			return (module_switch(other));
 		if (i == 4)
 			return (module_switch("exam"));
+		if (i == 5)
+			return (module_switch("banque"));
 		if (i == 6 && module_dispo("gnl"))
 			return (module_switch("gnl"));
 		if (i == 3 || i == 6)

@@ -1,0 +1,13 @@
+Assignment name    : ft_str_replace
+Expected files     : ft_str_replace.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Replace every occurrence of old by new, left to right, in a new string.
+
+Your function must have this prototype:
+
+char	*ft_str_replace(const char *s, const char *old, const char *new);
+
+Notion : deux passes : compter puis construire
+Norme obligatoire. Les fonctions d'aide doivent être static.

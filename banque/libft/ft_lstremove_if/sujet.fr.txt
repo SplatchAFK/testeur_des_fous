@@ -1,0 +1,15 @@
+Exercice           : ft_lstremove_if
+Fichiers attendus  : ft_lstremove_if.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Retire de la liste tous les maillons tels que cmp(content, ref) vaut 0.
+Pour chacun : del(content) puis free(maillon). La tête peut changer.
+
+Ta fonction doit avoir ce prototype :
+
+void	ft_lstremove_if(t_list **lst, const void *ref,
+			int (*cmp)(const void *, const void *), void (*del)(void *));
+
+Notion : supprimer en parcourant, t_list **
+Norme obligatoire. Les fonctions d'aide doivent être static.

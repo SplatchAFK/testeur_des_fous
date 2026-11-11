@@ -1,0 +1,6 @@
+source=libft
+niveau=12
+type=fonction
+fichiers=ft_str_replace.c
+autorise=malloc, free, write, ta libft
+notion=deux passes : compter puis construire

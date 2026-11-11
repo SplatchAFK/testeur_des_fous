@@ -1,0 +1,6 @@
+source=printf
+niveau=5
+type=fonction
+fichiers=ft_puthex_count.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=hexadécimal et casse

@@ -1,0 +1,6 @@
+source=printf
+niveau=10
+type=fonction
+fichiers=ft_max.c
+autorise=write, malloc, free, va_start, va_arg, va_copy, va_end
+notion=va_arg en boucle

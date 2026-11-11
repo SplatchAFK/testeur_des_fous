@@ -1,0 +1,15 @@
+Exercice           : ft_str_replace
+Fichiers attendus  : ft_str_replace.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Renvoie une nouvelle chaîne où chaque occurrence de old est remplacée par new,
+de gauche à droite, sans chevauchement ("aaaa", "aa", "b" donne "bb").
+Si old est vide, renvoie une copie de s. NULL si malloc échoue.
+
+Ta fonction doit avoir ce prototype :
+
+char	*ft_str_replace(const char *s, const char *old, const char *new);
+
+Notion : deux passes : compter puis construire
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,15 @@
+Exercice           : ft_split_set
+Fichiers attendus  : ft_split_set.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Comme ft_split, mais coupe sur N'IMPORTE QUEL caractère présent dans set.
+Les morceaux vides ne sont pas gardés. Le tableau finit par NULL.
+Si un malloc échoue : tout libérer et renvoyer NULL.
+
+Ta fonction doit avoir ce prototype :
+
+char	**ft_split_set(char const *s, char const *set);
+
+Notion : split généralisé
+Norme obligatoire. Les fonctions d'aide doivent être static.

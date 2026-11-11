@@ -1,0 +1,13 @@
+Exercice           : ft_putptr_count
+Fichiers attendus  : ft_putptr_count.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Écris l'adresse p comme %p de printf sous Linux (0x... ; NULL donne "(nil)"). Renvoie le nombre de caractères écrits.
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_putptr_count(void *p);
+
+Notion : pointeurs et unsigned long
+Norme obligatoire. Pas de libft ici.

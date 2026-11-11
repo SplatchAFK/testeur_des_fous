@@ -1,0 +1,13 @@
+Assignment name    : ft_memrchr
+Expected files     : ft_memrchr.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Find the LAST byte c (as unsigned char) in the first n bytes of s, or NULL.
+
+Your function must have this prototype:
+
+void	*ft_memrchr(const void *s, int c, size_t n);
+
+Notion : boucle à l'envers avec un size_t
+Norme obligatoire. Les fonctions d'aide doivent être static.

@@ -1,0 +1,13 @@
+Exercice           : ft_sum_twice
+Fichiers attendus  : ft_sum_twice.c
+Fonctions permises : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Lis les n entiers deux fois grâce à va_copy : renvoie (somme des n entiers) multipliée par (nombre d'entiers pairs).
+
+Ta fonction doit avoir ce prototype :
+
+int	ft_sum_twice(int n, ...);
+
+Notion : va_copy
+Norme obligatoire. Pas de libft ici.

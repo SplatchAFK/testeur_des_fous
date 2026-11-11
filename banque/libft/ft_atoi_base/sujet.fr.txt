@@ -1,0 +1,16 @@
+Exercice           : ft_atoi_base
+Fichiers attendus  : ft_atoi_base.c
+Fonctions permises : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Convertit str, écrit dans la base donnée, en int.
+Base invalide (moins de 2 caractères, doublon, '+', '-' ou espace) : renvoie 0.
+Saute les espaces du début (comme atoi), accepte UN signe, s'arrête au premier
+caractère qui n'est pas dans la base.
+
+Ta fonction doit avoir ce prototype :
+
+int		ft_atoi_base(const char *str, const char *base);
+
+Notion : conversion de base et validation
+Norme obligatoire. Les fonctions d'aide doivent être static.

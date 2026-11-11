@@ -1,0 +1,13 @@
+Assignment name    : ft_sum
+Expected files     : ft_sum.c
+Allowed functions  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Return the sum of the n integers after n. Use va_start, va_arg and va_end.
+
+Your function must have this prototype:
+
+int	ft_sum(int n, ...);
+
+Notion : fonctions variadiques
+Norme obligatoire. Pas de libft ici.

@@ -1,0 +1,13 @@
+Assignment name    : ft_itoa_base
+Expected files     : ft_itoa_base.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Write n in base into a new string. Handle LONG_MIN. NULL on invalid base.
+
+Your function must have this prototype:
+
+char	*ft_itoa_base(long n, const char *base);
+
+Notion : LONG_MIN, comptage de chiffres, malloc exact
+Norme obligatoire. Les fonctions d'aide doivent être static.

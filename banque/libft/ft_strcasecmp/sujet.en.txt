@@ -1,0 +1,13 @@
+Assignment name    : ft_strcasecmp
+Expected files     : ft_strcasecmp.c
+Allowed functions  : malloc, free, write, ta libft
+--------------------------------------------------------------
+
+Compare s1 and s2 ignoring case, same sign as strcasecmp(3).
+
+Your function must have this prototype:
+
+int		ft_strcasecmp(const char *s1, const char *s2);
+
+Notion : unsigned char et tolower
+Norme obligatoire. Les fonctions d'aide doivent être static.
