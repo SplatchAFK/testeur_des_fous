@@ -338,18 +338,10 @@ tdf_journal "résultat : $N_OK OK, $N_KO en échec, $N_INFO pour info"
 
 VU_PUITS=0
 if [ -t 0 ] && [ -t 1 ] && [ "${TDF_INTERFACE:-graphique}" != texte ] && [ "${SANS_LORE:-0}" = 0 ] && [ -n "$ANNEAUX" ]; then
-	VD="$RACINE/.build_accueil"
-	VUE="$VD/puits"
-	CLE=$(cat "$MOT/lanceur/puits.c" "$MOT/term.c" "$MOT/rendu.c" "$MOT/images.c" "$MOT/fous.h" 2>/dev/null | cksum | cut -d' ' -f1)
-	if [ ! -x "$VUE" ] || [ ! -f "$VD/puits.$CLE" ]; then
-		mkdir -p "$VD" && rm -f "$VD"/puits.* 2>/dev/null
-		"${CC:-cc}" -O2 -w -I "$MOT" "$MOT/lanceur/puits.c" "$MOT/term.c" "$MOT/rendu.c" "$MOT/images.c" -lm -ldl -o "$VUE" 2>/dev/null \
-			&& : > "$VD/puits.$CLE"
-	fi
-	if [ -x "$VUE" ] && [ -f "$VD/puits.$CLE" ]; then
+	if tdf_scene_bin "$MOT"; then
 		printf '  %s[ Entrée : descendre dans le Puits ]%s ' "$D" "$R"
 		read -r _
-		"$VUE" "$ICI" "$ANNEAUX" && VU_PUITS=1
+		"$TDF_SCENE" "$ICI" puits "$ANNEAUX" && VU_PUITS=1
 	fi
 fi
 if [ "$VU_PUITS" = 0 ] && [ -n "${TDF_RETOUR:-}" ] && [ -t 0 ] && [ -t 1 ]; then

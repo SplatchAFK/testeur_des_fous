@@ -126,35 +126,114 @@ static unsigned char	*composer(const t_pic *b, const char *res, long t, int *pro
 	return (img);
 }
 
-int	main(int ac, char **av)
+static void	empiler(unsigned char *img, const t_pic *p, int w, int h)
+{
+	int		i;
+	double	a;
+
+	if (!p || p->w != w || p->h != h)
+		return ;
+	for (i = 0; i < w * h; i++)
+	{
+		if (p->a[i] < 6)
+			continue ;
+		a = p->a[i] / 255.0;
+		img[i * 3] += (p->rgb[i * 3] - img[i * 3]) * a;
+		img[i * 3 + 1] += (p->rgb[i * 3 + 1] - img[i * 3 + 1]) * a;
+		img[i * 3 + 2] += (p->rgb[i * 3 + 2] - img[i * 3 + 2]) * a;
+	}
+}
+
+static unsigned char	*epreuve(const t_pic *b, int n)
+{
+	unsigned char	*img;
+	char			nom[40];
+	int				i;
+
+	if (!(img = malloc((size_t)b->w * b->h * 3)))
+		return (NULL);
+	memcpy(img, b->rgb, (size_t)b->w * b->h * 3);
+	for (i = 0; i < n && i < 4; i++)
+	{
+		snprintf(nom, sizeof(nom), "epreuve_porte_%d", i);
+		empiler(img, art_pic(nom), b->w, b->h);
+	}
+	if (n >= 4)
+		empiler(img, art_pic("epreuve_lanterne"), b->w, b->h);
+	return (img);
+}
+
+static unsigned char	*copie(const t_pic *b)
+{
+	unsigned char	*img;
+
+	if ((img = malloc((size_t)b->w * b->h * 3)))
+		memcpy(img, b->rgb, (size_t)b->w * b->h * 3);
+	return (img);
+}
+
+static void	montrer(const char *mode, const char *arg)
 {
 	const t_pic		*b;
 	unsigned char	*img;
 	char			tmp[200];
+	const char		*titre;
+	const char		*texte;
+	const char		*pied;
 	long			t0;
 	int				k;
 	int				cw;
 	int				ch;
 	int				prof;
 	int				nok;
+	int				n;
 
 	prof = -1;
 	nok = 0;
-	if (ac < 3)
-		return (2);
-	g_tester_dir = av[1];
-	strcpy(g_save.theme, "nuit");
-	if (!(b = art_pic("puits_fond")))
-		return (3);
-	term_init();
+	n = arg ? atoi(arg) : 0;
+	titre = "";
+	texte = "";
+	pied = "Entrée : continuer";
+	tmp[0] = '\0';
+	if (!strcmp(mode, "puits"))
+		b = art_pic("puits_fond");
+	else if (!strcmp(mode, "avant") || !strcmp(mode, "apres"))
+		b = art_pic(!strcmp(mode, "avant") ? "epreuve_avant" : "epreuve_salle");
+	else
+		b = art_pic(!strcmp(mode, "fin") ? "fin" : "fin_secrete");
+	if (!b)
+		return ;
+	if (!strcmp(mode, "avant"))
+	{
+		titre = "L ' É P R E U V E   D U   S I L E N C E";
+		texte = "Marvin pose sa lanterne et entre seul. Ici, personne ne t'aidera.";
+		pied = "Entrée : entrer dans la salle";
+	}
+	else if (!strcmp(mode, "apres"))
+	{
+		titre = "L ' É P R E U V E   D U   S I L E N C E";
+		snprintf(tmp, sizeof(tmp), "%d porte(s) sur 4 se sont ouvertes", n < 0 ? 0 : (n > 4 ? 4 : n));
+		texte = n >= 4 ? "Les quatre portes sont ouvertes. Dehors, la lanterne s'est rallumée toute seule."
+			: "Les portes encore fermées attendent la prochaine épreuve.";
+	}
 	t0 = now_ms();
 	while (1)
 	{
 		frame();
 		bgc(g_th.bg);
-		center(1, g_th.accent, "L E   P U I T S");
-		img = composer(b, av[2], now_ms() - t0, &prof, &nok);
-		snprintf(tmp, sizeof(tmp), "%d anneaux sur 22 · la lanterne est descendue de %d ligne(s)", nok, prof + 1);
+		if (!strcmp(mode, "puits"))
+		{
+			img = composer(b, arg ? arg : "", now_ms() - t0, &prof, &nok);
+			titre = "L E   P U I T S";
+			snprintf(tmp, sizeof(tmp), "%d anneaux sur 22 · la lanterne est descendue de %d ligne(s)", nok, prof + 1);
+			texte = nok == 22 ? "Au fond, de l'eau calme. Les empreintes de Moulinette mènent vers une ouverture."
+				: "Le Puits ne se descend qu'une ligne à la fois. Les anneaux rouges ne tiennent pas encore.";
+		}
+		else if (!strcmp(mode, "apres"))
+			img = epreuve(b, n);
+		else
+			img = copie(b);
+		center(1, g_th.accent, titre);
 		center(2, g_th.dim, tmp);
 		cw = term_cols() - 4;
 		ch = (int)(cw * (double)b->h / b->w / 2.0);
@@ -166,14 +245,28 @@ int	main(int ac, char **av)
 		if (img)
 			rendu_image(img, b->w, b->h, (term_cols() - cw) / 2, 4, cw, ch);
 		free(img);
-		center(5 + ch, g_th.text, nok == 22 ? "Au fond, de l'eau calme. Les empreintes de Moulinette mènent vers une ouverture."
-			: "Le Puits ne se descend qu'une ligne à la fois. Les anneaux rouges ne tiennent pas encore.");
-		foot_line((term_cols() - 30) / 2, "Entrée ou q : continuer");
+		center(5 + ch, g_th.text, texte);
+		foot_line((term_cols() - (int)strlen(pied)) / 2, pied);
 		flush();
 		k = key_read(120);
 		if (k == '\r' || k == '\n' || k == ' ' || key_quit(k) || k == 'q')
 			break ;
 	}
+	if (!strcmp(mode, "puits") && nok == 22 && art_pic("fin"))
+	{
+		cls();
+		montrer("fin", NULL);
+	}
+}
+
+int	main(int ac, char **av)
+{
+	if (ac < 3)
+		return (2);
+	g_tester_dir = av[1];
+	strcpy(g_save.theme, "nuit");
+	term_init();
+	montrer(av[2], ac > 3 ? av[3] : NULL);
 	term_end();
 	return (0);
 }

@@ -1141,6 +1141,8 @@ static void	reward(long octets, const char *why)
 	printf("  %s+%ld Octets · +%ld XP%s  %s%s%s\n", C_OK, octets, octets * 2, C_R, C_D, why, C_R);
 }
 
+static void	scene(const char *mode, int n);
+
 static void	finish(int timeout)
 {
 	char	p[1300];
@@ -1151,6 +1153,8 @@ static void	finish(int timeout)
 
 	elapsed = (long)time(NULL) - g_st.start;
 	fmt_time(elapsed, t, sizeof(t));
+	if (g_st.mode == 0)
+		scene("apres", g_st.points / XPOINTS);
 	ecran();
 	printf("\n%s══════════════════════════════════════════════════════════════%s\n", C_AC, C_R);
 	if (timeout)
@@ -1942,6 +1946,16 @@ static int	settings(void)
 	return (1);
 }
 
+static void	scene(const char *mode, int n)
+{
+	char	arg[16];
+
+	if (!g_tty || !getenv("TDF_SCENE") || !getenv("TDF_SCENE_DIR") || !*getenv("TDF_SCENE"))
+		return ;
+	snprintf(arg, sizeof(arg), "%d", n);
+	sh("%s %s %s %s", q(getenv("TDF_SCENE")), q(getenv("TDF_SCENE_DIR")), mode, arg);
+}
+
 static void	start(void)
 {
 	memset(&g_st, 0, sizeof(g_st));
@@ -1957,6 +1971,8 @@ static void	start(void)
 	g_st.lang = g_cfg.lang;
 	g_st.exo = -1;
 	sh("rm -rf %s/traces/* 2>/dev/null; true", q(g_work));
+	if (g_st.mode == 0)
+		scene("avant", 0);
 	next_exo();
 }
 

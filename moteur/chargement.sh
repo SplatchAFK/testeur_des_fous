@@ -113,3 +113,22 @@ tdf_compiler() {
 	rm -rf "$objdir"
 	return 1
 }
+
+tdf_scene_bin() {
+	local mot="$1" d cle
+	d="$(cd "$mot/.." && pwd)/.build_accueil"
+	cle=$(cat "$mot/lanceur/scene.c" "$mot/term.c" "$mot/rendu.c" "$mot/images.c" "$mot/fous.h" 2>/dev/null | cksum | cut -d' ' -f1)
+	TDF_SCENE="$d/scene"
+	if [ ! -x "$TDF_SCENE" ] || [ ! -f "$d/scene.$cle" ]; then
+		mkdir -p "$d" && rm -f "$d"/scene.* 2>/dev/null
+		if "${CC:-cc}" -O2 -w -I "$mot" "$mot/lanceur/scene.c" "$mot/term.c" "$mot/rendu.c" "$mot/images.c" \
+			-lm -ldl -o "$TDF_SCENE" 2>/dev/null; then
+			: > "$d/scene.$cle"
+		else
+			TDF_SCENE=""
+			return 1
+		fi
+	fi
+	export TDF_SCENE
+	return 0
+}

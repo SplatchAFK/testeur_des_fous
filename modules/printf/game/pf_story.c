@@ -633,7 +633,22 @@ int	story_bigboss(void)
 
 void	story_victory(int secret)
 {
+	char	cmd[2000];
+
 	g_secret = secret;
+	if (secret && getenv("TDF_SCENE") && *getenv("TDF_SCENE"))
+	{
+		snprintf(cmd, sizeof(cmd), "'%s' '%s' secrete", getenv("TDF_SCENE"), g_tester_dir);
+		term_pause();
+		if (system(cmd) == 0)
+		{
+			term_resume();
+			term_invalidate();
+			return ;
+		}
+		term_resume();
+		term_invalidate();
+	}
 	cine_play(sc_victory, secret ? 10.0 : 8.0);
 }
 

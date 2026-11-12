@@ -53,6 +53,10 @@ if ! tdf_compiler "$BUILD/exam" "$BUILD/exam.err" "$EMPREINTE" -O2 -w -DTDF_EXAM
 fi
 
 tdf_journal "examshell ouvert"
+if [ -t 0 ] && [ -t 1 ] && [ "${TDF_INTERFACE:-graphique}" != texte ]; then
+	tdf_scene_bin "$MOT" >/dev/null 2>&1 || true
+	export TDF_SCENE_DIR="$ICI"
+fi
 "$BUILD/exam" --racine "$RACINE" --home "$DOSSIER" ${SUITE[@]+"${SUITE[@]}"}
 code=$?
 tdf_journal "examshell fermé (code $code)"
