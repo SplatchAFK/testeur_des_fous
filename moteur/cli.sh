@@ -54,3 +54,69 @@ tdf_cli_maj() {
 	echo "Mise à jour du testeur ($TDF_RACINE)..."
 	git -C "$TDF_RACINE" pull --ff-only && echo "Le testeur est à jour."
 }
+
+tdf_cli_installee() {
+	[ -f "$TDF_BIN/$TDF_CMD_NOM" ] && grep -q 'TDF_CLI=1' "$TDF_BIN/$TDF_CMD_NOM" 2>/dev/null
+}
+
+tdf_touche() {
+	local k s
+	IFS= read -rsn1 k || { TOUCHE=q; return; }
+	case "$k" in
+		$'\033')
+			if [ "${BASH_VERSINFO[0]}" -ge 4 ]; then
+				IFS= read -rsn2 -t 0.05 s
+			else
+				IFS= read -rsn2 -t 1 s
+			fi
+			case "$s" in
+				'[A'|'OA') TOUCHE=haut ;;
+				'[B'|'OB') TOUCHE=bas ;;
+				'[C'|'OC') TOUCHE=droite ;;
+				'[D'|'OD') TOUCHE=gauche ;;
+				'') TOUCHE=echap ;;
+				*) TOUCHE=autre ;;
+			esac
+			;;
+		'') TOUCHE=entree ;;
+		k|K|z|Z|w|W) TOUCHE=haut ;;
+		j|J|s|S) TOUCHE=bas ;;
+		q|Q) TOUCHE=q ;;
+		*) TOUCHE=autre ;;
+	esac
+}
+
+tdf_menu_fleches() {
+	local titre="$1" sous="$2" i n sel=0 lab desc
+	shift 2
+	n=$#
+	local items=("$@")
+	CHOIX_MENU=-1
+	printf '\033[?25l'
+	while :; do
+		printf '\033[H\033[2J'
+		printf '\n  \033[1;36m%s\033[0m\n' "$titre"
+		[ -n "$sous" ] && printf '  \033[2m%s\033[0m\n' "$sous"
+		printf '\n'
+		for ((i = 0; i < n; i++)); do
+			lab="${items[$i]%%|*}"
+			if [ "$i" = "$sel" ]; then
+				printf '  \033[1;36m❯ %s\033[0m\n' "$lab"
+			else
+				printf '    %s\n' "$lab"
+			fi
+		done
+		desc="${items[$sel]#*|}"
+		[ "$desc" = "${items[$sel]}" ] && desc=""
+		printf '\n  \033[2m%s\033[0m\n' "$desc"
+		printf '\n  \033[2m↑ ↓ choisir   Entrée valider   Échap ou q : retour\033[0m\n'
+		tdf_touche
+		case "$TOUCHE" in
+			haut) sel=$(( (sel + n - 1) % n )) ;;
+			bas) sel=$(( (sel + 1) % n )) ;;
+			entree|droite) CHOIX_MENU=$sel; break ;;
+			echap|q|gauche) break ;;
+		esac
+	done
+	printf '\033[?25h\033[H\033[2J'
+}

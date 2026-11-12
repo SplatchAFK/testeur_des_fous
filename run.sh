@@ -39,7 +39,7 @@ usage() {
 Le testeur des fous $TDF_VERSION
 Créé et vibe-codé par Splatch (romasant)
 
-  $c                  détecter le projet du dossier courant et le tester
+  $c                  ouvrir le menu (projets détectés, exam, banque...) aux flèches
   $c libft            tester ta Libft
   $c printf           tester ton ft_printf
   $c gnl              tester ton get_next_line
@@ -118,6 +118,85 @@ court() {
 		"$PWD"/*) printf './%s' "${1#"$PWD"/}" ;;
 		"$HOME"/*) printf '~/%s' "${1#"$HOME"/}" ;;
 		*) printf '%s' "$1" ;;
+	esac
+}
+
+menu_depart() {
+	local items=() acts=() p a sous n
+	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do
+		items+=("Tester ma Libft          $(court "$p")|Les 43 fonctions, la mémoire, la Norme, les fichiers parasites, l'audit moulinette")
+		acts+=("libft|$p")
+	done
+	for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do
+		items+=("Tester mon ft_printf     $(court "$p")|Chaque conversion comparée au vrai printf, puis la trace moulinette")
+		acts+=("printf|$p")
+	done
+	for p in ${GNLS[@]+"${GNLS[@]}"}; do
+		items+=("Tester mon get_next_line $(court "$p")|Toutes les tailles de BUFFER_SIZE, les fuites, la Norme, les fichiers parasites")
+		acts+=("gnl|$p")
+	done
+	items+=("Exam en C|Examen blanc de 3 h, série d'exercices ou entraînement : tout se règle aux flèches")
+	acts+=("exam|")
+	items+=("Banque d'exercices|Les exercices du testeur au choix : exam, Libft, printf")
+	acts+=("banque|")
+	items+=("Menu du testeur|Stats, chevalier, lore et paramètres, sans lancer de tests")
+	acts+=("menu|")
+	items+=("Tester un autre dossier|Le testeur te demande le chemin d'un projet qui n'est pas ici")
+	acts+=("autre|")
+	if ! tdf_cli_installee; then
+		items+=("Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo)")
+		acts+=("installer|")
+	fi
+	items+=("Quitter|")
+	acts+=("quitter|")
+	n=$(( ${#LIBFTS[@]} + ${#PRINTFS[@]} + ${#GNLS[@]} ))
+	if [ "$n" = 0 ]; then
+		sous="Aucun projet trouvé ici ni à côté du testeur. L'exam et la banque marchent sans projet."
+	else
+		sous="$n projet(s) trouvé(s) dans ce dossier ou à côté du testeur."
+	fi
+	tdf_menu_fleches "LE TESTEUR DES FOUS $TDF_VERSION" "$sous" "${items[@]}"
+	[ "$CHOIX_MENU" -ge 0 ] || exit 0
+	a="${acts[$CHOIX_MENU]%%|*}"
+	p="${acts[$CHOIX_MENU]#*|}"
+	case "$a" in
+		libft|printf|gnl) MODULE="$a"; PROJET="$p" ;;
+		exam) MODULE=exam; PROJET="" ;;
+		banque) MODULE=exam; PROJET=""; SUITE+=(--banque) ;;
+		menu)
+			MODULE=libft
+			PROJET="${LIBFTS[0]:-}"
+			if [ -z "$PROJET" ] && [ ${#PRINTFS[@]} -gt 0 ]; then
+				MODULE=printf
+				PROJET="${PRINTFS[0]}"
+			fi
+			SUITE+=(--menu)
+			;;
+		autre)
+			printf '\n  Chemin du projet (Tab complète) : '
+			read -e -r p || exit 0
+			case "$p" in "~"*) p="$HOME${p#\~}" ;; esac
+			if [ -z "$p" ] || [ ! -d "$p" ]; then
+				printf '  Dossier introuvable : %s\n\n' "$p"
+				exit 2
+			fi
+			PROJET="$(cd "$p" && pwd -P)"
+			if est_printf "$PROJET"; then MODULE=printf
+			elif est_libft "$PROJET"; then MODULE=libft
+			elif est_gnl "$PROJET"; then MODULE=gnl
+			else
+				printf '  Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s\n\n' "$PROJET"
+				exit 2
+			fi
+			;;
+		installer)
+			printf '\n'
+			tdf_cli_installer
+			printf '\n  Entrée pour revenir au menu '
+			read -r p
+			menu_depart
+			;;
+		*) exit 0 ;;
 	esac
 }
 
@@ -261,6 +340,9 @@ elif [ -n "$PROJET" ]; then
 		echo "Précise le module : bash $TDF_NOM/run.sh libft --projet $PROJET"
 		exit 1
 	fi
+elif [ -z "$MODULE" ] && [ -t 0 ] && [ -t 1 ]; then
+	detecter
+	menu_depart
 else
 	detecter
 	if [ -z "$MODULE" ]; then

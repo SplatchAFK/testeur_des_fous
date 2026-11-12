@@ -11,6 +11,7 @@
 #include <sys/select.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <termios.h>
 #include "fous.h"
 
 #define XMAXEXO 160
@@ -1469,12 +1470,212 @@ static const char	*onoff(int v, const char *a, const char *b)
 	return (v ? a : b);
 }
 
+static int	touche(void)
+{
+	struct termios	old;
+	struct termios	t;
+	unsigned char	c[3];
+	int				k;
+	fd_set			fs;
+	struct timeval	tv;
+
+	fflush(stdout);
+	tcgetattr(0, &old);
+	t = old;
+	t.c_lflag &= ~(ICANON | ECHO);
+	t.c_cc[VMIN] = 1;
+	t.c_cc[VTIME] = 0;
+	tcsetattr(0, TCSANOW, &t);
+	k = -1;
+	if (read(0, c, 1) == 1)
+	{
+		k = c[0];
+		if (k == 27)
+		{
+			FD_ZERO(&fs);
+			FD_SET(0, &fs);
+			tv.tv_sec = 0;
+			tv.tv_usec = 60000;
+			if (select(1, &fs, NULL, NULL, &tv) > 0 && read(0, c + 1, 2) == 2 && (c[1] == '[' || c[1] == 'O'))
+				k = c[2] == 'A' ? 1000 : c[2] == 'B' ? 1001 : c[2] == 'C' ? 1002 : c[2] == 'D' ? 1003 : 0;
+		}
+		else if (k == 'z' || k == 'w' || k == 'k')
+			k = 1000;
+		else if (k == 's' || k == 'j')
+			k = 1001;
+		else if (k == 'd' || k == 'l')
+			k = 1002;
+		else if (k == 'a' || k == 'h')
+			k = 1003;
+	}
+	tcsetattr(0, TCSANOW, &old);
+	return (k);
+}
+
+static int	largeur(const char *s)
+{
+	int	n;
+
+	n = 0;
+	while (*s)
+		if ((*s++ & 0xC0) != 0x80)
+			n++;
+	return (n);
+}
+
+static int	reglage_ligne(int r, int sel, const char *nom, const char *val, const char *desc, const char **d)
+{
+	int	pad;
+
+	pad = 24 - largeur(nom);
+	if (pad < 1)
+		pad = 1;
+	if (r == sel)
+	{
+		printf("  %s❯ %s%*s%s %s◀ %s ▶%s\n", C_AC, nom, pad, "", C_R, C_B, val, C_R);
+		*d = desc;
+	}
+	else
+		printf("    %s%*s %s\n", nom, pad, "", val);
+	return (r + 1);
+}
+
+static int	reglages_fleches(void)
+{
+	static const char	*tr[3] = {"jamais", "à la fin de la session", "à chaque échec"};
+	static const char	*modes[3] = {"examen blanc", "entraînement", "série"};
+	char				v[80];
+	const char			*desc;
+	int					sel;
+	int					n;
+	int					k;
+	int					id[9];
+
+	sel = 0;
+	while (1)
+	{
+		if (g_cfg.real)
+		{
+			g_cfg.mode = 0;
+			g_cfg.chrono = 1;
+			g_cfg.wait = 1;
+			g_cfg.trace = 1;
+		}
+		ecran();
+		printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
+		printf("   %sLe testeur des fous · Exam en C%s\n", C_B, C_R);
+		printf("   %s%d exercices · 4 niveaux%s\n", C_D, g_nbank, C_R);
+		printf("  %s═══════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
+		desc = "";
+		n = 0;
+		id[n] = 0;
+		n = reglage_ligne(n, sel, "Mode", modes[g_cfg.mode],
+				g_cfg.mode == 0 ? "Comme le vrai : 4 niveaux, un exercice par niveau, 25 points chacun, 100 pour valider."
+				: g_cfg.mode == 1 ? "Des exercices d'un seul niveau, à la suite, sans note."
+				: "Tu choisis combien d'exercices (1 à 5) et leur difficulté.", &desc);
+		if (g_cfg.mode == 2)
+		{
+			snprintf(v, sizeof(v), "%d", g_cfg.serie);
+			id[n] = 1;
+			n = reglage_ligne(n, sel, "Exercices", v, "Combien d'exercices dans la série, de 1 à 5.", &desc);
+			if (g_cfg.diff)
+				snprintf(v, sizeof(v), "niveau %d", g_cfg.diff);
+			else
+				snprintf(v, sizeof(v), "croissante");
+			id[n] = 2;
+			n = reglage_ligne(n, sel, "Difficulté", v,
+					"Croissante : du niveau 1 vers le niveau 4. Sinon, tous les exercices au même niveau.", &desc);
+		}
+		else if (g_cfg.mode == 1)
+		{
+			snprintf(v, sizeof(v), "%d", g_cfg.level);
+			id[n] = 3;
+			n = reglage_ligne(n, sel, "Niveau", v, "Le niveau des exercices proposés, de 1 à 4.", &desc);
+		}
+		else
+		{
+			id[n] = 4;
+			n = reglage_ligne(n, sel, "Chronomètre", g_cfg.chrono ? "3 heures" : "libre",
+					"3 heures comme le vrai examen, ou sans limite.", &desc);
+		}
+		id[n] = 5;
+		n = reglage_ligne(n, sel, "Attente après un échec", g_cfg.wait ? "progressive" : "aucune",
+				"Progressive : 1 minute de plus à chaque échec, 10 au plus, comme le vrai.", &desc);
+		id[n] = 6;
+		n = reglage_ligne(n, sel, "Trace", tr[g_cfg.trace], "Quand afficher le détail des tests ratés.", &desc);
+		id[n] = 7;
+		n = reglage_ligne(n, sel, "Langue du sujet", g_cfg.lang ? "anglais" : "français", "La langue des sujets.", &desc);
+		id[n] = 8;
+		n = reglage_ligne(n, sel, "Conditions réelles", g_cfg.real ? "oui" : "non",
+				"Oui : examen blanc, 3 heures, attente, trace à la fin, aucun cheat. Verrouille les autres réglages.", &desc);
+		printf("\n");
+		if (sel == n)
+		{
+			printf("  %s❯ Commencer%s\n", C_OK, C_R);
+			desc = "Lance la session avec ces réglages.";
+		}
+		else
+			printf("    Commencer\n");
+		if (sel == n + 1)
+		{
+			printf("  %s❯ Quitter%s\n", C_AC, C_R);
+			desc = "Revenir sans lancer d'exam.";
+		}
+		else
+			printf("    Quitter\n");
+		printf("\n  %s%s%s\n", C_D, desc, C_R);
+		if (g_cfg.real && sel < n && id[sel] != 8)
+			printf("  %sconditions réelles : ce réglage est verrouillé%s\n", C_WN, C_R);
+		printf("\n  %s↑ ↓ choisir   ◀ ▶ changer   Entrée valider   q quitter%s\n", C_D, C_R);
+		k = touche();
+		if (k < 0 || k == 'q' || k == 'Q' || (k == 27))
+			return (0);
+		if (k == 1000)
+			sel = (sel + n + 1) % (n + 2);
+		else if (k == 1001)
+			sel = (sel + 1) % (n + 2);
+		else if ((k == '\n' || k == '\r' || k == ' ') && sel == n)
+			break ;
+		else if ((k == '\n' || k == '\r' || k == ' ') && sel == n + 1)
+			return (0);
+		else if ((k == '\n' || k == '\r' || k == ' ' || k == 1002 || k == 1003) && sel < n)
+		{
+			if (id[sel] == 8)
+				g_cfg.real = !g_cfg.real;
+			else if (g_cfg.real)
+				continue ;
+			else if (id[sel] == 0)
+				g_cfg.mode = (g_cfg.mode + (k == 1003 ? 2 : 1)) % 3;
+			else if (id[sel] == 1)
+				g_cfg.serie = k == 1003 ? (g_cfg.serie + 3) % 5 + 1 : g_cfg.serie % 5 + 1;
+			else if (id[sel] == 2)
+				g_cfg.diff = (g_cfg.diff + (k == 1003 ? XLEVELS : 1)) % (XLEVELS + 1);
+			else if (id[sel] == 3)
+				g_cfg.level = k == 1003 ? (g_cfg.level + XLEVELS - 2) % XLEVELS + 1 : g_cfg.level % XLEVELS + 1;
+			else if (id[sel] == 4)
+				g_cfg.chrono = !g_cfg.chrono;
+			else if (id[sel] == 5)
+				g_cfg.wait = !g_cfg.wait;
+			else if (id[sel] == 6)
+				g_cfg.trace = (g_cfg.trace + (k == 1003 ? 2 : 1)) % 3;
+			else if (id[sel] == 7)
+				g_cfg.lang = !g_cfg.lang;
+			if (sel >= n)
+				sel = 0;
+		}
+	}
+	cfg_save();
+	return (1);
+}
+
 static int	settings(void)
 {
 	static const char	*tr[3] = {"jamais", "à la fin de la session", "à chaque échec"};
 	char				line[80];
 	int					c;
 
+	if (g_tty)
+		return (reglages_fleches());
 	while (1)
 	{
 		if (g_cfg.real)
