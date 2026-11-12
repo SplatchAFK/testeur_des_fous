@@ -923,13 +923,13 @@ static void	xevents(t_xw *x, int *stop)
 	while (x->f.pending(x->d))
 	{
 		x->f.next(x->d, ev);
-		t = *(int *)ev;
+		memcpy(&t, ev, sizeof(t));
 		if (t == 12)
 			xdraw(x);
 		else if (t == 22)
 		{
-			w = *(int *)((char *)ev + 56);
-			h = *(int *)((char *)ev + 60);
+			memcpy(&w, (char *)ev + 56, sizeof(w));
+			memcpy(&h, (char *)ev + 60, sizeof(h));
 			if (w != x->ww || h != x->wh)
 			{
 				x->ww = w;

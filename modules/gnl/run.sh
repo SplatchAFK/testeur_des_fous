@@ -34,7 +34,8 @@ while [ $# -gt 0 ]; do
 		-k) GARDER=1 ;;
 		--tailles) shift; TAILLES="${1:-$TAILLES}" ;;
 		--projet|--dir) shift; PROJET="$(cd "${1:-.}" && pwd)" ;;
-		--fast|--no-anim|--no-lore|--lore-off|--no-update|--menu|--ci) ;;
+		--no-lore|--lore-off|--ci) SANS_LORE=1 ;;
+		--fast|--no-anim|--no-update|--menu) ;;
 		*) echo "option inconnue : $1 (voir --help)"; exit 2 ;;
 	esac
 	shift
@@ -247,6 +248,7 @@ done
 tdf_ch_fin
 
 nocomp="$(awk -F'\t' '$1 == "C" {print $2}' "$BUILD/res.tsv" | tr '\n' ' ')"
+ANNEAUX=""
 if [ -n "$nocomp" ]; then
 	section "Compilation avec -D BUFFER_SIZE"
 	awk -F'\t' '$1 == "C"' "$BUILD/res.tsv" | while IFS=$'\t' read -r _ t msg; do
@@ -285,10 +287,12 @@ for cat in base taille fin fd lecture malloc info; do
 		done < <(awk -F'\t' -v c="$cat" -v n="$nom" '$2 == "T" && $3 == c && $4 == n {print $1 "\t" $5 "\t" $6}' "$BUILD/res.tsv")
 		if [ "$pire" = OK ]; then
 			ligne OK "$nom"
+			[ "$cat" = info ] || ANNEAUX="${ANNEAUX}O"
 		elif [ "$pire" = INFO ]; then
 			ligne INFO "$nom" "$msg"
 		else
 			ligne "$pire" "$nom" "BUFFER_SIZE en échec : $tailles_ko · $msg"
+			[ "$cat" = info ] || ANNEAUX="${ANNEAUX}K"
 		fi
 	done <<< "$noms"
 done
@@ -332,7 +336,23 @@ fi
 tdf_journal "résultat : $N_OK OK, $N_KO en échec, $N_INFO pour info"
 [ -n "${TDF_JOURNAL:-}" ] && cp "$BUILD/res.tsv" "$(dirname "$TDF_JOURNAL")/gnl_resultats.tsv" 2>/dev/null
 
-if [ -n "${TDF_RETOUR:-}" ] && [ -t 0 ] && [ -t 1 ]; then
+VU_PUITS=0
+if [ -t 0 ] && [ -t 1 ] && [ "${TDF_INTERFACE:-graphique}" != texte ] && [ "${SANS_LORE:-0}" = 0 ] && [ -n "$ANNEAUX" ]; then
+	VD="$RACINE/.build_accueil"
+	VUE="$VD/puits"
+	CLE=$(cat "$MOT/lanceur/puits.c" "$MOT/term.c" "$MOT/rendu.c" "$MOT/images.c" "$MOT/fous.h" 2>/dev/null | cksum | cut -d' ' -f1)
+	if [ ! -x "$VUE" ] || [ ! -f "$VD/puits.$CLE" ]; then
+		mkdir -p "$VD" && rm -f "$VD"/puits.* 2>/dev/null
+		"${CC:-cc}" -O2 -w -I "$MOT" "$MOT/lanceur/puits.c" "$MOT/term.c" "$MOT/rendu.c" "$MOT/images.c" -lm -ldl -o "$VUE" 2>/dev/null \
+			&& : > "$VD/puits.$CLE"
+	fi
+	if [ -x "$VUE" ] && [ -f "$VD/puits.$CLE" ]; then
+		printf '  %s[ Entrée : descendre dans le Puits ]%s ' "$D" "$R"
+		read -r _
+		"$VUE" "$ICI" "$ANNEAUX" && VU_PUITS=1
+	fi
+fi
+if [ "$VU_PUITS" = 0 ] && [ -n "${TDF_RETOUR:-}" ] && [ -t 0 ] && [ -t 1 ]; then
 	printf '  %s[ Entrée pour revenir au menu ]%s ' "$D" "$R"
 	read -r _
 fi
