@@ -41,6 +41,8 @@ typedef struct s_xcfg
 	int	lang;
 	int	real;
 	int	level;
+	int	serie;
+	int	diff;
 }	t_xcfg;
 
 typedef struct s_xstate
@@ -77,7 +79,7 @@ typedef struct s_xsave
 
 static t_xexo	g_bank[XMAXEXO];
 static int		g_nbank;
-static t_xcfg	g_cfg = {0, 1, 0, 2, 0, 0, 1};
+static t_xcfg	g_cfg = {0, 1, 0, 2, 0, 0, 1, 4, 0};
 static t_xstate	g_st;
 static t_xsave	g_xs;
 static char		g_root[900];
@@ -324,8 +326,12 @@ static void	cfg_load(void)
 		return ;
 	while (fscanf(f, "%39[a-z]=%d\n", k, &v) == 2)
 	{
-		if (!strcmp(k, "mode"))
-			g_cfg.mode = v != 0;
+		if (!strcmp(k, "mode") && v >= 0 && v <= 2)
+			g_cfg.mode = v;
+		else if (!strcmp(k, "serie") && v >= 1 && v <= 5)
+			g_cfg.serie = v;
+		else if (!strcmp(k, "difficulte") && v >= 0 && v <= XLEVELS)
+			g_cfg.diff = v;
 		else if (!strcmp(k, "chrono"))
 			g_cfg.chrono = v != 0;
 		else if (!strcmp(k, "attente"))
@@ -351,8 +357,9 @@ static void	cfg_save(void)
 	f = fopen(path, "w");
 	if (!f)
 		return ;
-	fprintf(f, "mode=%d\nchrono=%d\nattente=%d\ntrace=%d\nlangue=%d\nreel=%d\nniveau=%d\n", g_cfg.mode,
-		g_cfg.chrono, g_cfg.wait, g_cfg.trace, g_cfg.lang, g_cfg.real, g_cfg.level);
+	fprintf(f, "mode=%d\nchrono=%d\nattente=%d\ntrace=%d\nlangue=%d\nreel=%d\nniveau=%d\nserie=%d\ndifficulte=%d\n",
+		g_cfg.mode, g_cfg.chrono, g_cfg.wait, g_cfg.trace, g_cfg.lang, g_cfg.real, g_cfg.level, g_cfg.serie,
+		g_cfg.diff);
 	fclose(f);
 }
 
@@ -555,6 +562,15 @@ static void	fmt_time(long s, char *b, size_t n)
 	snprintf(b, n, "%ld:%02ld:%02ld", s / 3600, s / 60 % 60, s % 60);
 }
 
+static int	serie_niveau(int k)
+{
+	if (g_cfg.diff >= 1 && g_cfg.diff <= XLEVELS)
+		return (g_cfg.diff);
+	if (k >= g_cfg.serie)
+		k = g_cfg.serie - 1;
+	return (1 + k * XLEVELS / g_cfg.serie);
+}
+
 static void	entete(void)
 {
 	t_xexo	*x;
@@ -569,6 +585,14 @@ static void	entete(void)
 		for (i = 1; i <= XLEVELS; i++)
 			printf("%s%s%s ", level_color(i), i < g_st.level ? "■" : i == g_st.level ? "▣" : "□", C_R);
 		printf(" %s%3d/100%s", C_B, g_st.points, C_R);
+	}
+	else if (g_st.mode == 2)
+	{
+		printf("   %sSérie%s  ", C_B, C_R);
+		for (i = 0; i < g_cfg.serie; i++)
+			printf("%s%s%s ", level_color(serie_niveau(i)), i < g_st.points ? "■" : i == g_st.points ? "▣" : "□", C_R);
+		printf(" %s%d/%d%s · %d réussi(s)", C_B, g_st.points + 1 > g_cfg.serie ? g_cfg.serie : g_st.points + 1,
+			g_cfg.serie, C_R, g_st.solved);
 	}
 	else
 		printf("   %sEntraînement%s · niveau %d · %d réussi(s)", C_B, C_R, g_st.level, g_st.solved);
@@ -1169,6 +1193,13 @@ static void	finish(int timeout)
 			tdf_stats_fail(i == g_st.level ? g_bank[g_st.exo].name : "niveau", "ECHEC");
 		tdf_stats_end(g_st.points / XPOINTS, XLEVELS);
 	}
+	else if (g_st.mode == 2)
+	{
+		printf("  %sSérie terminée%s · %s%d/%d%s réussi(s) · temps : %s · échecs : %d\n", C_B, C_R,
+			g_st.solved == g_cfg.serie ? C_OK : C_WN, g_st.solved, g_cfg.serie, C_R, t, g_st.tfails);
+		tdf_stats_begin("exam");
+		tdf_stats_end(g_st.solved, g_cfg.serie);
+	}
 	else
 		printf("  %sEntraînement terminé%s · %d exercice(s) réussi(s) · temps : %s\n", C_B, C_R, g_st.solved, t);
 	snprintf(p, sizeof(p), "%s/traces/", g_work);
@@ -1269,13 +1300,23 @@ static int	do_grademe(void)
 	first = !done_has(x->name);
 	done_add(x->name);
 	g_st.solved++;
-	if (g_st.mode == 1)
+	if (g_st.mode == 1 || g_st.mode == 2)
 	{
 		if (!g_st.cheats)
 			reward(first ? 15 * x->level : 2, first ? "nouvel exercice réussi" : "exercice déjà réussi");
-		tdf_stats_begin("exam");
-		tdf_stats_end(1, 1);
+		if (g_st.mode == 1)
+		{
+			tdf_stats_begin("exam");
+			tdf_stats_end(1, 1);
+		}
 		save_write();
+		if (g_st.mode == 2 && ++g_st.points >= g_cfg.serie)
+			return (1);
+		if (g_st.mode == 2)
+		{
+			printf("  %sexercice suivant : %d/%d%s\n", C_OK, g_st.points + 1, g_cfg.serie, C_R);
+			g_st.level = serie_niveau(g_st.points);
+		}
 		pause_x();
 		next_exo();
 		return (0);
@@ -1343,6 +1384,10 @@ static int	do_cheat(const char *cmd)
 			return (1);
 		if (g_st.mode == 0)
 			g_st.level++;
+		if (g_st.mode == 2 && ++g_st.points >= g_cfg.serie)
+			return (1);
+		if (g_st.mode == 2)
+			g_st.level = serie_niveau(g_st.points);
 		next_exo();
 	}
 	state_save();
@@ -1444,9 +1489,18 @@ static int	settings(void)
 		printf("   %sLe testeur des fous · Exam en C%s\n", C_B, C_R);
 		printf("   %s%d exercices · 4 niveaux · 25 points par niveau · 100 pour valider%s\n", C_D, g_nbank, C_R);
 		printf("  %s═══════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
-		printf("  %s1%s  Mode                    %s\n", C_AC, C_R,
-			onoff(g_cfg.mode, "entraînement sur un niveau", "examen (4 niveaux, un exercice par niveau)"));
-		if (g_cfg.mode)
+		printf("  %s1%s  Mode                    %s\n", C_AC, C_R, g_cfg.mode == 2 ? "série (nombre d'exercices et difficulté au choix)"
+			: onoff(g_cfg.mode, "entraînement sur un niveau", "examen (4 niveaux, un exercice par niveau)"));
+		if (g_cfg.mode == 2)
+		{
+			printf("  %s2%s  Exercices               %d\n", C_AC, C_R, g_cfg.serie);
+			printf("  %s7%s  Difficulté              ", C_AC, C_R);
+			if (g_cfg.diff)
+				printf("%sniveau %d%s, fixe\n", level_color(g_cfg.diff), g_cfg.diff, C_R);
+			else
+				printf("croissante (du facile au difficile)\n");
+		}
+		else if (g_cfg.mode)
 			printf("  %s2%s  Niveau                  %s%d%s\n", C_AC, C_R, level_color(g_cfg.level), g_cfg.level, C_R);
 		else
 			printf("  %s2%s  Chronomètre             %s\n", C_AC, C_R, onoff(g_cfg.chrono, "3 heures", "libre"));
@@ -1456,7 +1510,8 @@ static int	settings(void)
 		printf("  %s5%s  Langue du sujet         %s\n", C_AC, C_R, onoff(g_cfg.lang, "anglais", "français"));
 		printf("  %s6%s  Conditions réelles      %s\n\n", C_AC, C_R,
 			onoff(g_cfg.real, "oui : examen, 3 heures, attente, trace à la fin, aucun cheat", "non"));
-		printf("  %sEntrée%s commencer   %s1 à 6%s changer un réglage   %sq%s quitter\n\n  > ", C_B, C_R, C_B, C_R, C_B, C_R);
+		printf("  %sEntrée%s commencer   %s1 à %d%s changer un réglage   %sq%s quitter\n\n  > ", C_B, C_R, C_B,
+			g_cfg.mode == 2 ? 7 : 6, C_R, C_B, C_R);
 		fflush(stdout);
 		if (!fgets(line, sizeof(line), stdin))
 			return (0);
@@ -1470,7 +1525,11 @@ static int	settings(void)
 		else if (g_cfg.real)
 			printf("  %sconditions réelles : ce réglage est verrouillé (6 pour les quitter)%s\n", C_WN, C_R);
 		else if (c == '1')
-			g_cfg.mode = !g_cfg.mode;
+			g_cfg.mode = (g_cfg.mode + 1) % 3;
+		else if (c == '2' && g_cfg.mode == 2)
+			g_cfg.serie = g_cfg.serie % 5 + 1;
+		else if (c == '7' && g_cfg.mode == 2)
+			g_cfg.diff = (g_cfg.diff + 1) % (XLEVELS + 1);
 		else if (c == '2' && g_cfg.mode)
 			g_cfg.level = g_cfg.level % XLEVELS + 1;
 		else if (c == '2')
@@ -1491,7 +1550,9 @@ static void	start(void)
 	memset(&g_st, 0, sizeof(g_st));
 	g_st.active = 1;
 	g_st.mode = g_cfg.mode;
-	g_st.level = g_cfg.mode ? g_cfg.level : 1;
+	if (g_cfg.serie < 1 || g_cfg.serie > 5)
+		g_cfg.serie = 4;
+	g_st.level = g_cfg.mode == 2 ? serie_niveau(0) : (g_cfg.mode ? g_cfg.level : 1);
 	g_st.start = (long)time(NULL);
 	g_st.limit = (!g_cfg.mode && g_cfg.chrono) ? 3 * 3600 : 0;
 	g_st.wait = g_cfg.wait;
@@ -2049,6 +2110,7 @@ int	main(int ac, char **av)
 	static char	savedir[1000];
 	char		line[40];
 	int			i;
+	int			direct;
 
 	srand((unsigned int)(time(NULL) ^ getpid()));
 	for (i = 1; i + 1 < ac; i += 2)
@@ -2087,6 +2149,25 @@ int	main(int ac, char **av)
 	cfg_load();
 	if (i < ac && !strcmp(av[i], "--banque"))
 		return (banque());
+	direct = 0;
+	for (; i + 1 < ac; i += 2)
+	{
+		if (!strcmp(av[i], "--serie") && atoi(av[i + 1]) >= 1 && atoi(av[i + 1]) <= 5)
+			g_cfg.serie = atoi(av[i + 1]);
+		else if (!strcmp(av[i], "--difficulte") && !strcmp(av[i + 1], "croissante"))
+			g_cfg.diff = 0;
+		else if (!strcmp(av[i], "--difficulte") && atoi(av[i + 1]) >= 1 && atoi(av[i + 1]) <= XLEVELS)
+			g_cfg.diff = atoi(av[i + 1]);
+		else
+			die("options : --serie 1..5   --difficulte croissante|1..4");
+		g_cfg.mode = 2;
+		g_cfg.real = 0;
+		direct = 1;
+	}
+	if (i < ac)
+		die("options : --serie 1..5   --difficulte croissante|1..4");
+	if (direct)
+		cfg_save();
 	if (state_load())
 	{
 		printf("\n  Une session est en cours (%s, niveau %d). La reprendre ? (o/n) ", g_bank[g_st.exo].name, g_st.level);
@@ -2098,7 +2179,7 @@ int	main(int ac, char **av)
 	}
 	if (!g_st.active)
 	{
-		if (!settings())
+		if (!direct && !settings())
 			return (0);
 		start();
 	}

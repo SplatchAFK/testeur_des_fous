@@ -44,6 +44,7 @@ Créé et vibe-codé par Splatch (romasant)
   $c printf           tester ton ft_printf
   $c gnl              tester ton get_next_line
   $c exam             passer un exam en C (4 niveaux, grademe)
+  $c exam --serie 3 --difficulte croissante   une série de 1 à 5 exos (croissante ou 1 à 4)
   $c banque           la banque d'exercices (exam, Libft, printf)
   $c --menu           ouvrir le menu sans lancer de tests (stats, chevalier...)
   $c debug            le journal de la dernière session (debug aide : tout)
