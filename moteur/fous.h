@@ -187,6 +187,9 @@
 # define rendu_frame tdf_rendu_frame
 # define rendu_apres_flush tdf_rendu_apres_flush
 # define rendu_fin tdf_rendu_fin
+# define gardien_image tdf_gardien_image
+# define gardien_sprite tdf_gardien_sprite
+# define gardien_fenetre tdf_gardien_fenetre
 # define entete_24bits tdf_entete_24bits
 # define entete_taille tdf_entete_taille
 # define entete_hauteur tdf_entete_hauteur
@@ -578,6 +581,9 @@ void			rendu_image_terminal(const unsigned char *px, int pw, int ph, int cx, int
 void			rendu_frame(void);
 void			rendu_apres_flush(void);
 void			rendu_fin(void);
+const unsigned char	*gardien_image(int p, long ms, int *w, int *h);
+int				gardien_sprite(t_canvas *cv, int p, int x, int y, int mw, int mh, double flash);
+void			gardien_fenetre(int p, long ms);
 int				entete_24bits(void);
 void			entete_taille(int *cols, int *rows);
 int				entete_hauteur(const char *l1, const char *l2, int reste);

@@ -986,7 +986,8 @@ void	screen_boss_menu(void)
 		frame();
 		center(0, theme()->accent2, L("L E S   B O S S", "T H E   B O S S E S"));
 		cv_init(&cv, 40, 36);
-		cv_spr(&cv, &g_boss_spr[sel], 0, (int)((t / 450) % 2), g_bosses[sel].glow,
+		if (!gardien_sprite(&cv, sel, 0, (int)((t / 450) % 2), g_boss_spr[sel].w, g_boss_spr[sel].h, 0))
+			cv_spr(&cv, &g_boss_spr[sel], 0, (int)((t / 450) % 2), g_bosses[sel].glow,
 			mix(g_bosses[sel].glow, rgb(255, 255, 255), 0.5 + 0.5 * sin(t / 160.0)),
 			g_save.boss[sel] ? 0 : 0);
 		cv_print(&cv, x + 38, 2, theme()->bg);

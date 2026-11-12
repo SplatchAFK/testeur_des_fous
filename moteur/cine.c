@@ -515,7 +515,8 @@ void	stage_boss(t_hd *d, const t_stage *s, int p, double x, double y, double fad
 	t_canvas	cv;
 
 	cv_init(&cv, 41, 37);
-	cv_spr(&cv, &g_boss_spr[p], 0, 0, g_bosses[p].glow, rgb(255, 255, 255), 0);
+	if (!gardien_sprite(&cv, p, 0, 0, g_boss_spr[p].w, g_boss_spr[p].h, 0))
+		cv_spr(&cv, &g_boss_spr[p], 0, 0, g_bosses[p].glow, rgb(255, 255, 255), 0);
 	hd_canvas(d, &cv, s->ox + (int)floor(x * s->k), s->oy + (int)floor(y * s->k), s->k, fade);
 	cv_free(&cv);
 }
