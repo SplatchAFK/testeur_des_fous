@@ -352,6 +352,25 @@ static void	tile_pos(int i, int ox, int oy, int *x, int *y)
 	*y = oy + (p == 0 ? 1 : (p == 1 ? 9 : 14)) + (k / 4);
 }
 
+static void	draw_tour(void)
+{
+	int	etat[NFN];
+	int	ox;
+	int	oy;
+	int	i;
+
+	for (i = 0; i < NFN; i++)
+	{
+		etat[i] = 0;
+		if (g_shown[i] && st_pass(g_run.fn[i].st))
+			etat[i] = 1;
+		else if (g_shown[i] && st_bad(g_run.fn[i].st))
+			etat[i] = 2;
+	}
+	layout(&ox, &oy);
+	tour_dessiner(etat, NFN, ox + 4 * 16 + 3, oy, 17);
+}
+
 static void	draw_grid(long now, int sel)
 {
 	int	ox;
@@ -489,6 +508,7 @@ void	screen_scan(const char *path, int pid)
 		k = (term_cols() - 70) / 2;
 		text_at(k < 0 ? 0 : k, 2, theme()->dim, tmp);
 		draw_grid(now, -1);
+		draw_tour();
 		counts(&ok, &bad, &done);
 		layout(&k, &i);
 		if (done > 0 && !tfirst)
@@ -1022,6 +1042,7 @@ int	screen_results(int after)
 		center(1, m ? rgb(80, 230, 140) : rgb(255, 90, 100), tmp);
 		center(2, theme()->dim, why);
 		draw_grid(now_ms(), sel);
+		draw_tour();
 		detail_panel(sel, y + 17);
 		foot_line(x, L("flèches : choisir   f : fiche   m : audit   r : corrigé ? relancer   Entrée : continuer",
 				"arrows: pick   f: details   m: audit   r: fixed? run again   Enter: continue"));

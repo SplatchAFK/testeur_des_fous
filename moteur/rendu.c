@@ -643,6 +643,14 @@ static unsigned long	sum_of(const unsigned char *p, size_t n)
 
 static void	win_spawn(void);
 static void	win_send(const unsigned char *px, int pw, int ph);
+static int	g_terminal_seul;
+
+void	rendu_image_terminal(const unsigned char *px, int pw, int ph, int cx, int cy, int cw, int ch)
+{
+	g_terminal_seul = 1;
+	rendu_image(px, pw, ph, cx, cy, cw, ch);
+	g_terminal_seul = 0;
+}
 
 void	rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw, int ch)
 {
@@ -652,7 +660,7 @@ void	rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw
 	if (!px || pw <= 0 || ph <= 0 || cw <= 0 || ch <= 0)
 		return ;
 	p = rendu_palier();
-	if (p == 0)
+	if (p == 0 && !g_terminal_seul)
 		win_send(px, pw, ph);
 	if (p != 1)
 	{
@@ -681,6 +689,12 @@ void	rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw
 	g_sh.sum = s;
 	g_sh.on = 0;
 	g_sh.want = 1;
+}
+
+void	rendu_fenetre(const unsigned char *px, int pw, int ph)
+{
+	if (px && pw > 0 && ph > 0 && rendu_palier() == 0)
+		win_send(px, pw, ph);
 }
 
 void	rendu_frame(void)

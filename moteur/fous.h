@@ -183,9 +183,13 @@
 # define rendu_nom tdf_rendu_nom
 # define rendu_deploiement tdf_rendu_deploiement
 # define rendu_image tdf_rendu_image
+# define rendu_image_terminal tdf_rendu_image_terminal
 # define rendu_frame tdf_rendu_frame
 # define rendu_apres_flush tdf_rendu_apres_flush
 # define rendu_fin tdf_rendu_fin
+# define rendu_fenetre tdf_rendu_fenetre
+# define tour_dessiner tdf_tour_dessiner
+# define tour_largeur tdf_tour_largeur
 # define screen_rendu tdf_screen_rendu
 # define term_pause tdf_term_pause
 # define term_poll tdf_term_poll
@@ -565,9 +569,13 @@ int				rendu_palier(void);
 const char		*rendu_nom(int p);
 int				rendu_deploiement(int *det);
 void			rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw, int ch);
+void			rendu_image_terminal(const unsigned char *px, int pw, int ph, int cx, int cy, int cw, int ch);
 void			rendu_frame(void);
 void			rendu_apres_flush(void);
 void			rendu_fin(void);
+void			rendu_fenetre(const unsigned char *px, int pw, int ph);
+void			tour_dessiner(const int *etat, int n, int x, int y, int h);
+int				tour_largeur(int h);
 void			screen_rendu(void);
 void			term_fast(int on);
 void			at(int x, int y);
