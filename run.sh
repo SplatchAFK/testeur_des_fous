@@ -121,6 +121,35 @@ court() {
 	esac
 }
 
+LANCEUR="$DOSSIER/lanceur.txt"
+INTERFACE="$(sed -n 's/^interface=//p' "$LANCEUR" 2>/dev/null | head -1)"
+
+ecrire_interface() {
+	mkdir -p "$DOSSIER" 2>/dev/null
+	printf 'interface=%s\n' "$1" > "$LANCEUR"
+	INTERFACE="$1"
+}
+
+premiers_pas() {
+	local r
+	[ -n "$INTERFACE" ] && return 0
+	tdf_choisir "TESTEUR" "DES FOUS" "Première fois ici. Comment veux-tu le testeur ?" \
+		"Interface graphique|Le lore, les cinématiques, les animations et les combats des gardiens" \
+		"Mode texte|Les tests seuls, sans histoire ni animation : plus rapide et plus sobre"
+	[ "$CHOIX_MENU" -ge 0 ] || exit 0
+	if [ "$CHOIX_MENU" = 1 ]; then ecrire_interface texte; else ecrire_interface graphique; fi
+	if ! tdf_cli_installee; then
+		tdf_choisir "TESTEUR" "DES FOUS" "Installer la commande tdf ? Ensuite tu tapes seulement « tdf », dans n'importe quel dossier." \
+			"Oui, installer tdf|Sans sudo, dans ~/.local/bin" "Non, pas maintenant|Tu pourras le faire plus tard depuis le menu"
+		if [ "$CHOIX_MENU" = 0 ]; then
+			printf '\n'
+			tdf_cli_installer
+			printf '\n  Entrée pour continuer '
+			read -r r
+		fi
+	fi
+}
+
 menu_depart() {
 	local items=() acts=() p a sous n
 	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do
@@ -143,6 +172,12 @@ menu_depart() {
 	acts+=("menu|")
 	items+=("Tester un autre dossier|Le testeur te demande le chemin d'un projet qui n'est pas ici")
 	acts+=("autre|")
+	if [ "$INTERFACE" = texte ]; then
+		items+=("Interface : mode texte|Entrée pour passer à l'interface graphique (lore, animations)")
+	else
+		items+=("Interface : graphique|Entrée pour passer au mode texte (les tests seuls, sans animation)")
+	fi
+	acts+=("interface|")
 	if ! tdf_cli_installee; then
 		items+=("Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo)")
 		acts+=("installer|")
@@ -155,7 +190,7 @@ menu_depart() {
 	else
 		sous="$n projet(s) trouvé(s) dans ce dossier ou à côté du testeur."
 	fi
-	tdf_menu_fleches "LE TESTEUR DES FOUS $TDF_VERSION" "$sous" "${items[@]}"
+	tdf_choisir "TESTEUR" "DES FOUS" "$sous" "${items[@]}"
 	[ "$CHOIX_MENU" -ge 0 ] || exit 0
 	a="${acts[$CHOIX_MENU]%%|*}"
 	p="${acts[$CHOIX_MENU]#*|}"
@@ -188,6 +223,10 @@ menu_depart() {
 				printf '  Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s\n\n' "$PROJET"
 				exit 2
 			fi
+			;;
+		interface)
+			if [ "$INTERFACE" = texte ]; then ecrire_interface graphique; else ecrire_interface texte; fi
+			menu_depart
 			;;
 		installer)
 			printf '\n'
@@ -342,6 +381,7 @@ elif [ -n "$PROJET" ]; then
 	fi
 elif [ -z "$MODULE" ] && [ -t 0 ] && [ -t 1 ]; then
 	detecter
+	premiers_pas
 	menu_depart
 else
 	detecter
@@ -458,6 +498,10 @@ fi
 
 proteger_sauvegarde
 appliquer_anim
+export TDF_INTERFACE="${INTERFACE:-}"
+if [ "${INTERFACE:-}" = texte ] && { [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; }; then
+	case " ${SUITE[*]:-} " in *" --menu "*|*" --no-lore "*) ;; *) SUITE+=(--no-lore) ;; esac
+fi
 
 [ ${#LIBFTS[@]} -eq 0 ] && [ ${#PRINTFS[@]} -eq 0 ] && [ ${#GNLS[@]} -eq 0 ] && detecter
 TDF_DISPO="$MODULE exam"

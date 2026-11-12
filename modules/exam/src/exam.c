@@ -11,6 +11,7 @@
 #include <sys/select.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <sys/time.h>
 #include <termios.h>
 #include "fous.h"
 
@@ -1470,7 +1471,15 @@ static const char	*onoff(int v, const char *a, const char *b)
 	return (v ? a : b);
 }
 
-static int	touche(void)
+static long	ms_now(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000L + tv.tv_usec / 1000);
+}
+
+static int	touche(int haut, long t0)
 {
 	struct termios	old;
 	struct termios	t;
@@ -1487,6 +1496,16 @@ static int	touche(void)
 	t.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSANOW, &t);
 	k = -1;
+	while (haut)
+	{
+		entete_dessiner("EXAMSHELL", "DES FOUS", ms_now() - t0, 2, 20);
+		FD_ZERO(&fs);
+		FD_SET(0, &fs);
+		tv.tv_sec = 0;
+		tv.tv_usec = 40000;
+		if (select(1, &fs, NULL, NULL, &tv) > 0)
+			break ;
+	}
 	if (read(0, c, 1) == 1)
 	{
 		k = c[0];
@@ -1550,8 +1569,11 @@ static int	reglages_fleches(void)
 	int					n;
 	int					k;
 	int					id[9];
+	int					haut;
+	long				t0;
 
 	sel = 0;
+	t0 = ms_now();
 	while (1)
 	{
 		if (g_cfg.real)
@@ -1562,10 +1584,15 @@ static int	reglages_fleches(void)
 			g_cfg.trace = 1;
 		}
 		ecran();
-		printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
-		printf("   %sLe testeur des fous · Exam en C%s\n", C_B, C_R);
-		printf("   %s%d exercices · 4 niveaux%s\n", C_D, g_nbank, C_R);
-		printf("  %s═══════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
+		haut = g_color ? entete_hauteur("EXAMSHELL", "DES FOUS", 20) : 0;
+		if (haut)
+			printf("%.*s", haut + 2, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		else
+			printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
+		printf("   %sLe testeur des fous · Exam en C · %d exercices · 4 niveaux%s\n", C_B, g_nbank, C_R);
+		if (!haut)
+			printf("  %s═══════════════════════════════════════════════════════════%s\n", C_AC, C_R);
+		printf("\n");
 		desc = "";
 		n = 0;
 		id[n] = 0;
@@ -1627,7 +1654,7 @@ static int	reglages_fleches(void)
 		if (g_cfg.real && sel < n && id[sel] != 8)
 			printf("  %sconditions réelles : ce réglage est verrouillé%s\n", C_WN, C_R);
 		printf("\n  %s↑ ↓ choisir   ◀ ▶ changer   Entrée valider   q quitter%s\n", C_D, C_R);
-		k = touche();
+		k = touche(haut, t0);
 		if (k < 0 || k == 'q' || k == 'Q' || (k == 27))
 			return (0);
 		if (k == 1000)

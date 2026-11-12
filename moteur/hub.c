@@ -143,6 +143,13 @@ void	lore_setup(void)
 
 	if (g_save.cfg.lore == 1 || g_save.cfg.lore == 2)
 		return ;
+	if (getenv("TDF_INTERFACE") && (!strcmp(getenv("TDF_INTERFACE"), "graphique")
+			|| !strcmp(getenv("TDF_INTERFACE"), "texte")))
+	{
+		g_save.cfg.lore = strcmp(getenv("TDF_INTERFACE"), "texte") ? 1 : 2;
+		save_write();
+		return ;
+	}
 	sel = 0;
 	cls();
 	while (1)

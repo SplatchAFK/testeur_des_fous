@@ -187,6 +187,11 @@
 # define rendu_frame tdf_rendu_frame
 # define rendu_apres_flush tdf_rendu_apres_flush
 # define rendu_fin tdf_rendu_fin
+# define entete_24bits tdf_entete_24bits
+# define entete_taille tdf_entete_taille
+# define entete_hauteur tdf_entete_hauteur
+# define entete_dessiner tdf_entete_dessiner
+# define entete_phase tdf_entete_phase
 # define rendu_fenetre tdf_rendu_fenetre
 # define tour_dessiner tdf_tour_dessiner
 # define tour_largeur tdf_tour_largeur
@@ -573,6 +578,11 @@ void			rendu_image_terminal(const unsigned char *px, int pw, int ph, int cx, int
 void			rendu_frame(void);
 void			rendu_apres_flush(void);
 void			rendu_fin(void);
+int				entete_24bits(void);
+void			entete_taille(int *cols, int *rows);
+int				entete_hauteur(const char *l1, const char *l2, int reste);
+void			entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste);
+double			entete_phase(long ms, const char *l1, const char *l2);
 void			rendu_fenetre(const unsigned char *px, int pw, int ph);
 void			tour_dessiner(const int *etat, int n, int x, int y, int h);
 int				tour_largeur(int h);
