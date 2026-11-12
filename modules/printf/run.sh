@@ -7,6 +7,7 @@ MOT="$(cd "$TDF_DIR/../../moteur" && pwd)"
 TDF_AFF="${TDF_NOM:-$(basename "$TDF_DIR")}"
 TDF_JOURNAL_MOD="printf"
 . "$MOT/chargement.sh"
+. "$MOT/conformite.sh"
 MENU_SEUL=0
 MODE="asan+ubsan"
 ONLY=""
@@ -566,6 +567,20 @@ if want makefile; then
 	cache_run makefile "$MK_KEY" mk_audit
 fi
 
+K_PRE=$STATIC_KO
+if want makefile; then
+	PARAS="$(tdf_parasites printf "$PROJECT")"
+	if [ -z "$PARAS" ]; then
+		line OK "aucun fichier parasite dans le rendu"
+	else
+		while IFS=$'\t' read -r f m; do
+			line KO "fichier parasite : $f (erreur moulinette)" ""
+			detail "$m · à retirer : git rm $f"
+		done <<< "$PARAS"
+	fi
+fi
+PRE_FICHIERS=$((STATIC_KO - K_PRE))
+
 if want readme || want makefile; then
 	RD="$COPY/README.md"
 	if [ ! -f "$RD" ]; then
@@ -625,6 +640,7 @@ if { want makefile || want libft; } && [ -f "$COPY/libft/Makefile" ]; then
 	cache_run libft "$LR_KEY" lr_check
 fi
 
+K_NM=$STATIC_KO
 if want nm; then
 	UNDERSCORE='s/^//'
 	[ "$OS" = "Darwin" ] && UNDERSCORE='s/^_//'
@@ -660,6 +676,7 @@ if want nm; then
 		line OK "fonctions externes (nm) : seulement write/malloc/free"
 	fi
 fi
+PRE_FONCTIONS=$((STATIC_KO - K_NM))
 
 objs_to_srcs() {
 	local o base cands miss=0
@@ -815,7 +832,8 @@ export ASAN_OPTIONS="check_printf=0:detect_leaks=1:halt_on_error=1:symbolize=1:a
 export UBSAN_OPTIONS="print_stacktrace=1:halt_on_error=1"
 export LSAN_OPTIONS="print_suppressions=0"
 ARGS=(--seed "$SEED" --project "$COPY" --srclist "$BUILD/srcs.txt" --vglogdir "$BUILD/vg" --aide "$AIDE")
-[ -n "$MACHINE" ] && ARGS+=(--machine "$MACHINE")
+TRACE="${MACHINE:-$BUILD/trace.tsv}"
+ARGS+=(--machine "$TRACE")
 [ -n "$STRESS" ] && ARGS+=(--stress "$STRESS")
 [ -n "$TIMEOUT" ] && ARGS+=(--timeout "$TIMEOUT")
 [ -n "$VERBOSE" ] && ARGS+=("$VERBOSE")
@@ -854,6 +872,52 @@ if [ -z "$ONLY" ] || [ -n "$DYN_ONLY" ]; then
 		[ -n "$BONUS_OPT" ] && B_ARGS+=("$BONUS_OPT")
 		run_runner "$BUILD/tdf_runner_bonus" "${B_ARGS[@]}" || RC=1
 	fi
+fi
+
+trace_moulinette() {
+	local ok_all=1 k t v
+	printf "\n%s  ── Trace moulinette ──%s  %s(même plan et mêmes intitulés que la trace officielle)%s\n" "$B" "$N" "$D" "$N"
+	printf "  %sPrerequisites%s\n" "$B" "$N"
+	for k in "Expected files:0" "Allowed functions:${PRE_FONCTIONS:-0}" "Garbage files (norminette):${PRE_FICHIERS:-0}"; do
+		if [ "${k##*:}" = 0 ]; then
+			printf "    %-28s %sOK%s\n" "${k%:*}" "$G" "$N"
+		else
+			printf "    %-28s %sKO%s\n" "${k%:*}" "$R" "$N"
+			ok_all=0
+		fi
+	done
+	[ -f "$TRACE" ] || { printf "    %s(résultats des tests indisponibles)%s\n" "$D" "$N"; return; }
+	while IFS='|' read -r k t; do
+		v=$(awk -F'\t' -v k="$k" '$1 == "C" && $2 == k {ok += $4; ko += $5; w += $6} END {if (ok + ko + w) printf "%d %d", ok + w, ok + ko + w}' "$TRACE")
+		[ -n "$v" ] || continue
+		if [ "${v% *}" = "${v#* }" ]; then
+			printf "  %-58s %sValid tests: %s / %s%s\n" "$t" "$G" "${v% *}" "${v#* }" "$N"
+		else
+			printf "  %-58s %sValid tests: %s / %s%s\n" "$t" "$R" "${v% *}" "${v#* }" "$N"
+			ok_all=0
+		fi
+	done <<'EOT'
+%|Random %% literal cases
+c|Random %c cases
+s|Random %s cases (including NULL)
+p|Random %p cases
+d|Random %d cases
+i|Random %i cases
+u|Random %u cases
+x|Random %x cases
+X|Random %X cases
+mix|Random mixed conversions across all supported specifiers
+EOT
+	v=$(awk -F'\t' '$1 == "C" && ($2 == "limites" || $2 == "write") {ok += $4; w += $6} END {if (ok + w) printf "%d %d", ok, ok + w}' "$TRACE")
+	[ -n "$v" ] && printf "  %sbonus, hors trace : cas limites et write en échec  %s / %s%s\n" "$D" "${v% *}" "${v#* }" "$N"
+	if [ "$ok_all" = 1 ]; then
+		printf "  %s%sAssignment: Common_Core-Project-C-Printf  OK%s\n" "$B" "$G" "$N"
+	else
+		printf "  %s%sAssignment: Common_Core-Project-C-Printf  KO%s\n" "$B" "$R" "$N"
+	fi
+}
+if [ -z "$ONLY" ]; then
+	trace_moulinette
 fi
 
 printf "\n"

@@ -6,6 +6,7 @@ RACINE="$(cd "$ICI/../.." && pwd)"
 MOT="$RACINE/moteur"
 TDF_JOURNAL_MOD="gnl"
 . "$MOT/chargement.sh"
+. "$MOT/conformite.sh"
 CC="${CC:-cc}"
 OS="$(uname -s 2>/dev/null)"
 PROJET="${TDF_PROJET:-}"
@@ -183,13 +184,13 @@ else
 		ligne KO "README.md : 1re ligne, Description, Instructions, Resources, algorithme" "$pb"
 	fi
 fi
-if (cd "$PROJET" && git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-	extra="$(cd "$PROJET" && git ls-files | sed 's#/.*##' | sort -u | grep -vxE 'get_next_line\.c|get_next_line_utils\.c|get_next_line\.h|README\.md|\.gitignore' | tr '\n' ' ')"
-	if [ -z "$extra" ]; then
-		ligne OK "aucun fichier en trop suivi par git"
-	else
-		ligne NOTE "fichiers suivis par git en plus du rendu" "$extra"
-	fi
+PARAS="$(tdf_parasites gnl "$PROJET")"
+if [ -z "$PARAS" ]; then
+	ligne OK "aucun fichier parasite dans le rendu"
+else
+	while IFS=$'\t' read -r f m; do
+		ligne KO "fichier parasite : $f (erreur moulinette)" "$m · à retirer : git rm $f"
+	done <<< "$PARAS"
 fi
 
 SAN=""

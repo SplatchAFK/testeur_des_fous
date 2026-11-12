@@ -29,29 +29,37 @@ TDF_VERSION="$(lire_version TDF_VERSION)"
 TDF_DATE="$(lire_version TDF_DATE)"
 . "$TDF_RACINE/moteur/chargement.sh"
 . "$TDF_RACINE/moteur/debug.sh"
+. "$TDF_RACINE/moteur/cli.sh"
 ARGS_ORIG=("$@")
 
 usage() {
+	local c="bash $TDF_NOM/run.sh"
+	[ "${TDF_CLI:-0}" = 1 ] && c="$TDF_CMD_NOM"
 	cat <<EOF
 Le testeur des fous $TDF_VERSION
 Créé et vibe-codé par Splatch (romasant)
 
-  bash $TDF_NOM/run.sh                  détecter tes projets et lancer le testeur
-  bash $TDF_NOM/run.sh libft            tester ta Libft
-  bash $TDF_NOM/run.sh printf           tester ton ft_printf
-  bash $TDF_NOM/run.sh gnl              tester ton get_next_line
-  bash $TDF_NOM/run.sh exam             passer un exam en C (4 niveaux, grademe)
-  bash $TDF_NOM/run.sh banque           la banque d'exercices (exam, Libft, printf)
-  bash $TDF_NOM/run.sh --menu           ouvrir le menu sans lancer de tests (stats, chevalier...)
-  bash $TDF_NOM/run.sh debug            le journal de la dernière session (debug aide : tout)
-  bash $TDF_NOM/run.sh --projet CHEMIN  tester le projet de ce dossier
-  bash $TDF_NOM/run.sh --no-lore        les tests seuls, sans histoire
-  bash $TDF_NOM/run.sh -a               sans animations pour ce lancement
-  bash $TDF_NOM/run.sh --anim off       couper les animations pour de bon (on pour les remettre)
-  bash $TDF_NOM/run.sh --debug          tous les rapports détaillés
-  bash $TDF_NOM/run.sh --version        le numéro de version
+  $c                  détecter le projet du dossier courant et le tester
+  $c libft            tester ta Libft
+  $c printf           tester ton ft_printf
+  $c gnl              tester ton get_next_line
+  $c exam             passer un exam en C (4 niveaux, grademe)
+  $c banque           la banque d'exercices (exam, Libft, printf)
+  $c --menu           ouvrir le menu sans lancer de tests (stats, chevalier...)
+  $c debug            le journal de la dernière session (debug aide : tout)
+  $c --projet CHEMIN  tester le projet de ce dossier
+  $c --no-lore        les tests seuls, sans histoire
+  $c -a               sans animations pour ce lancement
+  $c --anim off       couper les animations pour de bon (on pour les remettre)
+  $c --debug          tous les rapports détaillés
+  $c --version        le numéro de version
 
-Les options d'un module : bash $TDF_NOM/run.sh libft --help   ou   printf --help
+La commande « $TDF_CMD_NOM », utilisable depuis n'importe quel dossier, sans sudo :
+  bash $TDF_NOM/run.sh installer     installe ~/.local/bin/$TDF_CMD_NOM
+  $TDF_CMD_NOM maj                         met le testeur à jour (git pull)
+  $TDF_CMD_NOM desinstaller                retire la commande (le testeur reste)
+
+Les options d'un module : $c libft --help   ou   $c printf --help
 EOF
 }
 
@@ -185,6 +193,11 @@ if [ "${1:-}" = debug ]; then
 	debug_commande "$@"
 	exit $?
 fi
+case "${1:-}" in
+	installer|install) tdf_cli_installer; exit $? ;;
+	desinstaller|uninstall) tdf_cli_desinstaller; exit $? ;;
+	maj|update) tdf_cli_maj; exit $? ;;
+esac
 
 while [ $# -gt 0 ]; do
 	a="$1"

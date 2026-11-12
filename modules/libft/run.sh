@@ -10,6 +10,7 @@ SRC="$HERE/src"
 MOT="$(cd "$HERE/../../moteur" && pwd)"
 TDF_JOURNAL_MOD="libft"
 . "$MOT/chargement.sh"
+. "$MOT/conformite.sh"
 MENU_SEUL=0
 DEDANS=0
 case "$HERE/" in "$ROOT"/*) DEDANS=1 ;; esac
@@ -755,11 +756,22 @@ run_audit() {
 		audit_line ko "aucune variable globale (sujet 4.1)" "trouvé : $extra"
 	else audit_line ok "aucune variable globale (sujet 4.1)"; fi
 
-	bad="$(list_extra_files)"
+	bad="$(tdf_parasites libft "$ROOT")"
 	if [ -z "$bad" ]; then
-		audit_line ok "aucun fichier en trop dans le dépôt"
+		audit_line ok "aucun fichier parasite dans le rendu"
 	else
-		audit_line ko "aucun fichier en trop dans le dépôt (sujet : interdit)" "$(echo $bad | cut -c1-100)"
+		while IFS=$'\t' read -r f m; do
+			audit_line ko "fichier parasite : $f (erreur moulinette)" "$m · à retirer : git rm $f"
+		done <<< "$bad"
+	fi
+
+	bad="$(tdf_portee "$ROOT" "$(for s in $ALL; do printf 'ft_%s ' "$s"; done)")"
+	if [ -z "$bad" ]; then
+		audit_line ok "fonctions d'aide en static, aucune variable globale (sujet 4.1)"
+	else
+		while IFS=$'\t' read -r f m; do
+			audit_line ko "$f" "$m"
+		done <<< "$bad"
 	fi
 
 	if [ ! -f "$ROOT/README.md" ]; then
@@ -770,21 +782,6 @@ run_audit() {
 		audit_line warn "README.md : 1re ligne imposée par le sujet" "attendu : *This activity has been created as part of the 42 curriculum by <login>.*"
 	fi
 	emit "AD"
-}
-
-list_extra_files() {
-	local f
-	if (cd "$ROOT" && git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-		(cd "$ROOT" && git ls-files) | sed 's#/.*##' | sort -u \
-			| grep -vE '^(ft_[a-z_0-9]+\.c|libft\.h|Makefile|README\.md|\.gitignore)$'
-	else
-		while IFS= read -r f; do
-			case "$f" in
-				ft_*.c|libft.h|Makefile|README.md|.gitignore|"$TDF_DIR"|*.o|libft.a) ;;
-				*) echo "$f" ;;
-			esac
-		done < <(cd "$ROOT" && ls -A)
-	fi
 }
 
 run_all() {
