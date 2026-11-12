@@ -1409,10 +1409,181 @@ static void	show_help(void)
 	printf("  Écris ton code dans un autre terminal ou dans ton éditeur, dans le dossier rendu/.\n\n");
 }
 
+static char	g_hist[32][256];
+static int	g_nhist;
+
+static const char	*const g_cmd_exam[] = {"grademe", "sujet", "status", "clear", "help", "aide", "finish", NULL};
+static const char	*const g_cmd_banque[] = {"liste", "cherche", "ouvre", "grademe", "sujet", "fait", "aide", "quitter", NULL};
+
+static const char	*const	*args_de(const char *cmd)
+{
+	static const char	*const	langues[] = {"fr", "en", NULL};
+	static const char	*const	sources[] = {"exam", "libft", "printf", NULL};
+
+	if (!strcmp(cmd, "sujet") || !strcmp(cmd, "subject"))
+		return (langues);
+	if (!strcmp(cmd, "liste") || !strcmp(cmd, "ls"))
+		return (sources);
+	return (NULL);
+}
+
+static void	redessiner(const char *invite, const char *buf, size_t len, size_t cur)
+{
+	printf("\r\033[K%s%.*s", invite, (int)len, buf);
+	if (len > cur)
+		printf("\033[%dD", (int)(len - cur));
+	fflush(stdout);
+}
+
+static void	completer(const char *invite, char *buf, size_t *len, size_t *cur, size_t n,
+		const char *const *cmds)
+{
+	const char *const	*liste;
+	const char			*m[16];
+	char				mot1[64];
+	size_t				deb;
+	size_t				k;
+	size_t				c;
+	int					nm;
+	int					i;
+
+	deb = *cur;
+	while (deb > 0 && buf[deb - 1] != ' ')
+		deb--;
+	liste = cmds;
+	if (deb > 0)
+	{
+		k = 0;
+		while (k < deb && buf[k] == ' ')
+			k++;
+		c = 0;
+		while (k < deb && buf[k] != ' ' && c + 1 < sizeof(mot1))
+			mot1[c++] = buf[k++];
+		mot1[c] = '\0';
+		liste = args_de(mot1);
+	}
+	if (!liste)
+		return ;
+	nm = 0;
+	for (i = 0; liste[i] && nm < 16; i++)
+		if (!strncmp(liste[i], buf + deb, *cur - deb))
+			m[nm++] = liste[i];
+	if (nm == 0)
+		return ;
+	c = strlen(m[0]);
+	for (i = 1; i < nm; i++)
+	{
+		k = 0;
+		while (k < c && m[i][k] == m[0][k])
+			k++;
+		c = k;
+	}
+	if (c > *cur - deb && *len + (c - (*cur - deb)) + 2 < n)
+	{
+		k = c - (*cur - deb);
+		memmove(buf + *cur + k, buf + *cur, *len - *cur);
+		memcpy(buf + *cur, m[0] + (*cur - deb), k);
+		*len += k;
+		*cur += k;
+		if (nm == 1 && *cur == *len)
+		{
+			buf[(*len)++] = ' ';
+			(*cur)++;
+		}
+	}
+	else if (nm > 1)
+	{
+		printf("\n");
+		for (i = 0; i < nm; i++)
+			printf("  %s", m[i]);
+		printf("\n");
+	}
+	redessiner(invite, buf, *len, *cur);
+}
+
+static int	lire_ligne(const char *invite, char *buf, size_t n, const char *const *cmds)
+{
+	struct termios	old;
+	struct termios	t;
+	unsigned char	c[4];
+	size_t			len;
+	size_t			cur;
+	int				h;
+
+	printf("%s", invite);
+	fflush(stdout);
+	if (!g_tty)
+		return (fgets(buf, (int)n, stdin) != NULL);
+	tcgetattr(0, &old);
+	t = old;
+	t.c_lflag &= ~(ICANON | ECHO);
+	t.c_cc[VMIN] = 1;
+	t.c_cc[VTIME] = 0;
+	tcsetattr(0, TCSANOW, &t);
+	len = 0;
+	cur = 0;
+	h = g_nhist;
+	while (1)
+	{
+		if (read(0, c, 1) != 1)
+			break ;
+		if (c[0] == '\r' || c[0] == '\n')
+		{
+			buf[len] = '\0';
+			printf("\n");
+			if (len && (g_nhist == 0 || strcmp(g_hist[(g_nhist - 1) % 32], buf)))
+				snprintf(g_hist[g_nhist++ % 32], sizeof(g_hist[0]), "%s", buf);
+			tcsetattr(0, TCSANOW, &old);
+			return (1);
+		}
+		if (c[0] == 4 && len == 0)
+			break ;
+		if (c[0] == '\t')
+			completer(invite, buf, &len, &cur, n, cmds);
+		else if ((c[0] == 127 || c[0] == 8) && cur > 0)
+		{
+			memmove(buf + cur - 1, buf + cur, len - cur);
+			len--;
+			cur--;
+			redessiner(invite, buf, len, cur);
+		}
+		else if (c[0] == 21)
+		{
+			len = 0;
+			cur = 0;
+			redessiner(invite, buf, len, cur);
+		}
+		else if (c[0] == 27 && read(0, c + 1, 2) == 2 && c[1] == '[')
+		{
+			if (c[2] == 'D' && cur > 0)
+				cur--;
+			else if (c[2] == 'C' && cur < len)
+				cur++;
+			else if ((c[2] == 'A' && h > 0 && g_nhist - h < 31) || (c[2] == 'B' && h < g_nhist))
+			{
+				h += c[2] == 'A' ? -1 : 1;
+				snprintf(buf, n, "%s", h < g_nhist ? g_hist[h % 32] : "");
+				len = strlen(buf);
+				cur = len;
+			}
+			redessiner(invite, buf, len, cur);
+		}
+		else if (c[0] >= 32 && c[0] < 127 && len + 2 < n)
+		{
+			memmove(buf + cur + 1, buf + cur, len - cur);
+			buf[cur++] = c[0];
+			len++;
+			redessiner(invite, buf, len, cur);
+		}
+	}
+	tcsetattr(0, TCSANOW, &old);
+	return (0);
+}
+
 static void	shell(void)
 {
 	char	line[1000];
-	char	t[32];
+	char	t[64];
 	char	*cmd;
 	int		end;
 
@@ -1421,10 +1592,8 @@ static void	shell(void)
 	{
 		if (g_st.limit && remaining() <= 0)
 			return (finish(1));
-		(void)t;
-		printf("%sexamshell%s> ", C_AC, C_R);
-		fflush(stdout);
-		if (!fgets(line, sizeof(line), stdin))
+		snprintf(t, sizeof(t), "%sexamshell%s> ", C_AC, C_R);
+		if (!lire_ligne(t, line, sizeof(line), g_cmd_exam))
 		{
 			printf("\n  session gardée : relance l'exam pour la reprendre.\n");
 			return ;
@@ -2266,6 +2435,7 @@ static void	b_aide(void)
 
 static int	banque(void)
 {
+	char	invite[64];
 	char	line[400];
 	char	*cmd;
 	char	*a1;
@@ -2277,9 +2447,8 @@ static int	banque(void)
 	b_accueil();
 	while (1)
 	{
-		printf("%sbanque%s> ", C_AC, C_R);
-		fflush(stdout);
-		if (!fgets(line, sizeof(line), stdin))
+		snprintf(invite, sizeof(invite), "%sbanque%s> ", C_AC, C_R);
+		if (!lire_ligne(invite, line, sizeof(line), g_cmd_banque))
 			break ;
 		cmd = strtok(line, " \t\r\n");
 		if (!cmd)
