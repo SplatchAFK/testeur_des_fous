@@ -53,10 +53,10 @@ static int	composer_fo(const int *etat)
 		free(g_fc);
 		g_fw = b->w;
 		g_fh = b->h;
-		g_cx0 = g_fw * 30 / 100;
-		g_cy0 = g_fh * 8 / 100;
-		g_cw = g_fw * 40 / 100;
-		g_ch = g_fh * 84 / 100;
+		g_cx0 = g_fw * 32 / 100;
+		g_cy0 = g_fh * 30 / 100;
+		g_cw = g_fw * 36 / 100;
+		g_ch = g_fh * 66 / 100;
 		g_fo = malloc((size_t)g_fw * g_fh * 3);
 		g_fc = malloc((size_t)g_cw * g_ch * 3);
 		if (!g_fo || !g_fc)
@@ -71,8 +71,7 @@ static int	composer_fo(const int *etat)
 		empiler_fo(art_pic(nom));
 		libre &= etat[i] != 0;
 	}
-	if (!libre)
-		empiler_fo(art_pic("fonderie_collier"));
+	empiler_fo(art_pic(libre ? "fonderie_cage_ouverte" : "fonderie_cage"));
 	for (y = 0; y < g_ch; y++)
 		memcpy(g_fc + (size_t)y * g_cw * 3, g_fo + ((size_t)(g_cy0 + y) * g_fw + g_cx0) * 3, (size_t)g_cw * 3);
 	return (1);
