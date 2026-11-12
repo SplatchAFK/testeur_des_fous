@@ -187,6 +187,7 @@
 # define rendu_frame tdf_rendu_frame
 # define rendu_apres_flush tdf_rendu_apres_flush
 # define rendu_fin tdf_rendu_fin
+# define fonderie_dessiner tdf_fonderie_dessiner
 # define avatar_fenetre tdf_avatar_fenetre
 # define gardien_image tdf_gardien_image
 # define gardien_sprite tdf_gardien_sprite
@@ -582,6 +583,7 @@ void			rendu_image_terminal(const unsigned char *px, int pw, int ph, int cx, int
 void			rendu_frame(void);
 void			rendu_apres_flush(void);
 void			rendu_fin(void);
+void			fonderie_dessiner(const int *etat, int x, int y, int h);
 const unsigned char	*gardien_image(int p, long ms, int *w, int *h);
 int				gardien_sprite(t_canvas *cv, int p, int x, int y, int mw, int mh, double flash);
 void			gardien_fenetre(int p, long ms);

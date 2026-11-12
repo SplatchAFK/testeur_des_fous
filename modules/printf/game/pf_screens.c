@@ -191,6 +191,20 @@ void	pf_connect_screen(void)
 	cls();
 }
 
+static void	fonderie_maj(int x, int y, int h)
+{
+	t_pcat	*c;
+	int		etat[9];
+	int		i;
+
+	for (i = 0; i < 9; i++)
+	{
+		c = pf_cat(g_chains[i].key);
+		etat[i] = c && c->ko == 0 && c->ok + c->warn > 0;
+	}
+	fonderie_dessiner(etat, x, y, h);
+}
+
 static void	scan_draw(long t, int dead)
 {
 	char	tmp[200];
@@ -230,6 +244,7 @@ static void	scan_draw(long t, int dead)
 		bar(x + 32, term_rows() - 3, 44, g_pr.pcur / (double)g_pr.ptot, theme()->accent2, theme()->accent);
 	}
 	bar(x, term_rows() - 2, 76, n / 16.0 > 1 ? 1 : n / 16.0, theme()->accent, theme()->accent2);
+	fonderie_maj(x + 78, 4, term_rows() - 9 > 22 ? 22 : term_rows() - 9);
 	if (!g_pr.done && !dead)
 		foot_line(x, L("[ Q / Échap / Ctrl+C : arrêter l'analyse ]",
 				"[ Q / Esc / Ctrl+C: stop the scan ]"));
@@ -433,6 +448,7 @@ int	pf_results(int after)
 		frame();
 		discord_line(0);
 		center(1, theme()->accent2, L("R É S U L T A T S   D É T A I L L É S", "D E T A I L E D   R E S U L T S"));
+		fonderie_maj(x + 80, 4, term_rows() - 9 > 22 ? 22 : term_rows() - 9);
 		snprintf(tmp, sizeof(tmp), L("%d OK · %d KO · %d avertissements · mode %s · aide %d/2",
 				"%d OK · %d KO · %d warnings · mode %s · help %d/2"), g_pr.tok, g_pr.tko, g_pr.twarn, g_pr.mode,
 			g_save.cfg.help);
