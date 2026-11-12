@@ -187,6 +187,7 @@
 # define rendu_frame tdf_rendu_frame
 # define rendu_apres_flush tdf_rendu_apres_flush
 # define rendu_fin tdf_rendu_fin
+# define avatar_fenetre tdf_avatar_fenetre
 # define gardien_image tdf_gardien_image
 # define gardien_sprite tdf_gardien_sprite
 # define gardien_fenetre tdf_gardien_fenetre
@@ -629,6 +630,7 @@ void			cv_spr(t_canvas *c, const t_spr *s, int x, int y, t_rgb tint,
 void			cv_print(const t_canvas *c, int sx, int sy, t_rgb bg);
 int				cv_row(const t_canvas *c, int row, t_rgb bg, char *buf, size_t sz);
 void			avatar_draw(t_canvas *c, int x, int y, const t_look *lk, long t);
+void			avatar_fenetre(const t_look *lk);
 void			look_default(t_look *lk);
 int				item_find(const char *id);
 t_rgb			item_color(int item, int col);

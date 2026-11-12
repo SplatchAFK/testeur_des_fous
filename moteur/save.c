@@ -59,7 +59,7 @@ static unsigned long	g_hl;
 static unsigned long	g_hg;
 #endif
 
-#define SAVE_FORMAT 3
+#define SAVE_FORMAT 4
 
 static int		copy_file(const char *from, const char *to);
 static void		write_file(int refresh);
@@ -84,6 +84,184 @@ static unsigned long	hash_line(unsigned long h, const char *k, const char *v)
 	return ((h ^ (unsigned char)'\n') * 1099511628211UL + 0x2a);
 }
 
+typedef struct s_ancien
+{
+	const char	*id;
+	int			prix;
+}	t_ancien;
+
+static const t_ancien	g_anciens[120] = {
+	{"fond_aucun", 0},
+	{"fond_nuit", 60},
+	{"fond_couchant", 80},
+	{"fond_damier", 50},
+	{"fond_terminal", 70},
+	{"fond_nuages", 60},
+	{"fond_frigo", 90},
+	{"fond_lave", 110},
+	{"cape_aucun", 0},
+	{"cape_classique", 0},
+	{"cape_chaussette", 70},
+	{"cape_nappe", 60},
+	{"cape_rideau", 80},
+	{"cape_pirate", 120},
+	{"cape_serviette", 70},
+	{"cape_feuilles", 90},
+	{"cape_chauvesouris", 150},
+	{"jambes_jambieres", 0},
+	{"jambes_short", 50},
+	{"jambes_tutu", 80},
+	{"jambes_pattes", 60},
+	{"jambes_palmes", 70},
+	{"jambes_chaussettes", 40},
+	{"jambes_bottes", 60},
+	{"jambes_rollers", 110},
+	{"armure_cotte", 0},
+	{"armure_noel", 80},
+	{"armure_tablier", 50},
+	{"armure_gilet", 70},
+	{"armure_smoking", 120},
+	{"armure_peignoir", 60},
+	{"armure_carton", 40},
+	{"armure_foot", 70},
+	{"armure_poubelle", 30},
+	{"armure_kimono", 100},
+	{"casque_rond", 0},
+	{"casque_seau", 40},
+	{"casque_casserole", 60},
+	{"casque_citrouille", 90},
+	{"casque_bocal", 100},
+	{"casque_ampoule", 120},
+	{"casque_cone", 70},
+	{"casque_pot", 60},
+	{"casque_conserve", 50},
+	{"casque_cloche", 140},
+	{"yeux_points", 0},
+	{"yeux_fente", 30},
+	{"yeux_ko", 40},
+	{"yeux_coeurs", 60},
+	{"yeux_etoiles", 60},
+	{"yeux_3d", 80},
+	{"yeux_cyclope", 70},
+	{"yeux_dodo", 30},
+	{"yeux_dollars", 90},
+	{"yeux_laser", 150},
+	{"deco_aucun", 0},
+	{"deco_fleur", 30},
+	{"deco_etiquette", 40},
+	{"deco_helice", 60},
+	{"deco_bougie", 50},
+	{"deco_antenne", 40},
+	{"deco_plume", 50},
+	{"deco_glace", 80},
+	{"deco_canard", 90},
+	{"deco_crete", 70},
+	{"deco_couronne", 100},
+	{"deco_ventouse", 60},
+	{"deco_champignon", 70},
+	{"deco_noeud", 50},
+	{"deco_wip", 80},
+	{"deco_arcenciel", 160},
+	{"arme_aucun", 0},
+	{"arme_epee", 0},
+	{"arme_baguette", 30},
+	{"arme_poisson", 60},
+	{"arme_fourchette", 50},
+	{"arme_parapluie", 80},
+	{"arme_ventouse", 40},
+	{"arme_sucette", 70},
+	{"arme_usb", 90},
+	{"arme_balai", 50},
+	{"arme_plume", 60},
+	{"arme_spatule", 40},
+	{"arme_guitare", 120},
+	{"main_aucun", 0},
+	{"main_bouclier", 0},
+	{"main_poubelle", 30},
+	{"main_pizza", 60},
+	{"main_poele", 50},
+	{"main_livre", 70},
+	{"main_ballon", 40},
+	{"main_lanterne", 90},
+	{"main_cafe", 40},
+	{"main_postit", 20},
+	{"main_bouquet", 80},
+	{"familier_aucun", 0},
+	{"fam_pointeur", 60},
+	{"fam_canard", 50},
+	{"fam_escargot", 50},
+	{"fam_slime", 70},
+	{"fam_chat", 90},
+	{"fam_bug", 80},
+	{"fam_poisson", 100},
+	{"fam_champignon", 60},
+	{"fam_miniboss", 150},
+	{"fam_nuage", 70},
+	{"aura_aucune", 0},
+	{"aura_etincelles", 80},
+	{"aura_flammes", 120},
+	{"aura_bulles", 60},
+	{"aura_notes", 90},
+	{"aura_coeurs", 70},
+	{"aura_binaire", 100},
+	{"aura_flocons", 80},
+	{"cape_veteran", -1},
+	{"casque_veteran", -1},
+	{"fam_moulinette", -1},
+	{"cape_format", 150},
+	{"main_chocolat", 60},
+	{"casque_pourcent", 120}
+};
+
+static char	g_items_brut[256];
+
+static int	nouvel_objet(const char *id)
+{
+	static const char	*m[][2] = {{"main_chocolat", "main_braise"}, {"cape_classique", "cape_voyage"},
+		{"casque_rond", "casque_cabosse"}, {"yeux_points", "yeux_fente"}, {"deco_plume", "deco_plume"}};
+	size_t				i;
+
+	for (i = 0; i < sizeof(m) / sizeof(m[0]); i++)
+		if (!strcmp(id, m[i][0]))
+			return (item_find(m[i][1]));
+	return (item_find(id));
+}
+
+static void	migrer_objets(t_save *s)
+{
+	int		i;
+	int		n;
+	long	rembourse;
+
+	rembourse = 0;
+	memset(s->items, '0', g_nitems);
+	s->items[g_nitems] = '\0';
+	for (i = 0; i < g_nitems; i++)
+		if (g_items[i].price == 0)
+			s->items[i] = '1';
+	for (i = 0; i < (int)(sizeof(g_anciens) / sizeof(g_anciens[0])) && g_items_brut[i]; i++)
+	{
+		if (g_items_brut[i] != '1')
+			continue ;
+		n = nouvel_objet(g_anciens[i].id);
+		if (n >= 0)
+			s->items[n] = '1';
+		else if (g_anciens[i].prix > 0)
+			rembourse += g_anciens[i].prix;
+	}
+	for (i = 0; i < NSLOT; i++)
+	{
+		n = s->look.eq[i];
+		if (n >= 0 && n < (int)(sizeof(g_anciens) / sizeof(g_anciens[0])))
+			n = nouvel_objet(g_anciens[n].id);
+		else
+			n = -1;
+		s->look.eq[i] = (n >= 0 && g_items[n].slot == i) ? n : -1;
+		s->look.col[i] = 0;
+	}
+	s->octets += rembourse;
+}
+
 static unsigned long	sum_legacy(const t_save *s)
 {
 	char	tmp[2400];
@@ -91,7 +269,7 @@ static unsigned long	sum_legacy(const t_save *s)
 	size_t	n;
 
 	n = snprintf(tmp, sizeof(tmp), "%s|%ld|%ld|%d|%s|%s|%s|%d|%s|%s|%d%d%d|%s|%s|%ld|%d",
-		s->login, s->xp, s->octets, s->runs, s->cleared, s->items, s->titles, s->title,
+		s->login, s->xp, s->octets, s->runs, s->cleared, g_items_brut[0] ? g_items_brut : s->items, s->titles, s->title,
 		s->themes, s->theme, s->boss[0], s->boss[1], s->boss[2], s->exo, s->ach,
 		s->lastreward, s->crashes);
 	for (i = 0; i < NSLOT && n < sizeof(tmp) - 16; i++)
@@ -251,7 +429,10 @@ static int	kv_profile(const char *k, const char *v)
 	else if (!strcmp(k, "octets"))
 		cur->octets = atol(v);
 	else if (!strcmp(k, "items"))
+	{
+		snprintf(g_items_brut, sizeof(g_items_brut), "%s", v);
 		set_bits(cur->items, v, g_nitems);
+	}
 	else if (!strcmp(k, "titles"))
 		set_bits(cur->titles, v, NTITLE);
 	else if (!strcmp(k, "title"))
@@ -373,10 +554,12 @@ static int	parse_file(const char *path, t_save *out, char *other, size_t on, cha
 	char		*eq;
 	size_t		used;
 	size_t		len;
+	int			r;
 
 	f = fopen(path, "r");
 	if (!f)
 		return (-1);
+	g_items_brut[0] = '\0';
 	fill_default(out);
 	cur = out;
 	memset(&pres, 0, sizeof(pres));
@@ -435,18 +618,22 @@ static int	parse_file(const char *path, t_save *out, char *other, size_t on, cha
 		kv(line, eq + 1);
 	}
 	fclose(f);
-	save_fix(out);
+	r = 0;
 	if (!pres.fmt)
-		return (pres.want_leg == sum_legacy(out) ? 0 : -2);
-	if (pres.profile && pres.want_p != g_hp)
-		return (-2);
-	if (pres.libft && pres.want_l != g_hl)
-		return (-2);
+		r = pres.want_leg == sum_legacy(out) ? 0 : -2;
+	if (pres.fmt && pres.profile && pres.want_p != g_hp)
+		r = -2;
+	if (pres.fmt && pres.libft && pres.want_l != g_hl)
+		r = -2;
 #ifdef TDF_SECTION
-	if (pres.game && pres.want_g != g_hg)
-		return (-2);
+	if (pres.fmt && pres.game && pres.want_g != g_hg)
+		r = -2;
 #endif
-	return (0);
+	if (r == 0 && pres.fmt < 4 && pres.profile)
+		migrer_objets(out);
+	g_items_brut[0] = '\0';
+	save_fix(out);
+	return (r);
 }
 
 static void	save_migrate(void)
@@ -458,7 +645,7 @@ static void	save_migrate(void)
 	snprintf(dir, sizeof(dir), "%s/copies", g_savedir);
 	mkdir(dir, 0700);
 	chmod(dir, 0700);
-	snprintf(dst, sizeof(dst), "%s/save_avant_v3.txt", dir);
+	snprintf(dst, sizeof(dst), "%s/save_avant_v%d.txt", dir, SAVE_FORMAT);
 	if (stat(dst, &st) != 0 && copy_file(save_path(), dst) == 0)
 		chmod(dst, 0600);
 	write_file(0);

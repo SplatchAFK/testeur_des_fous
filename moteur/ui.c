@@ -64,6 +64,7 @@ void	avatar_panel(int x, int y, const t_look *lk, int title, long t)
 
 	cv_init(&cv, 28, 32);
 	avatar_draw(&cv, 0, 0, lk, t);
+	avatar_fenetre(lk);
 	cv_print(&cv, x, y, theme()->bg);
 	cv_free(&cv);
 	text_at(x, y + 16, pseudo_color(), g_save.login);
@@ -288,7 +289,7 @@ static void	count_achs(void)
 		ach_give(14);
 	for (n = 0, i = 0; i < NSLOT; i++)
 		n += g_save.look.eq[i] >= 0 && g_items[g_save.look.eq[i]].price >= 0
-			&& g_items[g_save.look.eq[i]].spr.rows != NULL;
+			&& !strstr(g_items[g_save.look.eq[i]].id, "_aucun");
 	if (n >= NSLOT - 1)
 		ach_give(17);
 	if (g_save.octets >= 1000)
@@ -416,8 +417,8 @@ void	screen_shop(int wardrobe)
 						g_themes[id].floor, g_themes[id].text, g_themes[id].bg})[i]);
 		}
 		text_at(x, term_rows() - 2, theme()->dim,
-			L("◀ ▶ rayon  ▲ ▼ article  Entrée : acheter/équiper  c : couleur  Échap",
-				"◀ ▶ section  ▲ ▼ item  Enter: buy/equip  c: color  Esc: back"));
+			L("◀ ▶ rayon  ▲ ▼ article  Entrée : acheter/équiper  Échap : retour",
+				"◀ ▶ section  ▲ ▼ item  Enter: buy/equip  Esc: back"));
 		if (s.tab == NSLOT + 1)
 			foot_line(x, L("+ / - : sauter de 20   r : titre au hasard", "+ / -: jump 20   r: random title"));
 		flush();
@@ -448,12 +449,6 @@ void	screen_shop(int wardrobe)
 			s.sel = s.sel - 20 > 0 ? s.sel - 20 : 0;
 		else if (k == 'r' && n)
 			s.sel = rand() % n;
-		else if (k == 'c' && id >= 0 && tab_slot(s.tab) >= 0 && item_owned(id)
-			&& g_save.look.eq[tab_slot(s.tab)] == id)
-		{
-			g_save.look.col[tab_slot(s.tab)] = (g_save.look.col[tab_slot(s.tab)] + 1) % 10;
-			save_write();
-		}
 		else if ((k == '\r' || k == '\n' || k == ' ') && id >= 0)
 		{
 			if (!owns(&s, id))

@@ -836,7 +836,7 @@ typedef struct s_slot
 	int		ok;
 }	t_slot;
 
-static t_slot	g_pics[48];
+static t_slot	g_pics[96];
 static int		g_npics;
 
 const t_pic	*art_pic(const char *name)
@@ -851,13 +851,18 @@ const t_pic	*art_pic(const char *name)
 	for (i = 0; i < g_npics; i++)
 		if (!strcmp(g_pics[i].name, name))
 			return (g_pics[i].ok ? &g_pics[i].pic : NULL);
-	if (g_npics >= 48)
+	if (g_npics >= 96)
 		return (NULL);
 	i = g_npics++;
 	snprintf(g_pics[i].name, sizeof(g_pics[i].name), "%s", name);
 	snprintf(path, sizeof(path), "%s/assets/%s.png", g_tester_dir, name);
 	memset(&im, 0, sizeof(im));
 	d = read_all(path, &n);
+	if (!d && getenv("TDF_RACINE"))
+	{
+		snprintf(path, sizeof(path), "%s/moteur/images/%s.png", getenv("TDF_RACINE"), name);
+		d = read_all(path, &n);
+	}
 	if (!d || n < 8 || memcmp(d, "\x89PNG\r\n\x1a\n", 8) || png_decode(d, n, &im, &err))
 	{
 		free(d);

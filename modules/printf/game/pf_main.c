@@ -160,7 +160,7 @@ static void	cosmetic_achs(void)
 		if (!strcmp(g_items[g_save.look.eq[i]].id, "fam_moulinette"))
 			pf_ach(20);
 		if (!strcmp(g_items[g_save.look.eq[i]].id, "cape_format")
-			|| !strcmp(g_items[g_save.look.eq[i]].id, "main_chocolat")
+			|| !strcmp(g_items[g_save.look.eq[i]].id, "main_braise")
 			|| !strcmp(g_items[g_save.look.eq[i]].id, "casque_pourcent"))
 			pf_ach(19);
 	}
