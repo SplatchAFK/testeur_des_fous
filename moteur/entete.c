@@ -159,6 +159,16 @@ static int	largeur_ligne(const char *l1, const char *l2)
 	return (largeur_mot(l1) + 4 + largeur_mot(l2));
 }
 
+static int	score(const t_page *c)
+{
+	int	ecart;
+
+	ecart = c->fou && !c->pile ? c->th - c->fh : 0;
+	if (ecart < 0)
+		ecart = -ecart;
+	return ((c->fou ? 10000000 : 0) - c->pile * 1500000 + c->ech * 1000000 - ecart * 5000 + c->w * c->h);
+}
+
 static void	mise_en_page(const char *l1, const char *l2, int reste, t_page *pg)
 {
 	t_page	c;
@@ -169,7 +179,7 @@ static void	mise_en_page(const char *l1, const char *l2, int reste, t_page *pg)
 	entete_taille(&cols, &rows);
 	memset(pg, 0, sizeof(*pg));
 	best = -1;
-	for (c.ech = 4; c.ech >= 1; c.ech--)
+	for (c.ech = 2; c.ech >= 1; c.ech--)
 		for (c.lignes = 1; c.lignes <= 2; c.lignes++)
 			for (c.fou = 2; c.fou >= 0; c.fou--)
 				for (c.pile = 0; c.pile <= (c.fou ? 1 : 0); c.pile++)
@@ -191,9 +201,9 @@ static void	mise_en_page(const char *l1, const char *l2, int reste, t_page *pg)
 				}
 				if (c.w > cols - 2 || c.h > rows - reste)
 					continue ;
-				if ((c.fou ? 10000000 : 0) + c.ech * 1000000 + c.w * c.h - c.pile > best)
+				if (score(&c) > best)
 				{
-					best = (c.fou ? 10000000 : 0) + c.ech * 1000000 + c.w * c.h - c.pile;
+					best = score(&c);
 					*pg = c;
 				}
 			}
