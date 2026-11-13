@@ -99,38 +99,40 @@ static void	teinter(unsigned char *img, int w, int h, int cx, int cy, double r, 
 		}
 }
 
-static void	anneau(unsigned char *img, int w, int h, int cx, int cy, double r)
+static void	anneau(unsigned char *img, int w, int h, int cx, int cy, double r, double e)
 {
 	int		a;
 	double	t;
 	int		x;
 	int		y;
 
-	for (a = 0; a < 360; a++)
+	for (a = 0; a < 720; a++)
 	{
-		t = a * 3.14159265358979 / 180;
+		t = a * 3.14159265358979 / 360;
 		x = cx + (int)(cos(t) * r);
 		y = cy + (int)(sin(t) * r * 0.75);
-		teinter(img, w, h, x, y, 3, 118, 222, 238, 0.9);
+		teinter(img, w, h, x, y, 3 * e, 118, 222, 238, 0.9);
 	}
 }
 
 static unsigned char	*composer_carte(const t_pic *b, const t_prog *p, int sel, long t)
 {
 	unsigned char	*img;
+	double			e;
 	int				i;
 
 	if (!(img = malloc((size_t)b->w * b->h * 3)))
 		return (NULL);
 	memcpy(img, b->rgb, (size_t)b->w * b->h * 3);
+	e = b->w / 640.0;
 	for (i = 0; i < 6; i++)
 	{
 		if (!p[i].vu)
-			teinter(img, b->w, b->h, g_lieux[i].x, g_lieux[i].y, 58, 4, 4, 6, 0.75);
+			teinter(img, b->w, b->h, g_lieux[i].x * e, g_lieux[i].y * e, 58 * e, 4, 4, 6, 0.75);
 		else if (fini(&p[i]))
-			teinter(img, b->w, b->h, g_lieux[i].x, g_lieux[i].y, 46, 240, 196, 78, 0.18);
+			teinter(img, b->w, b->h, g_lieux[i].x * e, g_lieux[i].y * e, 46 * e, 240, 196, 78, 0.18);
 	}
-	anneau(img, b->w, b->h, g_lieux[sel].x, g_lieux[sel].y, 40 + 3 * sin(t / 220.0));
+	anneau(img, b->w, b->h, g_lieux[sel].x * e, g_lieux[sel].y * e, (40 + 3 * sin(t / 220.0)) * e, e);
 	return (img);
 }
 
