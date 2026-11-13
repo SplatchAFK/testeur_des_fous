@@ -1,7 +1,5 @@
-#include <dlfcn.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <poll.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,13 +7,8 @@
 #include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
-#include <sys/wait.h>
 #include <unistd.h>
 #include "fous.h"
-
-#ifndef MSG_NOSIGNAL
-# define MSG_NOSIGNAL 0
-#endif
 
 t_caps	g_caps;
 
@@ -36,9 +29,6 @@ typedef struct s_shown
 
 static t_shown	g_sh;
 static int		g_kitty_used;
-static int		g_win_fd = -1;
-static int		g_win_pid;
-static unsigned long	g_win_sum;
 
 static int	probe_byte(long fin)
 {
@@ -142,41 +132,6 @@ static int	has_ci(const char *s, const char *w)
 	return (0);
 }
 
-static void	*x11_lib(void)
-{
-	static void	*h;
-	static int	tried;
-
-	if (!tried)
-	{
-		tried = 1;
-		h = dlopen("libX11.so.6", RTLD_NOW | RTLD_LOCAL);
-		if (!h)
-			h = dlopen("libX11.so", RTLD_NOW | RTLD_LOCAL);
-	}
-	return (h);
-}
-
-static void	probe_x11(void)
-{
-	void	*(*op)(const char *);
-	int		(*cl)(void *);
-	void	*d;
-	void	*h;
-
-	if (!getenv("DISPLAY") || !*getenv("DISPLAY") || getenv("TDF_SANS_FENETRE"))
-		return ;
-	if (!(h = x11_lib()))
-		return ;
-	g_caps.x11_lib = 1;
-	op = (void *(*)(const char *))dlsym(h, "XOpenDisplay");
-	cl = (int (*)(void *))dlsym(h, "XCloseDisplay");
-	if (!op || !cl || !(d = op(NULL)))
-		return ;
-	cl(d);
-	g_caps.x11 = 1;
-}
-
 static void	probe_env(void)
 {
 	const char	*t;
@@ -220,9 +175,8 @@ static void	caps_write(void)
 	fprintf(f, "TERM=%s COLORTERM=%s VTE_VERSION=%s TERM_PROGRAM=%s\n", getenv("TERM") ? getenv("TERM") : "",
 		getenv("COLORTERM") ? getenv("COLORTERM") : "", getenv("VTE_VERSION") ? getenv("VTE_VERSION") : "",
 		getenv("TERM_PROGRAM") ? getenv("TERM_PROGRAM") : "");
-	fprintf(f, "sonde=%d couleurs=%d utf8=%d sixel=%d kitty=%d x11_lib=%d x11=%d cellule=%dx%d fenetre_px=%dx%d\n",
-		g_caps.sonde, g_caps.couleurs, g_caps.utf8, g_caps.sixel, g_caps.kitty, g_caps.x11_lib, g_caps.x11,
-		g_caps.cell_w, g_caps.cell_h, g_caps.win_w, g_caps.win_h);
+	fprintf(f, "sonde=%d couleurs=%d utf8=%d sixel=%d kitty=%d cellule=%dx%d\n",
+		g_caps.sonde, g_caps.couleurs, g_caps.utf8, g_caps.sixel, g_caps.kitty, g_caps.cell_w, g_caps.cell_h);
 	fprintf(f, "palier=%d deploiement=%d\n", rendu_palier(), rendu_deploiement(NULL));
 	fclose(f);
 }
@@ -232,7 +186,6 @@ void	rendu_sonde(void)
 	memset(&g_caps, 0, sizeof(g_caps));
 	probe_env();
 	probe_term();
-	probe_x11();
 	if (getenv("TDF_IMAGES") && *getenv("TDF_IMAGES"))
 	{
 		g_caps.kitty = !strcmp(getenv("TDF_IMAGES"), "kitty");
@@ -244,7 +197,7 @@ void	rendu_sonde(void)
 int	rendu_dispo(int p)
 {
 	if (p == 0)
-		return (g_caps.x11);
+		return (0);
 	if (p == 1)
 		return (g_caps.kitty || g_caps.sixel);
 	if (p == 2)
@@ -281,7 +234,7 @@ int	rendu_deploiement(int *det)
 	v[0] = g_caps.couleurs == 2 && !g_save.cfg.col256 ? 20 : (g_caps.couleurs ? 10 : 0);
 	v[1] = g_caps.utf8 ? 15 : 0;
 	v[2] = term_cols() >= 120 && term_rows() >= 36 ? 10 : 5;
-	v[3] = p == 1 ? 45 : (p == 0 ? 40 : 0);
+	v[3] = p == 1 ? 45 : (p == 2 ? 30 : 0);
 	v[4] = g_save.cfg.anim != 2 ? 10 : 0;
 	s = 0;
 	for (i = 0; i < 5; i++)
@@ -641,15 +594,9 @@ static unsigned long	sum_of(const unsigned char *p, size_t n)
 	return (h);
 }
 
-static void	win_spawn(void);
-static void	win_send(const unsigned char *px, int pw, int ph);
-static int	g_terminal_seul;
-
 void	rendu_image_terminal(const unsigned char *px, int pw, int ph, int cx, int cy, int cw, int ch)
 {
-	g_terminal_seul = 1;
 	rendu_image(px, pw, ph, cx, cy, cw, ch);
-	g_terminal_seul = 0;
 }
 
 void	rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw, int ch)
@@ -660,8 +607,6 @@ void	rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw
 	if (!px || pw <= 0 || ph <= 0 || cw <= 0 || ch <= 0)
 		return ;
 	p = rendu_palier();
-	if (p == 0 && !g_terminal_seul)
-		win_send(px, pw, ph);
 	if (p != 1)
 	{
 		cells(px, pw, ph, cx, cy, cw, ch, p != 3);
@@ -689,12 +634,6 @@ void	rendu_image(const unsigned char *px, int pw, int ph, int cx, int cy, int cw
 	g_sh.sum = s;
 	g_sh.on = 0;
 	g_sh.want = 1;
-}
-
-void	rendu_fenetre(const unsigned char *px, int pw, int ph)
-{
-	if (px && pw > 0 && ph > 0 && rendu_palier() == 0)
-		win_send(px, pw, ph);
 }
 
 void	rendu_frame(void)
@@ -756,321 +695,6 @@ void	rendu_fin(void)
 {
 	if (g_kitty_used)
 		(void)!write(1, "\033_Ga=d,d=A,q=2\033\\", 17);
-	if (g_win_fd >= 0)
-		close(g_win_fd);
-	g_win_fd = -1;
-	if (g_win_pid > 0)
-		waitpid(g_win_pid, NULL, WNOHANG);
-}
-
-typedef struct s_xf
-{
-	void			*(*open)(const char *);
-	int				(*dscreen)(void *);
-	unsigned long	(*root)(void *, int);
-	unsigned long	(*mkwin)(void *, unsigned long, int, int, unsigned, unsigned, unsigned,
-			unsigned long, unsigned long);
-	int				(*name)(void *, unsigned long, const char *);
-	int				(*select)(void *, unsigned long, long);
-	int				(*map)(void *, unsigned long);
-	void			*(*gc)(void *, int);
-	void			*(*visual)(void *, int);
-	int				(*depth)(void *, int);
-	void			*(*mkimg)(void *, void *, unsigned, int, int, char *, unsigned, unsigned, int, int);
-	int				(*put)(void *, unsigned long, void *, void *, int, int, int, int, unsigned, unsigned);
-	int				(*pending)(void *);
-	int				(*next)(void *, void *);
-	int				(*conn)(void *);
-	int				(*xflush)(void *);
-	int				(*xfree)(void *);
-	unsigned long	(*atom)(void *, const char *, int);
-	int				(*proto)(void *, unsigned long, unsigned long *, int);
-	int				(*hints)(void *, unsigned long, void *);
-}	t_xf;
-
-typedef struct s_wmh
-{
-	long			flags;
-	int				input;
-	int				state;
-	unsigned long	pix;
-	unsigned long	iwin;
-	int				ix;
-	int				iy;
-	unsigned long	mask;
-	unsigned long	group;
-}	t_wmh;
-
-static int	xload(t_xf *f, void *h)
-{
-	void	**v;
-	int		i;
-	static const char	*n[] = {"XOpenDisplay", "XDefaultScreen", "XRootWindow",
-		"XCreateSimpleWindow", "XStoreName", "XSelectInput", "XMapWindow", "XDefaultGC",
-		"XDefaultVisual", "XDefaultDepth", "XCreateImage", "XPutImage", "XPending",
-		"XNextEvent", "XConnectionNumber", "XFlush", "XFree", "XInternAtom", "XSetWMProtocols",
-		"XSetWMHints"};
-
-	v = (void **)f;
-	for (i = 0; i < 20; i++)
-		if (!(v[i] = dlsym(h, n[i])))
-			return (0);
-	return (1);
-}
-
-typedef struct s_xw
-{
-	t_xf			f;
-	void			*d;
-	int				s;
-	unsigned long	w;
-	int				ww;
-	int				wh;
-	unsigned char	*px;
-	int				pw;
-	int				ph;
-}	t_xw;
-
-static void	xdraw(t_xw *x)
-{
-	unsigned int	*buf;
-	void			*img;
-	double			k;
-	int				i;
-	int				j;
-	int				ox;
-	int				oy;
-	int				dw;
-	int				dh;
-	int				sx;
-	int				sy;
-	unsigned char	*p;
-
-	if (!x->px || x->ww <= 0 || x->wh <= 0)
-		return ;
-	if (!(buf = malloc((size_t)x->ww * x->wh * 4)))
-		return ;
-	k = (double)x->ww / x->pw < (double)x->wh / x->ph ? (double)x->ww / x->pw : (double)x->wh / x->ph;
-	dw = (int)(x->pw * k);
-	dh = (int)(x->ph * k);
-	ox = (x->ww - dw) / 2;
-	oy = (x->wh - dh) / 2;
-	for (j = 0; j < x->wh; j++)
-		for (i = 0; i < x->ww; i++)
-		{
-			buf[(size_t)j * x->ww + i] = 0x0b0d12;
-			if (i < ox || j < oy || i >= ox + dw || j >= oy + dh)
-				continue ;
-			sx = (int)((i - ox) / k);
-			sy = (int)((j - oy) / k);
-			sx = sx >= x->pw ? x->pw - 1 : sx;
-			sy = sy >= x->ph ? x->ph - 1 : sy;
-			p = x->px + ((size_t)sy * x->pw + sx) * 3;
-			buf[(size_t)j * x->ww + i] = (unsigned)p[0] << 16 | (unsigned)p[1] << 8 | p[2];
-		}
-	img = x->f.mkimg(x->d, x->f.visual(x->d, x->s), x->f.depth(x->d, x->s), 2, 0, (char *)buf,
-			x->ww, x->wh, 32, x->ww * 4);
-	if (img)
-	{
-		x->f.put(x->d, x->w, x->f.gc(x->d, x->s), img, 0, 0, 0, 0, x->ww, x->wh);
-		x->f.xflush(x->d);
-		x->f.xfree(img);
-	}
-	free(buf);
-}
-
-static int	xread_frame(t_xw *x, int fd)
-{
-	int				hd[2];
-	size_t			n;
-	size_t			o;
-	ssize_t			r;
-	unsigned char	*p;
-
-	o = 0;
-	while (o < sizeof(hd))
-	{
-		r = read(fd, (char *)hd + o, sizeof(hd) - o);
-		if (r <= 0)
-			return (0);
-		o += r;
-	}
-	if (hd[0] <= 0 || hd[1] <= 0 || hd[0] > 4096 || hd[1] > 4096)
-		return (0);
-	n = (size_t)hd[0] * hd[1] * 3;
-	if (!(p = malloc(n)))
-		return (0);
-	for (o = 0; o < n; o += r)
-		if ((r = read(fd, p + o, n - o)) <= 0)
-		{
-			free(p);
-			return (0);
-		}
-	free(x->px);
-	x->px = p;
-	x->pw = hd[0];
-	x->ph = hd[1];
-	return (1);
-}
-
-static void	xevents(t_xw *x, int *stop)
-{
-	long	ev[24];
-	int		t;
-	int		w;
-	int		h;
-
-	while (x->f.pending(x->d))
-	{
-		x->f.next(x->d, ev);
-		memcpy(&t, ev, sizeof(t));
-		if (t == 12)
-			xdraw(x);
-		else if (t == 22)
-		{
-			memcpy(&w, (char *)ev + 56, sizeof(w));
-			memcpy(&h, (char *)ev + 60, sizeof(h));
-			if (w != x->ww || h != x->wh)
-			{
-				x->ww = w;
-				x->wh = h;
-				xdraw(x);
-			}
-		}
-		else if (t == 33 || t == 17)
-			*stop = 1;
-	}
-}
-
-static void	win_child(int fd)
-{
-	t_xw			x;
-	t_wmh			hm;
-	unsigned long	del;
-	struct pollfd	p[2];
-	int				stop;
-	int				tours;
-	int				r;
-
-	memset(&x, 0, sizeof(x));
-	if (!x11_lib() || !xload(&x.f, x11_lib()) || !(x.d = x.f.open(NULL)))
-		_exit(0);
-	x.s = x.f.dscreen(x.d);
-	x.ww = 960;
-	x.wh = 540;
-	x.w = x.f.mkwin(x.d, x.f.root(x.d, x.s), 0, 0, x.ww, x.wh, 0, 0, 0x0b0d12);
-	x.f.name(x.d, x.w, "Testeur des fous");
-	memset(&hm, 0, sizeof(hm));
-	hm.flags = 1;
-	hm.input = 0;
-	x.f.hints(x.d, x.w, &hm);
-	del = x.f.atom(x.d, "WM_DELETE_WINDOW", 0);
-	x.f.proto(x.d, x.w, &del, 1);
-	x.f.select(x.d, x.w, (1L << 15) | (1L << 17));
-	x.f.map(x.d, x.w);
-	x.f.xflush(x.d);
-	stop = 0;
-	tours = 0;
-	while (!stop)
-	{
-		p[0].fd = fd;
-		p[0].events = POLLIN;
-		p[1].fd = x.f.conn(x.d);
-		p[1].events = POLLIN;
-		xevents(&x, &stop);
-		if (stop || (r = poll(p, 2, 250)) < 0)
-			break ;
-		if (r == 0 && tours > 0)
-		{
-			tours--;
-			xdraw(&x);
-		}
-		if (p[0].revents & (POLLIN | POLLHUP))
-		{
-			if (!xread_frame(&x, fd))
-				break ;
-			xdraw(&x);
-			tours = 8;
-		}
-	}
-	_exit(0);
-}
-
-static void	win_spawn(void)
-{
-	int	sv[2];
-	int	nul;
-
-	if (g_win_fd >= 0 || g_win_pid < 0)
-		return ;
-	if (socketpair(AF_UNIX, SOCK_STREAM, 0, sv) < 0)
-	{
-		g_win_pid = -1;
-		return ;
-	}
-	g_win_pid = fork();
-	if (g_win_pid == 0)
-	{
-		close(sv[1]);
-		nul = open("/dev/null", O_RDWR);
-		if (nul >= 0)
-		{
-			dup2(nul, 0);
-			dup2(nul, 1);
-			dup2(nul, 2);
-		}
-		win_child(sv[0]);
-	}
-	close(sv[0]);
-	if (g_win_pid < 0)
-	{
-		close(sv[1]);
-		return ;
-	}
-	fcntl(sv[1], F_SETFD, FD_CLOEXEC);
-	g_win_fd = sv[1];
-}
-
-static int	win_write(const void *s, size_t n)
-{
-	size_t	o;
-	ssize_t	r;
-
-	for (o = 0; o < n; o += r)
-	{
-		r = send(g_win_fd, (const char *)s + o, n - o, MSG_NOSIGNAL);
-		if (r < 0 && errno == EINTR)
-		{
-			r = 0;
-			continue ;
-		}
-		if (r <= 0)
-			return (0);
-	}
-	return (1);
-}
-
-static void	win_send(const unsigned char *px, int pw, int ph)
-{
-	unsigned long	s;
-	int				hd[2];
-
-	s = sum_of(px, (size_t)pw * ph * 3) ^ (unsigned long)pw << 32 ^ (unsigned long)ph;
-	if (s == g_win_sum && g_win_fd >= 0)
-		return ;
-	win_spawn();
-	if (g_win_fd < 0)
-		return ;
-	hd[0] = pw;
-	hd[1] = ph;
-	if (!win_write(hd, sizeof(hd)) || !win_write(px, (size_t)pw * ph * 3))
-	{
-		close(g_win_fd);
-		g_win_fd = -1;
-		g_win_pid = -1;
-		return ;
-	}
-	g_win_sum = s;
 }
 
 static void	put(unsigned char *p, int w, int h, int x, int y, t_rgb c, double k)
@@ -1177,9 +801,9 @@ static void	conseil(int x, int y, int *v)
 	else if (!v[1])
 		s = L("UTF-8 : lance avec LANG=fr_FR.UTF-8 (ou en_US.UTF-8).",
 				"UTF-8: run with LANG=en_US.UTF-8.");
-	else if (!v[3] && !rendu_dispo(0) && !rendu_dispo(1))
-		s = L("Images : ni fenêtre ni images dans ce terminal, les cellules fines prennent le relais.",
-				"Images: no window and no terminal images here, fine cells take over.");
+	else if (!rendu_dispo(1))
+		s = L("Images : ce terminal n'affiche pas d'images, les cellules fines prennent le relais.",
+				"Images: this terminal shows no images, fine cells take over.");
 	else if (v[2] < 10)
 		s = L("Taille : agrandis le terminal à 120 x 36 ou plus.",
 				"Size: make the terminal 120 x 36 or bigger.");
@@ -1219,9 +843,8 @@ void	screen_rendu(void)
 		ligne(x, 7, L("Taille du terminal", "Terminal size"), v[2] == 10, b, v[2]);
 		ligne(x, 8, L("Images terminal", "Terminal images"), rendu_dispo(1),
 			g_caps.kitty ? "kitty" : (g_caps.sixel ? "sixel" : L("non", "no")), rendu_palier() == 1 ? v[3] : -1);
-		ligne(x, 9, L("Fenêtre séparée", "Separate window"), rendu_dispo(0),
-			g_caps.x11 ? "X11" : (g_caps.x11_lib ? L("pas d'écran", "no display") : L("non", "no")),
-			rendu_palier() == 0 ? v[3] : -1);
+		ligne(x, 9, L("Cellules fines", "Fine cells"), rendu_dispo(2),
+			rendu_dispo(2) ? L("oui", "yes") : L("non", "no"), rendu_palier() == 2 ? v[3] : -1);
 		ligne(x, 10, L("Animations", "Animations"), v[4] > 0, v[4] ? L("oui", "yes") : L("non", "no"), v[4]);
 		snprintf(b, sizeof(b), "%s : %s%s", L("Palier", "Tier"), rendu_nom(rendu_palier()),
 			g_save.cfg.rendu ? L(" (choisi)", " (chosen)") : " (auto)");

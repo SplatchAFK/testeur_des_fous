@@ -251,7 +251,6 @@ void	screen_intro(void)
 		cy = (term_rows() - 17) / 2;
 		bgc(theme()->bg);
 		frame();
-		stars_draw();
 		bgc(theme()->bg);
 		big_text(cx, cy, "LE TESTEUR", t, (t > 1.3 && t < 1.65) ? 1 : 2);
 		big_text((term_cols() - big_width("DES FOUS")) / 2, cy + 6, "DES FOUS",
@@ -501,7 +500,6 @@ void	screen_scan(const char *path, int pid)
 			break ;
 		bgc(theme()->bg);
 		frame();
-		stars_draw();
 		center(1, mix(theme()->accent, theme()->accent2, 0.5 + 0.5 * sin(now / 400.0)),
 			L("▚▚  A N A L Y S E   D E   T A   L I B F T  ▞▞", "▚▚  S C A N N I N G   Y O U R   L I B F T  ▞▞"));
 		snprintf(tmp, sizeof(tmp), "%-70.70s", g_run.stage[0] ? g_run.stage : L("préparation...", "warming up..."));
@@ -1566,6 +1564,7 @@ void	screen_credits(void)
 	l[n++] = "";
 	l[n++] = L("Discord · le serveur des fous", "Discord · the fous server");
 	l[n++] = TDF_DISCORD;
+	l[n++] = L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord");
 	l[n++] = "";
 	l[n++] = L("Merci d'avoir testé !", "Thanks for testing!");
 	t0 = now_ms();
@@ -1574,7 +1573,6 @@ void	screen_credits(void)
 		s = (now_ms() - t0) / 220.0;
 		bgc(theme()->bg);
 		frame();
-		stars_draw();
 		for (i = 0; i < n; i++)
 		{
 			y = term_rows() - 5 - (int)s + i * 2;
@@ -1583,7 +1581,7 @@ void	screen_credits(void)
 			center(y, i == 0 ? hue(now_ms() / 2000.0) : ((i == 3 || i == 6 || i == 9 || i == 12
 						|| i == 15 || i == 21) ? theme()->accent2 : theme()->text), l[i]);
 		}
-		discord_card((term_cols() - DISCORD_W) / 2, term_rows() - 5);
+		discord_card((term_cols() - DISCORD_W) / 2, term_rows() - 6);
 		flush();
 		if (key_read(40) >= 0 || term_rows() - 5 - (int)s + n * 2 < 0)
 			break ;

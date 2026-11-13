@@ -471,7 +471,11 @@ N_TOTAL=43
 
 valgrind_one() {
 	local n="$1" out
-	command -v valgrind >/dev/null 2>&1 || return 0
+	if ! tdf_valgrind_pret; then
+		[ -n "${VG_DIT:-}" ] || printf '\n  ⚠ %s : passage valgrind sauté (ASan reste actif)\n' "$TDF_VG_RAISON" >&2
+		VG_DIT=1
+		return 0
+	fi
 	[ -f "$BUILD/libvg.a" ] || return 0
 	$CC -g -w -DT_"$n" -I "$ROOT" "$SRC/tests.c" "$BUILD/libvg.a" \
 		-o "$BUILD/vg/$n" 2>/dev/null || return 0
@@ -766,6 +770,10 @@ run_audit() {
 			audit_line ko "fichier parasite : $f (erreur moulinette)" "$m · à retirer : git rm $f"
 		done <<< "$bad"
 	fi
+	while IFS=$'\t' read -r f m; do
+		[ -n "$f" ] || continue
+		audit_line warn "hors git : $f" "$m"
+	done <<< "$(tdf_non_suivis "$ROOT")"
 
 	bad="$(tdf_portee "$ROOT" "$(for s in $ALL; do printf 'ft_%s ' "$s"; done)")"
 	if [ -z "$bad" ]; then
@@ -1117,61 +1125,12 @@ upd_build_ok() {
 }
 [ -n "$UPDATE_SET" ] && update_setting "$UPDATE_SET"
 
-grand_terminal() {
-	local c l t term lanceur a
-	c=$(tput cols 2>/dev/null || echo 80)
-	l=$(tput lines 2>/dev/null || echo 24)
-	{ [ "$c" -ge 120 ] && [ "$l" -ge 36 ]; } && return 0
-	[ -z "${TDF_FENETRE:-}" ] || return 0
-	printf '\e[8;42;140t'
-	sleep 0.3
-	c=$(tput cols 2>/dev/null || echo 80)
-	l=$(tput lines 2>/dev/null || echo 24)
-	{ [ "$c" -ge 120 ] && [ "$l" -ge 36 ]; } && return 0
-	lanceur=$(mktemp "${TMPDIR:-/tmp}/testeur_des_fous_fenetre.XXXXXX") || return 0
-	{
-		printf 'rm -f -- "$0"\n'
-		printf 'cd %q || exit 1\n' "$PWD"
-		printf 'export TDF_PROJET=%q TDF_NOM=%q\n' "$ROOT" "${TDF_NOM:-}"
-		printf 'TDF_FENETRE=1 bash %q libft --projet %q' "$UPD_DIR/run.sh" "$ROOT"
-		for a in ${ORIG_ARGS[@]+"${ORIG_ARGS[@]}"}; do printf ' %q' "$a"; done
-		printf '\nprintf "\\n  (Entrée pour fermer la fenêtre) "; read -r _\n'
-	} > "$lanceur" || return 0
-	if grep -qi microsoft /proc/version 2>/dev/null && command -v cmd.exe >/dev/null 2>&1; then
-		( cd /mnt/c 2>/dev/null; cmd.exe /c start "Le testeur des fous" cmd /c \
-			"mode con: cols=140 lines=42 & wsl.exe ${WSL_DISTRO_NAME:+-d $WSL_DISTRO_NAME} -- bash $lanceur" ) >/dev/null 2>&1 \
-			|| return 0
-	elif [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; then
-		term=""
-		for t in gnome-terminal konsole xfce4-terminal xterm; do
-			command -v "$t" >/dev/null 2>&1 && { term="$t"; break; }
-		done
-		case "$term" in
-			gnome-terminal) gnome-terminal --geometry=140x42 -- bash "$lanceur" >/dev/null 2>&1 || return 0 ;;
-			konsole) konsole -p TerminalColumns=140 -p TerminalRows=42 -e bash "$lanceur" >/dev/null 2>&1 & ;;
-			xfce4-terminal) xfce4-terminal --geometry=140x42 -x bash "$lanceur" >/dev/null 2>&1 & ;;
-			xterm) xterm -geometry 140x42 -e bash "$lanceur" >/dev/null 2>&1 & ;;
-			*) rm -f -- "$lanceur"; return 0 ;;
-		esac
-	elif [ "$(uname -s)" = Darwin ] && command -v osascript >/dev/null 2>&1; then
-		osascript -e "tell application \"Terminal\" to do script \"bash '$lanceur'\"" \
-			-e 'tell application "Terminal" to set bounds of front window to {40, 40, 1180, 900}' >/dev/null 2>&1 || return 0
-	else
-		rm -f -- "$lanceur"
-		return 0
-	fi
-	printf '\n  Ton terminal fait %s x %s : le testeur s'"'"'ouvre dans une nouvelle fenêtre de 140 x 42.\n' "$c" "$l"
-	printf '  (pour rester ici : TDF_FENETRE=1 bash %s/run.sh)\n\n' "$TDF_DIR"
-	exit 0
-}
-
 if [ "$MENU_SEUL" = 1 ] && [ "$CI" = 1 ]; then
 	echo "le menu a besoin d'un vrai terminal"
 	exit 2
 fi
 
 if [ "$CI" = 0 ]; then
-	grand_terminal
 	tdf_chrono_debut maj "recherche de mise à jour"
 	update_check
 	tdf_chrono_fin maj "recherche de mise à jour"

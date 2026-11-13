@@ -4,52 +4,6 @@
 #include <string.h>
 #include "fous.h"
 
-typedef struct s_star
-{
-	float		x;
-	float		y;
-	float		v;
-	t_rgb		c;
-	const char	*g;
-}	t_star;
-
-void	stars_draw(void)
-{
-	static t_star			s[70];
-	static const t_theme	*th;
-	static long				t0;
-	int						i;
-	int						w;
-	double					x;
-
-	w = term_cols();
-	if (th != theme())
-	{
-		th = theme();
-		if (!t0)
-			t0 = now_ms();
-		for (i = 0; i < 70; i++)
-		{
-			s[i].x = (rand() % 1000) / 1000.0f;
-			s[i].y = (rand() % 1000) / 1000.0f;
-			s[i].v = 0.15f + (rand() % 100) / 120.0f;
-			s[i].c = mix(th->bg, th->text, s[i].v * 0.8);
-			s[i].g = s[i].v > 0.8 ? "✦" : (s[i].v > 0.45 ? "•" : "·");
-		}
-	}
-	for (i = 0; i < 70; i++)
-	{
-		x = s[i].x * w;
-		if (!anim_off())
-			x = fmod(x - s[i].v * 0.03 * (now_ms() - t0), w);
-		if (x < 0)
-			x += w;
-		at((int)x, (int)(s[i].y * term_rows()));
-		fg(s[i].c);
-		out(s[i].g);
-	}
-}
-
 void	foot_line(int x, const char *s)
 {
 	text_clip(x, term_rows() - 1, theme()->dim, s, term_cols() - x - 1);
@@ -64,7 +18,6 @@ void	avatar_panel(int x, int y, const t_look *lk, int title, long t)
 
 	cv_init(&cv, 28, 32);
 	avatar_draw(&cv, 0, 0, lk, t);
-	avatar_fenetre(lk);
 	cv_print(&cv, x, y, theme()->bg);
 	cv_free(&cv);
 	text_at(x, y + 16, pseudo_color(), g_save.login);

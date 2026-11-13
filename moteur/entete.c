@@ -140,32 +140,66 @@ static int	largeur_mot(const char *s)
 	return (w > 0 ? w - 1 : 0);
 }
 
-static int	choix_fou(int cols, int rows, int tw, int reste)
+typedef struct s_page
 {
-	if (cols >= 2 + tw + 4 + g_fou_grand_w && rows >= g_fou_grand_h + reste)
-		return (2);
-	if (cols >= 2 + tw + 4 + g_fou_petit_w && rows >= g_fou_petit_h + reste)
-		return (1);
-	return (0);
+	int	ech;
+	int	lignes;
+	int	fou;
+	int	tw;
+	int	th;
+	int	fw;
+	int	fh;
+	int	w;
+	int	h;
+}	t_page;
+
+static int	largeur_ligne(const char *l1, const char *l2)
+{
+	return (largeur_mot(l1) + 4 + largeur_mot(l2));
+}
+
+static void	mise_en_page(const char *l1, const char *l2, int reste, t_page *pg)
+{
+	t_page	c;
+	int		cols;
+	int		rows;
+	int		best;
+
+	entete_taille(&cols, &rows);
+	memset(pg, 0, sizeof(*pg));
+	best = -1;
+	for (c.ech = 2; c.ech >= 1; c.ech--)
+		for (c.lignes = 1; c.lignes <= 2; c.lignes++)
+			for (c.fou = 2; c.fou >= 0; c.fou--)
+			{
+				c.tw = c.ech * (c.lignes == 1 ? largeur_ligne(l1, l2)
+						: (largeur_mot(l1) > largeur_mot(l2) ? largeur_mot(l1) : largeur_mot(l2)));
+				c.th = c.ech * (c.lignes == 1 ? 5 : 11);
+				c.fw = c.fou == 2 ? g_fou_grand_w : (c.fou == 1 ? g_fou_petit_w : 0);
+				c.fh = c.fou == 2 ? g_fou_grand_h : (c.fou == 1 ? g_fou_petit_h : 0);
+				c.w = c.tw + (c.fou ? 4 + c.fw : 0);
+				c.h = c.th > c.fh ? c.th : c.fh;
+				if (c.w > cols - 2 || c.h > rows - reste)
+					continue ;
+				if (c.ech * 1000000 + c.w * c.h > best)
+				{
+					best = c.ech * 1000000 + c.w * c.h;
+					*pg = c;
+				}
+			}
+	if (best < 0 && rows - reste >= 2 && cols >= 4)
+	{
+		pg->h = 2;
+		pg->w = (int)strlen(l1) + 1 + (int)strlen(l2);
+	}
 }
 
 int	entete_hauteur(const char *l1, const char *l2, int reste)
 {
-	int	cols;
-	int	rows;
-	int	tw;
-	int	f;
+	t_page	pg;
 
-	entete_taille(&cols, &rows);
-	tw = largeur_mot(l1) > largeur_mot(l2) ? largeur_mot(l1) : largeur_mot(l2);
-	if (cols < tw + 4 || rows < 11 + reste)
-		return (0);
-	f = choix_fou(cols, rows, tw, reste);
-	if (f == 2)
-		return (g_fou_grand_h);
-	if (f == 1)
-		return (g_fou_petit_h);
-	return (11);
+	mise_en_page(l1, l2, reste, &pg);
+	return (pg.h);
 }
 
 static void	pixel(int x, int y, double phase, int r, int g, int b)
@@ -185,7 +219,7 @@ static void	aller(int y, int x)
 	eb_put(t, snprintf(t, sizeof(t), "\033[%d;%dH", y, x));
 }
 
-static void	titre(const char *mot, int x0, int y0, int ligne0, int tw, double phase)
+static void	titre(const char *mot, int x0, int y0, int ech, int tw, double phase)
 {
 	const t_lettre	*l;
 	const char		*s;
@@ -193,27 +227,29 @@ static void	titre(const char *mot, int x0, int y0, int ligne0, int tw, double ph
 	int				x;
 	int				i;
 	int				u;
+	int				e;
 
 	u = utf8();
-	for (r = 0; r < 5; r++)
+	for (r = 0; r < 5 * ech; r++)
 	{
 		aller(y0 + r, x0 + 1);
 		x = 0;
 		for (s = mot; *s; s++)
 		{
 			l = lettre(*s);
-			for (i = 0; l->l[r][i]; i++, x++)
-			{
-				if (l->l[r][i] == '#')
+			for (i = 0; l->l[r / ech][i]; i++)
+				for (e = 0; e < ech; e++, x++)
 				{
-					pixel(x0 + x, ligne0 + r, phase, 100 + 60 * x / (tw ? tw : 1), 200, 238 - 40 * x / (tw ? tw : 1));
-					eb_put(u ? "\xe2\x96\x88" : "#", u ? 3 : 1);
+					if (l->l[r / ech][i] == '#')
+					{
+						pixel(x0 + x, y0 + r, phase, 100 + 60 * x / (tw ? tw : 1), 200, 238 - 40 * x / (tw ? tw : 1));
+						eb_put(u ? "\xe2\x96\x88" : "#", u ? 3 : 1);
+					}
+					else
+						eb_put(" ", 1);
 				}
-				else
-					eb_put(" ", 1);
-			}
-			eb_put(" ", 1);
-			x++;
+			for (e = 0; e < ech; e++, x++)
+				eb_put(" ", 1);
 		}
 	}
 }
@@ -235,49 +271,65 @@ void	entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste)
 {
 	const unsigned char	*rgb;
 	const char *const	*txt;
+	t_page				pg;
 	int					cols;
 	int					rows;
-	int					tw;
-	int					f;
-	int					fw;
-	int					fh;
 	int					ty;
+	int					fy;
 	int					r;
 	int					c;
 	int					x0;
 	double				phase;
 
 	entete_taille(&cols, &rows);
-	tw = largeur_mot(l1) > largeur_mot(l2) ? largeur_mot(l1) : largeur_mot(l2);
-	if (cols < tw + 4 || rows < 11 + reste)
+	mise_en_page(l1, l2, reste, &pg);
+	if (!pg.h)
 		return ;
-	f = choix_fou(cols, rows, tw, reste);
-	fw = f == 2 ? g_fou_grand_w : (f == 1 ? g_fou_petit_w : 0);
-	fh = f == 2 ? g_fou_grand_h : (f == 1 ? g_fou_petit_h : 11);
-	txt = f == 2 ? g_fou_grand_txt : g_fou_petit_txt;
-	rgb = f == 2 ? &g_fou_grand_rgb[0][0][0] : &g_fou_petit_rgb[0][0][0];
-	x0 = (cols - (tw + (fw ? 4 + fw : 0))) / 2;
+	x0 = (cols - pg.w) / 2;
 	if (x0 < 1)
 		x0 = 1;
-	phase = entete_phase(ms, l1, l2);
 	g_eb.n = 0;
 	g_eb.r = -1;
 	eb_put("\0337\033[?25l", 8);
-	ty = y0 + (fh - 11) / 2;
-	titre(l1, x0, ty, ty - y0, tw, phase);
-	titre(l2, x0, ty + 6, ty - y0 + 6, tw, phase);
-	for (r = 0; f && r < fh; r++)
+	if (!pg.ech)
 	{
-		aller(y0 + r, x0 + tw + 4 + 1);
-		for (c = 0; c < fw; c++)
+		aller(y0, x0 + 1);
+		eb_col(118, 222, 238);
+		eb_put(l1, strlen(l1));
+		eb_put(" ", 1);
+		eb_put(l2, strlen(l2));
+	}
+	else
+	{
+		phase = entete_phase(ms, l1, l2);
+		ty = y0 + (pg.h - pg.th) / 2;
+		if (pg.lignes == 1)
 		{
-			if (txt[r][c] == ' ')
+			titre(l1, x0, ty, pg.ech, pg.tw, phase);
+			titre(l2, x0 + pg.ech * (largeur_mot(l1) + 4), ty, pg.ech, pg.tw, phase);
+		}
+		else
+		{
+			titre(l1, x0, ty, pg.ech, pg.tw, phase);
+			titre(l2, x0, ty + 6 * pg.ech, pg.ech, pg.tw, phase);
+		}
+		txt = pg.fou == 2 ? g_fou_grand_txt : g_fou_petit_txt;
+		rgb = pg.fou == 2 ? &g_fou_grand_rgb[0][0][0] : &g_fou_petit_rgb[0][0][0];
+		fy = y0 + (pg.h - pg.fh) / 2;
+		for (r = 0; pg.fou && r < pg.fh; r++)
+		{
+			aller(fy + r, x0 + pg.tw + 4 + 1);
+			for (c = 0; c < pg.fw; c++)
 			{
-				eb_put(" ", 1);
-				continue ;
+				if (txt[r][c] == ' ')
+				{
+					eb_put(" ", 1);
+					continue ;
+				}
+				pixel(x0 + pg.tw + 4 + c, r, phase, rgb[(r * pg.fw + c) * 3], rgb[(r * pg.fw + c) * 3 + 1],
+					rgb[(r * pg.fw + c) * 3 + 2]);
+				eb_put(&txt[r][c], 1);
 			}
-			pixel(x0 + tw + 4 + c, r, phase, rgb[(r * fw + c) * 3], rgb[(r * fw + c) * 3 + 1], rgb[(r * fw + c) * 3 + 2]);
-			eb_put(&txt[r][c], 1);
 		}
 	}
 	eb_put("\033[0m\0338", 6);

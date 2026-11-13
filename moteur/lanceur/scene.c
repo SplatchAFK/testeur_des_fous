@@ -115,7 +115,7 @@ static unsigned char	*composer(const t_pic *b, const char *res, long t, int *pro
 		else if (res[i] == 'K')
 			lueur(img, b->w, b->h, g_ann[i][0], g_ann[i][1], 4, rgb(220, 70, 60), 0.6);
 	}
-	pu = 0.85 + 0.15 * sin(t / 260.0);
+	pu = 1.0;
 	if (*prof >= 0)
 		lueur(img, b->w, b->h, 320, g_ann[*prof][1], 14 * pu, rgb(160, 236, 244), 0.8);
 	else

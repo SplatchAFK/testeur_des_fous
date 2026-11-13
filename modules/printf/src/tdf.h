@@ -168,6 +168,7 @@ void	tdf_tests_mandatory(void);
 void	tdf_tests_edge(void);
 void	tdf_tests_stress(void);
 void	tdf_tests_bonus(void);
+void	tdf_tests_moulinette(void);
 
 typedef union u_val
 {

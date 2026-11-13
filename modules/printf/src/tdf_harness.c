@@ -149,6 +149,8 @@ int	tdf_selected(const char *key)
 		return (1);
 	if (!strncmp(key, "bonus_", 6) && tdf_selected("bonus"))
 		return (1);
+	if (!strncmp(key, "mou_", 4) && tdf_selected("moulinette"))
+		return (1);
 	o = g_opt.only;
 	while (*o)
 	{

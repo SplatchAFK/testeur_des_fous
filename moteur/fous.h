@@ -162,7 +162,6 @@
 # define screen_train tdf_screen_train
 # define sleep_ms tdf_sleep_ms
 # define st_bad tdf_st_bad
-# define stars_draw tdf_stars_draw
 # define st_color tdf_st_color
 # define st_label tdf_st_label
 # define st_pass tdf_st_pass
@@ -188,16 +187,12 @@
 # define rendu_apres_flush tdf_rendu_apres_flush
 # define rendu_fin tdf_rendu_fin
 # define fonderie_dessiner tdf_fonderie_dessiner
-# define avatar_fenetre tdf_avatar_fenetre
-# define gardien_image tdf_gardien_image
 # define gardien_sprite tdf_gardien_sprite
-# define gardien_fenetre tdf_gardien_fenetre
 # define entete_24bits tdf_entete_24bits
 # define entete_taille tdf_entete_taille
 # define entete_hauteur tdf_entete_hauteur
 # define entete_dessiner tdf_entete_dessiner
 # define entete_phase tdf_entete_phase
-# define rendu_fenetre tdf_rendu_fenetre
 # define tour_dessiner tdf_tour_dessiner
 # define tour_largeur tdf_tour_largeur
 # define screen_rendu tdf_screen_rendu
@@ -421,8 +416,6 @@ typedef struct s_caps
 	int	utf8;
 	int	sixel;
 	int	kitty;
-	int	x11_lib;
-	int	x11;
 	int	cell_w;
 	int	cell_h;
 	int	win_w;
@@ -432,7 +425,7 @@ typedef struct s_caps
 extern t_caps	g_caps;
 
 # define TDF_DISCORD "https://discord.gg/SwAmfRcXCH"
-# define DISCORD_W 46
+# define DISCORD_W 52
 
 # define NTITLE 1000
 # define NEXO 21
@@ -588,15 +581,12 @@ void			rendu_frame(void);
 void			rendu_apres_flush(void);
 void			rendu_fin(void);
 void			fonderie_dessiner(const int *etat, int x, int y, int h);
-const unsigned char	*gardien_image(int p, long ms, int *w, int *h);
 int				gardien_sprite(t_canvas *cv, int p, int x, int y, int mw, int mh, double flash);
-void			gardien_fenetre(int p, long ms);
 int				entete_24bits(void);
 void			entete_taille(int *cols, int *rows);
 int				entete_hauteur(const char *l1, const char *l2, int reste);
 void			entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste);
 double			entete_phase(long ms, const char *l1, const char *l2);
-void			rendu_fenetre(const unsigned char *px, int pw, int ph);
 void			tour_dessiner(const int *etat, int n, int x, int y, int h);
 int				tour_largeur(int h);
 void			screen_rendu(void);
@@ -636,7 +626,6 @@ void			cv_spr(t_canvas *c, const t_spr *s, int x, int y, t_rgb tint,
 void			cv_print(const t_canvas *c, int sx, int sy, t_rgb bg);
 int				cv_row(const t_canvas *c, int row, t_rgb bg, char *buf, size_t sz);
 void			avatar_draw(t_canvas *c, int x, int y, const t_look *lk, long t);
-void			avatar_fenetre(const t_look *lk);
 void			look_default(t_look *lk);
 int				item_find(const char *id);
 t_rgb			item_color(int item, int col);
@@ -715,7 +704,6 @@ void			tdf_stats_end(int ok, int total);
 void			screen_help_us(void);
 void			discord_card(int x, int y);
 void			discord_line(int y);
-void			stars_draw(void);
 void			foot_line(int x, const char *s);
 void			screen_profile_edit(void);
 void			screen_images(void);

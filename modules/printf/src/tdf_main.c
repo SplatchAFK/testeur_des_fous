@@ -79,5 +79,6 @@ int	main(int ac, char **av)
 	tdf_tests_edge();
 	tdf_tests_stress();
 	tdf_tests_bonus();
+	tdf_tests_moulinette();
 	return (tdf_summary());
 }

@@ -52,8 +52,8 @@ static void	summary(void)
 			printf("  \033[38;2;255;90;100m✘\033[0m %-10s %d KO · %s\n", g_pr.cat[i].key, g_pr.cat[i].ko,
 				g_pr.cat[i].title);
 	printf("  %s\n", L("Créé et vibe-codé par Splatch (romasant)", "Created and vibe-coded by Splatch (romasant)"));
-	printf("  \033[48;2;88;101;242m\033[38;2;255;255;255m DISCORD \033[0m \033[38;2;150;162;255m%s\033[0m\n\n",
-		TDF_DISCORD);
+	printf("  \033[48;2;88;101;242m\033[38;2;255;255;255m DISCORD \033[0m \033[38;2;150;162;255m%s\033[0m \033[2m· %s\033[0m\n\n",
+		TDF_DISCORD, L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
 }
 
 static void	battles(int dlc, int first, const char *dlc0)

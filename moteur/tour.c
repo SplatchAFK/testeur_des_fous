@@ -124,8 +124,6 @@ void	tour_dessiner(const int *etat, int n, int x, int y, int h)
 	if (p == 3 || !charger())
 		return ;
 	composer(etat, n);
-	if (p == 0)
-		rendu_fenetre(g_tour, g_tw, g_th);
 	w = (int)(h * 2.0 * g_cw / g_ch + 0.5);
 	if (h < 6 || x < 0 || x + w > term_cols())
 		return ;

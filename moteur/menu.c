@@ -43,7 +43,6 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 			x = 0;
 		bgc(theme()->bg);
 		frame();
-		stars_draw();
 		center(2, theme()->accent2, title);
 		for (i = 0; i < n; i++)
 		{

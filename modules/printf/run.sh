@@ -267,56 +267,8 @@ upd_build_ok() {
 }
 [ -n "$UPDATE_SET" ] && update_setting "$UPDATE_SET"
 
-grand_terminal() {
-	local c l t term lanceur a
-	c=$(tput cols 2>/dev/null || echo 80)
-	l=$(tput lines 2>/dev/null || echo 24)
-	{ [ "$c" -ge 120 ] && [ "$l" -ge 36 ]; } && return 0
-	[ -z "${TDF_FENETRE:-}" ] || return 0
-	printf '\e[8;42;140t'
-	sleep 0.3
-	c=$(tput cols 2>/dev/null || echo 80)
-	l=$(tput lines 2>/dev/null || echo 24)
-	{ [ "$c" -ge 120 ] && [ "$l" -ge 36 ]; } && return 0
-	lanceur=$(mktemp "${TMPDIR:-/tmp}/testeur_des_fous_fenetre.XXXXXX") || return 0
-	{
-		printf 'rm -f -- "$0"\n'
-		printf 'cd %q || exit 1\n' "$PWD"
-		printf 'export TDF_PROJET=%q TDF_NOM=%q\n' "$PROJECT" "${TDF_NOM:-}"
-		printf 'TDF_FENETRE=1 bash %q printf --projet %q' "$UPD_DIR/run.sh" "$PROJECT"
-		for a in ${SAVED_ARGS[@]+"${SAVED_ARGS[@]}"}; do printf ' %q' "$a"; done
-		printf '\nprintf "\\n  (Entrée pour fermer la fenêtre) "; read -r _\n'
-	} > "$lanceur" || return 0
-	if grep -qi microsoft /proc/version 2>/dev/null && command -v cmd.exe >/dev/null 2>&1; then
-		( cd /mnt/c 2>/dev/null; cmd.exe /c start "Le testeur des fous" cmd /c \
-			"mode con: cols=140 lines=42 & wsl.exe ${WSL_DISTRO_NAME:+-d $WSL_DISTRO_NAME} -- bash $lanceur" ) >/dev/null 2>&1 \
-			|| return 0
-	elif [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; then
-		term=""
-		for t in gnome-terminal konsole xfce4-terminal xterm; do
-			command -v "$t" >/dev/null 2>&1 && { term="$t"; break; }
-		done
-		case "$term" in
-			gnome-terminal) gnome-terminal --geometry=140x42 -- bash "$lanceur" >/dev/null 2>&1 || return 0 ;;
-			konsole) konsole -p TerminalColumns=140 -p TerminalRows=42 -e bash "$lanceur" >/dev/null 2>&1 & ;;
-			xfce4-terminal) xfce4-terminal --geometry=140x42 -x bash "$lanceur" >/dev/null 2>&1 & ;;
-			xterm) xterm -geometry 140x42 -e bash "$lanceur" >/dev/null 2>&1 & ;;
-			*) rm -f -- "$lanceur"; return 0 ;;
-		esac
-	elif [ "$(uname -s)" = Darwin ] && command -v osascript >/dev/null 2>&1; then
-		osascript -e "tell application \"Terminal\" to do script \"bash '$lanceur'\"" \
-			-e 'tell application "Terminal" to set bounds of front window to {40, 40, 1180, 900}' >/dev/null 2>&1 || return 0
-	else
-		rm -f -- "$lanceur"
-		return 0
-	fi
-	printf '\n  Ton terminal fait %s x %s : le testeur s'"'"'ouvre dans une nouvelle fenêtre de 140 x 42.\n' "$c" "$l"
-	printf '  (pour rester ici : TDF_FENETRE=1 bash %s/run.sh)\n\n' "$TDF_AFF"
-	exit 0
-}
 if [ -z "${TDF_ENGINE:-}" ] && [ "$NOLORE" = 0 ] && [ "$DEBUG" = 0 ] && [ -z "$VERBOSE" ] && [ -z "$ONLY" ] \
 	&& [ -z "$MACHINE" ] && [ -t 0 ] && [ -t 1 ]; then
-	grand_terminal
 	tdf_chrono_debut maj "recherche de mise à jour"
 	update_check
 	tdf_chrono_fin maj "recherche de mise à jour"
@@ -395,11 +347,11 @@ if [ "$DEBUG" = 1 ]; then
 	printf "\n%s  DEBUG AVANCÉ · passage 1/2 : ASan + UBSan, tout le détail%s\n" "$B" "$N"
 	bash "$TDF_DIR/run.sh" "${PASS[@]}"
 	rc=$?
-	if command -v valgrind >/dev/null 2>&1; then
+	if tdf_valgrind_pret; then
 		printf "\n%s  DEBUG AVANCÉ · passage 2/2 : valgrind (fuites de toutes sortes, lectures non initialisées)%s\n" "$B" "$N"
 		bash "$TDF_DIR/run.sh" "${PASS[@]}" --valgrind --stress 300 --no-norm || rc=1
 	else
-		printf "\n  %svalgrind n'est pas installé : passage 2/2 sauté%s\n" "$Y" "$N"
+		printf "\n  %s%s : passage 2/2 sauté (le passage 1/2 avec ASan reste valable)%s\n" "$Y" "$TDF_VG_RAISON" "$N"
 	fi
 	exit $rc
 fi
@@ -580,6 +532,11 @@ if want makefile; then
 			detail "$m · à retirer : git rm $f"
 		done <<< "$PARAS"
 	fi
+	while IFS=$'\t' read -r f m; do
+		[ -n "$f" ] || continue
+		line "~~" "hors git : $f" ""
+		detail "$m"
+	done <<< "$(tdf_non_suivis "$PROJECT")"
 fi
 PRE_FICHIERS=$((STATIC_KO - K_PRE))
 
@@ -743,7 +700,11 @@ case "$MODE" in
 	none) SAN="-DTDF_GUARD=1" ;;
 	valgrind)
 		SAN="-DTDF_VALGRIND=1"
-		command -v valgrind >/dev/null || { printf "  %sKO%s valgrind n'est pas installé\n" "$R" "$N"; exit 1; } ;;
+		if ! tdf_valgrind_pret; then
+			printf "  %s⚠ %s : tests lancés avec ASan + UBSan à la place%s\n" "$Y" "$TDF_VG_RAISON" "$N"
+			MODE="asan+ubsan"
+			SAN="-fsanitize=address,undefined -fno-sanitize-recover=all"
+		fi ;;
 esac
 CFLAGS_COMMON="-g -O0 -fno-omit-frame-pointer"
 san_ok() { echo 'int main(void){return 0;}' | LC_ALL=C cc $1 -x c - -o "$BUILD/.san_probe" >/dev/null 2>&1; }
@@ -876,47 +837,108 @@ if [ -z "$ONLY" ] || [ -n "$DYN_ONLY" ]; then
 	fi
 fi
 
-trace_moulinette() {
-	local ok_all=1 k t v
-	printf "\n%s  ── Trace moulinette ──%s  %s(même plan et mêmes intitulés que la trace officielle)%s\n" "$B" "$N" "$D" "$N"
-	printf "  %sPrerequisites%s\n" "$B" "$N"
-	for k in "Expected files:0" "Allowed functions:${PRE_FONCTIONS:-0}" "Garbage files (norminette):${PRE_FICHIERS:-0}"; do
-		if [ "${k##*:}" = 0 ]; then
-			printf "    %-28s %sOK%s\n" "${k%:*}" "$G" "$N"
-		else
-			printf "    %-28s %sKO%s\n" "${k%:*}" "$R" "$N"
-			ok_all=0
-		fi
-	done
-	[ -f "$TRACE" ] || { printf "    %s(résultats des tests indisponibles)%s\n" "$D" "$N"; return; }
-	while IFS='|' read -r k t; do
-		v=$(awk -F'\t' -v k="$k" '$1 == "C" && $2 == k {ok += $4; ko += $5; w += $6} END {if (ok + ko + w) printf "%d %d", ok + w, ok + ko + w}' "$TRACE")
-		[ -n "$v" ] || continue
-		if [ "${v% *}" = "${v#* }" ]; then
-			printf "  %-58s %sValid tests: %s / %s%s\n" "$t" "$G" "${v% *}" "${v#* }" "$N"
-		else
-			printf "  %-58s %sValid tests: %s / %s%s\n" "$t" "$R" "${v% *}" "${v#* }" "$N"
-			ok_all=0
-		fi
-	done <<'EOT'
-%|Random %% literal cases
-c|Random %c cases
-s|Random %s cases (including NULL)
-p|Random %p cases
-d|Random %d cases
-i|Random %i cases
-u|Random %u cases
-x|Random %x cases
-X|Random %X cases
-mix|Random mixed conversions across all supported specifiers
-EOT
-	v=$(awk -F'\t' '$1 == "C" && ($2 == "limites" || $2 == "write") {ok += $4; w += $6} END {if (ok + w) printf "%d %d", ok, ok + w}' "$TRACE")
-	[ -n "$v" ] && printf "  %sbonus, hors trace : cas limites et write en échec  %s / %s%s\n" "$D" "${v% *}" "${v#* }" "$N"
-	if [ "$ok_all" = 1 ]; then
-		printf "  %s%sAssignment: Common_Core-Project-C-Printf  OK%s\n" "$B" "$G" "$N"
-	else
-		printf "  %s%sAssignment: Common_Core-Project-C-Printf  KO%s\n" "$B" "$R" "$N"
+mou_compiler() {
+	local dir="$1" log="$2" ok=1
+	shift 2
+	rm -rf "$dir"
+	mkdir -p "$dir"
+	cp -R "$COPY/." "$dir/" 2>/dev/null
+	( cd "$dir" && make fclean >/dev/null 2>&1 )
+	if ! ( cd "$dir" && make "$@" ) > "$log" 2>&1; then
+		ok=0
 	fi
+	printf '#include "%s"\nint main(void)\n{\n\tft_printf("%%d %%s\\n", 42, "ok");\n\treturn (0);\n}\n' \
+		"$(cd "$dir" && find . -name ft_printf.h -not -path '*/.git/*' | head -1 | sed 's#^\./##')" > "$dir/mou_main.c"
+	if ! ( cd "$dir" && cc -Wall -Wextra -Werror mou_main.c -Wl,libftprintf.a -o mou_bin ) >> "$log" 2>&1; then
+		ok=0
+	fi
+	[ "$ok" = 1 ]
+}
+
+trace_moulinette() {
+	local md dossier ok_all=1 ok_pre=1 bloc titre cles k n_ok n_tot ca cb exp alw lab l v
+	local OKS="OK 🔥" KOS="KO 💔"
+	dossier="$HOME/.testeur_des_fous/traces"
+	mkdir -p "$dossier" 2>/dev/null
+	md="$dossier/trace_printf_$(date +%Y%m%d_%H%M%S).md"
+	ca=1; cb=1
+	mou_compiler "$BUILD/mou_a" "$BUILD/mou_a.log" || ca=0
+	mou_compiler "$BUILD/mou_b" "$BUILD/mou_b.log" CFLAGS="-Wall -Wextra -Werror" || cb=0
+	: > "$BUILD/mou.tsv"
+	if [ -x "$BUILD/tdf_runner" ]; then
+		"$BUILD/tdf_runner" --seed "$SEED" --project "$COPY" --srclist "$BUILD/srcs.txt" --vglogdir "$BUILD/vg" \
+			--aide "$AIDE" --machine "$BUILD/mou.tsv" --only moulinette --no-bonus >/dev/null 2>&1
+	fi
+	exp="$OKS"
+	if [ ! -f "$COPY/Makefile" ] || [ -z "$(student_find -name 'ft_printf.h')" ] || [ -z "$(student_find -name '*.c')" ]; then
+		exp="$KOS"; ok_pre=0
+	fi
+	alw="$OKS"
+	[ "${PRE_FONCTIONS:-0}" = 0 ] || { alw="$KOS"; ok_pre=0; }
+	[ "$ok_pre" = 1 ] || ok_all=0
+	{
+		printf '# Automated tests trace report for Common_Core-Project-C-Printf\n\n\n\n'
+		printf '## Common_Core-Project-C-Printf\n\n'
+		if [ "$ok_pre" = 1 ]; then printf '### ✅ Prerequisites\n\n'; else printf '### ❌ Prerequisites\n\n'; fi
+		printf '**Expected files:** %s\n\n' "$exp"
+		printf '**Allowed functions:** %s\n\n\n' "$alw"
+		printf '### 📋 Test results\n\n'
+		printf '⚠️ Disclaimer: some tests are generated randomly so may be different from one attempt to another.\n\n'
+	} > "$md"
+	while IFS='|' read -r bloc titre cles; do
+		{
+			printf '#### %s\n\n' "$titre"
+			if { [ "$bloc" = mix ] && [ "$cb" = 0 ]; } || { [ "$bloc" != mix ] && [ "$ca" = 0 ]; }; then
+				ok_all=0
+				l="$BUILD/mou_a.log"
+				[ "$bloc" = mix ] && l="$BUILD/mou_b.log"
+				printf '**Compilation:** %s\n \n```\n' "$KOS"
+				grep -E 'error|Error|undefined|cannot find|No such|No rule' "$l" | sed "s#$BUILD/mou_[ab]/##g" | head -12
+				printf '```\n  \n**Valid tests:** 0 / 0\n'
+			else
+				printf '**Compilation:** %s\n \n' "$OKS"
+				n_ok=0; n_tot=0
+				for k in $cles; do
+					lab=$(awk -F'\t' -v k="mou_$k" '$1 == "C" && $2 == k {print $3; exit}' "$BUILD/mou.tsv")
+					v=$(awk -F'\t' -v k="mou_$k" '$1 == "C" && $2 == k {print ($5 == 0 && $4 + $6 > 0) ? "1" : "0"; exit}' "$BUILD/mou.tsv")
+					[ -n "$lab" ] || continue
+					n_tot=$((n_tot + 1))
+					if [ "$v" = 1 ]; then
+						n_ok=$((n_ok + 1))
+						printf '**%s:** %s\n \n' "$lab" "$OKS"
+					else
+						printf '**%s:** %s\n \n' "$lab" "$KOS"
+					fi
+				done
+				[ "$n_ok" = "$n_tot" ] && [ "$n_tot" -gt 0 ] || ok_all=0
+				printf '  \n**Valid tests:** %d / %d\n' "$n_ok" "$n_tot"
+			fi
+		} >> "$md"
+	done <<'EOT'
+pct|Random %% literal cases|01 02 03 04
+c|Random %c cases|05 06
+s|Random %s cases (including NULL)|07 08 09 10
+p|Random %p cases|11 12 13 14
+d|Random %d cases|15 16 17 18
+i|Random %i cases|19 20 21 22
+u|Random %u cases|23 24 25
+x|Random %x cases|26 27 28
+X|Random %X cases|29 30 31
+mix|Random mixed conversions across all supported specifiers|32
+EOT
+	if [ "$ok_all" = 1 ]; then
+		printf ' \n\n✅ **Assignment:** Common_Core-Project-C-Printf\n' >> "$md"
+	else
+		printf ' \n\n❌ **Assignment:** Common_Core-Project-C-Printf\n' >> "$md"
+	fi
+	printf "\n%s  ── Trace moulinette ──%s\n\n" "$B" "$N"
+	sed -e 's/^\*\*\(.*\):\*\* OK 🔥$/  \1: '"$G"'OK 🔥'"$N"'/' -e 's/^\*\*\(.*\):\*\* KO 💔$/  \1: '"$R"'KO 💔'"$N"'/' \
+		-e '/^ *$/d' -e 's/^#### /\n/' -e 's/^### //' -e 's/^## //' -e 's/^# //' -e 's/\*\*\([^*]*\)\*\*/\1/g' "$md"
+	if [ "$ca" = 1 ] && [ "$cb" = 0 ]; then
+		printf "\n  %s⚠ ton projet compile avec 'make' mais casse quand la moulinette impose ses CFLAGS (make CFLAGS=...).%s\n" "$Y" "$N"
+		printf "  %s  Cause fréquente : '-c' rangé dans CFLAGS au lieu d'être écrit dans la règle %%.o (souvent dans libft/Makefile).%s\n" "$D" "$N"
+	fi
+	printf "\n  %sTrace enregistrée : %s%s\n" "$D" "$md" "$N"
 }
 if [ -z "$ONLY" ]; then
 	trace_moulinette

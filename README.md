@@ -81,7 +81,7 @@ Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests et ouvre le menu.
 
 ## Discord
 
-Entraide, bugs, idées : [discord.gg/SwAmfRcXCH](https://discord.gg/SwAmfRcXCH)
+Entraide, bugs, idées : [discord.gg/SwAmfRcXCH](https://discord.gg/SwAmfRcXCH) · si le lien ne marche plus, contacte **splatch_afk** sur Discord
 
 ## Crédits et licence
 

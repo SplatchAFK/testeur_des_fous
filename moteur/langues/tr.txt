@@ -806,3 +806,6 @@ your profile got a new look	profilin yeni bir görünüm kazandı
 ◈  T H E   C R A Z Y   S H O P  ◈	◈  F O U S   D Ü K K Â N I  ◈
 ◈  W A R D R O B E  ◈	◈  G A R D I R O P  ◈
 ✓ ft_printf beaten	✓ ft_printf yenildi
+Dead link? Contact splatch_afk on Discord	Bağlantı ölü mü? Discord'da splatch_afk'ye yaz
+Images: this terminal shows no images, fine cells take over.	Resimler: bu terminal resim göstermiyor, ince hücreler devralıyor.
+Fine cells	İnce hücreler

@@ -27,7 +27,14 @@ debug_env() {
 		echo "cc          : $(cc --version 2>/dev/null | head -1)"
 		echo "make        : $(make --version 2>/dev/null | head -1)"
 		echo "norminette  : $( (norminette --version 2>/dev/null || python3 -m norminette --version 2>/dev/null) | head -1)"
-		echo "valgrind    : $(command -v valgrind >/dev/null 2>&1 && valgrind --version 2>/dev/null || echo absent)"
+		if [ -f "${TDF_RACINE:-.}/moteur/conformite.sh" ]; then
+			. "${TDF_RACINE:-.}/moteur/conformite.sh"
+			if tdf_valgrind_pret; then
+				echo "valgrind    : $(valgrind --version 2>/dev/null) utilisable${VALGRIND_LIB:+ (VALGRIND_LIB=$VALGRIND_LIB)}"
+			else
+				echo "valgrind    : $TDF_VG_RAISON"
+			fi
+		fi
 		san_d=$(mktemp -d "${TMPDIR:-/tmp}/tdf_san.XXXXXX") || san_d=""
 		[ -n "$san_d" ] && echo 'int main(void){return 0;}' > "$san_d/s.c"
 		if [ -n "$san_d" ] && cc -fsanitize=address,undefined "$san_d/s.c" -o "$san_d/s" 2>/dev/null && "$san_d/s" 2>/dev/null; then

@@ -115,7 +115,7 @@ static void	anneau(unsigned char *img, int w, int h, int cx, int cy, double r, d
 	}
 }
 
-static unsigned char	*composer_carte(const t_pic *b, const t_prog *p, int sel, long t)
+static unsigned char	*composer_carte(const t_pic *b, const t_prog *p, int sel)
 {
 	unsigned char	*img;
 	double			e;
@@ -132,7 +132,7 @@ static unsigned char	*composer_carte(const t_pic *b, const t_prog *p, int sel, l
 		else if (fini(&p[i]))
 			teinter(img, b->w, b->h, g_lieux[i].x * e, g_lieux[i].y * e, 46 * e, 240, 196, 78, 0.18);
 	}
-	anneau(img, b->w, b->h, g_lieux[sel].x * e, g_lieux[sel].y * e, (40 + 3 * sin(t / 220.0)) * e, e);
+	anneau(img, b->w, b->h, g_lieux[sel].x * e, g_lieux[sel].y * e, 40 * e, e);
 	return (img);
 }
 
@@ -198,7 +198,6 @@ void	tdf_carte(void)
 	char		tmp[200];
 	const char	*nom;
 	int			pad;
-	long		t0;
 	int			k;
 	int			i;
 	int			x;
@@ -209,7 +208,6 @@ void	tdf_carte(void)
 	if (!(b = art_pic("carte")))
 		return ;
 	lire_progression(p);
-	t0 = now_ms();
 	cls();
 	while (1)
 	{
@@ -217,7 +215,7 @@ void	tdf_carte(void)
 		frame();
 		center(1, theme()->accent2, L("L A   C I T É", "T H E   C I T Y"));
 		placer(b, 3, 10, &x, &cw, &ch);
-		img = composer_carte(b, p, sel, now_ms() - t0);
+		img = composer_carte(b, p, sel);
 		if (img)
 			rendu_image(img, b->w, b->h, x, 3, cw, ch);
 		free(img);

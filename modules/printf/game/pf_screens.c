@@ -273,7 +273,6 @@ int	pf_scan(const char *path, int pid)
 		}
 		bgc(theme()->bg);
 		frame();
-		stars_draw();
 		scan_draw(now_ms() - t0, dead);
 		flush();
 		if (g_pr.done || dead)
@@ -768,6 +767,7 @@ void	pf_credits(void)
 	l[n++] = "";
 	l[n++] = L("Discord · le serveur des fous", "Discord · the fous server");
 	l[n++] = TDF_DISCORD;
+	l[n++] = L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord");
 	l[n++] = "";
 	l[n++] = L("Merci à Moulinette, chatte grise et libre.", "Thanks to Moulinette, a free grey cat.");
 	l[n++] = L("Licence MIT · rien n'est envoyé, mise à jour sur ton accord",
@@ -779,12 +779,11 @@ void	pf_credits(void)
 		s = anim_off() ? term_rows() - 5 : (now_ms() - t0) / 220.0;
 		bgc(theme()->bg);
 		frame();
-		stars_draw();
 		for (i = 0; i < n; i++)
 			if (term_rows() - 5 - (int)s + i * 2 >= 0 && term_rows() - 5 - (int)s + i * 2 < term_rows() - 5)
 				center(term_rows() - 5 - (int)s + i * 2 > 2 ? term_rows() - 5 - (int)s + i * 2 : 2,
 					(i == 0 || i == 12) ? theme()->accent2 : theme()->text, l[i]);
-		discord_card((term_cols() - DISCORD_W) / 2, term_rows() - 5);
+		discord_card((term_cols() - DISCORD_W) / 2, term_rows() - 6);
 		flush();
 		if (key_read(60) >= 0 || s > term_rows() + n * 2 + 4)
 			break ;

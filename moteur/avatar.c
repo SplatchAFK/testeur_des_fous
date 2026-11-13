@@ -315,13 +315,6 @@ static void	poser(t_canvas *c, const unsigned char *s, int w, int h, int x, int 
 				cv_px(c, x + i, y + j, rgb(s[(j * w + i) * 4], s[(j * w + i) * 4 + 1], s[(j * w + i) * 4 + 2]));
 }
 
-void	avatar_fenetre(const t_look *lk)
-{
-	if (rendu_palier() != 0 || !composer_av(lk) || !g_av.grand)
-		return ;
-	rendu_fenetre(g_av.grand, g_av.w, g_av.h);
-}
-
 void	avatar_draw(t_canvas *c, int x, int y, const t_look *lk, long t)
 {
 	int	bob;

@@ -195,6 +195,10 @@ else
 		ligne KO "fichier parasite : $f (erreur moulinette)" "$m · à retirer : git rm $f"
 	done <<< "$PARAS"
 fi
+while IFS=$'\t' read -r f m; do
+	[ -n "$f" ] || continue
+	ligne NOTE "hors git : $f" "$m"
+done <<< "$(tdf_non_suivis "$PROJET")"
 
 SAN=""
 probe='int main(void){return 0;}'

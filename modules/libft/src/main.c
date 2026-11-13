@@ -23,8 +23,8 @@ static void	summary(void)
 				g_run.fn[i].nd ? g_run.fn[i].detail[0] : "");
 	printf("  %s\n", L("Créé et vibe-codé par Splatch (romasant)",
 			"Created and vibe-coded by Splatch (romasant)"));
-	printf("  \033[48;2;88;101;242m\033[38;2;255;255;255m DISCORD \033[0m \033[38;2;150;162;255m%s\033[0m\n\n",
-		TDF_DISCORD);
+	printf("  \033[48;2;88;101;242m\033[38;2;255;255;255m DISCORD \033[0m \033[38;2;150;162;255m%s\033[0m \033[2m· %s\033[0m\n\n",
+		TDF_DISCORD, L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
 }
 
 static void	version_notice(void)

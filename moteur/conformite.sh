@@ -1,3 +1,58 @@
+tdf_valgrind_essai() {
+	local d="$1"
+	valgrind -q --error-exitcode=42 "$d/p" > "$d/sortie" 2>&1
+}
+
+tdf_valgrind_pret() {
+	local d vg base c
+	[ -n "${TDF_VG_ETAT:-}" ] && { [ "$TDF_VG_ETAT" = ok ]; return; }
+	TDF_VG_ETAT=ko
+	if ! command -v valgrind >/dev/null 2>&1; then
+		TDF_VG_RAISON="valgrind n'est pas installé"
+		return 1
+	fi
+	d=$(mktemp -d "${TMPDIR:-/tmp}/tdf_vg.XXXXXX") || { TDF_VG_RAISON="dossier temporaire impossible"; return 1; }
+	printf '#include <stdlib.h>\nint main(void)\n{\n\tfree(malloc(8));\n\treturn (0);\n}\n' > "$d/p.c"
+	if ! cc -g "$d/p.c" -o "$d/p" 2>/dev/null; then
+		rm -rf "$d"
+		TDF_VG_RAISON="impossible de compiler le programme d'essai"
+		return 1
+	fi
+	if tdf_valgrind_essai "$d"; then
+		rm -rf "$d"
+		TDF_VG_ETAT=ok
+		export TDF_VG_ETAT
+		return 0
+	fi
+	vg="$(command -v valgrind)"
+	base="$(cd "$(dirname "$(readlink -f "$vg" 2>/dev/null || echo "$vg")")/.." 2>/dev/null && pwd)"
+	for c in "${VALGRIND_LIB:-}" "$base/libexec/valgrind" "$base/lib64/valgrind" "$base/lib/valgrind" \
+		/usr/libexec/valgrind /usr/lib64/valgrind /usr/lib/valgrind /usr/lib/x86_64-linux-gnu/valgrind \
+		"$HOME/.local/libexec/valgrind" "$HOME/.local/lib64/valgrind" "$HOME/.local/lib/valgrind"; do
+		[ -n "$c" ] && ls "$c"/memcheck-* >/dev/null 2>&1 || continue
+		if VALGRIND_LIB="$c" tdf_valgrind_essai "$d"; then
+			export VALGRIND_LIB="$c"
+			rm -rf "$d"
+			TDF_VG_ETAT=ok
+			export TDF_VG_ETAT
+			return 0
+		fi
+	done
+	if [ -z "${DEBUGINFOD_URLS:-}" ] && grep -qiE 'ld-linux|mandatory|redirection' "$d/sortie"; then
+		if DEBUGINFOD_URLS="https://debuginfod.fedoraproject.org/" tdf_valgrind_essai "$d"; then
+			export DEBUGINFOD_URLS="https://debuginfod.fedoraproject.org/"
+			rm -rf "$d"
+			TDF_VG_ETAT=ok
+			export TDF_VG_ETAT
+			return 0
+		fi
+	fi
+	TDF_VG_RAISON="valgrind ne démarre pas ici : $(grep -v '^[[:space:]]*$' "$d/sortie" | sed 's/^==[0-9]*== //' | head -2 | tr '\n' ' ' | cut -c1-200)"
+	rm -rf "$d"
+	export TDF_VG_ETAT TDF_VG_RAISON
+	return 1
+}
+
 tdf_rendus() {
 	local d="$1"
 	if (cd "$d" && git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
@@ -7,6 +62,23 @@ tdf_rendus() {
 			-not -path './.build*' -not -path './.banc*' -not -name '*.o' -not -name '*.a' \
 			-not -name '*.d' | sed 's#^\./##')
 	fi | grep -Ev '(^|/)(testeur_des_fous|francinette|printfTester|ft_printf_tester|printf-tester|gnlTester|libftTester|Tripouille)[^/]*/' | sort
+}
+
+tdf_non_suivis() {
+	local d="$1"
+	tdf_suivi_git "$d" || return 0
+	(cd "$d" && git ls-files --others --exclude-standard --directory) | while IFS= read -r f; do
+		[ -n "$f" ] || continue
+		case "$f" in
+			*.o|*.a|*.d) continue ;;
+		esac
+		case "$f" in
+			testeur_des_fous*/|*Tester*/|*tester*/|francinette*/|Tripouille*/)
+				printf '%s\tun testeur rangé dans ton projet : pas encore dans git, mais « git add . » l'"'"'enverrait à la moulinette (range le testeur à côté du projet)\n' "$f" ;;
+			*)
+				printf '%s\tpas encore dans git : « git add . » l'"'"'enverrait ; ajoute seulement les fichiers à rendre\n' "$f" ;;
+		esac
+	done
 }
 
 tdf_suivi_git() {

@@ -112,12 +112,13 @@ void	discord_card(int x, int y)
 
 	b = rgb(88, 101, 242);
 	in = mix(theme()->bg, b, 0.2);
-	fill(x, y, DISCORD_W, 4, in);
+	fill(x, y, DISCORD_W, 5, in);
 	bgc(in);
-	box(x, y, DISCORD_W, 4, b);
+	box(x, y, DISCORD_W, 5, b);
 	text_at(x + 2, y, rgb(190, 198, 255), L(" DISCORD · LE SERVEUR DES FOUS ", " DISCORD · THE FOUS SERVER "));
 	text_at(x + 3, y + 1, theme()->text, L("Entraide, bugs, idées : rejoins-nous", "Help, bugs, ideas: join us"));
 	text_at(x + 3, y + 2, rgb(255, 255, 255), "◆ " TDF_DISCORD);
+	text_at(x + 3, y + 3, rgb(190, 198, 255), L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
 	bgc(theme()->bg);
 }
 
@@ -125,7 +126,7 @@ void	discord_line(int y)
 {
 	int	x;
 
-	x = (term_cols() - 10 - ulen(TDF_DISCORD)) / 2;
+	x = (term_cols() - 13 - ulen(TDF_DISCORD) - ulen(L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"))) / 2;
 	at(x < 0 ? 0 : x, y);
 	bgc(rgb(88, 101, 242));
 	fg(rgb(255, 255, 255));
@@ -133,6 +134,9 @@ void	discord_line(int y)
 	bgc(theme()->bg);
 	fg(rgb(150, 162, 255));
 	out(" " TDF_DISCORD);
+	fg(theme()->dim);
+	out(" · ");
+	out(L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
 }
 
 static void	choisir_langue(void)
@@ -505,6 +509,7 @@ void	screen_help_us(void)
 				"2. Send it as a direct message to @splatch_afk (42 Next server)."));
 		text_at(x, y++, theme()->text, L("   Ou dépose-la sur le Discord des fous : " TDF_DISCORD,
 				"   Or drop it on the fous Discord: " TDF_DISCORD));
+		text_at(x, y++, theme()->dim, L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
 		text_at(x, y++, theme()->text, L("3. Ajoute ce que tu veux : conseils, suggestions, idées, tout est pris.",
 				"3. Add anything: advice, suggestions, ideas, everything is welcome."));
 		y++;

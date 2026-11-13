@@ -35,7 +35,6 @@ int	pf_menu(void)
 			y = 0;
 		bgc(theme()->bg);
 		frame();
-		stars_draw();
 		avatar_panel(x, y + 1, &g_save.look, g_save.title, t);
 		at(x + 34, y + 1);
 		for (i = 0; "LE TESTEUR DES FOUS"[i]; i++)

@@ -806,3 +806,6 @@ your profile got a new look	il tuo profilo ha un nuovo look
 ◈  T H E   C R A Z Y   S H O P  ◈	◈  I L   N E G O Z I O   D E I   F O U S  ◈
 ◈  W A R D R O B E  ◈	◈  G U A R D A R O B A  ◈
 ✓ ft_printf beaten	✓ ft_printf sconfitto
+Dead link? Contact splatch_afk on Discord	Link non funziona? Contatta splatch_afk su Discord
+Images: this terminal shows no images, fine cells take over.	Immagini: questo terminale non mostra immagini, subentrano le celle fini.
+Fine cells	Celle fini

@@ -85,8 +85,6 @@ void	fonderie_dessiner(const int *etat, int x, int y, int h)
 	p = rendu_palier();
 	if (p == 3 || !composer_fo(etat))
 		return ;
-	if (p == 0)
-		rendu_fenetre(g_fo, g_fw, g_fh);
 	w = (int)(h * 2.0 * g_cw / g_ch + 0.5);
 	if (h < 6 || x < 0 || x + w > term_cols())
 		return ;

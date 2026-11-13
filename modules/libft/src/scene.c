@@ -279,15 +279,13 @@ static void	draw_world(long t)
 	shake = (g_flash_red > t) ? (int)(2 * sin(t / 20.0)) : 0;
 	kx = 6 + (g_dash > t ? (int)(14 * sin((g_dash - t) / 300.0 * 3.14)) : 0) + shake;
 	bx = 76 - g_boss_spr[g_boss].w + (g_lunge > t ? -(int)(10 * sin((g_lunge - t) / 300.0 * 3.14)) : 0);
-	by = CH - g_boss_spr[g_boss].h - 1 + (int)((t / 450) % 2);
+	by = CH - g_boss_spr[g_boss].h - 1;
 	if (g_dead == 1)
 		by += 0;
 	fl = g_flash_boss > t ? (g_flash_boss - t) / 220.0 : 0;
-	eye = mix(g_bosses[g_boss].glow, rgb(255, 255, 255), 0.5 + 0.5 * sin(t / 160.0));
+	eye = mix(g_bosses[g_boss].glow, rgb(255, 255, 255), 0.5);
 	if (g_dead != 2 && !gardien_sprite(&g_cv, g_boss, bx + shake, by, g_boss_spr[g_boss].w, g_boss_spr[g_boss].h, fl))
 		cv_spr(&g_cv, &g_boss_spr[g_boss], bx + shake, by, eye, eye, fl > 1 ? 1 : fl);
-	if (g_dead != 2)
-		gardien_fenetre(g_boss, t);
 	avatar_draw(&g_cv, kx, CH - 33, &g_save.look, t);
 	if (g_dash > t && g_dash - t < 160)
 	{
