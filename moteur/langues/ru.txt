@@ -1171,3 +1171,23 @@ Norm required. Helper functions must be static.\n	Норма обязатель�
 The testeur des fous printf · Training · level %02d\n\n	testeur des fous printf · Тренировка · уровень %02d\n\n
 Allowed functions: write, malloc, free, va_start, va_arg, va_copy, va_end.\n	Разрешённые функции: write, malloc, free, va_start, va_arg, va_copy, va_end.\n
 Include what you need (<unistd.h>, <stdlib.h>, <stdarg.h>). No libft here.\n	Подключи что нужно (<unistd.h>, <stdlib.h>, <stdarg.h>). Здесь без libft.\n
+valgrind is not installed	valgrind не установлен
+cannot create a temporary folder	не удаётся создать временную папку
+cannot compile the test program	не удаётся скомпилировать тестовую программу
+valgrind does not start here:	valgrind здесь не запускается:
+a tester stored in your project: not in git yet, but "git add ." would send it to the moulinette (keep the tester next to the project)	тестер лежит внутри проекта: пока не в git, но "git add ." отправит его мулинетт (держи тестер рядом с проектом)
+not in git yet: "git add ." would send it; add only the files to hand in	пока не в git: "git add ." отправит его; добавляй только сдаваемые файлы
+extra README: the only one expected is at the root, the moulinette's norminette rejects it	лишний README: ожидается только в корне, norminette мулинетт его отклоняет
+not among the files to hand in (the subject forbids useless files)	не входит в сдаваемые файлы (subject запрещает лишние файлы)
+duplicate: another %s exists in the repository	дубликат: в репозитории есть ещё один %s
+subfolder: the subject wants every file at the root	подпапка: subject требует все файлы в корне
+never compiled by the Makefile: unused file	Makefile его не компилирует: неиспользуемый файл
+extra header: the subject only expects libft.h	лишний заголовок: subject ждёт только libft.h
+not part of the libft (test main?)	не часть libft (тестовый main?)
+not among the files to hand in (ft_*.c, libft.h, Makefile, README.md)	не входит в сдаваемые файлы (ft_*.c, libft.h, Makefile, README.md)
+too deep: the subject accepts *.c, */*.c, *.h, */*.h and Makefile	слишком глубоко: subject принимает *.c, */*.c, *.h, */*.h и Makefile
+extra Makefile: only the root one and the libft/ one are expected	лишний Makefile: ожидаются только корневой и в libft/
+never compiled by a Makefile: unused file	ни один Makefile его не компилирует: неиспользуемый файл
+never included: unused file	нигде не подключается: неиспользуемый файл
+not among the files to hand in (*.c, */*.c, *.h, */*.h, Makefile)	не входит в сдаваемые файлы (*.c, */*.c, *.h, */*.h, Makefile)
+not among the files to hand in (get_next_line.c, get_next_line_utils.c, get_next_line.h)	не входит в сдаваемые файлы (get_next_line.c, get_next_line_utils.c, get_next_line.h)

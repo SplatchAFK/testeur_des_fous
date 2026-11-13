@@ -1171,3 +1171,23 @@ Norm required. Helper functions must be static.\n	Norm zorunlu. Yardımcı fonks
 The testeur des fous printf · Training · level %02d\n\n	testeur des fous printf · Antrenman · seviye %02d\n\n
 Allowed functions: write, malloc, free, va_start, va_arg, va_copy, va_end.\n	İzinli fonksiyonlar: write, malloc, free, va_start, va_arg, va_copy, va_end.\n
 Include what you need (<unistd.h>, <stdlib.h>, <stdarg.h>). No libft here.\n	Gerekenleri dahil et (<unistd.h>, <stdlib.h>, <stdarg.h>). Burada libft yok.\n
+valgrind is not installed	valgrind kurulu değil
+cannot create a temporary folder	geçici klasör oluşturulamıyor
+cannot compile the test program	test programı derlenemiyor
+valgrind does not start here:	valgrind burada başlamıyor:
+a tester stored in your project: not in git yet, but "git add ." would send it to the moulinette (keep the tester next to the project)	projende duran bir tester: henüz git'te değil ama "git add ." onu moulinette'e gönderir (tester'ı projenin yanına koy)
+not in git yet: "git add ." would send it; add only the files to hand in	henüz git'te değil: "git add ." onu gönderir; yalnızca teslim edilecek dosyaları ekle
+extra README: the only one expected is at the root, the moulinette's norminette rejects it	fazla README: beklenen tek README kökte, moulinette'in norminette'i bunu reddeder
+not among the files to hand in (the subject forbids useless files)	teslim edilecek dosyalardan değil (subject gereksiz dosyaları yasaklar)
+duplicate: another %s exists in the repository	kopya: depoda başka bir %s var
+subfolder: the subject wants every file at the root	alt klasör: subject tüm dosyaları kökte ister
+never compiled by the Makefile: unused file	Makefile hiç derlemiyor: kullanılmayan dosya
+extra header: the subject only expects libft.h	fazla başlık: subject yalnızca libft.h bekler
+not part of the libft (test main?)	libft'in parçası değil (test main'i mi?)
+not among the files to hand in (ft_*.c, libft.h, Makefile, README.md)	teslim edilecek dosyalardan değil (ft_*.c, libft.h, Makefile, README.md)
+too deep: the subject accepts *.c, */*.c, *.h, */*.h and Makefile	çok derin: subject *.c, */*.c, *.h, */*.h ve Makefile kabul eder
+extra Makefile: only the root one and the libft/ one are expected	fazla Makefile: yalnızca köktekiyle libft/ içindeki beklenir
+never compiled by a Makefile: unused file	hiçbir Makefile derlemiyor: kullanılmayan dosya
+never included: unused file	hiç dahil edilmiyor: kullanılmayan dosya
+not among the files to hand in (*.c, */*.c, *.h, */*.h, Makefile)	teslim edilecek dosyalardan değil (*.c, */*.c, *.h, */*.h, Makefile)
+not among the files to hand in (get_next_line.c, get_next_line_utils.c, get_next_line.h)	teslim edilecek dosyalardan değil (get_next_line.c, get_next_line_utils.c, get_next_line.h)

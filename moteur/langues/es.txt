@@ -1171,3 +1171,23 @@ Norm required. Helper functions must be static.\n	Norma obligatoria. Las funcion
 The testeur des fous printf · Training · level %02d\n\n	El testeur des fous printf · Entrenamiento · nivel %02d\n\n
 Allowed functions: write, malloc, free, va_start, va_arg, va_copy, va_end.\n	Funciones permitidas: write, malloc, free, va_start, va_arg, va_copy, va_end.\n
 Include what you need (<unistd.h>, <stdlib.h>, <stdarg.h>). No libft here.\n	Incluye lo que necesites (<unistd.h>, <stdlib.h>, <stdarg.h>). Aquí no hay libft.\n
+valgrind is not installed	valgrind no está instalado
+cannot create a temporary folder	no se puede crear una carpeta temporal
+cannot compile the test program	no se puede compilar el programa de prueba
+valgrind does not start here:	valgrind no arranca aquí:
+a tester stored in your project: not in git yet, but "git add ." would send it to the moulinette (keep the tester next to the project)	un tester guardado en tu proyecto: aún no está en git, pero "git add ." lo enviaría a la moulinette (pon el tester junto al proyecto)
+not in git yet: "git add ." would send it; add only the files to hand in	aún no está en git: "git add ." lo enviaría; añade solo los archivos que se entregan
+extra README: the only one expected is at the root, the moulinette's norminette rejects it	README de más: el único esperado está en la raíz, la norminette de la moulinette lo rechaza
+not among the files to hand in (the subject forbids useless files)	no está entre los archivos a entregar (el subject prohíbe archivos inútiles)
+duplicate: another %s exists in the repository	duplicado: existe otro %s en el repositorio
+subfolder: the subject wants every file at the root	subcarpeta: el subject quiere todos los archivos en la raíz
+never compiled by the Makefile: unused file	nunca compilado por el Makefile: archivo sin usar
+extra header: the subject only expects libft.h	cabecera de más: el subject solo espera libft.h
+not part of the libft (test main?)	no forma parte de la libft (¿main de prueba?)
+not among the files to hand in (ft_*.c, libft.h, Makefile, README.md)	no está entre los archivos a entregar (ft_*.c, libft.h, Makefile, README.md)
+too deep: the subject accepts *.c, */*.c, *.h, */*.h and Makefile	demasiado profundo: el subject acepta *.c, */*.c, *.h, */*.h y Makefile
+extra Makefile: only the root one and the libft/ one are expected	Makefile de más: solo se esperan el de la raíz y el de libft/
+never compiled by a Makefile: unused file	nunca compilado por un Makefile: archivo sin usar
+never included: unused file	nunca incluido: archivo sin usar
+not among the files to hand in (*.c, */*.c, *.h, */*.h, Makefile)	no está entre los archivos a entregar (*.c, */*.c, *.h, */*.h, Makefile)
+not among the files to hand in (get_next_line.c, get_next_line_utils.c, get_next_line.h)	no está entre los archivos a entregar (get_next_line.c, get_next_line_utils.c, get_next_line.h)

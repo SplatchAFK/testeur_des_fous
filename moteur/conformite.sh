@@ -8,14 +8,14 @@ tdf_valgrind_pret() {
 	[ -n "${TDF_VG_ETAT:-}" ] && { [ "$TDF_VG_ETAT" = ok ]; return; }
 	TDF_VG_ETAT=ko
 	if ! command -v valgrind >/dev/null 2>&1; then
-		TDF_VG_RAISON="valgrind n'est pas installé"
+		TDF_VG_RAISON="$(tt "valgrind n'est pas installé" "valgrind is not installed")"
 		return 1
 	fi
-	d=$(mktemp -d "${TMPDIR:-/tmp}/tdf_vg.XXXXXX") || { TDF_VG_RAISON="dossier temporaire impossible"; return 1; }
+	d=$(mktemp -d "${TMPDIR:-/tmp}/tdf_vg.XXXXXX") || { TDF_VG_RAISON="$(tt "dossier temporaire impossible" "cannot create a temporary folder")"; return 1; }
 	printf '#include <stdlib.h>\nint main(void)\n{\n\tfree(malloc(8));\n\treturn (0);\n}\n' > "$d/p.c"
 	if ! cc -g "$d/p.c" -o "$d/p" 2>/dev/null; then
 		rm -rf "$d"
-		TDF_VG_RAISON="impossible de compiler le programme d'essai"
+		TDF_VG_RAISON="$(tt "impossible de compiler le programme d'essai" "cannot compile the test program")"
 		return 1
 	fi
 	if tdf_valgrind_essai "$d"; then
@@ -47,7 +47,7 @@ tdf_valgrind_pret() {
 			return 0
 		fi
 	fi
-	TDF_VG_RAISON="valgrind ne démarre pas ici : $(grep -v '^[[:space:]]*$' "$d/sortie" | sed 's/^==[0-9]*== //' | head -2 | tr '\n' ' ' | cut -c1-200)"
+	TDF_VG_RAISON="$(tt "valgrind ne démarre pas ici :" "valgrind does not start here:") $(grep -v '^[[:space:]]*$' "$d/sortie" | sed 's/^==[0-9]*== //' | head -2 | tr '\n' ' ' | cut -c1-200)"
 	rm -rf "$d"
 	export TDF_VG_ETAT TDF_VG_RAISON
 	return 1
@@ -74,9 +74,9 @@ tdf_non_suivis() {
 		esac
 		case "$f" in
 			testeur_des_fous*/|*Tester*/|*tester*/|francinette*/|Tripouille*/)
-				printf '%s\tun testeur rangé dans ton projet : pas encore dans git, mais « git add . » l'"'"'enverrait à la moulinette (range le testeur à côté du projet)\n' "$f" ;;
+				printf '%s\t%s\n' "$f" "$(tt "un testeur rangé dans ton projet : pas encore dans git, mais « git add . » l'enverrait à la moulinette (range le testeur à côté du projet)" "a tester stored in your project: not in git yet, but \"git add .\" would send it to the moulinette (keep the tester next to the project)")" ;;
 			*)
-				printf '%s\tpas encore dans git : « git add . » l'"'"'enverrait ; ajoute seulement les fichiers à rendre\n' "$f" ;;
+				printf '%s\t%s\n' "$f" "$(tt "pas encore dans git : « git add . » l'enverrait ; ajoute seulement les fichiers à rendre" "not in git yet: \"git add .\" would send it; add only the files to hand in")" ;;
 		esac
 	done
 }
@@ -110,49 +110,49 @@ tdf_parasites() {
 		dir="$(dirname "$f")"
 		n="$(echo "$f" | tr -cd '/' | wc -c)"
 		if [ "$b" = README.md ] && [ "$f" != README.md ]; then
-			printf '%s\tREADME en trop : le seul attendu est à la racine, la norminette de la moulinette le refuse\n' "$f"
+			printf '%s\t%s\n' "$f" "$(tt "README en trop : le seul attendu est à la racine, la norminette de la moulinette le refuse" "extra README: the only one expected is at the root, the moulinette's norminette rejects it")"
 			continue
 		fi
 		if [ "$b" = .gitignore ]; then
-			printf '%s\tpas dans les fichiers à rendre (le sujet interdit les fichiers inutiles)\n' "$f"
+			printf '%s\t%s\n' "$f" "$(tt "pas dans les fichiers à rendre (le sujet interdit les fichiers inutiles)" "not among the files to hand in (the subject forbids useless files)")"
 			continue
 		fi
 		if echo "$dups" | grep -qxF "$b" && [ "$b" != README.md ]; then
-			printf '%s\ten double : un autre %s existe dans le dépôt\n' "$f" "$b"
+			printf '%s\t%s\n' "$f" "$(printf "$(tt "en double : un autre %s existe dans le dépôt" "duplicate: another %s exists in the repository")" "$b")"
 			continue
 		fi
 		case "$projet" in
 			libft)
 				if [ "$n" -gt 0 ]; then
-					printf '%s\tsous-dossier : le sujet veut tous les fichiers à la racine\n' "$f"
+					printf '%s\t%s\n' "$f" "$(tt "sous-dossier : le sujet veut tous les fichiers à la racine" "subfolder: the subject wants every file at the root")"
 					continue
 				fi
 				case "$b" in
 					Makefile|README.md|libft.h) ;;
-					ft_*.c) tdf_utilise_c "$d" "$f" || printf '%s\tjamais compilé par le Makefile : fichier inutilisé\n' "$f" ;;
-					*.h) printf '%s\ten-tête en trop : le sujet n'"'"'attend que libft.h\n' "$f" ;;
-					*.c) printf '%s\tne fait pas partie de la libft (main de test ?)\n' "$f" ;;
-					*) printf '%s\tpas dans les fichiers à rendre (ft_*.c, libft.h, Makefile, README.md)\n' "$f" ;;
+					ft_*.c) tdf_utilise_c "$d" "$f" || printf '%s\t%s\n' "$f" "$(tt "jamais compilé par le Makefile : fichier inutilisé" "never compiled by the Makefile: unused file")" ;;
+					*.h) printf '%s\t%s\n' "$f" "$(tt "en-tête en trop : le sujet n'attend que libft.h" "extra header: the subject only expects libft.h")" ;;
+					*.c) printf '%s\t%s\n' "$f" "$(tt "ne fait pas partie de la libft (main de test ?)" "not part of the libft (test main?)")" ;;
+					*) printf '%s\t%s\n' "$f" "$(tt "pas dans les fichiers à rendre (ft_*.c, libft.h, Makefile, README.md)" "not among the files to hand in (ft_*.c, libft.h, Makefile, README.md)")" ;;
 				esac
 				;;
 			printf)
 				if [ "$n" -gt 1 ]; then
-					printf '%s\ttrop profond : le sujet accepte *.c, */*.c, *.h, */*.h et Makefile\n' "$f"
+					printf '%s\t%s\n' "$f" "$(tt "trop profond : le sujet accepte *.c, */*.c, *.h, */*.h et Makefile" "too deep: the subject accepts *.c, */*.c, *.h, */*.h and Makefile")"
 					continue
 				fi
 				case "$b" in
 					Makefile)
-						[ "$n" = 0 ] || [ "$dir" = libft ] || printf '%s\tMakefile en trop : seuls celui de la racine et celui de libft/ sont attendus\n' "$f" ;;
+						[ "$n" = 0 ] || [ "$dir" = libft ] || printf '%s\t%s\n' "$f" "$(tt "Makefile en trop : seuls celui de la racine et celui de libft/ sont attendus" "extra Makefile: only the root one and the libft/ one are expected")" ;;
 					README.md) ;;
-					*.c) tdf_utilise_c "$d" "$f" || printf '%s\tjamais compilé par un Makefile : fichier inutilisé\n' "$f" ;;
-					*.h) tdf_utilise_h "$d" "$f" || printf '%s\tjamais inclus : fichier inutilisé\n' "$f" ;;
-					*) printf '%s\tpas dans les fichiers à rendre (*.c, */*.c, *.h, */*.h, Makefile)\n' "$f" ;;
+					*.c) tdf_utilise_c "$d" "$f" || printf '%s\t%s\n' "$f" "$(tt "jamais compilé par un Makefile : fichier inutilisé" "never compiled by a Makefile: unused file")" ;;
+					*.h) tdf_utilise_h "$d" "$f" || printf '%s\t%s\n' "$f" "$(tt "jamais inclus : fichier inutilisé" "never included: unused file")" ;;
+					*) printf '%s\t%s\n' "$f" "$(tt "pas dans les fichiers à rendre (*.c, */*.c, *.h, */*.h, Makefile)" "not among the files to hand in (*.c, */*.c, *.h, */*.h, Makefile)")" ;;
 				esac
 				;;
 			gnl)
 				case "$f" in
 					get_next_line.c|get_next_line_utils.c|get_next_line.h|README.md) ;;
-					*) printf '%s\tpas dans les fichiers à rendre (get_next_line.c, get_next_line_utils.c, get_next_line.h)\n' "$f" ;;
+					*) printf '%s\t%s\n' "$f" "$(tt "pas dans les fichiers à rendre (get_next_line.c, get_next_line_utils.c, get_next_line.h)" "not among the files to hand in (get_next_line.c, get_next_line_utils.c, get_next_line.h)")" ;;
 				esac
 				;;
 		esac
