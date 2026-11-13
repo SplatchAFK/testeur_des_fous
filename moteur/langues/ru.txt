@@ -891,3 +891,165 @@ The tester has local changes: update cancelled so nothing gets overwritten.	В �
 Updating the tester (%s)...	Обновление тестера (%s)...
 The tester is up to date.	Тестер обновлён.
 ↑ ↓ pick   Enter confirm   Esc or q: back	↑ ↓ выбрать   Enter подтвердить   Esc или q: назад
+exercise bank not found	банк упражнений не найден
+the exercise bank is empty	банк упражнений пуст
+\n  %s[ Enter to continue ]%s 	\n  %s[ Enter, чтобы продолжить ]%s 
+   (subject not found)\n	   (subject не найден)\n
+   %sExam%s  	   %sЭкзамен%s  
+   %sSeries%s  	   %sСерия%s  
+ %s%d/%d%s · %d passed	 %s%d/%d%s · пройдено: %d
+   %sTraining%s · level %d · %d passed	   %sТренировка%s · уровень %d · пройдено: %d
+        %s%s left%s	        %sосталось %s%s
+\n   Exercise  %s%s%s · level %s%d%s	\n   Задание   %s%s%s · уровень %s%d%s
+ · %d points	 · %d баллов
+   %s%d failure(s)%s	   %sпровалов: %d%s
+\n  %sgrademe%s grade   %ssujet%s reread   %sstatus%s where I am   %sfinish%s finish   %shelp%s help\n\n	\n  %sgrademe%s проверить   %ssujet%s перечитать   %sstatus%s где я   %sfinish%s закончить   %shelp%s помощь\n\n
+   Subject %s\n	   Subject %s\n
+   Work    %s	   Сдача   %s
+   Time    %s elapsed\n	   Время   прошло %s\n
+compilation failed	компиляция не удалась
+forbidden function(s): %s	запрещённые функции: %s
+linking failed	линковка не удалась
+\nexpected: %lu byte(s) · got: %lu byte(s) · first difference at byte %d\n	\nожидалось: %lu байт · получено: %lu байт · первое отличие в байте %d\n
+\n--- expected\n	\n--- ожидалось\n
+  trace: %s\n	  след: %s\n
+  %sthe trace will be readable at the end of the exam%s\n	  %sслед можно будет прочитать в конце экзамена%s\n
+expected file not found: %s	ожидаемый файл не найден: %s
+missing file	файла нет
+forbidden function	запрещённая функция
+compilation error	ошибка компиляции
+  tests not found for %s\n	  тесты для %s не найдены\n
+  warning %s test %d: code %d, %lu bytes\n	  внимание %s тест %d: код %d, %lu байт\n
+  expected outputs not found for %s\n	  ожидаемые выводы для %s не найдены\n
+  expected outputs incomplete for %s: tell splatch_afk\n	  ожидаемые выводы для %s неполные: сообщи splatch_afk\n
+infinite loop	бесконечный цикл
+no answer after 5 seconds	нет ответа через 5 секунд
+the program stopped on signal %d (%s)	программа остановилась по сигналу %d (%s)
+different output	другой вывод
+  %smemory: clean (ASan, UBSan, leaks)%s\n	  %sпамять: чисто (ASan, UBSan, утечки)%s\n
+  %smemory: %d test(s) with a memory error, a leak or undefined behaviour%s\n	  %sпамять: тестов с ошибкой памяти, утечкой или UB: %d%s\n
+  %s(the real exam does not check it, but a peer evaluation does)%s\n	  %s(настоящий экзамен этого не проверяет, а проверка однокурсников — да)%s\n
+  %s+%ld Octets · +%ld XP%s  %s%s%s\n	  %s+%ld Octets · +%ld XP%s  %s%s%s\n
+  %sTime is up.%s\n	  %sВремя вышло.%s\n
+  %sExam finished%s · grade: %s%d/100%s · time: %s · failures: %d\n	  %sЭкзамен окончен%s · оценка: %s%d/100%s · время: %s · провалов: %d\n
+Passed.	Сдан.
+Not passed: you need 100/100.	Не сдан: нужно 100/100.
+  %scheat used during the session: no Octets for this exam%s\n	  %sв сессии использован чит: за этот экзамен Octets не будет%s\n
+first exam passed	первый экзамен сдан
+  %sSeries finished%s · %s%d/%d%s passed · time: %s · failures: %d\n	  %sСерия окончена%s · %s%d/%d%s пройдено · время: %s · провалов: %d\n
+  %sTraining finished%s · %d exercise(s) passed · time: %s\n	  %sТренировка окончена%s · пройдено упражнений: %d · время: %s\n
+  traces: %s\n	  следы: %s\n
+  your work is kept in %s\n	  твои работы хранятся в %s\n
+   Your work: %s%s	   Твоя работа: %s%s
+%s\n   %sWrite your code in another terminal, then type grademe here.%s\n\n	%s\n   %sПиши код в другом терминале, потом набери здесь grademe.%s\n\n
+  %s%ld s more before you can run grademe again (%d failure(s) on this exercise)%s\n	  %sещё %ld с до повторного grademe (провалов на этом задании: %d)%s\n
+  Hand in %s%s%s now? (y/n) 	  Сдать %s%s%s сейчас? (y/n) 
+   Grading %s%s%s...\n	   Проверка %s%s%s...\n
+  %snext grademe possible in %d min%s\n	  %sследующий grademe через %d мин%s\n
+new exercise passed	новое упражнение пройдено
+exercise already passed	упражнение уже пройдено
+  %snext exercise: %d/%d%s\n	  %sследующее упражнение: %d/%d%s\n
+  %s+%d points · next level%s\n	  %s+%d баллов · следующий уровень%s\n
+  usage: code YOUR_CODE (ask splatch_afk on Discord, for your login: %s)\n	  использование: code ТВОЙ_КОД (попроси у splatch_afk в Discord, для логина: %s)\n
+  %scode refused%s: it does not match the login %s.\n	  %sкод отклонён%s: не подходит к логину %s.\n
+  %scode accepted%s: skip, reroll and trace are unlocked for %s.\n	  %sкод принят%s: skip, reroll и trace открыты для %s.\n
+  %san exam passed with a cheat earns no Octets.%s\n	  %sэкзамен, сданный с читом, не приносит Octets.%s\n
+  real conditions: no cheats during this session\n	  реальные условия: в этой сессии читов нет\n
+  %slocked command%s: you need a code, ask splatch_afk on Discord.\n	  %sкоманда заблокирована%s: нужен код, попроси у splatch_afk в Discord.\n
+  trace shown on every failure\n	  след показывается при каждом провале\n
+  %sgrademe%s   grade the current exercise\n	  %sgrademe%s   проверить текущее упражнение\n
+  %sstatus%s    where I am, time left\n	  %sstatus%s    где я, сколько осталось\n
+  %ssujet%s     reread the subject (sujet en: in English, sujet fr: in French)\n	  %ssujet%s     перечитать задание (sujet en: по-английски, sujet fr: по-французски)\n
+  %sfinish%s    end the session now\n	  %sfinish%s    закончить сессию сейчас\n
+  %shelp%s      this help\n	  %shelp%s      эта справка\n
+  %sskip, reroll, trace: with a code (command: code YOUR_CODE)%s\n\n	  %sskip, reroll, trace: с кодом (команда: code ТВОЙ_КОД)%s\n\n
+  Write your code in another terminal or in your editor, in the rendu/ folder.\n\n	  Пиши код в другом терминале или в редакторе, в папке rendu/.\n\n
+\n  session kept: run the exam again to resume it.\n	\n  сессия сохранена: запусти экзамен снова, чтобы продолжить.\n
+  End the session? (y/n) 	  Закончить сессию? (y/n) 
+  unknown command: %s (help for the list)\n	  неизвестная команда: %s (help — список)\n
+at the end of the session	в конце сессии
+on every failure	при каждом провале
+training	тренировка
+series	серия
+mock exam	пробный экзамен
+   %sThe testeur des fous · C exam · %d exercises · 4 levels%s\n	   %stesteur des fous · Экзамен по C · %d упражнений · 4 уровня%s\n
+Like the real one: 4 levels, one exercise per level, 25 points each, 100 to pass.	Как настоящий: 4 уровня, по одному заданию, по 25 баллов, 100 для сдачи.
+Exercises of a single level, one after another, no grade.	Задания одного уровня подряд, без оценки.
+You choose how many exercises (1 to 5) and their difficulty.	Ты выбираешь число заданий (1-5) и сложность.
+Exercises	Задания
+How many exercises in the series, from 1 to 5.	Сколько заданий в серии, от 1 до 5.
+level %d	уровень %d
+Croissante: from level 1 up to level 4. Otherwise, every exercise at the same level.	Croissante: с 1 по 4 уровень. Иначе все задания одного уровня.
+Level	Уровень
+The level of the exercises, from 1 to 4.	Уровень заданий, от 1 до 4.
+Timer	Таймер
+3 hours	3 часа
+free	без лимита
+3 hours like the real exam, or no limit.	3 часа, как на настоящем экзамене, или без лимита.
+Wait after a failure	Ожидание после провала
+progressive	растущее
+Progressive: 1 more minute on each failure, 10 at most, like the real one.	Растущее: +1 минута за каждый провал, максимум 10, как на настоящем.
+When to show the details of failed tests.	Когда показывать подробности проваленных тестов.
+Subject language	Язык задания
+English	английский
+French	французский
+The language of the subjects.	Язык заданий.
+Real conditions	Реальные условия
+Yes: mock exam, 3 hours, wait, trace at the end, no cheats. Locks the other settings.	Да: пробный экзамен, 3 часа, ожидание, след в конце, без читов. Блокирует остальные настройки.
+  %s❯ Start%s\n	  %s❯ Начать%s\n
+Starts the session with these settings.	Запускает сессию с этими настройками.
+  %s❯ Quit%s\n	  %s❯ Выход%s\n
+Go back without starting an exam.	Вернуться без экзамена.
+  %sreal conditions: this setting is locked%s\n	  %sреальные условия: эта настройка заблокирована%s\n
+\n  %s↑ ↓ pick   ◀ ▶ change   Enter confirm   q quit%s\n	\n  %s↑ ↓ выбрать   ◀ ▶ менять   Enter подтвердить   q выход%s\n
+   %sThe testeur des fous · C exam%s\n	   %stesteur des fous · Экзамен по C%s\n
+   %s%d exercises · 4 levels · 25 points per level · 100 to pass%s\n	   %s%d упражнений · 4 уровня · 25 баллов за уровень · 100 для сдачи%s\n
+series (number of exercises and difficulty of your choice)	серия (число заданий и сложность на выбор)
+training on one level	тренировка на одном уровне
+exam (4 levels, one exercise per level)	экзамен (4 уровня, по заданию на уровень)
+%slevel %d%s, fixed\n	%sуровень %d%s, фиксированный\n
+croissante (from easy to hard)\n	croissante (от простого к сложному)\n
+progressive (1 more min on each failure, 10 at most)	растущее (+1 мин за провал, максимум 10)
+yes: exam, 3 hours, wait, trace at the end, no cheats	да: экзамен, 3 часа, ожидание, след в конце, без читов
+  %sEnter%s start   %s1 to %d%s change a setting   %sq%s quit\n\n  > 	  %sEnter%s начать   %s1-%d%s изменить настройку   %sq%s выход\n\n  > 
+  %sreal conditions: this setting is locked (6 to leave them)%s\n	  %sреальные условия: настройка заблокирована (6 — выйти из них)%s\n
+   %s%d/%d passed%s\n	   %s%d/%d пройдено%s\n
+Every exercise of the tester, in any order you like	Все упражнения тестера, в любом порядке
+   %s%-8s%s %3d exercises   %s%d passed%s	   %s%-8s%s %3d упражнений   %s%d пройдено%s
+\n   %sExamples: 'liste exam 2', 'cherche split', 'ouvre 3', then 'grademe'.%s\n	\n   %sПримеры: 'liste exam 2', 'cherche split', 'ouvre 3', затем 'grademe'.%s\n
+   Open exercise: %s%s%s (%s)\n	   Открытое упражнение: %s%s%s (%s)\n
+Search '%s': %d result(s)	Поиск '%s': результатов %d
+   nothing matches\n	   ничего не найдено\n
+  no open exercise: 'ouvre N' after a list\n	  нет открытого упражнения: 'ouvre N' после списка\n
+   Your work: %s%s/	   Твоя работа: %s%s/
+   %sWrite your code in another terminal, then type grademe here.%s\n\n	   %sПиши код в другом терминале, потом набери здесь grademe.%s\n\n
+  exercise not found: %s (run 'liste' or 'cherche' first)\n	  упражнение не найдено: %s (сначала 'liste' или 'cherche')\n
+  expected file not found: %s\n	  ожидаемый файл не найден: %s\n
+  %s(no libft found next to the tester: only the functions in this file can be used)%s\n	  %s(рядом с тестером нет libft: можно использовать только функции этого файла)%s\n
+wrong result	неверный результат
+Norm not respected	Норма не соблюдена
+does not compile	не компилируется
+crash or memory error	падение или ошибка памяти
+memory leak	утечка памяти
+no answer: infinite loop?	нет ответа: бесконечный цикл?
+undefined behaviour	неопределённое поведение
+  the %s tester returned nothing\n	  тестер %s ничего не вернул\n
+new bank exercise	новое упражнение из банка
+   %sliste%s                 every exercise\n	   %sliste%s                 все упражнения\n
+   %sliste exam 2%s          the exam, level 2 (also: liste libft, liste printf)\n	   %sliste exam 2%s          экзамен, уровень 2 (также: liste libft, liste printf)\n
+   %scherche WORD%s          by name or topic (e.g. cherche lst, cherche bits)\n	   %scherche СЛОВО%s         по имени или теме (напр.: cherche lst, cherche bits)\n
+   %souvre N%s               opens exercise #N of the last list (or its name)\n	   %souvre N%s               открывает упражнение № N из последнего списка (или по имени)\n
+   %sgrademe%s               grades the open exercise\n	   %sgrademe%s               проверяет открытое упражнение\n
+   %ssujet%s                 reread the subject (sujet en: in English)\n	   %ssujet%s                 перечитать задание (sujet en: по-английски)\n
+   %sfait%s                  what you already passed\n	   %sfait%s                  что уже пройдено\n
+   %squitter%s               go back\n\n	   %squitter%s               назад\n\n
+   Libft and printf exercises are graded by their own tester:\n	   Упражнения Libft и printf проверяет их собственный тестер:\n
+   Norm required, sanitizers, malloc failures.\n	   Норма обязательна, санитайзеры, сбои malloc.\n
+Already passed	Уже пройдено
+   nothing yet\n	   пока ничего\n
+  unknown command: %s (aide for the list)\n	  неизвестная команда: %s (aide — список)\n
+  %ssave edited by hand: reset (old copy: save.txt.triche)%s\n	  %sсохранение изменено вручную: сброшено (старая копия: save.txt.triche)%s\n
+\n  A session is in progress (%s, level %d). Resume it? (y/n) 	\n  Идёт сессия (%s, уровень %d). Продолжить? (y/n) 
+\n  %s═══════════════════════ EXERCISE BANK ════════════════════════%s\n	\n  %s═══════════════════ БАНК УПРАЖНЕНИЙ ═══════════════════%s\n
+\n  %sliste%s [exam|libft|printf] [level]   %scherche%s WORD   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n	\n  %sliste%s [exam|libft|printf] [уровень]   %scherche%s СЛОВО   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n
+Help	Помощь

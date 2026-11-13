@@ -271,7 +271,7 @@ static void	bank_load(void)
 
 	d = opendir(g_bankdir);
 	if (!d)
-		die("banque d'exercices introuvable");
+		die(L("banque d'exercices introuvable", "exercise bank not found"));
 	while ((e = readdir(d)) && g_nbank < XMAXEXO)
 	{
 		if (e->d_name[0] == '.')
@@ -307,7 +307,7 @@ static void	bank_load(void)
 	closedir(d);
 	qsort(g_bank, g_nbank, sizeof(t_xexo), exo_cmp);
 	if (!g_nbank)
-		die("la banque d'exercices est vide");
+		die(L("la banque d'exercices est vide", "the exercise bank is empty"));
 }
 
 static void	cfg_path(char *b, size_t n)
@@ -503,7 +503,7 @@ static void	pause_x(void)
 
 	if (!g_tty)
 		return ;
-	printf("\n  %s[ Entrée pour continuer ]%s ", C_D, C_R);
+	printf(L("\n  %s[ Entrée pour continuer ]%s ", "\n  %s[ Enter to continue ]%s "), C_D, C_R);
 	fflush(stdout);
 	if (!fgets(line, sizeof(line), stdin))
 		return ;
@@ -535,7 +535,7 @@ static void	show_subject_text(void)
 	txt = slurp(path, NULL);
 	if (!txt)
 	{
-		printf("   (sujet introuvable)\n");
+		printf(L("   (sujet introuvable)\n", "   (subject not found)\n"));
 		return ;
 	}
 	p = txt;
@@ -583,37 +583,37 @@ static void	entete(void)
 	printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
 	if (g_st.mode == 0)
 	{
-		printf("   %sExamen%s  ", C_B, C_R);
+		printf(L("   %sExamen%s  ", "   %sExam%s  "), C_B, C_R);
 		for (i = 1; i <= XLEVELS; i++)
 			printf("%s%s%s ", level_color(i), i < g_st.level ? "■" : i == g_st.level ? "▣" : "□", C_R);
 		printf(" %s%3d/100%s", C_B, g_st.points, C_R);
 	}
 	else if (g_st.mode == 2)
 	{
-		printf("   %sSérie%s  ", C_B, C_R);
+		printf(L("   %sSérie%s  ", "   %sSeries%s  "), C_B, C_R);
 		for (i = 0; i < g_cfg.serie; i++)
 			printf("%s%s%s ", level_color(serie_niveau(i)), i < g_st.points ? "■" : i == g_st.points ? "▣" : "□", C_R);
-		printf(" %s%d/%d%s · %d réussi(s)", C_B, g_st.points + 1 > g_cfg.serie ? g_cfg.serie : g_st.points + 1,
+		printf(L(" %s%d/%d%s · %d réussi(s)", " %s%d/%d%s · %d passed"), C_B, g_st.points + 1 > g_cfg.serie ? g_cfg.serie : g_st.points + 1,
 			g_cfg.serie, C_R, g_st.solved);
 	}
 	else
-		printf("   %sEntraînement%s · niveau %d · %d réussi(s)", C_B, C_R, g_st.level, g_st.solved);
+		printf(L("   %sEntraînement%s · niveau %d · %d réussi(s)", "   %sTraining%s · level %d · %d passed"), C_B, C_R, g_st.level, g_st.solved);
 	if (g_st.limit)
 	{
 		fmt_time(remaining(), t, sizeof(t));
-		printf("        %sreste %s%s", remaining() < 1800 ? C_WN : C_D, t, C_R);
+		printf(L("        %sreste %s%s", "        %s%s left%s"), remaining() < 1800 ? C_WN : C_D, t, C_R);
 	}
-	printf("\n   Exercice  %s%s%s · niveau %s%d%s", C_AC, x->name, C_R, level_color(x->level), x->level, C_R);
+	printf(L("\n   Exercice  %s%s%s · niveau %s%d%s", "\n   Exercise  %s%s%s · level %s%d%s"), C_AC, x->name, C_R, level_color(x->level), x->level, C_R);
 	if (g_st.mode == 0)
-		printf(" · %d points", XPOINTS);
+		printf(L(" · %d points", " · %d points"), XPOINTS);
 	if (g_st.fails)
-		printf("   %s%d échec(s)%s", C_WN, g_st.fails, C_R);
+		printf(L("   %s%d échec(s)%s", "   %s%d failure(s)%s"), C_WN, g_st.fails, C_R);
 	printf("\n  %s═══════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
 }
 
 static void	commandes(void)
 {
-	printf("\n  %sgrademe%s corriger   %ssujet%s relire   %sstatus%s où j'en suis   %sfinish%s terminer   %shelp%s aide\n\n",
+	printf(L("\n  %sgrademe%s corriger   %ssujet%s relire   %sstatus%s où j'en suis   %sfinish%s terminer   %shelp%s aide\n\n", "\n  %sgrademe%s grade   %ssujet%s reread   %sstatus%s where I am   %sfinish%s finish   %shelp%s help\n\n"),
 		C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R);
 }
 
@@ -628,14 +628,14 @@ static void	show_status(void)
 	ecran();
 	entete();
 	snprintf(p, sizeof(p), "%s/sujet/%s/", g_work, x->name);
-	printf("   Sujet   %s\n", rel(p));
+	printf(L("   Sujet   %s\n", "   Subject %s\n"), rel(p));
 	snprintf(p, sizeof(p), "%s/rendu/%s/", g_work, x->name);
-	printf("   Rendu   %s", rel(p));
+	printf(L("   Rendu   %s", "   Work    %s"), rel(p));
 	for (i = 0; i < x->nfiles; i++)
 		printf("%s%s", i ? ", " : "", x->files[i]);
 	printf("\n");
 	fmt_time((long)time(NULL) - g_st.start, t, sizeof(t));
-	printf("   Temps   %s écoulé\n", t);
+	printf(L("   Temps   %s écoulé\n", "   Time    %s elapsed\n"), t);
 	commandes();
 }
 
@@ -892,7 +892,7 @@ static int	build(const t_xexo *x, const char *srcdir, const char *maindir, int s
 		if (r != 0)
 		{
 			err = slurp(errf, NULL);
-			snprintf(why, nwhy, "%s", err ? err : "la compilation a échoué");
+			snprintf(why, nwhy, "%s", err ? err : L("la compilation a échoué", "compilation failed"));
 			free(err);
 			return (1);
 		}
@@ -900,7 +900,7 @@ static int	build(const t_xexo *x, const char *srcdir, const char *maindir, int s
 	}
 	if (!san && !check_symbols(x, errf, sizeof(errf)))
 	{
-		snprintf(why, nwhy, "fonction(s) non autorisée(s) : %s", errf);
+		snprintf(why, nwhy, L("fonction(s) non autorisée(s) : %s", "forbidden function(s): %s"), errf);
 		return (2);
 	}
 	snprintf(errf, sizeof(errf), "%s/cc.err", g_build);
@@ -913,7 +913,7 @@ static int	build(const t_xexo *x, const char *srcdir, const char *maindir, int s
 	if (r != 0)
 	{
 		err = slurp(errf, NULL);
-		snprintf(why, nwhy, "%s", err ? err : "l'édition de liens a échoué");
+		snprintf(why, nwhy, "%s", err ? err : L("l'édition de liens a échoué", "linking failed"));
 		free(err);
 		return (1);
 	}
@@ -947,9 +947,9 @@ static void	trace_write(const t_xexo *x, const char *title, char **argv, const c
 	{
 		for (i = 0; (size_t)i < ne && (size_t)i < ng && exp[i] == got[i]; i++)
 			;
-		fprintf(f, "\nattendu : %lu octet(s) · obtenu : %lu octet(s) · première différence à l'octet %d\n",
+		fprintf(f, L("\nattendu : %lu octet(s) · obtenu : %lu octet(s) · première différence à l'octet %d\n", "\nexpected: %lu byte(s) · got: %lu byte(s) · first difference at byte %d\n"),
 			(unsigned long)ne, (unsigned long)ng, i + 1);
-		fprintf(f, "\n--- attendu\n");
+		fprintf(f, L("\n--- attendu\n", "\n--- expected\n"));
 		cat_e(f, exp, ne);
 		fprintf(f, "--- obtenu\n");
 		cat_e(f, got, ng);
@@ -969,10 +969,10 @@ static void	trace_show(const t_xexo *x)
 		if (txt)
 			printf("%s%s%s\n", C_D, txt, C_R);
 		free(txt);
-		printf("  trace : %s\n", rel(path));
+		printf(L("  trace : %s\n", "  trace: %s\n"), rel(path));
 	}
 	else if (g_st.trace == 1)
-		printf("  %sla trace sera lisible à la fin de l'exam%s\n", C_D, C_R);
+		printf(L("  %sla trace sera lisible à la fin de l'exam%s\n", "  %sthe trace will be readable at the end of the exam%s\n"), C_D, C_R);
 }
 
 static int	expected_next(const char **p, const char *end, const char **data, size_t *len)
@@ -1043,8 +1043,8 @@ static int	grade(const t_xexo *x, const char *srcdir, int generate)
 		snprintf(path, sizeof(path), "%s/%s", srcdir, x->files[i]);
 		if (access(path, R_OK) != 0)
 		{
-			snprintf(why, sizeof(why), "fichier attendu introuvable : %s", rel(path));
-			trace_write(x, "fichier manquant", NULL, NULL, 0, NULL, 0, why);
+			snprintf(why, sizeof(why), L("fichier attendu introuvable : %s", "expected file not found: %s"), rel(path));
+			trace_write(x, L("fichier manquant", "missing file"), NULL, NULL, 0, NULL, 0, why);
 			printf("  %s%s%s\n", C_KO, why, C_R);
 			return (1);
 		}
@@ -1052,7 +1052,7 @@ static int	grade(const t_xexo *x, const char *srcdir, int generate)
 	r = build(x, srcdir, g_bankdir, 0, why, sizeof(why));
 	if (r != 0)
 	{
-		trace_write(x, r == 2 ? "fonction non autorisée" : "erreur de compilation", NULL, NULL, 0, NULL, 0, why);
+		trace_write(x, r == 2 ? L("fonction non autorisée", "forbidden function") : L("erreur de compilation", "compilation error"), NULL, NULL, 0, NULL, 0, why);
 		if (generate)
 			printf("%s\n", why);
 		return (1);
@@ -1065,7 +1065,7 @@ static int	grade(const t_xexo *x, const char *srcdir, int generate)
 	if (x->prog)
 		ntests = parse_tests(path, tests, argv, args);
 	if (ntests < 1)
-		return (free(tests), printf("  tests introuvables pour %s\n", x->name), 1);
+		return (free(tests), printf(L("  tests introuvables pour %s\n", "  tests not found for %s\n"), x->name), 1);
 	snprintf(bin, sizeof(bin), "%s/bin", g_build);
 	snprintf(path, sizeof(path), "%s/%s/attendu", g_bankdir, x->name);
 	if (generate)
@@ -1077,7 +1077,7 @@ static int	grade(const t_xexo *x, const char *srcdir, int generate)
 		{
 			r = run_bin(bin, argv[i], out, sizeof(out), &len, NULL);
 			if (r != 0 || len > sizeof(out))
-				printf("  attention %s test %d : code %d, %lu octets\n", x->name, i + 1, r, (unsigned long)len);
+				printf(L("  attention %s test %d : code %d, %lu octets\n", "  warning %s test %d: code %d, %lu bytes\n"), x->name, i + 1, r, (unsigned long)len);
 			fprintf(g, "#%lu\n", (unsigned long)len);
 			fwrite(out, 1, len, g);
 			fputc('\n', g);
@@ -1088,32 +1088,32 @@ static int	grade(const t_xexo *x, const char *srcdir, int generate)
 	}
 	expd = slurp(path, &total);
 	if (!expd)
-		return (free(tests), printf("  sorties attendues introuvables pour %s\n", x->name), 1);
+		return (free(tests), printf(L("  sorties attendues introuvables pour %s\n", "  expected outputs not found for %s\n"), x->name), 1);
 	p = expd;
 	end = expd + total;
 	for (i = 0; i < ntests; i++)
 	{
 		if (!expected_next(&p, end, &data, &elen))
 		{
-			printf("  sorties attendues incomplètes pour %s : préviens splatch_afk\n", x->name);
+			printf(L("  sorties attendues incomplètes pour %s : préviens splatch_afk\n", "  expected outputs incomplete for %s: tell splatch_afk\n"), x->name);
 			break ;
 		}
 		r = run_bin(bin, argv[i], out, sizeof(out), &len, NULL);
 		if (r == -2)
 		{
-			trace_write(x, "boucle infinie", argv[i], NULL, 0, NULL, 0, "aucune réponse après 5 secondes");
+			trace_write(x, L("boucle infinie", "infinite loop"), argv[i], NULL, 0, NULL, 0, L("aucune réponse après 5 secondes", "no answer after 5 seconds"));
 			break ;
 		}
 		if (r >= 1000)
 		{
-			snprintf(why, sizeof(why), "le programme s'est arrêté sur le signal %d (%s)", r - 1000,
+			snprintf(why, sizeof(why), L("le programme s'est arrêté sur le signal %d (%s)", "the program stopped on signal %d (%s)"), r - 1000,
 				r - 1000 == SIGSEGV ? "segfault" : r - 1000 == SIGABRT ? "abort" : r - 1000 == SIGBUS ? "bus error" : "signal");
 			trace_write(x, "plantage", argv[i], data, elen, out, len > sizeof(out) ? sizeof(out) : len, why);
 			break ;
 		}
 		if (len != elen || memcmp(out, data, elen))
 		{
-			trace_write(x, "sortie différente", argv[i], data, elen, out, len > sizeof(out) ? sizeof(out) : len, "");
+			trace_write(x, L("sortie différente", "different output"), argv[i], data, elen, out, len > sizeof(out) ? sizeof(out) : len, "");
 			break ;
 		}
 	}
@@ -1122,10 +1122,14 @@ static int	grade(const t_xexo *x, const char *srcdir, int generate)
 	{
 		i = memory_bonus(x, srcdir, argv, ntests);
 		if (i == 0)
-			printf("  %smémoire : propre (ASan, UBSan, fuites)%s\n", C_D, C_R);
+			printf(L("  %smémoire : propre (ASan, UBSan, fuites)%s\n", "  %smemory: clean (ASan, UBSan, leaks)%s\n"), C_D, C_R);
 		else if (i > 0)
-			printf("  %smémoire : %d test(s) avec une erreur mémoire, une fuite ou un comportement indéfini%s\n"
-				"  %s(le vrai exam ne le vérifie pas, mais une évaluation, oui)%s\n", C_WN, i, C_R, C_D, C_R);
+		{
+			printf(L("  %smémoire : %d test(s) avec une erreur mémoire, une fuite ou un comportement indéfini%s\n",
+					"  %smemory: %d test(s) with a memory error, a leak or undefined behaviour%s\n"), C_WN, i, C_R);
+			printf(L("  %s(le vrai exam ne le vérifie pas, mais une évaluation, oui)%s\n",
+					"  %s(the real exam does not check it, but a peer evaluation does)%s\n"), C_D, C_R);
+		}
 	}
 	free(tests);
 	free(expd);
@@ -1138,7 +1142,7 @@ static void	reward(long octets, const char *why)
 		return ;
 	g_save.octets += octets;
 	g_save.xp += octets * 2;
-	printf("  %s+%ld Octets · +%ld XP%s  %s%s%s\n", C_OK, octets, octets * 2, C_R, C_D, why, C_R);
+	printf(L("  %s+%ld Octets · +%ld XP%s  %s%s%s\n", "  %s+%ld Octets · +%ld XP%s  %s%s%s\n"), C_OK, octets, octets * 2, C_R, C_D, why, C_R);
 }
 
 static void	scene(const char *mode, int n);
@@ -1158,15 +1162,15 @@ static void	finish(int timeout)
 	ecran();
 	printf("\n%s══════════════════════════════════════════════════════════════%s\n", C_AC, C_R);
 	if (timeout)
-		printf("  %sTemps écoulé.%s\n", C_KO, C_R);
+		printf(L("  %sTemps écoulé.%s\n", "  %sTime is up.%s\n"), C_KO, C_R);
 	if (g_st.mode == 0)
 	{
-		printf("  %sExamen terminé%s · note : %s%d/100%s · temps : %s · échecs : %d\n", C_B, C_R,
+		printf(L("  %sExamen terminé%s · note : %s%d/100%s · temps : %s · échecs : %d\n", "  %sExam finished%s · grade: %s%d/100%s · time: %s · failures: %d\n"), C_B, C_R,
 			g_st.points == 100 ? C_OK : C_WN, g_st.points, C_R, t, g_st.tfails);
-		printf("  %s\n", g_st.points == 100 ? "Validé." : "Non validé : il faut 100/100.");
+		printf("  %s\n", g_st.points == 100 ? L("Validé.", "Passed.") : L("Non validé : il faut 100/100.", "Not passed: you need 100/100."));
 		g_xs.runs++;
 		if (g_st.cheats)
-			printf("  %scheat utilisé pendant la session : aucun Octet pour cet exam%s\n", C_WN, C_R);
+			printf(L("  %scheat utilisé pendant la session : aucun Octet pour cet exam%s\n", "  %scheat used during the session: no Octets for this exam%s\n"), C_WN, C_R);
 		else
 		{
 			gain = (g_st.points / XPOINTS) * 100;
@@ -1182,7 +1186,7 @@ static void	finish(int timeout)
 			}
 			if ((long)time(NULL) - g_xs.lastreward < 21600 && g_xs.lastreward)
 				gain /= 4;
-			reward(gain, g_st.points == 100 && !g_xs.passed ? "premier exam validé" : "");
+			reward(gain, g_st.points == 100 && !g_xs.passed ? L("premier exam validé", "first exam passed") : "");
 			if (gain > 0)
 				g_xs.lastreward = (long)time(NULL);
 		}
@@ -1201,18 +1205,18 @@ static void	finish(int timeout)
 	}
 	else if (g_st.mode == 2)
 	{
-		printf("  %sSérie terminée%s · %s%d/%d%s réussi(s) · temps : %s · échecs : %d\n", C_B, C_R,
+		printf(L("  %sSérie terminée%s · %s%d/%d%s réussi(s) · temps : %s · échecs : %d\n", "  %sSeries finished%s · %s%d/%d%s passed · time: %s · failures: %d\n"), C_B, C_R,
 			g_st.solved == g_cfg.serie ? C_OK : C_WN, g_st.solved, g_cfg.serie, C_R, t, g_st.tfails);
 		tdf_stats_begin("exam");
 		tdf_stats_end(g_st.solved, g_cfg.serie);
 	}
 	else
-		printf("  %sEntraînement terminé%s · %d exercice(s) réussi(s) · temps : %s\n", C_B, C_R, g_st.solved, t);
+		printf(L("  %sEntraînement terminé%s · %d exercice(s) réussi(s) · temps : %s\n", "  %sTraining finished%s · %d exercise(s) passed · time: %s\n"), C_B, C_R, g_st.solved, t);
 	snprintf(p, sizeof(p), "%s/traces/", g_work);
 	if (g_st.trace == 1)
-		printf("  traces : %s\n", rel(p));
+		printf(L("  traces : %s\n", "  traces: %s\n"), rel(p));
 	snprintf(p, sizeof(p), "%s/archive/", g_work);
-	printf("  tes rendus sont gardés dans %s\n", rel(p));
+	printf(L("  tes rendus sont gardés dans %s\n", "  your work is kept in %s\n"), rel(p));
 	printf("%s══════════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
 	sh("cd %s && mkdir -p archive && for d in rendu/*/; do [ -d \"$d\" ] && mv \"$d\" \"archive/$(basename \"$d\")_fin_%ld\"; done; "
 		"rm -rf sujet/* 2>/dev/null; true", q(g_work), (long)time(NULL));
@@ -1231,10 +1235,10 @@ static void	view_exo(void)
 	ecran();
 	entete();
 	snprintf(p, sizeof(p), "%s/rendu/%s/", g_work, x->name);
-	printf("   Ton rendu : %s%s", C_B, rel(p));
+	printf(L("   Ton rendu : %s%s", "   Your work: %s%s"), C_B, rel(p));
 	for (i = 0; i < x->nfiles; i++)
 		printf("%s%s", i ? ", " : "", x->files[i]);
-	printf("%s\n   %sÉcris ton code dans un autre terminal, puis tape grademe ici.%s\n\n", C_R, C_D, C_R);
+	printf(L("%s\n   %sÉcris ton code dans un autre terminal, puis tape grademe ici.%s\n\n", "%s\n   %sWrite your code in another terminal, then type grademe here.%s\n\n"), C_R, C_D, C_R);
 	show_subject_text();
 	commandes();
 }
@@ -1262,7 +1266,7 @@ static int	do_grademe(void)
 		wait = g_st.lastfail + 60 * (g_st.fails > 10 ? 10 : g_st.fails) - (long)time(NULL);
 		if (wait > 0)
 		{
-			printf("  %sencore %ld s avant de pouvoir relancer grademe (%d échec(s) sur cet exercice)%s\n",
+			printf(L("  %sencore %ld s avant de pouvoir relancer grademe (%d échec(s) sur cet exercice)%s\n", "  %s%ld s more before you can run grademe again (%d failure(s) on this exercise)%s\n"),
 				C_WN, wait, g_st.fails, C_R);
 			return (0);
 		}
@@ -1270,7 +1274,7 @@ static int	do_grademe(void)
 	snprintf(src, sizeof(src), "%s/rendu/%s", g_work, x->name);
 	if (g_tty)
 	{
-		printf("  Rendre %s%s%s maintenant ? (o/n) ", C_AC, x->name, C_R);
+		printf(L("  Rendre %s%s%s maintenant ? (o/n) ", "  Hand in %s%s%s now? (y/n) "), C_AC, x->name, C_R);
 		fflush(stdout);
 		if (!fgets(src, sizeof(src), stdin) || !(src[0] == 'o' || src[0] == 'O' || src[0] == 'y' || src[0] == 'Y'))
 			return (0);
@@ -1278,7 +1282,7 @@ static int	do_grademe(void)
 	}
 	ecran();
 	entete();
-	printf("   Correction de %s%s%s en cours...\n", C_AC, x->name, C_R);
+	printf(L("   Correction de %s%s%s en cours...\n", "   Grading %s%s%s...\n"), C_AC, x->name, C_R);
 	fflush(stdout);
 	if (grade(x, src, 0) != 0)
 	{
@@ -1294,7 +1298,7 @@ static int	do_grademe(void)
 		tdf_stats_end(0, 1);
 		state_save();
 		if (g_st.wait)
-			printf("  %sprochain grademe possible dans %d min%s\n", C_D, g_st.fails > 10 ? 10 : g_st.fails, C_R);
+			printf(L("  %sprochain grademe possible dans %d min%s\n", "  %snext grademe possible in %d min%s\n"), C_D, g_st.fails > 10 ? 10 : g_st.fails, C_R);
 		pause_x();
 		if (g_tty)
 			view_exo();
@@ -1309,7 +1313,7 @@ static int	do_grademe(void)
 	if (g_st.mode == 1 || g_st.mode == 2)
 	{
 		if (!g_st.cheats)
-			reward(first ? 15 * x->level : 2, first ? "nouvel exercice réussi" : "exercice déjà réussi");
+			reward(first ? 15 * x->level : 2, first ? L("nouvel exercice réussi", "new exercise passed") : L("exercice déjà réussi", "exercise already passed"));
 		if (g_st.mode == 1)
 		{
 			tdf_stats_begin("exam");
@@ -1320,7 +1324,7 @@ static int	do_grademe(void)
 			return (1);
 		if (g_st.mode == 2)
 		{
-			printf("  %sexercice suivant : %d/%d%s\n", C_OK, g_st.points + 1, g_cfg.serie, C_R);
+			printf(L("  %sexercice suivant : %d/%d%s\n", "  %snext exercise: %d/%d%s\n"), C_OK, g_st.points + 1, g_cfg.serie, C_R);
 			g_st.level = serie_niveau(g_st.points);
 		}
 		pause_x();
@@ -1331,7 +1335,7 @@ static int	do_grademe(void)
 	save_write();
 	if (g_st.level == XLEVELS)
 		return (1);
-	printf("  %s+%d points · niveau suivant%s\n", C_OK, XPOINTS, C_R);
+	printf(L("  %s+%d points · niveau suivant%s\n", "  %s+%d points · next level%s\n"), C_OK, XPOINTS, C_R);
 	pause_x();
 	g_st.level++;
 	next_exo();
@@ -1349,30 +1353,30 @@ static void	enter_code(const char *c)
 {
 	if (!c)
 	{
-		printf("  usage : code TON_CODE (à demander à splatch_afk sur Discord, pour ton login : %s)\n", g_save.login);
+		printf(L("  usage : code TON_CODE (à demander à splatch_afk sur Discord, pour ton login : %s)\n", "  usage: code YOUR_CODE (ask splatch_afk on Discord, for your login: %s)\n"), g_save.login);
 		return ;
 	}
 	if (!tdf_code_ok(g_save.login, c))
 	{
-		printf("  %scode refusé%s : il ne correspond pas au login %s.\n", C_KO, C_R, g_save.login);
+		printf(L("  %scode refusé%s : il ne correspond pas au login %s.\n", "  %scode refused%s: it does not match the login %s.\n"), C_KO, C_R, g_save.login);
 		return ;
 	}
 	snprintf(g_xs.code, sizeof(g_xs.code), "%s", c);
 	save_write();
-	printf("  %scode accepté%s : skip, reroll et trace sont débloqués pour %s.\n", C_OK, C_R, g_save.login);
-	printf("  %sun exam passé avec un cheat ne rapporte aucun Octet.%s\n", C_D, C_R);
+	printf(L("  %scode accepté%s : skip, reroll et trace sont débloqués pour %s.\n", "  %scode accepted%s: skip, reroll and trace are unlocked for %s.\n"), C_OK, C_R, g_save.login);
+	printf(L("  %sun exam passé avec un cheat ne rapporte aucun Octet.%s\n", "  %san exam passed with a cheat earns no Octets.%s\n"), C_D, C_R);
 }
 
 static int	do_cheat(const char *cmd)
 {
 	if (g_cfg.real)
 	{
-		printf("  conditions réelles : aucun cheat pendant cette session\n");
+		printf(L("  conditions réelles : aucun cheat pendant cette session\n", "  real conditions: no cheats during this session\n"));
 		return (0);
 	}
 	if (!code_ok())
 	{
-		printf("  %scommande verrouillée%s : il faut un code, à demander à splatch_afk sur Discord.\n", C_WN, C_R);
+		printf(L("  %scommande verrouillée%s : il faut un code, à demander à splatch_afk sur Discord.\n", "  %slocked command%s: you need a code, ask splatch_afk on Discord.\n"), C_WN, C_R);
 		return (0);
 	}
 	g_st.cheats++;
@@ -1380,7 +1384,7 @@ static int	do_cheat(const char *cmd)
 	if (!strcmp(cmd, "trace"))
 	{
 		g_st.trace = 2;
-		printf("  trace affichée à chaque échec\n");
+		printf(L("  trace affichée à chaque échec\n", "  trace shown on every failure\n"));
 	}
 	else if (!strcmp(cmd, "reroll"))
 		next_exo();
@@ -1404,13 +1408,13 @@ static void	show_help(void)
 {
 	ecran();
 	entete();
-	printf("  %sgrademe%s   corriger l'exercice en cours\n", C_B, C_R);
-	printf("  %sstatus%s    où j'en suis, temps restant\n", C_B, C_R);
-	printf("  %ssujet%s     relire le sujet (sujet en : en anglais, sujet fr : en français)\n", C_B, C_R);
-	printf("  %sfinish%s    terminer la session maintenant\n", C_B, C_R);
-	printf("  %shelp%s      cette aide\n", C_B, C_R);
-	printf("  %sskip, reroll, trace : avec un code (commande : code TON_CODE)%s\n\n", C_D, C_R);
-	printf("  Écris ton code dans un autre terminal ou dans ton éditeur, dans le dossier rendu/.\n\n");
+	printf(L("  %sgrademe%s   corriger l'exercice en cours\n", "  %sgrademe%s   grade the current exercise\n"), C_B, C_R);
+	printf(L("  %sstatus%s    où j'en suis, temps restant\n", "  %sstatus%s    where I am, time left\n"), C_B, C_R);
+	printf(L("  %ssujet%s     relire le sujet (sujet en : en anglais, sujet fr : en français)\n", "  %ssujet%s     reread the subject (sujet en: in English, sujet fr: in French)\n"), C_B, C_R);
+	printf(L("  %sfinish%s    terminer la session maintenant\n", "  %sfinish%s    end the session now\n"), C_B, C_R);
+	printf(L("  %shelp%s      cette aide\n", "  %shelp%s      this help\n"), C_B, C_R);
+	printf(L("  %sskip, reroll, trace : avec un code (commande : code TON_CODE)%s\n\n", "  %sskip, reroll, trace: with a code (command: code YOUR_CODE)%s\n\n"), C_D, C_R);
+	printf(L("  Écris ton code dans un autre terminal ou dans ton éditeur, dans le dossier rendu/.\n\n", "  Write your code in another terminal or in your editor, in the rendu/ folder.\n\n"));
 }
 
 static char	g_hist[32][256];
@@ -1599,7 +1603,7 @@ static void	shell(void)
 		snprintf(t, sizeof(t), "%sexamshell%s> ", C_AC, C_R);
 		if (!lire_ligne(t, line, sizeof(line), g_cmd_exam))
 		{
-			printf("\n  session gardée : relance l'exam pour la reprendre.\n");
+			printf(L("\n  session gardée : relance l'exam pour la reprendre.\n", "\n  session kept: run the exam again to resume it.\n"));
 			return ;
 		}
 		cmd = strtok(line, " \t\r\n");
@@ -1628,15 +1632,33 @@ static void	shell(void)
 			view_exo();
 		else if (!strcmp(cmd, "finish") || !strcmp(cmd, "exit") || !strcmp(cmd, "quit"))
 		{
-			printf("  Terminer la session ? (o/n) ");
+			printf(L("  Terminer la session ? (o/n) ", "  End the session? (y/n) "));
 			fflush(stdout);
 			if (fgets(line, sizeof(line), stdin) && (line[0] == 'o' || line[0] == 'O' || line[0] == 'y'))
 				end = 1;
 		}
 		else
-			printf("  commande inconnue : %s (help pour la liste)\n", cmd);
+			printf(L("  commande inconnue : %s (help pour la liste)\n", "  unknown command: %s (help for the list)\n"), cmd);
 	}
 	finish(0);
+}
+
+static const char	*trace_nom(int t)
+{
+	if (t == 1)
+		return (L("à la fin de la session", "at the end of the session"));
+	if (t == 2)
+		return (L("à chaque échec", "on every failure"));
+	return (L("jamais", "never"));
+}
+
+static const char	*mode_nom(int m)
+{
+	if (m == 1)
+		return (L("entraînement", "training"));
+	if (m == 2)
+		return (L("série", "series"));
+	return (L("examen blanc", "mock exam"));
 }
 
 static const char	*onoff(int v, const char *a, const char *b)
@@ -1734,8 +1756,6 @@ static int	reglage_ligne(int r, int sel, const char *nom, const char *val, const
 
 static int	reglages_fleches(void)
 {
-	static const char	*tr[3] = {"jamais", "à la fin de la session", "à chaque échec"};
-	static const char	*modes[3] = {"examen blanc", "entraînement", "série"};
 	char				v[80];
 	const char			*desc;
 	int					sel;
@@ -1762,71 +1782,71 @@ static int	reglages_fleches(void)
 			printf("%.*s", haut + 2, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		else
 			printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
-		printf("   %sLe testeur des fous · Exam en C · %d exercices · 4 niveaux%s\n", C_B, g_nbank, C_R);
+		printf(L("   %sLe testeur des fous · Exam en C · %d exercices · 4 niveaux%s\n", "   %sThe testeur des fous · C exam · %d exercises · 4 levels%s\n"), C_B, g_nbank, C_R);
 		if (!haut)
 			printf("  %s═══════════════════════════════════════════════════════════%s\n", C_AC, C_R);
 		printf("\n");
 		desc = "";
 		n = 0;
 		id[n] = 0;
-		n = reglage_ligne(n, sel, "Mode", modes[g_cfg.mode],
-				g_cfg.mode == 0 ? "Comme le vrai : 4 niveaux, un exercice par niveau, 25 points chacun, 100 pour valider."
-				: g_cfg.mode == 1 ? "Des exercices d'un seul niveau, à la suite, sans note."
-				: "Tu choisis combien d'exercices (1 à 5) et leur difficulté.", &desc);
+		n = reglage_ligne(n, sel, "Mode", mode_nom(g_cfg.mode),
+				g_cfg.mode == 0 ? L("Comme le vrai : 4 niveaux, un exercice par niveau, 25 points chacun, 100 pour valider.", "Like the real one: 4 levels, one exercise per level, 25 points each, 100 to pass.")
+				: g_cfg.mode == 1 ? L("Des exercices d'un seul niveau, à la suite, sans note.", "Exercises of a single level, one after another, no grade.")
+				: L("Tu choisis combien d'exercices (1 à 5) et leur difficulté.", "You choose how many exercises (1 to 5) and their difficulty."), &desc);
 		if (g_cfg.mode == 2)
 		{
 			snprintf(v, sizeof(v), "%d", g_cfg.serie);
 			id[n] = 1;
-			n = reglage_ligne(n, sel, "Exercices", v, "Combien d'exercices dans la série, de 1 à 5.", &desc);
+			n = reglage_ligne(n, sel, L("Exercices", "Exercises"), v, L("Combien d'exercices dans la série, de 1 à 5.", "How many exercises in the series, from 1 to 5."), &desc);
 			if (g_cfg.diff)
-				snprintf(v, sizeof(v), "niveau %d", g_cfg.diff);
+				snprintf(v, sizeof(v), L("niveau %d", "level %d"), g_cfg.diff);
 			else
 				snprintf(v, sizeof(v), "croissante");
 			id[n] = 2;
 			n = reglage_ligne(n, sel, "Difficulté", v,
-					"Croissante : du niveau 1 vers le niveau 4. Sinon, tous les exercices au même niveau.", &desc);
+					L("Croissante : du niveau 1 vers le niveau 4. Sinon, tous les exercices au même niveau.", "Croissante: from level 1 up to level 4. Otherwise, every exercise at the same level."), &desc);
 		}
 		else if (g_cfg.mode == 1)
 		{
 			snprintf(v, sizeof(v), "%d", g_cfg.level);
 			id[n] = 3;
-			n = reglage_ligne(n, sel, "Niveau", v, "Le niveau des exercices proposés, de 1 à 4.", &desc);
+			n = reglage_ligne(n, sel, L("Niveau", "Level"), v, L("Le niveau des exercices proposés, de 1 à 4.", "The level of the exercises, from 1 to 4."), &desc);
 		}
 		else
 		{
 			id[n] = 4;
-			n = reglage_ligne(n, sel, "Chronomètre", g_cfg.chrono ? "3 heures" : "libre",
-					"3 heures comme le vrai examen, ou sans limite.", &desc);
+			n = reglage_ligne(n, sel, L("Chronomètre", "Timer"), g_cfg.chrono ? L("3 heures", "3 hours") : L("libre", "free"),
+					L("3 heures comme le vrai examen, ou sans limite.", "3 hours like the real exam, or no limit."), &desc);
 		}
 		id[n] = 5;
-		n = reglage_ligne(n, sel, "Attente après un échec", g_cfg.wait ? "progressive" : "aucune",
-				"Progressive : 1 minute de plus à chaque échec, 10 au plus, comme le vrai.", &desc);
+		n = reglage_ligne(n, sel, L("Attente après un échec", "Wait after a failure"), g_cfg.wait ? L("progressive", "progressive") : L("aucune", "none"),
+				L("Progressive : 1 minute de plus à chaque échec, 10 au plus, comme le vrai.", "Progressive: 1 more minute on each failure, 10 at most, like the real one."), &desc);
 		id[n] = 6;
-		n = reglage_ligne(n, sel, "Trace", tr[g_cfg.trace], "Quand afficher le détail des tests ratés.", &desc);
+		n = reglage_ligne(n, sel, "Trace", trace_nom(g_cfg.trace), L("Quand afficher le détail des tests ratés.", "When to show the details of failed tests."), &desc);
 		id[n] = 7;
-		n = reglage_ligne(n, sel, "Langue du sujet", g_cfg.lang ? "anglais" : "français", "La langue des sujets.", &desc);
+		n = reglage_ligne(n, sel, L("Langue du sujet", "Subject language"), g_cfg.lang ? L("anglais", "English") : L("français", "French"), L("La langue des sujets.", "The language of the subjects."), &desc);
 		id[n] = 8;
-		n = reglage_ligne(n, sel, "Conditions réelles", g_cfg.real ? "oui" : "non",
-				"Oui : examen blanc, 3 heures, attente, trace à la fin, aucun cheat. Verrouille les autres réglages.", &desc);
+		n = reglage_ligne(n, sel, L("Conditions réelles", "Real conditions"), g_cfg.real ? L("oui", "yes") : L("non", "no"),
+				L("Oui : examen blanc, 3 heures, attente, trace à la fin, aucun cheat. Verrouille les autres réglages.", "Yes: mock exam, 3 hours, wait, trace at the end, no cheats. Locks the other settings."), &desc);
 		printf("\n");
 		if (sel == n)
 		{
-			printf("  %s❯ Commencer%s\n", C_OK, C_R);
-			desc = "Lance la session avec ces réglages.";
+			printf(L("  %s❯ Commencer%s\n", "  %s❯ Start%s\n"), C_OK, C_R);
+			desc = L("Lance la session avec ces réglages.", "Starts the session with these settings.");
 		}
 		else
 			printf("    Commencer\n");
 		if (sel == n + 1)
 		{
-			printf("  %s❯ Quitter%s\n", C_AC, C_R);
-			desc = "Revenir sans lancer d'exam.";
+			printf(L("  %s❯ Quitter%s\n", "  %s❯ Quit%s\n"), C_AC, C_R);
+			desc = L("Revenir sans lancer d'exam.", "Go back without starting an exam.");
 		}
 		else
 			printf("    Quitter\n");
 		printf("\n  %s%s%s\n", C_D, desc, C_R);
 		if (g_cfg.real && sel < n && id[sel] != 8)
-			printf("  %sconditions réelles : ce réglage est verrouillé%s\n", C_WN, C_R);
-		printf("\n  %s↑ ↓ choisir   ◀ ▶ changer   Entrée valider   q quitter%s\n", C_D, C_R);
+			printf(L("  %sconditions réelles : ce réglage est verrouillé%s\n", "  %sreal conditions: this setting is locked%s\n"), C_WN, C_R);
+		printf(L("\n  %s↑ ↓ choisir   ◀ ▶ changer   Entrée valider   q quitter%s\n", "\n  %s↑ ↓ pick   ◀ ▶ change   Enter confirm   q quit%s\n"), C_D, C_R);
 		k = touche(haut, t0);
 		if (k < 0 || k == 'q' || k == 'Q' || (k == 27))
 			return (0);
@@ -1870,7 +1890,6 @@ static int	reglages_fleches(void)
 
 static int	settings(void)
 {
-	static const char	*tr[3] = {"jamais", "à la fin de la session", "à chaque échec"};
 	char				line[80];
 	int					c;
 
@@ -1887,31 +1906,31 @@ static int	settings(void)
 		}
 		ecran();
 		printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
-		printf("   %sLe testeur des fous · Exam en C%s\n", C_B, C_R);
-		printf("   %s%d exercices · 4 niveaux · 25 points par niveau · 100 pour valider%s\n", C_D, g_nbank, C_R);
+		printf(L("   %sLe testeur des fous · Exam en C%s\n", "   %sThe testeur des fous · C exam%s\n"), C_B, C_R);
+		printf(L("   %s%d exercices · 4 niveaux · 25 points par niveau · 100 pour valider%s\n", "   %s%d exercises · 4 levels · 25 points per level · 100 to pass%s\n"), C_D, g_nbank, C_R);
 		printf("  %s═══════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
-		printf("  %s1%s  Mode                    %s\n", C_AC, C_R, g_cfg.mode == 2 ? "série (nombre d'exercices et difficulté au choix)"
-			: onoff(g_cfg.mode, "entraînement sur un niveau", "examen (4 niveaux, un exercice par niveau)"));
+		printf("  %s1%s  Mode                    %s\n", C_AC, C_R, g_cfg.mode == 2 ? L("série (nombre d'exercices et difficulté au choix)", "series (number of exercises and difficulty of your choice)")
+			: onoff(g_cfg.mode, L("entraînement sur un niveau", "training on one level"), L("examen (4 niveaux, un exercice par niveau)", "exam (4 levels, one exercise per level)")));
 		if (g_cfg.mode == 2)
 		{
 			printf("  %s2%s  Exercices               %d\n", C_AC, C_R, g_cfg.serie);
 			printf("  %s7%s  Difficulté              ", C_AC, C_R);
 			if (g_cfg.diff)
-				printf("%sniveau %d%s, fixe\n", level_color(g_cfg.diff), g_cfg.diff, C_R);
+				printf(L("%sniveau %d%s, fixe\n", "%slevel %d%s, fixed\n"), level_color(g_cfg.diff), g_cfg.diff, C_R);
 			else
-				printf("croissante (du facile au difficile)\n");
+				printf(L("croissante (du facile au difficile)\n", "croissante (from easy to hard)\n"));
 		}
 		else if (g_cfg.mode)
 			printf("  %s2%s  Niveau                  %s%d%s\n", C_AC, C_R, level_color(g_cfg.level), g_cfg.level, C_R);
 		else
-			printf("  %s2%s  Chronomètre             %s\n", C_AC, C_R, onoff(g_cfg.chrono, "3 heures", "libre"));
+			printf("  %s2%s  Chronomètre             %s\n", C_AC, C_R, onoff(g_cfg.chrono, L("3 heures", "3 hours"), L("libre", "free")));
 		printf("  %s3%s  Attente après un échec  %s\n", C_AC, C_R,
-			onoff(g_cfg.wait, "progressive (1 min de plus à chaque échec, 10 au plus)", "aucune"));
-		printf("  %s4%s  Trace                   %s\n", C_AC, C_R, tr[g_cfg.trace]);
-		printf("  %s5%s  Langue du sujet         %s\n", C_AC, C_R, onoff(g_cfg.lang, "anglais", "français"));
+			onoff(g_cfg.wait, L("progressive (1 min de plus à chaque échec, 10 au plus)", "progressive (1 more min on each failure, 10 at most)"), L("aucune", "none")));
+		printf("  %s4%s  Trace                   %s\n", C_AC, C_R, trace_nom(g_cfg.trace));
+		printf("  %s5%s  Langue du sujet         %s\n", C_AC, C_R, onoff(g_cfg.lang, L("anglais", "English"), L("français", "French")));
 		printf("  %s6%s  Conditions réelles      %s\n\n", C_AC, C_R,
-			onoff(g_cfg.real, "oui : examen, 3 heures, attente, trace à la fin, aucun cheat", "non"));
-		printf("  %sEntrée%s commencer   %s1 à %d%s changer un réglage   %sq%s quitter\n\n  > ", C_B, C_R, C_B,
+			onoff(g_cfg.real, L("oui : examen, 3 heures, attente, trace à la fin, aucun cheat", "yes: exam, 3 hours, wait, trace at the end, no cheats"), L("non", "no")));
+		printf(L("  %sEntrée%s commencer   %s1 à %d%s changer un réglage   %sq%s quitter\n\n  > ", "  %sEnter%s start   %s1 to %d%s change a setting   %sq%s quit\n\n  > "), C_B, C_R, C_B,
 			g_cfg.mode == 2 ? 7 : 6, C_R, C_B, C_R);
 		fflush(stdout);
 		if (!fgets(line, sizeof(line), stdin))
@@ -1924,7 +1943,7 @@ static int	settings(void)
 		if (c == '6')
 			g_cfg.real = !g_cfg.real;
 		else if (g_cfg.real)
-			printf("  %sconditions réelles : ce réglage est verrouillé (6 pour les quitter)%s\n", C_WN, C_R);
+			printf(L("  %sconditions réelles : ce réglage est verrouillé (6 pour les quitter)%s\n", "  %sreal conditions: this setting is locked (6 to leave them)%s\n"), C_WN, C_R);
 		else if (c == '1')
 			g_cfg.mode = (g_cfg.mode + 1) % 3;
 		else if (c == '2' && g_cfg.mode == 2)
@@ -2170,15 +2189,17 @@ static void	b_entete(const char *titre)
 		ok += b_done(&g_b[i]);
 	}
 	ecran();
-	printf("\n  %s═════════════════════ BANQUE D'EXERCICES ══════════════════════%s\n", C_AC, C_R);
+	printf(L("\n  %s═════════════════════ BANQUE D'EXERCICES ══════════════════════%s\n",
+			"\n  %s═══════════════════════ EXERCISE BANK ════════════════════════%s\n"), C_AC, C_R);
 	printf("   %s%s%s", C_B, titre, C_R);
-	printf("   %s%d/%d réussis%s\n", C_D, ok, tot, C_R);
+	printf(L("   %s%d/%d réussis%s\n", "   %s%d/%d passed%s\n"), C_D, ok, tot, C_R);
 	printf("  %s════════════════════════════════════════════════════════════════%s\n\n", C_AC, C_R);
 }
 
 static void	b_commandes(void)
 {
-	printf("\n  %sliste%s [exam|libft|printf] [niveau]   %scherche%s MOT   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n",
+	printf(L("\n  %sliste%s [exam|libft|printf] [niveau]   %scherche%s MOT   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n",
+			"\n  %sliste%s [exam|libft|printf] [level]   %scherche%s WORD   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n"),
 		C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R);
 }
 
@@ -2191,7 +2212,7 @@ static void	b_accueil(void)
 	int					o;
 	int					i;
 
-	b_entete("Tous les exercices du testeur, à faire dans l'ordre que tu veux");
+	b_entete(L("Tous les exercices du testeur, à faire dans l'ordre que tu veux", "Every exercise of the tester, in any order you like"));
 	for (s = 0; s < 3; s++)
 	{
 		for (t = 0, o = 0, i = 0; i < g_nb; i++)
@@ -2200,7 +2221,7 @@ static void	b_accueil(void)
 				t++;
 				o += b_done(&g_b[i]);
 			}
-		printf("   %s%-8s%s %3d exercices   %s%d réussis%s", C_B, b_srcname(src[s]), C_R, t, o == t && t ? C_OK : C_D, o, C_R);
+		printf(L("   %s%-8s%s %3d exercices   %s%d réussis%s", "   %s%-8s%s %3d exercises   %s%d passed%s"), C_B, b_srcname(src[s]), C_R, t, o == t && t ? C_OK : C_D, o, C_R);
 		if (s == 0)
 		{
 			printf("   ");
@@ -2217,9 +2238,9 @@ static void	b_accueil(void)
 		}
 		printf("\n");
 	}
-	printf("\n   %sExemples : « liste exam 2 », « cherche split », « ouvre 3 », puis « grademe ».%s\n", C_D, C_R);
+	printf(L("\n   %sExemples : « liste exam 2 », « cherche split », « ouvre 3 », puis « grademe ».%s\n", "\n   %sExamples: 'liste exam 2', 'cherche split', 'ouvre 3', then 'grademe'.%s\n"), C_D, C_R);
 	if (g_bcur >= 0)
-		printf("   Exercice ouvert : %s%s%s (%s)\n", C_AC, g_b[g_bcur].name, C_R, b_srcname(g_b[g_bcur].src));
+		printf(L("   Exercice ouvert : %s%s%s (%s)\n", "   Open exercise: %s%s%s (%s)\n"), C_AC, g_b[g_bcur].name, C_R, b_srcname(g_b[g_bcur].src));
 	b_commandes();
 }
 
@@ -2240,7 +2261,7 @@ static void	b_liste(const char *src, int niv, const char *mot)
 		g_vue[g_nvue++] = i;
 	}
 	if (mot)
-		snprintf(titre, sizeof(titre), "Recherche « %s » : %d résultat(s)", mot, g_nvue);
+		snprintf(titre, sizeof(titre), L("Recherche « %s » : %d résultat(s)", "Search '%s': %d result(s)"), mot, g_nvue);
 	else
 		snprintf(titre, sizeof(titre), "%s%s%s", src ? b_srcname(src) : "Tout", niv > 0 ? " · niveau " : "",
 			niv > 0 ? (const char *[]){"", "1", "2", "3", "4", "5", "6", "7", "8", "9"}[niv < 10 ? niv : 0] : "");
@@ -2254,7 +2275,7 @@ static void	b_liste(const char *src, int niv, const char *mot)
 			C_R, b_srcname(b->src), b->niv, C_D, b->notion, C_R);
 	}
 	if (!g_nvue)
-		printf("   rien ne correspond\n");
+		printf(L("   rien ne correspond\n", "   nothing matches\n"));
 	b_commandes();
 }
 
@@ -2273,13 +2294,13 @@ static void	b_sujet(void)
 
 	if (g_bcur < 0)
 	{
-		printf("  aucun exercice ouvert : « ouvre N » après une liste\n");
+		printf(L("  aucun exercice ouvert : « ouvre N » après une liste\n", "  no open exercise: 'ouvre N' after a list\n"));
 		return ;
 	}
 	b = &g_b[g_bcur];
 	b_entete(b->name);
 	b_workdir(b, path, sizeof(path));
-	printf("   Ton rendu : %s%s/", C_B, rel(path));
+	printf(L("   Ton rendu : %s%s/", "   Your work: %s%s/"), C_B, rel(path));
 	if (!strcmp(b->src, "exam") && b->ex >= 0)
 	{
 		int	i;
@@ -2290,7 +2311,7 @@ static void	b_sujet(void)
 	else
 		printf("%s.c", b->name);
 	printf("%s\n", C_R);
-	printf("   %sÉcris ton code dans un autre terminal, puis tape grademe ici.%s\n\n", C_D, C_R);
+	printf(L("   %sÉcris ton code dans un autre terminal, puis tape grademe ici.%s\n\n", "   %sWrite your code in another terminal, then type grademe here.%s\n\n"), C_D, C_R);
 	snprintf(path, sizeof(path), "%s/banque/%s/%s/sujet.%s.txt", g_root, b->src, b->name, g_blang ? "en" : "fr");
 	txt = slurp(path, NULL);
 	for (s = txt; s && *s; s = *e ? e + 1 : e)
@@ -2322,7 +2343,7 @@ static void	b_ouvre(const char *arg)
 			k = i;
 	if (k < 0)
 	{
-		printf("  exercice introuvable : %s (fais d'abord « liste » ou « cherche »)\n", arg ? arg : "");
+		printf(L("  exercice introuvable : %s (fais d'abord « liste » ou « cherche »)\n", "  exercise not found: %s (run 'liste' or 'cherche' first)\n"), arg ? arg : "");
 		return ;
 	}
 	g_bcur = k;
@@ -2346,12 +2367,12 @@ static int	b_ext_grade(const t_bexo *b)
 	snprintf(line, sizeof(line), "%s/%s.c", work, b->name);
 	if (access(line, R_OK) != 0)
 	{
-		printf("  fichier attendu introuvable : %s\n", rel(line));
+		printf(L("  fichier attendu introuvable : %s\n", "  expected file not found: %s\n"), rel(line));
 		return (0);
 	}
 	sh("mkdir -p %s && cp %s %s/", q(dest), q(line), q(dest));
 	if (!strcmp(b->src, "libft") && !getenv("TDF_LIBFT"))
-		printf("  %s(pas de libft trouvée à côté du testeur : seules tes fonctions de ce fichier sont utilisables)%s\n", C_D, C_R);
+		printf(L("  %s(pas de libft trouvée à côté du testeur : seules tes fonctions de ce fichier sont utilisables)%s\n", "  %s(no libft found next to the tester: only the functions in this file can be used)%s\n"), C_D, C_R);
 	sh("rm -f %s; TDF_PROJET=%s bash %s/modules/%s/run.sh --exo %02d --out %s >/dev/null 2>&1", q(res),
 		q(getenv("TDF_LIBFT") ? getenv("TDF_LIBFT") : g_root), q(g_root), q(b->src), b->niv, q(res));
 	f = fopen(res, "r");
@@ -2361,10 +2382,12 @@ static int	b_ext_grade(const t_bexo *b)
 		line[strcspn(line, "\n")] = '\0';
 		if (!strncmp(line, "X\t", 2))
 		{
-			static const char	*k[][2] = {{"ko", "résultat faux"}, {"norme", "Norme non respectée"},
-				{"build", "ne compile pas"}, {"crash", "plantage ou erreur mémoire"}, {"leak", "fuite mémoire"},
-				{"fuite", "fuite mémoire"}, {"time", "aucune réponse : boucle infinie ?"},
-				{"ub", "comportement indéfini"}, {"interdit", "fonction interdite"}, {"absent", "fichier absent"}};
+			const char	*k[][2] = {{"ko", L("résultat faux", "wrong result")},
+				{"norme", L("Norme non respectée", "Norm not respected")}, {"build", L("ne compile pas", "does not compile")},
+				{"crash", L("plantage ou erreur mémoire", "crash or memory error")}, {"leak", L("fuite mémoire", "memory leak")},
+				{"fuite", L("fuite mémoire", "memory leak")}, {"time", L("aucune réponse : boucle infinie ?", "no answer: infinite loop?")},
+				{"ub", L("comportement indéfini", "undefined behaviour")}, {"interdit", L("fonction interdite", "forbidden function")},
+				{"absent", L("fichier absent", "missing file")}};
 			size_t				j;
 			size_t				l;
 
@@ -2382,7 +2405,7 @@ static int	b_ext_grade(const t_bexo *b)
 	if (f)
 		fclose(f);
 	else
-		printf("  le testeur %s n'a rien renvoyé\n", b->src);
+		printf(L("  le testeur %s n'a rien renvoyé\n", "  the %s tester returned nothing\n"), b->src);
 	return (ok);
 }
 
@@ -2395,12 +2418,12 @@ static void	b_grademe(void)
 
 	if (g_bcur < 0)
 	{
-		printf("  aucun exercice ouvert : « ouvre N » après une liste\n");
+		printf(L("  aucun exercice ouvert : « ouvre N » après une liste\n", "  no open exercise: 'ouvre N' after a list\n"));
 		return ;
 	}
 	b = &g_b[g_bcur];
 	b_entete(b->name);
-	printf("   Correction de %s%s%s en cours...\n", C_AC, b->name, C_R);
+	printf(L("   Correction de %s%s%s en cours...\n", "   Grading %s%s%s...\n"), C_AC, b->name, C_R);
 	fflush(stdout);
 	if (!strcmp(b->src, "exam"))
 	{
@@ -2421,7 +2444,7 @@ static void	b_grademe(void)
 		first = !b_done(b);
 		b_mark(b);
 		if (first)
-			reward(10 + 5 * b->niv, "nouvel exercice de la banque");
+			reward(10 + 5 * b->niv, L("nouvel exercice de la banque", "new bank exercise"));
 		save_write();
 	}
 	else
@@ -2435,17 +2458,17 @@ static void	b_grademe(void)
 
 static void	b_aide(void)
 {
-	b_entete("Aide");
-	printf("   %sliste%s                 tous les exercices\n", C_B, C_R);
-	printf("   %sliste exam 2%s          l'exam, niveau 2 (aussi : liste libft, liste printf)\n", C_B, C_R);
-	printf("   %scherche MOT%s           par nom ou par notion (ex. : cherche lst, cherche bits)\n", C_B, C_R);
-	printf("   %souvre N%s               ouvre l'exercice n°N de la dernière liste (ou son nom)\n", C_B, C_R);
-	printf("   %sgrademe%s               corrige l'exercice ouvert\n", C_B, C_R);
-	printf("   %ssujet%s                 relire le sujet (sujet en : en anglais)\n", C_B, C_R);
-	printf("   %sfait%s                  ce que tu as déjà réussi\n", C_B, C_R);
-	printf("   %squitter%s               revenir\n\n", C_B, C_R);
-	printf("   Les exercices Libft et printf sont corrigés par leur propre testeur :\n");
-	printf("   Norme obligatoire, sanitizers, échecs de malloc.\n");
+	b_entete(L("Aide", "Help"));
+	printf(L("   %sliste%s                 tous les exercices\n", "   %sliste%s                 every exercise\n"), C_B, C_R);
+	printf(L("   %sliste exam 2%s          l'exam, niveau 2 (aussi : liste libft, liste printf)\n", "   %sliste exam 2%s          the exam, level 2 (also: liste libft, liste printf)\n"), C_B, C_R);
+	printf(L("   %scherche MOT%s           par nom ou par notion (ex. : cherche lst, cherche bits)\n", "   %scherche WORD%s          by name or topic (e.g. cherche lst, cherche bits)\n"), C_B, C_R);
+	printf(L("   %souvre N%s               ouvre l'exercice n°N de la dernière liste (ou son nom)\n", "   %souvre N%s               opens exercise #N of the last list (or its name)\n"), C_B, C_R);
+	printf(L("   %sgrademe%s               corrige l'exercice ouvert\n", "   %sgrademe%s               grades the open exercise\n"), C_B, C_R);
+	printf(L("   %ssujet%s                 relire le sujet (sujet en : en anglais)\n", "   %ssujet%s                 reread the subject (sujet en: in English)\n"), C_B, C_R);
+	printf(L("   %sfait%s                  ce que tu as déjà réussi\n", "   %sfait%s                  what you already passed\n"), C_B, C_R);
+	printf(L("   %squitter%s               revenir\n\n", "   %squitter%s               go back\n\n"), C_B, C_R);
+	printf(L("   Les exercices Libft et printf sont corrigés par leur propre testeur :\n", "   Libft and printf exercises are graded by their own tester:\n"));
+	printf(L("   Norme obligatoire, sanitizers, échecs de malloc.\n", "   Norm required, sanitizers, malloc failures.\n"));
 	b_commandes();
 }
 
@@ -2498,11 +2521,11 @@ static int	banque(void)
 			for (i = 0; i < g_nb; i++)
 				if (b_done(&g_b[i]))
 					g_vue[g_nvue++] = i;
-			b_entete("Déjà réussis");
+			b_entete(L("Déjà réussis", "Already passed"));
 			for (i = 0; i < g_nvue; i++)
 				printf("   %s%3d%s  %s%-22s%s %s\n", C_AC, i + 1, C_R, C_OK, g_b[g_vue[i]].name, C_R, b_srcname(g_b[g_vue[i]].src));
 			if (!g_nvue)
-				printf("   rien pour l'instant\n");
+				printf(L("   rien pour l'instant\n", "   nothing yet\n"));
 			b_commandes();
 		}
 		else if (!strcmp(cmd, "aide") || !strcmp(cmd, "help"))
@@ -2512,7 +2535,7 @@ static int	banque(void)
 		else if (!strcmp(cmd, "quitter") || !strcmp(cmd, "exit") || !strcmp(cmd, "quit") || !strcmp(cmd, "q"))
 			break ;
 		else
-			printf("  commande inconnue : %s (aide pour la liste)\n", cmd);
+			printf(L("  commande inconnue : %s (aide pour la liste)\n", "  unknown command: %s (aide for the list)\n"), cmd);
 	}
 	save_write();
 	return (0);
@@ -2565,7 +2588,7 @@ int	main(int ac, char **av)
 	if (getenv("TDF_LANGUE_N") && *getenv("TDF_LANGUE_N") >= '0' && *getenv("TDF_LANGUE_N") <= '7')
 		g_save.cfg.lang = *getenv("TDF_LANGUE_N") - '0';
 	if (g_save.valid == -1)
-		printf("  %ssauvegarde modifiée à la main : remise à zéro (ancienne copie : save.txt.triche)%s\n", C_KO, C_R);
+		printf(L("  %ssauvegarde modifiée à la main : remise à zéro (ancienne copie : save.txt.triche)%s\n", "  %ssave edited by hand: reset (old copy: save.txt.triche)%s\n"), C_KO, C_R);
 	cfg_load();
 	if (i < ac && !strcmp(av[i], "--banque"))
 		return (banque());
@@ -2590,7 +2613,7 @@ int	main(int ac, char **av)
 		cfg_save();
 	if (state_load())
 	{
-		printf("\n  Une session est en cours (%s, niveau %d). La reprendre ? (o/n) ", g_bank[g_st.exo].name, g_st.level);
+		printf(L("\n  Une session est en cours (%s, niveau %d). La reprendre ? (o/n) ", "\n  A session is in progress (%s, level %d). Resume it? (y/n) "), g_bank[g_st.exo].name, g_st.level);
 		fflush(stdout);
 		if (fgets(line, sizeof(line), stdin) && (line[0] == 'n' || line[0] == 'N'))
 			g_st.active = 0;

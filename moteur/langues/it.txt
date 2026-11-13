@@ -891,3 +891,165 @@ The tester has local changes: update cancelled so nothing gets overwritten.	Il t
 Updating the tester (%s)...	Aggiornamento del tester (%s)...
 The tester is up to date.	Il tester è aggiornato.
 ↑ ↓ pick   Enter confirm   Esc or q: back	↑ ↓ scegli   Invio conferma   Esc o q: indietro
+exercise bank not found	banca esercizi non trovata
+the exercise bank is empty	la banca esercizi è vuota
+\n  %s[ Enter to continue ]%s 	\n  %s[ Invio per continuare ]%s 
+   (subject not found)\n	   (subject non trovato)\n
+   %sExam%s  	   %sEsame%s  
+   %sSeries%s  	   %sSerie%s  
+ %s%d/%d%s · %d passed	 %s%d/%d%s · %d superati
+   %sTraining%s · level %d · %d passed	   %sAllenamento%s · livello %d · %d superati
+        %s%s left%s	        %smancano %s%s
+\n   Exercise  %s%s%s · level %s%d%s	\n   Esercizio %s%s%s · livello %s%d%s
+ · %d points	 · %d punti
+   %s%d failure(s)%s	   %s%d errore/i%s
+\n  %sgrademe%s grade   %ssujet%s reread   %sstatus%s where I am   %sfinish%s finish   %shelp%s help\n\n	\n  %sgrademe%s correggi   %ssujet%s rileggi   %sstatus%s a che punto sono   %sfinish%s termina   %shelp%s aiuto\n\n
+   Subject %s\n	   Subject %s\n
+   Work    %s	   Consegna %s
+   Time    %s elapsed\n	   Tempo   %s trascorso\n
+compilation failed	la compilazione è fallita
+forbidden function(s): %s	funzione/i non autorizzata/e: %s
+linking failed	il linking è fallito
+\nexpected: %lu byte(s) · got: %lu byte(s) · first difference at byte %d\n	\natteso: %lu byte · ottenuto: %lu byte · prima differenza al byte %d\n
+\n--- expected\n	\n--- atteso\n
+  trace: %s\n	  traccia: %s\n
+  %sthe trace will be readable at the end of the exam%s\n	  %sla traccia sarà leggibile alla fine dell'esame%s\n
+expected file not found: %s	file atteso non trovato: %s
+missing file	file mancante
+forbidden function	funzione vietata
+compilation error	errore di compilazione
+  tests not found for %s\n	  test non trovati per %s\n
+  warning %s test %d: code %d, %lu bytes\n	  attenzione %s test %d: codice %d, %lu byte\n
+  expected outputs not found for %s\n	  output attesi non trovati per %s\n
+  expected outputs incomplete for %s: tell splatch_afk\n	  output attesi incompleti per %s: avvisa splatch_afk\n
+infinite loop	ciclo infinito
+no answer after 5 seconds	nessuna risposta dopo 5 secondi
+the program stopped on signal %d (%s)	il programma si è fermato con il segnale %d (%s)
+different output	output diverso
+  %smemory: clean (ASan, UBSan, leaks)%s\n	  %smemoria: pulita (ASan, UBSan, leak)%s\n
+  %smemory: %d test(s) with a memory error, a leak or undefined behaviour%s\n	  %smemoria: %d test con un errore di memoria, un leak o un comportamento indefinito%s\n
+  %s(the real exam does not check it, but a peer evaluation does)%s\n	  %s(l'esame vero non lo controlla, ma una valutazione sì)%s\n
+  %s+%ld Octets · +%ld XP%s  %s%s%s\n	  %s+%ld Octets · +%ld XP%s  %s%s%s\n
+  %sTime is up.%s\n	  %sTempo scaduto.%s\n
+  %sExam finished%s · grade: %s%d/100%s · time: %s · failures: %d\n	  %sEsame terminato%s · voto: %s%d/100%s · tempo: %s · errori: %d\n
+Passed.	Superato.
+Not passed: you need 100/100.	Non superato: serve 100/100.
+  %scheat used during the session: no Octets for this exam%s\n	  %strucco usato durante la sessione: nessun Octet per questo esame%s\n
+first exam passed	primo esame superato
+  %sSeries finished%s · %s%d/%d%s passed · time: %s · failures: %d\n	  %sSerie terminata%s · %s%d/%d%s superati · tempo: %s · errori: %d\n
+  %sTraining finished%s · %d exercise(s) passed · time: %s\n	  %sAllenamento terminato%s · %d esercizi superati · tempo: %s\n
+  traces: %s\n	  tracce: %s\n
+  your work is kept in %s\n	  le tue consegne sono conservate in %s\n
+   Your work: %s%s	   La tua consegna: %s%s
+%s\n   %sWrite your code in another terminal, then type grademe here.%s\n\n	%s\n   %sScrivi il tuo codice in un altro terminale, poi digita grademe qui.%s\n\n
+  %s%ld s more before you can run grademe again (%d failure(s) on this exercise)%s\n	  %sancora %ld s prima di poter rilanciare grademe (%d errori su questo esercizio)%s\n
+  Hand in %s%s%s now? (y/n) 	  Consegnare %s%s%s adesso? (y/n) 
+   Grading %s%s%s...\n	   Correzione di %s%s%s in corso...\n
+  %snext grademe possible in %d min%s\n	  %sprossimo grademe possibile tra %d min%s\n
+new exercise passed	nuovo esercizio superato
+exercise already passed	esercizio già superato
+  %snext exercise: %d/%d%s\n	  %sprossimo esercizio: %d/%d%s\n
+  %s+%d points · next level%s\n	  %s+%d punti · livello successivo%s\n
+  usage: code YOUR_CODE (ask splatch_afk on Discord, for your login: %s)\n	  uso: code IL_TUO_CODICE (chiedilo a splatch_afk su Discord, per il tuo login: %s)\n
+  %scode refused%s: it does not match the login %s.\n	  %scodice rifiutato%s: non corrisponde al login %s.\n
+  %scode accepted%s: skip, reroll and trace are unlocked for %s.\n	  %scodice accettato%s: skip, reroll e trace sono sbloccati per %s.\n
+  %san exam passed with a cheat earns no Octets.%s\n	  %sun esame superato con un trucco non dà Octets.%s\n
+  real conditions: no cheats during this session\n	  condizioni reali: nessun trucco in questa sessione\n
+  %slocked command%s: you need a code, ask splatch_afk on Discord.\n	  %scomando bloccato%s: serve un codice, chiedilo a splatch_afk su Discord.\n
+  trace shown on every failure\n	  traccia mostrata a ogni errore\n
+  %sgrademe%s   grade the current exercise\n	  %sgrademe%s   correggere l'esercizio in corso\n
+  %sstatus%s    where I am, time left\n	  %sstatus%s    a che punto sono, tempo rimasto\n
+  %ssujet%s     reread the subject (sujet en: in English, sujet fr: in French)\n	  %ssujet%s     rileggere il subject (sujet en: in inglese, sujet fr: in francese)\n
+  %sfinish%s    end the session now\n	  %sfinish%s    terminare la sessione ora\n
+  %shelp%s      this help\n	  %shelp%s      questo aiuto\n
+  %sskip, reroll, trace: with a code (command: code YOUR_CODE)%s\n\n	  %sskip, reroll, trace: con un codice (comando: code IL_TUO_CODICE)%s\n\n
+  Write your code in another terminal or in your editor, in the rendu/ folder.\n\n	  Scrivi il codice in un altro terminale o nel tuo editor, nella cartella rendu/.\n\n
+\n  session kept: run the exam again to resume it.\n	\n  sessione salvata: rilancia l'esame per riprenderla.\n
+  End the session? (y/n) 	  Terminare la sessione? (y/n) 
+  unknown command: %s (help for the list)\n	  comando sconosciuto: %s (help per l'elenco)\n
+at the end of the session	alla fine della sessione
+on every failure	a ogni errore
+training	allenamento
+series	serie
+mock exam	esame di prova
+   %sThe testeur des fous · C exam · %d exercises · 4 levels%s\n	   %sIl testeur des fous · Esame in C · %d esercizi · 4 livelli%s\n
+Like the real one: 4 levels, one exercise per level, 25 points each, 100 to pass.	Come quello vero: 4 livelli, un esercizio per livello, 25 punti ciascuno, 100 per superarlo.
+Exercises of a single level, one after another, no grade.	Esercizi di un solo livello, uno dopo l'altro, senza voto.
+You choose how many exercises (1 to 5) and their difficulty.	Scegli quanti esercizi (da 1 a 5) e la loro difficoltà.
+Exercises	Esercizi
+How many exercises in the series, from 1 to 5.	Quanti esercizi nella serie, da 1 a 5.
+level %d	livello %d
+Croissante: from level 1 up to level 4. Otherwise, every exercise at the same level.	Croissante: dal livello 1 al livello 4. Altrimenti, tutti gli esercizi allo stesso livello.
+Level	Livello
+The level of the exercises, from 1 to 4.	Il livello degli esercizi, da 1 a 4.
+Timer	Cronometro
+3 hours	3 ore
+free	libero
+3 hours like the real exam, or no limit.	3 ore come l'esame vero, o senza limite.
+Wait after a failure	Attesa dopo un errore
+progressive	progressiva
+Progressive: 1 more minute on each failure, 10 at most, like the real one.	Progressiva: 1 minuto in più a ogni errore, al massimo 10, come quello vero.
+When to show the details of failed tests.	Quando mostrare il dettaglio dei test falliti.
+Subject language	Lingua del subject
+English	inglese
+French	francese
+The language of the subjects.	La lingua dei subject.
+Real conditions	Condizioni reali
+Yes: mock exam, 3 hours, wait, trace at the end, no cheats. Locks the other settings.	Sì: esame di prova, 3 ore, attesa, traccia alla fine, nessun trucco. Blocca le altre impostazioni.
+  %s❯ Start%s\n	  %s❯ Inizia%s\n
+Starts the session with these settings.	Avvia la sessione con queste impostazioni.
+  %s❯ Quit%s\n	  %s❯ Esci%s\n
+Go back without starting an exam.	Tornare senza avviare un esame.
+  %sreal conditions: this setting is locked%s\n	  %scondizioni reali: questa impostazione è bloccata%s\n
+\n  %s↑ ↓ pick   ◀ ▶ change   Enter confirm   q quit%s\n	\n  %s↑ ↓ scegli   ◀ ▶ cambia   Invio conferma   q esci%s\n
+   %sThe testeur des fous · C exam%s\n	   %sIl testeur des fous · Esame in C%s\n
+   %s%d exercises · 4 levels · 25 points per level · 100 to pass%s\n	   %s%d esercizi · 4 livelli · 25 punti per livello · 100 per superare%s\n
+series (number of exercises and difficulty of your choice)	serie (numero di esercizi e difficoltà a scelta)
+training on one level	allenamento su un livello
+exam (4 levels, one exercise per level)	esame (4 livelli, un esercizio per livello)
+%slevel %d%s, fixed\n	%slivello %d%s, fisso\n
+croissante (from easy to hard)\n	croissante (dal facile al difficile)\n
+progressive (1 more min on each failure, 10 at most)	progressiva (1 min in più a ogni errore, al massimo 10)
+yes: exam, 3 hours, wait, trace at the end, no cheats	sì: esame, 3 ore, attesa, traccia alla fine, nessun trucco
+  %sEnter%s start   %s1 to %d%s change a setting   %sq%s quit\n\n  > 	  %sInvio%s inizia   %s1 a %d%s cambia un'impostazione   %sq%s esci\n\n  > 
+  %sreal conditions: this setting is locked (6 to leave them)%s\n	  %scondizioni reali: questa impostazione è bloccata (6 per uscirne)%s\n
+   %s%d/%d passed%s\n	   %s%d/%d superati%s\n
+Every exercise of the tester, in any order you like	Tutti gli esercizi del tester, nell'ordine che vuoi
+   %s%-8s%s %3d exercises   %s%d passed%s	   %s%-8s%s %3d esercizi   %s%d superati%s
+\n   %sExamples: 'liste exam 2', 'cherche split', 'ouvre 3', then 'grademe'.%s\n	\n   %sEsempi: 'liste exam 2', 'cherche split', 'ouvre 3', poi 'grademe'.%s\n
+   Open exercise: %s%s%s (%s)\n	   Esercizio aperto: %s%s%s (%s)\n
+Search '%s': %d result(s)	Ricerca '%s': %d risultato/i
+   nothing matches\n	   niente corrisponde\n
+  no open exercise: 'ouvre N' after a list\n	  nessun esercizio aperto: 'ouvre N' dopo un elenco\n
+   Your work: %s%s/	   La tua consegna: %s%s/
+   %sWrite your code in another terminal, then type grademe here.%s\n\n	   %sScrivi il tuo codice in un altro terminale, poi digita grademe qui.%s\n\n
+  exercise not found: %s (run 'liste' or 'cherche' first)\n	  esercizio non trovato: %s (prima 'liste' o 'cherche')\n
+  expected file not found: %s\n	  file atteso non trovato: %s\n
+  %s(no libft found next to the tester: only the functions in this file can be used)%s\n	  %s(nessuna libft accanto al tester: si possono usare solo le funzioni di questo file)%s\n
+wrong result	risultato sbagliato
+Norm not respected	Norma non rispettata
+does not compile	non compila
+crash or memory error	crash o errore di memoria
+memory leak	leak di memoria
+no answer: infinite loop?	nessuna risposta: ciclo infinito?
+undefined behaviour	comportamento indefinito
+  the %s tester returned nothing\n	  il tester %s non ha restituito nulla\n
+new bank exercise	nuovo esercizio della banca
+   %sliste%s                 every exercise\n	   %sliste%s                 tutti gli esercizi\n
+   %sliste exam 2%s          the exam, level 2 (also: liste libft, liste printf)\n	   %sliste exam 2%s          l'esame, livello 2 (anche: liste libft, liste printf)\n
+   %scherche WORD%s          by name or topic (e.g. cherche lst, cherche bits)\n	   %scherche PAROLA%s        per nome o nozione (es.: cherche lst, cherche bits)\n
+   %souvre N%s               opens exercise #N of the last list (or its name)\n	   %souvre N%s               apre l'esercizio n. N dell'ultimo elenco (o il suo nome)\n
+   %sgrademe%s               grades the open exercise\n	   %sgrademe%s               corregge l'esercizio aperto\n
+   %ssujet%s                 reread the subject (sujet en: in English)\n	   %ssujet%s                 rileggere il subject (sujet en: in inglese)\n
+   %sfait%s                  what you already passed\n	   %sfait%s                  ciò che hai già superato\n
+   %squitter%s               go back\n\n	   %squitter%s               indietro\n\n
+   Libft and printf exercises are graded by their own tester:\n	   Gli esercizi Libft e printf sono corretti dal loro tester:\n
+   Norm required, sanitizers, malloc failures.\n	   Norma obbligatoria, sanitizer, fallimenti di malloc.\n
+Already passed	Già superati
+   nothing yet\n	   ancora niente\n
+  unknown command: %s (aide for the list)\n	  comando sconosciuto: %s (aide per l'elenco)\n
+  %ssave edited by hand: reset (old copy: save.txt.triche)%s\n	  %ssave modificato a mano: azzerato (vecchia copia: save.txt.triche)%s\n
+\n  A session is in progress (%s, level %d). Resume it? (y/n) 	\n  C'è una sessione in corso (%s, livello %d). Riprenderla? (y/n) 
+\n  %s═══════════════════════ EXERCISE BANK ════════════════════════%s\n	\n  %s═══════════════════ BANCA ESERCIZI ═══════════════════%s\n
+\n  %sliste%s [exam|libft|printf] [level]   %scherche%s WORD   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n	\n  %sliste%s [exam|libft|printf] [livello]   %scherche%s PAROLA   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n
+Help	Aiuto

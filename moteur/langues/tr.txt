@@ -891,3 +891,165 @@ The tester has local changes: update cancelled so nothing gets overwritten.	Test
 Updating the tester (%s)...	Tester güncelleniyor (%s)...
 The tester is up to date.	Tester güncel.
 ↑ ↓ pick   Enter confirm   Esc or q: back	↑ ↓ seç   Enter onayla   Esc ya da q: geri
+exercise bank not found	alıştırma bankası bulunamadı
+the exercise bank is empty	alıştırma bankası boş
+\n  %s[ Enter to continue ]%s 	\n  %s[ devam için Enter ]%s 
+   (subject not found)\n	   (subject bulunamadı)\n
+   %sExam%s  	   %sSınav%s  
+   %sSeries%s  	   %sSeri%s  
+ %s%d/%d%s · %d passed	 %s%d/%d%s · %d geçildi
+   %sTraining%s · level %d · %d passed	   %sAntrenman%s · seviye %d · %d geçildi
+        %s%s left%s	        %skalan %s%s
+\n   Exercise  %s%s%s · level %s%d%s	\n   Alıştırma %s%s%s · seviye %s%d%s
+ · %d points	 · %d puan
+   %s%d failure(s)%s	   %s%d hata%s
+\n  %sgrademe%s grade   %ssujet%s reread   %sstatus%s where I am   %sfinish%s finish   %shelp%s help\n\n	\n  %sgrademe%s değerlendir   %ssujet%s yeniden oku   %sstatus%s neredeyim   %sfinish%s bitir   %shelp%s yardım\n\n
+   Subject %s\n	   Subject %s\n
+   Work    %s	   Teslim  %s
+   Time    %s elapsed\n	   Süre    %s geçti\n
+compilation failed	derleme başarısız
+forbidden function(s): %s	yasak fonksiyon(lar): %s
+linking failed	bağlama başarısız
+\nexpected: %lu byte(s) · got: %lu byte(s) · first difference at byte %d\n	\nbeklenen: %lu bayt · alınan: %lu bayt · ilk fark %d. baytta\n
+\n--- expected\n	\n--- beklenen\n
+  trace: %s\n	  iz: %s\n
+  %sthe trace will be readable at the end of the exam%s\n	  %siz sınavın sonunda okunabilir olacak%s\n
+expected file not found: %s	beklenen dosya bulunamadı: %s
+missing file	eksik dosya
+forbidden function	yasak fonksiyon
+compilation error	derleme hatası
+  tests not found for %s\n	  %s için testler bulunamadı\n
+  warning %s test %d: code %d, %lu bytes\n	  dikkat %s test %d: kod %d, %lu bayt\n
+  expected outputs not found for %s\n	  %s için beklenen çıktılar bulunamadı\n
+  expected outputs incomplete for %s: tell splatch_afk\n	  %s için beklenen çıktılar eksik: splatch_afk'ye haber ver\n
+infinite loop	sonsuz döngü
+no answer after 5 seconds	5 saniye sonra yanıt yok
+the program stopped on signal %d (%s)	program %d sinyaliyle durdu (%s)
+different output	farklı çıktı
+  %smemory: clean (ASan, UBSan, leaks)%s\n	  %sbellek: temiz (ASan, UBSan, leak)%s\n
+  %smemory: %d test(s) with a memory error, a leak or undefined behaviour%s\n	  %sbellek: %d testte bellek hatası, leak ya da tanımsız davranış%s\n
+  %s(the real exam does not check it, but a peer evaluation does)%s\n	  %s(gerçek sınav bunu kontrol etmez, ama bir değerlendirme eder)%s\n
+  %s+%ld Octets · +%ld XP%s  %s%s%s\n	  %s+%ld Octets · +%ld XP%s  %s%s%s\n
+  %sTime is up.%s\n	  %sSüre doldu.%s\n
+  %sExam finished%s · grade: %s%d/100%s · time: %s · failures: %d\n	  %sSınav bitti%s · not: %s%d/100%s · süre: %s · hata: %d\n
+Passed.	Geçti.
+Not passed: you need 100/100.	Geçmedi: 100/100 gerekli.
+  %scheat used during the session: no Octets for this exam%s\n	  %soturumda hile kullanıldı: bu sınav için Octet yok%s\n
+first exam passed	ilk sınav geçildi
+  %sSeries finished%s · %s%d/%d%s passed · time: %s · failures: %d\n	  %sSeri bitti%s · %s%d/%d%s geçildi · süre: %s · hata: %d\n
+  %sTraining finished%s · %d exercise(s) passed · time: %s\n	  %sAntrenman bitti%s · %d alıştırma geçildi · süre: %s\n
+  traces: %s\n	  izler: %s\n
+  your work is kept in %s\n	  teslimlerin %s içinde saklanıyor\n
+   Your work: %s%s	   Teslimin: %s%s
+%s\n   %sWrite your code in another terminal, then type grademe here.%s\n\n	%s\n   %sKodunu başka bir terminalde yaz, sonra burada grademe yaz.%s\n\n
+  %s%ld s more before you can run grademe again (%d failure(s) on this exercise)%s\n	  %sgrademe'yi yeniden çalıştırmak için %ld sn daha (bu alıştırmada %d hata)%s\n
+  Hand in %s%s%s now? (y/n) 	  %s%s%s şimdi teslim edilsin mi? (y/n) 
+   Grading %s%s%s...\n	   %s%s%s değerlendiriliyor...\n
+  %snext grademe possible in %d min%s\n	  %ssonraki grademe %d dk sonra%s\n
+new exercise passed	yeni alıştırma geçildi
+exercise already passed	alıştırma zaten geçilmişti
+  %snext exercise: %d/%d%s\n	  %ssonraki alıştırma: %d/%d%s\n
+  %s+%d points · next level%s\n	  %s+%d puan · sonraki seviye%s\n
+  usage: code YOUR_CODE (ask splatch_afk on Discord, for your login: %s)\n	  kullanım: code KODUN (Discord'da splatch_afk'den iste, girişin için: %s)\n
+  %scode refused%s: it does not match the login %s.\n	  %skod reddedildi%s: %s girişiyle eşleşmiyor.\n
+  %scode accepted%s: skip, reroll and trace are unlocked for %s.\n	  %skod kabul edildi%s: skip, reroll ve trace %s için açıldı.\n
+  %san exam passed with a cheat earns no Octets.%s\n	  %shileyle geçilen sınav Octet kazandırmaz.%s\n
+  real conditions: no cheats during this session\n	  gerçek koşullar: bu oturumda hile yok\n
+  %slocked command%s: you need a code, ask splatch_afk on Discord.\n	  %skilitli komut%s: bir kod gerekir, Discord'da splatch_afk'den iste.\n
+  trace shown on every failure\n	  iz her hatada gösterilir\n
+  %sgrademe%s   grade the current exercise\n	  %sgrademe%s   mevcut alıştırmayı değerlendir\n
+  %sstatus%s    where I am, time left\n	  %sstatus%s    neredeyim, kalan süre\n
+  %ssujet%s     reread the subject (sujet en: in English, sujet fr: in French)\n	  %ssujet%s     subject'i yeniden oku (sujet en: İngilizce, sujet fr: Fransızca)\n
+  %sfinish%s    end the session now\n	  %sfinish%s    oturumu şimdi bitir\n
+  %shelp%s      this help\n	  %shelp%s      bu yardım\n
+  %sskip, reroll, trace: with a code (command: code YOUR_CODE)%s\n\n	  %sskip, reroll, trace: kodla (komut: code KODUN)%s\n\n
+  Write your code in another terminal or in your editor, in the rendu/ folder.\n\n	  Kodunu başka bir terminalde ya da editöründe, rendu/ klasöründe yaz.\n\n
+\n  session kept: run the exam again to resume it.\n	\n  oturum saklandı: devam etmek için sınavı yeniden başlat.\n
+  End the session? (y/n) 	  Oturum bitirilsin mi? (y/n) 
+  unknown command: %s (help for the list)\n	  bilinmeyen komut: %s (liste için help)\n
+at the end of the session	oturum sonunda
+on every failure	her hatada
+training	antrenman
+series	seri
+mock exam	deneme sınavı
+   %sThe testeur des fous · C exam · %d exercises · 4 levels%s\n	   %stesteur des fous · C sınavı · %d alıştırma · 4 seviye%s\n
+Like the real one: 4 levels, one exercise per level, 25 points each, 100 to pass.	Gerçeği gibi: 4 seviye, seviye başına bir alıştırma, her biri 25 puan, geçmek için 100.
+Exercises of a single level, one after another, no grade.	Tek seviyeden alıştırmalar, art arda, notsuz.
+You choose how many exercises (1 to 5) and their difficulty.	Kaç alıştırma (1-5) ve zorluğunu sen seçersin.
+Exercises	Alıştırmalar
+How many exercises in the series, from 1 to 5.	Seride kaç alıştırma, 1-5.
+level %d	seviye %d
+Croissante: from level 1 up to level 4. Otherwise, every exercise at the same level.	Croissante: seviye 1'den 4'e. Değilse, tüm alıştırmalar aynı seviyede.
+Level	Seviye
+The level of the exercises, from 1 to 4.	Alıştırmaların seviyesi, 1-4.
+Timer	Süre
+3 hours	3 saat
+free	serbest
+3 hours like the real exam, or no limit.	Gerçek sınav gibi 3 saat, ya da sınırsız.
+Wait after a failure	Hatadan sonra bekleme
+progressive	artan
+Progressive: 1 more minute on each failure, 10 at most, like the real one.	Artan: her hatada 1 dakika daha, en fazla 10, gerçeği gibi.
+When to show the details of failed tests.	Başarısız testlerin ayrıntısı ne zaman gösterilsin.
+Subject language	Subject dili
+English	İngilizce
+French	Fransızca
+The language of the subjects.	Subject'lerin dili.
+Real conditions	Gerçek koşullar
+Yes: mock exam, 3 hours, wait, trace at the end, no cheats. Locks the other settings.	Evet: deneme sınavı, 3 saat, bekleme, sonda iz, hile yok. Diğer ayarları kilitler.
+  %s❯ Start%s\n	  %s❯ Başla%s\n
+Starts the session with these settings.	Oturumu bu ayarlarla başlatır.
+  %s❯ Quit%s\n	  %s❯ Çık%s\n
+Go back without starting an exam.	Sınav başlatmadan geri dön.
+  %sreal conditions: this setting is locked%s\n	  %sgerçek koşullar: bu ayar kilitli%s\n
+\n  %s↑ ↓ pick   ◀ ▶ change   Enter confirm   q quit%s\n	\n  %s↑ ↓ seç   ◀ ▶ değiştir   Enter onayla   q çık%s\n
+   %sThe testeur des fous · C exam%s\n	   %stesteur des fous · C sınavı%s\n
+   %s%d exercises · 4 levels · 25 points per level · 100 to pass%s\n	   %s%d alıştırma · 4 seviye · seviye başına 25 puan · geçmek için 100%s\n
+series (number of exercises and difficulty of your choice)	seri (alıştırma sayısı ve zorluk senin seçimin)
+training on one level	tek seviyede antrenman
+exam (4 levels, one exercise per level)	sınav (4 seviye, seviye başına bir alıştırma)
+%slevel %d%s, fixed\n	%sseviye %d%s, sabit\n
+croissante (from easy to hard)\n	croissante (kolaydan zora)\n
+progressive (1 more min on each failure, 10 at most)	artan (her hatada 1 dk daha, en fazla 10)
+yes: exam, 3 hours, wait, trace at the end, no cheats	evet: sınav, 3 saat, bekleme, sonda iz, hile yok
+  %sEnter%s start   %s1 to %d%s change a setting   %sq%s quit\n\n  > 	  %sEnter%s başla   %s1-%d%s ayar değiştir   %sq%s çık\n\n  > 
+  %sreal conditions: this setting is locked (6 to leave them)%s\n	  %sgerçek koşullar: bu ayar kilitli (çıkmak için 6)%s\n
+   %s%d/%d passed%s\n	   %s%d/%d geçildi%s\n
+Every exercise of the tester, in any order you like	Tester'ın tüm alıştırmaları, istediğin sırayla
+   %s%-8s%s %3d exercises   %s%d passed%s	   %s%-8s%s %3d alıştırma   %s%d geçildi%s
+\n   %sExamples: 'liste exam 2', 'cherche split', 'ouvre 3', then 'grademe'.%s\n	\n   %sÖrnekler: 'liste exam 2', 'cherche split', 'ouvre 3', sonra 'grademe'.%s\n
+   Open exercise: %s%s%s (%s)\n	   Açık alıştırma: %s%s%s (%s)\n
+Search '%s': %d result(s)	'%s' araması: %d sonuç
+   nothing matches\n	   eşleşen yok\n
+  no open exercise: 'ouvre N' after a list\n	  açık alıştırma yok: listeden sonra 'ouvre N'\n
+   Your work: %s%s/	   Teslimin: %s%s/
+   %sWrite your code in another terminal, then type grademe here.%s\n\n	   %sKodunu başka bir terminalde yaz, sonra burada grademe yaz.%s\n\n
+  exercise not found: %s (run 'liste' or 'cherche' first)\n	  alıştırma bulunamadı: %s (önce 'liste' ya da 'cherche')\n
+  expected file not found: %s\n	  beklenen dosya bulunamadı: %s\n
+  %s(no libft found next to the tester: only the functions in this file can be used)%s\n	  %s(tester'ın yanında libft yok: yalnızca bu dosyadaki fonksiyonlar kullanılabilir)%s\n
+wrong result	yanlış sonuç
+Norm not respected	Norm'a uyulmadı
+does not compile	derlenmiyor
+crash or memory error	çökme ya da bellek hatası
+memory leak	bellek sızıntısı
+no answer: infinite loop?	yanıt yok: sonsuz döngü mü?
+undefined behaviour	tanımsız davranış
+  the %s tester returned nothing\n	  %s tester'ı hiçbir şey döndürmedi\n
+new bank exercise	bankadan yeni alıştırma
+   %sliste%s                 every exercise\n	   %sliste%s                 tüm alıştırmalar\n
+   %sliste exam 2%s          the exam, level 2 (also: liste libft, liste printf)\n	   %sliste exam 2%s          sınav, seviye 2 (ayrıca: liste libft, liste printf)\n
+   %scherche WORD%s          by name or topic (e.g. cherche lst, cherche bits)\n	   %scherche KELİME%s        ada ya da kavrama göre (örn.: cherche lst, cherche bits)\n
+   %souvre N%s               opens exercise #N of the last list (or its name)\n	   %souvre N%s               son listenin N numaralı alıştırmasını açar (ya da adını)\n
+   %sgrademe%s               grades the open exercise\n	   %sgrademe%s               açık alıştırmayı değerlendirir\n
+   %ssujet%s                 reread the subject (sujet en: in English)\n	   %ssujet%s                 subject'i yeniden oku (sujet en: İngilizce)\n
+   %sfait%s                  what you already passed\n	   %sfait%s                  zaten geçtiklerin\n
+   %squitter%s               go back\n\n	   %squitter%s               geri\n\n
+   Libft and printf exercises are graded by their own tester:\n	   Libft ve printf alıştırmalarını kendi tester'ları değerlendirir:\n
+   Norm required, sanitizers, malloc failures.\n	   Norm zorunlu, sanitizer'lar, malloc hataları.\n
+Already passed	Zaten geçilenler
+   nothing yet\n	   şimdilik hiçbir şey\n
+  unknown command: %s (aide for the list)\n	  bilinmeyen komut: %s (liste için aide)\n
+  %ssave edited by hand: reset (old copy: save.txt.triche)%s\n	  %skayıt elle değiştirilmiş: sıfırlandı (eski kopya: save.txt.triche)%s\n
+\n  A session is in progress (%s, level %d). Resume it? (y/n) 	\n  Süren bir oturum var (%s, seviye %d). Devam edilsin mi? (y/n) 
+\n  %s═══════════════════════ EXERCISE BANK ════════════════════════%s\n	\n  %s═══════════════════ ALIŞTIRMA BANKASI ═══════════════════%s\n
+\n  %sliste%s [exam|libft|printf] [level]   %scherche%s WORD   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n	\n  %sliste%s [exam|libft|printf] [seviye]   %scherche%s KELİME   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n
+Help	Yardım
