@@ -809,3 +809,4 @@ your profile got a new look	твой профиль обновил облик
 Dead link? Contact splatch_afk on Discord	Ссылка не работает? Напиши splatch_afk в Discord
 Images: this terminal shows no images, fine cells take over.	Изображения: этот терминал не показывает картинки, работают мелкие ячейки.
 Fine cells	Мелкие ячейки
+Run your Libft through the tester first to get the full lore:	Сначала прогони свою Libft через тестер, чтобы открыть весь лор:

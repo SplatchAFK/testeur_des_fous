@@ -809,3 +809,4 @@ your profile got a new look	o teu perfil ganhou um novo visual
 Dead link? Contact splatch_afk on Discord	Link morto? Contacta splatch_afk no Discord
 Images: this terminal shows no images, fine cells take over.	Imagens: este terminal não mostra imagens, as células finas assumem.
 Fine cells	Células finas
+Run your Libft through the tester first to get the full lore:	Passa primeiro a tua Libft pelo tester para teres todo o lore:

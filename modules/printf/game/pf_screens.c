@@ -154,8 +154,8 @@ void	pf_connect_screen(void)
 		y = text_wrap(x, y, y + 3, 76, theme()->text, L("Aucune sauvegarde du testeur des fous libft n'a été trouvée. "
 				"Tu peux commencer tout de suite : tous les tests et tous les combats sont là.",
 				"No libft tester save was found. You can start right away: every test and every fight is here.")) + 1;
-		text_at(x, y++, rgb(255, 200, 80), L("Installe d'abord le testeur des fous libft pour avoir tout le lore :",
-				"Install the libft tester first to get the full lore:"));
+		text_at(x, y++, rgb(255, 200, 80), L("Passe d'abord ta Libft dans le testeur pour avoir tout le lore :",
+				"Run your Libft through the tester first to get the full lore:"));
 		text_at(x, y++, theme()->text, L("  ★ « Précédemment, dans la Libft » et la fin secrète",
 				"  ★ \"Previously, in the Libft\" and the secret ending"));
 		text_at(x, y++, theme()->text, L("  ★ ton chevalier Marvin, tes objets, titres, Octets et XP",
@@ -165,7 +165,7 @@ void	pf_connect_screen(void)
 		text_at(x, y++, theme()->text, L("  ★ le DLC débloqué tout de suite et 300 Octets offerts",
 				"  ★ the DLC unlocked right away and 300 free Octets"));
 		y++;
-		text_at(x, y++, theme()->dim, "github.com/SplatchAFK/testeur_des_fous_libft");
+		text_at(x, y++, theme()->dim, "bash testeur_des_fous/run.sh libft");
 		y++;
 		text_at(x, y++, theme()->text, L("Tu as gardé ton save.txt ? Charge-le pour te connecter.",
 				"Kept your save.txt? Load it to log in."));

@@ -809,3 +809,4 @@ your profile got a new look	profilin yeni bir görünüm kazandı
 Dead link? Contact splatch_afk on Discord	Bağlantı ölü mü? Discord'da splatch_afk'ye yaz
 Images: this terminal shows no images, fine cells take over.	Resimler: bu terminal resim göstermiyor, ince hücreler devralıyor.
 Fine cells	İnce hücreler
+Run your Libft through the tester first to get the full lore:	Tüm lore için önce Libft'ini tester'dan geçir:
