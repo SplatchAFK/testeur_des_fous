@@ -213,7 +213,8 @@ void	tdf_menu_lore(void (*boss)(void))
 	int			i;
 
 	items[0] = L("Boss et cinématiques|Revois les combats et les cinématiques déjà débloqués.", "Bosses and cutscenes|Replay the fights and cutscenes you unlocked.");
-	items[1] = L("~Carte du monde           (bientôt)", "~World map               (soon)");
+	items[1] = L("Carte de la Cité|Tous les lieux du lore, allumés selon ta progression. Entrée pour t'approcher.",
+			"Map of the City|Every place of the lore, lit by your progress. Enter to go closer.");
 	while (1)
 	{
 		i = tdf_list_menu(L("LORE", "LORE"), items, 2, &sel, NULL);
@@ -222,7 +223,7 @@ void	tdf_menu_lore(void (*boss)(void))
 		if (i == 0)
 			boss();
 		else
-			not_yet(L("la carte arrive avec le nouveau lore", "the map comes with the new lore"));
+			tdf_carte();
 	}
 }
 

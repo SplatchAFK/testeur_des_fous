@@ -697,6 +697,7 @@ int				tdf_menu_tester(const char *train, const char *other, const char *other_l
 void			tdf_menu_aide(int x, int y, int sel);
 void			tdf_menu_chevalier(void (*profile)(void));
 void			tdf_menu_lore(void (*boss)(void));
+void			tdf_carte(void);
 void			tdf_menu_stats(void);
 void			tdf_menu_params(void (*credits)(void));
 void			tdf_screen_stats(void);

@@ -847,6 +847,7 @@ const t_pic	*art_pic(const char *name)
 	t_img			im;
 	const char		*err;
 	int				i;
+	int				k;
 
 	for (i = 0; i < g_npics; i++)
 		if (!strcmp(g_pics[i].name, name))
@@ -861,6 +862,12 @@ const t_pic	*art_pic(const char *name)
 	if (!d && getenv("TDF_RACINE"))
 	{
 		snprintf(path, sizeof(path), "%s/moteur/images/%s.png", getenv("TDF_RACINE"), name);
+		d = read_all(path, &n);
+	}
+	for (k = 0; !d && getenv("TDF_RACINE") && k < 4; k++)
+	{
+		snprintf(path, sizeof(path), "%s/modules/%s/assets/%s.png", getenv("TDF_RACINE"),
+			(const char *[]){"libft", "printf", "gnl", "exam"}[k], name);
 		d = read_all(path, &n);
 	}
 	if (!d || n < 8 || memcmp(d, "\x89PNG\r\n\x1a\n", 8) || png_decode(d, n, &im, &err))
