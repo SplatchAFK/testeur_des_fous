@@ -1,0 +1,808 @@
+   %d checks  %d.%02ds	   %d kontrol  %d.%02ds
+   versus 	   karşı
+  · done	  · tamam
+  ★ Veteran exclusives: cape, helmet, Moulinette pet, golden theme	  ★ Veterana özel: pelerin, miğfer, Moulinette yoldaşı, altın tema
+  ★ \"Previously, in the Libft\" and the secret ending	  ★ \"Libft'te daha önce\" ve gizli son
+  ★ the DLC unlocked right away and 300 free Octets	  ★ DLC hemen açık ve 300 Octet hediye
+  ★ your knight Marvin, items, titles, Octets and XP	  ★ şövalyen Marvin, eşyalar, unvanlar, Octet ve XP
+ %2d/%d tested   %lds   %s         	 %2d/%d test edildi   %lds   %s
+ %s is defeated!  (Enter)	 %s yenildi!  (Enter)
+ (chosen)	 (seçildi)
+ 43 clean functions locally (%d/43 this run);	 yerelde 43 temiz fonksiyon (bu run'da %d/43);
+ DISCORD · THE FOUS SERVER 	 DISCORD · FOUS SUNUCUSU
+ Enter: skip   Q / Esc: leave the fights	 Enter: geç   Q / Esc: dövüşlerden çık
+ The boss has %d HP left.  (Enter)	 Patronun %d canı kaldı.  (Enter)
+ beat the 3 bosses (%d/3).	 3 patronu yen (%d/3).
+ closed	 kapalı
+ run \"Run the tests again\" (key r) (proof is made locally);	 \"Testleri yeniden çalıştır\"ı başlat (r tuşu) (kanıt yerelde yapılır);
+%-18s %3d failure(s) · mostly %-7s · %s	%-18s %3d hata · çoğu %-7s · %s
+%-7s %-18s %3d failure(s) · %s	%-7s %-18s %3d hata · %s
+%d OK · %d KO · %d warnings · mode %s · help %d/2	%d OK · %d KO · %d uyarı · mod %s · yardım %d/2
+%d/%d broken	%d/%d kırıldı
+%d/%d passed · levels open in order	%d/%d geçildi · seviyeler sırayla açılır
+%d/21 levels cleared	%d/21 seviye geçildi
+%ld d ago	%ld g önce
+%s every call is compared to the real printf, byte by byte	%s her çağrı gerçek printf ile bayt bayt karşılaştırılır
+%s · +300 XP  +150 ◈  ·  7 levels unlocked	%s · +300 XP  +150 ◈  ·  7 seviye açıldı
+%s · level %d · %ld XP · %ld ◈	%s · seviye %d · %ld XP · %ld ◈
+%s · libft %s	%s · libft %s
+(Enter: pick an image)	(Enter: bir resim seç)
+(beaten)	(yenildi)
+(empty)	(boş)
+(no banner)	(afiş yok)
+(no bio)	(biyografi yok)
+(not beaten yet)	(henüz yenilmedi)
+(picture)	(resim)
+(the culprit may also be one of your functions it calls)	(suçlu, çağırdığı fonksiyonlarından biri de olabilir)
++ / -: jump 20   r: random title	+ / -: 20 atla   r: rastgele unvan
++ line and advice	+ satır ve öneri
++ your code line	+ kod satırın
+1. Press t: the tester writes your trace in your home folder.	1. t'ye bas: tester izini ev klasörüne yazar.
+2. Send it as a direct message to @splatch_afk (42 Next server).	2. Onu @splatch_afk'ye özel mesajla gönder (42 Next sunucusu).
+20 items owned	20 eşyaya sahip
+21 levels made for the crazy tester	testeur des fous için yapılmış 21 seviye
+24-bit (millions)	24 bit (milyonlarca)
+24-bit colors	24 bit renkler
+3 rooms · 3 guardians · free Moulinette	3 oda · 3 muhafız · Moulinette özgür
+3. Add anything: advice, suggestions, ideas, everything is welcome.	3. İstediğini ekle: öneri, tavsiye, fikir, her şey hoş gelir.
+42 login: romasant	42 girişi: romasant
+43 out of 43	43 üzerinden 43
+43/43 locally and the 3 bosses beaten	yerelde 43/43 ve 3 patron yenildi
+50 runs	50 run
+9 chains · 1 big boss · free Moulinette	9 zincir · 1 büyük patron · Moulinette özgür
+A PNG or JPG file, e.g. ~/Pictures/me.png	Bir PNG ya da JPG dosyası, örn. ~/Resimler/ben.png
+A README that follows the subject.	Subject'e uyan bir README.
+A boss falls when every	Bir patron, her
+A file path, for example ~/my_save.txt	Bir dosya yolu, örneğin ~/benim_save.txt
+A free targets a block already freed, never allocated, or a string literal. Look for double frees and frees of arguments.	Bir free, zaten serbest bırakılmış, hiç ayrılmamış bir bloğu ya da bir string sabitini hedefliyor. Çift free'leri ve argümanlara yapılan free'leri ara.
+A hand-edited file, or one from another login, is refused.	Elle düzenlenmiş ya da başka bir girişe ait dosya reddedilir.
+A run between midnight and 5 am.	Gece yarısı ile 5 arasında bir run.
+A run without any warning.	Hiç uyarısız bir run.
+A sentence that sounds like you.	Sana benzeyen bir cümle.
+ACHIEVEMENT UNLOCKED  +50 ◈	BAŞARIM AÇILDI  +50 ◈
+ACHIEVEMENTS	BAŞARIMLAR
+ACTIVITY	ETKİNLİK
+ASan · UBSan · LeakSanitizer · malloc failures	ASan · UBSan · LeakSanitizer · malloc hataları
+AUDIT · WHAT THE MOULINETTE CHECKS	DENETİM · MOULINETTE'İN KONTROL ETTİKLERİ
+Absolute	Mutlak
+Achievements: %d · Badges: %d/%d	Başarımlar: %d · Rozetler: %d/%d
+Active days: %d · streak: %d d	Aktif günler: %d · seri: %d g
+Address found	Adres bulundu
+All 43 functions pass.	43 fonksiyonun hepsi geçiyor.
+All of them! Well done.	Hepsi! Aferin.
+Allocated blocks are never freed. Check the error paths and the intermediate results.	Ayrılan bloklar hiç serbest bırakılmıyor. Hata yollarını ve ara sonuçları kontrol et.
+Allowed: malloc, free, write, your libft. Norm REQUIRED.	İzinli: malloc, free, write, kendi libft'in. Norm ZORUNLU.
+Allowed: write, malloc, free, va_*. Norm REQUIRED. No solution is given.	İzinli: write, malloc, free, va_*. Norm ZORUNLU. Hiçbir çözüm verilmez.
+Animations	Animasyonlar
+Animations: turn them back on in Settings.	Animasyonlar: Ayarlar'dan yeniden aç.
+Armor	Zırh
+Aura	Aura
+Avatar (wardrobe)|Equip the items you own and pick their colours.	Avatar (gardırop)|Sahip olduğun eşyaları kuşan ve renklerini seç.
+B A D G E S	R O Z E T L E R
+B A N N E R   A N D   P I C T U R E	A F İ Ş   V E   R E S İ M
+B O S S E S   A N D   C U T S C E N E S	P A T R O N L A R   V E   A R A   S A H N E L E R
+BEATEN	YENİLDİ
+BIG BOSS ft_printf	BÜYÜK PATRON ft_printf
+BOSS DEFEATED	PATRON YENİLDİ
+BUILD	DERLEME
+Back	Geri
+Background	Arka plan
+Badges and 42 Next holygraph|Your badges and the Common Core projects, with what is missing.	Rozetler ve 42 Next holygraph|Rozetlerin ve Common Core projeleri, eksik olanlarla birlikte.
+Baguette	Baget
+Banner and picture	Afiş ve resim
+Beat a DLC boss.	Bir DLC patronunu yen.
+Beat ft_printf on your first run.	ft_printf'i ilk run'ında yen.
+Beat ft_printf.	ft_printf'i yen.
+Beat the 6 DLC bosses.	6 DLC patronunu yen.
+Beat the Memory Warden.	Hafıza Muhafızı'nı yen.
+Beat the String Alchemist.	Zincir Simyacısı'nı yen.
+Beat the t_list Hydra.	t_list Hidrası'nı yen.
+Beating it unlocks 7	Onu yenmek 7
+Best passing time: %ld h %02ld min	En iyi geçme süresi: %ld sa %02ld dk
+Best passing time: -	En iyi geçme süresi: -
+Best score: %d/100	En iyi puan: %d/100
+Bio	Biyografi
+Bonus: edge cases and failing write	Bonus: uç durumlar ve başarısız write
+Book of the Norm	Norm Kitabı
+Bosses and cutscenes|Replay the fights and cutscenes you unlocked.	Patronlar ve ara sahneler|Açtığın dövüşleri ve ara sahneleri yeniden izle.
+Bosses beaten	Yenilen patronlar
+Break a first chain.	İlk zinciri kır.
+Break all 9 chains.	9 zincirin hepsini kır.
+Break the %% chain.	%% zincirini kır.
+Break the %d and %i chains.	%d ve %i zincirlerini kır.
+Break the %p chain.	%p zincirini kır.
+Break the %x and %X chains.	%x ve %X zincirlerini kır.
+Broccoli	Brokoli
+Buffer	Tampon
+Bug	Bug
+But she had barely left the tower when someone was waiting…	Ama kuleden daha yeni çıkmıştı ki biri onu bekliyordu…
+Byte	Bayt
+C EXAM	C SINAVI
+C exam|The rank 02 exam on the command line, like the real one: grademe, 4 levels, 3 h.	C sınavı|Rank 02 sınavı komut satırında, gerçeği gibi: grademe, 4 seviye, 3 sa.
+CANCELLED	İPTAL EDİLDİ
+CONNECTED	BAĞLANDI
+CONVERSIONS (chains broken)	DÖNÜŞÜMLER (kırılan zincirler)
+COPY FAILED	KOPYALAMA BAŞARISIZ
+CRASH	ÇÖKME
+Cactus	Kaktüs
+Cape	Pelerin
+Chainmail	Zincir zırh
+Cheats used: %d	Kullanılan hileler: %d
+Check every malloc. If one fails: free everything already allocated (e.g. the previous words of a split) and return NULL.	Her malloc'u kontrol et. Biri başarısız olursa: zaten ayrılan her şeyi serbest bırak (örn. bir split'in önceki kelimeleri) ve NULL döndür.
+City crow	Şehir kargası
+Clean ft_memmove.	Temiz ft_memmove.
+Clear 14 training levels.	14 antrenman seviyesini geç.
+Clear 7 training levels.	7 antrenman seviyesini geç.
+Clear all 21 training levels.	21 antrenman seviyesinin hepsini geç.
+Close the tester. Your progress is already saved.	Tester'ı kapat. İlerlemen zaten kaydedildi.
+Code written by vibe-coding, with an AI	Kod vibe-coding ile, bir yapay zekâ ile yazıldı
+Collector	Koleksiyoncu
+Color themes	Renk temaları
+Colors	Renkler
+Colors: run with COLORTERM=truecolor if your terminal supports it.	Renkler: terminalin destekliyorsa COLORTERM=truecolor ile başlat.
+Common Core · 7 modules · %d/%d validated with the testeurs des fous	Common Core · 7 modül · testeurs des fous ile %d/%d onaylandı
+Compare s1 and s2 ignoring case, same sign as strcasecmp(3).	s1 ve s2'yi büyük/küçük harf gözetmeden karşılaştır, strcasecmp(3) ile aynı işaret.
+Compare the \"expected\" line with what your function returns on this exact case, then replay it alone with the command below.	\"beklenen\" satırını fonksiyonunun bu tam durumda döndürdüğüyle karşılaştır, sonra aşağıdaki komutla tek başına yeniden çalıştır.
+Compiler	Derleyici
+Connected	Bağlandı
+Convert str written in base to int. Invalid base returns 0.	base tabanında yazılmış str'yi int'e çevir. Geçersiz taban 0 döndürür.
+Count the conversions in fmt ("%%" counts as one). A lone '%' at the end does not count. Never read past the '\0'.	fmt içindeki dönüşümleri say ("%%" bir sayılır). Sonda tek başına bir '%' sayılmaz. '\0'ın ötesini asla okuma.
+Crash a scene, then restart.	Bir sahneyi çökert, sonra yeniden başlat.
+Crazy apprentice	Deli çırak
+Crazy companion	Deli yoldaş
+Crazy master	Deli usta
+Created and vibe-coded by Splatch	Splatch tarafından yaratıldı ve vibe-code'landı
+Created and vibe-coded by Splatch  (login: romasant)	Splatch tarafından yaratıldı ve vibe-code'landı  (giriş: romasant)
+Created and vibe-coded by Splatch (romasant)	Splatch tarafından yaratıldı ve vibe-code'landı (romasant)
+Credits	Emeği geçenler
+D E P L O Y M E N T	D A Ğ I T I M
+D E T A I L E D   R E S U L T S	A Y R I N T I L I   S O N U Ç L A R
+D L C	D L C
+D L C  ·  T R A I N I N G	D L C  ·  A N T R E N M A N
+DETAILS · ft_%s	AYRINTI · ft_%s
+DLC master	DLC ustası
+DLC · FLAGS	DLC · BAYRAKLAR
+DLC · flags and training|The bonus flags (- 0 . # + space) and 16 training levels.	DLC · bayraklar ve antrenman|Bonus bayraklar (- 0 . # + boşluk) ve 16 antrenman seviyesi.
+Dedicated	Azimli
+Deep copy a NULL-terminated array of strings. Free everything if a malloc fails.	NULL ile biten bir string dizisinin derin kopyası. Bir malloc başarısız olursa her şeyi serbest bırak.
+Dented helm	Ezik miğfer
+Detailed results|Every function or category, with the failing case and a hint.	Ayrıntılı sonuçlar|Her fonksiyon ya da kategori, başarısız durum ve bir ipucuyla.
+Discord · the fous server	Discord · fous sunucusu
+Do 10 runs.	10 run yap.
+Do 30 runs.	30 run yap.
+Do you want the story (cutscenes and lore)?	Hikâyeyi (ara sahneler ve lore) ister misin?
+Dragon	Ejderha
+Dress your knight, the shop, your profile and achievements.	Şövalyeni giydir, dükkân, profilin ve başarımların.
+Duck	Ördek
+Duplicate at most n characters of s. NULL if malloc fails.	s'nin en fazla n karakterini çoğalt. malloc başarısız olursa NULL.
+EQUIPPED	KUŞANILDI
+EXCLUSIVE	ÖZEL
+EXERCISES SOLVED AT LEAST ONCE	EN AZ BİR KEZ ÇÖZÜLEN ALIŞTIRMALAR
+Earthworm	Solucan
+Edge sword	Keskin kılıç
+Ember feather	Kor tüyü
+Ember glow	Kor ışıltısı
+Embers	Korlar
+Enter or Esc: back to the map	Enter ya da Esc: haritaya dön
+Enter: confirm   Esc: cancel	Enter: onayla   Esc: iptal
+Enter: details   r: fixed? run the tests again   Esc: menu	Enter: ayrıntı   r: düzeldi mi? testleri yeniden çalıştır   Esc: menü
+Enter: open the level	Enter: seviyeyi aç
+Equip a printf item.	Bir printf eşyası kuşan.
+Equip an item in every slot.	Her yuvaya bir eşya kuşan.
+Equip the Moulinette pet.	Moulinette yoldaşını kuşan.
+Erase everything? XP, Octets, items, bosses, training...	Her şey silinsin mi? XP, Octet, eşyalar, patronlar, antrenman...
+Esc: back   (showcase: Profile, key e)	Esc: geri   (vitrin: Profil, e tuşu)
+Exam · a room without help, three hours, four doors.	Sınav · yardımsız bir oda, üç saat, dört kapı.
+Exams passed (100/100): %d	Geçilen sınavlar (100/100): %d
+Exams taken: %d	Girilen sınavlar: %d
+Exercise bank|All 94 exercises of the tester (exam, Libft, printf): search, open, grademe.	Alıştırma bankası|Tester'ın 94 alıştırması (sınav, Libft, printf): ara, aç, grademe.
+Export my save	Kaydımı dışa aktar
+Eyes	Gözler
+FAIL	HATA
+FAILED	BAŞARISIZ
+FUNCTIONS CLEARED (at least once)	GEÇİLEN FONKSİYONLAR (en az bir kez)
+Failing malloc	Başarısız malloc
+Fashion victim	Moda kurbanı
+Find the LAST byte c (as unsigned char) in the first n bytes of s, or NULL.	s'nin ilk n baytında SON c baytını (unsigned char olarak) bul, yoksa NULL.
+First blood	İlk kan
+First flag	İlk bayrak
+First link	İlk halka
+First time here. Just one question before we start:	İlk kez buradasın. Başlamadan önce tek bir soru:
+First try	İlk denemede
+Flag world · 6 bosses (- 0 width . # +)	Bayraklar dünyası · 6 patron (- 0 genişlik . # +)
+For 42 Next students	42 Next öğrencileri için
+For 42 Next students · Paris and other campuses	42 Next öğrencileri için · Paris ve diğer kampüsler
+For example ~/testeur_des_fous_save.txt	Örneğin ~/testeur_des_fous_save.txt
+Forbidden functions	Yasak fonksiyonlar
+Forge hammer	Demirci çekici
+Format cloak	Format pelerini
+Format companion	Format yoldaşı
+Format master	Format ustası
+Format night owl	Format gece kuşu
+Foundry armour	Dökümhane zırhı
+Foundry ember	Dökümhane koru
+Freed	Serbest
+Fridge	Buzdolabı
+Full DLC	Tam DLC
+Full audit without errors.	Hatasız tam denetim.
+Full stylist	Tam stilist
+Furious	Öfkeli
+Gambeson	Kapitone zırh
+Ghost	Hayalet
+Gnome	Cüce
+Goblin	Goblin
+Gold thread scarf	Altın iplik atkı
+Golden holygraph	Altın holygraph
+Graphics deployment	Grafik dağıtımı
+Greaves	Baldırlık
+Grey lines unlock as you progress.	Gri satırlar ilerledikçe açılır.
+H E L P   U S	B İ Z E   Y A R D I M   E T
+H O L Y G R A P H   ·   4 2   N E X T	H O L Y G R A P H   ·   4 2   N E X T
+HINT	İPUCU
+HISTORY · latest runs	GEÇMİŞ · son run'lar
+Hamster	Hamster
+Have 1000 Octets.	1000 Octet'e sahip ol.
+Hedgehog	Kirpi
+Helmet	Miğfer
+Helmet decoration	Miğfer süsü
+Help level	Yardım düzeyi
+Help us|Create a trace (no code, no login) to send to splatch_afk.	Bize yardım et|splatch_afk'ye göndermek için bir iz oluştur (kod yok, giriş yok).
+Help, bugs, ideas: join us	Yardım, bug, fikir: bize katıl
+Helper	Yardımcı
+Hexadecimal	Onaltılık
+History	Geçmiş
+Hold on, Moulinette.\nHere I come with my libft!	Dayan, Moulinette.\nLibft'imle geliyorum!
+Hot chocolate	Sıcak çikolata
+How	Nasıl
+I am the format. I check EVERYTHING:\nleaks, Norm, Makefile, README…	Ben formatım. HER ŞEYİ kontrol ederim:\nleak, Norm, Makefile, README…
+IMAGE ADDED	RESİM EKLENDİ
+IMAGE REFUSED	RESİM REDDEDİLDİ
+INT_MIN tamed	INT_MIN evcilleştirildi
+Image rendering	Resim gösterimi
+Images: no window and no terminal images here, fine cells take over.	Resimler: burada pencere de terminal resmi de yok, ince hücreler devralıyor.
+In the scene, ft_%s handles %s.	Sahnede ft_%s, %s ile ilgileniyor.
+Infinite loop: check the stop condition (the '\\0', a counter that advances).	Sonsuz döngü: durma koşulunu kontrol et ('\\0', ilerleyen bir sayaç).
+Install the libft tester first to get the full lore:	Tüm lore için önce libft tester'ını kur:
+Intro · the Norminette Machine	Giriş · Norminette Makinesi
+It only breaks them.	Sadece onları kırar.
+Items: %d · Titles: %d	Eşyalar: %d · Unvanlar: %d
+KNIGHT	ŞÖVALYE
+Kebab	Kebap
+Kept your save.txt? Load it to log in.	save.txt'ni sakladın mı? Giriş yapmak için yükle.
+Keyboard	Klavye
+Keys	Tuşlar
+Knight	Şövalye
+L I B F T   V A L I D A T E D	L I B F T   O N A Y L A N D I
+L O G   I N	G İ R İ Ş
+LEAK	LEAK
+LEVEL %-4d %33ld XP	SEVİYE %-4d %33ld XP
+LEVEL %02d · %s	SEVİYE %02d · %s
+LEVEL %d	SEVİYE %d
+LEVEL CLEARED	SEVİYE GEÇİLDİ
+LOCKED	KİLİTLİ
+LOGGED IN TO THE LIBFT TESTER	LIBFT TESTER'INA BAĞLANDI
+LOOP	DÖNGÜ
+LORE	LORE
+Language	Dil
+Last visit: %d / %d%s	Son ziyaret: %d / %d%s
+Left hand	Sol el
+Legendary	Efsanevi
+Legs	Bacaklar
+Length of the initial segment of s made only of characters from accept, like strspn(3).	s'nin yalnızca accept karakterlerinden oluşan baş kısmının uzunluğu, strspn(3) gibi.
+Level %d	Seviye %d
+Level %d · %ld XP · %ld Octets	Seviye %d · %ld XP · %ld Octet
+Libft Veteran	Libft Veteranı
+Libft and Printf validated.	Libft ve Printf onaylandı.
+Libft edition	Libft sürümü
+Libft validated	Libft onaylandı
+Libft veteran	Libft veteranı
+Libft · 43 windows, three wardens. Moulinette was caged there.	Libft · 43 pencere, üç muhafız. Moulinette orada kafesteydi.
+Libft · bosses	Libft · patronlar
+Libft · created and vibe-coded by Splatch	Libft · Splatch tarafından yaratıldı ve vibe-code'landı
+Libft · functions	Libft · fonksiyonlar
+Libft · training	Libft · antrenman
+Like dprintf with only %c, %s and %d: writes to fd. Return the number of bytes written, -1 if write fails.	Yalnızca %c, %s ve %d ile dprintf gibi: fd'ye yazar. Yazılan bayt sayısını döndür, write başarısız olursa -1.
+Like ft_split, but splits on any character of set.	ft_split gibi, ama set'teki herhangi bir karakterde böler.
+Like printf with only %d, %s and %%, but takes an already started va_list (like vprintf). Return the number of bytes written.	Yalnızca %d, %s ve %% ile printf gibi, ama önceden başlatılmış bir va_list alır (vprintf gibi). Yazılan bayt sayısını döndür.
+Little cog	Küçük dişli
+Llama	Lama
+Load a save file (log in)	Bir kayıt yükle (giriş yap)
+Locked: beat %s first (every function of part %d clean).	Kilitli: önce %s'yi yen (bölüm %d'in tüm fonksiyonları temiz).
+Locked: clear level %02d first.	Kilitli: önce %02d. seviyeyi geç.
+Log in with a validated libft.	Onaylı bir libft ile giriş yap.
+Logged in: %s · level %d · %ld ◈	Giriş yapıldı: %s · seviye %d · %ld ◈
+Longest streak: %d d · tracked runs: %d	En uzun seri: %d g · kayıtlı run'lar: %d
+Lore	Lore
+Lore and ideas: Splatch (romasant)	Lore ve fikirler: Splatch (romasant)
+M E O W  !	M İ Y A V  !
+M Y   P R O F I L E	P R O F İ L İ M
+MAKE YOUR TERMINAL BIGGER	TERMİNALİNİ BÜYÜT
+MINI-BOSSES	MİNİ PATRONLAR
+MISSING	EKSİK
+MIT licence · nothing is sent, updates only if you agree	MIT lisansı · hiçbir şey gönderilmez, güncellemeler yalnızca onayınla
+Macro	Makro
+Makefile, header and README	Makefile, header ve README
+Malloc	Malloc
+Map of the City|Every place of the lore, lit by your progress. Enter to go closer.	Şehrin haritası|Lore'un tüm yerleri, ilerlemene göre aydınlanır. Yaklaşmak için Enter.
+Marathoner	Maratoncu
+Marvin strikes all 9 chains at once…	Marvin 9 zincire birden vuruyor…
+Marvin! You came!	Marvin! Geldin!
+Max time per test	Test başına en fazla süre
+Menu crashes avoided: %d	Önlenen menü çökmeleri: %d
+Meow! Help!	Miyav! İmdat!
+Meow?!	Miyav?!
+Meow… (Marvin, hurry!)	Miyav… (Marvin, çabuk!)
+Mist	Sis
+Mist cloak	Sis pelerini
+Mixes and return value	Karışımlar ve dönüş değeri
+Model README	Örnek README
+Mossy stone plate	Yosunlu taş levha
+Moulinette	Moulinette
+Moulinette audit	Moulinette denetimi
+Moulinette fan	Moulinette hayranı
+Moulinette is free!	Moulinette özgür!
+Moulinette is free. Thank you, Marvin!	Moulinette özgür. Teşekkürler, Marvin!
+Moulinette is mine.\nEach chain is one of my conversions.	Moulinette benim.\nHer zincir dönüşümlerimden biri.
+Mushroom	Mantar
+My stats|Your progress, what fails most, your history. ◀ ▶ to change page.	İstatistiklerim|İlerlemen, en çok başarısız olan, geçmişin. Sayfa değiştirmek için ◀ ▶.
+NEW BADGE	YENİ ROZET
+NOT CLEARED YET	HENÜZ GEÇİLMEDİ
+NOT YET	HENÜZ DEĞİL
+NOT YET · %s	HENÜZ DEĞİL · %s
+NOTE	NOT
+Name color	İsim rengi
+Nickname	Takma ad
+Night over the Tower	Kulenin üstünde gece
+Night owl	Gece kuşu
+Nine chains	Dokuz zincir
+Nine chains, nine conversions.\nLet's begin.	Dokuz zincir, dokuz dönüşüm.\nBaşlayalım.
+No details for this function.	Bu fonksiyon için ayrıntı yok.
+No failure recorded.	Kayıtlı hata yok.
+No leak in the 43 functions.	43 fonksiyonda hiç leak yok.
+No libft tester save was found. You can start right away: every test and every fight is here.	Libft tester'ına ait kayıt bulunamadı. Hemen başlayabilirsin: tüm testler ve tüm dövüşler burada.
+No results: run \"Run the tests again\" (key r).	Sonuç yok: \"Testleri yeniden çalıştır\"ı başlat (r tuşu).
+No testeur des fous for this project yet.	Bu proje için henüz testeur des fous yok.
+No: straight to the point, no cutscenes	Hayır: doğrudan konuya, ara sahne yok
+Nobody will free her.\nHer tests are ours!	Onu kimse kurtarmayacak.\nTestleri bizim!
+None	Yok
+None of your libft functions were written by this tester.	libft fonksiyonlarından hiçbiri bu tester tarafından yazılmadı.
+Norminette	Norminette
+Norminette without errors.	Hatasız Norminette.
+Nothing here yet. Visit the shop!	Burada henüz bir şey yok. Dükkâna uğra!
+Nothing to report: every check passes.	Bildirilecek bir şey yok: tüm kontroller geçiyor.
+Nothing to report: everything matches the real printf.	Bildirilecek bir şey yok: her şey gerçek printf ile aynı.
+Nothing yet: run some tests.	Henüz bir şey yok: birkaç test çalıştır.
+OK	OK
+OTHER LOGIN: REFUSED	BAŞKA GİRİŞ: REDDEDİLDİ
+Oak shield	Meşe kalkan
+Octets for broken chains	Kırılan zincirler için Octet
+Octets for first wins	İlk zaferler için Octet
+Octets: ft_printf beaten	Octet: ft_printf yenildi
+Octopus	Ahtapot
+Overall progress	Genel ilerleme
+Overlap master	Örtüşme ustası
+Own 10 items.	10 eşyaya sahip ol.
+Own 2000 Octets.	2000 Octet'e sahip ol.
+Own 25 titles.	25 unvana sahip ol.
+P R I N T F   V A L I D A T E D	P R I N T F   O N A Y L A N D I
+P R O F I L E	P R O F İ L
+PART %d · guarded by %s %s	BÖLÜM %d · bekçisi %s %s
+PART 1 · LIBC	BÖLÜM 1 · LIBC
+PART 2 · ADDITIONAL	BÖLÜM 2 · EK FONKSİYONLAR
+PART 3 · LINKED LIST	BÖLÜM 3 · BAĞLI LİSTE
+PASSED	GEÇTİ
+PASSED · %d checks · %s	GEÇTİ · %d kontrol · %s
+PROGRESS	İLERLEME
+Paris and other campuses	Paris ve diğer kampüsler
+Pass 4 training levels.	4 antrenman seviyesini geç.
+Pass 8 training levels.	8 antrenman seviyesini geç.
+Pass all 16 training levels.	16 antrenman seviyesinin hepsini geç.
+Path of your banner	Afişinin yolu
+Path of your picture	Resminin yolu
+Path of your save	Kaydının yolu
+Penguin	Penguen
+Percent helm	Yüzde miğferi
+Perfect percent	Kusursuz yüzde
+Perfect prototypes	Kusursuz prototipler
+Pet	Yoldaş
+Pick a banner (PNG or JPG)	Bir afiş seç (PNG ya da JPG)
+Pick a profile picture (PNG or JPG)	Bir profil resmi seç (PNG ya da JPG)
+Pickle	Turşu
+Pigeon	Güvercin
+Pixel	Piksel
+Pixel art drawn with Python and Pillow	Python ve Pillow ile çizilmiş piksel sanatı
+Pointer	İşaretçi
+Preview: not equipped yet (Enter)	Önizleme: henüz kuşanılmadı (Enter)
+Previously, in the Libft	Libft'te daha önce
+Previously, in the Libft…	Libft'te daha önce…
+Printf validated	Printf onaylandı
+Profile and achievements|Banner, picture, bio and all your achievements.	Profil ve başarımlar|Afiş, resim, biyografi ve tüm başarımların.
+Purr… look, Marvin: the three guardians\nas plushies!	Mırr… bak Marvin: üç muhafız\npeluş olmuş!
+Purr… thank you, Marvin.	Mırr… teşekkürler, Marvin.
+Quantum	Kuantum
+Quit	Çık
+R E W A R D S	Ö D Ü L L E R
+R O O M   %d	O D A   %d
+RESULTS  %d/%d  ·  estimated moulinette grade: %s	SONUÇLAR  %d/%d  ·  tahmini moulinette notu: %s
+Raccoon	Rakun
+Read the n integers twice with va_copy: return (sum of the n integers) times (number of even integers).	n tamsayıyı va_copy ile iki kez oku: (n tamsayının toplamı) çarpı (çift tamsayıların sayısı) döndür.
+Really? This is final.	Emin misin? Bu kesin.
+Recent success: %d %%	Son başarı: %d %%
+Recent success: %d %%  %s %+d	Son başarı: %d %%  %s %+d
+Recent success: -	Son başarı: -
+Remove every node where cmp(content, ref) == 0 (del then free).	cmp(content, ref) == 0 olan her düğümü kaldır (önce del, sonra free).
+Remove the banner	Afişi kaldır
+Remove the picture	Resmi kaldır
+Replace every occurrence of old by new, left to right, in a new string.	old'un her geçişini soldan sağa new ile değiştir, yeni bir string'de.
+Replace your progress (level %d) with the file's (level %d)?	İlerlemen (seviye %d) dosyadakiyle (seviye %d) değiştirilsin mi?
+Replay the bosses and cutscenes you unlocked.	Açtığın patronları ve ara sahneleri yeniden izle.
+Rerun under valgrind	valgrind altında yeniden çalıştır
+Reset the save	Kaydı sıfırla
+Return 1 if c is a conversion from the subject (cspdiuxX%), 0 otherwise.	c subject'teki bir dönüşümse (cspdiuxX%) 1, değilse 0 döndür.
+Return a NULL-terminated array of the content pointers, in order.	content işaretçilerinin NULL ile biten bir dizisini sırayla döndür.
+Return a new string (malloc of the exact size) joining the n strings after n. NULL if malloc fails.	n'den sonraki n string'i birleştiren yeni bir string (tam boyutta malloc) döndür. malloc başarısız olursa NULL.
+Return n written in base, in a string allocated to the exact size. NULL if malloc fails.	base tabanında yazılmış n'yi tam boyutta ayrılmış bir string'de döndür. malloc başarısız olursa NULL.
+Return the first node where cmp(content, ref) == 0, else NULL.	cmp(content, ref) == 0 olan ilk düğümü döndür, yoksa NULL.
+Return the largest of the n integers after n (n >= 1).	n'den sonraki n tamsayının en büyüğünü döndür (n >= 1).
+Return the node at index (0 is the first), or NULL.	index konumundaki düğümü döndür (0 ilkidir), ya da NULL.
+Return the number of bits set to 1 in n.	n'deki 1 olan bitlerin sayısını döndür.
+Return the sum of the n integers after n. Use va_start, va_arg and va_end.	n'den sonraki n tamsayının toplamını döndür. va_start, va_arg ve va_end kullan.
+Reverse s in place (no malloc) and return s.	s'yi yerinde ters çevir (malloc yok) ve s'yi döndür.
+Reverse the list in place, reusing the nodes.	Listeyi düğümleri yeniden kullanarak yerinde ters çevir.
+Rich	Zengin
+Rich in Octets	Octet zengini
+Robot	Robot
+Rotate the list by n (negative goes backwards, n may exceed the size or be INT_MIN).	Listeyi n kadar döndür (negatif geriye gider, n boyutu aşabilir ya da INT_MIN olabilir).
+Run Octets	Run Octet'leri
+Run Octets (1 per clean function)	Run Octet'leri (temiz fonksiyon başına 1)
+Run XP	Run XP'si
+Run XP (2 per clean function)	Run XP'si (temiz fonksiyon başına 2)
+Run the tester 10 times.	Tester'ı 10 kez çalıştır.
+Run the tester once.	Tester'ı bir kez çalıştır.
+Run the tests           (r)|Rebuilds your project and tests all of it.	Test et                 (r)|Projeni yeniden derler ve tamamını test eder.
+Run your project's tests, see results, training and the exam.	Projenin testlerini çalıştır, sonuçları, antrenmanı ve sınavı gör.
+Runs: Libft %d · printf %d	Run'lar: Libft %d · printf %d
+S A V E   A N D   L O G I N	K A Y D E T   V E   G İ R İ Ş
+S C A N N I N G   Y O U R   F T _ P R I N T F	F T _ P R I N T F ' İ N   T A R A N I Y O R
+S E T T I N G S	A Y A R L A R
+SAVE EDITED	KAYIT DEĞİŞTİRİLDİ
+SAVE EDITED BY HAND	KAYIT ELLE DEĞİŞTİRİLDİ
+SAVE EXPORTED	KAYIT DIŞA AKTARILDI
+SETTINGS	AYARLAR
+STATS	İSTATİSTİKLER
+Save and login|Export your progress or get it back on another computer.	Kaydet ve giriş|İlerlemeni dışa aktar ya da başka bir bilgisayarda geri al.
+Screwdriver	Tornavida
+Secret ending	Gizli son
+Secret ending · Libft and Printf validated	Gizli son · Libft ve Printf onaylandı
+See the secret ending.	Gizli sonu gör.
+Segfault	Segfault
+Segfault survivor	Segfault kurtulanı
+Separate window	Ayrı pencere
+Settings	Ayarlar
+Settings, save, help us, credits.	Ayarlar, kayıt, bize yardım et, emeği geçenler.
+Settings|Language, animations, story, help level, test tools.	Ayarlar|Dil, animasyonlar, hikâye, yardım düzeyi, test araçları.
+Shop|Spend your Octets: items, themes, titles. You earn Octets by passing tests.	Dükkân|Octet'lerini harca: eşyalar, temalar, unvanlar. Octet'ler testleri geçerek kazanılır.
+Showcase 1	Vitrin 1
+Showcase 2	Vitrin 2
+Showcase 3	Vitrin 3
+Size: make the terminal 120 x 36 or bigger.	Boyut: terminali 120 x 36 ya da daha büyük yap.
+Slit great helm	Yarıklı büyük miğfer
+Snail	Salyangoz
+Sock	Çorap
+Sort a NULL-terminated array in place using cmp. Swap pointers only.	NULL ile biten bir diziyi cmp ile yerinde sırala. Yalnızca işaretçileri değiştir.
+Sort the list in ascending order according to cmp.	Listeyi cmp'ye göre artan sırada sırala.
+Soul feather	Ruh tüyü
+Soul firefly	Ruh ateşböceği
+Soul glow	Ruh ışıltısı
+Soul lantern	Ruh feneri
+Soul spores	Ruh sporları
+Sound (beep)	Ses (bip)
+Spaghetti	Spagetti
+Spear	Mızrak
+Spotless Norm	Kusursuz Norm
+Stainless	Paslanmaz
+Stats	İstatistikler
+Steel Norm	Çelik Norm
+Steel greaves	Çelik baldırlık
+Stool	Tabure
+Story and cutscenes	Hikâye ve ara sahneler
+Stubborn	İnatçı
+Stylist	Stilist
+Summary	Özet
+Swap the first n bytes of a and b. Works for any type.	a ve b'nin ilk n baytını değiş tokuş et. Her türle çalışır.
+Switch to 	Şuna geç:
+T H E   B O S S E S	P A T R O N L A R
+T H E   C I T Y	Ş E H İ R
+T H E   L I B F T   T O W E R	L I B F T   K U L E S İ
+T H E   N O R M I N E T T E   M A C H I N E	N O R M I N E T T E   M A K İ N E S İ
+TEST	TEST
+TESTER UPDATED	TESTER GÜNCELLENDİ
+TO REPLAY IT ALONE	TEK BAŞINA YENİDEN ÇALIŞTIRMAK İÇİN
+TRACE CREATED	İZ OLUŞTURULDU
+Terminal	Terminal
+Terminal images	Terminal resimleri
+Terminal size	Terminal boyutu
+Test                    (r)	Test et                 (r)
+Test engine	Test motoru
+Test engine: Splatch (printf tester beta)	Test motoru: Splatch (printf tester'ı beta)
+Test settings (time, sanitizers, valgrind, audit)	Test ayarları (süre, sanitizer, valgrind, denetim)
+Thank you Marvin! Watch out… here he comes!	Teşekkürler Marvin! Dikkat… geliyor!
+Thanks for testing!	Test ettiğin için teşekkürler!
+Thanks to Moulinette, a free grey cat.	Özgür gri bir kedi olan Moulinette'e teşekkürler.
+That file already exists. Overwrite it?	Bu dosya zaten var. Üzerine yazılsın mı?
+The 43 prototypes match the subject.	43 prototip subject ile uyuşuyor.
+The 9 chains (your last run)	9 zincir (son run'ın)
+The Alchemist dissolved	Simyacı çözüldü
+The City	Şehir
+The Devourer: 10,000 calls	Yutucu: 10 000 çağrı
+The Foundry	Dökümhane
+The Foundry of Formats	Formatlar Dökümhanesi
+The Hydra drained	Hidra tükendi
+The Link Hydra	Halkaların Hidrası
+The Memory Warden	Hafıza Muhafızı
+The Norm	Norm
+The Norm stays required in training.	Norm antrenmanda da zorunlu.
+The Tower of Foundations	Temeller Kulesi
+The Trial of Silence	Sessizlik Sınavı
+The Two Stacks	İki Yığın
+The Warden fell	Muhafız düştü
+The Weaver	Dokumacı
+The Well	Kuyu
+The crazy tester is reading your code...	testeur des fous kodunu okuyor...
+The end · at the very bottom, under the Well.	Son · en dipte, Kuyunun altında.
+The file does not compile with -Wall -Wextra -Werror: fix the error shown above.	Dosya -Wall -Wextra -Werror ile derlenmiyor: yukarıda gösterilen hatayı düzelt.
+The flag runes awaken…	Bayrak rünleri uyanıyor…
+The flag world is yours!	Bayraklar dünyası senin!
+The flag world tests what subject v1.1 does not ask for (flags, width, precision), against the real printf. It opens after ft_printf, or right away for Libft Veterans. Training covers the project's notions and the ones the subject does not show.	Bayraklar dünyası, subject v1.1'in istemediklerini (bayraklar, genişlik, hassasiyet) gerçek printf'e karşı test eder. ft_printf'ten sonra açılır, Libft Veteranları için hemen. Antrenman, projenin kavramlarını ve subject'in göstermediklerini kapsar.
+The full audit runs once the 43 functions are clean.	Tam denetim, 43 fonksiyon temiz olunca çalışır.
+The image is turned into pixel art and stored in your save: it follows the export.	Resim piksel sanatına dönüştürülüp kaydına konur: dışa aktarmayla birlikte gider.
+The last mechanism	Son mekanizma
+The moulinette smiles	Moulinette gülümsüyor
+The path of your copied save.txt (for example ~/my_save.txt)	Kopyaladığın save.txt'nin yolu (örneğin ~/benim_save.txt)
+The red chains hold: see Detailed results to know why.	Kırmızı zincirler dayanıyor: nedenini Ayrıntılı sonuçlar'da gör.
+The scene crashed in ft_%s  (signal %d)	Sahne ft_%s içinde çöktü  (sinyal %d)
+The scene froze for 3 s: infinite loop in ft_%s?	Sahne 3 sn dondu: ft_%s içinde sonsuz döngü mü?
+The tester saw: %.90s	Tester şunu gördü: %.90s
+The testeur des fous gets better thanks to you. Whether your tests pass or not, your trace helps find false positives, missing cases and tester bugs.	testeur des fous senin sayende gelişiyor. Testlerin geçse de geçmese de izin, yanlış alarmları, eksik durumları ve tester hatalarını bulmaya yardım eder.
+The three guardians fell. Moulinette is free.	Üç muhafız düştü. Moulinette özgür.
+The trace holds neither your code nor your login: only test results, the tester version and your system. Everything stays offline: nothing is sent without you.	İz ne kodunu ne de girişini içerir: yalnızca test sonuçları, tester sürümü ve sistemin. Her şey çevrimdışı kalır: sensiz hiçbir şey gönderilmez.
+Theme (owned ones)	Tema (sahip olunanlar)
+This choice applies to every version of the tester. You can change it anytime in Settings. For tests only, no story: bash run.sh --no-lore.	Bu seçim tester'ın tüm sürümleri için geçerli. Ayarlar'dan istediğin zaman değiştirebilirsin. Hikâyesiz, yalnızca testler: bash run.sh --no-lore.
+This place is not open yet.	Bu yer henüz açık değil.
+Tier	Kademe
+Title collector	Unvan koleksiyoncusu
+Titles (1000)	Unvanlar (1000)
+To keep it elsewhere or on another machine: export it, then load it.	Başka yerde ya da başka makinede tutmak için: dışa aktar, sonra yükle.
+To make Libft more fun.	Libft'i daha eğlenceli yapmak için.
+Toaster	Ekmek kızartma makinesi
+Tracked: %s to %s	Kayıt: %s ile %s arası
+Training	Antrenman
+Training (21 levels)|New functions, beyond Libft, to train. Unlocked by bosses.	Antrenman (21 seviye)|Libft'in ötesinde, çalışmak için yeni fonksiyonlar. Patronlar açar.
+Training exercises	Antrenman alıştırmaları
+Training · 16 levels	Antrenman · 16 seviye
+Travel cloak	Yolculuk pelerini
+UB	UB
+UNREADABLE FILE	OKUNAMAYAN DOSYA
+UTF-8 characters	UTF-8 karakterler
+UTF-8: run with LANG=en_US.UTF-8.	UTF-8: LANG=en_US.UTF-8 ile başlat.
+Undefined behavior: uninitialized variable, integer overflow, NULL pointer or invalid shift. The line is shown above.	Tanımsız davranış: başlatılmamış değişken, tamsayı taşması, NULL işaretçi ya da geçersiz kaydırma. Satır yukarıda gösteriliyor.
+VETERAN PERKS	VETERAN AVANTAJLARI
+Validated by the \"Libft validated\" badge (no libft/ in your ft_printf, or no run here yet).	\"Libft onaylandı\" rozetiyle onaylandı (ft_printf'inde libft/ yok, ya da burada henüz run yok).
+Validated in the printf tester.	printf tester'ında onaylandı.
+Validated: 43/43 locally and the 3 bosses beaten.	Onaylandı: yerelde 43/43 ve 3 patron yenildi.
+Validated: \"Libft validated\" badge (43/43 and 3 bosses in the libft tester) and your libft/ passes the quick check here, locally.	Onaylandı: \"Libft onaylandı\" rozeti (libft tester'ında 43/43 ve 3 patron) ve libft/'in burada, yerelde hızlı kontrolü geçiyor.
+Validated: the 9 chains and ft_printf beaten, locally, this run.	Onaylandı: 9 zincir ve ft_printf yenildi, yerelde, bu run'da.
+Variadic apprentice	Değişken argümanlı çırak
+Veteran	Veteran
+Veteran cloak	Veteran pelerini
+Veteran helm	Veteran miğferi
+Victory: hot chocolate	Zafer: sıcak çikolata
+WHAT FAILS MOST	EN ÇOK BAŞARISIZ OLAN
+WHAT WAS SEEN	GÖRÜLEN
+WRONG	YANLIŞ
+Walking boots	Yürüyüş botları
+Watcher's hood	Gözcü başlığı
+Weapon	Silah
+Weaver's thread	Dokumacının ipliği
+Welcome, %s · level %d	Hoş geldin, %s · seviye %d
+Welcome, new lunatic.	Hoş geldin, yeni deli.
+What you still need:	Eksiğin:
+What you still need: chains %d/9	Eksiğin: zincirler %d/9
+What you still need: install the printf tester and beat ft_printf.	Eksiğin: printf tester'ını kur ve ft_printf'i yen.
+What you still need: log in with your libft tester save (Save and login), or install the libft tester.	Eksiğin: libft tester kaydınla giriş yap (Kaydet ve giriş), ya da libft tester'ını kur.
+What you still need: run \"Run the tests again\" (key r) (proof is made locally).	Eksiğin: \"Testleri yeniden çalıştır\"ı başlat (r tuşu) (kanıt yerelde yapılır).
+What you still need: validate libft in the libft tester (43/43 locally + 3 bosses).	Eksiğin: libft'i libft tester'ında onaylat (yerelde 43/43 + 3 patron).
+What you still need: your libft/ fails the quick check (Detailed results).	Eksiğin: libft/'in hızlı kontrolü geçemiyor (Ayrıntılı sonuçlar).
+What you still need: your libft/ must build with the ft_printf Makefile.	Eksiğin: libft/'in ft_printf Makefile'ı ile derlenmeli.
+Where to copy your save?	Kaydın nereye kopyalansın?
+Which save file to load?	Hangi kayıt yüklensin?
+White slit	Beyaz yarık
+Worn edge cloak	Eskimiş kenarlı pelerin
+Write c to standard output. Return the number of bytes written (1), or -1 if write fails.	c'yi standart çıktıya yaz. Yazılan bayt sayısını (1) döndür, write başarısız olursa -1.
+Write n in base 10 (INT_MIN included, no undefined behavior). Return the number of characters written.	n'yi 10 tabanında yaz (INT_MIN dahil, tanımsız davranış yok). Yazılan karakter sayısını döndür.
+Write n in base into a new string. Handle LONG_MIN. NULL on invalid base.	n'yi base tabanında yeni bir string'e yaz. LONG_MIN'i ele al. Geçersiz tabanda NULL.
+Write n in base on fd. Invalid base writes nothing. Handle LONG_MIN.	n'yi base tabanında fd'ye yaz. Geçersiz taban hiçbir şey yazmaz. LONG_MIN'i ele al.
+Write n in hexadecimal, uppercase if upper is 1. Return the number of characters written.	n'yi onaltılık yaz, upper 1 ise büyük harfle. Yazılan karakter sayısını döndür.
+Write n in the given base (base = "0123456789abcdef" for example). Return the number of characters written.	n'yi verilen tabanda yaz (örneğin base = "0123456789abcdef"). Yazılan karakter sayısını döndür.
+Write s to fd. Return the number of bytes written, or -1 if a write fails (closed fd for example).	s'yi fd'ye yaz. Yazılan bayt sayısını döndür, bir write başarısız olursa -1 (örneğin kapalı fd).
+Write s. If s is NULL, write "(null)" like printf on Linux. Return the number of bytes written, -1 if write fails.	s'yi yaz. s NULL ise Linux'taki printf gibi "(null)" yaz. Yazılan bayt sayısını döndür, write başarısız olursa -1.
+Write the address p like printf's %p on Linux (0x... ; NULL gives "(nil)"). Return the number of characters written.	p adresini Linux'taki printf'in %p'si gibi yaz (0x... ; NULL "(nil)" verir). Yazılan karakter sayısını döndür.
+XP for chains broken the first time	İlk kez kırılan zincirler için XP
+XP for first-time clean functions	İlk kez temiz fonksiyonlar için XP
+XP: ft_printf beaten for the first time!	XP: ft_printf ilk kez yenildi!
+YOUR ATTEMPTS (gradings and exams)	DENEMELERİN (değerlendirmeler ve sınavlar)
+YOUR LAST 70 RUNS (all modules)	SON 70 RUN'IN (tüm modüller)
+YOUR LIBFT RUNS	LIBFT RUN'LARIN
+YOUR PRINTF RUNS	PRINTF RUN'LARIN
+Yes: the story, the cutscenes and the fights	Evet: hikâye, ara sahneler ve dövüşler
+Yogurt	Yoğurt
+You can delete the tester folder: your progress stays here.	Tester klasörünü silebilirsin: ilerlemen burada kalır.
+You have never been here.	Buraya hiç gelmedin.
+You read or write outside a block. Check the allocated size, the loop condition and the final '\\0'.	Bir bloğun dışında okuyor ya da yazıyorsun. Ayrılan boyutu, döngü koşulunu ve sondaki '\\0'ı kontrol et.
+Your 42 login (Enter to confirm):	42 girişin (onaylamak için Enter):
+Your bio (80 characters)	Biyografin (80 karakter)
+Your file: %s/entrainement/niveau_%02d/%s.c	Dosyan: %s/entrainement/niveau_%02d/%s.c
+Your function frees memory it did not allocate (one of its arguments). It must only free what it allocated itself.	Fonksiyonun, ayırmadığı belleği serbest bırakıyor (argümanlarından biri). Yalnızca kendi ayırdığını serbest bırakmalı.
+Your knight, as equipped	Şövalyen, kuşandığı gibi
+Your malloc asks for more room than the result uses. Compute the exact result size first (+1 for the '\\0'), then malloc that. Tripouille rejects it too (MKO).	malloc'un sonucun kullandığından fazla yer istiyor. Önce sonucun tam boyutunu hesapla ('\\0' için +1), sonra o kadar malloc yap. Tripouille de bunu reddeder (MKO).
+Your malloc leaves too little room (the final '\\0'?). Recount the size before filling the block.	malloc'un çok az yer bırakıyor (sondaki '\\0'?). Bloğu doldurmadan önce boyutu yeniden say.
+Your progress, what fails most, your history.	İlerlemen, en çok başarısız olan, geçmişin.
+Your save: %s/save.txt (in your home folder, not in the tester folder).	Kaydın: %s/save.txt (ev klasöründe, tester klasöründe değil).
+Zero leak	Sıfır leak
+Zero leaks	Sıfır leak
+Zero warning	Sıfır uyarı
+[ Esc / Enter: back ]	[ Esc / Enter: geri ]
+[ Q / Esc / Ctrl+C: stop the scan ]	[ Q / Esc / Ctrl+C: taramayı durdur ]
+[ any key to continue ]	[ devam etmek için bir tuşa bas ]
+[ any key to continue · fights start in 8 s ]	[ devam etmek için bir tuşa bas · dövüşler 8 sn sonra başlar ]
+[ e: edit my profile   ·   any other key: back ]	[ e: profilimi düzenle   ·   başka bir tuş: geri ]
+[ press any key ]	[ bir tuşa bas ]
+[Esc] back	[Esc] geri
+[r] restart with this function quarantined (fallback version)	[r] bu fonksiyonu karantinaya alarak yeniden başlat (yedek sürüm)
+a full run without a single leak	tek bir leak olmadan tam bir run
+a run between midnight and 5 am	gece yarısı ile 5 arasında bir run
+a save reloaded	yeniden yüklenmiş bir kayıt
+a trace made for "Help us"	\"Bize yardım et\" için yapılmış bir iz
+all 21 DLC levels	21 DLC seviyesinin hepsi
+always	her zaman
+apple	elma
+apply to the next \"Run the tests again\".	bir sonraki \"Testleri yeniden çalıştır\"da geçerli.
+arrows: pick   Enter: open   Esc: back	oklar: seç   Enter: aç   Esc: geri
+arrows: pick   f: details   m: audit   r: fixed? run again   Enter: continue	oklar: seç   f: ayrıntı   m: denetim   r: düzeldi mi? yeniden çalıştır   Enter: devam
+audit not run	denetim çalıştırılmadı
+beat ft_printf, or log in with a validated libft	ft_printf'i yen ya da onaylı bir libft ile giriş yap
+c: load a save.txt   Enter: continue without	c: bir save.txt yükle   Enter: onsuz devam et
+cape, helmet, Moulinette pet, golden theme, title and +300 ◈	pelerin, miğfer, Moulinette yoldaşı, altın tema, unvan ve +300 ◈
+case	durum
+chains %d/9 · ft_printf %s · train %d/16	zincirler %d/9 · ft_printf %s · antr. %d/16
+check the path and permissions	yolu ve izinleri kontrol et
+checks	kontrol
+checksum mismatch: refused	sağlama toplamı hatalı: reddedildi
+compiling and preparing	derleme ve hazırlık
+could not write the trace	iz yazılamadı
+done	tamam
+everything clean on the very first run	ilk run'dan itibaren her şey temiz
+everything is clean	her şey temiz
+exclusive	özel
+fast	hızlı
+fine cells	ince hücreler
+for Libft Veterans only (printf tester)	yalnızca Libft Veteranları için (printf tester'ı)
+ft_%s prototype differs from the subject	ft_%s prototipi subject'ten farklı
+ft_printf beaten in the printf tester	ft_printf printf tester'ında yenildi
+ft_printf holds: fix the red phases (Detailed results).	ft_printf dayanıyor: kırmızı aşamaları düzelt (Ayrıntılı sonuçlar).
+ft_printf is defeated!	ft_printf yenildi!
+ft_printf · created and vibe-coded by Splatch	ft_printf · Splatch tarafından yaratıldı ve vibe-code'landı
+ft_printf · the machine that shapes words. Nine chains.	ft_printf · kelimelere biçim veren makine. Dokuz zincir.
+ft_printf, the big boss	ft_printf, büyük patron
+function of its part	bölümünün fonksiyonu
+functions OK	fonksiyon OK
+get_next_line · you go down one line at a time.	get_next_line · her seferinde bir satır inilir.
+get_next_line|Tests your get_next_line with 7 BUFFER_SIZE values, stdin, pipes, read and malloc errors.	get_next_line|get_next_line'ını 7 BUFFER_SIZE değeri, stdin, pipe'lar, read ve malloc hatalarıyla test eder.
+in a Bathrobe	Bornozlu
+keep going to unlock it	açmak için devam et
+level	seviye
+libft part %d	libft bölüm %d
+libft validated, then printf launched	libft onaylandı, sonra printf başlatıldı
+lines %d-%d of %d   ▲ ▼ scroll   	satır %d-%d / %d   ▲ ▼ kaydır
+made of Cardboard	Kartondan
+never	asla
+no	hayır
+no display	ekran yok
+no run yet	henüz run yok
+none	yok
+none (the case only)	yok (yalnızca durum)
+normal	normal
+norminette not checked	norminette kontrol edilmedi
+norminette without a single error	tek bir hatası olmayan norminette
+not found or not readable	bulunamadı ya da okunamıyor
+not validated yet	henüz onaylanmadı
+nothing was copied	hiçbir şey kopyalanmadı
+now:	şimdi:
+of Linked Lists	Bağlı Listelerin
+of Lost Pointers	Kayıp İşaretçilerin
+of Midnight	Gece Yarısının
+of Sunday	Pazarın
+of the '\\0'	'\\0'ın
+of the 43 Functions	43 Fonksiyonun
+of the Heap	Heap'in
+of the Holy Segfault	Kutsal Segfault'un
+of the Libc	Libc'nin
+of the Makefile	Makefile'ın
+of the Norm	Norm'un
+of the RAM	RAM'in
+of the Stack	Stack'in
+off	kapalı
+older  →  newer  (height: success share)	eski  →  yeni  (yükseklik: başarı payı)
+on	açık
+on Sale	İndirimde
+owned   	sahip
+part %d · %s	bölüm %d · %s
+pass the previous level first	önce bir önceki seviyeyi geç
+passes the tester.	tester'ı geçer.
+printf edition	printf sürümü
+printf marathon	printf maratonu
+printf runs: %s	printf run'ları: %s
+printf · chains	printf · zincirler
+printf · flags	printf · bayraklar
+printf · ft_printf	printf · ft_printf
+printf · training	printf · antrenman
+prototypes checked	prototipler kontrol edildi
+prototypes...	prototipler...
+push_swap · two stone columns to sort. Later.	push_swap · sıralanacak iki taş sütun. Daha sonra.
+put that project next to the tester, then relaunch	o projeyi tester'ın yanına koy, sonra yeniden başlat
+reset (old copy: save.txt.triche)	sıfırlandı (eski kopya: save.txt.triche)
+run already rewarded %ld min ago (30 min cooldown)	run %ld dk önce zaten ödüllendirildi (30 dk bekleme)
+run already rewarded (30 min cooldown)	run zaten ödüllendirildi (30 dk bekleme)
+runs %d · DLC %d/6 · training %d/16 · libft %s · crashes %d	run %d · DLC %d/6 · antr. %d/16 · libft %s · çökme %d
+runs %d · bosses %d/3 · training %d/21 · items %d/%d · titles %d/1000 · crashes %d	run %d · patron %d/3 · antr. %d/21 · eşya %d/%d · unvan %d/1000 · çökme %d
+t: create my trace   Esc: back	t: izimi oluştur   Esc: geri
+t: test my code   Esc: back	t: kodumu test et   Esc: geri
+t: test my file   Esc: back	t: dosyamı test et   Esc: geri
+terminal images	terminal resimleri
+test: %d/43 · boss %d/3 · train %d/21	test: %d/43 · patron %d/3 · antr. %d/21
+text	metin
+the tester resumes by itself  ·  Q: quit	tester kendiliğinden devam ediyor  ·  Q: çık
+theme	tema
+this file belongs to %s, you are %s	bu dosya %s kullanıcısına ait, sen %s kullanıcısısın
+this module comes in a later version	bu modül daha sonraki bir sürümde gelecek
+today	bugün
+topic: %s	kavram: %s
+training levels.	antrenman seviyesi.
+unbeaten	yenilmedi
+v%s  →  v%s   (see CHANGELOG.md)	v%s  →  v%s   (bkz. CHANGELOG.md)
+validated ✓: the full lore is unlocked	onaylandı ✓: tüm lore açıldı
+warming up...	ısınıyor...
+who Relinks	Yeniden Linkleyen
+window	pencere
+with a Moustache	Bıyıklı
+without Leaks	Leak'siz
+world	dünya
+y: yes   n: no	y: evet   n: hayır
+yes	evet
+yesterday	dün
+your profile got a new look	profilin yeni bir görünüm kazandı
+|Put that project next to the tester to enable it.	|Etkinleştirmek için o projeyi tester'ın yanına koy.
+|Switch project without leaving the tester.	|Tester'dan çıkmadan proje değiştir.
+~%lds left	~%lds kaldı
+~get_next_line|Put your get_next_line folder next to the tester to enable it.	~get_next_line|Etkinleştirmek için get_next_line klasörünü tester'ın yanına koy.
+~push_swap               (later)	~push_swap               (daha sonra)
+· ft_printf not beaten yet	· ft_printf henüz yenilmedi
+▚▚  S C A N N I N G   Y O U R   L I B F T  ▞▞	▚▚  L I B F T ' İ N   T A R A N I Y O R  ▞▞
+▲ ▼ module   ◀ ▶ project   b: badges   Esc: back	▲ ▼ modül   ◀ ▶ proje   b: rozetler   Esc: geri
+▲ ▼ pick   (run \"Run the tests again\" (key r) to fight)   Esc: back	▲ ▼ seç   (dövüşmek için \"Testleri yeniden çalıştır\"ı başlat (r tuşu))   Esc: geri
+▲ ▼ pick   Enter: confirm	▲ ▼ seç   Enter: onayla
+▲ ▼ pick   Enter: confirm   Esc: back	▲ ▼ seç   Enter: onayla   Esc: geri
+▲ ▼ pick   Enter: open   Esc: back	▲ ▼ seç   Enter: aç   Esc: geri
+▲ ▼ pick   Enter: open   r: run the tests   Esc: quit	▲ ▼ seç   Enter: aç   r: testleri çalıştır   Esc: çık
+▲ ▼ pick   Enter: replay the fight   Esc: back	▲ ▼ seç   Enter: dövüşü tekrarla   Esc: geri
+▲ ▼ pick   ◀ ▶ change   Enter: edit   Esc: back	▲ ▼ seç   ◀ ▶ değiştir   Enter: düzenle   Esc: geri
+▲ ▼ pick   ◀ ▶ change   Esc: back	▲ ▼ seç   ◀ ▶ değiştir   Esc: geri
+▲ ▼ pick a place   Enter: go closer   Esc: back	▲ ▼ bir yer seç   Enter: yaklaş   Esc: geri
+▲ ▼ scroll   Esc: back   (help: Settings)	▲ ▼ kaydır   Esc: geri   (yardım: Ayarlar)
+◀ ▶ change page   Esc: back	◀ ▶ sayfa değiştir   Esc: geri
+◀ ▶ change tier   Esc: back	◀ ▶ kademe değiştir   Esc: geri
+◀ ▶ other failing function   Esc: back	◀ ▶ başarısız başka fonksiyon   Esc: geri
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  Esc: back	◀ ▶ bölüm  ▲ ▼ eşya  Enter: satın al/kuşan  Esc: geri
+◈  T H E   C R A Z Y   S H O P  ◈	◈  F O U S   D Ü K K Â N I  ◈
+◈  W A R D R O B E  ◈	◈  G A R D I R O P  ◈
+✓ ft_printf beaten	✓ ft_printf yenildi

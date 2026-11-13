@@ -135,6 +135,44 @@ void	discord_line(int y)
 	out(" " TDF_DISCORD);
 }
 
+static void	choisir_langue(void)
+{
+	int	k;
+	int	sel;
+	int	i;
+	int	x;
+
+	sel = langue_auto();
+	cls();
+	while (1)
+	{
+		x = (term_cols() - 30) / 2;
+		if (x < 0)
+			x = 0;
+		center(3, theme()->accent2, "L E   T E S T E U R   D E S   F O U S");
+		center(5, theme()->text, "Langue · Language · Idioma · Sprache · Lingua · Dil · Язык");
+		for (i = 0; i < NLANG; i++)
+		{
+			at(x, 8 + i * 2);
+			bgc(i == sel ? mix(theme()->bg, theme()->accent, 0.25) : theme()->bg);
+			fg(i == sel ? theme()->accent2 : theme()->text);
+			outf(" %s %-24s ", i == sel ? "▶" : " ", langue_nom(i));
+		}
+		bgc(theme()->bg);
+		foot_line(x, "▲ ▼   Enter");
+		flush();
+		k = key_dir(key_read(80));
+		if (k == 1000 || k == 1003)
+			sel = (sel + NLANG - 1) % NLANG;
+		else if (k == 1001 || k == 1002)
+			sel = (sel + 1) % NLANG;
+		else if (k == '\r' || k == '\n' || k == ' ')
+			break ;
+	}
+	g_save.cfg.lang = sel;
+	cls();
+}
+
 void	lore_setup(void)
 {
 	int	k;
@@ -143,6 +181,7 @@ void	lore_setup(void)
 
 	if (g_save.cfg.lore == 1 || g_save.cfg.lore == 2)
 		return ;
+	choisir_langue();
 	if (getenv("TDF_INTERFACE") && (!strcmp(getenv("TDF_INTERFACE"), "graphique")
 			|| !strcmp(getenv("TDF_INTERFACE"), "texte")))
 	{
@@ -433,7 +472,7 @@ static int	trace_write(char *path, size_t n)
 	fprintf(f, "date : %s", ctime(&t));
 	fprintf(f, "système : %s %s %s\n", u.sysname, u.release, u.machine);
 	fprintf(f, "aide : %d/2 · anim : %d · langue : %s\n", g_save.cfg.help, g_save.cfg.anim,
-		g_save.cfg.lang ? "en" : "fr");
+		langue_code(g_save.cfg.lang));
 	fprintf(f, "(aucun code, aucun login : seulement les résultats des tests)\n\n");
 	game_trace(f);
 	fclose(f);

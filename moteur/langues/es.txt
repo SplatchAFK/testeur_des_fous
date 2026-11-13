@@ -1,0 +1,808 @@
+   %d checks  %d.%02ds	   %d pruebas  %d.%02ds
+   versus 	   contra
+  · done	  · terminado
+  ★ Veteran exclusives: cape, helmet, Moulinette pet, golden theme	  ★ Exclusivos Veterano: capa, casco, mascota Moulinette, tema dorado
+  ★ \"Previously, in the Libft\" and the secret ending	  ★ \"Anteriormente, en la Libft\" y el final secreto
+  ★ the DLC unlocked right away and 300 free Octets	  ★ el DLC desbloqueado al instante y 300 Octets gratis
+  ★ your knight Marvin, items, titles, Octets and XP	  ★ tu caballero Marvin, objetos, títulos, Octets y XP
+ %2d/%d tested   %lds   %s         	 %2d/%d probadas   %lds   %s
+ %s is defeated!  (Enter)	 ¡%s ha sido derrotado!  (Intro)
+ (chosen)	 (elegido)
+ 43 clean functions locally (%d/43 this run);	 43 funciones limpias en local (%d/43 en este run);
+ DISCORD · THE FOUS SERVER 	 DISCORD · EL SERVIDOR DE LOS FOUS
+ Enter: skip   Q / Esc: leave the fights	 Intro: saltar   Q / Esc: salir de los combates
+ The boss has %d HP left.  (Enter)	 Al jefe le quedan %d PV.  (Intro)
+ beat the 3 bosses (%d/3).	 vence a los 3 jefes (%d/3).
+ closed	 cerrado
+ run \"Run the tests again\" (key r) (proof is made locally);	 lanza \"Volver a probar\" (tecla r) (la prueba se hace en local);
+%-18s %3d failure(s) · mostly %-7s · %s	%-18s %3d fallo(s) · sobre todo %-7s · %s
+%-7s %-18s %3d failure(s) · %s	%-7s %-18s %3d fallo(s) · %s
+%d OK · %d KO · %d warnings · mode %s · help %d/2	%d OK · %d KO · %d avisos · modo %s · ayuda %d/2
+%d/%d broken	%d/%d rotas
+%d/%d passed · levels open in order	%d/%d superados · los niveles se abren en orden
+%d/21 levels cleared	%d/21 niveles superados
+%ld d ago	hace %ld d
+%s every call is compared to the real printf, byte by byte	%s cada llamada se compara con el printf real, byte a byte
+%s · +300 XP  +150 ◈  ·  7 levels unlocked	%s · +300 XP  +150 ◈  ·  7 niveles desbloqueados
+%s · level %d · %ld XP · %ld ◈	%s · nivel %d · %ld XP · %ld ◈
+%s · libft %s	%s · libft %s
+(Enter: pick an image)	(Intro: elegir una imagen)
+(beaten)	(vencido)
+(empty)	(vacío)
+(no banner)	(sin banner)
+(no bio)	(sin bio)
+(not beaten yet)	(aún no vencido)
+(picture)	(imagen)
+(the culprit may also be one of your functions it calls)	(el culpable también puede ser una de tus funciones que llama)
++ / -: jump 20   r: random title	+ / -: saltar 20   r: título al azar
++ line and advice	+ línea y consejo
++ your code line	+ tu línea de código
+1. Press t: the tester writes your trace in your home folder.	1. Pulsa t: el tester escribe tu traza en tu carpeta personal.
+2. Send it as a direct message to @splatch_afk (42 Next server).	2. Envíala por mensaje privado a @splatch_afk (servidor 42 Next).
+20 items owned	20 objetos poseídos
+21 levels made for the crazy tester	21 niveles hechos para el testeur des fous
+24-bit (millions)	24 bits (millones)
+24-bit colors	Colores de 24 bits
+3 rooms · 3 guardians · free Moulinette	3 salas · 3 guardianes · Moulinette liberada
+3. Add anything: advice, suggestions, ideas, everything is welcome.	3. Añade lo que quieras: consejos, sugerencias, ideas, todo es bienvenido.
+42 login: romasant	Login 42: romasant
+43 out of 43	43 de 43
+43/43 locally and the 3 bosses beaten	43/43 en local y los 3 jefes vencidos
+50 runs	50 runs
+9 chains · 1 big boss · free Moulinette	9 cadenas · 1 gran jefe · Moulinette liberada
+A PNG or JPG file, e.g. ~/Pictures/me.png	Un archivo PNG o JPG, p. ej. ~/Imágenes/yo.png
+A README that follows the subject.	Un README que sigue el subject.
+A boss falls when every	Un jefe cae cuando cada
+A file path, for example ~/my_save.txt	Una ruta de archivo, por ejemplo ~/mi_save.txt
+A free targets a block already freed, never allocated, or a string literal. Look for double frees and frees of arguments.	Un free apunta a un bloque ya liberado, nunca asignado, o a una cadena literal. Busca dobles free y free de argumentos.
+A hand-edited file, or one from another login, is refused.	Un archivo editado a mano, o de otro login, se rechaza.
+A run between midnight and 5 am.	Un run entre medianoche y las 5.
+A run without any warning.	Un run sin ningún aviso.
+A sentence that sounds like you.	Una frase que suene a ti.
+ACHIEVEMENT UNLOCKED  +50 ◈	LOGRO DESBLOQUEADO  +50 ◈
+ACHIEVEMENTS	LOGROS
+ACTIVITY	ACTIVIDAD
+ASan · UBSan · LeakSanitizer · malloc failures	ASan · UBSan · LeakSanitizer · fallos de malloc
+AUDIT · WHAT THE MOULINETTE CHECKS	AUDITORÍA · LO QUE REVISA LA MOULINETTE
+Absolute	Absoluto
+Achievements: %d · Badges: %d/%d	Logros: %d · Insignias: %d/%d
+Active days: %d · streak: %d d	Días activos: %d · racha: %d d
+Address found	Dirección encontrada
+All 43 functions pass.	Las 43 funciones pasan.
+All of them! Well done.	¡Todos! Bien hecho.
+Allocated blocks are never freed. Check the error paths and the intermediate results.	Bloques asignados que nunca se liberan. Revisa las rutas de error y los resultados intermedios.
+Allowed: malloc, free, write, your libft. Norm REQUIRED.	Permitido: malloc, free, write, tu libft. Norma OBLIGATORIA.
+Allowed: write, malloc, free, va_*. Norm REQUIRED. No solution is given.	Permitido: write, malloc, free, va_*. Norma OBLIGATORIA. No se da ninguna solución.
+Animations	Animaciones
+Animations: turn them back on in Settings.	Animaciones: vuelve a activarlas en Ajustes.
+Armor	Armadura
+Aura	Aura
+Avatar (wardrobe)|Equip the items you own and pick their colours.	Avatar (vestuario)|Equipa los objetos que posees y elige sus colores.
+B A D G E S	I N S I G N I A S
+B A N N E R   A N D   P I C T U R E	B A N N E R   E   I M A G E N
+B O S S E S   A N D   C U T S C E N E S	J E F E S   Y   C I N E M Á T I C A S
+BEATEN	VENCIDO
+BIG BOSS ft_printf	GRAN JEFE ft_printf
+BOSS DEFEATED	JEFE DERROTADO
+BUILD	COMPIL
+Back	Volver
+Background	Fondo
+Badges and 42 Next holygraph|Your badges and the Common Core projects, with what is missing.	Insignias y holygraph 42 Next|Tus insignias y los proyectos del Common Core, con lo que falta.
+Baguette	Baguette
+Banner and picture	Banner e imagen
+Beat a DLC boss.	Vence a un jefe del DLC.
+Beat ft_printf on your first run.	Vence a ft_printf en tu primer run.
+Beat ft_printf.	Vence a ft_printf.
+Beat the 6 DLC bosses.	Vence a los 6 jefes del DLC.
+Beat the Memory Warden.	Vence al Guardián de la Memoria.
+Beat the String Alchemist.	Vence al Alquimista de las Cadenas.
+Beat the t_list Hydra.	Vence a la Hidra t_list.
+Beating it unlocks 7	Vencerlo desbloquea 7
+Best passing time: %ld h %02ld min	Mejor tiempo aprobado: %ld h %02ld min
+Best passing time: -	Mejor tiempo aprobado: -
+Best score: %d/100	Mejor nota: %d/100
+Bio	Bio
+Bonus: edge cases and failing write	Bonus: casos límite y write que falla
+Book of the Norm	Libro de la Norma
+Bosses and cutscenes|Replay the fights and cutscenes you unlocked.	Jefes y cinemáticas|Vuelve a ver los combates y cinemáticas desbloqueados.
+Bosses beaten	Jefes vencidos
+Break a first chain.	Rompe una primera cadena.
+Break all 9 chains.	Rompe las 9 cadenas.
+Break the %% chain.	Rompe la cadena %%.
+Break the %d and %i chains.	Rompe las cadenas %d y %i.
+Break the %p chain.	Rompe la cadena %p.
+Break the %x and %X chains.	Rompe las cadenas %x y %X.
+Broccoli	Brócoli
+Buffer	Buffer
+Bug	Bug
+But she had barely left the tower when someone was waiting…	Pero apenas había salido de la torre cuando alguien la esperaba…
+Byte	Byte
+C EXAM	EXAMEN C
+C exam|The rank 02 exam on the command line, like the real one: grademe, 4 levels, 3 h.	Examen en C|El examen del rango 02 en línea de comandos, como el real: grademe, 4 niveles, 3 h.
+CANCELLED	CANCELADO
+CONNECTED	CONECTADO
+CONVERSIONS (chains broken)	CONVERSIONES (cadenas rotas)
+COPY FAILED	COPIA FALLIDA
+CRASH	CRASH
+Cactus	Cactus
+Cape	Capa
+Chainmail	Cota de malla
+Cheats used: %d	Trucos usados: %d
+Check every malloc. If one fails: free everything already allocated (e.g. the previous words of a split) and return NULL.	Comprueba cada malloc. Si uno falla: libera todo lo ya asignado (p. ej. las palabras anteriores de un split) y devuelve NULL.
+City crow	Cuervo de la Ciudad
+Clean ft_memmove.	ft_memmove limpia.
+Clear 14 training levels.	Supera 14 niveles de entrenamiento.
+Clear 7 training levels.	Supera 7 niveles de entrenamiento.
+Clear all 21 training levels.	Supera los 21 niveles de entrenamiento.
+Close the tester. Your progress is already saved.	Cierra el tester. Tu progreso ya está guardado.
+Code written by vibe-coding, with an AI	Código escrito en vibe-coding, con una IA
+Collector	Coleccionista
+Color themes	Temas de color
+Colors	Colores
+Colors: run with COLORTERM=truecolor if your terminal supports it.	Colores: lanza con COLORTERM=truecolor si tu terminal lo admite.
+Common Core · 7 modules · %d/%d validated with the testeurs des fous	Common Core · 7 módulos · %d/%d validados con los testeurs des fous
+Compare s1 and s2 ignoring case, same sign as strcasecmp(3).	Compara s1 y s2 sin distinguir mayúsculas, mismo signo que strcasecmp(3).
+Compare the \"expected\" line with what your function returns on this exact case, then replay it alone with the command below.	Compara la línea \"esperado\" con lo que devuelve tu función en este caso exacto, y luego vuelve a lanzarlo solo con el comando de abajo.
+Compiler	Compilador
+Connected	Conectado
+Convert str written in base to int. Invalid base returns 0.	Convierte str escrita en base a int. Base inválida devuelve 0.
+Count the conversions in fmt ("%%" counts as one). A lone '%' at the end does not count. Never read past the '\0'.	Cuenta las conversiones de fmt ("%%" cuenta como una). Un '%' solo al final no cuenta. Nunca leas más allá del '\0'.
+Crash a scene, then restart.	Haz crashear una escena y vuelve a lanzar.
+Crazy apprentice	Aprendiz loco
+Crazy companion	Compañero loco
+Crazy master	Maestro loco
+Created and vibe-coded by Splatch	Creado y vibe-codeado por Splatch
+Created and vibe-coded by Splatch  (login: romasant)	Creado y vibe-codeado por Splatch  (login: romasant)
+Created and vibe-coded by Splatch (romasant)	Creado y vibe-codeado por Splatch (romasant)
+Credits	Créditos
+D E P L O Y M E N T	D E S P L I E G U E
+D E T A I L E D   R E S U L T S	R E S U L T A D O S   D E T A L L A D O S
+D L C	D L C
+D L C  ·  T R A I N I N G	D L C  ·  E N T R E N A M I E N T O
+DETAILS · ft_%s	DETALLE · ft_%s
+DLC master	Maestro del DLC
+DLC · FLAGS	DLC · FLAGS
+DLC · flags and training|The bonus flags (- 0 . # + space) and 16 training levels.	DLC · flags y entrenamiento|Los flags bonus (- 0 . # + espacio) y 16 niveles de entrenamiento.
+Dedicated	Constante
+Deep copy a NULL-terminated array of strings. Free everything if a malloc fails.	Copia profunda de un array de cadenas terminado en NULL. Libera todo si un malloc falla.
+Dented helm	Yelmo abollado
+Detailed results|Every function or category, with the failing case and a hint.	Resultados detallados|Cada función o categoría, con el caso que falla y una pista.
+Discord · the fous server	Discord · el servidor de los fous
+Do 10 runs.	Haz 10 runs.
+Do 30 runs.	Haz 30 runs.
+Do you want the story (cutscenes and lore)?	¿Quieres la historia (cinemáticas y lore)?
+Dragon	Dragón
+Dress your knight, the shop, your profile and achievements.	Viste a tu caballero, la tienda, tu perfil y tus logros.
+Duck	Pato
+Duplicate at most n characters of s. NULL if malloc fails.	Duplica como mucho n caracteres de s. NULL si malloc falla.
+EQUIPPED	EQUIPADO
+EXCLUSIVE	EXCLUSIVO
+EXERCISES SOLVED AT LEAST ONCE	EJERCICIOS RESUELTOS AL MENOS UNA VEZ
+Earthworm	Lombriz
+Edge sword	Espada de filo
+Ember feather	Pluma de brasa
+Ember glow	Brillo de brasa
+Embers	Brasas
+Enter or Esc: back to the map	Intro o Esc: volver al mapa
+Enter: confirm   Esc: cancel	Intro: confirmar   Esc: cancelar
+Enter: details   r: fixed? run the tests again   Esc: menu	Intro: detalle   r: ¿corregido? volver a probar   Esc: menú
+Enter: open the level	Intro: abrir el nivel
+Equip a printf item.	Equipa un objeto de printf.
+Equip an item in every slot.	Equipa un objeto en cada ranura.
+Equip the Moulinette pet.	Equipa la mascota Moulinette.
+Erase everything? XP, Octets, items, bosses, training...	¿Borrarlo todo? XP, Octets, objetos, jefes, entrenamiento...
+Esc: back   (showcase: Profile, key e)	Esc: volver   (vitrina: Perfil, tecla e)
+Exam · a room without help, three hours, four doors.	Examen · una sala sin ayuda, tres horas, cuatro puertas.
+Exams passed (100/100): %d	Exámenes aprobados (100/100): %d
+Exams taken: %d	Exámenes hechos: %d
+Exercise bank|All 94 exercises of the tester (exam, Libft, printf): search, open, grademe.	Banco de ejercicios|Los 94 ejercicios del tester (examen, Libft, printf): busca, abre, grademe.
+Export my save	Exportar mi save
+Eyes	Ojos
+FAIL	FALLO
+FAILED	FALLIDO
+FUNCTIONS CLEARED (at least once)	FUNCIONES SUPERADAS (al menos una vez)
+Failing malloc	Malloc que falla
+Fashion victim	Víctima de la moda
+Find the LAST byte c (as unsigned char) in the first n bytes of s, or NULL.	Busca el ÚLTIMO byte c (como unsigned char) en los n primeros bytes de s, o NULL.
+First blood	Primera sangre
+First flag	Primer flag
+First link	Primer eslabón
+First time here. Just one question before we start:	Primera vez aquí. Una sola pregunta antes de empezar:
+First try	A la primera
+Flag world · 6 bosses (- 0 width . # +)	Mundo de los flags · 6 jefes (- 0 ancho . # +)
+For 42 Next students	Para estudiantes de 42 Next
+For 42 Next students · Paris and other campuses	Para estudiantes de 42 Next · París y otros campus
+For example ~/testeur_des_fous_save.txt	Por ejemplo ~/testeur_des_fous_save.txt
+Forbidden functions	Funciones prohibidas
+Forge hammer	Martillo de forja
+Format cloak	Manto de formatos
+Format companion	Compañero de formatos
+Format master	Maestro de formatos
+Format night owl	Noctámbulo de formatos
+Foundry armour	Armadura de la Fundición
+Foundry ember	Brasa de la Fundición
+Freed	Liberado
+Fridge	Nevera
+Full DLC	DLC completo
+Full audit without errors.	Auditoría completa sin errores.
+Full stylist	Estilista total
+Furious	Furioso
+Gambeson	Gambesón
+Ghost	Fantasma
+Gnome	Gnomo
+Goblin	Goblin
+Gold thread scarf	Bufanda de hilo de oro
+Golden holygraph	Holygraph dorado
+Graphics deployment	Despliegue gráfico
+Greaves	Grebas
+Grey lines unlock as you progress.	Las líneas grises se desbloquean a medida que avanzas.
+H E L P   U S	A Y Ú D A N O S
+H O L Y G R A P H   ·   4 2   N E X T	H O L Y G R A P H   ·   4 2   N E X T
+HINT	PISTA
+HISTORY · latest runs	HISTORIAL · últimos runs
+Hamster	Hámster
+Have 1000 Octets.	Ten 1000 Octets.
+Hedgehog	Erizo
+Helmet	Casco
+Helmet decoration	Adorno de casco
+Help level	Nivel de ayuda
+Help us|Create a trace (no code, no login) to send to splatch_afk.	Ayúdanos|Crea una traza (sin código, sin login) para enviar a splatch_afk.
+Help, bugs, ideas: join us	Ayuda, bugs, ideas: únete
+Helper	Ayudante
+Hexadecimal	Hexadecimal
+History	Historial
+Hold on, Moulinette.\nHere I come with my libft!	Aguanta, Moulinette.\n¡Ahí voy con mi libft!
+Hot chocolate	Chocolate caliente
+How	Cómo
+I am the format. I check EVERYTHING:\nleaks, Norm, Makefile, README…	Soy el formato. Lo reviso TODO:\nleaks, Norma, Makefile, README…
+IMAGE ADDED	IMAGEN AÑADIDA
+IMAGE REFUSED	IMAGEN RECHAZADA
+INT_MIN tamed	INT_MIN domado
+Image rendering	Renderizado de imágenes
+Images: no window and no terminal images here, fine cells take over.	Imágenes: aquí no hay ventana ni imágenes en terminal, las celdas finas toman el relevo.
+In the scene, ft_%s handles %s.	En la escena, ft_%s se encarga de %s.
+Infinite loop: check the stop condition (the '\\0', a counter that advances).	Bucle infinito: revisa la condición de parada (el '\\0', un contador que avanza).
+Install the libft tester first to get the full lore:	Instala primero el tester de la libft para tener todo el lore:
+Intro · the Norminette Machine	Intro · la Máquina de la Norminette
+It only breaks them.	Solo las rompe.
+Items: %d · Titles: %d	Objetos: %d · Títulos: %d
+KNIGHT	CABALLERO
+Kebab	Kebab
+Kept your save.txt? Load it to log in.	¿Guardaste tu save.txt? Cárgalo para conectarte.
+Keyboard	Teclado
+Keys	Teclas
+Knight	Caballero
+L I B F T   V A L I D A T E D	L I B F T   V A L I D A D A
+L O G   I N	C O N E X I Ó N
+LEAK	LEAK
+LEVEL %-4d %33ld XP	NIVEL %-4d %33ld XP
+LEVEL %02d · %s	NIVEL %02d · %s
+LEVEL %d	NIVEL %d
+LEVEL CLEARED	NIVEL SUPERADO
+LOCKED	BLOQUEADO
+LOGGED IN TO THE LIBFT TESTER	CONECTADO AL TESTER DE LA LIBFT
+LOOP	BUCLE
+LORE	LORE
+Language	Idioma
+Last visit: %d / %d%s	Última visita: %d / %d%s
+Left hand	Mano izquierda
+Legendary	Legendario
+Legs	Piernas
+Length of the initial segment of s made only of characters from accept, like strspn(3).	Longitud del segmento inicial de s hecho solo de caracteres de accept, como strspn(3).
+Level %d	Nivel %d
+Level %d · %ld XP · %ld Octets	Nivel %d · %ld XP · %ld Octets
+Libft Veteran	Veterano de la Libft
+Libft and Printf validated.	Libft y Printf validadas.
+Libft edition	Edición Libft
+Libft validated	Libft validada
+Libft veteran	Veterano de la Libft
+Libft · 43 windows, three wardens. Moulinette was caged there.	Libft · 43 ventanas, tres guardianes. Moulinette estaba enjaulada allí.
+Libft · bosses	Libft · jefes
+Libft · created and vibe-coded by Splatch	Libft · creado y vibe-codeado por Splatch
+Libft · functions	Libft · funciones
+Libft · training	Libft · entrenamiento
+Like dprintf with only %c, %s and %d: writes to fd. Return the number of bytes written, -1 if write fails.	Como dprintf con solo %c, %s y %d: escribe en fd. Devuelve el número de bytes escritos, -1 si write falla.
+Like ft_split, but splits on any character of set.	Como ft_split, pero corta en cualquier carácter de set.
+Like printf with only %d, %s and %%, but takes an already started va_list (like vprintf). Return the number of bytes written.	Como printf con solo %d, %s y %%, pero recibe un va_list ya iniciado (como vprintf). Devuelve el número de bytes escritos.
+Little cog	Engranaje pequeño
+Llama	Llama
+Load a save file (log in)	Cargar un save (conectarse)
+Locked: beat %s first (every function of part %d clean).	Bloqueado: vence antes a %s (todas las funciones de la parte %d limpias).
+Locked: clear level %02d first.	Bloqueado: supera antes el nivel %02d.
+Log in with a validated libft.	Conéctate con una libft validada.
+Logged in: %s · level %d · %ld ◈	Conectado: %s · nivel %d · %ld ◈
+Longest streak: %d d · tracked runs: %d	Racha más larga: %d d · runs registrados: %d
+Lore	Lore
+Lore and ideas: Splatch (romasant)	Lore e ideas: Splatch (romasant)
+M E O W  !	¡ M I A U  !
+M Y   P R O F I L E	M I   P E R F I L
+MAKE YOUR TERMINAL BIGGER	AGRANDA TU TERMINAL
+MINI-BOSSES	MINIJEFES
+MISSING	AUSENTE
+MIT licence · nothing is sent, updates only if you agree	Licencia MIT · no se envía nada, actualizaciones solo si aceptas
+Macro	Macro
+Makefile, header and README	Makefile, header y README
+Malloc	Malloc
+Map of the City|Every place of the lore, lit by your progress. Enter to go closer.	Mapa de la Ciudad|Todos los lugares del lore, iluminados según tu progreso. Intro para acercarte.
+Marathoner	Maratonista
+Marvin strikes all 9 chains at once…	Marvin golpea las 9 cadenas a la vez…
+Marvin! You came!	¡Marvin! ¡Has venido!
+Max time per test	Tiempo máximo por prueba
+Menu crashes avoided: %d	Crashes de menú evitados: %d
+Meow! Help!	¡Miau! ¡Socorro!
+Meow?!	¡¿Miau?!
+Meow… (Marvin, hurry!)	Miau… (¡Marvin, rápido!)
+Mist	Niebla
+Mist cloak	Manto de niebla
+Mixes and return value	Mezclas y valor de retorno
+Model README	README modelo
+Mossy stone plate	Placa de piedra musgosa
+Moulinette	Moulinette
+Moulinette audit	Auditoría moulinette
+Moulinette fan	Fan de Moulinette
+Moulinette is free!	¡Moulinette es libre!
+Moulinette is free. Thank you, Marvin!	Moulinette es libre. ¡Gracias, Marvin!
+Moulinette is mine.\nEach chain is one of my conversions.	Moulinette es mía.\nCada cadena es una de mis conversiones.
+Mushroom	Seta
+My stats|Your progress, what fails most, your history. ◀ ▶ to change page.	Mis estadísticas|Tu progreso, lo que más falla, tu historial. ◀ ▶ para cambiar de página.
+NEW BADGE	NUEVA INSIGNIA
+NOT CLEARED YET	AÚN NO SUPERADO
+NOT YET	TODAVÍA NO
+NOT YET · %s	TODAVÍA NO · %s
+NOTE	NOTA
+Name color	Color del nombre
+Nickname	Apodo
+Night over the Tower	Noche sobre la Torre
+Night owl	Noctámbulo
+Nine chains	Nueve cadenas
+Nine chains, nine conversions.\nLet's begin.	Nueve cadenas, nueve conversiones.\nEmpecemos.
+No details for this function.	No hay detalle para esta función.
+No failure recorded.	Ningún fallo registrado.
+No leak in the 43 functions.	Ningún leak en las 43 funciones.
+No libft tester save was found. You can start right away: every test and every fight is here.	No se encontró ningún save del tester de la libft. Puedes empezar ya: todas las pruebas y todos los combates están aquí.
+No results: run \"Run the tests again\" (key r).	Sin resultados: lanza \"Volver a probar\" (tecla r).
+No testeur des fous for this project yet.	Aún no hay testeur des fous para este proyecto.
+No: straight to the point, no cutscenes	No: directo al grano, sin cinemáticas
+Nobody will free her.\nHer tests are ours!	Nadie la liberará.\n¡Sus pruebas son nuestras!
+None	Ninguno
+None of your libft functions were written by this tester.	Ninguna de tus funciones libft fue escrita por este tester.
+Norminette	Norminette
+Norminette without errors.	Norminette sin errores.
+Nothing here yet. Visit the shop!	Aún no hay nada. ¡Visita la tienda!
+Nothing to report: every check passes.	Nada que señalar: todas las comprobaciones pasan.
+Nothing to report: everything matches the real printf.	Nada que señalar: todo coincide con el printf real.
+Nothing yet: run some tests.	Aún nada: lanza algunas pruebas.
+OK	OK
+OTHER LOGIN: REFUSED	OTRO LOGIN: RECHAZADO
+Oak shield	Escudo de roble
+Octets for broken chains	Octets por cadenas rotas
+Octets for first wins	Octets por primeras victorias
+Octets: ft_printf beaten	Octets: ft_printf vencido
+Octopus	Pulpo
+Overall progress	Progreso global
+Overlap master	Maestro del solapamiento
+Own 10 items.	Ten 10 objetos.
+Own 2000 Octets.	Ten 2000 Octets.
+Own 25 titles.	Ten 25 títulos.
+P R I N T F   V A L I D A T E D	P R I N T F   V A L I D A D O
+P R O F I L E	P E R F I L
+PART %d · guarded by %s %s	PARTE %d · custodiada por %s %s
+PART 1 · LIBC	PARTE 1 · LIBC
+PART 2 · ADDITIONAL	PARTE 2 · ADICIONALES
+PART 3 · LINKED LIST	PARTE 3 · LISTA ENLAZADA
+PASSED	APROBADO
+PASSED · %d checks · %s	APROBADO · %d pruebas · %s
+PROGRESS	PROGRESO
+Paris and other campuses	París y otros campus
+Pass 4 training levels.	Supera 4 niveles de entrenamiento.
+Pass 8 training levels.	Supera 8 niveles de entrenamiento.
+Pass all 16 training levels.	Supera los 16 niveles de entrenamiento.
+Path of your banner	Ruta de tu banner
+Path of your picture	Ruta de tu imagen
+Path of your save	Ruta de tu save
+Penguin	Pingüino
+Percent helm	Yelmo del porcentaje
+Perfect percent	Porcentaje perfecto
+Perfect prototypes	Prototipos perfectos
+Pet	Mascota
+Pick a banner (PNG or JPG)	Elige un banner (PNG o JPG)
+Pick a profile picture (PNG or JPG)	Elige una foto de perfil (PNG o JPG)
+Pickle	Pepinillo
+Pigeon	Paloma
+Pixel	Píxel
+Pixel art drawn with Python and Pillow	Pixel art dibujado con Python y Pillow
+Pointer	Puntero
+Preview: not equipped yet (Enter)	Vista previa: aún no equipado (Intro)
+Previously, in the Libft	Anteriormente, en la Libft
+Previously, in the Libft…	Anteriormente, en la Libft…
+Printf validated	Printf validado
+Profile and achievements|Banner, picture, bio and all your achievements.	Perfil y logros|Banner, imagen, bio y todos tus logros.
+Purr… look, Marvin: the three guardians\nas plushies!	Rrrr… mira, Marvin: ¡los tres guardianes\nen peluche!
+Purr… thank you, Marvin.	Rrrr… gracias, Marvin.
+Quantum	Cuántico
+Quit	Salir
+R E W A R D S	R E C O M P E N S A S
+R O O M   %d	S A L A   %d
+RESULTS  %d/%d  ·  estimated moulinette grade: %s	RESULTADOS  %d/%d  ·  nota moulinette estimada: %s
+Raccoon	Mapache
+Read the n integers twice with va_copy: return (sum of the n integers) times (number of even integers).	Lee los n enteros dos veces con va_copy: devuelve (suma de los n enteros) por (número de enteros pares).
+Really? This is final.	¿De verdad? Es definitivo.
+Recent success: %d %%	Éxito reciente: %d %%
+Recent success: %d %%  %s %+d	Éxito reciente: %d %%  %s %+d
+Recent success: -	Éxito reciente: -
+Remove every node where cmp(content, ref) == 0 (del then free).	Quita cada nodo donde cmp(content, ref) == 0 (del y luego free).
+Remove the banner	Quitar el banner
+Remove the picture	Quitar la imagen
+Replace every occurrence of old by new, left to right, in a new string.	Sustituye cada aparición de old por new, de izquierda a derecha, en una cadena nueva.
+Replace your progress (level %d) with the file's (level %d)?	¿Sustituir tu progreso (nivel %d) por el del archivo (nivel %d)?
+Replay the bosses and cutscenes you unlocked.	Vuelve a ver los jefes y cinemáticas desbloqueados.
+Rerun under valgrind	Relanzar con valgrind
+Reset the save	Reiniciar el save
+Return 1 if c is a conversion from the subject (cspdiuxX%), 0 otherwise.	Devuelve 1 si c es una conversión del subject (cspdiuxX%), 0 si no.
+Return a NULL-terminated array of the content pointers, in order.	Devuelve un array terminado en NULL de los punteros content, en orden.
+Return a new string (malloc of the exact size) joining the n strings after n. NULL if malloc fails.	Devuelve una cadena nueva (malloc del tamaño exacto) que une las n cadenas después de n. NULL si malloc falla.
+Return n written in base, in a string allocated to the exact size. NULL if malloc fails.	Devuelve n escrito en base, en una cadena asignada al tamaño exacto. NULL si malloc falla.
+Return the first node where cmp(content, ref) == 0, else NULL.	Devuelve el primer nodo donde cmp(content, ref) == 0, si no NULL.
+Return the largest of the n integers after n (n >= 1).	Devuelve el mayor de los n enteros después de n (n >= 1).
+Return the node at index (0 is the first), or NULL.	Devuelve el nodo en index (0 es el primero), o NULL.
+Return the number of bits set to 1 in n.	Devuelve el número de bits a 1 en n.
+Return the sum of the n integers after n. Use va_start, va_arg and va_end.	Devuelve la suma de los n enteros después de n. Usa va_start, va_arg y va_end.
+Reverse s in place (no malloc) and return s.	Invierte s en el sitio (sin malloc) y devuelve s.
+Reverse the list in place, reusing the nodes.	Invierte la lista en el sitio, reutilizando los nodos.
+Rich	Rico
+Rich in Octets	Rico en Octets
+Robot	Robot
+Rotate the list by n (negative goes backwards, n may exceed the size or be INT_MIN).	Rota la lista n posiciones (negativo va hacia atrás, n puede superar el tamaño o valer INT_MIN).
+Run Octets	Octets del run
+Run Octets (1 per clean function)	Octets del run (1 por función limpia)
+Run XP	XP del run
+Run XP (2 per clean function)	XP del run (2 por función limpia)
+Run the tester 10 times.	Lanza el tester 10 veces.
+Run the tester once.	Lanza el tester una vez.
+Run the tests           (r)|Rebuilds your project and tests all of it.	Probar                  (r)|Recompila tu proyecto y lo prueba entero.
+Run your project's tests, see results, training and the exam.	Lanza las pruebas de tu proyecto, mira los resultados, el entrenamiento y el examen.
+Runs: Libft %d · printf %d	Runs: Libft %d · printf %d
+S A V E   A N D   L O G I N	G U A R D A R   Y   C O N E C T A R
+S C A N N I N G   Y O U R   F T _ P R I N T F	A N A L I Z A N D O   T U   F T _ P R I N T F
+S E T T I N G S	A J U S T E S
+SAVE EDITED	SAVE MODIFICADO
+SAVE EDITED BY HAND	SAVE MODIFICADO A MANO
+SAVE EXPORTED	SAVE EXPORTADO
+SETTINGS	AJUSTES
+STATS	ESTADÍSTICAS
+Save and login|Export your progress or get it back on another computer.	Guardar y conectar|Exporta tu progreso o recupéralo en otro ordenador.
+Screwdriver	Destornillador
+Secret ending	Final secreto
+Secret ending · Libft and Printf validated	Final secreto · Libft y Printf validadas
+See the secret ending.	Ve el final secreto.
+Segfault	Segfault
+Segfault survivor	Superviviente del segfault
+Separate window	Ventana aparte
+Settings	Ajustes
+Settings, save, help us, credits.	Ajustes, save, ayúdanos, créditos.
+Settings|Language, animations, story, help level, test tools.	Ajustes|Idioma, animaciones, historia, nivel de ayuda, herramientas de prueba.
+Shop|Spend your Octets: items, themes, titles. You earn Octets by passing tests.	Tienda|Gasta tus Octets: objetos, temas, títulos. Los Octets se ganan validando.
+Showcase 1	Vitrina 1
+Showcase 2	Vitrina 2
+Showcase 3	Vitrina 3
+Size: make the terminal 120 x 36 or bigger.	Tamaño: pon el terminal en 120 x 36 o más.
+Slit great helm	Gran yelmo de rendija
+Snail	Caracol
+Sock	Calcetín
+Sort a NULL-terminated array in place using cmp. Swap pointers only.	Ordena en el sitio un array terminado en NULL usando cmp. Intercambia solo punteros.
+Sort the list in ascending order according to cmp.	Ordena la lista en orden ascendente según cmp.
+Soul feather	Pluma del alma
+Soul firefly	Luciérnaga del alma
+Soul glow	Brillo del alma
+Soul lantern	Linterna del alma
+Soul spores	Esporas del alma
+Sound (beep)	Sonido (bip)
+Spaghetti	Espaguetis
+Spear	Lanza
+Spotless Norm	Norma impecable
+Stainless	Inoxidable
+Stats	Estadísticas
+Steel Norm	Norma de acero
+Steel greaves	Grebas de acero
+Stool	Taburete
+Story and cutscenes	Historia y cinemáticas
+Stubborn	Tenaz
+Stylist	Estilista
+Summary	Resumen
+Swap the first n bytes of a and b. Works for any type.	Intercambia los n primeros bytes de a y b. Sirve para cualquier tipo.
+Switch to 	Cambiar a
+T H E   B O S S E S	L O S   J E F E S
+T H E   C I T Y	L A   C I U D A D
+T H E   L I B F T   T O W E R	L A   T O R R E   L I B F T
+T H E   N O R M I N E T T E   M A C H I N E	L A   M Á Q U I N A   D E   L A   N O R M I N E T T E
+TEST	PRUEBA
+TESTER UPDATED	TESTER ACTUALIZADO
+TO REPLAY IT ALONE	PARA VOLVER A LANZARLO SOLO
+TRACE CREATED	TRAZA CREADA
+Terminal	Terminal
+Terminal images	Imágenes en terminal
+Terminal size	Tamaño del terminal
+Test                    (r)	Probar                  (r)
+Test engine	Motor de pruebas
+Test engine: Splatch (printf tester beta)	Motor de pruebas: Splatch (beta del tester de printf)
+Test settings (time, sanitizers, valgrind, audit)	Ajustes de prueba (tiempo, sanitizers, valgrind, auditoría)
+Thank you Marvin! Watch out… here he comes!	¡Gracias, Marvin! Cuidado… ¡ahí viene!
+Thanks for testing!	¡Gracias por probar!
+Thanks to Moulinette, a free grey cat.	Gracias a Moulinette, una gata gris libre.
+That file already exists. Overwrite it?	Ese archivo ya existe. ¿Sobrescribirlo?
+The 43 prototypes match the subject.	Los 43 prototipos coinciden con el subject.
+The 9 chains (your last run)	Las 9 cadenas (tu último run)
+The Alchemist dissolved	El Alquimista disuelto
+The City	La Ciudad
+The Devourer: 10,000 calls	El Devorador: 10 000 llamadas
+The Foundry	La Fundición
+The Foundry of Formats	La Fundición de los Formatos
+The Hydra drained	La Hidra agotada
+The Link Hydra	La Hidra de los Eslabones
+The Memory Warden	El Guardián de la Memoria
+The Norm	La Norma
+The Norm stays required in training.	La Norma sigue siendo obligatoria en el entrenamiento.
+The Tower of Foundations	La Torre de los Cimientos
+The Trial of Silence	La Prueba del Silencio
+The Two Stacks	Las Dos Pilas
+The Warden fell	El Guardián cayó
+The Weaver	El Tejedor
+The Well	El Pozo
+The crazy tester is reading your code...	El testeur des fous lee tu código...
+The end · at the very bottom, under the Well.	El final · muy abajo, bajo el Pozo.
+The file does not compile with -Wall -Wextra -Werror: fix the error shown above.	El archivo no compila con -Wall -Wextra -Werror: corrige el error de arriba.
+The flag runes awaken…	Las runas de los flags despiertan…
+The flag world is yours!	¡El mundo de los flags es tuyo!
+The flag world tests what subject v1.1 does not ask for (flags, width, precision), against the real printf. It opens after ft_printf, or right away for Libft Veterans. Training covers the project's notions and the ones the subject does not show.	El mundo de los flags prueba lo que el subject v1.1 no pide (flags, ancho, precisión), contra el printf real. Se abre tras ft_printf, o enseguida para los Veteranos de la Libft. El entrenamiento cubre las nociones del proyecto y las que el subject no muestra.
+The full audit runs once the 43 functions are clean.	La auditoría completa se lanza cuando las 43 funciones están limpias.
+The image is turned into pixel art and stored in your save: it follows the export.	La imagen se convierte en pixel art y se guarda en tu save: sigue a la exportación.
+The last mechanism	El último mecanismo
+The moulinette smiles	La moulinette sonríe
+The path of your copied save.txt (for example ~/my_save.txt)	La ruta de tu save.txt copiado (por ejemplo ~/mi_save.txt)
+The red chains hold: see Detailed results to know why.	Las cadenas rojas resisten: mira Resultados detallados para saber por qué.
+The scene crashed in ft_%s  (signal %d)	La escena crasheó en ft_%s  (señal %d)
+The scene froze for 3 s: infinite loop in ft_%s?	La escena se congeló 3 s: ¿bucle infinito en ft_%s?
+The tester saw: %.90s	El tester vio: %.90s
+The testeur des fous gets better thanks to you. Whether your tests pass or not, your trace helps find false positives, missing cases and tester bugs.	El testeur des fous mejora gracias a ti. Pasen o no tus pruebas, tu traza ayuda a encontrar falsos positivos, casos que faltan y bugs del tester.
+The three guardians fell. Moulinette is free.	Los tres guardianes cayeron. Moulinette es libre.
+The trace holds neither your code nor your login: only test results, the tester version and your system. Everything stays offline: nothing is sent without you.	La traza no contiene ni tu código ni tu login: solo resultados de pruebas, la versión del tester y tu sistema. Todo queda sin conexión: nada se envía sin ti.
+Theme (owned ones)	Tema (los que posees)
+This choice applies to every version of the tester. You can change it anytime in Settings. For tests only, no story: bash run.sh --no-lore.	Esta elección vale para todas las versiones del tester. Puedes cambiarla cuando quieras en Ajustes. Solo pruebas, sin historia: bash run.sh --no-lore.
+This place is not open yet.	Este lugar aún no está abierto.
+Tier	Nivel
+Title collector	Coleccionista de títulos
+Titles (1000)	Títulos (1000)
+To keep it elsewhere or on another machine: export it, then load it.	Para guardarlo en otro sitio u otra máquina: expórtalo y luego cárgalo.
+To make Libft more fun.	Para hacer la Libft más divertida.
+Toaster	Tostadora
+Tracked: %s to %s	Registrado: de %s a %s
+Training	Entrenamiento
+Training (21 levels)|New functions, beyond Libft, to train. Unlocked by bosses.	Entrenamiento (21 niveles)|Funciones nuevas, más allá de la Libft, para entrenar. Las desbloquean los jefes.
+Training exercises	Ejercicios de entrenamiento
+Training · 16 levels	Entrenamiento · 16 niveles
+Travel cloak	Capa de viaje
+UB	UB
+UNREADABLE FILE	ARCHIVO ILEGIBLE
+UTF-8 characters	Caracteres UTF-8
+UTF-8: run with LANG=en_US.UTF-8.	UTF-8: lanza con LANG=en_US.UTF-8.
+Undefined behavior: uninitialized variable, integer overflow, NULL pointer or invalid shift. The line is shown above.	Comportamiento indefinido: variable sin inicializar, desbordamiento de entero, puntero NULL o desplazamiento inválido. La línea aparece arriba.
+VETERAN PERKS	VENTAJAS DE VETERANO
+Validated by the \"Libft validated\" badge (no libft/ in your ft_printf, or no run here yet).	Validado por la insignia \"Libft validada\" (sin libft/ en tu ft_printf, o aún sin run aquí).
+Validated in the printf tester.	Validado en el tester de printf.
+Validated: 43/43 locally and the 3 bosses beaten.	Validado: 43/43 en local y los 3 jefes vencidos.
+Validated: \"Libft validated\" badge (43/43 and 3 bosses in the libft tester) and your libft/ passes the quick check here, locally.	Validado: insignia \"Libft validada\" (43/43 y 3 jefes en el tester de la libft) y tu libft/ pasa la comprobación rápida aquí, en local.
+Validated: the 9 chains and ft_printf beaten, locally, this run.	Validado: las 9 cadenas y ft_printf vencido, en local, en este run.
+Variadic apprentice	Aprendiz variádico
+Veteran	Veterano
+Veteran cloak	Capa de veterano
+Veteran helm	Yelmo de veterano
+Victory: hot chocolate	Victoria: chocolate caliente
+WHAT FAILS MOST	LO QUE MÁS FALLA
+WHAT WAS SEEN	LO QUE SE VIO
+WRONG	MAL
+Walking boots	Botas de marcha
+Watcher's hood	Capucha del vigía
+Weapon	Arma
+Weaver's thread	Hilo del Tejedor
+Welcome, %s · level %d	Bienvenido, %s · nivel %d
+Welcome, new lunatic.	Bienvenido, nuevo loco.
+What you still need:	Lo que te falta:
+What you still need: chains %d/9	Lo que te falta: cadenas %d/9
+What you still need: install the printf tester and beat ft_printf.	Lo que te falta: instala el tester de printf y vence a ft_printf.
+What you still need: log in with your libft tester save (Save and login), or install the libft tester.	Lo que te falta: conéctate con tu save del tester de la libft (Guardar y conectar), o instala el tester de la libft.
+What you still need: run \"Run the tests again\" (key r) (proof is made locally).	Lo que te falta: lanza \"Volver a probar\" (tecla r) (la prueba se hace en local).
+What you still need: validate libft in the libft tester (43/43 locally + 3 bosses).	Lo que te falta: valida la libft en el tester de la libft (43/43 en local + 3 jefes).
+What you still need: your libft/ fails the quick check (Detailed results).	Lo que te falta: tu libft/ falla la comprobación rápida (Resultados detallados).
+What you still need: your libft/ must build with the ft_printf Makefile.	Lo que te falta: tu libft/ debe compilar con el Makefile de ft_printf.
+Where to copy your save?	¿Dónde copiar tu save?
+Which save file to load?	¿Qué save cargar?
+White slit	Rendija blanca
+Worn edge cloak	Capa de borde gastado
+Write c to standard output. Return the number of bytes written (1), or -1 if write fails.	Escribe c en la salida estándar. Devuelve el número de bytes escritos (1), o -1 si write falla.
+Write n in base 10 (INT_MIN included, no undefined behavior). Return the number of characters written.	Escribe n en base 10 (INT_MIN incluido, sin comportamiento indefinido). Devuelve el número de caracteres escritos.
+Write n in base into a new string. Handle LONG_MIN. NULL on invalid base.	Escribe n en base en una cadena nueva. Gestiona LONG_MIN. NULL si la base es inválida.
+Write n in base on fd. Invalid base writes nothing. Handle LONG_MIN.	Escribe n en base en fd. Una base inválida no escribe nada. Gestiona LONG_MIN.
+Write n in hexadecimal, uppercase if upper is 1. Return the number of characters written.	Escribe n en hexadecimal, en mayúsculas si upper vale 1. Devuelve el número de caracteres escritos.
+Write n in the given base (base = "0123456789abcdef" for example). Return the number of characters written.	Escribe n en la base dada (base = "0123456789abcdef" por ejemplo). Devuelve el número de caracteres escritos.
+Write s to fd. Return the number of bytes written, or -1 if a write fails (closed fd for example).	Escribe s en fd. Devuelve el número de bytes escritos, o -1 si un write falla (fd cerrado por ejemplo).
+Write s. If s is NULL, write "(null)" like printf on Linux. Return the number of bytes written, -1 if write fails.	Escribe s. Si s es NULL, escribe "(null)" como printf en Linux. Devuelve el número de bytes escritos, -1 si write falla.
+Write the address p like printf's %p on Linux (0x... ; NULL gives "(nil)"). Return the number of characters written.	Escribe la dirección p como el %p de printf en Linux (0x... ; NULL da "(nil)"). Devuelve el número de caracteres escritos.
+XP for chains broken the first time	XP por cadenas rotas por primera vez
+XP for first-time clean functions	XP por funciones limpias por primera vez
+XP: ft_printf beaten for the first time!	XP: ¡ft_printf vencido por primera vez!
+YOUR ATTEMPTS (gradings and exams)	TUS INTENTOS (correcciones y exámenes)
+YOUR LAST 70 RUNS (all modules)	TUS ÚLTIMOS 70 RUNS (todos los módulos)
+YOUR LIBFT RUNS	TUS RUNS DE LIBFT
+YOUR PRINTF RUNS	TUS RUNS DE PRINTF
+Yes: the story, the cutscenes and the fights	Sí: la historia, las cinemáticas y los combates
+Yogurt	Yogur
+You can delete the tester folder: your progress stays here.	Puedes borrar la carpeta del tester: tu progreso se queda aquí.
+You have never been here.	Nunca has estado aquí.
+You read or write outside a block. Check the allocated size, the loop condition and the final '\\0'.	Lees o escribes fuera de un bloque. Revisa el tamaño asignado, la condición del bucle y el '\\0' final.
+Your 42 login (Enter to confirm):	Tu login 42 (Intro para confirmar):
+Your bio (80 characters)	Tu bio (80 caracteres)
+Your file: %s/entrainement/niveau_%02d/%s.c	Tu archivo: %s/entrainement/niveau_%02d/%s.c
+Your function frees memory it did not allocate (one of its arguments). It must only free what it allocated itself.	Tu función libera memoria que no asignó (uno de sus argumentos). Solo debe liberar lo que asignó ella misma.
+Your knight, as equipped	Tu caballero, tal como va equipado
+Your malloc asks for more room than the result uses. Compute the exact result size first (+1 for the '\\0'), then malloc that. Tripouille rejects it too (MKO).	Tu malloc pide más espacio del que usa el resultado. Calcula primero el tamaño exacto del resultado (+1 para el '\\0') y luego haz el malloc. Tripouille también lo rechaza (MKO).
+Your malloc leaves too little room (the final '\\0'?). Recount the size before filling the block.	Tu malloc deja muy poco espacio (¿el '\\0' final?). Vuelve a contar el tamaño antes de rellenar el bloque.
+Your progress, what fails most, your history.	Tu progreso, lo que más falla, tu historial.
+Your save: %s/save.txt (in your home folder, not in the tester folder).	Tu save: %s/save.txt (en tu carpeta personal, no en la carpeta del tester).
+Zero leak	Cero leaks
+Zero leaks	Cero leaks
+Zero warning	Cero avisos
+[ Esc / Enter: back ]	[ Esc / Intro: volver ]
+[ Q / Esc / Ctrl+C: stop the scan ]	[ Q / Esc / Ctrl+C: detener el análisis ]
+[ any key to continue ]	[ cualquier tecla para continuar ]
+[ any key to continue · fights start in 8 s ]	[ cualquier tecla para continuar · los combates empiezan en 8 s ]
+[ e: edit my profile   ·   any other key: back ]	[ e: editar mi perfil   ·   cualquier otra tecla: volver ]
+[ press any key ]	[ pulsa una tecla ]
+[Esc] back	[Esc] volver
+[r] restart with this function quarantined (fallback version)	[r] relanzar con esta función en cuarentena (versión de reserva)
+a full run without a single leak	un run completo sin un solo leak
+a run between midnight and 5 am	un run entre medianoche y las 5
+a save reloaded	un save recargado
+a trace made for "Help us"	una traza hecha para \"Ayúdanos\"
+all 21 DLC levels	los 21 niveles del DLC
+always	siempre
+apple	manzana
+apply to the next \"Run the tests again\".	se aplican en el próximo \"Volver a probar\".
+arrows: pick   Enter: open   Esc: back	flechas: elegir   Intro: abrir   Esc: volver
+arrows: pick   f: details   m: audit   r: fixed? run again   Enter: continue	flechas: elegir   f: detalle   m: auditoría   r: ¿corregido? volver a probar   Intro: continuar
+audit not run	auditoría no lanzada
+beat ft_printf, or log in with a validated libft	vence a ft_printf, o conéctate con una libft validada
+c: load a save.txt   Enter: continue without	c: cargar un save.txt   Intro: continuar sin él
+cape, helmet, Moulinette pet, golden theme, title and +300 ◈	capa, casco, mascota Moulinette, tema dorado, título y +300 ◈
+case	caso
+chains %d/9 · ft_printf %s · train %d/16	cadenas %d/9 · ft_printf %s · entren. %d/16
+check the path and permissions	revisa la ruta y los permisos
+checks	pruebas
+checksum mismatch: refused	checksum incorrecto: rechazado
+compiling and preparing	compilación y preparación
+could not write the trace	no se pudo escribir la traza
+done	terminado
+everything clean on the very first run	todo limpio desde el primer run
+everything is clean	todo está limpio
+exclusive	exclusivo
+fast	rápidas
+fine cells	celdas finas
+for Libft Veterans only (printf tester)	solo para Veteranos de la Libft (tester de printf)
+ft_%s prototype differs from the subject	el prototipo de ft_%s no coincide con el subject
+ft_printf beaten in the printf tester	ft_printf vencido en el tester de printf
+ft_printf holds: fix the red phases (Detailed results).	ft_printf resiste: corrige las fases rojas (Resultados detallados).
+ft_printf is defeated!	¡ft_printf ha sido derrotado!
+ft_printf · created and vibe-coded by Splatch	ft_printf · creado y vibe-codeado por Splatch
+ft_printf · the machine that shapes words. Nine chains.	ft_printf · la máquina que da forma a las palabras. Nueve cadenas.
+ft_printf, the big boss	ft_printf, el gran jefe
+function of its part	función de su parte
+functions OK	funciones OK
+get_next_line · you go down one line at a time.	get_next_line · se baja una línea cada vez.
+get_next_line|Tests your get_next_line with 7 BUFFER_SIZE values, stdin, pipes, read and malloc errors.	get_next_line|Prueba tu get_next_line con 7 valores de BUFFER_SIZE, stdin, pipes, errores de read y de malloc.
+in a Bathrobe	en Albornoz
+keep going to unlock it	sigue para desbloquearlo
+level	nivel
+libft part %d	libft parte %d
+libft validated, then printf launched	libft validada y luego printf lanzado
+lines %d-%d of %d   ▲ ▼ scroll   	líneas %d-%d de %d   ▲ ▼ desplazar
+made of Cardboard	de Cartón
+never	nunca
+no	no
+no display	sin pantalla
+no run yet	aún sin run
+none	ninguna
+none (the case only)	ninguno (solo el caso)
+normal	normales
+norminette not checked	norminette no comprobada
+norminette without a single error	norminette sin un solo error
+not found or not readable	no encontrado o ilegible
+not validated yet	aún no validado
+nothing was copied	no se copió nada
+now:	ahora:
+of Linked Lists	de las Listas Enlazadas
+of Lost Pointers	de los Punteros Perdidos
+of Midnight	de Medianoche
+of Sunday	del Domingo
+of the '\\0'	del '\\0'
+of the 43 Functions	de las 43 Funciones
+of the Heap	del Heap
+of the Holy Segfault	del Santo Segfault
+of the Libc	de la Libc
+of the Makefile	del Makefile
+of the Norm	de la Norma
+of the RAM	de la RAM
+of the Stack	del Stack
+off	no
+older  →  newer  (height: success share)	antiguo  →  reciente  (altura: proporción de éxito)
+on	sí
+on Sale	en Rebajas
+owned   	poseído
+part %d · %s	parte %d · %s
+pass the previous level first	supera antes el nivel anterior
+passes the tester.	pasa el tester.
+printf edition	edición printf
+printf marathon	maratón printf
+printf runs: %s	runs de printf: %s
+printf · chains	printf · cadenas
+printf · flags	printf · flags
+printf · ft_printf	printf · ft_printf
+printf · training	printf · entrenamiento
+prototypes checked	prototipos comprobados
+prototypes...	prototipos...
+push_swap · two stone columns to sort. Later.	push_swap · dos columnas de piedra que ordenar. Más adelante.
+put that project next to the tester, then relaunch	pon ese proyecto junto al tester y vuelve a lanzar
+reset (old copy: save.txt.triche)	reiniciado (copia antigua: save.txt.triche)
+run already rewarded %ld min ago (30 min cooldown)	run ya recompensado hace %ld min (espera de 30 min)
+run already rewarded (30 min cooldown)	run ya recompensado (espera de 30 min)
+runs %d · DLC %d/6 · training %d/16 · libft %s · crashes %d	runs %d · DLC %d/6 · entren. %d/16 · libft %s · crashes %d
+runs %d · bosses %d/3 · training %d/21 · items %d/%d · titles %d/1000 · crashes %d	runs %d · jefes %d/3 · entren. %d/21 · objetos %d/%d · títulos %d/1000 · crashes %d
+t: create my trace   Esc: back	t: crear mi traza   Esc: volver
+t: test my code   Esc: back	t: probar mi código   Esc: volver
+t: test my file   Esc: back	t: probar mi archivo   Esc: volver
+terminal images	imágenes en terminal
+test: %d/43 · boss %d/3 · train %d/21	prueba: %d/43 · jefe %d/3 · entren. %d/21
+text	texto
+the tester resumes by itself  ·  Q: quit	el tester sigue solo  ·  Q: salir
+theme	tema
+this file belongs to %s, you are %s	este archivo es de %s, tú eres %s
+this module comes in a later version	este módulo llegará en una versión posterior
+today	hoy
+topic: %s	noción: %s
+training levels.	niveles de entrenamiento.
+unbeaten	invicto
+v%s  →  v%s   (see CHANGELOG.md)	v%s  →  v%s   (ver CHANGELOG.md)
+validated ✓: the full lore is unlocked	validado ✓: todo el lore está desbloqueado
+warming up...	calentando...
+who Relinks	que Relinkea
+window	ventana
+with a Moustache	con Bigote
+without Leaks	sin Leaks
+world	mundo
+y: yes   n: no	y: sí   n: no
+yes	sí
+yesterday	ayer
+your profile got a new look	tu perfil cambió de aspecto
+|Put that project next to the tester to enable it.	|Pon ese proyecto junto al tester para activarlo.
+|Switch project without leaving the tester.	|Cambia de proyecto sin salir del tester.
+~%lds left	~%lds restantes
+~get_next_line|Put your get_next_line folder next to the tester to enable it.	~get_next_line|Pon tu carpeta get_next_line junto al tester para activarlo.
+~push_swap               (later)	~push_swap               (más tarde)
+· ft_printf not beaten yet	· ft_printf aún no vencido
+▚▚  S C A N N I N G   Y O U R   L I B F T  ▞▞	▚▚  A N A L I Z A N D O   T U   L I B F T  ▞▞
+▲ ▼ module   ◀ ▶ project   b: badges   Esc: back	▲ ▼ módulo   ◀ ▶ proyecto   b: insignias   Esc: volver
+▲ ▼ pick   (run \"Run the tests again\" (key r) to fight)   Esc: back	▲ ▼ elegir   (lanza \"Volver a probar\" (tecla r) para combatir)   Esc: volver
+▲ ▼ pick   Enter: confirm	▲ ▼ elegir   Intro: confirmar
+▲ ▼ pick   Enter: confirm   Esc: back	▲ ▼ elegir   Intro: confirmar   Esc: volver
+▲ ▼ pick   Enter: open   Esc: back	▲ ▼ elegir   Intro: abrir   Esc: volver
+▲ ▼ pick   Enter: open   r: run the tests   Esc: quit	▲ ▼ elegir   Intro: abrir   r: lanzar las pruebas   Esc: salir
+▲ ▼ pick   Enter: replay the fight   Esc: back	▲ ▼ elegir   Intro: repetir el combate   Esc: volver
+▲ ▼ pick   ◀ ▶ change   Enter: edit   Esc: back	▲ ▼ elegir   ◀ ▶ cambiar   Intro: editar   Esc: volver
+▲ ▼ pick   ◀ ▶ change   Esc: back	▲ ▼ elegir   ◀ ▶ cambiar   Esc: volver
+▲ ▼ pick a place   Enter: go closer   Esc: back	▲ ▼ elegir un lugar   Intro: acercarse   Esc: volver
+▲ ▼ scroll   Esc: back   (help: Settings)	▲ ▼ desplazar   Esc: volver   (ayuda: Ajustes)
+◀ ▶ change page   Esc: back	◀ ▶ cambiar de página   Esc: volver
+◀ ▶ change tier   Esc: back	◀ ▶ cambiar de nivel   Esc: volver
+◀ ▶ other failing function   Esc: back	◀ ▶ otra función que falla   Esc: volver
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  Esc: back	◀ ▶ sección  ▲ ▼ objeto  Intro: comprar/equipar  Esc: volver
+◈  T H E   C R A Z Y   S H O P  ◈	◈  L A   T I E N D A   D E   L O S   F O U S  ◈
+◈  W A R D R O B E  ◈	◈  V E S T U A R I O  ◈
+✓ ft_printf beaten	✓ ft_printf vencido

@@ -495,7 +495,7 @@ static const char	*opt_val(int i, char *buf)
 	if (i == 1)
 		return (g_save.cfg.col256 ? "256" : L("24 bits (millions)", "24-bit (millions)"));
 	if (i == 2)
-		return (g_save.cfg.lang ? "English" : "Français");
+		return (langue_nom(g_save.cfg.lang));
 	if (i == 3)
 		return (keys[g_save.cfg.keys]);
 	if (i == 4)
@@ -536,7 +536,7 @@ static void	opt_change(int i, int d)
 	else if (i == 1)
 		g_save.cfg.col256 = !g_save.cfg.col256;
 	else if (i == 2)
-		g_save.cfg.lang = !g_save.cfg.lang;
+		g_save.cfg.lang = (g_save.cfg.lang + NLANG + d) % NLANG;
 	else if (i == 3)
 		g_save.cfg.keys = (g_save.cfg.keys + 3 + d) % 3;
 	else if (i == 4)

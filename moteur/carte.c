@@ -196,6 +196,8 @@ void	tdf_carte(void)
 	const t_pic	*b;
 	unsigned char	*img;
 	char		tmp[200];
+	const char	*nom;
+	int			pad;
 	long		t0;
 	int			k;
 	int			i;
@@ -225,11 +227,13 @@ void	tdf_carte(void)
 			at(x, y);
 			bgc(i == sel ? mix(theme()->bg, theme()->accent, 0.2) : theme()->bg);
 			fg(!p[i].vu ? theme()->dim : (fini(&p[i]) ? rgb(240, 196, 78) : theme()->text));
+			nom = L(g_lieux[i].nom, g_lieux[i].en);
+			pad = 30 - ulen(nom);
 			if (p[i].vu && p[i].total > 0)
-				snprintf(tmp, sizeof(tmp), " %s %-28s %3d %%", i == sel ? "▶" : " ", L(g_lieux[i].nom, g_lieux[i].en),
+				snprintf(tmp, sizeof(tmp), " %s %s%*s%3d %%", i == sel ? "▶" : " ", nom, pad > 0 ? pad : 1, "",
 					p[i].ok * 100 / p[i].total);
 			else
-				snprintf(tmp, sizeof(tmp), " %s %-28s %s", i == sel ? "▶" : " ", L(g_lieux[i].nom, g_lieux[i].en),
+				snprintf(tmp, sizeof(tmp), " %s %s%*s%s", i == sel ? "▶" : " ", nom, pad > 0 ? pad : 1, "",
 					g_lieux[i].module ? "  ·" : L(" fermé", " closed"));
 			out(tmp);
 			bgc(theme()->bg);

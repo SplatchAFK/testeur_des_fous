@@ -1,0 +1,808 @@
+   %d checks  %d.%02ds	   %d проверок  %d.%02ds
+   versus 	   против
+  · done	  · готово
+  ★ Veteran exclusives: cape, helmet, Moulinette pet, golden theme	  ★ Только для ветеранов: плащ, шлем, питомец Мулинетт, золотая тема
+  ★ \"Previously, in the Libft\" and the secret ending	  ★ \"Ранее в Libft\" и тайная концовка
+  ★ the DLC unlocked right away and 300 free Octets	  ★ DLC открыт сразу и 300 Octets в подарок
+  ★ your knight Marvin, items, titles, Octets and XP	  ★ твой рыцарь Марвин, предметы, титулы, Octets и XP
+ %2d/%d tested   %lds   %s         	 %2d/%d проверено   %lds   %s
+ %s is defeated!  (Enter)	 %s повержен!  (Enter)
+ (chosen)	 (выбрано)
+ 43 clean functions locally (%d/43 this run);	 43 чистые функции локально (%d/43 в этом запуске);
+ DISCORD · THE FOUS SERVER 	 DISCORD · СЕРВЕР FOUS
+ Enter: skip   Q / Esc: leave the fights	 Enter: пропустить   Q / Esc: выйти из боёв
+ The boss has %d HP left.  (Enter)	 У босса осталось %d ОЗ.  (Enter)
+ beat the 3 bosses (%d/3).	 победи 3 боссов (%d/3).
+ closed	 закрыто
+ run \"Run the tests again\" (key r) (proof is made locally);	 запусти \"Повторить тесты\" (клавиша r) (доказательство делается локально);
+%-18s %3d failure(s) · mostly %-7s · %s	%-18s %3d сбой(ев) · чаще всего %-7s · %s
+%-7s %-18s %3d failure(s) · %s	%-7s %-18s %3d сбой(ев) · %s
+%d OK · %d KO · %d warnings · mode %s · help %d/2	%d OK · %d KO · %d предупр. · режим %s · помощь %d/2
+%d/%d broken	%d/%d разбито
+%d/%d passed · levels open in order	%d/%d пройдено · уровни открываются по порядку
+%d/21 levels cleared	%d/21 уровней пройдено
+%ld d ago	%ld дн назад
+%s every call is compared to the real printf, byte by byte	%s каждый вызов сравнивается с настоящим printf, байт за байтом
+%s · +300 XP  +150 ◈  ·  7 levels unlocked	%s · +300 XP  +150 ◈  ·  открыто 7 уровней
+%s · level %d · %ld XP · %ld ◈	%s · уровень %d · %ld XP · %ld ◈
+%s · libft %s	%s · libft %s
+(Enter: pick an image)	(Enter: выбрать изображение)
+(beaten)	(побеждён)
+(empty)	(пусто)
+(no banner)	(нет баннера)
+(no bio)	(нет описания)
+(not beaten yet)	(ещё не побеждён)
+(picture)	(изображение)
+(the culprit may also be one of your functions it calls)	(виновником может быть и одна из твоих функций, которую она вызывает)
++ / -: jump 20   r: random title	+ / -: прыжок на 20   r: случайный титул
++ line and advice	+ строка и совет
++ your code line	+ твоя строка кода
+1. Press t: the tester writes your trace in your home folder.	1. Нажми t: тестер запишет твой след в домашнюю папку.
+2. Send it as a direct message to @splatch_afk (42 Next server).	2. Отправь его личным сообщением @splatch_afk (сервер 42 Next).
+20 items owned	20 предметов в наличии
+21 levels made for the crazy tester	21 уровень, сделанный для testeur des fous
+24-bit (millions)	24 бита (миллионы)
+24-bit colors	24-битные цвета
+3 rooms · 3 guardians · free Moulinette	3 зала · 3 стража · Мулинетт на свободе
+3. Add anything: advice, suggestions, ideas, everything is welcome.	3. Добавь что угодно: советы, предложения, идеи, всё приветствуется.
+42 login: romasant	Логин 42: romasant
+43 out of 43	43 из 43
+43/43 locally and the 3 bosses beaten	43/43 локально и 3 босса побеждены
+50 runs	50 запусков
+9 chains · 1 big boss · free Moulinette	9 цепей · 1 главный босс · Мулинетт на свободе
+A PNG or JPG file, e.g. ~/Pictures/me.png	Файл PNG или JPG, напр. ~/Изображения/я.png
+A README that follows the subject.	README по требованиям subject.
+A boss falls when every	Босс падает, когда каждая
+A file path, for example ~/my_save.txt	Путь к файлу, например ~/my_save.txt
+A free targets a block already freed, never allocated, or a string literal. Look for double frees and frees of arguments.	free освобождает блок, уже освобождённый, никогда не выделенный, или строковый литерал. Ищи двойные free и free аргументов.
+A hand-edited file, or one from another login, is refused.	Файл, изменённый вручную или с другого логина, отклоняется.
+A run between midnight and 5 am.	Запуск между полуночью и 5 утра.
+A run without any warning.	Запуск без единого предупреждения.
+A sentence that sounds like you.	Фраза, похожая на тебя.
+ACHIEVEMENT UNLOCKED  +50 ◈	ДОСТИЖЕНИЕ ОТКРЫТО  +50 ◈
+ACHIEVEMENTS	ДОСТИЖЕНИЯ
+ACTIVITY	АКТИВНОСТЬ
+ASan · UBSan · LeakSanitizer · malloc failures	ASan · UBSan · LeakSanitizer · сбои malloc
+AUDIT · WHAT THE MOULINETTE CHECKS	АУДИТ · ЧТО ПРОВЕРЯЕТ МУЛИНЕТТ
+Absolute	Абсолютный
+Achievements: %d · Badges: %d/%d	Достижения: %d · Значки: %d/%d
+Active days: %d · streak: %d d	Активных дней: %d · серия: %d дн
+Address found	Адрес найден
+All 43 functions pass.	Все 43 функции проходят.
+All of them! Well done.	Все! Отлично.
+Allocated blocks are never freed. Check the error paths and the intermediate results.	Выделенные блоки не освобождаются. Проверь пути ошибок и промежуточные результаты.
+Allowed: malloc, free, write, your libft. Norm REQUIRED.	Разрешено: malloc, free, write, твоя libft. Норма ОБЯЗАТЕЛЬНА.
+Allowed: write, malloc, free, va_*. Norm REQUIRED. No solution is given.	Разрешено: write, malloc, free, va_*. Норма ОБЯЗАТЕЛЬНА. Решение не даётся.
+Animations	Анимации
+Animations: turn them back on in Settings.	Анимации: включи их снова в Настройках.
+Armor	Доспех
+Aura	Аура
+Avatar (wardrobe)|Equip the items you own and pick their colours.	Аватар (гардероб)|Надень свои предметы и выбери их цвета.
+B A D G E S	З Н А Ч К И
+B A N N E R   A N D   P I C T U R E	Б А Н Н Е Р   И   И З О Б Р А Ж Е Н И Е
+B O S S E S   A N D   C U T S C E N E S	Б О С С Ы   И   Р О Л И К И
+BEATEN	ПОБЕЖДЁН
+BIG BOSS ft_printf	ГЛАВНЫЙ БОСС ft_printf
+BOSS DEFEATED	БОСС ПОВЕРЖЕН
+BUILD	СБОРКА
+Back	Назад
+Background	Фон
+Badges and 42 Next holygraph|Your badges and the Common Core projects, with what is missing.	Значки и holygraph 42 Next|Твои значки и проекты Common Core, с тем, чего не хватает.
+Baguette	Багет
+Banner and picture	Баннер и изображение
+Beat a DLC boss.	Победи босса DLC.
+Beat ft_printf on your first run.	Победи ft_printf с первого запуска.
+Beat ft_printf.	Победи ft_printf.
+Beat the 6 DLC bosses.	Победи 6 боссов DLC.
+Beat the Memory Warden.	Победи Стража Памяти.
+Beat the String Alchemist.	Победи Алхимика Цепей.
+Beat the t_list Hydra.	Победи Гидру t_list.
+Beating it unlocks 7	Победа открывает 7
+Best passing time: %ld h %02ld min	Лучшее время сдачи: %ld ч %02ld мин
+Best passing time: -	Лучшее время сдачи: -
+Best score: %d/100	Лучший результат: %d/100
+Bio	О себе
+Bonus: edge cases and failing write	Бонус: крайние случаи и сбой write
+Book of the Norm	Книга Нормы
+Bosses and cutscenes|Replay the fights and cutscenes you unlocked.	Боссы и ролики|Пересмотри открытые бои и ролики.
+Bosses beaten	Побеждённые боссы
+Break a first chain.	Разбей первую цепь.
+Break all 9 chains.	Разбей все 9 цепей.
+Break the %% chain.	Разбей цепь %%.
+Break the %d and %i chains.	Разбей цепи %d и %i.
+Break the %p chain.	Разбей цепь %p.
+Break the %x and %X chains.	Разбей цепи %x и %X.
+Broccoli	Брокколи
+Buffer	Буфер
+Bug	Баг
+But she had barely left the tower when someone was waiting…	Но едва она вышла из башни, как её уже кто-то ждал…
+Byte	Байт
+C EXAM	ЭКЗАМЕН C
+C exam|The rank 02 exam on the command line, like the real one: grademe, 4 levels, 3 h.	Экзамен по C|Экзамен ранга 02 в командной строке, как настоящий: grademe, 4 уровня, 3 ч.
+CANCELLED	ОТМЕНЕНО
+CONNECTED	ПОДКЛЮЧЕНО
+CONVERSIONS (chains broken)	ПРЕОБРАЗОВАНИЯ (разбитые цепи)
+COPY FAILED	КОПИРОВАНИЕ НЕ УДАЛОСЬ
+CRASH	КРАШ
+Cactus	Кактус
+Cape	Плащ
+Chainmail	Кольчуга
+Cheats used: %d	Использовано читов: %d
+Check every malloc. If one fails: free everything already allocated (e.g. the previous words of a split) and return NULL.	Проверяй каждый malloc. Если один не удался: освободи всё уже выделенное (напр. предыдущие слова split) и верни NULL.
+City crow	Ворон Города
+Clean ft_memmove.	Чистая ft_memmove.
+Clear 14 training levels.	Пройди 14 тренировочных уровней.
+Clear 7 training levels.	Пройди 7 тренировочных уровней.
+Clear all 21 training levels.	Пройди все 21 тренировочный уровень.
+Close the tester. Your progress is already saved.	Закрыть тестер. Твой прогресс уже сохранён.
+Code written by vibe-coding, with an AI	Код написан в стиле vibe-coding, с ИИ
+Collector	Коллекционер
+Color themes	Цветовые темы
+Colors	Цвета
+Colors: run with COLORTERM=truecolor if your terminal supports it.	Цвета: запускай с COLORTERM=truecolor, если терминал это поддерживает.
+Common Core · 7 modules · %d/%d validated with the testeurs des fous	Common Core · 7 модулей · %d/%d подтверждено testeurs des fous
+Compare s1 and s2 ignoring case, same sign as strcasecmp(3).	Сравни s1 и s2 без учёта регистра, знак как у strcasecmp(3).
+Compare the \"expected\" line with what your function returns on this exact case, then replay it alone with the command below.	Сравни строку \"ожидалось\" с тем, что возвращает твоя функция в этом самом случае, затем запусти его отдельно командой ниже.
+Compiler	Компилятор
+Connected	Подключено
+Convert str written in base to int. Invalid base returns 0.	Преобразуй str, записанную в системе base, в int. Неверная система даёт 0.
+Count the conversions in fmt ("%%" counts as one). A lone '%' at the end does not count. Never read past the '\0'.	Посчитай преобразования в fmt ("%%" считается за одно). Одиночный '%' в конце не считается. Никогда не читай дальше '\0'.
+Crash a scene, then restart.	Обрушь сцену, затем перезапусти.
+Crazy apprentice	Безумный ученик
+Crazy companion	Безумный товарищ
+Crazy master	Безумный мастер
+Created and vibe-coded by Splatch	Создано и навайбкожено Splatch
+Created and vibe-coded by Splatch  (login: romasant)	Создано и навайбкожено Splatch  (логин: romasant)
+Created and vibe-coded by Splatch (romasant)	Создано и навайбкожено Splatch (romasant)
+Credits	Авторы
+D E P L O Y M E N T	Р А З В Ё Р Т Ы В А Н И Е
+D E T A I L E D   R E S U L T S	П О Д Р О Б Н Ы Е   Р Е З У Л Ь Т А Т Ы
+D L C	D L C
+D L C  ·  T R A I N I N G	D L C  ·  Т Р Е Н И Р О В К А
+DETAILS · ft_%s	ПОДРОБНО · ft_%s
+DLC master	Мастер DLC
+DLC · FLAGS	DLC · ФЛАГИ
+DLC · flags and training|The bonus flags (- 0 . # + space) and 16 training levels.	DLC · флаги и тренировка|Бонусные флаги (- 0 . # + пробел) и 16 тренировочных уровней.
+Dedicated	Упорный
+Deep copy a NULL-terminated array of strings. Free everything if a malloc fails.	Глубокая копия массива строк, оканчивающегося NULL. Освободи всё, если malloc не удался.
+Dented helm	Помятый шлем
+Detailed results|Every function or category, with the failing case and a hint.	Подробные результаты|Каждая функция или категория, с падающим случаем и подсказкой.
+Discord · the fous server	Discord · сервер fous
+Do 10 runs.	Сделай 10 запусков.
+Do 30 runs.	Сделай 30 запусков.
+Do you want the story (cutscenes and lore)?	Хочешь историю (ролики и лор)?
+Dragon	Дракон
+Dress your knight, the shop, your profile and achievements.	Одень своего рыцаря, магазин, твой профиль и достижения.
+Duck	Утка
+Duplicate at most n characters of s. NULL if malloc fails.	Дублируй не более n символов s. NULL, если malloc не удался.
+EQUIPPED	НАДЕТО
+EXCLUSIVE	ЭКСКЛЮЗИВ
+EXERCISES SOLVED AT LEAST ONCE	УПРАЖНЕНИЯ, РЕШЁННЫЕ ХОТЯ БЫ РАЗ
+Earthworm	Дождевой червь
+Edge sword	Острый меч
+Ember feather	Перо углей
+Ember glow	Сияние углей
+Embers	Угли
+Enter or Esc: back to the map	Enter или Esc: назад к карте
+Enter: confirm   Esc: cancel	Enter: подтвердить   Esc: отмена
+Enter: details   r: fixed? run the tests again   Esc: menu	Enter: подробно   r: исправил? повторить тесты   Esc: меню
+Enter: open the level	Enter: открыть уровень
+Equip a printf item.	Надень предмет printf.
+Equip an item in every slot.	Надень предмет в каждый слот.
+Equip the Moulinette pet.	Надень питомца Мулинетт.
+Erase everything? XP, Octets, items, bosses, training...	Стереть всё? XP, Octets, предметы, боссы, тренировку...
+Esc: back   (showcase: Profile, key e)	Esc: назад   (витрина: Профиль, клавиша e)
+Exam · a room without help, three hours, four doors.	Экзамен · зал без помощи, три часа, четыре двери.
+Exams passed (100/100): %d	Сданных экзаменов (100/100): %d
+Exams taken: %d	Экзаменов пройдено: %d
+Exercise bank|All 94 exercises of the tester (exam, Libft, printf): search, open, grademe.	Банк упражнений|Все 94 упражнения тестера (экзамен, Libft, printf): поиск, открыть, grademe.
+Export my save	Экспортировать сохранение
+Eyes	Глаза
+FAIL	ОШИБКА
+FAILED	ПРОВАЛ
+FUNCTIONS CLEARED (at least once)	ПРОЙДЕННЫЕ ФУНКЦИИ (хотя бы раз)
+Failing malloc	Сбой malloc
+Fashion victim	Жертва моды
+Find the LAST byte c (as unsigned char) in the first n bytes of s, or NULL.	Найди ПОСЛЕДНИЙ байт c (как unsigned char) в первых n байтах s, иначе NULL.
+First blood	Первая кровь
+First flag	Первый флаг
+First link	Первое звено
+First time here. Just one question before we start:	Ты здесь впервые. Всего один вопрос перед началом:
+First try	С первой попытки
+Flag world · 6 bosses (- 0 width . # +)	Мир флагов · 6 боссов (- 0 ширина . # +)
+For 42 Next students	Для студентов 42 Next
+For 42 Next students · Paris and other campuses	Для студентов 42 Next · Париж и другие кампусы
+For example ~/testeur_des_fous_save.txt	Например ~/testeur_des_fous_save.txt
+Forbidden functions	Запрещённые функции
+Forge hammer	Кузнечный молот
+Format cloak	Плащ форматов
+Format companion	Товарищ форматов
+Format master	Мастер форматов
+Format night owl	Полуночник форматов
+Foundry armour	Доспех Литейной
+Foundry ember	Уголь Литейной
+Freed	Освобождено
+Fridge	Холодильник
+Full DLC	Весь DLC
+Full audit without errors.	Полный аудит без ошибок.
+Full stylist	Полный стилист
+Furious	Яростный
+Gambeson	Стёганка
+Ghost	Призрак
+Gnome	Гном
+Goblin	Гоблин
+Gold thread scarf	Шарф из золотой нити
+Golden holygraph	Золотой holygraph
+Graphics deployment	Развёртывание графики
+Greaves	Поножи
+Grey lines unlock as you progress.	Серые строки открываются по мере прогресса.
+H E L P   U S	П О М О Г И   Н А М
+H O L Y G R A P H   ·   4 2   N E X T	H O L Y G R A P H   ·   4 2   N E X T
+HINT	ПОДСКАЗКА
+HISTORY · latest runs	ИСТОРИЯ · последние запуски
+Hamster	Хомяк
+Have 1000 Octets.	Имей 1000 Octets.
+Hedgehog	Ёж
+Helmet	Шлем
+Helmet decoration	Украшение шлема
+Help level	Уровень помощи
+Help us|Create a trace (no code, no login) to send to splatch_afk.	Помоги нам|Создай след (без кода, без логина), чтобы отправить его splatch_afk.
+Help, bugs, ideas: join us	Помощь, баги, идеи: присоединяйся
+Helper	Помощник
+Hexadecimal	Шестнадцатеричный
+History	История
+Hold on, Moulinette.\nHere I come with my libft!	Держись, Мулинетт.\nЯ иду с моей libft!
+Hot chocolate	Горячий шоколад
+How	Как
+I am the format. I check EVERYTHING:\nleaks, Norm, Makefile, README…	Я формат. Я проверяю ВСЁ:\nутечки, Норму, Makefile, README…
+IMAGE ADDED	ИЗОБРАЖЕНИЕ ДОБАВЛЕНО
+IMAGE REFUSED	ИЗОБРАЖЕНИЕ ОТКЛОНЕНО
+INT_MIN tamed	INT_MIN укрощён
+Image rendering	Вывод изображений
+Images: no window and no terminal images here, fine cells take over.	Изображения: здесь нет ни окна, ни картинок в терминале, работают мелкие ячейки.
+In the scene, ft_%s handles %s.	В сцене ft_%s отвечает за %s.
+Infinite loop: check the stop condition (the '\\0', a counter that advances).	Бесконечный цикл: проверь условие остановки ('\\0', счётчик, который растёт).
+Install the libft tester first to get the full lore:	Сначала установи тестер libft, чтобы получить весь лор:
+Intro · the Norminette Machine	Вступление · Машина Norminette
+It only breaks them.	Она их только разбивает.
+Items: %d · Titles: %d	Предметы: %d · Титулы: %d
+KNIGHT	РЫЦАРЬ
+Kebab	Шаурма
+Kept your save.txt? Load it to log in.	Сохранил save.txt? Загрузи его, чтобы войти.
+Keyboard	Клавиатура
+Keys	Клавиши
+Knight	Рыцарь
+L I B F T   V A L I D A T E D	L I B F T   П О Д Т В Е Р Ж Д Е Н А
+L O G   I N	В Х О Д
+LEAK	УТЕЧКА
+LEVEL %-4d %33ld XP	УРОВЕНЬ %-4d %33ld XP
+LEVEL %02d · %s	УРОВЕНЬ %02d · %s
+LEVEL %d	УРОВЕНЬ %d
+LEVEL CLEARED	УРОВЕНЬ ПРОЙДЕН
+LOCKED	ЗАКРЫТО
+LOGGED IN TO THE LIBFT TESTER	ПОДКЛЮЧЕНО К ТЕСТЕРУ LIBFT
+LOOP	ЦИКЛ
+LORE	ЛОР
+Language	Язык
+Last visit: %d / %d%s	Последний визит: %d / %d%s
+Left hand	Левая рука
+Legendary	Легендарный
+Legs	Ноги
+Length of the initial segment of s made only of characters from accept, like strspn(3).	Длина начального отрезка s только из символов accept, как strspn(3).
+Level %d	Уровень %d
+Level %d · %ld XP · %ld Octets	Уровень %d · %ld XP · %ld Octets
+Libft Veteran	Ветеран Libft
+Libft and Printf validated.	Libft и Printf подтверждены.
+Libft edition	Издание Libft
+Libft validated	Libft подтверждена
+Libft veteran	Ветеран Libft
+Libft · 43 windows, three wardens. Moulinette was caged there.	Libft · 43 окна, три стража. Мулинетт была там в клетке.
+Libft · bosses	Libft · боссы
+Libft · created and vibe-coded by Splatch	Libft · создано и навайбкожено Splatch
+Libft · functions	Libft · функции
+Libft · training	Libft · тренировка
+Like dprintf with only %c, %s and %d: writes to fd. Return the number of bytes written, -1 if write fails.	Как dprintf только с %c, %s и %d: пишет в fd. Верни число записанных байт, -1, если write не удался.
+Like ft_split, but splits on any character of set.	Как ft_split, но делит по любому символу из set.
+Like printf with only %d, %s and %%, but takes an already started va_list (like vprintf). Return the number of bytes written.	Как printf только с %d, %s и %%, но принимает уже начатый va_list (как vprintf). Верни число записанных байт.
+Little cog	Маленькая шестерёнка
+Llama	Лама
+Load a save file (log in)	Загрузить сохранение (войти)
+Locked: beat %s first (every function of part %d clean).	Закрыто: сначала победи %s (все функции части %d чистые).
+Locked: clear level %02d first.	Закрыто: сначала пройди уровень %02d.
+Log in with a validated libft.	Войди с подтверждённой libft.
+Logged in: %s · level %d · %ld ◈	Вход: %s · уровень %d · %ld ◈
+Longest streak: %d d · tracked runs: %d	Самая длинная серия: %d дн · учтённых запусков: %d
+Lore	Лор
+Lore and ideas: Splatch (romasant)	Лор и идеи: Splatch (romasant)
+M E O W  !	М Я У  !
+M Y   P R O F I L E	М О Й   П Р О Ф И Л Ь
+MAKE YOUR TERMINAL BIGGER	УВЕЛИЧЬ ТЕРМИНАЛ
+MINI-BOSSES	МИНИ-БОССЫ
+MISSING	НЕТ ФАЙЛА
+MIT licence · nothing is sent, updates only if you agree	Лицензия MIT · ничего не отправляется, обновления только с твоего согласия
+Macro	Макрос
+Makefile, header and README	Makefile, заголовок и README
+Malloc	Malloc
+Map of the City|Every place of the lore, lit by your progress. Enter to go closer.	Карта Города|Все места лора, освещённые по твоему прогрессу. Enter, чтобы подойти ближе.
+Marathoner	Марафонец
+Marvin strikes all 9 chains at once…	Марвин бьёт по всем 9 цепям разом…
+Marvin! You came!	Марвин! Ты пришёл!
+Max time per test	Макс. время на тест
+Menu crashes avoided: %d	Предотвращено падений меню: %d
+Meow! Help!	Мяу! Помогите!
+Meow?!	Мяу?!
+Meow… (Marvin, hurry!)	Мяу… (Марвин, скорее!)
+Mist	Туман
+Mist cloak	Плащ тумана
+Mixes and return value	Смеси и возвращаемое значение
+Model README	Образец README
+Mossy stone plate	Замшелая каменная плита
+Moulinette	Мулинетт
+Moulinette audit	Аудит мулинетт
+Moulinette fan	Фанат Мулинетт
+Moulinette is free!	Мулинетт на свободе!
+Moulinette is free. Thank you, Marvin!	Мулинетт на свободе. Спасибо, Марвин!
+Moulinette is mine.\nEach chain is one of my conversions.	Мулинетт моя.\nКаждая цепь — одно из моих преобразований.
+Mushroom	Гриб
+My stats|Your progress, what fails most, your history. ◀ ▶ to change page.	Моя статистика|Твой прогресс, что чаще всего падает, твоя история. ◀ ▶ чтобы листать.
+NEW BADGE	НОВЫЙ ЗНАЧОК
+NOT CLEARED YET	ЕЩЁ НЕ ПРОЙДЕНО
+NOT YET	ЕЩЁ НЕТ
+NOT YET · %s	ЕЩЁ НЕТ · %s
+NOTE	ЗАМЕТКА
+Name color	Цвет имени
+Nickname	Прозвище
+Night over the Tower	Ночь над Башней
+Night owl	Полуночник
+Nine chains	Девять цепей
+Nine chains, nine conversions.\nLet's begin.	Девять цепей, девять преобразований.\nНачнём.
+No details for this function.	Нет подробностей для этой функции.
+No failure recorded.	Сбоев не записано.
+No leak in the 43 functions.	Ни одной утечки в 43 функциях.
+No libft tester save was found. You can start right away: every test and every fight is here.	Сохранение тестера libft не найдено. Можешь начать сразу: все тесты и все бои здесь.
+No results: run \"Run the tests again\" (key r).	Нет результатов: запусти \"Повторить тесты\" (клавиша r).
+No testeur des fous for this project yet.	Для этого проекта ещё нет testeur des fous.
+No: straight to the point, no cutscenes	Нет: сразу к делу, без роликов
+Nobody will free her.\nHer tests are ours!	Никто её не освободит.\nЕё тесты теперь наши!
+None	Нет
+None of your libft functions were written by this tester.	Ни одна из твоих функций libft не написана этим тестером.
+Norminette	Norminette
+Norminette without errors.	Norminette без ошибок.
+Nothing here yet. Visit the shop!	Пока пусто. Загляни в магазин!
+Nothing to report: every check passes.	Замечаний нет: все проверки проходят.
+Nothing to report: everything matches the real printf.	Замечаний нет: всё совпадает с настоящим printf.
+Nothing yet: run some tests.	Пока ничего: запусти несколько тестов.
+OK	OK
+OTHER LOGIN: REFUSED	ДРУГОЙ ЛОГИН: ОТКЛОНЕНО
+Oak shield	Дубовый щит
+Octets for broken chains	Octets за разбитые цепи
+Octets for first wins	Octets за первые победы
+Octets: ft_printf beaten	Octets: ft_printf побеждён
+Octopus	Осьминог
+Overall progress	Общий прогресс
+Overlap master	Мастер перекрытия
+Own 10 items.	Имей 10 предметов.
+Own 2000 Octets.	Имей 2000 Octets.
+Own 25 titles.	Имей 25 титулов.
+P R I N T F   V A L I D A T E D	P R I N T F   П О Д Т В Е Р Ж Д Ё Н
+P R O F I L E	П Р О Ф И Л Ь
+PART %d · guarded by %s %s	ЧАСТЬ %d · её охраняет %s %s
+PART 1 · LIBC	ЧАСТЬ 1 · LIBC
+PART 2 · ADDITIONAL	ЧАСТЬ 2 · ДОПОЛНИТЕЛЬНЫЕ
+PART 3 · LINKED LIST	ЧАСТЬ 3 · СВЯЗНЫЙ СПИСОК
+PASSED	ПРОЙДЕНО
+PASSED · %d checks · %s	ПРОЙДЕНО · %d проверок · %s
+PROGRESS	ПРОГРЕСС
+Paris and other campuses	Париж и другие кампусы
+Pass 4 training levels.	Пройди 4 тренировочных уровня.
+Pass 8 training levels.	Пройди 8 тренировочных уровней.
+Pass all 16 training levels.	Пройди все 16 тренировочных уровней.
+Path of your banner	Путь к твоему баннеру
+Path of your picture	Путь к твоему изображению
+Path of your save	Путь к твоему сохранению
+Penguin	Пингвин
+Percent helm	Шлем процента
+Perfect percent	Идеальный процент
+Perfect prototypes	Идеальные прототипы
+Pet	Питомец
+Pick a banner (PNG or JPG)	Выбери баннер (PNG или JPG)
+Pick a profile picture (PNG or JPG)	Выбери фото профиля (PNG или JPG)
+Pickle	Огурчик
+Pigeon	Голубь
+Pixel	Пиксель
+Pixel art drawn with Python and Pillow	Пиксель-арт, нарисованный на Python и Pillow
+Pointer	Указатель
+Preview: not equipped yet (Enter)	Предпросмотр: ещё не надето (Enter)
+Previously, in the Libft	Ранее в Libft
+Previously, in the Libft…	Ранее в Libft…
+Printf validated	Printf подтверждён
+Profile and achievements|Banner, picture, bio and all your achievements.	Профиль и достижения|Баннер, изображение, описание и все твои достижения.
+Purr… look, Marvin: the three guardians\nas plushies!	Мрр… смотри, Марвин: три стража\nв виде плюшевых игрушек!
+Purr… thank you, Marvin.	Мрр… спасибо, Марвин.
+Quantum	Квантовый
+Quit	Выход
+R E W A R D S	Н А Г Р А Д Ы
+R O O M   %d	З А Л   %d
+RESULTS  %d/%d  ·  estimated moulinette grade: %s	РЕЗУЛЬТАТЫ  %d/%d  ·  ожидаемая оценка мулинетт: %s
+Raccoon	Енот
+Read the n integers twice with va_copy: return (sum of the n integers) times (number of even integers).	Прочитай n целых дважды через va_copy: верни (сумма n целых) умноженная на (число чётных).
+Really? This is final.	Точно? Это окончательно.
+Recent success: %d %%	Недавний успех: %d %%
+Recent success: %d %%  %s %+d	Недавний успех: %d %%  %s %+d
+Recent success: -	Недавний успех: -
+Remove every node where cmp(content, ref) == 0 (del then free).	Удали каждый узел, где cmp(content, ref) == 0 (del, затем free).
+Remove the banner	Убрать баннер
+Remove the picture	Убрать изображение
+Replace every occurrence of old by new, left to right, in a new string.	Замени каждое вхождение old на new, слева направо, в новой строке.
+Replace your progress (level %d) with the file's (level %d)?	Заменить твой прогресс (уровень %d) прогрессом из файла (уровень %d)?
+Replay the bosses and cutscenes you unlocked.	Пересмотри открытых боссов и ролики.
+Rerun under valgrind	Перезапустить под valgrind
+Reset the save	Сбросить сохранение
+Return 1 if c is a conversion from the subject (cspdiuxX%), 0 otherwise.	Верни 1, если c — преобразование из subject (cspdiuxX%), иначе 0.
+Return a NULL-terminated array of the content pointers, in order.	Верни массив указателей content, оканчивающийся NULL, по порядку.
+Return a new string (malloc of the exact size) joining the n strings after n. NULL if malloc fails.	Верни новую строку (malloc точного размера), соединяющую n строк после n. NULL, если malloc не удался.
+Return n written in base, in a string allocated to the exact size. NULL if malloc fails.	Верни n в системе base, в строке, выделенной точно по размеру. NULL, если malloc не удался.
+Return the first node where cmp(content, ref) == 0, else NULL.	Верни первый узел, где cmp(content, ref) == 0, иначе NULL.
+Return the largest of the n integers after n (n >= 1).	Верни наибольшее из n целых после n (n >= 1).
+Return the node at index (0 is the first), or NULL.	Верни узел с номером index (0 — первый) или NULL.
+Return the number of bits set to 1 in n.	Верни число единичных битов в n.
+Return the sum of the n integers after n. Use va_start, va_arg and va_end.	Верни сумму n целых после n. Используй va_start, va_arg и va_end.
+Reverse s in place (no malloc) and return s.	Разверни s на месте (без malloc) и верни s.
+Reverse the list in place, reusing the nodes.	Разверни список на месте, переиспользуя узлы.
+Rich	Богач
+Rich in Octets	Богат Octets
+Robot	Робот
+Rotate the list by n (negative goes backwards, n may exceed the size or be INT_MIN).	Поверни список на n (отрицательное — назад, n может превышать размер или быть INT_MIN).
+Run Octets	Octets за запуск
+Run Octets (1 per clean function)	Octets за запуск (1 за чистую функцию)
+Run XP	XP за запуск
+Run XP (2 per clean function)	XP за запуск (2 за чистую функцию)
+Run the tester 10 times.	Запусти тестер 10 раз.
+Run the tester once.	Запусти тестер один раз.
+Run the tests           (r)|Rebuilds your project and tests all of it.	Тестировать             (r)|Пересобирает проект и тестирует его целиком.
+Run your project's tests, see results, training and the exam.	Запусти тесты проекта, смотри результаты, тренировку и экзамен.
+Runs: Libft %d · printf %d	Запуски: Libft %d · printf %d
+S A V E   A N D   L O G I N	С О Х Р А Н Е Н И Е   И   В Х О Д
+S C A N N I N G   Y O U R   F T _ P R I N T F	А Н А Л И З   Т В О Е Г О   F T _ P R I N T F
+S E T T I N G S	Н А С Т Р О Й К И
+SAVE EDITED	СОХРАНЕНИЕ ИЗМЕНЕНО
+SAVE EDITED BY HAND	СОХРАНЕНИЕ ИЗМЕНЕНО ВРУЧНУЮ
+SAVE EXPORTED	СОХРАНЕНИЕ ЭКСПОРТИРОВАНО
+SETTINGS	НАСТРОЙКИ
+STATS	СТАТИСТИКА
+Save and login|Export your progress or get it back on another computer.	Сохранение и вход|Экспортируй прогресс или верни его на другом компьютере.
+Screwdriver	Отвёртка
+Secret ending	Тайная концовка
+Secret ending · Libft and Printf validated	Тайная концовка · Libft и Printf подтверждены
+See the secret ending.	Увидь тайную концовку.
+Segfault	Segfault
+Segfault survivor	Переживший segfault
+Separate window	Отдельное окно
+Settings	Настройки
+Settings, save, help us, credits.	Настройки, сохранение, помоги нам, авторы.
+Settings|Language, animations, story, help level, test tools.	Настройки|Язык, анимации, история, уровень помощи, инструменты тестов.
+Shop|Spend your Octets: items, themes, titles. You earn Octets by passing tests.	Магазин|Трать Octets: предметы, темы, титулы. Octets зарабатываются прохождением тестов.
+Showcase 1	Витрина 1
+Showcase 2	Витрина 2
+Showcase 3	Витрина 3
+Size: make the terminal 120 x 36 or bigger.	Размер: сделай терминал 120 x 36 или больше.
+Slit great helm	Большой шлем со щелью
+Snail	Улитка
+Sock	Носок
+Sort a NULL-terminated array in place using cmp. Swap pointers only.	Отсортируй на месте массив, оканчивающийся NULL, с помощью cmp. Меняй только указатели.
+Sort the list in ascending order according to cmp.	Отсортируй список по возрастанию согласно cmp.
+Soul feather	Перо души
+Soul firefly	Светлячок души
+Soul glow	Сияние души
+Soul lantern	Фонарь души
+Soul spores	Споры души
+Sound (beep)	Звук (сигнал)
+Spaghetti	Спагетти
+Spear	Копьё
+Spotless Norm	Безупречная Норма
+Stainless	Нержавеющий
+Stats	Статистика
+Steel Norm	Стальная Норма
+Steel greaves	Стальные поножи
+Stool	Табурет
+Story and cutscenes	История и ролики
+Stubborn	Упрямый
+Stylist	Стилист
+Summary	Сводка
+Swap the first n bytes of a and b. Works for any type.	Поменяй местами первые n байт a и b. Работает для любого типа.
+Switch to 	Перейти на
+T H E   B O S S E S	Б О С С Ы
+T H E   C I T Y	Г О Р О Д
+T H E   L I B F T   T O W E R	Б А Ш Н Я   L I B F T
+T H E   N O R M I N E T T E   M A C H I N E	М А Ш И Н А   N O R M I N E T T E
+TEST	ТЕСТ
+TESTER UPDATED	ТЕСТЕР ОБНОВЛЁН
+TO REPLAY IT ALONE	ЧТОБЫ ЗАПУСТИТЬ ОТДЕЛЬНО
+TRACE CREATED	СЛЕД СОЗДАН
+Terminal	Терминал
+Terminal images	Изображения в терминале
+Terminal size	Размер терминала
+Test                    (r)	Тестировать             (r)
+Test engine	Движок тестов
+Test engine: Splatch (printf tester beta)	Движок тестов: Splatch (бета тестера printf)
+Test settings (time, sanitizers, valgrind, audit)	Настройки тестов (время, санитайзеры, valgrind, аудит)
+Thank you Marvin! Watch out… here he comes!	Спасибо, Марвин! Осторожно… он идёт!
+Thanks for testing!	Спасибо за тестирование!
+Thanks to Moulinette, a free grey cat.	Спасибо Мулинетт, свободной серой кошке.
+That file already exists. Overwrite it?	Этот файл уже существует. Перезаписать?
+The 43 prototypes match the subject.	43 прототипа совпадают с subject.
+The 9 chains (your last run)	9 цепей (твой последний запуск)
+The Alchemist dissolved	Алхимик растворён
+The City	Город
+The Devourer: 10,000 calls	Пожиратель: 10 000 вызовов
+The Foundry	Литейная
+The Foundry of Formats	Литейная Форматов
+The Hydra drained	Гидра истощена
+The Link Hydra	Гидра Звеньев
+The Memory Warden	Страж Памяти
+The Norm	Норма
+The Norm stays required in training.	Норма остаётся обязательной в тренировке.
+The Tower of Foundations	Башня Основ
+The Trial of Silence	Испытание Тишины
+The Two Stacks	Две Стопки
+The Warden fell	Страж пал
+The Weaver	Ткач
+The Well	Колодец
+The crazy tester is reading your code...	testeur des fous читает твой код...
+The end · at the very bottom, under the Well.	Конец · в самом низу, под Колодцем.
+The file does not compile with -Wall -Wextra -Werror: fix the error shown above.	Файл не компилируется с -Wall -Wextra -Werror: исправь ошибку выше.
+The flag runes awaken…	Руны флагов пробуждаются…
+The flag world is yours!	Мир флагов твой!
+The flag world tests what subject v1.1 does not ask for (flags, width, precision), against the real printf. It opens after ft_printf, or right away for Libft Veterans. Training covers the project's notions and the ones the subject does not show.	Мир флагов проверяет то, чего subject v1.1 не требует (флаги, ширина, точность), против настоящего printf. Он открывается после ft_printf, а ветеранам Libft сразу. Тренировка охватывает понятия проекта и то, чего subject не показывает.
+The full audit runs once the 43 functions are clean.	Полный аудит запускается, когда все 43 функции чистые.
+The image is turned into pixel art and stored in your save: it follows the export.	Изображение превращается в пиксель-арт и хранится в сохранении: оно переносится при экспорте.
+The last mechanism	Последний механизм
+The moulinette smiles	Мулинетт улыбается
+The path of your copied save.txt (for example ~/my_save.txt)	Путь к скопированному save.txt (например ~/my_save.txt)
+The red chains hold: see Detailed results to know why.	Красные цепи держатся: смотри Подробные результаты, чтобы понять почему.
+The scene crashed in ft_%s  (signal %d)	Сцена упала в ft_%s  (сигнал %d)
+The scene froze for 3 s: infinite loop in ft_%s?	Сцена зависла на 3 с: бесконечный цикл в ft_%s?
+The tester saw: %.90s	Тестер увидел: %.90s
+The testeur des fous gets better thanks to you. Whether your tests pass or not, your trace helps find false positives, missing cases and tester bugs.	testeur des fous становится лучше благодаря тебе. Проходят твои тесты или нет, твой след помогает найти ложные срабатывания, недостающие случаи и баги тестера.
+The three guardians fell. Moulinette is free.	Три стража пали. Мулинетт на свободе.
+The trace holds neither your code nor your login: only test results, the tester version and your system. Everything stays offline: nothing is sent without you.	След не содержит ни твоего кода, ни логина: только результаты тестов, версию тестера и твою систему. Всё остаётся офлайн: без тебя ничего не отправляется.
+Theme (owned ones)	Тема (твои)
+This choice applies to every version of the tester. You can change it anytime in Settings. For tests only, no story: bash run.sh --no-lore.	Этот выбор действует для всех версий тестера. Его можно изменить в Настройках в любой момент. Только тесты, без истории: bash run.sh --no-lore.
+This place is not open yet.	Это место ещё не открыто.
+Tier	Ступень
+Title collector	Собиратель титулов
+Titles (1000)	Титулы (1000)
+To keep it elsewhere or on another machine: export it, then load it.	Чтобы хранить его в другом месте или на другой машине: экспортируй, затем загрузи.
+To make Libft more fun.	Чтобы Libft была веселее.
+Toaster	Тостер
+Tracked: %s to %s	Учтено: с %s по %s
+Training	Тренировка
+Training (21 levels)|New functions, beyond Libft, to train. Unlocked by bosses.	Тренировка (21 уровень)|Новые функции сверх Libft для тренировки. Открываются боссами.
+Training exercises	Тренировочные упражнения
+Training · 16 levels	Тренировка · 16 уровней
+Travel cloak	Дорожный плащ
+UB	UB
+UNREADABLE FILE	ФАЙЛ НЕ ЧИТАЕТСЯ
+UTF-8 characters	Символы UTF-8
+UTF-8: run with LANG=en_US.UTF-8.	UTF-8: запускай с LANG=en_US.UTF-8.
+Undefined behavior: uninitialized variable, integer overflow, NULL pointer or invalid shift. The line is shown above.	Неопределённое поведение: неинициализированная переменная, переполнение целого, указатель NULL или неверный сдвиг. Строка показана выше.
+VETERAN PERKS	ПРИВИЛЕГИИ ВЕТЕРАНА
+Validated by the \"Libft validated\" badge (no libft/ in your ft_printf, or no run here yet).	Подтверждено значком \"Libft подтверждена\" (нет libft/ в твоём ft_printf или здесь ещё не было запуска).
+Validated in the printf tester.	Подтверждено в тестере printf.
+Validated: 43/43 locally and the 3 bosses beaten.	Подтверждено: 43/43 локально и 3 босса побеждены.
+Validated: \"Libft validated\" badge (43/43 and 3 bosses in the libft tester) and your libft/ passes the quick check here, locally.	Подтверждено: значок \"Libft подтверждена\" (43/43 и 3 босса в тестере libft) и твоя libft/ проходит здесь быструю проверку, локально.
+Validated: the 9 chains and ft_printf beaten, locally, this run.	Подтверждено: 9 цепей и ft_printf побеждён, локально, в этом запуске.
+Variadic apprentice	Вариадический ученик
+Veteran	Ветеран
+Veteran cloak	Плащ ветерана
+Veteran helm	Шлем ветерана
+Victory: hot chocolate	Победа: горячий шоколад
+WHAT FAILS MOST	ЧТО ПАДАЕТ ЧАЩЕ ВСЕГО
+WHAT WAS SEEN	ЧТО БЫЛО ЗАМЕЧЕНО
+WRONG	НЕВЕРНО
+Walking boots	Походные сапоги
+Watcher's hood	Капюшон дозорного
+Weapon	Оружие
+Weaver's thread	Нить Ткача
+Welcome, %s · level %d	Добро пожаловать, %s · уровень %d
+Welcome, new lunatic.	Добро пожаловать, новый безумец.
+What you still need:	Чего не хватает:
+What you still need: chains %d/9	Чего не хватает: цепи %d/9
+What you still need: install the printf tester and beat ft_printf.	Чего не хватает: установи тестер printf и победи ft_printf.
+What you still need: log in with your libft tester save (Save and login), or install the libft tester.	Чего не хватает: войди с сохранением тестера libft (Сохранение и вход) или установи тестер libft.
+What you still need: run \"Run the tests again\" (key r) (proof is made locally).	Чего не хватает: запусти \"Повторить тесты\" (клавиша r) (доказательство делается локально).
+What you still need: validate libft in the libft tester (43/43 locally + 3 bosses).	Чего не хватает: подтверди libft в тестере libft (43/43 локально + 3 босса).
+What you still need: your libft/ fails the quick check (Detailed results).	Чего не хватает: твоя libft/ не проходит быструю проверку (Подробные результаты).
+What you still need: your libft/ must build with the ft_printf Makefile.	Чего не хватает: твоя libft/ должна собираться с Makefile ft_printf.
+Where to copy your save?	Куда скопировать сохранение?
+Which save file to load?	Какое сохранение загрузить?
+White slit	Белая щель
+Worn edge cloak	Плащ с потёртым краем
+Write c to standard output. Return the number of bytes written (1), or -1 if write fails.	Выведи c в стандартный вывод. Верни число записанных байт (1) или -1, если write не удался.
+Write n in base 10 (INT_MIN included, no undefined behavior). Return the number of characters written.	Выведи n в десятичной системе (включая INT_MIN, без неопределённого поведения). Верни число выведенных символов.
+Write n in base into a new string. Handle LONG_MIN. NULL on invalid base.	Запиши n в системе base в новую строку. Учти LONG_MIN. NULL при неверной системе.
+Write n in base on fd. Invalid base writes nothing. Handle LONG_MIN.	Выведи n в системе base в fd. Неверная система ничего не выводит. Учти LONG_MIN.
+Write n in hexadecimal, uppercase if upper is 1. Return the number of characters written.	Выведи n в шестнадцатеричном виде, заглавными, если upper равно 1. Верни число выведенных символов.
+Write n in the given base (base = "0123456789abcdef" for example). Return the number of characters written.	Выведи n в заданной системе (например base = "0123456789abcdef"). Верни число выведенных символов.
+Write s to fd. Return the number of bytes written, or -1 if a write fails (closed fd for example).	Выведи s в fd. Верни число записанных байт или -1, если write не удался (например, закрытый fd).
+Write s. If s is NULL, write "(null)" like printf on Linux. Return the number of bytes written, -1 if write fails.	Выведи s. Если s равно NULL, выведи "(null)", как printf в Linux. Верни число записанных байт, -1, если write не удался.
+Write the address p like printf's %p on Linux (0x... ; NULL gives "(nil)"). Return the number of characters written.	Выведи адрес p, как %p у printf в Linux (0x... ; NULL даёт "(nil)"). Верни число выведенных символов.
+XP for chains broken the first time	XP за впервые разбитые цепи
+XP for first-time clean functions	XP за впервые чистые функции
+XP: ft_printf beaten for the first time!	XP: ft_printf побеждён впервые!
+YOUR ATTEMPTS (gradings and exams)	ТВОИ ПОПЫТКИ (проверки и экзамены)
+YOUR LAST 70 RUNS (all modules)	ТВОИ ПОСЛЕДНИЕ 70 ЗАПУСКОВ (все модули)
+YOUR LIBFT RUNS	ТВОИ ЗАПУСКИ LIBFT
+YOUR PRINTF RUNS	ТВОИ ЗАПУСКИ PRINTF
+Yes: the story, the cutscenes and the fights	Да: история, ролики и бои
+Yogurt	Йогурт
+You can delete the tester folder: your progress stays here.	Папку тестера можно удалить: прогресс остаётся здесь.
+You have never been here.	Ты здесь ещё не бывал.
+You read or write outside a block. Check the allocated size, the loop condition and the final '\\0'.	Ты читаешь или пишешь за пределами блока. Проверь выделенный размер, условие цикла и завершающий '\\0'.
+Your 42 login (Enter to confirm):	Твой логин 42 (Enter для подтверждения):
+Your bio (80 characters)	О себе (80 символов)
+Your file: %s/entrainement/niveau_%02d/%s.c	Твой файл: %s/entrainement/niveau_%02d/%s.c
+Your function frees memory it did not allocate (one of its arguments). It must only free what it allocated itself.	Твоя функция освобождает память, которую не выделяла (один из аргументов). Она должна освобождать только то, что выделила сама.
+Your knight, as equipped	Твой рыцарь, как он экипирован
+Your malloc asks for more room than the result uses. Compute the exact result size first (+1 for the '\\0'), then malloc that. Tripouille rejects it too (MKO).	Твой malloc просит больше места, чем использует результат. Сначала посчитай точный размер (+1 на '\\0'), затем выдели ровно столько. Tripouille тоже это отклоняет (MKO).
+Your malloc leaves too little room (the final '\\0'?). Recount the size before filling the block.	Твой malloc оставляет слишком мало места (завершающий '\\0'?). Пересчитай размер перед заполнением блока.
+Your progress, what fails most, your history.	Твой прогресс, что чаще всего падает, твоя история.
+Your save: %s/save.txt (in your home folder, not in the tester folder).	Твоё сохранение: %s/save.txt (в домашней папке, не в папке тестера).
+Zero leak	Ноль утечек
+Zero leaks	Ноль утечек
+Zero warning	Ноль предупреждений
+[ Esc / Enter: back ]	[ Esc / Enter: назад ]
+[ Q / Esc / Ctrl+C: stop the scan ]	[ Q / Esc / Ctrl+C: остановить анализ ]
+[ any key to continue ]	[ любая клавиша, чтобы продолжить ]
+[ any key to continue · fights start in 8 s ]	[ любая клавиша, чтобы продолжить · бои начнутся через 8 с ]
+[ e: edit my profile   ·   any other key: back ]	[ e: изменить профиль   ·   другая клавиша: назад ]
+[ press any key ]	[ нажми любую клавишу ]
+[Esc] back	[Esc] назад
+[r] restart with this function quarantined (fallback version)	[r] перезапуск с этой функцией на карантине (запасная версия)
+a full run without a single leak	полный запуск без единой утечки
+a run between midnight and 5 am	запуск между полуночью и 5 утра
+a save reloaded	перезагруженное сохранение
+a trace made for "Help us"	след, сделанный для \"Помоги нам\"
+all 21 DLC levels	все 21 уровень DLC
+always	всегда
+apple	яблоко
+apply to the next \"Run the tests again\".	применяются при следующем \"Повторить тесты\".
+arrows: pick   Enter: open   Esc: back	стрелки: выбрать   Enter: открыть   Esc: назад
+arrows: pick   f: details   m: audit   r: fixed? run again   Enter: continue	стрелки: выбрать   f: подробно   m: аудит   r: исправил? повторить   Enter: продолжить
+audit not run	аудит не запущен
+beat ft_printf, or log in with a validated libft	победи ft_printf или войди с подтверждённой libft
+c: load a save.txt   Enter: continue without	c: загрузить save.txt   Enter: продолжить без него
+cape, helmet, Moulinette pet, golden theme, title and +300 ◈	плащ, шлем, питомец Мулинетт, золотая тема, титул и +300 ◈
+case	случай
+chains %d/9 · ft_printf %s · train %d/16	цепи %d/9 · ft_printf %s · трен. %d/16
+check the path and permissions	проверь путь и права
+checks	проверок
+checksum mismatch: refused	контрольная сумма не совпадает: отклонено
+compiling and preparing	компиляция и подготовка
+could not write the trace	не удалось записать след
+done	готово
+everything clean on the very first run	всё чисто с первого же запуска
+everything is clean	всё чисто
+exclusive	эксклюзив
+fast	быстрые
+fine cells	мелкие ячейки
+for Libft Veterans only (printf tester)	только для ветеранов Libft (тестер printf)
+ft_%s prototype differs from the subject	прототип ft_%s отличается от subject
+ft_printf beaten in the printf tester	ft_printf побеждён в тестере printf
+ft_printf holds: fix the red phases (Detailed results).	ft_printf держится: исправь красные фазы (Подробные результаты).
+ft_printf is defeated!	ft_printf повержен!
+ft_printf · created and vibe-coded by Splatch	ft_printf · создано и навайбкожено Splatch
+ft_printf · the machine that shapes words. Nine chains.	ft_printf · машина, что придаёт форму словам. Девять цепей.
+ft_printf, the big boss	ft_printf, главный босс
+function of its part	функция своей части
+functions OK	функций OK
+get_next_line · you go down one line at a time.	get_next_line · спускаются по одной строке за раз.
+get_next_line|Tests your get_next_line with 7 BUFFER_SIZE values, stdin, pipes, read and malloc errors.	get_next_line|Тестирует твой get_next_line с 7 значениями BUFFER_SIZE, stdin, каналами, ошибками read и malloc.
+in a Bathrobe	в Халате
+keep going to unlock it	продолжай, чтобы открыть
+level	уровень
+libft part %d	libft часть %d
+libft validated, then printf launched	libft подтверждена, затем запущен printf
+lines %d-%d of %d   ▲ ▼ scroll   	строки %d-%d из %d   ▲ ▼ прокрутка
+made of Cardboard	из Картона
+never	никогда
+no	нет
+no display	нет экрана
+no run yet	ещё нет запусков
+none	нет
+none (the case only)	нет (только случай)
+normal	обычные
+norminette not checked	norminette не проверена
+norminette without a single error	norminette без единой ошибки
+not found or not readable	не найден или не читается
+not validated yet	ещё не подтверждено
+nothing was copied	ничего не скопировано
+now:	сейчас:
+of Linked Lists	Связных Списков
+of Lost Pointers	Потерянных Указателей
+of Midnight	Полуночи
+of Sunday	Воскресенья
+of the '\\0'	Символа '\\0'
+of the 43 Functions	43 Функций
+of the Heap	Кучи
+of the Holy Segfault	Святого Segfault
+of the Libc	Libc
+of the Makefile	Makefile
+of the Norm	Нормы
+of the RAM	Оперативки
+of the Stack	Стека
+off	выкл
+older  →  newer  (height: success share)	раньше  →  позже  (высота: доля успеха)
+on	вкл
+on Sale	со Скидкой
+owned   	есть
+part %d · %s	часть %d · %s
+pass the previous level first	сначала пройди предыдущий уровень
+passes the tester.	проходит тестер.
+printf edition	издание printf
+printf marathon	марафон printf
+printf runs: %s	запуски printf: %s
+printf · chains	printf · цепи
+printf · flags	printf · флаги
+printf · ft_printf	printf · ft_printf
+printf · training	printf · тренировка
+prototypes checked	прототипы проверены
+prototypes...	прототипы...
+push_swap · two stone columns to sort. Later.	push_swap · две каменные колонны, которые надо упорядочить. Позже.
+put that project next to the tester, then relaunch	положи этот проект рядом с тестером и перезапусти
+reset (old copy: save.txt.triche)	сброшено (старая копия: save.txt.triche)
+run already rewarded %ld min ago (30 min cooldown)	запуск уже награждён %ld мин назад (ожидание 30 мин)
+run already rewarded (30 min cooldown)	запуск уже награждён (ожидание 30 мин)
+runs %d · DLC %d/6 · training %d/16 · libft %s · crashes %d	запуски %d · DLC %d/6 · трен. %d/16 · libft %s · падения %d
+runs %d · bosses %d/3 · training %d/21 · items %d/%d · titles %d/1000 · crashes %d	запуски %d · боссы %d/3 · трен. %d/21 · предметы %d/%d · титулы %d/1000 · падения %d
+t: create my trace   Esc: back	t: создать мой след   Esc: назад
+t: test my code   Esc: back	t: проверить мой код   Esc: назад
+t: test my file   Esc: back	t: проверить мой файл   Esc: назад
+terminal images	изображения в терминале
+test: %d/43 · boss %d/3 · train %d/21	тест: %d/43 · босс %d/3 · трен. %d/21
+text	текст
+the tester resumes by itself  ·  Q: quit	тестер продолжит сам  ·  Q: выйти
+theme	тема
+this file belongs to %s, you are %s	этот файл принадлежит %s, а ты %s
+this module comes in a later version	этот модуль появится в одной из следующих версий
+today	сегодня
+topic: %s	тема: %s
+training levels.	тренировочных уровней.
+unbeaten	не побеждён
+v%s  →  v%s   (see CHANGELOG.md)	v%s  →  v%s   (см. CHANGELOG.md)
+validated ✓: the full lore is unlocked	подтверждено ✓: весь лор открыт
+warming up...	разогрев...
+who Relinks	который Перелинковывает
+window	окно
+with a Moustache	с Усами
+without Leaks	без Утечек
+world	мир
+y: yes   n: no	y: да   n: нет
+yes	да
+yesterday	вчера
+your profile got a new look	твой профиль обновил облик
+|Put that project next to the tester to enable it.	|Положи этот проект рядом с тестером, чтобы включить его.
+|Switch project without leaving the tester.	|Смени проект, не выходя из тестера.
+~%lds left	осталось ~%lds
+~get_next_line|Put your get_next_line folder next to the tester to enable it.	~get_next_line|Положи папку get_next_line рядом с тестером, чтобы включить его.
+~push_swap               (later)	~push_swap               (позже)
+· ft_printf not beaten yet	· ft_printf ещё не побеждён
+▚▚  S C A N N I N G   Y O U R   L I B F T  ▞▞	▚▚  А Н А Л И З   Т В О Е Й   L I B F T  ▞▞
+▲ ▼ module   ◀ ▶ project   b: badges   Esc: back	▲ ▼ модуль   ◀ ▶ проект   b: значки   Esc: назад
+▲ ▼ pick   (run \"Run the tests again\" (key r) to fight)   Esc: back	▲ ▼ выбрать   (запусти \"Повторить тесты\" (клавиша r), чтобы сражаться)   Esc: назад
+▲ ▼ pick   Enter: confirm	▲ ▼ выбрать   Enter: подтвердить
+▲ ▼ pick   Enter: confirm   Esc: back	▲ ▼ выбрать   Enter: подтвердить   Esc: назад
+▲ ▼ pick   Enter: open   Esc: back	▲ ▼ выбрать   Enter: открыть   Esc: назад
+▲ ▼ pick   Enter: open   r: run the tests   Esc: quit	▲ ▼ выбрать   Enter: открыть   r: запустить тесты   Esc: выйти
+▲ ▼ pick   Enter: replay the fight   Esc: back	▲ ▼ выбрать   Enter: повторить бой   Esc: назад
+▲ ▼ pick   ◀ ▶ change   Enter: edit   Esc: back	▲ ▼ выбрать   ◀ ▶ менять   Enter: изменить   Esc: назад
+▲ ▼ pick   ◀ ▶ change   Esc: back	▲ ▼ выбрать   ◀ ▶ менять   Esc: назад
+▲ ▼ pick a place   Enter: go closer   Esc: back	▲ ▼ выбрать место   Enter: подойти   Esc: назад
+▲ ▼ scroll   Esc: back   (help: Settings)	▲ ▼ прокрутка   Esc: назад   (помощь: Настройки)
+◀ ▶ change page   Esc: back	◀ ▶ сменить страницу   Esc: назад
+◀ ▶ change tier   Esc: back	◀ ▶ сменить ступень   Esc: назад
+◀ ▶ other failing function   Esc: back	◀ ▶ другая падающая функция   Esc: назад
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  Esc: back	◀ ▶ раздел  ▲ ▼ предмет  Enter: купить/надеть  Esc: назад
+◈  T H E   C R A Z Y   S H O P  ◈	◈  М А Г А З И Н   F O U S  ◈
+◈  W A R D R O B E  ◈	◈  Г А Р Д Е Р О Б  ◈
+✓ ft_printf beaten	✓ ft_printf побеждён

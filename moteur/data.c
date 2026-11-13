@@ -303,10 +303,7 @@ const char	*title_name(int i, char *buf, size_t sz)
 		i = 0;
 	if (i == NTITLE - 1)
 		return (snprintf(buf, sz, "%s", L("Vétéran de la Libft", "Libft Veteran")), buf);
-	if (g_save.cfg.lang)
-		snprintf(buf, sz, "%s %s", g_tn_en[i % 40], g_tc_en[i / 40]);
-	else
-		snprintf(buf, sz, "%s %s", g_tn_fr[i % 40], g_tc_fr[i / 40]);
+	snprintf(buf, sz, "%s %s", L(g_tn_fr[i % 40], g_tn_en[i % 40]), L(g_tc_fr[i / 40], g_tc_en[i / 40]));
 	return (buf);
 }
 
