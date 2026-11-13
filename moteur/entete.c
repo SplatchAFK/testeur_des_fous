@@ -145,6 +145,7 @@ typedef struct s_page
 	int	ech;
 	int	lignes;
 	int	fou;
+	int	pile;
 	int	tw;
 	int	th;
 	int	fw;
@@ -168,22 +169,31 @@ static void	mise_en_page(const char *l1, const char *l2, int reste, t_page *pg)
 	entete_taille(&cols, &rows);
 	memset(pg, 0, sizeof(*pg));
 	best = -1;
-	for (c.ech = 2; c.ech >= 1; c.ech--)
+	for (c.ech = 4; c.ech >= 1; c.ech--)
 		for (c.lignes = 1; c.lignes <= 2; c.lignes++)
 			for (c.fou = 2; c.fou >= 0; c.fou--)
+				for (c.pile = 0; c.pile <= (c.fou ? 1 : 0); c.pile++)
 			{
 				c.tw = c.ech * (c.lignes == 1 ? largeur_ligne(l1, l2)
 						: (largeur_mot(l1) > largeur_mot(l2) ? largeur_mot(l1) : largeur_mot(l2)));
 				c.th = c.ech * (c.lignes == 1 ? 5 : 11);
 				c.fw = c.fou == 2 ? g_fou_grand_w : (c.fou == 1 ? g_fou_petit_w : 0);
 				c.fh = c.fou == 2 ? g_fou_grand_h : (c.fou == 1 ? g_fou_petit_h : 0);
-				c.w = c.tw + (c.fou ? 4 + c.fw : 0);
-				c.h = c.th > c.fh ? c.th : c.fh;
+				if (c.pile)
+				{
+					c.w = c.tw > c.fw ? c.tw : c.fw;
+					c.h = c.fh + 1 + c.th;
+				}
+				else
+				{
+					c.w = c.tw + (c.fou ? 4 + c.fw : 0);
+					c.h = c.th > c.fh ? c.th : c.fh;
+				}
 				if (c.w > cols - 2 || c.h > rows - reste)
 					continue ;
-				if (c.ech * 1000000 + c.w * c.h > best)
+				if ((c.fou ? 10000000 : 0) + c.ech * 1000000 + c.w * c.h - c.pile > best)
 				{
-					best = c.ech * 1000000 + c.w * c.h;
+					best = (c.fou ? 10000000 : 0) + c.ech * 1000000 + c.w * c.h - c.pile;
 					*pg = c;
 				}
 			}
@@ -192,6 +202,21 @@ static void	mise_en_page(const char *l1, const char *l2, int reste, t_page *pg)
 		pg->h = 2;
 		pg->w = (int)strlen(l1) + 1 + (int)strlen(l2);
 	}
+}
+
+int	entete_gauche(const char *l1, const char *l2, int reste)
+{
+	t_page	pg;
+	int		cols;
+	int		rows;
+	int		x0;
+
+	entete_taille(&cols, &rows);
+	mise_en_page(l1, l2, reste, &pg);
+	if (!pg.h)
+		return (0);
+	x0 = (cols - pg.w) / 2;
+	return ((x0 < 1 ? 1 : x0) + 1);
 }
 
 int	entete_hauteur(const char *l1, const char *l2, int reste)
@@ -276,6 +301,8 @@ void	entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste)
 	int					rows;
 	int					ty;
 	int					fy;
+	int					tx;
+	int					fx;
 	int					r;
 	int					c;
 	int					x0;
@@ -302,23 +329,25 @@ void	entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste)
 	else
 	{
 		phase = entete_phase(ms, l1, l2);
-		ty = y0 + (pg.h - pg.th) / 2;
+		tx = pg.pile ? x0 + (pg.w - pg.tw) / 2 : x0;
+		ty = pg.pile ? y0 + pg.fh + 1 : y0 + (pg.h - pg.th) / 2;
+		fx = pg.pile ? x0 + (pg.w - pg.fw) / 2 : x0 + pg.tw + 4;
+		fy = pg.pile ? y0 : y0 + (pg.h - pg.fh) / 2;
 		if (pg.lignes == 1)
 		{
-			titre(l1, x0, ty, pg.ech, pg.tw, phase);
-			titre(l2, x0 + pg.ech * (largeur_mot(l1) + 4), ty, pg.ech, pg.tw, phase);
+			titre(l1, tx, ty, pg.ech, pg.tw, phase);
+			titre(l2, tx + pg.ech * (largeur_mot(l1) + 4), ty, pg.ech, pg.tw, phase);
 		}
 		else
 		{
-			titre(l1, x0, ty, pg.ech, pg.tw, phase);
-			titre(l2, x0, ty + 6 * pg.ech, pg.ech, pg.tw, phase);
+			titre(l1, tx, ty, pg.ech, pg.tw, phase);
+			titre(l2, tx, ty + 6 * pg.ech, pg.ech, pg.tw, phase);
 		}
 		txt = pg.fou == 2 ? g_fou_grand_txt : g_fou_petit_txt;
 		rgb = pg.fou == 2 ? &g_fou_grand_rgb[0][0][0] : &g_fou_petit_rgb[0][0][0];
-		fy = y0 + (pg.h - pg.fh) / 2;
 		for (r = 0; pg.fou && r < pg.fh; r++)
 		{
-			aller(fy + r, x0 + pg.tw + 4 + 1);
+			aller(fy + r, fx + 1);
 			for (c = 0; c < pg.fw; c++)
 			{
 				if (txt[r][c] == ' ')
@@ -326,7 +355,7 @@ void	entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste)
 					eb_put(" ", 1);
 					continue ;
 				}
-				pixel(x0 + pg.tw + 4 + c, r, phase, rgb[(r * pg.fw + c) * 3], rgb[(r * pg.fw + c) * 3 + 1],
+				pixel(fx + c, r, phase, rgb[(r * pg.fw + c) * 3], rgb[(r * pg.fw + c) * 3 + 1],
 					rgb[(r * pg.fw + c) * 3 + 2]);
 				eb_put(&txt[r][c], 1);
 			}

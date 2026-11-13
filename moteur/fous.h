@@ -191,6 +191,7 @@
 # define entete_24bits tdf_entete_24bits
 # define entete_taille tdf_entete_taille
 # define entete_hauteur tdf_entete_hauteur
+# define entete_gauche tdf_entete_gauche
 # define entete_dessiner tdf_entete_dessiner
 # define entete_phase tdf_entete_phase
 # define tour_dessiner tdf_tour_dessiner
@@ -585,6 +586,7 @@ int				gardien_sprite(t_canvas *cv, int p, int x, int y, int mw, int mh, double 
 int				entete_24bits(void);
 void			entete_taille(int *cols, int *rows);
 int				entete_hauteur(const char *l1, const char *l2, int reste);
+int				entete_gauche(const char *l1, const char *l2, int reste);
 void			entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste);
 double			entete_phase(long ms, const char *l1, const char *l2);
 void			tour_dessiner(const int *etat, int n, int x, int y, int h);
