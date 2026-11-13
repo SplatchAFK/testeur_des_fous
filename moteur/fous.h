@@ -541,6 +541,7 @@ extern const char		*g_slot_en[NSLOT];
 # define langue_code tdf_langue_code
 # define langue_nom tdf_langue_nom
 # define langue_auto tdf_langue_auto
+# define texte_trad tdf_texte_trad
 # define FT(f, ...) (tdf_track(E_##f), g_ft.f(__VA_ARGS__))
 
 void			tdf_track(int i);
@@ -697,6 +698,7 @@ const char		*tdf_tr(const char *fr, const char *en);
 const char		*langue_code(int l);
 const char		*langue_nom(int l);
 int				langue_auto(void);
+const char		*texte_trad(const char *fr);
 void			tdf_menu_stats(void);
 void			tdf_menu_params(void (*credits)(void));
 void			tdf_screen_stats(void);

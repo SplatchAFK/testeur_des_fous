@@ -60,14 +60,16 @@ static void	exo_prepare(int i)
 	f = fopen(p, "w");
 	if (!f)
 		return ;
-	fprintf(f, "Le testeur des fous printf · Entraînement · niveau %02d\n\n", i + 1);
-	fprintf(f, "Fonction : %s\nFichier  : %s.c (dans ce dossier)\nPrototype :\n%s\n\n",
+	fprintf(f, L("Le testeur des fous printf · Entraînement · niveau %02d\n\n", "The testeur des fous printf · Training · level %02d\n\n"), i + 1);
+	fprintf(f, L("Fonction : %s\nFichier  : %s.c (dans ce dossier)\nPrototype :\n%s\n\n",
+		"Function: %s\nFile    : %s.c (in this folder)\nPrototype:\n%s\n\n"),
 		g_pexos[i].fn, g_pexos[i].fn, g_pexos[i].proto);
-	fprintf(f, "%s\n\nNotion : %s\n", g_pexos[i].fr, g_pexos[i].notion);
-	fprintf(f, "Fonctions autorisées : write, malloc, free, va_start, va_arg, va_copy, va_end.\n");
-	fprintf(f, "Inclus ce dont tu as besoin (<unistd.h>, <stdlib.h>, <stdarg.h>). Pas de libft ici.\n");
-	fprintf(f, "Norme obligatoire. Les fonctions d'aide doivent être static.\n");
-	fprintf(f, "\nEnglish: %s\n", g_pexos[i].en);
+	fprintf(f, L("%s\n\nNotion : %s\n", "%s\n\nTopic: %s\n"), L(g_pexos[i].fr, g_pexos[i].en), texte_trad(g_pexos[i].notion));
+	fprintf(f, L("Fonctions autorisées : write, malloc, free, va_start, va_arg, va_copy, va_end.\n",
+		"Allowed functions: write, malloc, free, va_start, va_arg, va_copy, va_end.\n"));
+	fprintf(f, L("Inclus ce dont tu as besoin (<unistd.h>, <stdlib.h>, <stdarg.h>). Pas de libft ici.\n",
+		"Include what you need (<unistd.h>, <stdlib.h>, <stdarg.h>). No libft here.\n"));
+	fprintf(f, L("Norme obligatoire. Les fonctions d'aide doivent être static.\n", "Norm required. Helper functions must be static.\n"));
 	fclose(f);
 }
 
@@ -203,7 +205,7 @@ static void	level_screen(int i)
 		frame();
 		snprintf(tmp, sizeof(tmp), L("NIVEAU %02d · %s", "LEVEL %02d · %s"), i + 1, g_pexos[i].fn);
 		text_at(x, 1, theme()->accent2, tmp);
-		snprintf(tmp, sizeof(tmp), L("notion : %s", "topic: %s"), g_pexos[i].notion);
+		snprintf(tmp, sizeof(tmp), L("notion : %s", "topic: %s"), texte_trad(g_pexos[i].notion));
 		text_clip(x, 2, theme()->dim, tmp, w);
 		y = text_wrap(x, 4, 7, w, rgb(255, 230, 140), g_pexos[i].proto);
 		y = text_wrap(x, y + 1, term_rows() - 9, w, theme()->text, L(g_pexos[i].fr, g_pexos[i].en));
@@ -262,7 +264,7 @@ void	pf_train(void)
 		center(2, theme()->dim, tmp);
 		for (i = top; i < NPEXO && 4 + i - top < term_rows() - 2; i++)
 		{
-			snprintf(tmp, sizeof(tmp), " %s %02d  %-22s %s", i == sel ? "▶" : " ", i + 1, g_pexos[i].fn, g_pexos[i].notion);
+			snprintf(tmp, sizeof(tmp), " %s %02d  %-22s %s", i == sel ? "▶" : " ", i + 1, g_pexos[i].fn, texte_trad(g_pexos[i].notion));
 			text_clip(x, 4 + i - top, g_pf.exo[i] == '1' ? rgb(80, 230, 140) : (unlocked(i) ? theme()->text : theme()->dim),
 				tmp, 78);
 		}

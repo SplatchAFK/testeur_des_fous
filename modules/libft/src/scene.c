@@ -549,7 +549,7 @@ int	scene_child(int boss, int replay)
 	FT(putstr_fd, "\033[0m\033[2J", 1);
 	FT(strlcpy, g_log, L(" Entrée : passer   Q / Échap : quitter les combats",
 			" Enter: skip   Q / Esc: leave the fights"), sizeof(g_log));
-	say(g_bosses[boss].intro, 0);
+	say(texte_trad(g_bosses[boss].intro), 0);
 	k = frame_wait(now_ms() + anim_ms(2600));
 	if (k == 2)
 		return (0);
@@ -586,13 +586,13 @@ int	scene_child(int boss, int replay)
 		g_dead = 2;
 		explode();
 		g_shm->beaten[boss] = 1;
-		say(g_bosses[boss].defeat, 0);
+		say(texte_trad(g_bosses[boss].defeat), 0);
 		snprintf(g_log, sizeof(g_log), L(" %s est vaincu !  (Entrée)", " %s is defeated!  (Enter)"),
 			L(g_bosses[boss].name, g_bosses[boss].en));
 	}
 	else
 	{
-		say(g_bosses[boss].taunt, fails);
+		say(texte_trad(g_bosses[boss].taunt), fails);
 		snprintf(g_log, sizeof(g_log), L(" Il reste %d PV au boss.  (Entrée)", " The boss has %d HP left.  (Enter)"), g_hp);
 	}
 	frame_wait(now_ms() + 600000);

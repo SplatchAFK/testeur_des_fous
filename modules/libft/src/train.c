@@ -68,15 +68,16 @@ static void	exo_prepare(int i)
 	f = fopen(p, "w");
 	if (!f)
 		return ;
-	fprintf(f, "Le testeur des fous · Entraînement · niveau %02d\n\n", i + 1);
-	fprintf(f, "%s :\n%s\n\n", g_exos[i].npc, g_exos[i].lore);
-	fprintf(f, "Fonction : %s\nFichier  : %s.c (dans ce dossier)\nPrototype :\n%s\n\n",
+	fprintf(f, L("Le testeur des fous · Entraînement · niveau %02d\n\n", "The testeur des fous · Training · level %02d\n\n"), i + 1);
+	fprintf(f, "%s :\n%s\n\n", texte_trad(g_exos[i].npc), texte_trad(g_exos[i].lore));
+	fprintf(f, L("Fonction : %s\nFichier  : %s.c (dans ce dossier)\nPrototype :\n%s\n\n",
+		"Function: %s\nFile    : %s.c (in this folder)\nPrototype:\n%s\n\n"),
 		g_exos[i].fn, g_exos[i].fn, g_exos[i].proto);
-	fprintf(f, "%s\n\n", g_exos[i].fr);
-	fprintf(f, "Notion : %s\n", g_exos[i].notion);
-	fprintf(f, "Fonctions autorisées : malloc, free, write, et ta libft (#include \"libft.h\").\n");
-	fprintf(f, "Norme obligatoire. Les fonctions d'aide doivent être static.\n");
-	fprintf(f, "\nEnglish: %s\n", g_exos[i].en);
+	fprintf(f, "%s\n\n", L(g_exos[i].fr, g_exos[i].en));
+	fprintf(f, L("Notion : %s\n", "Topic: %s\n"), texte_trad(g_exos[i].notion));
+	fprintf(f, L("Fonctions autorisées : malloc, free, write, et ta libft (#include \"libft.h\").\n",
+		"Allowed functions: malloc, free, write, and your libft (#include \"libft.h\").\n"));
+	fprintf(f, L("Norme obligatoire. Les fonctions d'aide doivent être static.\n", "Norm required. Helper functions must be static.\n"));
 	fclose(f);
 }
 
@@ -254,11 +255,11 @@ static void	level_screen(int i)
 		w = term_cols() - x - 1 < 78 ? term_cols() - x - 1 : 78;
 		snprintf(tmp, sizeof(tmp), L("NIVEAU %02d · %s", "LEVEL %02d · %s"), i + 1, g_exos[i].fn);
 		text_at(x, 1, theme()->accent2, tmp);
-		snprintf(tmp, sizeof(tmp), L("notion : %s", "topic: %s"), g_exos[i].notion);
+		snprintf(tmp, sizeof(tmp), L("notion : %s", "topic: %s"), texte_trad(g_exos[i].notion));
 		text_clip(x, 2, theme()->dim, tmp, w);
-		snprintf(tmp, sizeof(tmp), "%s :", g_exos[i].npc);
+		snprintf(tmp, sizeof(tmp), "%s :", texte_trad(g_exos[i].npc));
 		text_at(x, 3, theme()->accent, tmp);
-		y = lines_at(x + 2, 4, 8, theme()->text, g_exos[i].lore,
+		y = lines_at(x + 2, 4, 8, theme()->text, texte_trad(g_exos[i].lore),
 			anim_off() ? -1 : (int)((now_ms() - t0) / 18));
 		y = text_wrap(x, y + 1, y + 4, w, rgb(255, 230, 140), g_exos[i].proto);
 		y = text_wrap(x, y + 1, term_rows() - 6, w, theme()->text, L(g_exos[i].fr, g_exos[i].en));
@@ -272,7 +273,7 @@ static void	level_screen(int i)
 			c = !strcmp(r.st, "ok") ? rgb(80, 230, 140) : rgb(255, 90, 100);
 			if (!strcmp(r.st, "ok"))
 				snprintf(tmp, sizeof(tmp), L("RÉUSSI · %d contrôles · %s", "PASSED · %d checks · %s"),
-					r.checks, g_exos[i].win);
+					r.checks, texte_trad(g_exos[i].win));
 			else
 				snprintf(tmp, sizeof(tmp), L("PAS ENCORE · %s", "NOT YET · %s"), r.st);
 			y = text_wrap(x, y + 1, term_rows() - 1, w, c, tmp);
@@ -355,7 +356,7 @@ void	screen_train(void)
 			}
 		}
 		y = 20;
-		snprintf(tmp, sizeof(tmp), "%02d · %s · %s", sel + 1, g_exos[sel].fn, g_exos[sel].notion);
+		snprintf(tmp, sizeof(tmp), "%02d · %s · %s", sel + 1, g_exos[sel].fn, texte_trad(g_exos[sel].notion));
 		text_clip(x, y, theme()->text, tmp, term_cols() - x - 1);
 		if (!g_save.boss[sel / 7])
 			snprintf(tmp, sizeof(tmp), L("Verrouillé : bats d'abord %s (toutes les fonctions de la partie %d propres).",

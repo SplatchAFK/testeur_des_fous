@@ -1053,3 +1053,121 @@ Already passed	Zaten geçilenler
 \n  %s═══════════════════════ EXERCISE BANK ════════════════════════%s\n	\n  %s═══════════════════ ALIŞTIRMA BANKASI ═══════════════════%s\n
 \n  %sliste%s [exam|libft|printf] [level]   %scherche%s WORD   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n	\n  %sliste%s [exam|libft|printf] [seviye]   %scherche%s KELİME   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n
 Help	Yardım
+Topic: %s\n	Kavram: %s\n
+%s\n\nTopic: %s\n	%s\n\nKavram: %s\n
+Nothing leaves this place without being handed in.	Teslim edilmeden hiçbir şey buradan çıkmaz.
+{n} of your stones do not hold.\nCome back when they do.	Taşlarından {n} tanesi tutmuyor.\nTuttuklarında geri gel.
+The mist withdraws into the joints.\nThe Warden goes still and becomes a pillar of the Tower.	Sis derzlere çekiliyor.\nMuhafız donuyor ve Kulenin bir sütunu oluyor.
+Everything that enters here is cut up.\nBadly, most of the time.	Buraya giren her şey kesilir.\nÇoğu zaman kötü.
+His threads knot around your sword.\n{n} functions still need work.	İplikleri kılıcına dolanıyor.\nDüzeltilecek {n} fonksiyon kaldı.
+His threads pull straight, like a harp,\nthen fall silent.	İplikleri bir arp gibi gerilir,\nsonra susar.
+No words. Only the sound of chains.	Tek kelime yok. Yalnızca zincir sesi.
+One head hangs in the void, never freed.\n{n} functions still feed it.	Bir kafa boşlukta asılı kalır, hiç serbest bırakılmaz.\nOnu besleyen {n} fonksiyon kaldı.
+The links come loose one by one, cleanly,\nand fall.	Halkalar teker teker, temizce çözülür\nve düşer.
+swap in place, two indexes	yerinde takas, iki indeks
+A pigeon in a bathrobe	Bornozlu bir güvercin
+I wrote my name backwards on my mailbox.\nNobody writes to me. Turn it around, but IN PLACE:\nI do not have a second mailbox.	Posta kutuma adımı ters yazdım.\nKimse bana yazmıyor. Çevir, ama YERİNDE:\nikinci bir kutum yok.
+The postman came! It was an ad, but still.	Postacı geldi! Reklamdı ama olsun.
+nested search, like the libc	iç içe arama, libc gibi
+A baguette doing yoga	Yoga yapan bir baget
+I count how many of my first letters are zen letters.\nAs soon as a letter is not zen, I stop counting and I grumble.	İlk harflerimden kaçının zen harfi olduğunu sayıyorum.\nZen olmayan bir harf görünce saymayı bırakıp söyleniyorum.
+Ommmm. 4 zen letters. I feel crispy.	Ommmm. 4 zen harf. Kendimi çıtır hissediyorum.
+backwards loop with a size_t	size_t ile geriye döngü
+An archivist snail	Arşivci bir salyangoz
+I read my archives backwards, it is faster for me.\nFind the LAST time I wrote this character...\nand never read before the start, I hate draughts.	Arşivlerimi tersten okurum, benim için daha hızlı.\nBu karakteri SON yazdığım yeri bul...\nve asla başlangıçtan önce okuma, cereyandan nefret ederim.
+Found! It was hidden under a lettuce leaf.	Buldum! Bir marul yaprağının altına saklanmıştı.
+unsigned char and tolower	unsigned char ve tolower
+Two shouting twins	Bağıran iki ikiz
+We say exactly the same thing, but he SHOUTS and I whisper.\nCompare us without minding the capitals.	Tam olarak aynı şeyi söylüyoruz, ama o BAĞIRIYOR, ben fısıldıyorum.\nBüyük harflere bakmadan bizi karşılaştır.
+WE AGREE! well... we agree.	ANLAŞTIK! yani... anlaştık.
+void * and bytes	void * ve baytlar
+A junk dealer	Bir eskici
+Swap these two chests, byte by byte.\nI do not know what is inside. Neither do you. It is void *.	Bu iki sandığı bayt bayt değiştir.\nİçinde ne var bilmiyorum. Sen de bilmiyorsun. Bu void *.
+Perfect. I will sell both for more.	Mükemmel. İkisini de daha pahalıya satacağım.
+bitwise operators	bit düzeyi işleçler
+A sentimental light bulb	Duygusal bir ampul
+How many of my switches are on?\nCount the bits set to 1, please. I am afraid of the dark.	Anahtarlarımdan kaçı açık?\nLütfen 1 olan bitleri say. Karanlıktan korkuyorum.
+Phew. There is light somewhere.	Oh be. Bir yerde ışık var.
+base conversion and validation	taban dönüşümü ve doğrulama
+The Great Moulinette, half awake	Yarı uyanık Büyük Moulinette
+I no longer read decimal, it is too mainstream.\nRead this number in any base. If the base is weird,\nanswer 0 and do not argue. I am going back to sleep.	Artık onluk okumuyorum, fazla sıradan.\nBu sayıyı herhangi bir tabanda oku. Taban tuhafsa\n0 de ve tartışma. Uyumaya dönüyorum.
+Zzz... 255 in hexadecimal... zzz... well done... zzz.	Zzz... onaltılıkta 255... zzz... aferin... zzz.
+exact allocation size	tam ayırma boyutu
+A tired photocopier	Yorgun bir fotokopi makinesi
+Copy this text, but no more than n letters.\nBeyond that, I go on strike and blink orange.	Bu metni kopyala ama n harften fazlasını değil.\nÖtesinde greve çıkar, turuncu yanıp sönerim.
+Beep. Copy done. I am taking a nap.	Bip. Kopya bitti. Biraz kestireceğim.
+LONG_MIN, digit counting, exact malloc	LONG_MIN, basamak sayma, tam malloc
+A bookkeeping pirate	Muhasebeci bir korsan
+Record my treasures in the base of my choice.\nEven my debts. Even the biggest debt in the world: LONG_MIN.	Hazinelerimi seçtiğim tabanda kaydet.\nBorçlarımı bile. Dünyanın en büyük borcunu bile: LONG_MIN.
+Arrr! -9223372036854775808 gold coins. I am broke but organised.	Arrr! -9223372036854775808 altın. Battım ama düzenliyim.
+2D array and partial freeing	2B dizi ve kısmi serbest bırakma
+A hen that collects shopping lists	Alışveriş listesi biriktiren bir tavuk
+Duplicate my list of lists. Every sheet.\nIf you run out of paper on the way, give EVERYTHING back and keep nothing.	Liste listemi çoğalt. Her sayfasını.\nYolda kâğıdın biterse HER ŞEYİ geri ver ve hiçbir şey tutma.
+Cluck cluck! Two copies of each. I can finally lose the original.	Gıt gıdak! Her birinden iki tane. Sonunda aslını kaybedebilirim.
+generalised split	genelleştirilmiş split
+A chef who cuts everything	Her şeyi doğrayan bir şef
+Cut this sentence at every forbidden ingredient.\nNot only commas: ALL the ingredients on my blacklist.	Bu cümleyi her yasak malzemede kes.\nYalnızca virgüller değil: kara listemdeki TÜM malzemeler.
+Magnificent julienne of strings. Three stars.	Muhteşem string jülyeni. Üç yıldız.
+two passes: count, then build	iki geçiş: say, sonra kur
+A proofreading parrot	Düzelti yapan bir papağan
+Replace every word with another. Everywhere.\nAnd allocate the right size, I do not want feathers sticking out.	Her kelimeyi başka biriyle değiştir. Her yerde.\nVe doğru boyutu ayır, dışarı taşan tüy istemiyorum.
+POLLY PROOFREAD! POLLY PROOFREAD!	PAPAĞAN DÜZELTTİ! PAPAĞAN DÜZELTTİ!
+recursion and write	özyineleme ve write
+A pirate radio	Bir korsan radyo
+Broadcast this number on my fd frequency, in any base.\nListeners love hexadecimal on Sundays.	Bu sayıyı fd frekansımda, herhangi bir tabanda yayınla.\nDinleyiciler pazar günleri onaltılığa bayılır.
+This is Radio Fous, 7FFFFFFFFFFFFFFF listeners are tuned in.	Burası Radyo Fous, 7FFFFFFFFFFFFFFF dinleyici bizi dinliyor.
+function pointers and sorting	fonksiyon işaretçileri ve sıralama
+An indecisive librarian	Kararsız bir kütüphaneci
+Sort my books. But I decide how they are compared:\nby title, by size, by cover colour...\nMove the labels, not the books.	Kitaplarımı sırala. Ama nasıl karşılaştırılacağına ben karar veririm:\nbaşlığa, boyuta, kapak rengine göre...\nKitapları değil, etiketleri taşı.
+Sorted by title length. It is absurd. I love it.	Başlık uzunluğuna göre sıralandı. Saçma. Bayıldım.
+traversal and bounds	dolaşma ve sınırlar
+A ghost train	Bir hayalet treni
+Tell me which carriage is at position i.\nIf it does not exist, whatever you do, do not get on. There are ghosts.	i konumunda hangi vagon var söyle.\nYoksa sakın binme. Hayaletler var.
+Carriage found. The ghost waves at you.	Vagon bulundu. Hayalet sana el sallıyor.
+juggling three pointers	üç işaretçiyle hokkabazlık
+A caterpillar that lost its way	Yönünü kaybetmiş bir tırtıl
+I want to walk backwards.\nTurn me around, but without building me a new body, I like this one.	Geri geri yürümek istiyorum.\nBeni çevir, ama yeni bir beden yapmadan, bunu seviyorum.
+I am going backwards! I am going backwards! Mind the wall.	Geri gidiyorum! Geri gidiyorum! Duvara dikkat.
+callback with context	bağlamlı callback
+A sniffer dog	Bir iz süren köpek
+Find the first link that smells like my reference.\nYou do the sniffing, with the cmp function. I wag my tail.	Referansım gibi kokan ilk halkayı bul.\nKoklamayı sen yap, cmp fonksiyonuyla. Ben kuyruk sallarım.
+Woof! (that means well done in dog)	Hav! (köpekçe aferin demek)
+deleting while traversing, t_list **	dolaşırken silme, t_list **
+A gardener	Bir bahçıvan
+Pull every weed out of the row.\nEven the first one! And throw them away with del, not into my slippers.	Sıradaki tüm yabani otları sök.\nİlkini bile! Ve onları terliklerime değil, del ile at.
+Spotless row. The weeds have been freed.	Kusursuz sıra. Yabani otlar serbest bırakıldı.
+sorting a linked list	bağlı listeyi sıralama
+A moustached sergeant	Bıyıklı bir çavuş
+Get this line in order! From smallest to largest!\nAnd make it snappy, my moustache is getting impatient!	Bu sırayı düzene sok! Küçükten büyüğe!\nHem de çabuk, bıyığım sabırsızlanıyor!
+AT EASE! Finally a presentable line.	RAHAT! Sonunda düzgün bir sıra.
+list to array	listeden diziye
+A removal man	Bir nakliyeci
+Put every box of the list in the truck, in order,\nand a NULL at the very back to close the door.	Listedeki tüm kolileri sırayla kamyona koy,\nkapıyı kapatmak için en arkaya bir NULL koy.
+Truck closed. We lost no box, that is a first.	Kamyon kapandı. Hiç koli kaybetmedik, bu bir ilk.
+modulo, negatives, joining the tail	mod, negatifler, kuyruğu bağlama
+The Great Moulinette, for good	Büyük Moulinette, bu sefer gerçekten
+Last test. Rotate my line by n notches.\nForwards, backwards, even if n is HUGE.\nAfterwards, I go back to sleep for a thousand years.	Son test. Sıramı n adım döndür.\nİleri, geri, n ÇOK BÜYÜK olsa bile.\nSonra bin yıl uyumaya dönerim.
+The Moulinette smiles, rolls over and snores. You understood everything.	Moulinette gülümsüyor, dönüp horluyor. Her şeyi anladın.
+write and its return value	write ve dönüş değeri
+NULL string	NULL string
+INT_MIN without overflow	taşmasız INT_MIN
+base conversion	taban dönüşümü
+hexadecimal and case	onaltılık ve büyük/küçük harf
+pointers and unsigned long	işaretçiler ve unsigned long
+reading the format	formatı okuma
+the final '%'	sondaki '%'
+variadic functions	değişken argümanlı fonksiyonlar
+va_arg in a loop	döngüde va_arg
+two passes over the arguments	argümanlar üzerinde iki geçiş
+va_copy	va_copy
+descriptors and errors	tanımlayıcılar ve hatalar
+exact-size malloc	tam boyutlu malloc
+passing a va_list	va_list aktarma
+dprintf	dprintf
+The testeur des fous · Training · level %02d\n\n	testeur des fous · Antrenman · seviye %02d\n\n
+Function: %s\nFile    : %s.c (in this folder)\nPrototype:\n%s\n\n	Fonksiyon: %s\nDosya    : %s.c (bu klasörde)\nPrototip:\n%s\n\n
+Allowed functions: malloc, free, write, and your libft (#include \"libft.h\").\n	İzinli fonksiyonlar: malloc, free, write ve libft'in (#include \"libft.h\").\n
+Norm required. Helper functions must be static.\n	Norm zorunlu. Yardımcı fonksiyonlar static olmalı.\n
+The testeur des fous printf · Training · level %02d\n\n	testeur des fous printf · Antrenman · seviye %02d\n\n
+Allowed functions: write, malloc, free, va_start, va_arg, va_copy, va_end.\n	İzinli fonksiyonlar: write, malloc, free, va_start, va_arg, va_copy, va_end.\n
+Include what you need (<unistd.h>, <stdlib.h>, <stdarg.h>). No libft here.\n	Gerekenleri dahil et (<unistd.h>, <stdlib.h>, <stdarg.h>). Burada libft yok.\n

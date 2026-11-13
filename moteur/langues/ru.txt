@@ -1053,3 +1053,121 @@ Already passed	Уже пройдено
 \n  %s═══════════════════════ EXERCISE BANK ════════════════════════%s\n	\n  %s═══════════════════ БАНК УПРАЖНЕНИЙ ═══════════════════%s\n
 \n  %sliste%s [exam|libft|printf] [level]   %scherche%s WORD   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n	\n  %sliste%s [exam|libft|printf] [уровень]   %scherche%s СЛОВО   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n
 Help	Помощь
+Topic: %s\n	Тема: %s\n
+%s\n\nTopic: %s\n	%s\n\nТема: %s\n
+Nothing leaves this place without being handed in.	Ничто не покидает это место, не будучи сданным.
+{n} of your stones do not hold.\nCome back when they do.	Не держатся камней: {n}.\nВозвращайся, когда они будут держаться.
+The mist withdraws into the joints.\nThe Warden goes still and becomes a pillar of the Tower.	Туман уходит в щели.\nСтраж застывает и становится колонной Башни.
+Everything that enters here is cut up.\nBadly, most of the time.	Всё, что входит сюда, разрезается.\nЧаще всего плохо.
+His threads knot around your sword.\n{n} functions still need work.	Его нити обвивают твой меч.\nНужно доработать ещё функций: {n}.
+His threads pull straight, like a harp,\nthen fall silent.	Его нити натягиваются, как струны арфы,\nи затихают.
+No words. Only the sound of chains.	Ни слова. Только звон цепей.
+One head hangs in the void, never freed.\n{n} functions still feed it.	Одна голова висит в пустоте, так и не освобождённая.\nЕё ещё кормят функций: {n}.
+The links come loose one by one, cleanly,\nand fall.	Звенья отходят одно за другим, чисто,\nи падают.
+swap in place, two indexes	обмен на месте, два индекса
+A pigeon in a bathrobe	Голубь в халате
+I wrote my name backwards on my mailbox.\nNobody writes to me. Turn it around, but IN PLACE:\nI do not have a second mailbox.	Я написал своё имя задом наперёд на почтовом ящике.\nМне никто не пишет. Переверни его, но НА МЕСТЕ:\nвторого ящика у меня нет.
+The postman came! It was an ad, but still.	Почтальон пришёл! Это была реклама, но всё же.
+nested search, like the libc	вложенный поиск, как в libc
+A baguette doing yoga	Багет, который занимается йогой
+I count how many of my first letters are zen letters.\nAs soon as a letter is not zen, I stop counting and I grumble.	Я считаю, сколько моих первых букв — дзен-буквы.\nКак только буква не дзен, я перестаю считать и ворчу.
+Ommmm. 4 zen letters. I feel crispy.	Омммм. 4 дзен-буквы. Чувствую себя хрустящим.
+backwards loop with a size_t	обратный цикл с size_t
+An archivist snail	Улитка-архивариус
+I read my archives backwards, it is faster for me.\nFind the LAST time I wrote this character...\nand never read before the start, I hate draughts.	Я читаю свои архивы с конца, так мне быстрее.\nНайди ПОСЛЕДНИЙ раз, когда я написал этот символ...\nи никогда не читай до начала, ненавижу сквозняки.
+Found! It was hidden under a lettuce leaf.	Нашёл! Он прятался под листом салата.
+unsigned char and tolower	unsigned char и tolower
+Two shouting twins	Два кричащих близнеца
+We say exactly the same thing, but he SHOUTS and I whisper.\nCompare us without minding the capitals.	Мы говорим одно и то же, но он ОРЁТ, а я шепчу.\nСравни нас, не обращая внимания на заглавные.
+WE AGREE! well... we agree.	МЫ СОГЛАСНЫ! ну... мы согласны.
+void * and bytes	void * и байты
+A junk dealer	Старьёвщик
+Swap these two chests, byte by byte.\nI do not know what is inside. Neither do you. It is void *.	Поменяй эти два сундука местами, байт за байтом.\nЯ не знаю, что внутри. Ты тоже. Это void *.
+Perfect. I will sell both for more.	Отлично. Перепродам оба подороже.
+bitwise operators	побитовые операторы
+A sentimental light bulb	Сентиментальная лампочка
+How many of my switches are on?\nCount the bits set to 1, please. I am afraid of the dark.	Сколько моих выключателей включено?\nПосчитай единичные биты, пожалуйста. Я боюсь темноты.
+Phew. There is light somewhere.	Фух. Где-то есть свет.
+base conversion and validation	перевод систем счисления и проверка
+The Great Moulinette, half awake	Великая Мулинетт, наполовину проснувшаяся
+I no longer read decimal, it is too mainstream.\nRead this number in any base. If the base is weird,\nanswer 0 and do not argue. I am going back to sleep.	Я больше не читаю десятичную, это слишком банально.\nПрочитай это число в любой системе. Если система странная,\nответь 0 и не спорь. Я снова сплю.
+Zzz... 255 in hexadecimal... zzz... well done... zzz.	Хррр... 255 в шестнадцатеричной... хррр... молодец... хррр.
+exact allocation size	точный размер выделения
+A tired photocopier	Уставший ксерокс
+Copy this text, but no more than n letters.\nBeyond that, I go on strike and blink orange.	Скопируй этот текст, но не больше n букв.\nДальше я бастую и мигаю оранжевым.
+Beep. Copy done. I am taking a nap.	Бип. Копия готова. Пойду вздремну.
+LONG_MIN, digit counting, exact malloc	LONG_MIN, подсчёт цифр, точный malloc
+A bookkeeping pirate	Пират-бухгалтер
+Record my treasures in the base of my choice.\nEven my debts. Even the biggest debt in the world: LONG_MIN.	Запиши мои сокровища в системе на мой выбор.\nДаже долги. Даже самый большой долг в мире: LONG_MIN.
+Arrr! -9223372036854775808 gold coins. I am broke but organised.	Арр! -9223372036854775808 золотых. Я разорён, но организован.
+2D array and partial freeing	двумерный массив и частичное освобождение
+A hen that collects shopping lists	Курица, которая собирает списки покупок
+Duplicate my list of lists. Every sheet.\nIf you run out of paper on the way, give EVERYTHING back and keep nothing.	Скопируй мой список списков. Каждый лист.\nЕсли по дороге кончится бумага, верни ВСЁ и ничего не оставляй.
+Cluck cluck! Two copies of each. I can finally lose the original.	Ко-ко! По две копии каждого. Наконец-то можно потерять оригинал.
+generalised split	обобщённый split
+A chef who cuts everything	Шеф, который режет всё
+Cut this sentence at every forbidden ingredient.\nNot only commas: ALL the ingredients on my blacklist.	Разрежь это предложение на каждом запрещённом ингредиенте.\nНе только запятые: ВСЕ ингредиенты из моего чёрного списка.
+Magnificent julienne of strings. Three stars.	Великолепная жюльен из строк. Три звезды.
+two passes: count, then build	два прохода: посчитать, потом построить
+A proofreading parrot	Попугай-корректор
+Replace every word with another. Everywhere.\nAnd allocate the right size, I do not want feathers sticking out.	Замени каждое слово другим. Везде.\nИ выдели нужный размер, мне не нужны торчащие перья.
+POLLY PROOFREAD! POLLY PROOFREAD!	ПОПКА ИСПРАВИЛ! ПОПКА ИСПРАВИЛ!
+recursion and write	рекурсия и write
+A pirate radio	Пиратское радио
+Broadcast this number on my fd frequency, in any base.\nListeners love hexadecimal on Sundays.	Передай это число на моей частоте fd, в любой системе.\nСлушатели обожают шестнадцатеричную по воскресеньям.
+This is Radio Fous, 7FFFFFFFFFFFFFFF listeners are tuned in.	Это Радио Фу, нас слушают 7FFFFFFFFFFFFFFF слушателей.
+function pointers and sorting	указатели на функции и сортировка
+An indecisive librarian	Нерешительный библиотекарь
+Sort my books. But I decide how they are compared:\nby title, by size, by cover colour...\nMove the labels, not the books.	Расставь мои книги. Но как их сравнивать, решаю я:\nпо названию, по размеру, по цвету обложки...\nПереставляй ярлыки, а не книги.
+Sorted by title length. It is absurd. I love it.	Отсортированы по длине названия. Это абсурд. Обожаю.
+traversal and bounds	обход и границы
+A ghost train	Поезд-призрак
+Tell me which carriage is at position i.\nIf it does not exist, whatever you do, do not get on. There are ghosts.	Скажи, какой вагон стоит на позиции i.\nЕсли его нет, ни в коем случае не садись. Там призраки.
+Carriage found. The ghost waves at you.	Вагон найден. Призрак машет тебе рукой.
+juggling three pointers	жонглировать тремя указателями
+A caterpillar that lost its way	Гусеница, сбившаяся с пути
+I want to walk backwards.\nTurn me around, but without building me a new body, I like this one.	Хочу ходить задом наперёд.\nРазверни меня, но не делая нового тела, мне дорого это.
+I am going backwards! I am going backwards! Mind the wall.	Я пячусь! Я пячусь! Осторожно, стена.
+callback with context	callback с контекстом
+A sniffer dog	Собака-ищейка
+Find the first link that smells like my reference.\nYou do the sniffing, with the cmp function. I wag my tail.	Найди первое звено, которое пахнет как мой образец.\nНюхаешь ты, функцией cmp. Я виляю хвостом.
+Woof! (that means well done in dog)	Гав! (по-собачьи это «молодец»)
+deleting while traversing, t_list **	удаление при обходе, t_list **
+A gardener	Садовник
+Pull every weed out of the row.\nEven the first one! And throw them away with del, not into my slippers.	Выдерни все сорняки из грядки.\nДаже первый! И выбрасывай их через del, а не в мои тапки.
+Spotless row. The weeds have been freed.	Безупречная грядка. Сорняки освобождены.
+sorting a linked list	сортировка связного списка
+A moustached sergeant	Усатый сержант
+Get this line in order! From smallest to largest!\nAnd make it snappy, my moustache is getting impatient!	Построй эту шеренгу! От меньшего к большему!\nИ живо, мои усы теряют терпение!
+AT EASE! Finally a presentable line.	ВОЛЬНО! Наконец приличная шеренга.
+list to array	список в массив
+A removal man	Грузчик
+Put every box of the list in the truck, in order,\nand a NULL at the very back to close the door.	Погрузи все коробки из списка в грузовик, по порядку,\nи NULL в самом конце, чтобы закрыть дверь.
+Truck closed. We lost no box, that is a first.	Грузовик закрыт. Ни одной коробки не потеряли, впервые.
+modulo, negatives, joining the tail	остаток, отрицательные, соединить хвост
+The Great Moulinette, for good	Великая Мулинетт, всерьёз
+Last test. Rotate my line by n notches.\nForwards, backwards, even if n is HUGE.\nAfterwards, I go back to sleep for a thousand years.	Последний тест. Поверни мою очередь на n позиций.\nВперёд, назад, даже если n ОГРОМНОЕ.\nПотом я снова усну на тысячу лет.
+The Moulinette smiles, rolls over and snores. You understood everything.	Мулинетт улыбается, переворачивается и храпит. Ты всё понял.
+write and its return value	write и его возвращаемое значение
+NULL string	строка NULL
+INT_MIN without overflow	INT_MIN без переполнения
+base conversion	перевод систем счисления
+hexadecimal and case	шестнадцатеричная и регистр
+pointers and unsigned long	указатели и unsigned long
+reading the format	чтение формата
+the final '%'	последний '%'
+variadic functions	вариадические функции
+va_arg in a loop	va_arg в цикле
+two passes over the arguments	два прохода по аргументам
+va_copy	va_copy
+descriptors and errors	дескрипторы и ошибки
+exact-size malloc	malloc точного размера
+passing a va_list	передача va_list
+dprintf	dprintf
+The testeur des fous · Training · level %02d\n\n	testeur des fous · Тренировка · уровень %02d\n\n
+Function: %s\nFile    : %s.c (in this folder)\nPrototype:\n%s\n\n	Функция: %s\nФайл   : %s.c (в этой папке)\nПрототип:\n%s\n\n
+Allowed functions: malloc, free, write, and your libft (#include \"libft.h\").\n	Разрешённые функции: malloc, free, write и твоя libft (#include \"libft.h\").\n
+Norm required. Helper functions must be static.\n	Норма обязательна. Вспомогательные функции должны быть static.\n
+The testeur des fous printf · Training · level %02d\n\n	testeur des fous printf · Тренировка · уровень %02d\n\n
+Allowed functions: write, malloc, free, va_start, va_arg, va_copy, va_end.\n	Разрешённые функции: write, malloc, free, va_start, va_arg, va_copy, va_end.\n
+Include what you need (<unistd.h>, <stdlib.h>, <stdarg.h>). No libft here.\n	Подключи что нужно (<unistd.h>, <stdlib.h>, <stdarg.h>). Здесь без libft.\n

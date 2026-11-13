@@ -1053,3 +1053,121 @@ Already passed	Già superati
 \n  %s═══════════════════════ EXERCISE BANK ════════════════════════%s\n	\n  %s═══════════════════ BANCA ESERCIZI ═══════════════════%s\n
 \n  %sliste%s [exam|libft|printf] [level]   %scherche%s WORD   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n	\n  %sliste%s [exam|libft|printf] [livello]   %scherche%s PAROLA   %souvre%s N   %sgrademe%s   %ssujet%s   %sfait%s   %saide%s   %squitter%s\n\n
 Help	Aiuto
+Topic: %s\n	Nozione: %s\n
+%s\n\nTopic: %s\n	%s\n\nNozione: %s\n
+Nothing leaves this place without being handed in.	Niente esce da qui senza essere consegnato.
+{n} of your stones do not hold.\nCome back when they do.	{n} delle tue pietre non reggono.\nTorna quando reggeranno.
+The mist withdraws into the joints.\nThe Warden goes still and becomes a pillar of the Tower.	La nebbia si ritira nelle fessure.\nIl Guardiano si immobilizza e diventa un pilastro della Torre.
+Everything that enters here is cut up.\nBadly, most of the time.	Tutto ciò che entra qui viene tagliato.\nMale, il più delle volte.
+His threads knot around your sword.\n{n} functions still need work.	I suoi fili si annodano intorno alla tua spada.\nRestano {n} funzioni da riprendere.
+His threads pull straight, like a harp,\nthen fall silent.	I suoi fili si tendono dritti, come un'arpa,\npoi tacciono.
+No words. Only the sound of chains.	Nessuna parola. Solo il rumore delle catene.
+One head hangs in the void, never freed.\n{n} functions still feed it.	Una testa resta sospesa nel vuoto, mai liberata.\nRestano {n} funzioni che la nutrono.
+The links come loose one by one, cleanly,\nand fall.	Gli anelli si staccano uno a uno, puliti,\ne cadono.
+swap in place, two indexes	scambio sul posto, due indici
+A pigeon in a bathrobe	Un piccione in accappatoio
+I wrote my name backwards on my mailbox.\nNobody writes to me. Turn it around, but IN PLACE:\nI do not have a second mailbox.	Ho scritto il mio nome al contrario sulla cassetta delle lettere.\nNessuno mi scrive. Giralo, ma SUL POSTO:\nnon ho una seconda cassetta.
+The postman came! It was an ad, but still.	È passato il postino! Era pubblicità, ma comunque.
+nested search, like the libc	ricerca annidata, come la libc
+A baguette doing yoga	Una baguette che fa yoga
+I count how many of my first letters are zen letters.\nAs soon as a letter is not zen, I stop counting and I grumble.	Conto quante delle mie prime lettere sono lettere zen.\nAppena una lettera non è zen, smetto di contare e brontolo.
+Ommmm. 4 zen letters. I feel crispy.	Ommmm. 4 lettere zen. Mi sento croccante.
+backwards loop with a size_t	ciclo all'indietro con un size_t
+An archivist snail	Una lumaca archivista
+I read my archives backwards, it is faster for me.\nFind the LAST time I wrote this character...\nand never read before the start, I hate draughts.	Leggo i miei archivi al contrario, per me è più veloce.\nTrova l'ULTIMA volta che ho scritto questo carattere...\ne non leggere mai prima dell'inizio, odio gli spifferi.
+Found! It was hidden under a lettuce leaf.	Trovato! Era nascosto sotto una foglia di insalata.
+unsigned char and tolower	unsigned char e tolower
+Two shouting twins	Due gemelli che urlano
+We say exactly the same thing, but he SHOUTS and I whisper.\nCompare us without minding the capitals.	Diciamo esattamente la stessa cosa, ma lui URLA e io sussurro.\nConfrontaci senza badare alle maiuscole.
+WE AGREE! well... we agree.	SIAMO D'ACCORDO! beh... siamo d'accordo.
+void * and bytes	void * e byte
+A junk dealer	Un rigattiere
+Swap these two chests, byte by byte.\nI do not know what is inside. Neither do you. It is void *.	Scambia questi due bauli, byte per byte.\nNon so cosa c'è dentro. Neanche tu. È void *.
+Perfect. I will sell both for more.	Perfetto. Li rivenderò tutti e due a più caro prezzo.
+bitwise operators	operatori sui bit
+A sentimental light bulb	Una lampadina sentimentale
+How many of my switches are on?\nCount the bits set to 1, please. I am afraid of the dark.	Quanti dei miei interruttori sono accesi?\nConta i bit a 1, per favore. Ho paura del buio.
+Phew. There is light somewhere.	Fiu. C'è luce da qualche parte.
+base conversion and validation	conversione di base e validazione
+The Great Moulinette, half awake	La Grande Moulinette, mezza sveglia
+I no longer read decimal, it is too mainstream.\nRead this number in any base. If the base is weird,\nanswer 0 and do not argue. I am going back to sleep.	Non leggo più il decimale, è troppo mainstream.\nLeggi questo numero in qualsiasi base. Se la base è strana,\nrispondi 0 e non discutere. Torno a dormire.
+Zzz... 255 in hexadecimal... zzz... well done... zzz.	Zzz... 255 in esadecimale... zzz... ben fatto... zzz.
+exact allocation size	dimensione esatta dell'allocazione
+A tired photocopier	Una fotocopiatrice stanca
+Copy this text, but no more than n letters.\nBeyond that, I go on strike and blink orange.	Copia questo testo, ma non più di n lettere.\nOltre, sciopero e lampeggio in arancione.
+Beep. Copy done. I am taking a nap.	Bip. Copia terminata. Faccio un pisolino.
+LONG_MIN, digit counting, exact malloc	LONG_MIN, conteggio delle cifre, malloc esatto
+A bookkeeping pirate	Un pirata contabile
+Record my treasures in the base of my choice.\nEven my debts. Even the biggest debt in the world: LONG_MIN.	Annota i miei tesori nella base che scelgo io.\nAnche i miei debiti. Anche il debito più grande del mondo: LONG_MIN.
+Arrr! -9223372036854775808 gold coins. I am broke but organised.	Arrr! -9223372036854775808 monete d'oro. Sono rovinato ma organizzato.
+2D array and partial freeing	array 2D e liberazione parziale
+A hen that collects shopping lists	Una gallina che colleziona liste della spesa
+Duplicate my list of lists. Every sheet.\nIf you run out of paper on the way, give EVERYTHING back and keep nothing.	Duplica la mia lista di liste. Tutti i fogli.\nSe resti senza carta a metà strada, restituisci TUTTO e non tenere niente.
+Cluck cluck! Two copies of each. I can finally lose the original.	Coccodè! Due copie di ciascuna. Finalmente posso perdere l'originale.
+generalised split	split generalizzato
+A chef who cuts everything	Uno chef che taglia tutto
+Cut this sentence at every forbidden ingredient.\nNot only commas: ALL the ingredients on my blacklist.	Taglia questa frase a ogni ingrediente proibito.\nNon solo le virgole: TUTTI gli ingredienti della mia lista nera.
+Magnificent julienne of strings. Three stars.	Magnifica julienne di stringhe. Tre stelle.
+two passes: count, then build	due passate: contare, poi costruire
+A proofreading parrot	Un pappagallo correttore
+Replace every word with another. Everywhere.\nAnd allocate the right size, I do not want feathers sticking out.	Sostituisci ogni parola con un'altra. Ovunque.\nE alloca la dimensione giusta, non voglio piume che spuntano.
+POLLY PROOFREAD! POLLY PROOFREAD!	COCORITO CORRETTO! COCORITO CORRETTO!
+recursion and write	ricorsione e write
+A pirate radio	Una radio pirata
+Broadcast this number on my fd frequency, in any base.\nListeners love hexadecimal on Sundays.	Trasmetti questo numero sulla mia frequenza fd, in qualsiasi base.\nGli ascoltatori adorano l'esadecimale la domenica.
+This is Radio Fous, 7FFFFFFFFFFFFFFF listeners are tuned in.	Qui Radio Fous, 7FFFFFFFFFFFFFFF ascoltatori ci seguono.
+function pointers and sorting	puntatori a funzione e ordinamento
+An indecisive librarian	Un bibliotecario indeciso
+Sort my books. But I decide how they are compared:\nby title, by size, by cover colour...\nMove the labels, not the books.	Riordina i miei libri. Ma decido io come si confrontano:\nper titolo, per misura, per colore della copertina...\nSposta le etichette, non i libri.
+Sorted by title length. It is absurd. I love it.	Ordinati per lunghezza del titolo. È assurdo. Lo adoro.
+traversal and bounds	percorso e limiti
+A ghost train	Un treno fantasma
+Tell me which carriage is at position i.\nIf it does not exist, whatever you do, do not get on. There are ghosts.	Dimmi quale vagone è alla posizione i.\nSe non esiste, non salire per nessun motivo. Ci sono fantasmi.
+Carriage found. The ghost waves at you.	Vagone trovato. Il fantasma ti saluta con la mano.
+juggling three pointers	giocolare con tre puntatori
+A caterpillar that lost its way	Un bruco che ha perso la bussola
+I want to walk backwards.\nTurn me around, but without building me a new body, I like this one.	Voglio camminare all'indietro.\nGirami, ma senza costruirmi un corpo nuovo, ci tengo a questo.
+I am going backwards! I am going backwards! Mind the wall.	Vado all'indietro! Vado all'indietro! Attento al muro.
+callback with context	callback con contesto
+A sniffer dog	Un cane da fiuto
+Find the first link that smells like my reference.\nYou do the sniffing, with the cmp function. I wag my tail.	Trova il primo anello che ha l'odore del mio riferimento.\nAnnusi tu, con la funzione cmp. Io scodinzolo.
+Woof! (that means well done in dog)	Bau! (vuol dire bravo in cane)
+deleting while traversing, t_list **	eliminare durante il percorso, t_list **
+A gardener	Un giardiniere
+Pull every weed out of the row.\nEven the first one! And throw them away with del, not into my slippers.	Strappa tutte le erbacce dalla fila.\nAnche la prima! E buttale con del, non nelle mie pantofole.
+Spotless row. The weeds have been freed.	Fila impeccabile. Le erbacce sono state liberate.
+sorting a linked list	ordinare una lista concatenata
+A moustached sergeant	Un sergente coi baffi
+Get this line in order! From smallest to largest!\nAnd make it snappy, my moustache is getting impatient!	Metti in ordine questa fila! Dal più piccolo al più grande!\nE alla svelta, i miei baffi si spazientiscono!
+AT EASE! Finally a presentable line.	RIPOSO! Finalmente una fila presentabile.
+list to array	lista in array
+A removal man	Un traslocatore
+Put every box of the list in the truck, in order,\nand a NULL at the very back to close the door.	Metti tutti gli scatoloni della lista nel camion, in ordine,\ne un NULL in fondo per chiudere la porta.
+Truck closed. We lost no box, that is a first.	Camion chiuso. Non abbiamo perso nessuno scatolone, è una prima volta.
+modulo, negatives, joining the tail	modulo, negativi, collegare la coda
+The Great Moulinette, for good	La Grande Moulinette, per davvero
+Last test. Rotate my line by n notches.\nForwards, backwards, even if n is HUGE.\nAfterwards, I go back to sleep for a thousand years.	Ultimo test. Fai ruotare la mia fila di n posti.\nAvanti, indietro, anche se n è ENORME.\nPoi torno a dormire per mille anni.
+The Moulinette smiles, rolls over and snores. You understood everything.	La Moulinette sorride, si gira e russa. Hai capito tutto.
+write and its return value	write e il suo valore di ritorno
+NULL string	stringa NULL
+INT_MIN without overflow	INT_MIN senza overflow
+base conversion	conversione di base
+hexadecimal and case	esadecimale e maiuscole
+pointers and unsigned long	puntatori e unsigned long
+reading the format	lettura del formato
+the final '%'	il '%' finale
+variadic functions	funzioni variadiche
+va_arg in a loop	va_arg in un ciclo
+two passes over the arguments	due passate sugli argomenti
+va_copy	va_copy
+descriptors and errors	descrittori ed errori
+exact-size malloc	malloc di dimensione esatta
+passing a va_list	passare una va_list
+dprintf	dprintf
+The testeur des fous · Training · level %02d\n\n	Il testeur des fous · Allenamento · livello %02d\n\n
+Function: %s\nFile    : %s.c (in this folder)\nPrototype:\n%s\n\n	Funzione: %s\nFile    : %s.c (in questa cartella)\nPrototipo:\n%s\n\n
+Allowed functions: malloc, free, write, and your libft (#include \"libft.h\").\n	Funzioni consentite: malloc, free, write e la tua libft (#include \"libft.h\").\n
+Norm required. Helper functions must be static.\n	Norma obbligatoria. Le funzioni di supporto devono essere static.\n
+The testeur des fous printf · Training · level %02d\n\n	Il testeur des fous printf · Allenamento · livello %02d\n\n
+Allowed functions: write, malloc, free, va_start, va_arg, va_copy, va_end.\n	Funzioni consentite: write, malloc, free, va_start, va_arg, va_copy, va_end.\n
+Include what you need (<unistd.h>, <stdlib.h>, <stdarg.h>). No libft here.\n	Includi ciò che ti serve (<unistd.h>, <stdlib.h>, <stdarg.h>). Niente libft qui.\n
