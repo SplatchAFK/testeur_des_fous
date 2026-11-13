@@ -94,37 +94,37 @@ section() {
 printf '\n  %s╭──────────────────────────────────────────────────────────╮%s\n' "$AC" "$R"
 printf '  %s│%s  %sLE TESTEUR DES FOUS%s · get_next_line · v%-17s%s│%s\n' "$AC" "$R" "$B" "$R" "$VERSION" "$AC" "$R"
 printf '  %s╰──────────────────────────────────────────────────────────╯%s\n' "$AC" "$R"
-printf '  %sprojet : %s%s\n' "$D" "$PROJET" "$R"
+printf '  %s%s %s%s\n' "$D" "$(tt "projet :" "project:")" "$PROJET" "$R"
 tdf_journal "projet $PROJET · tailles $TAILLES"
 
-section "Rendu · ce que le sujet demande"
+section "$(tt "Rendu · ce que le sujet demande" "Submission · what the subject asks")"
 MANQUE=0
 for f in get_next_line.c get_next_line_utils.c get_next_line.h; do
 	if [ -f "$PROJET/$f" ]; then
-		ligne OK "$f à la racine"
+		ligne OK "$(printf "$(tt "%s à la racine" "%s at the root")" "$f")"
 	else
-		ligne KO "$f à la racine" "fichier introuvable : le sujet demande les trois fichiers à la racine du dépôt"
+		ligne KO "$(printf "$(tt "%s à la racine" "%s at the root")" "$f")" "$(tt "fichier introuvable : le sujet demande les trois fichiers à la racine du dépôt" "file not found: the subject wants the three files at the root of the repository")"
 		MANQUE=1
 	fi
 done
 if [ "$MANQUE" = 1 ]; then
-	printf '\n  %s%sIl manque des fichiers : les tests ne peuvent pas compiler.%s\n\n' "$F_KO" "$B" "$R"
+	printf "$(tt "\n  %s%sIl manque des fichiers : les tests ne peuvent pas compiler.%s\n\n" "\n  %s%sFiles are missing: the tests cannot compile.%s\n\n")" "$F_KO" "$B" "$R"
 	tdf_journal "fichiers manquants"
 	exit 1
 fi
 if grep -Eq 'char[[:space:]]*\*[[:space:]]*get_next_line[[:space:]]*\([[:space:]]*int' "$PROJET/get_next_line.h"; then
-	ligne OK "prototype de get_next_line dans get_next_line.h"
+	ligne OK "$(tt "prototype de get_next_line dans get_next_line.h" "get_next_line prototype in get_next_line.h")"
 else
-	ligne KO "prototype de get_next_line dans get_next_line.h" "attendu : char *get_next_line(int fd);"
+	ligne KO "$(tt "prototype de get_next_line dans get_next_line.h" "get_next_line prototype in get_next_line.h")" "$(tt "attendu : char *get_next_line(int fd);" "expected: char *get_next_line(int fd);")"
 fi
 
 SRC=("$PROJET/get_next_line.c" "$PROJET/get_next_line_utils.c")
 if "$CC" -Wall -Wextra -Werror -I "$PROJET" -c "${SRC[0]}" -o "$BUILD/a.o" 2> "$BUILD/sans_d.err" \
 	&& "$CC" -Wall -Wextra -Werror -I "$PROJET" -c "${SRC[1]}" -o "$BUILD/b.o" 2>> "$BUILD/sans_d.err"; then
-	ligne OK "compile sans -D BUFFER_SIZE (cc -Wall -Wextra -Werror)"
+	ligne OK "$(tt "compile sans -D BUFFER_SIZE (cc -Wall -Wextra -Werror)" "compiles without -D BUFFER_SIZE (cc -Wall -Wextra -Werror)")"
 else
-	ligne KO "compile sans -D BUFFER_SIZE (cc -Wall -Wextra -Werror)" "$(grep -m1 -E 'error' "$BUILD/sans_d.err" | sed "s#$PROJET/##")"
-	printf '\n  %s%sLe projet ne compile pas : corrige d'"'"'abord ça.%s\n\n' "$F_KO" "$B" "$R"
+	ligne KO "$(tt "compile sans -D BUFFER_SIZE (cc -Wall -Wextra -Werror)" "compiles without -D BUFFER_SIZE (cc -Wall -Wextra -Werror)")" "$(grep -m1 -E 'error' "$BUILD/sans_d.err" | sed "s#$PROJET/##")"
+	printf "$(tt "\n  %s%sLe projet ne compile pas : corrige d'abord ça.%s\n\n" "\n  %s%sThe project does not compile: fix that first.%s\n\n")" "$F_KO" "$B" "$R"
 	exit 1
 fi
 
@@ -143,25 +143,25 @@ for s in $UND; do
 	esac
 done
 if [ -z "$INTERDIT" ]; then
-	ligne OK "fonctions externes : seulement read, malloc et free"
+	ligne OK "$(tt "fonctions externes : seulement read, malloc et free" "external functions: only read, malloc and free")"
 else
 	case " $INTERDIT " in
-		*" lseek "*) ligne KO "fonctions externes : seulement read, malloc et free" "interdit :$INTERDIT (lseek est interdit par le sujet)" ;;
-		*) ligne KO "fonctions externes : seulement read, malloc et free" "interdit :$INTERDIT" ;;
+		*" lseek "*) ligne KO "$(tt "fonctions externes : seulement read, malloc et free" "external functions: only read, malloc and free")" "interdit :$INTERDIT (lseek est interdit par le sujet)" ;;
+		*) ligne KO "$(tt "fonctions externes : seulement read, malloc et free" "external functions: only read, malloc and free")" "interdit :$INTERDIT" ;;
 	esac
 fi
 GLOB="$(nm "$BUILD/a.o" "$BUILD/b.o" 2>/dev/null | awk 'NF == 3 && $2 ~ /^[BDCGS]$/ {print $3}' | sort -u | tr '\n' ' ')"
 if [ -z "$GLOB" ]; then
-	ligne OK "aucune variable globale (les static sont permises)"
+	ligne OK "$(tt "aucune variable globale (les static sont permises)" "no global variable (statics are allowed)")"
 else
-	ligne KO "aucune variable globale (les static sont permises)" "trouvé : $GLOB"
+	ligne KO "$(tt "aucune variable globale (les static sont permises)" "no global variable (statics are allowed)")" "trouvé : $GLOB"
 fi
 
 NORM=""
 norminette --version 2>/dev/null | grep -qi norminette && NORM="norminette"
 [ -z "$NORM" ] && python3 -m norminette --version 2>/dev/null | grep -qi norminette && NORM="python3 -m norminette"
 if [ -z "$NORM" ]; then
-	ligne NOTE "norminette introuvable : la Norme n'est pas vérifiée" "python3 -m pip install --user norminette"
+	ligne NOTE "$(tt "norminette introuvable : la Norme n'est pas vérifiée" "norminette not found: the Norm is not checked")" "python3 -m pip install --user norminette"
 else
 	nout="$(cd "$PROJET" && $NORM get_next_line.c get_next_line_utils.c get_next_line.h 2>&1 | sed $'s/\x1b\\[[0-9;]*m//g')"
 	if echo "$nout" | grep -q 'Error'; then
@@ -173,7 +173,7 @@ fi
 
 RM="$PROJET/README.md"
 if [ ! -f "$RM" ]; then
-	ligne KO "README.md à la racine" "le sujet (chapitre 5) le demande"
+	ligne KO "$(tt "README.md à la racine" "README.md at the root")" "$(tt "le sujet (chapitre 5) le demande" "the subject (chapter 5) requires it")"
 else
 	pb=""
 	head -1 "$RM" | grep -q "This activity has been created as part of the 42 curriculum by" || pb="1re ligne en italique imposée"
@@ -183,14 +183,14 @@ else
 	done
 	grep -qiE 'algorithm|algorithme' "$RM" || pb="${pb:+$pb, }explication de l'algorithme introuvable"
 	if [ -z "$pb" ]; then
-		ligne OK "README.md : 1re ligne, Description, Instructions, Resources, algorithme"
+		ligne OK "$(tt "README.md : 1re ligne, Description, Instructions, Resources, algorithme" "README.md: 1st line, Description, Instructions, Resources, algorithm")"
 	else
-		ligne KO "README.md : 1re ligne, Description, Instructions, Resources, algorithme" "$pb"
+		ligne KO "$(tt "README.md : 1re ligne, Description, Instructions, Resources, algorithme" "README.md: 1st line, Description, Instructions, Resources, algorithm")" "$pb"
 	fi
 fi
 PARAS="$(tdf_parasites gnl "$PROJET")"
 if [ -z "$PARAS" ]; then
-	ligne OK "aucun fichier parasite dans le rendu"
+	ligne OK "$(tt "aucun fichier parasite dans le rendu" "no garbage file in the submission")"
 else
 	while IFS=$'\t' read -r f m; do
 		ligne KO "fichier parasite : $f (erreur moulinette)" "$m · à retirer : git rm $f"
@@ -257,9 +257,9 @@ tdf_ch_fin
 nocomp="$(awk -F'\t' '$1 == "C" {print $2}' "$BUILD/res.tsv" | tr '\n' ' ')"
 ANNEAUX=""
 if [ -n "$nocomp" ]; then
-	section "Compilation avec -D BUFFER_SIZE"
+	section "$(tt "Compilation avec -D BUFFER_SIZE" "Compiling with -D BUFFER_SIZE")"
 	awk -F'\t' '$1 == "C"' "$BUILD/res.tsv" | while IFS=$'\t' read -r _ t msg; do
-		printf '  '; pill KO; printf '  BUFFER_SIZE=%s ne compile pas\n            %s%s%s\n' "$t" "$D" "$msg" "$R"
+		printf '  '; pill KO; printf "$(tt "  BUFFER_SIZE=%s ne compile pas\n            %s%s%s\n" "  BUFFER_SIZE=%s does not compile\n            %s%s%s\n")" "$t" "$D" "$msg" "$R"
 	done
 	N_KO=$((N_KO + 1))
 	ECHECS+=("compilation avec -D BUFFER_SIZE|KO")
@@ -267,13 +267,13 @@ fi
 
 for cat in base taille fin fd lecture malloc info; do
 	case "$cat" in
-		base) titre="Lecture de base" ;;
-		taille) titre="Tailles de lignes et de fichiers" ;;
-		fin) titre="Fin de fichier" ;;
+		base) titre="$(tt "Lecture de base" "Basic reading")" ;;
+		taille) titre="$(tt "Tailles de lignes et de fichiers" "Line and file sizes")" ;;
+		fin) titre="$(tt "Fin de fichier" "End of file")" ;;
 		fd) titre="Descripteurs : stdin, tube, erreurs" ;;
-		lecture) titre="Lecture : read en échec, lire le moins possible" ;;
-		malloc) titre="malloc qui échoue" ;;
-		info) titre="Pour info (hors sujet v1.3)" ;;
+		lecture) titre="$(tt "Lecture : read en échec, lire le moins possible" "Reading: failing read, read as little as possible")" ;;
+		malloc) titre="$(tt "malloc qui échoue" "failing malloc")" ;;
+		info) titre="$(tt "Pour info (hors sujet v1.3)" "For info (outside subject v1.3)")" ;;
 	esac
 	noms="$(awk -F'\t' -v c="$cat" '$2 == "T" && $3 == c {print $4}' "$BUILD/res.tsv" | awk '!vu[$0]++')"
 	[ -n "$noms" ] || continue
@@ -304,7 +304,7 @@ for cat in base taille fin fd lecture malloc info; do
 	done <<< "$noms"
 done
 
-section "BUFFER_SIZE=0 et négatif (le sujet ne dit rien : pour info)"
+section "$(tt "BUFFER_SIZE=0 et négatif (le sujet ne dit rien : pour info)" "BUFFER_SIZE=0 and negative (the subject says nothing: for info)")"
 for t in 0 -5; do
 	if "$CC" -w -g $SAN -D BUFFER_SIZE="$t" $WRAP -I "$PROJET" "$ICI/src/tdf_gnl.c" "${SRC[@]}" $WFLAGS -o "$BUILD/z" 2>/dev/null; then
 		out="$("$BUILD/z" "$BUILD/fichiers" "fd" 2>/dev/null | cut -f4 | grep -cE 'CRASH|BOUCLE')"
@@ -317,17 +317,17 @@ for t in 0 -5; do
 		ligne INFO "BUFFER_SIZE=$t : ne compile pas" "un correcteur peut le tester"
 	fi
 done
-[ -n "$SAN" ] || printf '\n  %s! AddressSanitizer indisponible ici : fuites et erreurs mémoire non vérifiées (valgrind conseillé).%s\n' "$F_WN" "$R"
+[ -n "$SAN" ] || printf "$(tt "\n  %s! AddressSanitizer indisponible ici : fuites et erreurs mémoire non vérifiées (valgrind conseillé).%s\n" "\n  %s! AddressSanitizer unavailable here: leaks and memory errors not checked (valgrind recommended).%s\n")" "$F_WN" "$R"
 
 printf '\n  %s' "$D"; printf '%.0s─' $(seq 1 58); printf '%s\n\n' "$R"
 printf '  %s%d OK%s' "$F_OK$B" "$N_OK" "$R"
-[ "$N_KO" -gt 0 ] && printf '   %s%d en échec%s' "$F_KO$B" "$N_KO" "$R"
-[ "$N_INFO" -gt 0 ] && printf '   %s%d pour info%s' "$F_WN" "$N_INFO" "$R"
-printf '   %s(BUFFER_SIZE testés : %s, et sans -D)%s\n' "$D" "$TAILLES" "$R"
+[ "$N_KO" -gt 0 ] && printf "$(tt "   %s%d en échec%s" "   %s%d failing%s")" "$F_KO$B" "$N_KO" "$R"
+[ "$N_INFO" -gt 0 ] && printf "$(tt "   %s%d pour info%s" "   %s%d for info%s")" "$F_WN" "$N_INFO" "$R"
+printf "$(tt "   %s(BUFFER_SIZE testés : %s, et sans -D)%s\n" "   %s(BUFFER_SIZE tested: %s, and without -D)%s\n")" "$D" "$TAILLES" "$R"
 if [ "$N_KO" = 0 ]; then
-	printf '\n  %s%sTout est propre.%s\n\n' "$F_OK" "$B" "$R"
+	printf "$(tt "\n  %s%sTout est propre.%s\n\n" "\n  %s%sEverything is clean.%s\n\n")" "$F_OK" "$B" "$R"
 else
-	printf '\n  %s%sCorrige les rouges d'"'"'abord.%s %s-v pour tout le détail.%s\n\n' "$F_KO" "$B" "$R" "$D" "$R"
+	printf "$(tt "\n  %s%sCorrige les rouges d'abord.%s %s-v pour tout le détail.%s\n\n" "\n  %s%sFix the red ones first.%s %s-v for every detail.%s\n\n")" "$F_KO" "$B" "$R" "$D" "$R"
 fi
 
 STATS="$HOME/.testeur_des_fous/stats.txt"
@@ -346,13 +346,13 @@ tdf_journal "résultat : $N_OK OK, $N_KO en échec, $N_INFO pour info"
 VU_PUITS=0
 if [ -t 0 ] && [ -t 1 ] && [ "${TDF_INTERFACE:-graphique}" != texte ] && [ "${SANS_LORE:-0}" = 0 ] && [ -n "$ANNEAUX" ]; then
 	if tdf_scene_bin "$MOT"; then
-		printf '  %s[ Entrée : descendre dans le Puits ]%s ' "$D" "$R"
+		printf "$(tt "  %s[ Entrée : descendre dans le Puits ]%s " "  %s[ Enter: go down into the Well ]%s ")" "$D" "$R"
 		read -r _
 		"$TDF_SCENE" "$ICI" puits "$ANNEAUX" && VU_PUITS=1
 	fi
 fi
 if [ "$VU_PUITS" = 0 ] && [ -n "${TDF_RETOUR:-}" ] && [ -t 0 ] && [ -t 1 ]; then
-	printf '  %s[ Entrée pour revenir au menu ]%s ' "$D" "$R"
+	printf "$(tt "  %s[ Entrée pour revenir au menu ]%s " "  %s[ Enter to go back to the menu ]%s ")" "$D" "$R"
 	read -r _
 fi
 [ "$N_KO" = 0 ]

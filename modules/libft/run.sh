@@ -124,7 +124,7 @@ if [ "$CI" = 1 ] && [ "$CFG_AIDE" = 0 ] && [ -z "${TDF_FILTRE:-}" ] && [ -z "$EX
 	exit "${PIPESTATUS[0]}"
 fi
 if [ -n "$RECO" ] && [ "$CI" = 1 ]; then
-	echo "--reco a besoin d'un vrai terminal (sans --ci)"
+	echo "$(tt "--reco a besoin d'un vrai terminal (sans --ci)" "--reco needs a real terminal (without --ci)")"
 	exit 2
 fi
 
@@ -205,7 +205,7 @@ header() {
 	local w=58
 	printf '\n  %s╭' "$ACC"; rule $w; printf '╮%s\n' "$R"
 	printf '  %s│%s  %sLE TESTEUR DES FOUS%s %s· Version Libft v%s%s%*s%s│%s\n' "$ACC" "$R" "$B" "$R" "$TXT" "$VERSION" "$R" $((w - 39 - ${#VERSION})) '' "$ACC" "$R"
-	printf '  %s│%s  %scréé et vibe-codé par Splatch (romasant)%s%*s%s│%s\n' "$ACC" "$R" "$D" "$R" $((w - 42)) '' "$ACC" "$R"
+	printf "$(tt "  %s│%s  %scréé et vibe-codé par Splatch (romasant)%s%*s%s│%s\n" "  %s│%s  %screated and vibe-coded by Splatch (romasant)%s%*s%s│%s\n")" "$ACC" "$R" "$D" "$R" $((w - 42)) '' "$ACC" "$R"
 	printf '  %s╰' "$ACC"; rule $w; printf '╯%s\n' "$R"
 }
 
@@ -223,7 +223,7 @@ RES="$BUILD/results"
 : > "$RES"
 mkdir -p "$BUILD/obj" "$BUILD/bin" "$BUILD/log" "$BUILD/plain" "$BUILD/proto" "$BUILD/vg"
 
-CACHE="$HERE/.build/cache"
+CACHE="$HERE/.build/cache/l${TDF_LANGUE_N:-0}"
 { [ "${TDF_CACHE:-1}" = 1 ] && mkdir -p "$CACHE" 2>/dev/null; } || CACHE=""
 fingerprint() {
 	{ printf '%s|%s\n' "$OS" "$CC"; cat "$@" 2>/dev/null; } | cksum | cut -d' ' -f1
@@ -354,7 +354,7 @@ build_game() {
 		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$MOT"/rendu.c "$MOT"/tour.c "$MOT"/gardien.c "$MOT"/carte.c "$MOT"/langue.c "$MOT"/textes.c "$SRC"/story.c)
 	local GX="" GOBJ="" key g ok=1
 	for f in "$ROOT"/ft_*.c; do [ -f "$f" ] && nft=$((nft + 1)); done
-	tdf_ch_debut "préparation" $((nft + ${#GSRC[@]} + 1))
+	tdf_ch_debut "$(tt "préparation" "preparation")" $((nft + ${#GSRC[@]} + 1))
 	for f in "$ROOT"/ft_*.c; do
 		[ -f "$f" ] || continue
 		compile_plain "$f" &
@@ -387,7 +387,7 @@ build_game() {
 			for g in "${GSRC[@]}"; do [ -f "$GOBJ/$(basename "$g" .c).o" ] || ok=0; done
 			if [ "$ok" = 1 ]; then : > "$GOBJ/ok"; else GOBJ=""; fi
 		else
-			tdf_ch_pas "interface en cache" "${#GSRC[@]}"
+			tdf_ch_pas "$(tt "interface en cache" "interface in cache")" "${#GSRC[@]}"
 		fi
 	fi
 	if [ -n "$GOBJ" ]; then
@@ -443,9 +443,9 @@ report() {
 		skip)  pill "$P_SK" '--' ;;
 	esac
 	if [ "$st" = skip ]; then
-		printf '  %s%-18s pas encore écrite%s\n' "$D" "ft_$n" "$R"
+		printf "$(tt "  %s%-18s pas encore écrite%s\n" "  %s%-18s not written yet%s\n")" "$D" "ft_$n" "$R"
 	else
-		printf '  %s%-18s%s %s%6s contrôles%s   %s%s%s\n' "$TXT" "ft_$n" "$R" "$D" "${c:--}" "$R" "$D" "$t" "$R"
+		printf "$(tt "  %s%-18s%s %s%6s contrôles%s   %s%s%s\n" "  %s%-18s%s %s%6s checks%s   %s%s%s\n")" "$TXT" "ft_$n" "$R" "$D" "${c:--}" "$R" "$D" "$t" "$R"
 	fi
 	for l in ${DET[@]+"${DET[@]}"}; do printf '            %s%s%s\n' "$D" "$l" "$R"; done
 }
@@ -473,7 +473,7 @@ N_TOTAL=43
 valgrind_one() {
 	local n="$1" out
 	if ! tdf_valgrind_pret; then
-		[ -n "${VG_DIT:-}" ] || printf '\n  ⚠ %s : passage valgrind sauté (ASan reste actif)\n' "$TDF_VG_RAISON" >&2
+		[ -n "${VG_DIT:-}" ] || printf "$(tt "\n  ⚠ %s : passage valgrind sauté (ASan reste actif)\n" "\n  ⚠ %s: valgrind pass skipped (ASan stays on)\n")" "$TDF_VG_RAISON" >&2
 		VG_DIT=1
 		return 0
 	fi
@@ -621,13 +621,13 @@ start_norm() {
 n_norm_ko=0
 finish_norm() {
 	local v nerr nfile files l
-	section "Norme · norminette"
+	section "$(tt "Norme · norminette" "Norm · norminette")"
 	if [ "$CFG_NORM" != 1 ]; then
-		audit_line warn "norminette désactivée dans les paramètres" "la moulinette, elle, la lance toujours"
+		audit_line warn "$(tt "norminette désactivée dans les paramètres" "norminette turned off in the settings")" "$(tt "la moulinette, elle, la lance toujours" "the moulinette always runs it")"
 		return
 	fi
 	if [ -z "$NORM_CMD" ]; then
-		audit_line warn "norminette introuvable : la Norme n'est PAS vérifiée" "installe-la : python3 -m pip install --user norminette"
+		audit_line warn "$(tt "norminette introuvable : la Norme n'est PAS vérifiée" "norminette not found: the Norm is NOT checked")" "$(tt "installe-la : python3 -m pip install --user norminette" "install it: python3 -m pip install --user norminette")"
 		emit "G	norminette introuvable : la Norme n'est pas vérifiée (python3 -m pip install --user norminette)"
 		return
 	fi
@@ -660,12 +660,12 @@ run_audit() {
 	rm -rf "$A"; mkdir -p "$A"
 	cp "$ROOT"/ft_*.c "$ROOT"/libft.h "$ROOT"/Makefile "$A"/ 2>/dev/null
 	emit "S	audit moulinette"
-	section "Audit · ce que la moulinette regarde"
+	section "$(tt "Audit · ce que la moulinette regarde" "Audit · what the moulinette looks at")"
 
 	if [ ! -f "$ROOT/Makefile" ]; then
-		audit_line ko "Makefile à la racine"; emit "AD"; return
+		audit_line ko "$(tt "Makefile à la racine" "Makefile at the root")"; emit "AD"; return
 	fi
-	audit_line ok "Makefile à la racine"
+	audit_line ok "$(tt "Makefile à la racine" "Makefile at the root")"
 
 	bad=""
 	for r in all clean fclean re; do
@@ -681,24 +681,24 @@ run_audit() {
 	else audit_line ko "flags -Wall -Wextra -Werror"; fi
 
 	if grep -q -- '-std=c99' "$ROOT/Makefile"; then
-		audit_line ko "pas de -std=c99 (interdit par le sujet)"
-	else audit_line ok "pas de -std=c99 (interdit par le sujet)"; fi
+		audit_line ko "$(tt "pas de -std=c99 (interdit par le sujet)" "no -std=c99 (forbidden by the subject)")"
+	else audit_line ok "$(tt "pas de -std=c99 (interdit par le sujet)" "no -std=c99 (forbidden by the subject)")"; fi
 
 	if grep -qE 'wildcard|\*\.c|\*\.o' "$ROOT/Makefile"; then
-		audit_line warn "sources nommées une par une (Norme v4.1 III.11)" "wildcard ou *.c trouvé"
-	else audit_line ok "sources nommées une par une (Norme v4.1 III.11)"; fi
+		audit_line warn "$(tt "sources nommées une par une (Norme v4.1 III.11)" "sources named one by one (Norm v4.1 III.11)")" "$(tt "wildcard ou *.c trouvé" "wildcard or *.c found")"
+	else audit_line ok "$(tt "sources nommées une par une (Norme v4.1 III.11)" "sources named one by one (Norm v4.1 III.11)")"; fi
 
 	if grep -q 'libtool' "$ROOT/Makefile"; then
-		audit_line ko "ar et pas libtool (sujet 4.1)"
-	else audit_line ok "ar et pas libtool (sujet 4.1)"; fi
+		audit_line ko "$(tt "ar et pas libtool (sujet 4.1)" "ar and not libtool (subject 4.1)")"
+	else audit_line ok "$(tt "ar et pas libtool (sujet 4.1)" "ar and not libtool (subject 4.1)")"; fi
 
 	out="$(cd "$A" && make 2>&1)"
 	if [ ! -f "$A/libft.a" ]; then
-		audit_line ko "make crée libft.a à la racine" "$(echo "$out" | grep -m2 -E '\*\*\*|No rule|error:' | cut -c1-90 | tr '\n' ' ')"
+		audit_line ko "$(tt "make crée libft.a à la racine" "make creates libft.a at the root")" "$(echo "$out" | grep -m2 -E '\*\*\*|No rule|error:' | cut -c1-90 | tr '\n' ' ')"
 		emit "AD"
 		return
 	fi
-	audit_line ok "make crée libft.a à la racine"
+	audit_line ok "$(tt "make crée libft.a à la racine" "make creates libft.a at the root")"
 
 	key=$(fingerprint "$ROOT/Makefile" "$ROOT/libft.h" <(cd "$ROOT" && ls ft_*.c 2>/dev/null))
 	if [ -n "$CACHE" ] && [ -f "$CACHE/makefile.$key" ]; then
@@ -713,8 +713,8 @@ run_audit() {
 		}
 		out="$(cd "$A" && make 2>&1)"
 		if echo "$out" | grep -qE '(^|[[:space:]])(cc|gcc|clang|ar)[[:space:]]'; then
-			mk_line ko "un 2e make ne relink pas" "$(echo "$out" | head -1 | cut -c1-90)"
-		else mk_line ok "un 2e make ne relink pas"; fi
+			mk_line ko "$(tt "un 2e make ne relink pas" "a 2nd make does not relink")" "$(echo "$out" | head -1 | cut -c1-90)"
+		else mk_line ok "$(tt "un 2e make ne relink pas" "a 2nd make does not relink")"; fi
 
 		sleep 1
 		touch "$A/libft.h"
@@ -748,9 +748,9 @@ run_audit() {
 	def_syms "$A/libft.a" > "$A/defined.txt"
 	extra="$(undef_syms "$A/libft.a" | comm -23 - "$A/defined.txt" | grep -vE "$LIBC_OK")"
 	if [ -z "$extra" ]; then
-		audit_line ok "seuls malloc, free et write viennent de la libc"
+		audit_line ok "$(tt "seuls malloc, free et write viennent de la libc" "only malloc, free and write come from the libc")"
 	else
-		audit_line ko "seuls malloc, free et write viennent de la libc" "interdit : $(echo $extra | tr '\n' ' ')"
+		audit_line ko "$(tt "seuls malloc, free et write viennent de la libc" "only malloc, free and write come from the libc")" "interdit : $(echo $extra | tr '\n' ' ')"
 	fi
 
 	if ! grep -qE '^#[[:space:]]*ifndef' "$ROOT/libft.h"; then
@@ -760,12 +760,12 @@ run_audit() {
 	(cd "$A" && make >/dev/null 2>&1)
 	extra="$(nm "$A/libft.a" 2>/dev/null | awk '$2 ~ /^[BDCG]$/ {print $3}' | sort -u | tr '\n' ' ')"
 	if [ -n "$extra" ]; then
-		audit_line ko "aucune variable globale (sujet 4.1)" "trouvé : $extra"
-	else audit_line ok "aucune variable globale (sujet 4.1)"; fi
+		audit_line ko "$(tt "aucune variable globale (sujet 4.1)" "no global variable (subject 4.1)")" "trouvé : $extra"
+	else audit_line ok "$(tt "aucune variable globale (sujet 4.1)" "no global variable (subject 4.1)")"; fi
 
 	bad="$(tdf_parasites libft "$ROOT")"
 	if [ -z "$bad" ]; then
-		audit_line ok "aucun fichier parasite dans le rendu"
+		audit_line ok "$(tt "aucun fichier parasite dans le rendu" "no garbage file in the submission")"
 	else
 		while IFS=$'\t' read -r f m; do
 			audit_line ko "fichier parasite : $f (erreur moulinette)" "$m · à retirer : git rm $f"
@@ -778,7 +778,7 @@ run_audit() {
 
 	bad="$(tdf_portee "$ROOT" "$(for s in $ALL; do printf 'ft_%s ' "$s"; done)")"
 	if [ -z "$bad" ]; then
-		audit_line ok "fonctions d'aide en static, aucune variable globale (sujet 4.1)"
+		audit_line ok "$(tt "fonctions d'aide en static, aucune variable globale (sujet 4.1)" "helper functions static, no global variable (subject 4.1)")"
 	else
 		while IFS=$'\t' read -r f m; do
 			audit_line ko "$f" "$m"
@@ -786,11 +786,11 @@ run_audit() {
 	fi
 
 	if [ ! -f "$ROOT/README.md" ]; then
-		audit_line ko "README.md à la racine (sujet chapitre 5)"
+		audit_line ko "$(tt "README.md à la racine (sujet chapitre 5)" "README.md at the root (subject chapter 5)")"
 	elif head -1 "$ROOT/README.md" | grep -q "This activity has been created as part of the 42 curriculum by"; then
-		audit_line ok "README.md : 1re ligne imposée par le sujet"
+		audit_line ok "$(tt "README.md : 1re ligne imposée par le sujet" "README.md: 1st line required by the subject")"
 	else
-		audit_line warn "README.md : 1re ligne imposée par le sujet" "attendu : *This activity has been created as part of the 42 curriculum by <login>.*"
+		audit_line warn "$(tt "README.md : 1re ligne imposée par le sujet" "README.md: 1st line required by the subject")" "$(tt "attendu : *This activity has been created as part of the 42 curriculum by <login>.*" "expected: *This activity has been created as part of the 42 curriculum by <login>.*")"
 	fi
 	emit "AD"
 }
@@ -820,7 +820,7 @@ run_all() {
 		check_proto "$n" &
 	done
 	wait
-	section "Prototypes · sujet"
+	section "$(tt "Prototypes · sujet" "Prototypes · subject")"
 	p=0
 	for n in $PART1 $PART2 $PART3; do
 		IFS=$'\t' read -r st msg < "$BUILD/proto/$n"
@@ -861,9 +861,9 @@ run_all() {
 
 	for part in 1 2 3; do
 		case $part in
-			1) section "Partie 1 · libc"; list="$PART1" ;;
-			2) section "Partie 2 · additionnelles"; list="$PART2" ;;
-			3) section "Partie 3 · liste chaînée"; list="$PART3" ;;
+			1) section "$(tt "Partie 1 · libc" "Part 1 · libc")"; list="$PART1" ;;
+			2) section "$(tt "Partie 2 · additionnelles" "Part 2 · additional")"; list="$PART2" ;;
+			3) section "$(tt "Partie 3 · liste chaînée" "Part 3 · linked list")"; list="$PART3" ;;
 		esac
 		for n in $list; do
 			if wanted "$n"; then
@@ -879,14 +879,14 @@ run_all() {
 	finish_norm
 
 	if [ "$CFG_AUDIT" = 2 ]; then
-		section "Audit · ce que la moulinette regarde"
+		section "$(tt "Audit · ce que la moulinette regarde" "Audit · what the moulinette looks at")"
 		say '  %sdésactivé dans les paramètres%s\n' "$D" "$R"
 	elif [ "$FORCEAUDIT" = 1 ]; then
 		run_audit
 	elif [ ${#SELECT[@]} -eq 0 ] && [ "$n_skip" -eq 0 ] && [ "$n_bad" -eq 0 ]; then
 		run_audit
 	else
-		section "Audit · ce que la moulinette regarde"
+		section "$(tt "Audit · ce que la moulinette regarde" "Audit · what the moulinette looks at")"
 		say '  %sse lance quand les 43 fonctions sont écrites et propres (ou : --audit)%s\n' "$D" "$R"
 	fi
 	emit "S	terminé"
@@ -895,17 +895,17 @@ run_all() {
 	if [ "$CI" = 1 ]; then
 		printf '\n  %s' "$D"; rule 58; printf '%s\n\n' "$R"
 		printf '  %s%d OK%s' "$F_OK$B" "$n_ok" "$R"
-		[ "$n_warn" -gt 0 ] && printf '   %s(dont %d avec une remarque)%s' "$F_LK" "$n_warn" "$R"
-		[ "$n_bad" -gt 0 ] && printf '   %s%d en échec%s' "$F_KO$B" "$n_bad" "$R"
-		[ "$n_skip" -gt 0 ] && printf '   %s%d pas encore écrites%s' "$D" "$n_skip" "$R"
-		[ "$p" -gt 0 ] && printf '   %s%d prototype(s) différent(s) du sujet%s' "$F_KO$B" "$p" "$R"
-		[ "$n_audit_ko" -gt 0 ] && printf '   %s%d contrôles d'"'"'audit en échec%s' "$F_KO$B" "$n_audit_ko" "$R"
+		[ "$n_warn" -gt 0 ] && printf "$(tt "   %s(dont %d avec une remarque)%s" "   %s(of which %d with a remark)%s")" "$F_LK" "$n_warn" "$R"
+		[ "$n_bad" -gt 0 ] && printf "$(tt "   %s%d en échec%s" "   %s%d failing%s")" "$F_KO$B" "$n_bad" "$R"
+		[ "$n_skip" -gt 0 ] && printf "$(tt "   %s%d pas encore écrites%s" "   %s%d not written yet%s")" "$D" "$n_skip" "$R"
+		[ "$p" -gt 0 ] && printf "$(tt "   %s%d prototype(s) différent(s) du sujet%s" "   %s%d prototype(s) different from the subject%s")" "$F_KO$B" "$p" "$R"
+		[ "$n_audit_ko" -gt 0 ] && printf "$(tt "   %s%d contrôles d'audit en échec%s" "   %s%d audit checks failing%s")" "$F_KO$B" "$n_audit_ko" "$R"
 		printf '\n'
 		grep '^G	' "$RES" | cut -f2 | while IFS= read -r l; do printf '  %s! %s%s\n' "$F_LK" "$l" "$R"; done
 		if [ $((n_bad + n_audit_ko + p)) -eq 0 ]; then
-			printf '\n  %s%sTout est propre. Lance sans --ci pour ouvrir le menu et dépenser tes Octets.%s\n\n' "$F_OK" "$B" "$R"
+			printf "$(tt "\n  %s%sTout est propre. Lance sans --ci pour ouvrir le menu et dépenser tes Octets.%s\n\n" "\n  %s%sEverything is clean. Run without --ci to open the menu and spend your Octets.%s\n\n")" "$F_OK" "$B" "$R"
 		else
-			printf '\n  %s%sCorrige les rouges d'"'"'abord.%s %s-v montre le rapport complet.%s\n\n' "$F_KO" "$B" "$R" "$D" "$R"
+			printf "$(tt "\n  %s%sCorrige les rouges d'abord.%s %s-v montre le rapport complet.%s\n\n" "\n  %s%sFix the red ones first.%s %s-v shows the full report.%s\n\n")" "$F_KO" "$B" "$R" "$D" "$R"
 		fi
 	fi
 	[ $((n_bad + n_audit_ko + p)) -eq 0 ]
@@ -1069,38 +1069,38 @@ update_check() {
 	printf '%s %s\n' "$now" "${remote:--}" > "$st"
 	{ [ -n "$remote" ] && ver_gt "$remote" "$UPD_VER"; } || return 0
 	printf '\n  %s╭──────────── NOUVELLE VERSION DISPONIBLE ────────────%s\n' "$A" "$Z"
-	printf '  %s│%s  Le testeur des fous · %s   %sv%s%s  →  %sv%s%s\n' "$A" "$Z" "$UPD_NAME" "$G" "$UPD_VER" "$Z" "$V" "$remote" "$Z"
-	printf '  %s│%s  Mettre à jour maintenant ? %s[O/n]%s   %s(sans réponse dans 20 s : plus tard)%s\n' "$A" "$Z" "$Y" "$Z" "$G" "$Z"
+	printf "$(tt "  %s│%s  Le testeur des fous · %s   %sv%s%s  →  %sv%s%s\n" "  %s│%s  The testeur des fous · %s   %sv%s%s  →  %sv%s%s\n")" "$A" "$Z" "$UPD_NAME" "$G" "$UPD_VER" "$Z" "$V" "$remote" "$Z"
+	printf "$(tt "  %s│%s  Mettre à jour maintenant ? %s[O/n]%s   %s(sans réponse dans 20 s : plus tard)%s\n" "  %s│%s  Update now? %s[Y/n]%s   %s(no answer within 20 s: later)%s\n")" "$A" "$Z" "$Y" "$Z" "$G" "$Z"
 	printf '  %s╰─▶%s ' "$A" "$Z"
 	ans="n"
 	if read -r -t 20 -n 1 ans; then [ -n "$ans" ] || ans="o"; else ans="n"; fi
 	printf '\n'
 	case "$ans" in
 		o|O|y|Y) ;;
-		*) printf '  %s   plus tard : on continue en v%s (pas de nouvelle question avant 6 h)%s\n' "$G" "$UPD_VER" "$Z"; return 0 ;;
+		*) printf "$(tt "  %s   plus tard : on continue en v%s (pas de nouvelle question avant 6 h)%s\n" "  %s   later: we carry on with v%s (no new question for 6 h)%s\n")" "$G" "$UPD_VER" "$Z"; return 0 ;;
 	esac
 	if ! old=$(git -C "$UPD_DIR" rev-parse HEAD 2>/dev/null); then
-		printf '  %s   ce dossier n'"'"'est pas un clone git : retélécharge le testeur depuis GitHub.%s\n' "$E" "$Z"
+		printf "$(tt "  %s   ce dossier n'est pas un clone git : retélécharge le testeur depuis GitHub.%s\n" "  %s   this folder is not a git clone: download the tester again from GitHub.%s\n")" "$E" "$Z"
 		sleep 2
 		return 0
 	fi
 	printf '  %s   git pull...%s\n' "$G" "$Z"
 	if ! out=$(GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND='ssh -oBatchMode=yes -oConnectTimeout=5' \
 		git -C "$UPD_DIR" pull --ff-only 2>&1 </dev/null); then
-		printf '  %s   échec du git pull : rien n'"'"'a changé, on continue en v%s%s\n' "$E" "$UPD_VER" "$Z"
+		printf "$(tt "  %s   échec du git pull : rien n'a changé, on continue en v%s%s\n" "  %s   git pull failed: nothing changed, we carry on with v%s%s\n")" "$E" "$UPD_VER" "$Z"
 		printf '%s\n' "$out" | tail -3 | sed 's/^/      /'
 		sleep 2
 		return 0
 	fi
 	if ! out=$(upd_build_ok 2>&1); then
 		git -C "$UPD_DIR" reset -q --keep "$old" 2>/dev/null
-		printf '  %s   la nouvelle version ne compile pas ici : retour à la v%s, qui continue%s\n' "$E" "$UPD_VER" "$Z"
+		printf "$(tt "  %s   la nouvelle version ne compile pas ici : retour à la v%s, qui continue%s\n" "  %s   the new version does not build here: back to v%s, which carries on%s\n")" "$E" "$UPD_VER" "$Z"
 		printf '%s\n' "$out" | grep -m3 -E 'error|erreur' | cut -c1-150 | sed 's/^/      /'
 		sleep 2
 		return 0
 	fi
 	rm -f "$st"
-	printf '  %s   mise à jour réussie : v%s. Relance du testeur...%s\n' "$V" "$remote" "$Z"
+	printf "$(tt "  %s   mise à jour réussie : v%s. Relance du testeur...%s\n" "  %s   update done: v%s. Restarting the tester...%s\n")" "$V" "$remote" "$Z"
 	sleep 1
 	TDF_NO_UPDATE=1 exec bash "$UPD_DIR/run.sh" libft ${UPD_ARGS[@]+"${UPD_ARGS[@]}"}
 }
@@ -1109,7 +1109,7 @@ update_setting() {
 	case "$1" in
 		off|non|0) : > "$HOME/.testeur_des_fous/no_update"; echo "recherche de mise à jour : coupée (--update on pour la remettre)" ;;
 		on|oui|1) rm -f "$HOME/.testeur_des_fous/no_update"; echo "recherche de mise à jour : activée" ;;
-		*) echo "--update : on ou off"; exit 2 ;;
+		*) echo "$(tt "--update : on ou off" "--update: on or off")"; exit 2 ;;
 	esac
 	exit 0
 }
@@ -1127,7 +1127,7 @@ upd_build_ok() {
 [ -n "$UPDATE_SET" ] && update_setting "$UPDATE_SET"
 
 if [ "$MENU_SEUL" = 1 ] && [ "$CI" = 1 ]; then
-	echo "le menu a besoin d'un vrai terminal"
+	echo "$(tt "le menu a besoin d'un vrai terminal" "the menu needs a real terminal")"
 	exit 2
 fi
 
@@ -1137,7 +1137,7 @@ if [ "$CI" = 0 ]; then
 	tdf_chrono_fin maj "recherche de mise à jour"
 	tdf_chrono_debut jeu "compilation de l'interface"
 	if ! build_game; then
-		printf '\r\e[K  le menu ne compile pas, passage en mode texte\n'
+		printf "$(tt "\r\e[K  le menu ne compile pas, passage en mode texte\n" "\r\e[K  the menu does not build, switching to text mode\n")"
 		sed 's/^/    /' "$BUILD/game.err" | head -5
 		tdf_journal "ERREUR : l'interface ne compile pas, passage en mode texte"
 		[ -n "${TDF_JOURNAL:-}" ] && cp "$BUILD/game.err" "$(dirname "$TDF_JOURNAL")/libft_compilation.err" 2>/dev/null
@@ -1166,10 +1166,10 @@ if [ "$CI" = 1 ]; then
 		if build_game; then
 			"$BUILD/fous" --results "$RES" --record --dir "$HERE" || true
 		else
-			printf '  (progression non enregistrée : le menu ne compile pas)\n'
+			printf "$(tt "  (progression non enregistrée : le menu ne compile pas)\n" "  (progress not saved: the menu does not build)\n")"
 		fi
 	fi
-	[ "$KEEP" = 1 ] && printf '  %sbuild gardé dans %s%s\n\n' "$D" "$BUILD" "$R"
+	[ "$KEEP" = 1 ] && printf "$(tt "  %sbuild gardé dans %s%s\n\n" "  %sbuild kept in %s%s\n\n")" "$D" "$BUILD" "$R"
 	exit $code
 fi
 
@@ -1182,9 +1182,9 @@ while :; do
 		mkdir -p "$BUILD/obj" "$BUILD/bin" "$BUILD/log" "$BUILD/plain" "$BUILD/proto" "$BUILD/vg"
 		: > "$RES"
 		n_ok=0; n_bad=0; n_skip=0; n_warn=0; n_seen=0; n_audit_ko=0; n_norm_ko=0
-		printf '\e[0m\e[2J\e[H\n  \e[38;5;213mLe testeur des fous\e[0m · recompilation...'
+		printf "$(tt "\e[0m\e[2J\e[H\n  \e[38;5;213mLe testeur des fous\e[0m · recompilation..." "\e[0m\e[2J\e[H\n  \e[38;5;213mThe testeur des fous\e[0m · rebuilding...")"
 		if ! build_game; then
-			printf '\r\e[K  le menu ne compile plus :\n'
+			printf "$(tt "\r\e[K  le menu ne compile plus :\n" "\r\e[K  the menu no longer builds:\n")"
 			sed 's/^/    /' "$BUILD/game.err" | head -5
 			exit 1
 		fi
@@ -1216,5 +1216,5 @@ while :; do
 	[ "$code" = 42 ] || break
 	first=0
 done
-[ "$KEEP" = 1 ] && printf '  build gardé dans %s\n\n' "$BUILD"
+[ "$KEEP" = 1 ] && printf "$(tt "  build gardé dans %s\n\n" "  build kept in %s\n\n")" "$BUILD"
 exit $code

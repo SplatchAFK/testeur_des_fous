@@ -92,7 +92,7 @@ tdf_compiler() {
 	mkdir -p "$objdir" || return 1
 	: > "$journal_err"
 	total=$(( ${#sources[@]} + 1 ))
-	tdf_ch_debut "préparation" "$total"
+	tdf_ch_debut "$(tt "préparation" "preparation")" "$total"
 	for f in "${sources[@]}"; do
 		o="$objdir/$(basename "$f" .c).o"
 		( "${CC:-cc}" "${cc_opts[@]}" -c "$f" -o "$o" 2>> "$journal_err" ) &

@@ -214,38 +214,38 @@ update_check() {
 	printf '%s %s\n' "$now" "${remote:--}" > "$st"
 	{ [ -n "$remote" ] && ver_gt "$remote" "$UPD_VER"; } || return 0
 	printf '\n  %s╭──────────── NOUVELLE VERSION DISPONIBLE ────────────%s\n' "$A" "$Z"
-	printf '  %s│%s  Le testeur des fous · %s   %sv%s%s  →  %sv%s%s\n' "$A" "$Z" "$UPD_NAME" "$G" "$UPD_VER" "$Z" "$V" "$remote" "$Z"
-	printf '  %s│%s  Mettre à jour maintenant ? %s[O/n]%s   %s(sans réponse dans 20 s : plus tard)%s\n' "$A" "$Z" "$Y" "$Z" "$G" "$Z"
+	printf "$(tt "  %s│%s  Le testeur des fous · %s   %sv%s%s  →  %sv%s%s\n" "  %s│%s  The testeur des fous · %s   %sv%s%s  →  %sv%s%s\n")" "$A" "$Z" "$UPD_NAME" "$G" "$UPD_VER" "$Z" "$V" "$remote" "$Z"
+	printf "$(tt "  %s│%s  Mettre à jour maintenant ? %s[O/n]%s   %s(sans réponse dans 20 s : plus tard)%s\n" "  %s│%s  Update now? %s[Y/n]%s   %s(no answer within 20 s: later)%s\n")" "$A" "$Z" "$Y" "$Z" "$G" "$Z"
 	printf '  %s╰─▶%s ' "$A" "$Z"
 	ans="n"
 	if read -r -t 20 -n 1 ans; then [ -n "$ans" ] || ans="o"; else ans="n"; fi
 	printf '\n'
 	case "$ans" in
 		o|O|y|Y) ;;
-		*) printf '  %s   plus tard : on continue en v%s (pas de nouvelle question avant 6 h)%s\n' "$G" "$UPD_VER" "$Z"; return 0 ;;
+		*) printf "$(tt "  %s   plus tard : on continue en v%s (pas de nouvelle question avant 6 h)%s\n" "  %s   later: we carry on with v%s (no new question for 6 h)%s\n")" "$G" "$UPD_VER" "$Z"; return 0 ;;
 	esac
 	if ! old=$(git -C "$UPD_DIR" rev-parse HEAD 2>/dev/null); then
-		printf '  %s   ce dossier n'"'"'est pas un clone git : retélécharge le testeur depuis GitHub.%s\n' "$E" "$Z"
+		printf "$(tt "  %s   ce dossier n'est pas un clone git : retélécharge le testeur depuis GitHub.%s\n" "  %s   this folder is not a git clone: download the tester again from GitHub.%s\n")" "$E" "$Z"
 		sleep 2
 		return 0
 	fi
 	printf '  %s   git pull...%s\n' "$G" "$Z"
 	if ! out=$(GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND='ssh -oBatchMode=yes -oConnectTimeout=5' \
 		git -C "$UPD_DIR" pull --ff-only 2>&1 </dev/null); then
-		printf '  %s   échec du git pull : rien n'"'"'a changé, on continue en v%s%s\n' "$E" "$UPD_VER" "$Z"
+		printf "$(tt "  %s   échec du git pull : rien n'a changé, on continue en v%s%s\n" "  %s   git pull failed: nothing changed, we carry on with v%s%s\n")" "$E" "$UPD_VER" "$Z"
 		printf '%s\n' "$out" | tail -3 | sed 's/^/      /'
 		sleep 2
 		return 0
 	fi
 	if ! out=$(upd_build_ok 2>&1); then
 		git -C "$UPD_DIR" reset -q --keep "$old" 2>/dev/null
-		printf '  %s   la nouvelle version ne compile pas ici : retour à la v%s, qui continue%s\n' "$E" "$UPD_VER" "$Z"
+		printf "$(tt "  %s   la nouvelle version ne compile pas ici : retour à la v%s, qui continue%s\n" "  %s   the new version does not build here: back to v%s, which carries on%s\n")" "$E" "$UPD_VER" "$Z"
 		printf '%s\n' "$out" | grep -m3 -E 'error|erreur' | cut -c1-150 | sed 's/^/      /'
 		sleep 2
 		return 0
 	fi
 	rm -f "$st"
-	printf '  %s   mise à jour réussie : v%s. Relance du testeur...%s\n' "$V" "$remote" "$Z"
+	printf "$(tt "  %s   mise à jour réussie : v%s. Relance du testeur...%s\n" "  %s   update done: v%s. Restarting the tester...%s\n")" "$V" "$remote" "$Z"
 	sleep 1
 	TDF_NO_UPDATE=1 exec bash "$UPD_DIR/run.sh" printf ${UPD_ARGS[@]+"${UPD_ARGS[@]}"}
 }
@@ -254,7 +254,7 @@ update_setting() {
 	case "$1" in
 		off|non|0) : > "$HOME/.testeur_des_fous/no_update"; echo "recherche de mise à jour : coupée (--update on pour la remettre)" ;;
 		on|oui|1) rm -f "$HOME/.testeur_des_fous/no_update"; echo "recherche de mise à jour : activée" ;;
-		*) echo "--update : on ou off"; exit 2 ;;
+		*) echo "$(tt "--update : on ou off" "--update: on or off")"; exit 2 ;;
 	esac
 	exit 0
 }
@@ -329,7 +329,7 @@ if [ -z "${TDF_ENGINE:-}" ] && [ "$NOLORE" = 0 ] && [ "$DEBUG" = 0 ] && [ -z "$V
 		done
 		exit $code
 	fi
-	printf '\r\033[K  le menu ne compile pas, passage en mode texte :\n'
+	printf "$(tt "\r\033[K  le menu ne compile pas, passage en mode texte :\n" "\r\033[K  the menu does not build, switching to text mode:\n")"
 	sed 's/^/    /' "$JEU/jeu.err" | head -5
 	tdf_journal "ERREUR : l'interface ne compile pas, passage en mode texte"
 	[ -n "${TDF_JOURNAL:-}" ] && cp "$JEU/jeu.err" "$(dirname "$TDF_JOURNAL")/printf_compilation.err" 2>/dev/null
@@ -345,14 +345,14 @@ if [ "$DEBUG" = 1 ]; then
 	[ -n "$ONLY" ] && PASS+=(--only "$ONLY")
 	[ "$BONUS_OPT" = "--bonus" ] && PASS+=(--bonus)
 	[ "$DO_NORM" = 0 ] && PASS+=(--no-norm)
-	printf "\n%s  DEBUG AVANCÉ · passage 1/2 : ASan + UBSan, tout le détail%s\n" "$B" "$N"
+	printf "$(tt "\n%s  DEBUG AVANCÉ · passage 1/2 : ASan + UBSan, tout le détail%s\n" "\n%s  ADVANCED DEBUG · pass 1/2: ASan + UBSan, every detail%s\n")" "$B" "$N"
 	bash "$TDF_DIR/run.sh" "${PASS[@]}"
 	rc=$?
 	if tdf_valgrind_pret; then
-		printf "\n%s  DEBUG AVANCÉ · passage 2/2 : valgrind (fuites de toutes sortes, lectures non initialisées)%s\n" "$B" "$N"
+		printf "$(tt "\n%s  DEBUG AVANCÉ · passage 2/2 : valgrind (fuites de toutes sortes, lectures non initialisées)%s\n" "\n%s  ADVANCED DEBUG · pass 2/2: valgrind (every kind of leak, uninitialised reads)%s\n")" "$B" "$N"
 		bash "$TDF_DIR/run.sh" "${PASS[@]}" --valgrind --stress 300 --no-norm || rc=1
 	else
-		printf "\n  %s%s : passage 2/2 sauté (le passage 1/2 avec ASan reste valable)%s\n" "$Y" "$TDF_VG_RAISON" "$N"
+		printf "$(tt "\n  %s%s : passage 2/2 sauté (le passage 1/2 avec ASan reste valable)%s\n" "\n  %s%s: pass 2/2 skipped (pass 1/2 with ASan still holds)%s\n")" "$Y" "$TDF_VG_RAISON" "$N"
 	fi
 	exit $rc
 fi
@@ -385,7 +385,7 @@ detail() {
 	return 0
 }
 
-CACHE="$TDF_DIR/.build_jeu/cache"
+CACHE="$TDF_DIR/.build_jeu/cache/l${TDF_LANGUE_N:-0}"
 mkdir -p "$CACHE" 2>/dev/null
 fingerprint() {
 	{ printf '%s|%s|%s|%s\n' "${TDF_V:-}" "$OS" "$ONLY" "$BONUS_OPT"; cat "$@" 2>/dev/null; } | cksum | cut -d' ' -f1
@@ -416,13 +416,13 @@ cache_run() {
 
 printf "\n%s ═══════════════════════════════════════════════════════════════%s\n" "$B" "$N"
 TDF_V=$(sed -n 's/^# *define TDF_VERSION "\(.*\)"/\1/p' "$MOT/version.h" 2>/dev/null)
-printf "%s   Le testeur des fous · version printf v%s   %smode : %s%s%s\n" "$B" "${TDF_V:-?}" "$N" "$C" "$MODE" "$N"
+printf "$(tt "%s   Le testeur des fous · version printf v%s   %smode : %s%s%s\n" "%s   The testeur des fous · printf version v%s   %smode: %s%s%s\n")" "$B" "${TDF_V:-?}" "$N" "$C" "$MODE" "$N"
 printf "%s ═══════════════════════════════════════════════════════════════%s\n" "$B" "$N"
-printf "  projet : %s\n  OS : %s   graine du stress : %s   aide : %s/2\n" "$PROJECT" "$OS" "$SEED" "$AIDE"
+printf "$(tt "  projet : %s\n  OS : %s   graine du stress : %s   aide : %s/2\n" "  project: %s\n  OS: %s   stress seed: %s   help: %s/2\n")" "$PROJECT" "$OS" "$SEED" "$AIDE"
 
 if [ ! -f "$PROJECT/Makefile" ]; then
-	printf "\n  %sKO%s pas de Makefile dans %s\n" "$R" "$N" "$PROJECT"
-	printf "     Clone le testeur à côté de ton dossier ft_printf, ou utilise --projet.\n\n"
+	printf "$(tt "\n  %sKO%s pas de Makefile dans %s\n" "\n  %sKO%s no Makefile in %s\n")" "$R" "$N" "$PROJECT"
+	printf "$(tt "     Clone le testeur à côté de ton dossier ft_printf, ou utilise --projet.\n\n" "     Clone the tester next to your ft_printf folder, or use --projet.\n\n")"
 	exit 1
 fi
 
@@ -441,15 +441,15 @@ student_find() {
 		| grep -Ev "(^|/)($TESTER_DIRS)[^/]*/" | sed "s#^#$COPY/#" | sort
 }
 
-printf "\n%s  ── Contrôles statiques ──%s\n" "$B" "$N"
+printf "$(tt "\n%s  ── Contrôles statiques ──%s\n" "\n%s  ── Static checks ──%s\n")" "$B" "$N"
 MK_LOG="$BUILD/make.log"
 if ! ( cd "$COPY" && make ) >"$MK_LOG" 2>&1; then
-	line KO "Makefile : 'make' échoue"
+	line KO "$(tt "Makefile : 'make' échoue" "Makefile: 'make' fails")"
 	tail -n 15 "$MK_LOG" | sed 's/^/      /'
 	exit 1
 fi
 if [ ! -f "$COPY/libftprintf.a" ]; then
-	line KO "Makefile : libftprintf.a absent à la racine du dépôt"
+	line KO "$(tt "Makefile : libftprintf.a absent à la racine du dépôt" "Makefile: libftprintf.a missing at the root of the repository")"
 	exit 1
 fi
 
@@ -463,12 +463,12 @@ mk_audit() {
 		fi
 	done
 	grep -Eq '^[[:space:]]*NAME[[:space:]]*[:+?]?=[[:space:]]*libftprintf\.a' "$COPY/Makefile" \
-		|| MK_PB+=("variable NAME = libftprintf.a introuvable")
+		|| MK_PB+=("$(tt "variable NAME = libftprintf.a introuvable" "variable NAME = libftprintf.a not found")")
 	grep -qi 'libtool' "$COPY/Makefile" && MK_PB+=("libtool utilisé (interdit, il faut ar)")
 	CMDS=$(cd "$COPY" && make -n -B all 2>/dev/null)
 	COMPILES=$(echo "$CMDS" | grep -E '(^|[[:space:]/])(cc|gcc|clang)[[:space:]].*-c' )
 	if [ -z "$COMPILES" ]; then
-		MK_WARN+=("impossible de voir les lignes de compilation (make -n -B)")
+		MK_WARN+=("$(tt "impossible de voir les lignes de compilation (make -n -B)" "cannot see the compile lines (make -n -B)")")
 	else
 		NOFLAGS=$(echo "$COMPILES" | grep -v -- '-Wall' ; echo "$COMPILES" | grep -v -- '-Wextra'; echo "$COMPILES" | grep -v -- '-Werror')
 		[ -n "$(echo "$NOFLAGS" | tr -d '[:space:]')" ] && MK_PB+=("compilation sans -Wall -Wextra -Werror : $(echo "$NOFLAGS" | head -1 | cut -c1-90)")
@@ -480,7 +480,7 @@ mk_audit() {
 	again=$(cd "$COPY" && make 2>&1)
 	after=$(stat -c '%Y.%y' "$COPY/libftprintf.a" 2>/dev/null || stat -f '%m' "$COPY/libftprintf.a")
 	if [ "$before" != "$after" ] || echo "$again" | grep -Eq '(^|[[:space:]/])(cc|gcc|clang|ar)[[:space:]]'; then
-		MK_PB+=("relink : un 2e 'make' sans modification reconstruit")
+		MK_PB+=("$(tt "relink : un 2e 'make' sans modification reconstruit" "relink: a 2nd 'make' without changes rebuilds")")
 	fi
 	( cd "$COPY" && make clean >/dev/null 2>&1 )
 	[ -n "$(student_find -name '*.o')" ] && MK_PB+=("'make clean' laisse des .o")
@@ -490,7 +490,7 @@ mk_audit() {
 	[ -f "$COPY/libftprintf.a" ] || MK_PB+=("'make re' ne reconstruit pas libftprintf.a")
 	( cd "$COPY" && make >/dev/null 2>&1 )
 	if [ ${#MK_PB[@]} -eq 0 ] && [ ${#MK_WARN[@]} -eq 0 ]; then
-		line OK "Makefile (règles, NAME, flags, cc, ar, relink, clean/fclean/re)"
+		line OK "$(tt "Makefile (règles, NAME, flags, cc, ar, relink, clean/fclean/re)" "Makefile (rules, NAME, flags, cc, ar, relink, clean/fclean/re)")"
 	elif [ ${#MK_PB[@]} -eq 0 ]; then
 		line "~~" "Makefile"
 		for m in "${MK_WARN[@]}"; do detail "${Y}⚠${N} $m"; done
@@ -501,19 +501,19 @@ mk_audit() {
 	fi
 	if [ -d "$COPY/libft" ]; then
 		if echo "$CMDS" | grep -Eq '(make|MAKE)[^;&|]*-C[[:space:]]*(\./)?libft|cd[[:space:]]+(\./)?libft[^;&|]*(&&|;)[[:space:]]*\$?\(?(make|MAKE)'; then
-			line OK "Makefile : la libft est compilée par son propre Makefile (make -C libft)"
+			line OK "$(tt "Makefile : la libft est compilée par son propre Makefile (make -C libft)" "Makefile: the libft is built by its own Makefile (make -C libft)")"
 		else
-			line KO "Makefile : la libft doit être compilée par son propre Makefile"
-			detail "sujet, instructions communes : « Your activity's Makefile must compile the library by using its Makefile »"
+			line KO "$(tt "Makefile : la libft doit être compilée par son propre Makefile" "Makefile: the libft must be built by its own Makefile")"
+			detail "$(tt "sujet, instructions communes : « Your activity's Makefile must compile the library by using its Makefile »" "subject, common instructions: \"Your activity's Makefile must compile the library by using its Makefile\"")"
 		fi
 	fi
 	HDR=$(student_find -name 'ft_printf.h' | head -1)
 	if [ -z "$HDR" ]; then
-		line KO "ft_printf.h introuvable"
+		line KO "$(tt "ft_printf.h introuvable" "ft_printf.h not found")"
 	elif ! grep -Eq 'int[[:space:]]+ft_printf[[:space:]]*\([[:space:]]*const[[:space:]]+char[[:space:]]*\*' "$HDR"; then
-		line KO "ft_printf.h : prototype 'int ft_printf(const char *, ...);' introuvable"
+		line KO "$(tt "ft_printf.h : prototype 'int ft_printf(const char *, ...);' introuvable" "ft_printf.h: prototype 'int ft_printf(const char *, ...);' not found")"
 	else
-		line OK "ft_printf.h et prototype"
+		line OK "$(tt "ft_printf.h et prototype" "ft_printf.h and prototype")"
 	fi
 }
 if want makefile; then
@@ -526,7 +526,7 @@ K_PRE=$STATIC_KO
 if want makefile; then
 	PARAS="$(tdf_parasites printf "$PROJECT")"
 	if [ -z "$PARAS" ]; then
-		line OK "aucun fichier parasite dans le rendu"
+		line OK "$(tt "aucun fichier parasite dans le rendu" "no garbage file in the submission")"
 	else
 		while IFS=$'\t' read -r f m; do
 			line KO "fichier parasite : $f (erreur moulinette)" ""
@@ -544,13 +544,13 @@ PRE_FICHIERS=$((STATIC_KO - K_PRE))
 if want readme || want makefile; then
 	RD="$COPY/README.md"
 	if [ ! -f "$RD" ]; then
-		line KO "README.md absent à la racine (sujet, chapitre 5)"
+		line KO "$(tt "README.md absent à la racine (sujet, chapitre 5)" "README.md missing at the root (subject, chapter 5)")"
 	else
 		RD_PB=()
 		first=$(grep -m1 -v '^[[:space:]]*$' "$RD")
 		case "$first" in
 			[*_]*"This activity has been created as part of the 42 curriculum by "*[*_]) ;;
-			*) RD_PB+=("1re ligne : en italique, « This activity has been created as part of the 42 curriculum by <login> »") ;;
+			*) RD_PB+=("$(tt "1re ligne : en italique, « This activity has been created as part of the 42 curriculum by <login> »" "1st line: in italics, \"This activity has been created as part of the 42 curriculum by <login>\"")") ;;
 		esac
 		for sec in Description Instructions Resources; do
 			grep -Eqi "^#+[[:space:]]*$sec" "$RD" || RD_PB+=("section « $sec » absente")
@@ -558,11 +558,11 @@ if want readme || want makefile; then
 		RES=$(sed -n '/^#\{1,\}[[:space:]]*[Rr]esources/,$p' "$RD")
 		{ echo "$RES" | grep -Eqiw 'ai|ia|llm|chatgpt|gpt|claude|copilot|mistral|gemini' \
 			|| echo "$RES" | grep -qi 'intelligence'; } \
-			|| RD_PB+=("Resources : décris comment l'IA a été utilisée (ou qu'elle ne l'a pas été)")
+			|| RD_PB+=("$(tt "Resources : décris comment l'IA a été utilisée (ou qu'elle ne l'a pas été)" "Resources: describe how AI was used (or that it was not)")")
 		if [ ${#RD_PB[@]} -eq 0 ]; then
-			line OK "README.md (1re ligne, Description, Instructions, Resources)"
-			line "~~" "README.md : explication de l'algorithme et de la structure de données" \
-				"(exigée par le sujet, à vérifier par toi : le testeur ne juge pas le fond)"
+			line OK "$(tt "README.md (1re ligne, Description, Instructions, Resources)" "README.md (1st line, Description, Instructions, Resources)")"
+			line "~~" "$(tt "README.md : explication de l'algorithme et de la structure de données" "README.md: explanation of the algorithm and the data structure")" \
+				"$(tt "(exigée par le sujet, à vérifier par toi : le testeur ne juge pas le fond)" "(required by the subject, check it yourself: the tester does not judge the content)")"
 		else
 			line KO "README.md"
 			for m in "${RD_PB[@]}"; do detail "${R}✗${N} $m"; done
@@ -577,10 +577,10 @@ lr_check() {
 	( cd "$LR" && make fclean >/dev/null 2>&1; make >/dev/null 2>&1 )
 	LRA=$(find "$LR" -maxdepth 1 -name '*.a' | head -1)
 	if [ -z "$LRA" ]; then
-		line KO "libft/ : contrôle rapide impossible, la libft ne compile pas avec son Makefile"
+		line KO "$(tt "libft/ : contrôle rapide impossible, la libft ne compile pas avec son Makefile" "libft/: quick check impossible, the libft does not build with its Makefile")"
 	elif ! { WA=(-Wl,--whole-archive "$LRA" -Wl,--no-whole-archive); [ "$OS" = Darwin ] && WA=("-Wl,-force_load,$LRA")
 		cc -g -w -fsanitize=address,undefined "$TDF_DIR/game/exos/libft_rapide.c" "${WA[@]}" -o "$LR/rapide" 2>"$LR/build.log"; }; then
-		line "~~" "libft/ : contrôle rapide impossible (édition de liens)" "$(head -1 "$LR/build.log" | cut -c1-90)"
+		line "~~" "$(tt "libft/ : contrôle rapide impossible (édition de liens)" "libft/: quick check impossible (linking)")" "$(head -1 "$LR/build.log" | cut -c1-90)"
 	else
 		ASAN_OPTIONS=detect_leaks=0 timeout 60 "$LR/rapide" > "$LR/res.txt" 2>/dev/null
 		LOK=$(awk -F'\t' '$1=="T"{print $2}' "$LR/res.txt")
@@ -622,18 +622,18 @@ if want nm; then
 			nm -g "$LIBFT_A" 2>/dev/null | awk 'NF==3 && $2!="U"{print $3}' | sed "$UNDERSCORE" | grep -qx "$s" && LFB+=("$s")
 		done
 		if [ ${#LFB[@]} -gt 0 ]; then
-			line KO "libft utilisée mais NON incluse dans libftprintf.a (nm)" "${R}${LFB[*]}${N}"
-			detail "la libft est autorisée, mais ton libftprintf.a doit la contenir (make -C libft, puis ar des .o de libft)"
-			detail "sinon le correcteur ne pourra pas lier : undefined reference"
+			line KO "$(tt "libft utilisée mais NON incluse dans libftprintf.a (nm)" "libft used but NOT included in libftprintf.a (nm)")" "${R}${LFB[*]}${N}"
+			detail "$(tt "la libft est autorisée, mais ton libftprintf.a doit la contenir (make -C libft, puis ar des .o de libft)" "the libft is allowed, but your libftprintf.a must contain it (make -C libft, then ar the libft .o files)")"
+			detail "$(tt "sinon le correcteur ne pourra pas lier : undefined reference" "otherwise the grader cannot link: undefined reference")"
 		else
 			line KO "fonctions externes interdites (nm)" "${R}${BAD[*]}${N}"
-			detail "autorisées : write malloc free + ta libft (si elle est dans libftprintf.a)"
+			detail "$(tt "autorisées : write malloc free + ta libft (si elle est dans libftprintf.a)" "allowed: write malloc free + your libft (if it is in libftprintf.a)")"
 		fi
 	elif [ ${#SUSP[@]} -gt 0 ]; then
 		line "~~" "fonctions externes (nm)" "${Y}${SUSP[*]}${N}"
-		detail "pas autorisées par le sujet, mais parfois générées par le compilateur : vérifie ton code"
+		detail "$(tt "pas autorisées par le sujet, mais parfois générées par le compilateur : vérifie ton code" "not allowed by the subject, but sometimes generated by the compiler: check your code")"
 	else
-		line OK "fonctions externes (nm) : seulement write/malloc/free"
+		line OK "$(tt "fonctions externes (nm) : seulement write/malloc/free" "external functions (nm): only write/malloc/free")"
 	fi
 fi
 PRE_FONCTIONS=$((STATIC_KO - K_NM))
@@ -691,7 +691,7 @@ if want norme && [ $DO_NORM -eq 1 ]; then
 		}
 		cache_run norme "$(fingerprint <(echo "$NV $VERBOSE"; echo "$NFILES" | sed "s#^$COPY/##") $NFILES)" norm_run
 	else
-		line ".." "norminette non installée : vérification de la norme ignorée"
+		line ".." "$(tt "norminette non installée : vérification de la norme ignorée" "norminette not installed: Norm check skipped")"
 	fi
 fi
 
@@ -702,7 +702,7 @@ case "$MODE" in
 	valgrind)
 		SAN="-DTDF_VALGRIND=1"
 		if ! tdf_valgrind_pret; then
-			printf "  %s⚠ %s : tests lancés avec ASan + UBSan à la place%s\n" "$Y" "$TDF_VG_RAISON" "$N"
+			printf "$(tt "  %s⚠ %s : tests lancés avec ASan + UBSan à la place%s\n" "  %s⚠ %s: tests run with ASan + UBSan instead%s\n")" "$Y" "$TDF_VG_RAISON" "$N"
 			MODE="asan+ubsan"
 			SAN="-fsanitize=address,undefined -fno-sanitize-recover=all"
 		fi ;;
@@ -711,14 +711,14 @@ CFLAGS_COMMON="-g -O0 -fno-omit-frame-pointer"
 san_ok() { echo 'int main(void){return 0;}' | LC_ALL=C cc $1 -x c - -o "$BUILD/.san_probe" >/dev/null 2>&1; }
 if [ "$MODE" = "asan+ubsan" ] && ! san_ok "$SAN"; then
 	if san_ok "-fsanitize=address"; then
-		line "~~" "UBSan indisponible sur cette machine (libubsan absente) : repli sur ASan seul"
+		line "~~" "$(tt "UBSan indisponible sur cette machine (libubsan absente) : repli sur ASan seul" "UBSan unavailable on this machine (no libubsan): falling back to ASan only")"
 		MODE="asan"; SAN="-fsanitize=address"
 	else
-		line "~~" "sanitizers indisponibles sur cette machine : repli sur le mode sans sanitizer"
+		line "~~" "$(tt "sanitizers indisponibles sur cette machine : repli sur le mode sans sanitizer" "sanitizers unavailable on this machine: falling back to no-sanitizer mode")"
 		MODE="none"; SAN="-DTDF_GUARD=1"
 	fi
 elif [ "$MODE" = "asan" ] && ! san_ok "$SAN"; then
-	line "~~" "ASan indisponible sur cette machine : repli sur le mode sans sanitizer"
+	line "~~" "$(tt "ASan indisponible sur cette machine : repli sur le mode sans sanitizer" "ASan unavailable on this machine: falling back to no-sanitizer mode")"
 	MODE="none"; SAN="-DTDF_GUARD=1"
 fi
 INCS=$(student_find -name '*.h' -exec dirname {} \; | sort -u | sed 's/^/-I/')
@@ -749,8 +749,8 @@ build_lib() {
 	return 0
 }
 if ! build_lib "$SRCS_M" "$BUILD/obj" "$BUILD/lib_m.a" "$BUILD/student.a"; then
-	line "~~" "lib non instrumentée" "(sources introuvables pour : $(echo "$SRCS_M" | grep MISSING | tr '\n' ' '))"
-	detail "les erreurs mémoire seront moins bien localisées"
+	line "~~" "$(tt "lib non instrumentée" "lib not instrumented")" "(sources introuvables pour : $(echo "$SRCS_M" | grep MISSING | tr '\n' ' '))"
+	detail "$(tt "les erreurs mémoire seront moins bien localisées" "memory errors will be located less precisely")"
 fi
 echo "$SRCS_M" | grep -v '^MISSING:' > "$BUILD/srcs.txt"
 RUNNER_SRC="$TDF_DIR/src"
@@ -781,7 +781,7 @@ build_runner() {
 		-I"$RUNNER_SRC" "$RUNNER_SRC"/*.c "$1" $LINK_WRAP -ldl -o "$2" 2>"$BUILD/runner_build.log"
 }
 if ! build_runner "$BUILD/lib_m.a" "$BUILD/tdf_runner"; then
-	printf "  %sKO%s impossible de lier le testeur avec ta lib :\n" "$R" "$N"
+	printf "$(tt "  %sKO%s impossible de lier le testeur avec ta lib :\n" "  %sKO%s cannot link the tester with your lib:\n")" "$R" "$N"
 	grep -v '^$' "$BUILD/runner_build.log" | cut -c1-200 | head -n 14 | sed 's/^/      /'
 	exit 1
 fi
@@ -819,7 +819,7 @@ run_runner() {
 
 RC=0
 if [ -z "$ONLY" ] || [ -n "$DYN_ONLY" ]; then
-	printf "\n%s  ── Tests dynamiques ──%s  %s(chaque test dans un processus fils, comparé au vrai printf)%s\n" "$B" "$N" "$D" "$N"
+	printf "$(tt "\n%s  ── Tests dynamiques ──%s  %s(chaque test dans un processus fils, comparé au vrai printf)%s\n" "\n%s  ── Dynamic tests ──%s  %s(each test in a child process, compared to the real printf)%s\n")" "$B" "$N" "$D" "$N"
 	M_ARGS=("${ARGS[@]}")
 	[ -n "$DYN_ONLY" ] && M_ARGS+=(--only "$DYN_ONLY")
 	if [ $HAS_BONUS -eq 1 ]; then
@@ -831,7 +831,7 @@ if [ -z "$ONLY" ] || [ -n "$DYN_ONLY" ]; then
 	fi
 	run_runner "$BUILD/tdf_runner" "${M_ARGS[@]}" || RC=1
 	if [ $HAS_BONUS -eq 1 ] && [ "$BONUS_OPT" != "--no-bonus" ] && { [ -z "$DYN_ONLY" ] || echo ",$DYN_ONLY," | grep -q ',bonus,'; }; then
-		printf "  %s(bonus : lib construite par 'make bonus')%s\n" "$D" "$N"
+		printf "$(tt "  %s(bonus : lib construite par 'make bonus')%s\n" "  %s(bonus: lib built by 'make bonus')%s\n")" "$D" "$N"
 		B_ARGS=("${ARGS[@]}" --only bonus)
 		[ -n "$BONUS_OPT" ] && B_ARGS+=("$BONUS_OPT")
 		run_runner "$BUILD/tdf_runner_bonus" "${B_ARGS[@]}" || RC=1
@@ -936,10 +936,10 @@ EOT
 	sed -e 's/^\*\*\(.*\):\*\* OK 🔥$/  \1: '"$G"'OK 🔥'"$N"'/' -e 's/^\*\*\(.*\):\*\* KO 💔$/  \1: '"$R"'KO 💔'"$N"'/' \
 		-e '/^ *$/d' -e 's/^#### /\n/' -e 's/^### //' -e 's/^## //' -e 's/^# //' -e 's/\*\*\([^*]*\)\*\*/\1/g' "$md"
 	if [ "$ca" = 1 ] && [ "$cb" = 0 ]; then
-		printf "\n  %s⚠ ton projet compile avec 'make' mais casse quand la moulinette impose ses CFLAGS (make CFLAGS=...).%s\n" "$Y" "$N"
-		printf "  %s  Cause fréquente : '-c' rangé dans CFLAGS au lieu d'être écrit dans la règle %%.o (souvent dans libft/Makefile).%s\n" "$D" "$N"
+		printf "$(tt "\n  %s⚠ ton projet compile avec 'make' mais casse quand la moulinette impose ses CFLAGS (make CFLAGS=...).%s\n" "\n  %s⚠ your project builds with 'make' but breaks when the moulinette forces its CFLAGS (make CFLAGS=...).%s\n")" "$Y" "$N"
+		printf "$(tt "  %s  Cause fréquente : '-c' rangé dans CFLAGS au lieu d'être écrit dans la règle %%.o (souvent dans libft/Makefile).%s\n" "  %s  Common cause: '-c' put in CFLAGS instead of being written in the %%.o rule (often in libft/Makefile).%s\n")" "$D" "$N"
 	fi
-	printf "\n  %sTrace enregistrée : %s%s\n" "$D" "$md" "$N"
+	printf "$(tt "\n  %sTrace enregistrée : %s%s\n" "\n  %sTrace saved: %s%s\n")" "$D" "$md" "$N"
 }
 if [ -z "$ONLY" ]; then
 	trace_moulinette
@@ -947,23 +947,23 @@ fi
 
 printf "\n"
 if [ $STATIC_KO -gt 0 ]; then
-	printf "  %sContrôles statiques : %d KO%s" "$R" "$STATIC_KO" "$N"
+	printf "$(tt "  %sContrôles statiques : %d KO%s" "  %sStatic checks: %d KO%s")" "$R" "$STATIC_KO" "$N"
 else
-	printf "  %sContrôles statiques : OK%s" "$G" "$N"
+	printf "$(tt "  %sContrôles statiques : OK%s" "  %sStatic checks: OK%s")" "$G" "$N"
 fi
-[ $STATIC_WARN -gt 0 ] && printf "  %s(%d avertissement(s))%s" "$Y" "$STATIC_WARN" "$N"
+[ $STATIC_WARN -gt 0 ] && printf "$(tt "  %s(%d avertissement(s))%s" "  %s(%d warning(s))%s")" "$Y" "$STATIC_WARN" "$N"
 printf "\n"
 if want stress; then
-	printf "  %sPour rejouer le stress : bash %s/run.sh printf --only stress --seed %s%s\n" "$D" "$TDF_AFF" "$SEED" "$N"
+	printf "$(tt "  %sPour rejouer le stress : bash %s/run.sh printf --only stress --seed %s%s\n" "  %sTo replay the stress: bash %s/run.sh printf --only stress --seed %s%s\n")" "$D" "$TDF_AFF" "$SEED" "$N"
 fi
-printf "  %stestable aussi avec : --valgrind | --asan-only | --no-sanitize%s\n\n" "$D" "$N"
+printf "$(tt "  %stestable aussi avec : --valgrind | --asan-only | --no-sanitize%s\n\n" "  %salso testable with: --valgrind | --asan-only | --no-sanitize%s\n\n")" "$D" "$N"
 [ $STATIC_KO -gt 0 ] && RC=1
 if [ "${NOLORE_RECORD:-0}" = 1 ]; then
 	printf 'E\n' >> "$MACHINE"
 	if build_jeu; then
 		"$JEU/fous" --results "$MACHINE" --record --dir "$TDF_DIR" || true
 	else
-		printf '  (progression non enregistrée : le menu ne compile pas)\n'
+		printf "$(tt "  (progression non enregistrée : le menu ne compile pas)\n" "  (progress not saved: the menu does not build)\n")"
 	fi
 fi
 exit $RC

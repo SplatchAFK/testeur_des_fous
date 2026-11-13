@@ -331,6 +331,8 @@ static void	fill_default(t_save *s)
 	s->cfg.ubsan = 1;
 	s->cfg.norm = 1;
 	s->cfg.help = 2;
+	if (getenv("TDF_LANGUE_N") && *getenv("TDF_LANGUE_N") >= '0' && *getenv("TDF_LANGUE_N") <= '7')
+		s->cfg.lang = *getenv("TDF_LANGUE_N") - '0';
 }
 
 static const char	*save_path(void)
@@ -746,7 +748,16 @@ static void	write_file(int refresh)
 
 void	save_write(void)
 {
+	char	p[700];
+	FILE	*f;
+
 	write_file(1);
+	snprintf(p, sizeof(p), "%s/langue.txt", g_savedir ? g_savedir : ".");
+	if ((f = fopen(p, "w")))
+	{
+		fprintf(f, "%d\n", g_save.cfg.lang);
+		fclose(f);
+	}
 }
 
 #ifdef TDF_PRINTF

@@ -3,8 +3,8 @@ TDF_NOMS=("Français" "English" "Español" "Deutsch" "Italiano" "Português" "T�
 
 tdf_langue_lire() {
 	local d="$HOME/.testeur_des_fous" n=""
-	[ -f "$d/save.txt" ] && n="$(sed -n 's/^cfg_lang=//p' "$d/save.txt" 2>/dev/null | head -1)"
-	[ -z "$n" ] && [ -f "$d/langue.txt" ] && n="$(head -1 "$d/langue.txt" 2>/dev/null)"
+	[ -f "$d/langue.txt" ] && n="$(head -1 "$d/langue.txt" 2>/dev/null)"
+	[ -z "$n" ] && [ -f "$d/save.txt" ] && n="$(sed -n 's/^cfg_lang=//p' "$d/save.txt" 2>/dev/null | head -1)"
 	case "$n" in [0-7]) ;; *) n="" ;; esac
 	TDF_LANGUE_N="$n"
 	export TDF_LANGUE_N
@@ -44,7 +44,7 @@ tt() {
 		1) printf '%s' "$2"; return ;;
 	esac
 	if [ -n "${TDF_LANGUE_FICHIER:-}" ] && [ -f "$TDF_LANGUE_FICHIER" ]; then
-		r="$(awk -v k="$2" 'BEGIN { n = length(k) } substr($0, 1, n + 1) == k "\t" { print substr($0, n + 2); exit }' "$TDF_LANGUE_FICHIER")"
+		r="$(TDF_CLE="$2" awk 'BEGIN { k = ENVIRON["TDF_CLE"]; n = length(k) } substr($0, 1, n + 1) == k "\t" { print substr($0, n + 2); exit }' "$TDF_LANGUE_FICHIER")"
 	fi
 	printf '%s' "${r:-$2}"
 }

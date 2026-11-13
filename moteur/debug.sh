@@ -38,9 +38,9 @@ debug_env() {
 		san_d=$(mktemp -d "${TMPDIR:-/tmp}/tdf_san.XXXXXX") || san_d=""
 		[ -n "$san_d" ] && echo 'int main(void){return 0;}' > "$san_d/s.c"
 		if [ -n "$san_d" ] && cc -fsanitize=address,undefined "$san_d/s.c" -o "$san_d/s" 2>/dev/null && "$san_d/s" 2>/dev/null; then
-			echo "sanitizers  : ASan et UBSan disponibles"
+			echo "$(tt "sanitizers  : ASan et UBSan disponibles" "sanitizers  : ASan and UBSan available")"
 		else
-			echo "sanitizers  : indisponibles (repli sur le traqueur mémoire du testeur)"
+			echo "$(tt "sanitizers  : indisponibles (repli sur le traqueur mémoire du testeur)" "sanitizers  : unavailable (falling back to the tester's memory tracker)")"
 		fi
 		[ -n "$san_d" ] && rm -rf "$san_d"
 		echo "terminal    : TERM=${TERM:-?} TERM_PROGRAM=${TERM_PROGRAM:-?} COLORTERM=${COLORTERM:-?}"
@@ -106,7 +106,7 @@ debug_resoudre() {
 debug_liste() {
 	local i=0 s d mod etat c
 	debug_couleurs
-	printf '\n  %sJOURNAL DU TESTEUR%s · %s\n\n' "$DB_T" "$DB_R" "$TDF_DEBUG_DIR/sessions"
+	printf "$(tt "\n  %sJOURNAL DU TESTEUR%s · %s\n\n" "\n  %sTESTER LOG%s · %s\n\n")" "$DB_T" "$DB_R" "$TDF_DEBUG_DIR/sessions"
 	for s in $(debug_sessions); do
 		i=$((i + 1))
 		d="$TDF_DEBUG_DIR/sessions/$s"
@@ -116,8 +116,8 @@ debug_liste() {
 		printf '  %s%2d%s  %s-%s-%s %s:%s  %s%-22s%s %s\n' "$DB_AC" "$i" "$DB_R" "${s:0:4}" "${s:4:2}" "${s:6:2}" "${s:9:2}" "${s:11:2}" \
 			"$c" "$etat" "$DB_R" "${mod:-(sans argument)}"
 	done
-	[ "$i" = 0 ] && printf '  aucune session enregistrée pour l'"'"'instant\n'
-	printf '\n  %sbash %s/run.sh debug N%s pour en voir une\n\n' "$DB_D" "$TDF_NOM" "$DB_R"
+	[ "$i" = 0 ] && printf "$(tt "  aucune session enregistrée pour l'instant\n" "  no session recorded yet\n")"
+	printf "$(tt "\n  %sbash %s/run.sh debug N%s pour en voir une\n\n" "\n  %sbash %s/run.sh debug N%s to see one\n\n")" "$DB_D" "$TDF_NOM" "$DB_R"
 }
 
 debug_voir() {
@@ -125,13 +125,13 @@ debug_voir() {
 	debug_couleurs
 	d="$(debug_resoudre "${1:-1}")"
 	if [ -z "$d" ]; then
-		echo "aucune session enregistrée (lance d'abord le testeur)"
+		echo "$(tt "aucune session enregistrée (lance d'abord le testeur)" "no session recorded (run the tester first)")"
 		return 1
 	fi
 	printf '\n  %sSESSION %s%s · %s\n\n' "$DB_T" "$(basename "$d")" "$DB_R" "$(debug_etat "$d")"
 	printf '  %sMACHINE%s\n' "$DB_B" "$DB_R"
 	sed 's/^/    /' "$d/environnement.txt" 2>/dev/null
-	printf '\n  %sDÉROULÉ%s\n' "$DB_B" "$DB_R"
+	printf "$(tt "\n  %sDÉROULÉ%s\n" "\n  %sTIMELINE%s\n")" "$DB_B" "$DB_R"
 	while IFS= read -r ligne; do
 		case "$ligne" in
 			*ERREUR*|*interromp*|*"code 1"*|*"code 2"*|*"code 13"*) printf '    %s%s%s\n' "$DB_KO" "$ligne" "$DB_R" ;;
@@ -144,7 +144,7 @@ debug_voir() {
 		[ -f "$f" ] || continue
 		printf '    %-28s %6s octets\n' "$(basename "$f")" "$(wc -c < "$f" | tr -d ' ')"
 	done
-	printf '\n  %scat %s/FICHIER pour le lire · bash %s/run.sh debug paquet pour l'"'"'envoyer%s\n\n' "$DB_D" "$d" "$TDF_NOM" "$DB_R"
+	printf "$(tt "\n  %scat %s/FICHIER pour le lire · bash %s/run.sh debug paquet pour l'envoyer%s\n\n" "\n  %scat %s/FILE to read it · bash %s/run.sh debug paquet to send it%s\n\n")" "$DB_D" "$d" "$TDF_NOM" "$DB_R"
 }
 
 debug_paquet() {
@@ -164,7 +164,7 @@ debug_paquet() {
 	} | sed -e "s#$HOME#~#g" -e "s#${USER:-@@@}#<utilisateur>#g" ${login:+-e "s#$login#<login>#g"} > "$out"
 	chmod 600 "$out" 2>/dev/null
 	echo "paquet créé : $out"
-	echo "ni ton code, ni ton login dedans. Envoie-le à splatch_afk sur Discord avec ce qui s'est passé."
+	echo "$(tt "ni ton code, ni ton login dedans. Envoie-le à splatch_afk sur Discord avec ce qui s'est passé." "neither your code nor your login inside. Send it to splatch_afk on Discord with what happened.")"
 }
 
 debug_suivre() {
@@ -182,7 +182,7 @@ debug_commande() {
 		paquet|envoyer) debug_paquet "${2:-1}" ;;
 		suivre|direct) debug_suivre ;;
 		effacer)
-			printf 'effacer tout le journal (%s) ? (o/n) ' "$TDF_DEBUG_DIR/sessions"
+			printf "$(tt "effacer tout le journal (%s) ? (o/n) " "erase the whole log (%s)? (y/n) ")" "$TDF_DEBUG_DIR/sessions"
 			read -r r
 			case "$r" in o|O|y|Y) rm -rf "${TDF_DEBUG_DIR:?}/sessions" "$TDF_DEBUG_DIR/derniere"; echo "journal effacé" ;; *) echo "rien n'a été effacé" ;; esac
 			;;

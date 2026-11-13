@@ -1191,3 +1191,150 @@ never compiled by a Makefile: unused file	ни один Makefile его не к�
 never included: unused file	нигде не подключается: неиспользуемый файл
 not among the files to hand in (*.c, */*.c, *.h, */*.h, Makefile)	не входит в сдаваемые файлы (*.c, */*.c, *.h, */*.h, Makefile)
 not among the files to hand in (get_next_line.c, get_next_line_utils.c, get_next_line.h)	не входит в сдаваемые файлы (get_next_line.c, get_next_line_utils.c, get_next_line.h)
+\n  %s%sFiles are missing: the tests cannot compile.%s\n\n	\n  %s%sНе хватает файлов: тесты не могут скомпилироваться.%s\n\n
+get_next_line prototype in get_next_line.h	прототип get_next_line в get_next_line.h
+expected: char *get_next_line(int fd);	ожидается: char *get_next_line(int fd);
+compiles without -D BUFFER_SIZE (cc -Wall -Wextra -Werror)	компилируется без -D BUFFER_SIZE (cc -Wall -Wextra -Werror)
+\n  %s%sThe project does not compile: fix that first.%s\n\n	\n  %s%sПроект не компилируется: сначала исправь это.%s\n\n
+external functions: only read, malloc and free	внешние функции: только read, malloc и free
+no global variable (statics are allowed)	нет глобальных переменных (static разрешены)
+norminette not found: the Norm is not checked	norminette не найдена: Норма не проверяется
+README.md at the root	README.md в корне
+the subject (chapter 5) requires it	этого требует subject (глава 5)
+README.md: 1st line, Description, Instructions, Resources, algorithm	README.md: 1-я строка, Description, Instructions, Resources, алгоритм
+no garbage file in the submission	в сдаче нет лишних файлов
+  BUFFER_SIZE=%s does not compile\n            %s%s%s\n	  BUFFER_SIZE=%s не компилируется\n            %s%s%s\n
+Basic reading	Базовое чтение
+Line and file sizes	Размеры строк и файлов
+End of file	Конец файла
+Reading: failing read, read as little as possible	Чтение: сбой read, читать как можно меньше
+failing malloc	сбой malloc
+For info (outside subject v1.3)	Для сведения (вне subject v1.3)
+\n  %s! AddressSanitizer unavailable here: leaks and memory errors not checked (valgrind recommended).%s\n	\n  %s! AddressSanitizer здесь недоступен: утечки и ошибки памяти не проверены (советуем valgrind).%s\n
+   %s%d failing%s	   %sпровалено: %d%s
+   %s%d for info%s	   %sдля сведения: %d%s
+   %s(BUFFER_SIZE tested: %s, and without -D)%s\n	   %s(проверенные BUFFER_SIZE: %s и без -D)%s\n
+\n  %s%sEverything is clean.%s\n\n	\n  %s%sВсё чисто.%s\n\n
+\n  %s%sFix the red ones first.%s %s-v for every detail.%s\n\n	\n  %s%sСначала исправь красные.%s %s-v — все подробности.%s\n\n
+  %s[ Enter: go down into the Well ]%s 	  %s[ Enter: спуститься в Колодец ]%s 
+  %s[ Enter to go back to the menu ]%s 	  %s[ Enter — назад в меню ]%s 
+--reco needs a real terminal (without --ci)	--reco нужен настоящий терминал (без --ci)
+  %s│%s  %screated and vibe-coded by Splatch (romasant)%s%*s%s│%s\n	  %s│%s  %sсоздано и навайбкожено Splatch (romasant)%s%*s%s│%s\n
+preparation	подготовка
+interface in cache	интерфейс в кэше
+  %s%-18s not written yet%s\n	  %s%-18s ещё не написана%s\n
+  %s%-18s%s %s%6s checks%s   %s%s%s\n	  %s%-18s%s %s%6s проверок%s   %s%s%s\n
+\n  ⚠ %s: valgrind pass skipped (ASan stays on)\n	\n  ⚠ %s: проход valgrind пропущен (ASan остаётся)\n
+norminette turned off in the settings	norminette отключена в настройках
+the moulinette always runs it	мулинетт всегда её запускает
+norminette not found: the Norm is NOT checked	norminette не найдена: Норма НЕ проверяется
+install it: python3 -m pip install --user norminette	установи: python3 -m pip install --user norminette
+Makefile at the root	Makefile в корне
+no -std=c99 (forbidden by the subject)	без -std=c99 (запрещено subject)
+sources named one by one (Norm v4.1 III.11)	исходники перечислены по одному (Норма v4.1 III.11)
+wildcard or *.c found	найден wildcard или *.c
+ar and not libtool (subject 4.1)	ar, а не libtool (subject 4.1)
+make creates libft.a at the root	make создаёт libft.a в корне
+a 2nd make does not relink	второй make не перелинковывает
+only malloc, free and write come from the libc	из libc берутся только malloc, free и write
+no global variable (subject 4.1)	нет глобальных переменных (subject 4.1)
+helper functions static, no global variable (subject 4.1)	вспомогательные функции static, нет глобальных переменных (subject 4.1)
+README.md at the root (subject chapter 5)	README.md в корне (subject, глава 5)
+README.md: 1st line required by the subject	README.md: 1-я строка, требуемая subject
+expected: *This activity has been created as part of the 42 curriculum by <login>.*	ожидается: *This activity has been created as part of the 42 curriculum by <login>.*
+   %s(of which %d with a remark)%s	   %s(из них с замечанием: %d)%s
+   %s%d not written yet%s	   %sещё не написано: %d%s
+   %s%d prototype(s) different from the subject%s	   %sпрототипов не как в subject: %d%s
+   %s%d audit checks failing%s	   %sпровалено проверок аудита: %d%s
+\n  %s%sEverything is clean. Run without --ci to open the menu and spend your Octets.%s\n\n	\n  %s%sВсё чисто. Запусти без --ci, чтобы открыть меню и потратить Octets.%s\n\n
+\n  %s%sFix the red ones first.%s %s-v shows the full report.%s\n\n	\n  %s%sСначала исправь красные.%s %s-v показывает полный отчёт.%s\n\n
+  %s│%s  The testeur des fous · %s   %sv%s%s  →  %sv%s%s\n	  %s│%s  testeur des fous · %s   %sv%s%s  →  %sv%s%s\n
+  %s│%s  Update now? %s[Y/n]%s   %s(no answer within 20 s: later)%s\n	  %s│%s  Обновить сейчас? %s[Y/n]%s   %s(нет ответа за 20 с: позже)%s\n
+  %s   later: we carry on with v%s (no new question for 6 h)%s\n	  %s   позже: продолжаем на v%s (6 ч без новых вопросов)%s\n
+  %s   this folder is not a git clone: download the tester again from GitHub.%s\n	  %s   эта папка не git-клон: скачай тестер заново с GitHub.%s\n
+  %s   git pull failed: nothing changed, we carry on with v%s%s\n	  %s   git pull не удался: ничего не изменилось, продолжаем на v%s%s\n
+  %s   the new version does not build here: back to v%s, which carries on%s\n	  %s   новая версия здесь не собирается: возврат к v%s, работаем дальше%s\n
+  %s   update done: v%s. Restarting the tester...%s\n	  %s   обновлено: v%s. Перезапуск тестера...%s\n
+--update: on or off	--update: on или off
+the menu needs a real terminal	меню нужен настоящий терминал
+\r\e[K  the menu does not build, switching to text mode\n	\r\e[K  меню не собирается, переход в текстовый режим\n
+  (progress not saved: the menu does not build)\n	  (прогресс не сохранён: меню не собирается)\n
+  %sbuild kept in %s%s\n\n	  %sсборка сохранена в %s%s\n\n
+\e[0m\e[2J\e[H\n  \e[38;5;213mThe testeur des fous\e[0m · rebuilding...	\e[0m\e[2J\e[H\n  \e[38;5;213mtesteur des fous\e[0m · пересборка...
+\r\e[K  the menu no longer builds:\n	\r\e[K  меню больше не собирается:\n
+  build kept in %s\n\n	  сборка сохранена в %s\n\n
+\r\033[K  the menu does not build, switching to text mode:\n	\r\033[K  меню не собирается, переход в текстовый режим:\n
+\n%s  ADVANCED DEBUG · pass 1/2: ASan + UBSan, every detail%s\n	\n%s  РАСШИРЕННАЯ ОТЛАДКА · проход 1/2: ASan + UBSan, все подробности%s\n
+\n%s  ADVANCED DEBUG · pass 2/2: valgrind (every kind of leak, uninitialised reads)%s\n	\n%s  РАСШИРЕННАЯ ОТЛАДКА · проход 2/2: valgrind (любые утечки, неинициализированное чтение)%s\n
+\n  %s%s: pass 2/2 skipped (pass 1/2 with ASan still holds)%s\n	\n  %s%s: проход 2/2 пропущен (проход 1/2 с ASan остаётся в силе)%s\n
+%s   The testeur des fous · printf version v%s   %smode: %s%s%s\n	%s   testeur des fous · версия printf v%s   %sрежим: %s%s%s\n
+  project: %s\n  OS: %s   stress seed: %s   help: %s/2\n	  проект: %s\n  ОС: %s   зерно стресса: %s   помощь: %s/2\n
+\n  %sKO%s no Makefile in %s\n	\n  %sKO%s нет Makefile в %s\n
+     Clone the tester next to your ft_printf folder, or use --projet.\n\n	     Клонируй тестер рядом с папкой ft_printf или используй --projet.\n\n
+\n%s  ── Static checks ──%s\n	\n%s  ── Статические проверки ──%s\n
+Makefile: 'make' fails	Makefile: 'make' не проходит
+Makefile: libftprintf.a missing at the root of the repository	Makefile: нет libftprintf.a в корне репозитория
+variable NAME = libftprintf.a not found	переменная NAME = libftprintf.a не найдена
+cannot see the compile lines (make -n -B)	не видно строк компиляции (make -n -B)
+relink: a 2nd 'make' without changes rebuilds	relink: второй 'make' без изменений пересобирает
+Makefile (rules, NAME, flags, cc, ar, relink, clean/fclean/re)	Makefile (правила, NAME, флаги, cc, ar, relink, clean/fclean/re)
+Makefile: the libft is built by its own Makefile (make -C libft)	Makefile: libft собирается своим Makefile (make -C libft)
+Makefile: the libft must be built by its own Makefile	Makefile: libft должна собираться своим Makefile
+subject, common instructions: "Your activity's Makefile must compile the library by using its Makefile"	subject, общие инструкции: "Your activity's Makefile must compile the library by using its Makefile"
+ft_printf.h not found	ft_printf.h не найден
+ft_printf.h: prototype 'int ft_printf(const char *, ...);' not found	ft_printf.h: прототип 'int ft_printf(const char *, ...);' не найден
+ft_printf.h and prototype	ft_printf.h и прототип
+README.md missing at the root (subject, chapter 5)	нет README.md в корне (subject, глава 5)
+1st line: in italics, "This activity has been created as part of the 42 curriculum by <login>"	1-я строка: курсивом, "This activity has been created as part of the 42 curriculum by <login>"
+Resources: describe how AI was used (or that it was not)	Resources: опиши, как использовался ИИ (или что не использовался)
+README.md (1st line, Description, Instructions, Resources)	README.md (1-я строка, Description, Instructions, Resources)
+README.md: explanation of the algorithm and the data structure	README.md: объяснение алгоритма и структуры данных
+libft/: quick check impossible, the libft does not build with its Makefile	libft/: быстрая проверка невозможна, libft не собирается своим Makefile
+libft/: quick check impossible (linking)	libft/: быстрая проверка невозможна (линковка)
+libft used but NOT included in libftprintf.a (nm)	libft используется, но НЕ входит в libftprintf.a (nm)
+the libft is allowed, but your libftprintf.a must contain it (make -C libft, then ar the libft .o files)	libft разрешена, но твой libftprintf.a должен её содержать (make -C libft, затем ar .o-файлов libft)
+otherwise the grader cannot link: undefined reference	иначе проверяющий не слинкует: undefined reference
+allowed: write malloc free + your libft (if it is in libftprintf.a)	разрешено: write malloc free + твоя libft (если она в libftprintf.a)
+not allowed by the subject, but sometimes generated by the compiler: check your code	не разрешены subject, но иногда генерируются компилятором: проверь код
+external functions (nm): only write/malloc/free	внешние функции (nm): только write/malloc/free
+norminette not installed: Norm check skipped	norminette не установлена: проверка Нормы пропущена
+  %s⚠ %s: tests run with ASan + UBSan instead%s\n	  %s⚠ %s: тесты запущены с ASan + UBSan вместо этого%s\n
+UBSan unavailable on this machine (no libubsan): falling back to ASan only	UBSan недоступен на этой машине (нет libubsan): только ASan
+sanitizers unavailable on this machine: falling back to no-sanitizer mode	санитайзеры недоступны на этой машине: режим без санитайзеров
+ASan unavailable on this machine: falling back to no-sanitizer mode	ASan недоступен на этой машине: режим без санитайзеров
+lib not instrumented	lib без инструментирования
+memory errors will be located less precisely	ошибки памяти будут найдены менее точно
+  %sKO%s cannot link the tester with your lib:\n	  %sKO%s не удаётся слинковать тестер с твоей lib:\n
+\n%s  ── Dynamic tests ──%s  %s(each test in a child process, compared to the real printf)%s\n	\n%s  ── Динамические тесты ──%s  %s(каждый тест в дочернем процессе, сверка с настоящим printf)%s\n
+  %s(bonus: lib built by 'make bonus')%s\n	  %s(бонус: lib собрана через 'make bonus')%s\n
+\n  %s⚠ your project builds with 'make' but breaks when the moulinette forces its CFLAGS (make CFLAGS=...).%s\n	\n  %s⚠ проект собирается через 'make', но ломается, когда мулинетт навязывает свои CFLAGS (make CFLAGS=...).%s\n
+  %s  Common cause: '-c' put in CFLAGS instead of being written in the %%.o rule (often in libft/Makefile).%s\n	  %s  Частая причина: '-c' положен в CFLAGS, а не записан в правило %%.o (часто в libft/Makefile).%s\n
+\n  %sTrace saved: %s%s\n	\n  %sСлед сохранён: %s%s\n
+  %sStatic checks: %d KO%s	  %sСтатические проверки: %d KO%s
+  %sStatic checks: OK%s	  %sСтатические проверки: OK%s
+  %sTo replay the stress: bash %s/run.sh printf --only stress --seed %s%s\n	  %sПовторить стресс: bash %s/run.sh printf --only stress --seed %s%s\n
+  %salso testable with: --valgrind | --asan-only | --no-sanitize%s\n\n	  %sтакже можно проверить с: --valgrind | --asan-only | --no-sanitize%s\n\n
+sanitizers  : ASan and UBSan available	санитайзеры : ASan и UBSan доступны
+sanitizers  : unavailable (falling back to the tester's memory tracker)	санитайзеры : недоступны (используется трекер памяти тестера)
+\n  %sTESTER LOG%s · %s\n\n	\n  %sЖУРНАЛ ТЕСТЕРА%s · %s\n\n
+  no session recorded yet\n	  пока нет записанных сессий\n
+\n  %sbash %s/run.sh debug N%s to see one\n\n	\n  %sbash %s/run.sh debug N%s — посмотреть одну\n\n
+no session recorded (run the tester first)	нет записанных сессий (сначала запусти тестер)
+\n  %sTIMELINE%s\n	\n  %sХОД%s\n
+\n  %scat %s/FILE to read it · bash %s/run.sh debug paquet to send it%s\n\n	\n  %scat %s/ФАЙЛ — прочитать · bash %s/run.sh debug paquet — отправить%s\n\n
+neither your code nor your login inside. Send it to splatch_afk on Discord with what happened.	внутри нет ни твоего кода, ни логина. Отправь его splatch_afk в Discord с описанием, что случилось.
+erase the whole log (%s)? (y/n) 	стереть весь журнал (%s)? (y/n) 
+project:	проект:
+Submission · what the subject asks	Сдача · что требует subject
+Compiling with -D BUFFER_SIZE	Компиляция с -D BUFFER_SIZE
+BUFFER_SIZE=0 and negative (the subject says nothing: for info)	BUFFER_SIZE=0 и отрицательный (subject молчит: для сведения)
+Norm · norminette	Норма · norminette
+Audit · what the moulinette looks at	Аудит · что смотрит мулинетт
+Prototypes · subject	Прототипы · subject
+Part 1 · libc	Часть 1 · libc
+Part 2 · additional	Часть 2 · дополнительные
+Part 3 · linked list	Часть 3 · связный список
+%s at the root	%s в корне
+file not found: the subject wants the three files at the root of the repository	файл не найден: subject требует три файла в корне репозитория
+(required by the subject, check it yourself: the tester does not judge the content)	(требует subject, проверь сам: тестер не оценивает содержание)
+  %s(%d warning(s))%s	  %s(предупреждений: %d)%s

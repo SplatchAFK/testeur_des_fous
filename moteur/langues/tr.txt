@@ -1191,3 +1191,150 @@ never compiled by a Makefile: unused file	hiçbir Makefile derlemiyor: kullanıl
 never included: unused file	hiç dahil edilmiyor: kullanılmayan dosya
 not among the files to hand in (*.c, */*.c, *.h, */*.h, Makefile)	teslim edilecek dosyalardan değil (*.c, */*.c, *.h, */*.h, Makefile)
 not among the files to hand in (get_next_line.c, get_next_line_utils.c, get_next_line.h)	teslim edilecek dosyalardan değil (get_next_line.c, get_next_line_utils.c, get_next_line.h)
+\n  %s%sFiles are missing: the tests cannot compile.%s\n\n	\n  %s%sDosyalar eksik: testler derlenemiyor.%s\n\n
+get_next_line prototype in get_next_line.h	get_next_line.h içinde get_next_line prototipi
+expected: char *get_next_line(int fd);	beklenen: char *get_next_line(int fd);
+compiles without -D BUFFER_SIZE (cc -Wall -Wextra -Werror)	-D BUFFER_SIZE olmadan derleniyor (cc -Wall -Wextra -Werror)
+\n  %s%sThe project does not compile: fix that first.%s\n\n	\n  %s%sProje derlenmiyor: önce bunu düzelt.%s\n\n
+external functions: only read, malloc and free	dış fonksiyonlar: yalnızca read, malloc ve free
+no global variable (statics are allowed)	global değişken yok (static'lere izin var)
+norminette not found: the Norm is not checked	norminette bulunamadı: Norm kontrol edilmiyor
+README.md at the root	kökte README.md
+the subject (chapter 5) requires it	subject (bölüm 5) bunu ister
+README.md: 1st line, Description, Instructions, Resources, algorithm	README.md: 1. satır, Description, Instructions, Resources, algoritma
+no garbage file in the submission	teslimde fazla dosya yok
+  BUFFER_SIZE=%s does not compile\n            %s%s%s\n	  BUFFER_SIZE=%s derlenmiyor\n            %s%s%s\n
+Basic reading	Temel okuma
+Line and file sizes	Satır ve dosya boyutları
+End of file	Dosya sonu
+Reading: failing read, read as little as possible	Okuma: başarısız read, olabildiğince az oku
+failing malloc	başarısız malloc
+For info (outside subject v1.3)	Bilgi için (subject v1.3 dışında)
+\n  %s! AddressSanitizer unavailable here: leaks and memory errors not checked (valgrind recommended).%s\n	\n  %s! AddressSanitizer burada yok: leak ve bellek hataları kontrol edilmedi (valgrind önerilir).%s\n
+   %s%d failing%s	   %s%d başarısız%s
+   %s%d for info%s	   %s%d bilgi için%s
+   %s(BUFFER_SIZE tested: %s, and without -D)%s\n	   %s(test edilen BUFFER_SIZE: %s ve -D olmadan)%s\n
+\n  %s%sEverything is clean.%s\n\n	\n  %s%sHer şey temiz.%s\n\n
+\n  %s%sFix the red ones first.%s %s-v for every detail.%s\n\n	\n  %s%sÖnce kırmızıları düzelt.%s %s-v tüm ayrıntılar için.%s\n\n
+  %s[ Enter: go down into the Well ]%s 	  %s[ Enter: Kuyuya in ]%s 
+  %s[ Enter to go back to the menu ]%s 	  %s[ Menüye dönmek için Enter ]%s 
+--reco needs a real terminal (without --ci)	--reco gerçek bir terminal ister (--ci olmadan)
+  %s│%s  %screated and vibe-coded by Splatch (romasant)%s%*s%s│%s\n	  %s│%s  %sSplatch (romasant) tarafından vibe-code'landı%s%*s%s│%s\n
+preparation	hazırlık
+interface in cache	arayüz önbellekte
+  %s%-18s not written yet%s\n	  %s%-18s henüz yazılmadı%s\n
+  %s%-18s%s %s%6s checks%s   %s%s%s\n	  %s%-18s%s %s%6s kontrol%s   %s%s%s\n
+\n  ⚠ %s: valgrind pass skipped (ASan stays on)\n	\n  ⚠ %s: valgrind geçişi atlandı (ASan açık kalır)\n
+norminette turned off in the settings	norminette ayarlarda kapalı
+the moulinette always runs it	moulinette onu her zaman çalıştırır
+norminette not found: the Norm is NOT checked	norminette bulunamadı: Norm kontrol EDİLMİYOR
+install it: python3 -m pip install --user norminette	kur: python3 -m pip install --user norminette
+Makefile at the root	kökte Makefile
+no -std=c99 (forbidden by the subject)	-std=c99 yok (subject yasaklar)
+sources named one by one (Norm v4.1 III.11)	kaynaklar tek tek adlandırılmış (Norm v4.1 III.11)
+wildcard or *.c found	wildcard ya da *.c bulundu
+ar and not libtool (subject 4.1)	libtool değil ar (subject 4.1)
+make creates libft.a at the root	make kökte libft.a oluşturur
+a 2nd make does not relink	2. make yeniden bağlamaz
+only malloc, free and write come from the libc	libc'den yalnızca malloc, free ve write gelir
+no global variable (subject 4.1)	global değişken yok (subject 4.1)
+helper functions static, no global variable (subject 4.1)	yardımcı fonksiyonlar static, global değişken yok (subject 4.1)
+README.md at the root (subject chapter 5)	kökte README.md (subject bölüm 5)
+README.md: 1st line required by the subject	README.md: subject'in istediği 1. satır
+expected: *This activity has been created as part of the 42 curriculum by <login>.*	beklenen: *This activity has been created as part of the 42 curriculum by <login>.*
+   %s(of which %d with a remark)%s	   %s(%d tanesi notlu)%s
+   %s%d not written yet%s	   %s%d henüz yazılmadı%s
+   %s%d prototype(s) different from the subject%s	   %s%d prototip subject'ten farklı%s
+   %s%d audit checks failing%s	   %s%d denetim kontrolü başarısız%s
+\n  %s%sEverything is clean. Run without --ci to open the menu and spend your Octets.%s\n\n	\n  %s%sHer şey temiz. Menüyü açıp Octet harcamak için --ci olmadan çalıştır.%s\n\n
+\n  %s%sFix the red ones first.%s %s-v shows the full report.%s\n\n	\n  %s%sÖnce kırmızıları düzelt.%s %s-v tam raporu gösterir.%s\n\n
+  %s│%s  The testeur des fous · %s   %sv%s%s  →  %sv%s%s\n	  %s│%s  testeur des fous · %s   %sv%s%s  →  %sv%s%s\n
+  %s│%s  Update now? %s[Y/n]%s   %s(no answer within 20 s: later)%s\n	  %s│%s  Şimdi güncellensin mi? %s[Y/n]%s   %s(20 sn içinde yanıt yoksa: sonra)%s\n
+  %s   later: we carry on with v%s (no new question for 6 h)%s\n	  %s   sonra: v%s ile devam (6 saat yeni soru yok)%s\n
+  %s   this folder is not a git clone: download the tester again from GitHub.%s\n	  %s   bu klasör bir git klonu değil: tester'ı GitHub'dan yeniden indir.%s\n
+  %s   git pull failed: nothing changed, we carry on with v%s%s\n	  %s   git pull başarısız: hiçbir şey değişmedi, v%s ile devam%s\n
+  %s   the new version does not build here: back to v%s, which carries on%s\n	  %s   yeni sürüm burada derlenmiyor: v%s'e dönülüyor, o devam ediyor%s\n
+  %s   update done: v%s. Restarting the tester...%s\n	  %s   güncelleme tamam: v%s. Tester yeniden başlıyor...%s\n
+--update: on or off	--update: on ya da off
+the menu needs a real terminal	menü gerçek bir terminal ister
+\r\e[K  the menu does not build, switching to text mode\n	\r\e[K  menü derlenmiyor, metin moduna geçiliyor\n
+  (progress not saved: the menu does not build)\n	  (ilerleme kaydedilmedi: menü derlenmiyor)\n
+  %sbuild kept in %s%s\n\n	  %sbuild şurada tutuldu: %s%s\n\n
+\e[0m\e[2J\e[H\n  \e[38;5;213mThe testeur des fous\e[0m · rebuilding...	\e[0m\e[2J\e[H\n  \e[38;5;213mtesteur des fous\e[0m · yeniden derleniyor...
+\r\e[K  the menu no longer builds:\n	\r\e[K  menü artık derlenmiyor:\n
+  build kept in %s\n\n	  build şurada tutuldu: %s\n\n
+\r\033[K  the menu does not build, switching to text mode:\n	\r\033[K  menü derlenmiyor, metin moduna geçiliyor:\n
+\n%s  ADVANCED DEBUG · pass 1/2: ASan + UBSan, every detail%s\n	\n%s  GELİŞMİŞ DEBUG · geçiş 1/2: ASan + UBSan, tüm ayrıntılar%s\n
+\n%s  ADVANCED DEBUG · pass 2/2: valgrind (every kind of leak, uninitialised reads)%s\n	\n%s  GELİŞMİŞ DEBUG · geçiş 2/2: valgrind (her tür leak, başlatılmamış okumalar)%s\n
+\n  %s%s: pass 2/2 skipped (pass 1/2 with ASan still holds)%s\n	\n  %s%s: geçiş 2/2 atlandı (ASan'lı geçiş 1/2 geçerli)%s\n
+%s   The testeur des fous · printf version v%s   %smode: %s%s%s\n	%s   testeur des fous · printf sürümü v%s   %smod: %s%s%s\n
+  project: %s\n  OS: %s   stress seed: %s   help: %s/2\n	  proje: %s\n  OS: %s   stres tohumu: %s   yardım: %s/2\n
+\n  %sKO%s no Makefile in %s\n	\n  %sKO%s %s içinde Makefile yok\n
+     Clone the tester next to your ft_printf folder, or use --projet.\n\n	     Tester'ı ft_printf klasörünün yanına klonla ya da --projet kullan.\n\n
+\n%s  ── Static checks ──%s\n	\n%s  ── Statik kontroller ──%s\n
+Makefile: 'make' fails	Makefile: 'make' başarısız
+Makefile: libftprintf.a missing at the root of the repository	Makefile: depo kökünde libftprintf.a yok
+variable NAME = libftprintf.a not found	NAME = libftprintf.a değişkeni bulunamadı
+cannot see the compile lines (make -n -B)	derleme satırları görülemiyor (make -n -B)
+relink: a 2nd 'make' without changes rebuilds	relink: değişiklik olmadan 2. 'make' yeniden derliyor
+Makefile (rules, NAME, flags, cc, ar, relink, clean/fclean/re)	Makefile (kurallar, NAME, flag'ler, cc, ar, relink, clean/fclean/re)
+Makefile: the libft is built by its own Makefile (make -C libft)	Makefile: libft kendi Makefile'ı ile derleniyor (make -C libft)
+Makefile: the libft must be built by its own Makefile	Makefile: libft kendi Makefile'ı ile derlenmeli
+subject, common instructions: "Your activity's Makefile must compile the library by using its Makefile"	subject, ortak talimatlar: "Your activity's Makefile must compile the library by using its Makefile"
+ft_printf.h not found	ft_printf.h bulunamadı
+ft_printf.h: prototype 'int ft_printf(const char *, ...);' not found	ft_printf.h: 'int ft_printf(const char *, ...);' prototipi bulunamadı
+ft_printf.h and prototype	ft_printf.h ve prototip
+README.md missing at the root (subject, chapter 5)	kökte README.md yok (subject, bölüm 5)
+1st line: in italics, "This activity has been created as part of the 42 curriculum by <login>"	1. satır: italik, "This activity has been created as part of the 42 curriculum by <login>"
+Resources: describe how AI was used (or that it was not)	Resources: yapay zekânın nasıl kullanıldığını (ya da kullanılmadığını) anlat
+README.md (1st line, Description, Instructions, Resources)	README.md (1. satır, Description, Instructions, Resources)
+README.md: explanation of the algorithm and the data structure	README.md: algoritma ve veri yapısının açıklaması
+libft/: quick check impossible, the libft does not build with its Makefile	libft/: hızlı kontrol yapılamıyor, libft kendi Makefile'ı ile derlenmiyor
+libft/: quick check impossible (linking)	libft/: hızlı kontrol yapılamıyor (bağlama)
+libft used but NOT included in libftprintf.a (nm)	libft kullanılıyor ama libftprintf.a içinde DEĞİL (nm)
+the libft is allowed, but your libftprintf.a must contain it (make -C libft, then ar the libft .o files)	libft serbest, ama libftprintf.a onu içermeli (make -C libft, sonra libft .o dosyalarını ar ile ekle)
+otherwise the grader cannot link: undefined reference	yoksa değerlendiren bağlayamaz: undefined reference
+allowed: write malloc free + your libft (if it is in libftprintf.a)	izinli: write malloc free + libft'in (libftprintf.a içindeyse)
+not allowed by the subject, but sometimes generated by the compiler: check your code	subject izin vermez ama derleyici bazen üretir: kodunu kontrol et
+external functions (nm): only write/malloc/free	dış fonksiyonlar (nm): yalnızca write/malloc/free
+norminette not installed: Norm check skipped	norminette kurulu değil: Norm kontrolü atlandı
+  %s⚠ %s: tests run with ASan + UBSan instead%s\n	  %s⚠ %s: testler bunun yerine ASan + UBSan ile çalıştı%s\n
+UBSan unavailable on this machine (no libubsan): falling back to ASan only	bu makinede UBSan yok (libubsan yok): yalnızca ASan
+sanitizers unavailable on this machine: falling back to no-sanitizer mode	bu makinede sanitizer yok: sanitizer'sız moda geçiliyor
+ASan unavailable on this machine: falling back to no-sanitizer mode	bu makinede ASan yok: sanitizer'sız moda geçiliyor
+lib not instrumented	lib enstrümante edilmedi
+memory errors will be located less precisely	bellek hataları daha az kesin bulunacak
+  %sKO%s cannot link the tester with your lib:\n	  %sKO%s tester lib'inle bağlanamıyor:\n
+\n%s  ── Dynamic tests ──%s  %s(each test in a child process, compared to the real printf)%s\n	\n%s  ── Dinamik testler ──%s  %s(her test bir alt süreçte, gerçek printf ile karşılaştırılır)%s\n
+  %s(bonus: lib built by 'make bonus')%s\n	  %s(bonus: lib 'make bonus' ile kuruldu)%s\n
+\n  %s⚠ your project builds with 'make' but breaks when the moulinette forces its CFLAGS (make CFLAGS=...).%s\n	\n  %s⚠ projen 'make' ile derleniyor ama moulinette kendi CFLAGS'ını dayatınca bozuluyor (make CFLAGS=...).%s\n
+  %s  Common cause: '-c' put in CFLAGS instead of being written in the %%.o rule (often in libft/Makefile).%s\n	  %s  Sık neden: '-c' %%.o kuralına yazılacağına CFLAGS içine konmuş (çoğu zaman libft/Makefile).%s\n
+\n  %sTrace saved: %s%s\n	\n  %sİz kaydedildi: %s%s\n
+  %sStatic checks: %d KO%s	  %sStatik kontroller: %d KO%s
+  %sStatic checks: OK%s	  %sStatik kontroller: OK%s
+  %sTo replay the stress: bash %s/run.sh printf --only stress --seed %s%s\n	  %sStresi tekrar çalıştırmak için: bash %s/run.sh printf --only stress --seed %s%s\n
+  %salso testable with: --valgrind | --asan-only | --no-sanitize%s\n\n	  %sşunlarla da test edilebilir: --valgrind | --asan-only | --no-sanitize%s\n\n
+sanitizers  : ASan and UBSan available	sanitizer   : ASan ve UBSan var
+sanitizers  : unavailable (falling back to the tester's memory tracker)	sanitizer   : yok (tester'ın bellek izleyicisine geçiliyor)
+\n  %sTESTER LOG%s · %s\n\n	\n  %sTESTER KAYDI%s · %s\n\n
+  no session recorded yet\n	  henüz kayıtlı oturum yok\n
+\n  %sbash %s/run.sh debug N%s to see one\n\n	\n  %sbash %s/run.sh debug N%s birini görmek için\n\n
+no session recorded (run the tester first)	kayıtlı oturum yok (önce tester'ı çalıştır)
+\n  %sTIMELINE%s\n	\n  %sAKIŞ%s\n
+\n  %scat %s/FILE to read it · bash %s/run.sh debug paquet to send it%s\n\n	\n  %scat %s/DOSYA okumak için · bash %s/run.sh debug paquet göndermek için%s\n\n
+neither your code nor your login inside. Send it to splatch_afk on Discord with what happened.	içinde ne kodun ne de girişin var. Olanlarla birlikte Discord'da splatch_afk'ye gönder.
+erase the whole log (%s)? (y/n) 	tüm kayıt (%s) silinsin mi? (y/n) 
+project:	proje:
+Submission · what the subject asks	Teslim · subject'in istedikleri
+Compiling with -D BUFFER_SIZE	-D BUFFER_SIZE ile derleme
+BUFFER_SIZE=0 and negative (the subject says nothing: for info)	BUFFER_SIZE=0 ve negatif (subject bir şey demiyor: bilgi için)
+Norm · norminette	Norm · norminette
+Audit · what the moulinette looks at	Denetim · moulinette'in baktıkları
+Prototypes · subject	Prototipler · subject
+Part 1 · libc	Bölüm 1 · libc
+Part 2 · additional	Bölüm 2 · ek
+Part 3 · linked list	Bölüm 3 · bağlı liste
+%s at the root	kökte %s
+file not found: the subject wants the three files at the root of the repository	dosya bulunamadı: subject üç dosyanın da depo kökünde olmasını ister
+(required by the subject, check it yourself: the tester does not judge the content)	(subject ister, sen kontrol et: tester içeriği değerlendirmez)
+  %s(%d warning(s))%s	  %s(%d uyarı)%s

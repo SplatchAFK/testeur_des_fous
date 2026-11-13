@@ -1191,3 +1191,150 @@ never compiled by a Makefile: unused file	nie von einem Makefile kompiliert: ung
 never included: unused file	nie eingebunden: ungenutzte Datei
 not among the files to hand in (*.c, */*.c, *.h, */*.h, Makefile)	gehört nicht zu den abzugebenden Dateien (*.c, */*.c, *.h, */*.h, Makefile)
 not among the files to hand in (get_next_line.c, get_next_line_utils.c, get_next_line.h)	gehört nicht zu den abzugebenden Dateien (get_next_line.c, get_next_line_utils.c, get_next_line.h)
+\n  %s%sFiles are missing: the tests cannot compile.%s\n\n	\n  %s%sEs fehlen Dateien: die Tests können nicht kompilieren.%s\n\n
+get_next_line prototype in get_next_line.h	Prototyp von get_next_line in get_next_line.h
+expected: char *get_next_line(int fd);	erwartet: char *get_next_line(int fd);
+compiles without -D BUFFER_SIZE (cc -Wall -Wextra -Werror)	kompiliert ohne -D BUFFER_SIZE (cc -Wall -Wextra -Werror)
+\n  %s%sThe project does not compile: fix that first.%s\n\n	\n  %s%sDas Projekt kompiliert nicht: behebe das zuerst.%s\n\n
+external functions: only read, malloc and free	externe Funktionen: nur read, malloc und free
+no global variable (statics are allowed)	keine globale Variable (static ist erlaubt)
+norminette not found: the Norm is not checked	norminette nicht gefunden: die Norm wird nicht geprüft
+README.md at the root	README.md im Hauptordner
+the subject (chapter 5) requires it	das Subject (Kapitel 5) verlangt es
+README.md: 1st line, Description, Instructions, Resources, algorithm	README.md: 1. Zeile, Description, Instructions, Resources, Algorithmus
+no garbage file in the submission	keine Müll-Datei in der Abgabe
+  BUFFER_SIZE=%s does not compile\n            %s%s%s\n	  BUFFER_SIZE=%s kompiliert nicht\n            %s%s%s\n
+Basic reading	Grundlegendes Lesen
+Line and file sizes	Zeilen- und Dateigrößen
+End of file	Dateiende
+Reading: failing read, read as little as possible	Lesen: fehlschlagendes read, so wenig wie möglich lesen
+failing malloc	fehlschlagendes malloc
+For info (outside subject v1.3)	Zur Info (außerhalb Subject v1.3)
+\n  %s! AddressSanitizer unavailable here: leaks and memory errors not checked (valgrind recommended).%s\n	\n  %s! AddressSanitizer hier nicht verfügbar: Leaks und Speicherfehler ungeprüft (valgrind empfohlen).%s\n
+   %s%d failing%s	   %s%d fehlgeschlagen%s
+   %s%d for info%s	   %s%d zur Info%s
+   %s(BUFFER_SIZE tested: %s, and without -D)%s\n	   %s(getestete BUFFER_SIZE: %s, und ohne -D)%s\n
+\n  %s%sEverything is clean.%s\n\n	\n  %s%sAlles ist sauber.%s\n\n
+\n  %s%sFix the red ones first.%s %s-v for every detail.%s\n\n	\n  %s%sBehebe zuerst die roten.%s %s-v für alle Details.%s\n\n
+  %s[ Enter: go down into the Well ]%s 	  %s[ Enter: in den Brunnen hinabsteigen ]%s 
+  %s[ Enter to go back to the menu ]%s 	  %s[ Enter, um zum Menü zurückzukehren ]%s 
+--reco needs a real terminal (without --ci)	--reco braucht ein echtes Terminal (ohne --ci)
+  %s│%s  %screated and vibe-coded by Splatch (romasant)%s%*s%s│%s\n	  %s│%s  %serstellt und vibe-gecodet von Splatch (romasant)%s%*s%s│%s\n
+preparation	Vorbereitung
+interface in cache	Oberfläche im Cache
+  %s%-18s not written yet%s\n	  %s%-18s noch nicht geschrieben%s\n
+  %s%-18s%s %s%6s checks%s   %s%s%s\n	  %s%-18s%s %s%6s Prüfungen%s   %s%s%s\n
+\n  ⚠ %s: valgrind pass skipped (ASan stays on)\n	\n  ⚠ %s: valgrind-Durchlauf übersprungen (ASan bleibt aktiv)\n
+norminette turned off in the settings	norminette in den Einstellungen ausgeschaltet
+the moulinette always runs it	die Moulinette startet sie immer
+norminette not found: the Norm is NOT checked	norminette nicht gefunden: die Norm wird NICHT geprüft
+install it: python3 -m pip install --user norminette	installiere sie: python3 -m pip install --user norminette
+Makefile at the root	Makefile im Hauptordner
+no -std=c99 (forbidden by the subject)	kein -std=c99 (vom Subject verboten)
+sources named one by one (Norm v4.1 III.11)	Quellen einzeln genannt (Norm v4.1 III.11)
+wildcard or *.c found	wildcard oder *.c gefunden
+ar and not libtool (subject 4.1)	ar und nicht libtool (Subject 4.1)
+make creates libft.a at the root	make erzeugt libft.a im Hauptordner
+a 2nd make does not relink	ein 2. make linkt nicht neu
+only malloc, free and write come from the libc	nur malloc, free und write kommen aus der libc
+no global variable (subject 4.1)	keine globale Variable (Subject 4.1)
+helper functions static, no global variable (subject 4.1)	Hilfsfunktionen static, keine globale Variable (Subject 4.1)
+README.md at the root (subject chapter 5)	README.md im Hauptordner (Subject Kapitel 5)
+README.md: 1st line required by the subject	README.md: vom Subject vorgeschriebene 1. Zeile
+expected: *This activity has been created as part of the 42 curriculum by <login>.*	erwartet: *This activity has been created as part of the 42 curriculum by <login>.*
+   %s(of which %d with a remark)%s	   %s(davon %d mit Anmerkung)%s
+   %s%d not written yet%s	   %s%d noch nicht geschrieben%s
+   %s%d prototype(s) different from the subject%s	   %s%d Prototyp(en) weichen vom Subject ab%s
+   %s%d audit checks failing%s	   %s%d Audit-Prüfungen fehlgeschlagen%s
+\n  %s%sEverything is clean. Run without --ci to open the menu and spend your Octets.%s\n\n	\n  %s%sAlles ist sauber. Starte ohne --ci, um das Menü zu öffnen und deine Octets auszugeben.%s\n\n
+\n  %s%sFix the red ones first.%s %s-v shows the full report.%s\n\n	\n  %s%sBehebe zuerst die roten.%s %s-v zeigt den ganzen Bericht.%s\n\n
+  %s│%s  The testeur des fous · %s   %sv%s%s  →  %sv%s%s\n	  %s│%s  Der testeur des fous · %s   %sv%s%s  →  %sv%s%s\n
+  %s│%s  Update now? %s[Y/n]%s   %s(no answer within 20 s: later)%s\n	  %s│%s  Jetzt aktualisieren? %s[Y/n]%s   %s(keine Antwort in 20 s: später)%s\n
+  %s   later: we carry on with v%s (no new question for 6 h)%s\n	  %s   später: weiter mit v%s (6 h lang keine neue Frage)%s\n
+  %s   this folder is not a git clone: download the tester again from GitHub.%s\n	  %s   dieser Ordner ist kein Git-Klon: lade den Tester neu von GitHub.%s\n
+  %s   git pull failed: nothing changed, we carry on with v%s%s\n	  %s   git pull fehlgeschlagen: nichts geändert, weiter mit v%s%s\n
+  %s   the new version does not build here: back to v%s, which carries on%s\n	  %s   die neue Version kompiliert hier nicht: zurück zu v%s, die weiterläuft%s\n
+  %s   update done: v%s. Restarting the tester...%s\n	  %s   Update erledigt: v%s. Tester startet neu...%s\n
+--update: on or off	--update: on oder off
+the menu needs a real terminal	das Menü braucht ein echtes Terminal
+\r\e[K  the menu does not build, switching to text mode\n	\r\e[K  das Menü kompiliert nicht, Wechsel in den Textmodus\n
+  (progress not saved: the menu does not build)\n	  (Fortschritt nicht gespeichert: das Menü kompiliert nicht)\n
+  %sbuild kept in %s%s\n\n	  %sBuild liegt in %s%s\n\n
+\e[0m\e[2J\e[H\n  \e[38;5;213mThe testeur des fous\e[0m · rebuilding...	\e[0m\e[2J\e[H\n  \e[38;5;213mDer testeur des fous\e[0m · wird neu gebaut...
+\r\e[K  the menu no longer builds:\n	\r\e[K  das Menü kompiliert nicht mehr:\n
+  build kept in %s\n\n	  Build liegt in %s\n\n
+\r\033[K  the menu does not build, switching to text mode:\n	\r\033[K  das Menü kompiliert nicht, Wechsel in den Textmodus:\n
+\n%s  ADVANCED DEBUG · pass 1/2: ASan + UBSan, every detail%s\n	\n%s  ERWEITERTES DEBUG · Durchlauf 1/2: ASan + UBSan, alle Details%s\n
+\n%s  ADVANCED DEBUG · pass 2/2: valgrind (every kind of leak, uninitialised reads)%s\n	\n%s  ERWEITERTES DEBUG · Durchlauf 2/2: valgrind (alle Arten von Leaks, uninitialisierte Lesezugriffe)%s\n
+\n  %s%s: pass 2/2 skipped (pass 1/2 with ASan still holds)%s\n	\n  %s%s: Durchlauf 2/2 übersprungen (Durchlauf 1/2 mit ASan gilt weiter)%s\n
+%s   The testeur des fous · printf version v%s   %smode: %s%s%s\n	%s   Der testeur des fous · printf-Version v%s   %sModus: %s%s%s\n
+  project: %s\n  OS: %s   stress seed: %s   help: %s/2\n	  Projekt: %s\n  OS: %s   Stress-Seed: %s   Hilfe: %s/2\n
+\n  %sKO%s no Makefile in %s\n	\n  %sKO%s kein Makefile in %s\n
+     Clone the tester next to your ft_printf folder, or use --projet.\n\n	     Klone den Tester neben deinen ft_printf-Ordner oder nutze --projet.\n\n
+\n%s  ── Static checks ──%s\n	\n%s  ── Statische Prüfungen ──%s\n
+Makefile: 'make' fails	Makefile: 'make' schlägt fehl
+Makefile: libftprintf.a missing at the root of the repository	Makefile: libftprintf.a fehlt im Hauptordner des Repositorys
+variable NAME = libftprintf.a not found	Variable NAME = libftprintf.a nicht gefunden
+cannot see the compile lines (make -n -B)	Kompilierzeilen nicht sichtbar (make -n -B)
+relink: a 2nd 'make' without changes rebuilds	Relink: ein 2. 'make' ohne Änderungen baut neu
+Makefile (rules, NAME, flags, cc, ar, relink, clean/fclean/re)	Makefile (Regeln, NAME, Flags, cc, ar, Relink, clean/fclean/re)
+Makefile: the libft is built by its own Makefile (make -C libft)	Makefile: die libft wird mit ihrem eigenen Makefile gebaut (make -C libft)
+Makefile: the libft must be built by its own Makefile	Makefile: die libft muss mit ihrem eigenen Makefile gebaut werden
+subject, common instructions: "Your activity's Makefile must compile the library by using its Makefile"	Subject, gemeinsame Anweisungen: "Your activity's Makefile must compile the library by using its Makefile"
+ft_printf.h not found	ft_printf.h nicht gefunden
+ft_printf.h: prototype 'int ft_printf(const char *, ...);' not found	ft_printf.h: Prototyp 'int ft_printf(const char *, ...);' nicht gefunden
+ft_printf.h and prototype	ft_printf.h und Prototyp
+README.md missing at the root (subject, chapter 5)	README.md fehlt im Hauptordner (Subject, Kapitel 5)
+1st line: in italics, "This activity has been created as part of the 42 curriculum by <login>"	1. Zeile: kursiv, "This activity has been created as part of the 42 curriculum by <login>"
+Resources: describe how AI was used (or that it was not)	Resources: beschreibe, wie KI genutzt wurde (oder dass nicht)
+README.md (1st line, Description, Instructions, Resources)	README.md (1. Zeile, Description, Instructions, Resources)
+README.md: explanation of the algorithm and the data structure	README.md: Erklärung des Algorithmus und der Datenstruktur
+libft/: quick check impossible, the libft does not build with its Makefile	libft/: Schnellprüfung unmöglich, die libft baut nicht mit ihrem Makefile
+libft/: quick check impossible (linking)	libft/: Schnellprüfung unmöglich (Linken)
+libft used but NOT included in libftprintf.a (nm)	libft genutzt, aber NICHT in libftprintf.a enthalten (nm)
+the libft is allowed, but your libftprintf.a must contain it (make -C libft, then ar the libft .o files)	die libft ist erlaubt, aber dein libftprintf.a muss sie enthalten (make -C libft, dann ar der libft-.o-Dateien)
+otherwise the grader cannot link: undefined reference	sonst kann der Bewerter nicht linken: undefined reference
+allowed: write malloc free + your libft (if it is in libftprintf.a)	erlaubt: write malloc free + deine libft (wenn sie in libftprintf.a ist)
+not allowed by the subject, but sometimes generated by the compiler: check your code	vom Subject nicht erlaubt, aber manchmal vom Compiler erzeugt: prüfe deinen Code
+external functions (nm): only write/malloc/free	externe Funktionen (nm): nur write/malloc/free
+norminette not installed: Norm check skipped	norminette nicht installiert: Normprüfung übersprungen
+  %s⚠ %s: tests run with ASan + UBSan instead%s\n	  %s⚠ %s: Tests stattdessen mit ASan + UBSan%s\n
+UBSan unavailable on this machine (no libubsan): falling back to ASan only	UBSan auf diesem Rechner nicht verfügbar (keine libubsan): nur ASan
+sanitizers unavailable on this machine: falling back to no-sanitizer mode	Sanitizer auf diesem Rechner nicht verfügbar: Modus ohne Sanitizer
+ASan unavailable on this machine: falling back to no-sanitizer mode	ASan auf diesem Rechner nicht verfügbar: Modus ohne Sanitizer
+lib not instrumented	Lib nicht instrumentiert
+memory errors will be located less precisely	Speicherfehler werden ungenauer verortet
+  %sKO%s cannot link the tester with your lib:\n	  %sKO%s der Tester lässt sich nicht mit deiner Lib linken:\n
+\n%s  ── Dynamic tests ──%s  %s(each test in a child process, compared to the real printf)%s\n	\n%s  ── Dynamische Tests ──%s  %s(jeder Test in einem Kindprozess, mit dem echten printf verglichen)%s\n
+  %s(bonus: lib built by 'make bonus')%s\n	  %s(Bonus: Lib gebaut mit 'make bonus')%s\n
+\n  %s⚠ your project builds with 'make' but breaks when the moulinette forces its CFLAGS (make CFLAGS=...).%s\n	\n  %s⚠ dein Projekt baut mit 'make', bricht aber, wenn die Moulinette ihre CFLAGS erzwingt (make CFLAGS=...).%s\n
+  %s  Common cause: '-c' put in CFLAGS instead of being written in the %%.o rule (often in libft/Makefile).%s\n	  %s  Häufige Ursache: '-c' in CFLAGS statt in der Regel %%.o (oft in libft/Makefile).%s\n
+\n  %sTrace saved: %s%s\n	\n  %sSpur gespeichert: %s%s\n
+  %sStatic checks: %d KO%s	  %sStatische Prüfungen: %d KO%s
+  %sStatic checks: OK%s	  %sStatische Prüfungen: OK%s
+  %sTo replay the stress: bash %s/run.sh printf --only stress --seed %s%s\n	  %sStress wiederholen: bash %s/run.sh printf --only stress --seed %s%s\n
+  %salso testable with: --valgrind | --asan-only | --no-sanitize%s\n\n	  %sauch testbar mit: --valgrind | --asan-only | --no-sanitize%s\n\n
+sanitizers  : ASan and UBSan available	Sanitizer   : ASan und UBSan verfügbar
+sanitizers  : unavailable (falling back to the tester's memory tracker)	Sanitizer   : nicht verfügbar (Speicher-Tracker des Testers als Ersatz)
+\n  %sTESTER LOG%s · %s\n\n	\n  %sTESTER-PROTOKOLL%s · %s\n\n
+  no session recorded yet\n	  noch keine Sitzung aufgezeichnet\n
+\n  %sbash %s/run.sh debug N%s to see one\n\n	\n  %sbash %s/run.sh debug N%s, um eine anzusehen\n\n
+no session recorded (run the tester first)	keine Sitzung aufgezeichnet (starte zuerst den Tester)
+\n  %sTIMELINE%s\n	\n  %sABLAUF%s\n
+\n  %scat %s/FILE to read it · bash %s/run.sh debug paquet to send it%s\n\n	\n  %scat %s/DATEI zum Lesen · bash %s/run.sh debug paquet zum Senden%s\n\n
+neither your code nor your login inside. Send it to splatch_afk on Discord with what happened.	weder dein Code noch dein Login drin. Schick es splatch_afk auf Discord mit dem, was passiert ist.
+erase the whole log (%s)? (y/n) 	das ganze Protokoll (%s) löschen? (y/n) 
+project:	Projekt:
+Submission · what the subject asks	Abgabe · was das Subject verlangt
+Compiling with -D BUFFER_SIZE	Kompilieren mit -D BUFFER_SIZE
+BUFFER_SIZE=0 and negative (the subject says nothing: for info)	BUFFER_SIZE=0 und negativ (das Subject sagt nichts: zur Info)
+Norm · norminette	Norm · norminette
+Audit · what the moulinette looks at	Audit · was die Moulinette prüft
+Prototypes · subject	Prototypen · Subject
+Part 1 · libc	Teil 1 · libc
+Part 2 · additional	Teil 2 · zusätzliche
+Part 3 · linked list	Teil 3 · verkettete Liste
+%s at the root	%s im Hauptordner
+file not found: the subject wants the three files at the root of the repository	Datei nicht gefunden: das Subject will die drei Dateien im Hauptordner des Repositorys
+(required by the subject, check it yourself: the tester does not judge the content)	(vom Subject verlangt, prüf es selbst: der Tester bewertet den Inhalt nicht)
+  %s(%d warning(s))%s	  %s(%d Warnung(en))%s
