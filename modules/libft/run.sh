@@ -1,6 +1,7 @@
 #!/bin/bash
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
+export TDF_RACINE="${TDF_RACINE:-$(cd "$HERE/../.." && pwd)}"
 ORIG_ARGS=("$@")
 ROOT="${TDF_PROJET:-$(cd "$HERE/.." && pwd)}"
 TDF_DIR="${TDF_NOM:-$(basename "$HERE")}"
@@ -216,6 +217,7 @@ pill() { printf '%s %-6s %s' "$1" "$2" "$R"; }
 
 TMPROOT="${TMPDIR:-/tmp}"
 BUILD="$(mktemp -d "${TMPROOT%/}/testeur_des_fous.XXXXXX")"
+[ -n "$BUILD" ] && [ -d "$BUILD" ] || { echo "testeur des fous : impossible de créer un dossier temporaire dans $TMPROOT" >&2; exit 1; }
 RES="$BUILD/results"
 : > "$RES"
 mkdir -p "$BUILD/obj" "$BUILD/bin" "$BUILD/log" "$BUILD/plain" "$BUILD/proto" "$BUILD/vg"
@@ -1126,7 +1128,7 @@ grand_terminal() {
 	c=$(tput cols 2>/dev/null || echo 80)
 	l=$(tput lines 2>/dev/null || echo 24)
 	{ [ "$c" -ge 120 ] && [ "$l" -ge 36 ]; } && return 0
-	lanceur="${TMPDIR:-/tmp}/testeur_des_fous_fenetre_$$.sh"
+	lanceur=$(mktemp "${TMPDIR:-/tmp}/testeur_des_fous_fenetre.XXXXXX") || return 0
 	{
 		printf 'rm -f -- "$0"\n'
 		printf 'cd %q || exit 1\n' "$PWD"

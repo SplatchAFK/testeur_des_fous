@@ -13,7 +13,7 @@ tdf_cli_installer() {
 		echo "$cible existe déjà et n'appartient pas au testeur des fous : rien n'est modifié."
 		return 1
 	fi
-	printf '\043!/usr/bin/env bash\nexport TDF_CLI=1\nexec bash "%s/run.sh" "$@"\n' "$TDF_RACINE" > "$cible" || return 1
+	printf '\043!/usr/bin/env bash\nexport TDF_CLI=1\nexec bash %q "$@"\n' "$TDF_RACINE/run.sh" > "$cible" || return 1
 	chmod 755 "$cible" || return 1
 	echo "Commande installée : $cible (sans sudo)"
 	echo "Elle lance le testeur rangé dans : $TDF_RACINE"

@@ -2,6 +2,7 @@
 set -u
 
 ICI="$(cd "$(dirname "$0")" && pwd)"
+export TDF_RACINE="${TDF_RACINE:-$(cd "$ICI/../.." && pwd)}"
 RACINE="$(cd "$ICI/../.." && pwd)"
 MOT="$RACINE/moteur"
 TDF_JOURNAL_MOD="gnl"
@@ -51,6 +52,7 @@ else
 fi
 
 BUILD="$(mktemp -d "${TMPDIR:-/tmp}/tdf_gnl.XXXXXX")"
+[ -n "$BUILD" ] && [ -d "$BUILD" ] || { echo "testeur des fous : impossible de créer un dossier temporaire" >&2; exit 1; }
 trap '[ "$GARDER" = 1 ] || rm -rf "$BUILD"' EXIT
 mkdir -p "$BUILD/fichiers"
 N_OK=0

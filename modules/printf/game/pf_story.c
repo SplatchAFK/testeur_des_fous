@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
 #include "fous.h"
 
 #define CAT_W 24
@@ -633,14 +635,23 @@ int	story_bigboss(void)
 
 void	story_victory(int secret)
 {
-	char	cmd[2000];
+	pid_t	pid;
+	int		st;
 
 	g_secret = secret;
 	if (secret && getenv("TDF_SCENE") && *getenv("TDF_SCENE"))
 	{
-		snprintf(cmd, sizeof(cmd), "'%s' '%s' secrete", getenv("TDF_SCENE"), g_tester_dir);
 		term_pause();
-		if (system(cmd) == 0)
+		st = -1;
+		pid = fork();
+		if (pid == 0)
+		{
+			execl(getenv("TDF_SCENE"), getenv("TDF_SCENE"), g_tester_dir, "secrete", (char *)NULL);
+			_exit(127);
+		}
+		if (pid > 0)
+			waitpid(pid, &st, 0);
+		if (pid > 0 && WIFEXITED(st) && WEXITSTATUS(st) == 0)
 		{
 			term_resume();
 			term_invalidate();

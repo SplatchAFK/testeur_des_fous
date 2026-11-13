@@ -186,11 +186,6 @@ static FILE	*ouvrir(int l)
 		snprintf(p, sizeof(p), "%s/moteur/langues/%s.txt", getenv("TDF_RACINE"), g_codes[l]);
 		f = fopen(p, "r");
 	}
-	if (!f && g_tester_dir)
-	{
-		snprintf(p, sizeof(p), "%s/../../moteur/langues/%s.txt", g_tester_dir, g_codes[l]);
-		f = fopen(p, "r");
-	}
 	return (f);
 }
 

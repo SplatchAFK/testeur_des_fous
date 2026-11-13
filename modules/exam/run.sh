@@ -2,6 +2,7 @@
 set -u
 
 ICI="$(cd "$(dirname "$0")" && pwd)"
+export TDF_RACINE="${TDF_RACINE:-$(cd "$ICI/../.." && pwd)}"
 RACINE="$(cd "$ICI/../.." && pwd)"
 MOT="$RACINE/moteur"
 BUILD="$RACINE/exam/.build"
@@ -42,7 +43,7 @@ done
 mkdir -p "$BUILD" "$DOSSIER" 2>/dev/null
 chmod 700 "$DOSSIER" 2>/dev/null
 
-SOURCES=("$ICI/src/exam.c" "$ICI/src/code.c" "$MOT/save.c" "$MOT/data.c" "$MOT/art.c" "$MOT/stats.c" "$MOT/entete.c" "$MOT/fou_ascii.c")
+SOURCES=("$ICI/src/exam.c" "$ICI/src/code.c" "$MOT/save.c" "$MOT/data.c" "$MOT/art.c" "$MOT/stats.c" "$MOT/langue.c" "$MOT/entete.c" "$MOT/fou_ascii.c")
 EMPREINTE="$(cat "${SOURCES[@]}" "$MOT"/*.h "$ICI"/src/*.h 2>/dev/null | cksum | cut -d' ' -f1)"
 if ! tdf_compiler "$BUILD/exam" "$BUILD/exam.err" "$EMPREINTE" -O2 -w -DTDF_EXAM -DTDF_STATS_SEUL -I "$MOT" -I "$ICI/src" -- \
 	"${SOURCES[@]}" -- -lm; then

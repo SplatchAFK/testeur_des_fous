@@ -484,9 +484,9 @@ static void	install(void)
 	sh("mkdir -p %s/archive %s/rendu %s/sujet %s/traces", q(g_work), q(g_work), q(g_work), q(g_work));
 	sh("cd %s && for d in rendu/*/; do [ -d \"$d\" ] && mv \"$d\" \"archive/$(basename \"$d\")_%s\"; done; "
 		"rm -rf sujet/* 2>/dev/null; true", q(g_work), ts);
-	sh("mkdir -p %s/rendu/%s %s/sujet/%s", q(g_work), x->name, q(g_work), x->name);
-	sh("cp %s/%s/sujet.fr.txt %s/%s/sujet.en.txt %s/sujet/%s/ 2>/dev/null", q(g_bankdir), x->name,
-		q(g_bankdir), x->name, q(g_work), x->name);
+	sh("cd %s && mkdir -p rendu/%s sujet/%s", q(g_work), q(x->name), q(x->name));
+	sh("cd %s && cp %s/sujet.fr.txt %s/sujet.en.txt %s/sujet/%s/ 2>/dev/null", q(g_bankdir), q(x->name),
+		q(x->name), q(g_work), q(x->name));
 }
 
 static int	g_tty;
@@ -886,9 +886,9 @@ static int	build(const t_xexo *x, const char *srcdir, const char *maindir, int s
 	{
 		if (strcmp(x->files[i] + strlen(x->files[i]) - 2, ".c"))
 			continue ;
-		r = sh("cc -std=gnu17 -Wall -Wextra -Werror %s -I %s -c %s/%s -o %s/u_%d.o 2> %s",
-				san ? "-g -fsanitize=address,undefined -fno-omit-frame-pointer" : "",
-				q(srcdir), q(srcdir), x->files[i], q(g_build), i, q(errf));
+		r = sh("cd %s && cc -std=gnu17 -Wall -Wextra -Werror %s -I . -c ./%s -o %s/u_%d.o 2> %s",
+				q(srcdir), san ? "-g -fsanitize=address,undefined -fno-omit-frame-pointer" : "",
+				q(x->files[i]), q(g_build), i, q(errf));
 		if (r != 0)
 		{
 			err = slurp(errf, NULL);
@@ -1953,7 +1953,7 @@ static void	scene(const char *mode, int n)
 	if (!g_tty || !getenv("TDF_SCENE") || !getenv("TDF_SCENE_DIR") || !*getenv("TDF_SCENE"))
 		return ;
 	snprintf(arg, sizeof(arg), "%d", n);
-	sh("%s %s %s %s", q(getenv("TDF_SCENE")), q(getenv("TDF_SCENE_DIR")), mode, arg);
+	sh("%s %s %s %s", q(getenv("TDF_SCENE")), q(getenv("TDF_SCENE_DIR")), q(mode), q(arg));
 }
 
 static void	start(void)
@@ -2353,7 +2353,7 @@ static int	b_ext_grade(const t_bexo *b)
 	if (!strcmp(b->src, "libft") && !getenv("TDF_LIBFT"))
 		printf("  %s(pas de libft trouvée à côté du testeur : seules tes fonctions de ce fichier sont utilisables)%s\n", C_D, C_R);
 	sh("rm -f %s; TDF_PROJET=%s bash %s/modules/%s/run.sh --exo %02d --out %s >/dev/null 2>&1", q(res),
-		q(getenv("TDF_LIBFT") ? getenv("TDF_LIBFT") : g_root), q(g_root), b->src, b->niv, q(res));
+		q(getenv("TDF_LIBFT") ? getenv("TDF_LIBFT") : g_root), q(g_root), q(b->src), b->niv, q(res));
 	f = fopen(res, "r");
 	ok = 0;
 	while (f && fgets(line, sizeof(line), f))
@@ -2522,6 +2522,7 @@ int	main(int ac, char **av)
 {
 	static char	savedir[1000];
 	char		line[40];
+	char		*abs;
 	int			i;
 	int			direct;
 
@@ -2537,6 +2538,10 @@ int	main(int ac, char **av)
 	}
 	if (!g_root[0] || !g_home[0])
 		die("usage : exam --racine DOSSIER --home DOSSIER");
+	abs = realpath(g_root, NULL);
+	if (abs && strlen(abs) < sizeof(g_root))
+		snprintf(g_root, sizeof(g_root), "%s", abs);
+	free(abs);
 	snprintf(g_bankdir, sizeof(g_bankdir), "%s/banque/exam", g_root);
 	snprintf(g_work, sizeof(g_work), "%s/exam", g_root);
 	snprintf(g_build, sizeof(g_build), "%s/.build", g_work);

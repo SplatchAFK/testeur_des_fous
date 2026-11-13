@@ -2,6 +2,7 @@
 set -u
 
 TDF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export TDF_RACINE="${TDF_RACINE:-$(cd "$TDF_DIR/../.." && pwd)}"
 PROJECT="${TDF_PROJET:-$(dirname "$TDF_DIR")}"
 MOT="$(cd "$TDF_DIR/../../moteur" && pwd)"
 TDF_AFF="${TDF_NOM:-$(basename "$TDF_DIR")}"
@@ -277,7 +278,7 @@ grand_terminal() {
 	c=$(tput cols 2>/dev/null || echo 80)
 	l=$(tput lines 2>/dev/null || echo 24)
 	{ [ "$c" -ge 120 ] && [ "$l" -ge 36 ]; } && return 0
-	lanceur="${TMPDIR:-/tmp}/testeur_des_fous_fenetre_$$.sh"
+	lanceur=$(mktemp "${TMPDIR:-/tmp}/testeur_des_fous_fenetre.XXXXXX") || return 0
 	{
 		printf 'rm -f -- "$0"\n'
 		printf 'cd %q || exit 1\n' "$PWD"

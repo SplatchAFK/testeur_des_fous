@@ -1564,6 +1564,26 @@ static int	explain_valgrind(t_buf *msg)
 	return (nerr);
 }
 
+static void	quoter(const char *s, char *o, size_t n)
+{
+	size_t	j;
+
+	j = 0;
+	o[j++] = '\'';
+	for (; *s && j + 6 < n; s++)
+	{
+		if (*s == '\'')
+		{
+			memcpy(o + j, "'\\''", 4);
+			j += 4;
+		}
+		else
+			o[j++] = *s;
+	}
+	o[j++] = '\'';
+	o[j] = 0;
+}
+
 void	tdf_symbolize(uintptr_t off, char *dst, size_t n)
 {
 	char		cmd[8192];
@@ -1576,8 +1596,9 @@ void	tdf_symbolize(uintptr_t off, char *dst, size_t n)
 	snprintf(dst, n, "0x%lx", (unsigned long)off);
 	if (!g_opt.exe)
 		return ;
-	snprintf(cmd, sizeof(cmd), "addr2line -f -e '%s' 0x%lx 2>/dev/null",
-		g_opt.exe, (unsigned long)(off ? off - 1 : 0));
+	quoter(g_opt.exe, loc, sizeof(loc));
+	snprintf(cmd, sizeof(cmd), "addr2line -f -e %s 0x%lx 2>/dev/null",
+		loc, (unsigned long)(off ? off - 1 : 0));
 	f = popen(cmd, "r");
 	if (!f)
 		return ;

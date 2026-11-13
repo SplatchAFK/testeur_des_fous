@@ -28,13 +28,14 @@ debug_env() {
 		echo "make        : $(make --version 2>/dev/null | head -1)"
 		echo "norminette  : $( (norminette --version 2>/dev/null || python3 -m norminette --version 2>/dev/null) | head -1)"
 		echo "valgrind    : $(command -v valgrind >/dev/null 2>&1 && valgrind --version 2>/dev/null || echo absent)"
-		echo 'int main(void){return 0;}' > "${TMPDIR:-/tmp}/tdf_san_$$.c"
-		if cc -fsanitize=address,undefined "${TMPDIR:-/tmp}/tdf_san_$$.c" -o "${TMPDIR:-/tmp}/tdf_san_$$" 2>/dev/null && "${TMPDIR:-/tmp}/tdf_san_$$" 2>/dev/null; then
+		san_d=$(mktemp -d "${TMPDIR:-/tmp}/tdf_san.XXXXXX") || san_d=""
+		[ -n "$san_d" ] && echo 'int main(void){return 0;}' > "$san_d/s.c"
+		if [ -n "$san_d" ] && cc -fsanitize=address,undefined "$san_d/s.c" -o "$san_d/s" 2>/dev/null && "$san_d/s" 2>/dev/null; then
 			echo "sanitizers  : ASan et UBSan disponibles"
 		else
 			echo "sanitizers  : indisponibles (repli sur le traqueur mémoire du testeur)"
 		fi
-		rm -f "${TMPDIR:-/tmp}/tdf_san_$$" "${TMPDIR:-/tmp}/tdf_san_$$.c"
+		[ -n "$san_d" ] && rm -rf "$san_d"
 		echo "terminal    : TERM=${TERM:-?} TERM_PROGRAM=${TERM_PROGRAM:-?} COLORTERM=${COLORTERM:-?}"
 		echo "taille      : $(tput cols 2>/dev/null || echo ?) x $(tput lines 2>/dev/null || echo ?)"
 		echo "langue      : ${LANG:-?}"
