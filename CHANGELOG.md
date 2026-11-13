@@ -2,9 +2,52 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
-## 3.0.0 · en construction
+## 3.0.0 · 2026-11-13
 
-Un seul testeur réunit le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1), et ajoute un examshell en C.
+Un seul testeur réunit le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1), et ajoute get_next_line, un examshell en C et une banque d'exercices.
+
+### Lancement
+
+- `bash run.sh` ou `tdf` sans argument : menu aux flèches avec les projets trouvés, l'exam, la banque, le menu du testeur ; aucune commande à connaître ;
+- premier lancement : langue, interface graphique ou texte, commande `tdf` à installer sans sudo (`~/.local/bin/tdf`, `tdf maj`, `tdf desinstaller`) ;
+- en-tête « LE TESTEUR DES FOUS » avec le fou en ASCII couleur, qui s'adapte à la taille du terminal (grosses lettres et grand fou sur grand écran, texte simple sur tout petit) ;
+- tout se passe dans un seul terminal : plus de fenêtre séparée, plus de nouveau terminal qui s'ouvre.
+
+### Lore « La Cité qui compile »
+
+- histoire sérieuse réécrite : la Tour des Fondations (Libft), la Fonderie des Formats (printf), le Puits (get_next_line), l'Épreuve du Silence (exam), les Deux Piles (push_swap, plus tard) ;
+- décors peints : la tour aux 43 fenêtres qui s'allument selon tes fonctions, les trois gardiens, la Fonderie où Moulinette est en cage et sort quand les 9 chaînes sont brisées, le Puits aux 22 anneaux, l'Épreuve aux 4 portes, la fin et la fin secrète ;
+- Lore → Carte de la Cité : chaque lieu s'allume selon ta progression, Entrée pour t'approcher ;
+- Marvin et sa garde-robe repeints : 37 objets ; la sauvegarde passe au format 4 et rembourse en Octets les objets disparus ;
+- images dans le terminal (kitty, sixel) ou en cellules fines ; mode texte toujours disponible (`--no-lore`).
+
+### Langues
+
+- français, anglais, espagnol, allemand, italien, portugais, turc et russe, au choix au premier lancement et dans Paramètres ;
+- une traduction mal formée est ignorée au lieu de faire planter le testeur.
+
+### Conformité et trace moulinette
+
+- printf : une trace au même format que celle de la moulinette (mêmes blocs, mêmes intitulés), enregistrée dans `~/.testeur_des_fous/traces/` ;
+- la compilation est faite deux fois, dont une avec des `CFLAGS` imposés comme le fait la moulinette : un `-c` rangé dans `CFLAGS` est détecté ;
+- fichiers parasites : README en trop, fichiers hors sujet, `.c` jamais compilés, `.h` jamais inclus, doublons ; les fichiers pas encore dans git qu'un `git add .` enverrait sont signalés ;
+- Libft : fonctions d'aide non static et variables globales signalées (sujet 4.1).
+
+### Examshell
+
+- complétion Tab des commandes et de leurs arguments, historique avec les flèches ;
+- mode série façon 42-cli : 1 à 5 exercices, difficulté croissante ou fixe (`--serie`, `--difficulte`).
+
+### Sécurité et fiabilité
+
+- audit : appels au shell protégés (chemins avec apostrophes ou `$`), fichiers temporaires créés avec `mktemp`, commande `tdf` écrite sans risque ;
+- les décodeurs PNG et JPG, la lecture d'une sauvegarde et les fichiers de langue ont été testés au fuzzing (ASan et UBSan) sans plantage ;
+- valgrind est essayé avant usage : s'il ne démarre pas, le testeur le dit et continue avec ASan ;
+- testé sur Ubuntu 24.04, Fedora 45, Fedora 44, Debian et Arch ; macOS codé mais non vérifié.
+
+### Discord
+
+- à côté du lien : « Lien mort ? Contacte splatch_afk sur Discord ».
 
 ### Banque d'exercices
 

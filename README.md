@@ -1,11 +1,14 @@
 # Le testeur des fous
 
-> Version 3.0.0 en construction · [historique](CHANGELOG.md) · créé par **Splatch** (`romasant`) pour les étudiants de 42 Next.
+> **Version 3.0.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next.
+>
+> Remplace le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1) : ta progression est reprise automatiquement.
 
 ## Commandes
 
 ```bash
-bash testeur_des_fous/run.sh              # détecter tes projets et lancer le testeur
+bash testeur_des_fous/run.sh              # menu aux flèches : tes projets, l'exam, la banque
+bash testeur_des_fous/run.sh installer    # installer la commande tdf (sans sudo), puis juste : tdf
 bash testeur_des_fous/run.sh libft        # tester ta Libft
 bash testeur_des_fous/run.sh printf       # tester ton ft_printf
 bash testeur_des_fous/run.sh gnl          # tester ton get_next_line
@@ -18,6 +21,7 @@ bash testeur_des_fous/run.sh -a           # sans animations pour ce lancement
 bash testeur_des_fous/run.sh --anim off   # couper les animations pour de bon (on pour les remettre)
 bash testeur_des_fous/run.sh --debug      # tous les rapports détaillés
 bash testeur_des_fous/run.sh --version    # le numéro de version
+tdf maj                                   # mettre le testeur à jour
 ```
 
 ## Installation
@@ -54,7 +58,11 @@ Ta progression est dans `~/.testeur_des_fous/save.txt`, hors du dossier du teste
 | get_next_line | intégré : 7 BUFFER_SIZE et sans -D, stdin, tubes, fd invalides, read et malloc qui échouent, fuites, Norme, README |
 | push_swap | plus tard |
 
+Pour printf, le testeur écrit aussi une trace au format de la moulinette (mêmes blocs, mêmes intitulés) dans `~/.testeur_des_fous/traces/`, et compile ton projet comme elle, `CFLAGS` imposés compris. Il signale les fichiers parasites, y compris ceux qu'un `git add .` enverrait.
+
 Le testeur ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te dit où regarder.
+
+Langues : français, anglais, espagnol, allemand, italien, portugais, turc, russe (premier lancement ou Paramètres). Tout se passe dans un seul terminal ; les images s'affichent si ton terminal le permet, sinon en cellules ou en texte.
 
 ## L'exam
 
@@ -87,3 +95,5 @@ Entraide, bugs, idées : [discord.gg/SwAmfRcXCH](https://discord.gg/SwAmfRcXCH) 
 
 - Créé et vibe-codé par Splatch (`romasant`). Licence MIT, voir [LICENSE](LICENSE).
 - Exam : la liste des 57 exercices vient de [42exam.net](https://42exam.net/) (rang 02) et de [Don't Panic](https://code-dontpanic.lovable.app/). Les énoncés sont réécrits avec nos mots. Idée de départ et première version de l'examshell : [exam_shell](https://github.com/Sam-Sepi00l/exam_shell) de Sam-Sepi00l, avec son accord.
+- Mode série de l'exam et commande `tdf` : inspirés de [42-cli](https://github.com/brunogo25/42-cli) de Bruno Gomez.
+- Moulinette, la vraie, est une chatte grise et libre.
