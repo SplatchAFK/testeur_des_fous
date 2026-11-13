@@ -10,6 +10,7 @@ DOSSIER="$HOME/.testeur_des_fous"
 CC="${CC:-cc}"
 TDF_JOURNAL_MOD="exam"
 . "$MOT/chargement.sh"
+. "$MOT/langue.sh"
 
 usage() {
 	cat <<EOF

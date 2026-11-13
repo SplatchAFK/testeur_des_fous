@@ -2562,6 +2562,8 @@ int	main(int ac, char **av)
 	snprintf(savedir, sizeof(savedir), "%s", g_home);
 	g_savedir = savedir;
 	save_load();
+	if (getenv("TDF_LANGUE_N") && *getenv("TDF_LANGUE_N") >= '0' && *getenv("TDF_LANGUE_N") <= '7')
+		g_save.cfg.lang = *getenv("TDF_LANGUE_N") - '0';
 	if (g_save.valid == -1)
 		printf("  %ssauvegarde modifiée à la main : remise à zéro (ancienne copie : save.txt.triche)%s\n", C_KO, C_R);
 	cfg_load();

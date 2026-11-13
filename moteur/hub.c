@@ -146,6 +146,11 @@ static void	choisir_langue(void)
 	int	i;
 	int	x;
 
+	if (getenv("TDF_LANGUE_N") && *getenv("TDF_LANGUE_N") >= '0' && *getenv("TDF_LANGUE_N") <= '7')
+	{
+		g_save.cfg.lang = *getenv("TDF_LANGUE_N") - '0';
+		return ;
+	}
 	sel = langue_auto();
 	cls();
 	while (1)

@@ -8,6 +8,7 @@ MOT="$(cd "$TDF_DIR/../../moteur" && pwd)"
 TDF_AFF="${TDF_NOM:-$(basename "$TDF_DIR")}"
 TDF_JOURNAL_MOD="printf"
 . "$MOT/chargement.sh"
+. "$MOT/langue.sh"
 . "$MOT/conformite.sh"
 [ -t 0 ] && [ -t 1 ] && [ "${TDF_INTERFACE:-graphique}" != texte ] && { tdf_scene_bin "$MOT" >/dev/null 2>&1 || true; }
 MENU_SEUL=0

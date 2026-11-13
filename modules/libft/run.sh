@@ -11,6 +11,7 @@ SRC="$HERE/src"
 MOT="$(cd "$HERE/../../moteur" && pwd)"
 TDF_JOURNAL_MOD="libft"
 . "$MOT/chargement.sh"
+. "$MOT/langue.sh"
 . "$MOT/conformite.sh"
 MENU_SEUL=0
 DEDANS=0

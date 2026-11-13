@@ -8,23 +8,25 @@ tdf_cli_dans_path() {
 
 tdf_cli_installer() {
 	local cible="$TDF_BIN/$TDF_CMD_NOM" rc
-	mkdir -p "$TDF_BIN" || { echo "impossible de créer $TDF_BIN"; return 1; }
+	mkdir -p "$TDF_BIN" || { tl "impossible de créer %s" "cannot create %s" "$TDF_BIN"; return 1; }
 	if [ -e "$cible" ] && ! grep -q 'TDF_CLI=1' "$cible" 2>/dev/null; then
-		echo "$cible existe déjà et n'appartient pas au testeur des fous : rien n'est modifié."
+		tl "%s existe déjà et n'appartient pas au testeur des fous : rien n'est modifié." \
+			"%s already exists and does not belong to the testeur des fous: nothing was changed." "$cible"
 		return 1
 	fi
 	printf '\043!/usr/bin/env bash\nexport TDF_CLI=1\nexec bash %q "$@"\n' "$TDF_RACINE/run.sh" > "$cible" || return 1
 	chmod 755 "$cible" || return 1
-	echo "Commande installée : $cible (sans sudo)"
-	echo "Elle lance le testeur rangé dans : $TDF_RACINE"
+	tl "Commande installée : %s (sans sudo)" "Command installed: %s (no sudo)" "$cible"
+	tl "Elle lance le testeur rangé dans : %s" "It runs the tester stored in: %s" "$TDF_RACINE"
 	if tdf_cli_dans_path; then
-		echo "Tape « $TDF_CMD_NOM » dans n'importe quel dossier de projet."
+		tl "Tape « %s » dans n'importe quel dossier de projet." "Type \"%s\" in any project folder." "$TDF_CMD_NOM"
 	else
 		case "${SHELL:-}" in
 			*zsh) rc="~/.zshrc" ;;
 			*) rc="~/.bashrc" ;;
 		esac
-		echo "$TDF_BIN n'est pas dans ton PATH. Ajoute cette ligne à la fin de $rc, puis ouvre un nouveau terminal :"
+		tl "%s n'est pas dans ton PATH. Ajoute cette ligne à la fin de %s, puis ouvre un nouveau terminal :" \
+			"%s is not in your PATH. Add this line at the end of %s, then open a new terminal:" "$TDF_BIN" "$rc"
 		echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
 	fi
 }
@@ -32,27 +34,30 @@ tdf_cli_installer() {
 tdf_cli_desinstaller() {
 	local cible="$TDF_BIN/$TDF_CMD_NOM"
 	if [ ! -e "$cible" ]; then
-		echo "Aucune commande $TDF_CMD_NOM installée dans $TDF_BIN."
+		tl "Aucune commande %s installée dans %s." "No %s command installed in %s." "$TDF_CMD_NOM" "$TDF_BIN"
 		return 0
 	fi
 	if ! grep -q 'TDF_CLI=1' "$cible" 2>/dev/null; then
-		echo "$cible n'appartient pas au testeur des fous : rien n'est supprimé."
+		tl "%s n'appartient pas au testeur des fous : rien n'est supprimé." "%s does not belong to the testeur des fous: nothing was removed." "$cible"
 		return 1
 	fi
-	rm -f "$cible" && echo "Commande $TDF_CMD_NOM retirée. Le testeur et ta sauvegarde restent en place."
+	rm -f "$cible" && tl "Commande %s retirée. Le testeur et ta sauvegarde restent en place." \
+		"Command %s removed. The tester and your save stay in place." "$TDF_CMD_NOM"
 }
 
 tdf_cli_maj() {
 	if ! git -C "$TDF_RACINE" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-		echo "Le testeur n'est pas un clone git : mets-le à jour en le clonant de nouveau."
+		tl "Le testeur n'est pas un clone git : mets-le à jour en le clonant de nouveau." \
+			"The tester is not a git clone: update it by cloning it again."
 		return 1
 	fi
 	if [ -n "$(git -C "$TDF_RACINE" status --porcelain --untracked-files=no 2>/dev/null)" ]; then
-		echo "Le testeur a des modifications locales : mise à jour annulée pour ne rien écraser."
+		tl "Le testeur a des modifications locales : mise à jour annulée pour ne rien écraser." \
+			"The tester has local changes: update cancelled so nothing gets overwritten."
 		return 1
 	fi
-	echo "Mise à jour du testeur ($TDF_RACINE)..."
-	git -C "$TDF_RACINE" pull --ff-only && echo "Le testeur est à jour."
+	tl "Mise à jour du testeur (%s)..." "Updating the tester (%s)..." "$TDF_RACINE"
+	git -C "$TDF_RACINE" pull --ff-only && tl "Le testeur est à jour." "The tester is up to date."
 }
 
 tdf_cli_installee() {
@@ -109,7 +114,7 @@ tdf_menu_fleches() {
 		desc="${items[$sel]#*|}"
 		[ "$desc" = "${items[$sel]}" ] && desc=""
 		printf '\n  \033[2m%s\033[0m\n' "$desc"
-		printf '\n  \033[2m↑ ↓ choisir   Entrée valider   Échap ou q : retour\033[0m\n'
+		printf '\n  \033[2m%s\033[0m\n' "$(tt "↑ ↓ choisir   Entrée valider   Échap ou q : retour" "↑ ↓ pick   Enter confirm   Esc or q: back")"
 		tdf_touche
 		case "$TOUCHE" in
 			haut) sel=$(( (sel + n - 1) % n )) ;;
@@ -142,7 +147,8 @@ tdf_choisir() {
 	local l1="$1" l2="$2" sous="$3" rc
 	shift 3
 	if [ -n "${ACCUEIL:-}" ] || tdf_accueil_bin; then
-		"$ACCUEIL" --titre "$l1" "$l2" --sous "$sous" "$@"
+		"$ACCUEIL" --titre "$l1" "$l2" --sous "$sous" \
+			--aide "$(tt "↑ ↓ choisir   Entrée valider   Échap ou q : retour" "↑ ↓ pick   Enter confirm   Esc or q: back")" "$@"
 		rc=$?
 		if [ "$rc" != 254 ]; then
 			if [ "$rc" = 255 ]; then CHOIX_MENU=-1; else CHOIX_MENU=$rc; fi

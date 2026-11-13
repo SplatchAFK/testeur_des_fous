@@ -810,3 +810,84 @@ Dead link? Contact splatch_afk on Discord	Bağlantı ölü mü? Discord'da splat
 Images: this terminal shows no images, fine cells take over.	Resimler: bu terminal resim göstermiyor, ince hücreler devralıyor.
 Fine cells	İnce hücreler
 Run your Libft through the tester first to get the full lore:	Tüm lore için önce Libft'ini tester'dan geçir:
+open the menu (detected projects, exam, bank...) with the arrows	menüyü aç (bulunan projeler, sınav, banka...) oklarla
+test your Libft	Libft'ini test et
+test your ft_printf	ft_printf'ini test et
+test your get_next_line	get_next_line'ını test et
+take a C exam (4 levels, grademe)	C sınavına gir (4 seviye, grademe)
+a series of 1 to 5 exercises (croissante or 1 to 4)	1 ile 5 arası alıştırma serisi (croissante ya da 1-4)
+the exercise bank (exam, Libft, printf)	alıştırma bankası (sınav, Libft, printf)
+open the menu without running tests (stats, knight...)	test çalıştırmadan menüyü aç (istatistik, şövalye...)
+the log of the last session (debug aide: everything)	son oturumun kaydı (debug aide: hepsi)
+test the project in this folder	bu klasördeki projeyi test et
+tests only, no story	yalnızca testler, hikâyesiz
+no animations for this run	bu çalıştırmada animasyon yok
+turn animations off for good (on to bring them back)	animasyonları kalıcı kapat (geri açmak için on)
+every detailed report	tüm ayrıntılı raporlar
+the version number	sürüm numarası
+The "%s" command, usable from any folder, no sudo:	"%s" komutu, her klasörden, sudo olmadan:
+installs ~/.local/bin/tdf	~/.local/bin/tdf kurar
+updates the tester (git pull)	tester'ı günceller (git pull)
+removes the command (the tester stays)	komutu kaldırır (tester kalır)
+A module's options: %s libft --help   or   %s printf --help	Bir modülün seçenekleri: %s libft --help   ya da   %s printf --help
+First time here. How do you want the tester?	İlk kez buradasın. Tester'ı nasıl istersin?
+Graphical interface|The lore, the cutscenes and the warden fights	Grafik arayüz|Lore, ara sahneler ve muhafız dövüşleri
+Text mode|Tests only, no story: faster and plainer	Metin modu|Yalnızca testler, hikâyesiz: daha hızlı ve sade
+Install the tdf command? Then you just type "tdf", in any folder.	tdf komutu kurulsun mu? Sonra her klasörde yalnızca "tdf" yazarsın.
+Yes, install tdf|No sudo, in ~/.local/bin	Evet, tdf'yi kur|Sudo olmadan, ~/.local/bin içine
+No, not now|You can do it later from the menu	Hayır, şimdi değil|Daha sonra menüden yapabilirsin
+Enter to continue	Devam etmek için Enter
+Test my Libft           	Libft'imi test et       
+The 43 functions, memory, the Norm, garbage files, the moulinette audit	43 fonksiyon, bellek, Norm, fazla dosyalar, moulinette denetimi
+Test my ft_printf       	ft_printf'imi test et   
+Every conversion compared to the real printf, then the moulinette trace	Her dönüşüm gerçek printf ile karşılaştırılır, sonra moulinette izi
+Test my get_next_line   	get_next_line'ımı test et
+Every BUFFER_SIZE, leaks, the Norm, garbage files	Tüm BUFFER_SIZE değerleri, leak'ler, Norm, fazla dosyalar
+C exam|3-hour mock exam, exercise series or training: all set with the arrows	C sınavı|3 saatlik deneme sınavı, alıştırma serisi ya da antrenman: hepsi oklarla
+Exercise bank|The tester's exercises, your pick: exam, Libft, printf	Alıştırma bankası|Tester'ın alıştırmaları, seçim senin: sınav, Libft, printf
+Tester menu|Stats, knight, lore and settings, without running tests	Tester menüsü|İstatistik, şövalye, lore ve ayarlar, test çalıştırmadan
+Test another folder|The tester asks for the path of a project that is not here	Başka bir klasörü test et|Tester, burada olmayan bir projenin yolunu sorar
+Interface: text mode|Enter to switch to the graphical interface (lore, animations)	Arayüz: metin modu|Grafik arayüze geçmek için Enter (lore, animasyonlar)
+Interface: graphical|Enter to switch to text mode (tests only, no animation)	Arayüz: grafik|Metin moduna geçmek için Enter (yalnızca testler, animasyonsuz)
+Language|	Dil|
+Install the tdf command|Then you just type "tdf" in any folder (no sudo)	tdf komutunu kur|Sonra her klasörde yalnızca "tdf" yazarsın (sudo yok)
+Quit|	Çık|
+No project found here or next to the tester. The exam and the bank work without a project.	Burada ya da tester'ın yanında proje bulunamadı. Sınav ve banka projesiz çalışır.
+%s project(s) found in this folder or next to the tester.	Bu klasörde ya da tester'ın yanında %s proje bulundu.
+Project path (Tab completes):	Proje yolu (Tab tamamlar):
+Folder not found: %s	Klasör bulunamadı: %s
+I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s	%s içinde ne Libft ne ft_printf ne de get_next_line tanıyorum
+Enter to go back to the menu	Menüye dönmek için Enter
+animations: off (--anim on to bring them back)	animasyonlar: kapalı (geri açmak için --anim on)
+animations: on	animasyonlar: açık
+--anim: on or off	--anim: on ya da off
+%s: the project path is missing	%s: proje yolu eksik
+%s: folder not found: %s	%s: klasör bulunamadı: %s
+I recognise neither a Libft nor a ft_printf in: %s	Şurada ne Libft ne ft_printf tanıyorum: %s
+Name the module: %s	Modülü belirt: %s
+No project found. Clone the tester next to your projects:	Proje bulunamadı. Tester'ı projelerinin yanına klonla:
+your_folder	klasorun
+Or give the path: %s	Ya da yolu ver: %s
+The C exam needs no project: %s	C sınavının projeye ihtiyacı yok: %s
+Neither does the menu (stats, knight...): %s	Menünün de (istatistik, şövalye...) ihtiyacı yok: %s
+No project found next to the tester (libft/, ft_printf/...).	Tester'ın yanında proje bulunamadı (libft/, ft_printf/...).
+C exam	C sınavı
+Exercise bank: exam, Libft, printf	Alıştırma bankası: sınav, Libft, printf
+Menu only: stats, knight, lore (no tests)	Yalnızca menü: istatistik, şövalye, lore (testsiz)
+quit	çık
+unknown choice: %s	bilinmeyen seçim: %s
+Several projects found, say which one:	Birkaç proje bulundu, hangisi olduğunu söyle:
+cannot create %s	%s oluşturulamıyor
+%s already exists and does not belong to the testeur des fous: nothing was changed.	%s zaten var ve testeur des fous'a ait değil: hiçbir şey değiştirilmedi.
+Command installed: %s (no sudo)	Komut kuruldu: %s (sudo yok)
+It runs the tester stored in: %s	Şuradaki tester'ı çalıştırır: %s
+Type "%s" in any project folder.	Herhangi bir proje klasöründe "%s" yaz.
+%s is not in your PATH. Add this line at the end of %s, then open a new terminal:	%s PATH'inde değil. Bu satırı %s dosyasının sonuna ekle, sonra yeni bir terminal aç:
+No %s command installed in %s.	%s komutu %s içinde kurulu değil.
+%s does not belong to the testeur des fous: nothing was removed.	%s testeur des fous'a ait değil: hiçbir şey silinmedi.
+Command %s removed. The tester and your save stay in place.	%s komutu kaldırıldı. Tester ve kaydın yerinde kalıyor.
+The tester is not a git clone: update it by cloning it again.	Tester bir git klonu değil: yeniden klonlayarak güncelle.
+The tester has local changes: update cancelled so nothing gets overwritten.	Tester'da yerel değişiklikler var: hiçbir şeyin üzerine yazılmaması için güncelleme iptal edildi.
+Updating the tester (%s)...	Tester güncelleniyor (%s)...
+The tester is up to date.	Tester güncel.
+↑ ↓ pick   Enter confirm   Esc or q: back	↑ ↓ seç   Enter onayla   Esc ya da q: geri

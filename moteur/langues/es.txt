@@ -810,3 +810,84 @@ Dead link? Contact splatch_afk on Discord	¿Enlace caído? Contacta con splatch_
 Images: this terminal shows no images, fine cells take over.	Imágenes: este terminal no muestra imágenes, las celdas finas toman el relevo.
 Fine cells	Celdas finas
 Run your Libft through the tester first to get the full lore:	Pasa primero tu Libft por el tester para tener todo el lore:
+open the menu (detected projects, exam, bank...) with the arrows	abrir el menú (proyectos detectados, examen, banco...) con las flechas
+test your Libft	probar tu Libft
+test your ft_printf	probar tu ft_printf
+test your get_next_line	probar tu get_next_line
+take a C exam (4 levels, grademe)	hacer un examen en C (4 niveles, grademe)
+a series of 1 to 5 exercises (croissante or 1 to 4)	una serie de 1 a 5 ejercicios (croissante o 1 a 4)
+the exercise bank (exam, Libft, printf)	el banco de ejercicios (examen, Libft, printf)
+open the menu without running tests (stats, knight...)	abrir el menú sin lanzar pruebas (estadísticas, caballero...)
+the log of the last session (debug aide: everything)	el registro de la última sesión (debug aide: todo)
+test the project in this folder	probar el proyecto de esta carpeta
+tests only, no story	solo las pruebas, sin historia
+no animations for this run	sin animaciones en este lanzamiento
+turn animations off for good (on to bring them back)	quitar las animaciones para siempre (on para volver a ponerlas)
+every detailed report	todos los informes detallados
+the version number	el número de versión
+The "%s" command, usable from any folder, no sudo:	El comando "%s", usable desde cualquier carpeta, sin sudo:
+installs ~/.local/bin/tdf	instala ~/.local/bin/tdf
+updates the tester (git pull)	actualiza el tester (git pull)
+removes the command (the tester stays)	quita el comando (el tester se queda)
+A module's options: %s libft --help   or   %s printf --help	Opciones de un módulo: %s libft --help   o   %s printf --help
+First time here. How do you want the tester?	Primera vez aquí. ¿Cómo quieres el tester?
+Graphical interface|The lore, the cutscenes and the warden fights	Interfaz gráfica|El lore, las cinemáticas y los combates de los guardianes
+Text mode|Tests only, no story: faster and plainer	Modo texto|Solo las pruebas, sin historia: más rápido y sobrio
+Install the tdf command? Then you just type "tdf", in any folder.	¿Instalar el comando tdf? Luego solo escribes "tdf", en cualquier carpeta.
+Yes, install tdf|No sudo, in ~/.local/bin	Sí, instalar tdf|Sin sudo, en ~/.local/bin
+No, not now|You can do it later from the menu	No, ahora no|Podrás hacerlo más tarde desde el menú
+Enter to continue	Intro para continuar
+Test my Libft           	Probar mi Libft         
+The 43 functions, memory, the Norm, garbage files, the moulinette audit	Las 43 funciones, la memoria, la Norma, los archivos basura, la auditoría moulinette
+Test my ft_printf       	Probar mi ft_printf     
+Every conversion compared to the real printf, then the moulinette trace	Cada conversión comparada con el printf real, y luego la traza moulinette
+Test my get_next_line   	Probar mi get_next_line 
+Every BUFFER_SIZE, leaks, the Norm, garbage files	Todos los BUFFER_SIZE, las fugas, la Norma, los archivos basura
+C exam|3-hour mock exam, exercise series or training: all set with the arrows	Examen en C|Examen de prueba de 3 h, serie de ejercicios o entrenamiento: todo con las flechas
+Exercise bank|The tester's exercises, your pick: exam, Libft, printf	Banco de ejercicios|Los ejercicios del tester a elegir: examen, Libft, printf
+Tester menu|Stats, knight, lore and settings, without running tests	Menú del tester|Estadísticas, caballero, lore y ajustes, sin lanzar pruebas
+Test another folder|The tester asks for the path of a project that is not here	Probar otra carpeta|El tester te pide la ruta de un proyecto que no está aquí
+Interface: text mode|Enter to switch to the graphical interface (lore, animations)	Interfaz: modo texto|Intro para pasar a la interfaz gráfica (lore, animaciones)
+Interface: graphical|Enter to switch to text mode (tests only, no animation)	Interfaz: gráfica|Intro para pasar al modo texto (solo pruebas, sin animación)
+Language|	Idioma|
+Install the tdf command|Then you just type "tdf" in any folder (no sudo)	Instalar el comando tdf|Luego solo escribes "tdf" en cualquier carpeta (sin sudo)
+Quit|	Salir|
+No project found here or next to the tester. The exam and the bank work without a project.	Ningún proyecto encontrado aquí ni junto al tester. El examen y el banco funcionan sin proyecto.
+%s project(s) found in this folder or next to the tester.	%s proyecto(s) encontrado(s) en esta carpeta o junto al tester.
+Project path (Tab completes):	Ruta del proyecto (Tab completa):
+Folder not found: %s	Carpeta no encontrada: %s
+I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s	No reconozco ni una Libft, ni un ft_printf, ni un get_next_line en %s
+Enter to go back to the menu	Intro para volver al menú
+animations: off (--anim on to bring them back)	animaciones: desactivadas (--anim on para volver a ponerlas)
+animations: on	animaciones: activadas
+--anim: on or off	--anim: on u off
+%s: the project path is missing	%s: falta la ruta del proyecto
+%s: folder not found: %s	%s: carpeta no encontrada: %s
+I recognise neither a Libft nor a ft_printf in: %s	No reconozco ni una Libft ni un ft_printf en: %s
+Name the module: %s	Indica el módulo: %s
+No project found. Clone the tester next to your projects:	Ningún proyecto encontrado. Clona el tester junto a tus proyectos:
+your_folder	tu_carpeta
+Or give the path: %s	O da la ruta: %s
+The C exam needs no project: %s	El examen en C no necesita ningún proyecto: %s
+Neither does the menu (stats, knight...): %s	El menú (estadísticas, caballero...) tampoco: %s
+No project found next to the tester (libft/, ft_printf/...).	Ningún proyecto encontrado junto al tester (libft/, ft_printf/...).
+C exam	Examen en C
+Exercise bank: exam, Libft, printf	Banco de ejercicios: examen, Libft, printf
+Menu only: stats, knight, lore (no tests)	Solo el menú: estadísticas, caballero, lore (sin pruebas)
+quit	salir
+unknown choice: %s	opción desconocida: %s
+Several projects found, say which one:	Varios proyectos encontrados, indica cuál:
+cannot create %s	no se puede crear %s
+%s already exists and does not belong to the testeur des fous: nothing was changed.	%s ya existe y no pertenece al testeur des fous: no se ha cambiado nada.
+Command installed: %s (no sudo)	Comando instalado: %s (sin sudo)
+It runs the tester stored in: %s	Lanza el tester guardado en: %s
+Type "%s" in any project folder.	Escribe "%s" en cualquier carpeta de proyecto.
+%s is not in your PATH. Add this line at the end of %s, then open a new terminal:	%s no está en tu PATH. Añade esta línea al final de %s y abre un terminal nuevo:
+No %s command installed in %s.	No hay ningún comando %s instalado en %s.
+%s does not belong to the testeur des fous: nothing was removed.	%s no pertenece al testeur des fous: no se ha borrado nada.
+Command %s removed. The tester and your save stay in place.	Comando %s quitado. El tester y tu save siguen en su sitio.
+The tester is not a git clone: update it by cloning it again.	El tester no es un clon git: actualízalo clonándolo de nuevo.
+The tester has local changes: update cancelled so nothing gets overwritten.	El tester tiene cambios locales: actualización cancelada para no machacar nada.
+Updating the tester (%s)...	Actualizando el tester (%s)...
+The tester is up to date.	El tester está al día.
+↑ ↓ pick   Enter confirm   Esc or q: back	↑ ↓ elegir   Intro confirmar   Esc o q: volver

@@ -810,3 +810,84 @@ Dead link? Contact splatch_afk on Discord	Ссылка не работает? Н
 Images: this terminal shows no images, fine cells take over.	Изображения: этот терминал не показывает картинки, работают мелкие ячейки.
 Fine cells	Мелкие ячейки
 Run your Libft through the tester first to get the full lore:	Сначала прогони свою Libft через тестер, чтобы открыть весь лор:
+open the menu (detected projects, exam, bank...) with the arrows	открыть меню (найденные проекты, экзамен, банк...) стрелками
+test your Libft	проверить твою Libft
+test your ft_printf	проверить твой ft_printf
+test your get_next_line	проверить твой get_next_line
+take a C exam (4 levels, grademe)	сдать экзамен по C (4 уровня, grademe)
+a series of 1 to 5 exercises (croissante or 1 to 4)	серия из 1-5 упражнений (croissante или 1-4)
+the exercise bank (exam, Libft, printf)	банк упражнений (экзамен, Libft, printf)
+open the menu without running tests (stats, knight...)	открыть меню без тестов (статистика, рыцарь...)
+the log of the last session (debug aide: everything)	журнал последней сессии (debug aide: всё)
+test the project in this folder	проверить проект в этой папке
+tests only, no story	только тесты, без истории
+no animations for this run	без анимаций в этом запуске
+turn animations off for good (on to bring them back)	выключить анимации насовсем (on, чтобы вернуть)
+every detailed report	все подробные отчёты
+the version number	номер версии
+The "%s" command, usable from any folder, no sudo:	Команда "%s", работает из любой папки, без sudo:
+installs ~/.local/bin/tdf	устанавливает ~/.local/bin/tdf
+updates the tester (git pull)	обновляет тестер (git pull)
+removes the command (the tester stays)	удаляет команду (тестер остаётся)
+A module's options: %s libft --help   or   %s printf --help	Опции модуля: %s libft --help   или   %s printf --help
+First time here. How do you want the tester?	Ты здесь впервые. Каким тебе нужен тестер?
+Graphical interface|The lore, the cutscenes and the warden fights	Графический интерфейс|Лор, ролики и бои со стражами
+Text mode|Tests only, no story: faster and plainer	Текстовый режим|Только тесты, без истории: быстрее и проще
+Install the tdf command? Then you just type "tdf", in any folder.	Установить команду tdf? Потом просто пишешь "tdf" в любой папке.
+Yes, install tdf|No sudo, in ~/.local/bin	Да, установить tdf|Без sudo, в ~/.local/bin
+No, not now|You can do it later from the menu	Нет, не сейчас|Можно сделать позже из меню
+Enter to continue	Enter, чтобы продолжить
+Test my Libft           	Проверить мою Libft     
+The 43 functions, memory, the Norm, garbage files, the moulinette audit	43 функции, память, Норма, лишние файлы, аудит мулинетт
+Test my ft_printf       	Проверить мой ft_printf 
+Every conversion compared to the real printf, then the moulinette trace	Каждое преобразование сверено с настоящим printf, затем след мулинетт
+Test my get_next_line   	Проверить мой gnl       
+Every BUFFER_SIZE, leaks, the Norm, garbage files	Все BUFFER_SIZE, утечки, Норма, лишние файлы
+C exam|3-hour mock exam, exercise series or training: all set with the arrows	Экзамен по C|Пробный экзамен на 3 ч, серия упражнений или тренировка: всё стрелками
+Exercise bank|The tester's exercises, your pick: exam, Libft, printf	Банк упражнений|Упражнения тестера на выбор: экзамен, Libft, printf
+Tester menu|Stats, knight, lore and settings, without running tests	Меню тестера|Статистика, рыцарь, лор и настройки, без тестов
+Test another folder|The tester asks for the path of a project that is not here	Проверить другую папку|Тестер спросит путь к проекту, которого здесь нет
+Interface: text mode|Enter to switch to the graphical interface (lore, animations)	Интерфейс: текстовый|Enter, чтобы перейти к графическому (лор, анимации)
+Interface: graphical|Enter to switch to text mode (tests only, no animation)	Интерфейс: графический|Enter, чтобы перейти в текстовый режим (только тесты)
+Language|	Язык|
+Install the tdf command|Then you just type "tdf" in any folder (no sudo)	Установить команду tdf|Потом просто пишешь "tdf" в любой папке (без sudo)
+Quit|	Выход|
+No project found here or next to the tester. The exam and the bank work without a project.	Здесь и рядом с тестером проектов нет. Экзамен и банк работают без проекта.
+%s project(s) found in this folder or next to the tester.	Найдено проектов в этой папке или рядом с тестером: %s.
+Project path (Tab completes):	Путь к проекту (Tab дополняет):
+Folder not found: %s	Папка не найдена: %s
+I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s	Не вижу ни Libft, ни ft_printf, ни get_next_line в %s
+Enter to go back to the menu	Enter, чтобы вернуться в меню
+animations: off (--anim on to bring them back)	анимации: выключены (--anim on, чтобы вернуть)
+animations: on	анимации: включены
+--anim: on or off	--anim: on или off
+%s: the project path is missing	%s: не указан путь к проекту
+%s: folder not found: %s	%s: папка не найдена: %s
+I recognise neither a Libft nor a ft_printf in: %s	Не вижу ни Libft, ни ft_printf в: %s
+Name the module: %s	Укажи модуль: %s
+No project found. Clone the tester next to your projects:	Проектов не найдено. Клонируй тестер рядом со своими проектами:
+your_folder	твоя_папка
+Or give the path: %s	Или укажи путь: %s
+The C exam needs no project: %s	Экзамену по C проект не нужен: %s
+Neither does the menu (stats, knight...): %s	Меню (статистика, рыцарь...) тоже: %s
+No project found next to the tester (libft/, ft_printf/...).	Рядом с тестером проектов нет (libft/, ft_printf/...).
+C exam	Экзамен по C
+Exercise bank: exam, Libft, printf	Банк упражнений: экзамен, Libft, printf
+Menu only: stats, knight, lore (no tests)	Только меню: статистика, рыцарь, лор (без тестов)
+quit	выход
+unknown choice: %s	неизвестный выбор: %s
+Several projects found, say which one:	Найдено несколько проектов, укажи какой:
+cannot create %s	не удаётся создать %s
+%s already exists and does not belong to the testeur des fous: nothing was changed.	%s уже существует и не принадлежит testeur des fous: ничего не изменено.
+Command installed: %s (no sudo)	Команда установлена: %s (без sudo)
+It runs the tester stored in: %s	Она запускает тестер из: %s
+Type "%s" in any project folder.	Пиши "%s" в любой папке проекта.
+%s is not in your PATH. Add this line at the end of %s, then open a new terminal:	%s нет в твоём PATH. Добавь эту строку в конец %s и открой новый терминал:
+No %s command installed in %s.	Команда %s не установлена в %s.
+%s does not belong to the testeur des fous: nothing was removed.	%s не принадлежит testeur des fous: ничего не удалено.
+Command %s removed. The tester and your save stay in place.	Команда %s удалена. Тестер и сохранение остаются на месте.
+The tester is not a git clone: update it by cloning it again.	Тестер не git-клон: обнови его, клонировав заново.
+The tester has local changes: update cancelled so nothing gets overwritten.	В тестере есть локальные изменения: обновление отменено, чтобы ничего не затереть.
+Updating the tester (%s)...	Обновление тестера (%s)...
+The tester is up to date.	Тестер обновлён.
+↑ ↓ pick   Enter confirm   Esc or q: back	↑ ↓ выбрать   Enter подтвердить   Esc или q: назад

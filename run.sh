@@ -28,6 +28,7 @@ lire_version() {
 TDF_VERSION="$(lire_version TDF_VERSION)"
 TDF_DATE="$(lire_version TDF_DATE)"
 . "$TDF_RACINE/moteur/chargement.sh"
+. "$TDF_RACINE/moteur/langue.sh"
 . "$TDF_RACINE/moteur/debug.sh"
 . "$TDF_RACINE/moteur/cli.sh"
 ARGS_ORIG=("$@")
@@ -35,33 +36,32 @@ ARGS_ORIG=("$@")
 usage() {
 	local c="bash $TDF_NOM/run.sh"
 	[ "${TDF_CLI:-0}" = 1 ] && c="$TDF_CMD_NOM"
-	cat <<EOF
-Le testeur des fous $TDF_VERSION
-Créé et vibe-codé par Splatch (romasant)
-
-  $c                  ouvrir le menu (projets détectés, exam, banque...) aux flèches
-  $c libft            tester ta Libft
-  $c printf           tester ton ft_printf
-  $c gnl              tester ton get_next_line
-  $c exam             passer un exam en C (4 niveaux, grademe)
-  $c exam --serie 3 --difficulte croissante   une série de 1 à 5 exos (croissante ou 1 à 4)
-  $c banque           la banque d'exercices (exam, Libft, printf)
-  $c --menu           ouvrir le menu sans lancer de tests (stats, chevalier...)
-  $c debug            le journal de la dernière session (debug aide : tout)
-  $c --projet CHEMIN  tester le projet de ce dossier
-  $c --no-lore        les tests seuls, sans histoire
-  $c -a               sans animations pour ce lancement
-  $c --anim off       couper les animations pour de bon (on pour les remettre)
-  $c --debug          tous les rapports détaillés
-  $c --version        le numéro de version
-
-La commande « $TDF_CMD_NOM », utilisable depuis n'importe quel dossier, sans sudo :
-  bash $TDF_NOM/run.sh installer     installe ~/.local/bin/$TDF_CMD_NOM
-  $TDF_CMD_NOM maj                         met le testeur à jour (git pull)
-  $TDF_CMD_NOM desinstaller                retire la commande (le testeur reste)
-
-Les options d'un module : $c libft --help   ou   $c printf --help
-EOF
+	printf 'Le testeur des fous %s\n' "$TDF_VERSION"
+	tl "Créé et vibe-codé par Splatch (romasant)" "Created and vibe-coded by Splatch (romasant)"
+	printf '\n'
+	u() { printf '  %s %-17s %s\n' "$c" "$1" "$2"; }
+	u "" "$(tt "ouvrir le menu (projets détectés, exam, banque...) aux flèches" "open the menu (detected projects, exam, bank...) with the arrows")"
+	u "libft" "$(tt "tester ta Libft" "test your Libft")"
+	u "printf" "$(tt "tester ton ft_printf" "test your ft_printf")"
+	u "gnl" "$(tt "tester ton get_next_line" "test your get_next_line")"
+	u "exam" "$(tt "passer un exam en C (4 niveaux, grademe)" "take a C exam (4 levels, grademe)")"
+	u "exam --serie 3 --difficulte croissante" "$(tt "une série de 1 à 5 exos (croissante ou 1 à 4)" "a series of 1 to 5 exercises (croissante or 1 to 4)")"
+	u "banque" "$(tt "la banque d'exercices (exam, Libft, printf)" "the exercise bank (exam, Libft, printf)")"
+	u "--menu" "$(tt "ouvrir le menu sans lancer de tests (stats, chevalier...)" "open the menu without running tests (stats, knight...)")"
+	u "debug" "$(tt "le journal de la dernière session (debug aide : tout)" "the log of the last session (debug aide: everything)")"
+	u "--projet CHEMIN" "$(tt "tester le projet de ce dossier" "test the project in this folder")"
+	u "--no-lore" "$(tt "les tests seuls, sans histoire" "tests only, no story")"
+	u "-a" "$(tt "sans animations pour ce lancement" "no animations for this run")"
+	u "--anim off" "$(tt "couper les animations pour de bon (on pour les remettre)" "turn animations off for good (on to bring them back)")"
+	u "--debug" "$(tt "tous les rapports détaillés" "every detailed report")"
+	u "--version" "$(tt "le numéro de version" "the version number")"
+	printf '\n'
+	tl "La commande « %s », utilisable depuis n'importe quel dossier, sans sudo :" "The \"%s\" command, usable from any folder, no sudo:" "$TDF_CMD_NOM"
+	printf '  %-36s %s\n' "bash $TDF_NOM/run.sh installer" "$(tt "installe ~/.local/bin/tdf" "installs ~/.local/bin/tdf")"
+	printf '  %-36s %s\n' "$TDF_CMD_NOM maj" "$(tt "met le testeur à jour (git pull)" "updates the tester (git pull)")"
+	printf '  %-36s %s\n' "$TDF_CMD_NOM desinstaller" "$(tt "retire la commande (le testeur reste)" "removes the command (the tester stays)")"
+	printf '\n'
+	tl "Les options d'un module : %s libft --help   ou   %s printf --help" "A module's options: %s libft --help   or   %s printf --help" "$c" "$c"
 }
 
 est_printf() {
@@ -131,20 +131,27 @@ ecrire_interface() {
 }
 
 premiers_pas() {
-	local r
+	local r i noms=()
+	if [ -z "${TDF_LANGUE_N:-}" ]; then
+		for i in 0 1 2 3 4 5 6 7; do noms+=("${TDF_NOMS[$i]}|"); done
+		tdf_choisir "TESTEUR" "DES FOUS" "Langue · Language · Idioma · Sprache · Lingua · Dil · Язык" "${noms[@]}"
+		[ "$CHOIX_MENU" -ge 0 ] || exit 0
+		tdf_langue_ecrire "$CHOIX_MENU"
+	fi
 	[ -n "$INTERFACE" ] && return 0
-	tdf_choisir "TESTEUR" "DES FOUS" "Première fois ici. Comment veux-tu le testeur ?" \
-		"Interface graphique|Le lore, les cinématiques, les animations et les combats des gardiens" \
-		"Mode texte|Les tests seuls, sans histoire ni animation : plus rapide et plus sobre"
+	tdf_choisir "TESTEUR" "DES FOUS" "$(tt "Première fois ici. Comment veux-tu le testeur ?" "First time here. How do you want the tester?")" \
+		"$(tt "Interface graphique|Le lore, les cinématiques et les combats des gardiens" "Graphical interface|The lore, the cutscenes and the warden fights")" \
+		"$(tt "Mode texte|Les tests seuls, sans histoire : plus rapide et plus sobre" "Text mode|Tests only, no story: faster and plainer")"
 	[ "$CHOIX_MENU" -ge 0 ] || exit 0
 	if [ "$CHOIX_MENU" = 1 ]; then ecrire_interface texte; else ecrire_interface graphique; fi
 	if ! tdf_cli_installee; then
-		tdf_choisir "TESTEUR" "DES FOUS" "Installer la commande tdf ? Ensuite tu tapes seulement « tdf », dans n'importe quel dossier." \
-			"Oui, installer tdf|Sans sudo, dans ~/.local/bin" "Non, pas maintenant|Tu pourras le faire plus tard depuis le menu"
+		tdf_choisir "TESTEUR" "DES FOUS" "$(tt "Installer la commande tdf ? Ensuite tu tapes seulement « tdf », dans n'importe quel dossier." "Install the tdf command? Then you just type \"tdf\", in any folder.")" \
+			"$(tt "Oui, installer tdf|Sans sudo, dans ~/.local/bin" "Yes, install tdf|No sudo, in ~/.local/bin")" \
+			"$(tt "Non, pas maintenant|Tu pourras le faire plus tard depuis le menu" "No, not now|You can do it later from the menu")"
 		if [ "$CHOIX_MENU" = 0 ]; then
 			printf '\n'
 			tdf_cli_installer
-			printf '\n  Entrée pour continuer '
+			printf '\n  %s ' "$(tt "Entrée pour continuer" "Enter to continue")"
 			read -r r
 		fi
 	fi
@@ -153,42 +160,44 @@ premiers_pas() {
 menu_depart() {
 	local items=() acts=() p a sous n
 	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do
-		items+=("Tester ma Libft          $(court "$p")|Les 43 fonctions, la mémoire, la Norme, les fichiers parasites, l'audit moulinette")
+		items+=("$(tt "Tester ma Libft         " "Test my Libft           ") $(court "$p")|$(tt "Les 43 fonctions, la mémoire, la Norme, les fichiers parasites, l'audit moulinette" "The 43 functions, memory, the Norm, garbage files, the moulinette audit")")
 		acts+=("libft|$p")
 	done
 	for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do
-		items+=("Tester mon ft_printf     $(court "$p")|Chaque conversion comparée au vrai printf, puis la trace moulinette")
+		items+=("$(tt "Tester mon ft_printf    " "Test my ft_printf       ") $(court "$p")|$(tt "Chaque conversion comparée au vrai printf, puis la trace moulinette" "Every conversion compared to the real printf, then the moulinette trace")")
 		acts+=("printf|$p")
 	done
 	for p in ${GNLS[@]+"${GNLS[@]}"}; do
-		items+=("Tester mon get_next_line $(court "$p")|Toutes les tailles de BUFFER_SIZE, les fuites, la Norme, les fichiers parasites")
+		items+=("$(tt "Tester mon get_next_line" "Test my get_next_line   ") $(court "$p")|$(tt "Toutes les tailles de BUFFER_SIZE, les fuites, la Norme, les fichiers parasites" "Every BUFFER_SIZE, leaks, the Norm, garbage files")")
 		acts+=("gnl|$p")
 	done
-	items+=("Exam en C|Examen blanc de 3 h, série d'exercices ou entraînement : tout se règle aux flèches")
+	items+=("$(tt "Exam en C|Examen blanc de 3 h, série d'exercices ou entraînement : tout se règle aux flèches" "C exam|3-hour mock exam, exercise series or training: all set with the arrows")")
 	acts+=("exam|")
-	items+=("Banque d'exercices|Les exercices du testeur au choix : exam, Libft, printf")
+	items+=("$(tt "Banque d'exercices|Les exercices du testeur au choix : exam, Libft, printf" "Exercise bank|The tester's exercises, your pick: exam, Libft, printf")")
 	acts+=("banque|")
-	items+=("Menu du testeur|Stats, chevalier, lore et paramètres, sans lancer de tests")
+	items+=("$(tt "Menu du testeur|Stats, chevalier, lore et paramètres, sans lancer de tests" "Tester menu|Stats, knight, lore and settings, without running tests")")
 	acts+=("menu|")
-	items+=("Tester un autre dossier|Le testeur te demande le chemin d'un projet qui n'est pas ici")
+	items+=("$(tt "Tester un autre dossier|Le testeur te demande le chemin d'un projet qui n'est pas ici" "Test another folder|The tester asks for the path of a project that is not here")")
 	acts+=("autre|")
 	if [ "$INTERFACE" = texte ]; then
-		items+=("Interface : mode texte|Entrée pour passer à l'interface graphique (lore, animations)")
+		items+=("$(tt "Interface : mode texte|Entrée pour passer à l'interface graphique (lore, animations)" "Interface: text mode|Enter to switch to the graphical interface (lore, animations)")")
 	else
-		items+=("Interface : graphique|Entrée pour passer au mode texte (les tests seuls, sans animation)")
+		items+=("$(tt "Interface : graphique|Entrée pour passer au mode texte (les tests seuls, sans animation)" "Interface: graphical|Enter to switch to text mode (tests only, no animation)")")
 	fi
 	acts+=("interface|")
+	items+=("$(tt "Langue|" "Language|")${TDF_NOMS[${TDF_LANGUE_N:-0}]}")
+	acts+=("langue|")
 	if ! tdf_cli_installee; then
-		items+=("Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo)")
+		items+=("$(tt "Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo)" "Install the tdf command|Then you just type \"tdf\" in any folder (no sudo)")")
 		acts+=("installer|")
 	fi
-	items+=("Quitter|")
+	items+=("$(tt "Quitter|" "Quit|")")
 	acts+=("quitter|")
 	n=$(( ${#LIBFTS[@]} + ${#PRINTFS[@]} + ${#GNLS[@]} ))
 	if [ "$n" = 0 ]; then
-		sous="Aucun projet trouvé ici ni à côté du testeur. L'exam et la banque marchent sans projet."
+		sous="$(tt "Aucun projet trouvé ici ni à côté du testeur. L'exam et la banque marchent sans projet." "No project found here or next to the tester. The exam and the bank work without a project.")"
 	else
-		sous="$n projet(s) trouvé(s) dans ce dossier ou à côté du testeur."
+		sous="$(printf "$(tt "%s projet(s) trouvé(s) dans ce dossier ou à côté du testeur." "%s project(s) found in this folder or next to the tester.")" "$n")"
 	fi
 	tdf_choisir "TESTEUR" "DES FOUS" "$sous" "${items[@]}"
 	[ "$CHOIX_MENU" -ge 0 ] || exit 0
@@ -208,11 +217,11 @@ menu_depart() {
 			SUITE+=(--menu)
 			;;
 		autre)
-			printf '\n  Chemin du projet (Tab complète) : '
+			printf '\n  %s ' "$(tt "Chemin du projet (Tab complète) :" "Project path (Tab completes):")"
 			read -e -r p || exit 0
 			case "$p" in "~"*) p="$HOME${p#\~}" ;; esac
 			if [ -z "$p" ] || [ ! -d "$p" ]; then
-				printf '  Dossier introuvable : %s\n\n' "$p"
+				printf '  %s\n\n' "$(printf "$(tt "Dossier introuvable : %s" "Folder not found: %s")" "$p")"
 				exit 2
 			fi
 			PROJET="$(cd "$p" && pwd -P)"
@@ -220,7 +229,7 @@ menu_depart() {
 			elif est_libft "$PROJET"; then MODULE=libft
 			elif est_gnl "$PROJET"; then MODULE=gnl
 			else
-				printf '  Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s\n\n' "$PROJET"
+				printf '  %s\n\n' "$(printf "$(tt "Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s" "I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s")" "$PROJET")"
 				exit 2
 			fi
 			;;
@@ -228,10 +237,17 @@ menu_depart() {
 			if [ "$INTERFACE" = texte ]; then ecrire_interface graphique; else ecrire_interface texte; fi
 			menu_depart
 			;;
+		langue)
+			local i noms=()
+			for i in 0 1 2 3 4 5 6 7; do noms+=("${TDF_NOMS[$i]}|"); done
+			tdf_choisir "TESTEUR" "DES FOUS" "Langue · Language · Idioma · Sprache · Lingua · Dil · Язык" "${noms[@]}"
+			[ "$CHOIX_MENU" -ge 0 ] && tdf_langue_ecrire "$CHOIX_MENU"
+			menu_depart
+			;;
 		installer)
 			printf '\n'
 			tdf_cli_installer
-			printf '\n  Entrée pour revenir au menu '
+			printf '\n  %s ' "$(tt "Entrée pour revenir au menu" "Enter to go back to the menu")"
 			read -r p
 			menu_depart
 			;;
@@ -286,15 +302,15 @@ regler_anim() {
 	case "$1" in
 		off|non|0)
 			ecrire_anim 2 || : > "$DOSSIER/anim_off"
-			echo "animations : coupées (--anim on pour les remettre)"
+			tl "animations : coupées (--anim on pour les remettre)" "animations: off (--anim on to bring them back)"
 			;;
 		on|oui|1)
 			rm -f "$DOSSIER/anim_off"
 			ecrire_anim 0
-			echo "animations : activées"
+			tl "animations : activées" "animations: on"
 			;;
 		*)
-			echo "--anim : on ou off"
+			tl "--anim : on ou off" "--anim: on or off"
 			exit 2
 			;;
 	esac
@@ -338,13 +354,13 @@ while [ $# -gt 0 ]; do
 			SUITE+=("$a")
 			;;
 		--projet|--dir)
-			[ $# -gt 0 ] || { echo "$a : il manque le chemin du projet"; exit 2; }
-			[ -d "$1" ] || { echo "$a : dossier introuvable : $1"; exit 2; }
+			[ $# -gt 0 ] || { tl "%s : il manque le chemin du projet" "%s: the project path is missing" "$a"; exit 2; }
+			[ -d "$1" ] || { tl "%s : dossier introuvable : %s" "%s: folder not found: %s" "$a" "$1"; exit 2; }
 			PROJET="$(cd "$1" && pwd -P)"
 			shift
 			;;
 		--anim)
-			[ $# -gt 0 ] || { echo "--anim : on ou off"; exit 2; }
+			[ $# -gt 0 ] || { tl "--anim : on ou off" "--anim: on or off"; exit 2; }
 			regler_anim "$1"
 			;;
 		-a|--fast|--no-anim) SUITE+=(--fast); SANS_ANIM=1 ;;
@@ -375,8 +391,8 @@ elif [ -n "$PROJET" ]; then
 	elif est_gnl "$PROJET"; then
 		[ -n "$MODULE" ] || MODULE="gnl"
 	elif [ -z "$MODULE" ]; then
-		echo "Je ne reconnais ni une Libft ni un ft_printf dans : $PROJET"
-		echo "Précise le module : bash $TDF_NOM/run.sh libft --projet $PROJET"
+		tl "Je ne reconnais ni une Libft ni un ft_printf dans : %s" "I recognise neither a Libft nor a ft_printf in: %s" "$PROJET"
+		tl "Précise le module : %s" "Name the module: %s" "bash $TDF_NOM/run.sh libft --projet $PROJET"
 		exit 1
 	fi
 elif [ -z "$MODULE" ] && [ -t 0 ] && [ -t 1 ]; then
@@ -410,36 +426,28 @@ else
 		NOMS+=("exam" "banque" "menu")
 	fi
 	if [ ${#CHOIX[@]} -eq 0 ] || { [ ${#CHOIX[@]} -eq 3 ] && [ "${NOMS[0]}" = exam ] && ! { [ -t 0 ] && [ -t 1 ]; }; }; then
-		cat <<EOF
-Le testeur des fous $TDF_VERSION
-
-Aucun projet trouvé. Le testeur se clone à côté de tes projets :
-
-  ton_dossier/
-  ├── $TDF_NOM/
-  ├── libft/
-  └── ft_printf/
-
-Ou donne le chemin : bash $TDF_NOM/run.sh --projet CHEMIN
-
-L'exam en C, lui, n'a besoin d'aucun projet : bash $TDF_NOM/run.sh exam
-Le menu (stats, chevalier...) non plus      : bash $TDF_NOM/run.sh --menu
-EOF
+		printf 'Le testeur des fous %s\n\n' "$TDF_VERSION"
+		tl "Aucun projet trouvé. Le testeur se clone à côté de tes projets :" "No project found. Clone the tester next to your projects:"
+		printf '\n  %s/\n  ├── %s/\n  ├── libft/\n  └── ft_printf/\n\n' "$(tt "ton_dossier" "your_folder")" "$TDF_NOM"
+		tl "Ou donne le chemin : %s" "Or give the path: %s" "bash $TDF_NOM/run.sh --projet CHEMIN"
+		printf '\n'
+		tl "L'exam en C n'a besoin d'aucun projet : %s" "The C exam needs no project: %s" "bash $TDF_NOM/run.sh exam"
+		tl "Le menu (stats, chevalier...) non plus : %s" "Neither does the menu (stats, knight...): %s" "bash $TDF_NOM/run.sh --menu"
 		exit 1
 	elif [ ${#CHOIX[@]} -eq 1 ] && [ "${NOMS[0]}" != exam ]; then
 		PROJET="${CHOIX[0]}"
 		MODULE="${NOMS[0]}"
 	elif [ -t 0 ] && [ -t 1 ]; then
 		printf '\n  Le testeur des fous %s\n\n' "$TDF_VERSION"
-		[ "${NOMS[0]}" = exam ] && printf '  Aucun projet trouvé à côté du testeur (libft/, ft_printf/...).\n\n'
+		[ "${NOMS[0]}" = exam ] && printf '  %s\n\n' "$(tt "Aucun projet trouvé à côté du testeur (libft/, ft_printf/...)." "No project found next to the tester (libft/, ft_printf/...).")"
 		i=0
 		while [ $i -lt ${#CHOIX[@]} ]; do
 			case "${NOMS[$i]}" in
 				libft) etiquette="Libft" ;;
-				exam) etiquette="Exam en C" ;;
-				banque) etiquette="Banque d'exercices : exam, Libft, printf" ;;
+				exam) etiquette="$(tt "Exam en C" "C exam")" ;;
+				banque) etiquette="$(tt "Banque d'exercices : exam, Libft, printf" "Exercise bank: exam, Libft, printf")" ;;
 				gnl) etiquette="GNL" ;;
-				menu) etiquette="Menu seul : stats, chevalier, lore (sans tester)" ;;
+				menu) etiquette="$(tt "Menu seul : stats, chevalier, lore (sans tester)" "Menu only: stats, knight, lore (no tests)")" ;;
 				*) etiquette="ft_printf" ;;
 			esac
 			if [ -n "${CHOIX[$i]}" ]; then
@@ -449,14 +457,14 @@ EOF
 			fi
 			i=$((i + 1))
 		done
-		printf '  q  quitter\n\n  > '
+		printf '  q  %s\n\n  > ' "$(tt "quitter" "quit")"
 		read -r rep || exit 0
 		case "$rep" in
 			q|Q|'') exit 0 ;;
-			*[!0-9]*) echo "choix inconnu : $rep"; exit 2 ;;
+			*[!0-9]*) tl "choix inconnu : %s" "unknown choice: %s" "$rep"; exit 2 ;;
 		esac
 		if [ "$rep" -lt 1 ] || [ "$rep" -gt ${#CHOIX[@]} ]; then
-			echo "choix inconnu : $rep"
+			tl "choix inconnu : %s" "unknown choice: %s" "$rep"
 			exit 2
 		fi
 		PROJET="${CHOIX[$((rep - 1))]}"
@@ -475,7 +483,7 @@ EOF
 			SUITE+=(--menu)
 		fi
 	else
-		echo "Plusieurs projets trouvés, précise lequel :"
+		tl "Plusieurs projets trouvés, précise lequel :" "Several projects found, say which one:"
 		i=0
 		while [ $i -lt ${#CHOIX[@]} ]; do
 			if [ -n "${CHOIX[$i]}" ]; then
