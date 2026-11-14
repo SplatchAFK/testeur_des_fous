@@ -2,6 +2,42 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
+## 3.1.0 · 2026-11-20
+
+### Un seul menu
+
+- `bash run.sh` ou `tdf` ouvre directement le menu, avec le titre et le fou en haut ;
+- Chevalier, Lore, Stats et Paramètres sont dans ce menu ; Paramètres regroupe les réglages, la langue, l'interface, la commande `tdf`, le tuto et les nouveautés ;
+- après un test Libft, ft_printf ou get_next_line, Entrée ramène au menu ; en quittant l'exam ou la banque, on y revient directement ;
+- premier lancement : seulement la langue, puis le tuto (interface graphique par défaut, `tdf` à installer depuis Paramètres).
+
+### Tuto et nouveautés
+
+- tuto en 6 écrans au premier lancement : les touches, tester un projet, l'exam, la banque, Chevalier/Lore/Stats, Paramètres ;
+- à chaque nouvelle version, un écran « Nouveautés de la version X » s'affiche une fois ;
+- les deux se revoient depuis Paramètres.
+
+### Banque d'exercices
+
+- aux flèches : onglets Tout, Exam, Libft, printf (◀ ▶), Entrée ouvre le sujet ;
+- sous le sujet : Corriger mon code, Langue du sujet (◀ ▶), Retour à la liste ;
+- plus besoin de taper `liste`, `ouvre` ou `grademe`.
+
+### Examshell
+
+- une commande mal tapée propose la plus proche (« Tu voulais dire grademe ? »), Entrée pour accepter.
+
+### Langues
+
+- les 94 sujets de l'exam et de la banque existent en 8 langues ; `sujet <code>` (fr, en, es, de, it, pt, tr, ru), l'anglais sert de repli ;
+- la langue du sujet suit celle de l'interface par défaut ;
+- lanceur, aide, examshell, banque, répliques des boss, rapports Libft, ft_printf et get_next_line, fichiers parasites et valgrind traduits ;
+- les sujets anglais Libft et printf n'ont plus de lignes en français.
+
+### README
+
+- réécrit : démarrage en 30 secondes, le menu et ses touches, l'exam et la banque pas à pas.
+
 ## 3.0.0 · 2026-11-13
 
 Un seul testeur réunit le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1), et ajoute get_next_line, un examshell en C et une banque d'exercices.

@@ -1,95 +1,135 @@
 # Le testeur des fous
 
-> **Version 3.0.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next.
->
-> Remplace le testeur des fous Libft (2.2.1) et le testeur des fous printf (1.1.1) : ta progression est reprise automatiquement.
+> **Version 3.1.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next.
 
-## Commandes
+Un seul testeur pour **Libft**, **ft_printf** et **get_next_line**, plus un **examshell en C** et une **banque d'exercices**. Il teste comme la moulinette, il ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te dit où regarder.
+
+## Démarrer en 30 secondes
+
+1. Clone le testeur **à côté** de tes projets, pas dedans :
+
+   ```bash
+   git clone https://github.com/SplatchAFK/testeur_des_fous.git
+   ```
+
+   ```text
+   ton_dossier/
+   ├── testeur_des_fous/
+   ├── libft/
+   ├── ft_printf/
+   └── get_next_line/
+   ```
+
+2. Lance-le :
+
+   ```bash
+   bash testeur_des_fous/run.sh
+   ```
+
+3. Choisis ta langue, suis le tuto (6 écrans, tu peux le passer), puis tout se fait dans le menu aux flèches.
+
+Il te faut seulement `bash`, `cc` et `make`. Aucun `sudo`. `norminette` et `valgrind` sont utilisés s'ils sont installés.
+
+## Le menu
+
+| Touche | Action |
+|---|---|
+| ↑ ↓ | choisir |
+| Entrée | valider |
+| ◀ ▶ | changer d'onglet ou de réglage |
+| Échap ou q | revenir |
+
+| Entrée du menu | Ce que ça fait |
+|---|---|
+| Tester ma Libft / mon ft_printf / mon get_next_line | les projets trouvés à côté du testeur ; à la fin du rapport, Entrée te ramène au menu |
+| Exam en C | examen blanc de 3 h, série d'exercices ou entraînement |
+| Banque d'exercices | 94 exercices au choix, aux flèches |
+| Chevalier | ton avatar, la boutique, ton profil et tes succès |
+| Lore | les boss, les cinématiques et la carte de la Cité |
+| Stats | ta progression, tes badges et le holygraph 42 Next |
+| Paramètres | réglages, langue, interface graphique ou texte, commande `tdf`, revoir le tuto et les nouveautés |
+| Tester un autre dossier | un projet rangé ailleurs |
+
+Astuce : dans **Paramètres**, installe la commande `tdf` (sans sudo). Ensuite tu tapes seulement `tdf`, dans n'importe quel dossier.
+
+## Ce qu'il teste
+
+| Projet | Ce qui est vérifié |
+|---|---|
+| Libft | 43 fonctions, fuites et erreurs mémoire, Norme, Makefile (règles, relink, flags), fichiers parasites, audit moulinette |
+| ft_printf | chaque conversion comparée au vrai `printf`, valeur de retour, `malloc` qui échoue, trace au format de la moulinette |
+| get_next_line | 7 BUFFER_SIZE et sans `-D`, entrée standard, tubes, fd invalides, `read` et `malloc` qui échouent, fuites, Norme |
+| push_swap | plus tard |
+
+Pour ft_printf, la trace est enregistrée dans `~/.testeur_des_fous/traces/`. Le testeur compile ton projet comme la moulinette, `CFLAGS` imposés compris, et signale les fichiers qu'un `git add .` enverrait en trop.
+
+## L'exam
+
+1. Règle ta session aux flèches : examen ou entraînement, niveau, chronomètre, langue du sujet, ou « conditions réelles ».
+2. Lis le sujet dans `testeur_des_fous/exam/sujet/<exercice>/`.
+3. Écris ton code dans `testeur_des_fous/exam/rendu/<exercice>/`, dans un autre terminal.
+4. Dans l'examshell, tape `grademe`.
+
+| Commande | Rôle |
+|---|---|
+| `grademe` | corriger ton rendu |
+| `sujet` | relire le sujet (`sujet en`, `sujet es`… pour une autre langue) |
+| `status` | temps restant et progression |
+| `help` | la liste des commandes |
+| `finish` | terminer la session |
+
+Une commande mal tapée ? Le testeur propose la bonne : Entrée pour accepter.
+
+La correction compile avec `cc -Wall -Wextra -Werror`, refuse les fonctions non autorisées et compare ta sortie octet par octet, comme la vraie. Elle signale en plus les erreurs mémoire et les fuites.
+
+## La banque d'exercices
+
+94 exercices : les 57 de l'exam, 21 d'entraînement Libft, 16 d'entraînement printf.
+
+1. ◀ ▶ choisit l'onglet (Tout, Exam, Libft, printf), ↑ ↓ l'exercice, Entrée l'ouvre.
+2. Écris ton code dans `testeur_des_fous/banque_travail/<source>/<exercice>/`.
+3. Choisis **Corriger mon code**. ◀ ▶ sur « Langue du sujet » change la langue.
+
+Chaque sujet existe en 8 langues : français, anglais, espagnol, allemand, italien, portugais, turc, russe.
+
+## Pour aller plus vite
+
+Tout est dans le menu, mais chaque entrée a aussi sa commande :
 
 ```bash
-bash testeur_des_fous/run.sh              # menu aux flèches : tes projets, l'exam, la banque
-bash testeur_des_fous/run.sh installer    # installer la commande tdf (sans sudo), puis juste : tdf
 bash testeur_des_fous/run.sh libft        # tester ta Libft
 bash testeur_des_fous/run.sh printf       # tester ton ft_printf
 bash testeur_des_fous/run.sh gnl          # tester ton get_next_line
-bash testeur_des_fous/run.sh exam         # passer l'exam en C (4 niveaux, grademe)
-bash testeur_des_fous/run.sh banque       # la banque d'exercices : exam, Libft, printf
-bash testeur_des_fous/run.sh --menu       # le menu sans lancer de tests (stats, chevalier, lore)
-bash testeur_des_fous/run.sh debug        # le journal de la dernière session (debug aide : tout)
+bash testeur_des_fous/run.sh exam         # l'examshell
+bash testeur_des_fous/run.sh banque       # la banque d'exercices
+bash testeur_des_fous/run.sh --projet CHEMIN   # un projet rangé ailleurs
 bash testeur_des_fous/run.sh --no-lore    # les tests seuls, sans histoire
 bash testeur_des_fous/run.sh -a           # sans animations pour ce lancement
-bash testeur_des_fous/run.sh --anim off   # couper les animations pour de bon (on pour les remettre)
 bash testeur_des_fous/run.sh --debug      # tous les rapports détaillés
 bash testeur_des_fous/run.sh --version    # le numéro de version
 tdf maj                                   # mettre le testeur à jour
 ```
 
-## Installation
+Chaque module a ses options : `bash testeur_des_fous/run.sh libft --help`.
 
-Clone le testeur **à côté** de tes projets, pas dedans :
+## Ta progression
 
-```bash
-git clone https://github.com/SplatchAFK/testeur_des_fous.git
-```
-
-```text
-ton_dossier/
-├── testeur_des_fous/
-├── libft/
-└── ft_printf/
-```
-
-Le testeur trouve tout seul les projets rangés à côté de lui. Sinon : `--projet CHEMIN`.
-
-Il te faut `cc`, `make` et `bash`. Rien à installer, aucun `sudo`. `norminette` et `valgrind` sont utilisés s'ils sont là.
-
-Chaque module a ses options : `bash testeur_des_fous/run.sh libft --help` ou `printf --help`.
-
-Ta progression est dans `~/.testeur_des_fous/save.txt`, hors du dossier du testeur. Une sauvegarde des anciens testeurs est reprise telle quelle, et une copie en est gardée.
-
-## Ce qu'il teste
-
-| Module | État |
-|---|---|
-| Libft | intégré : 43 fonctions, mémoire, Norme, audit du Makefile |
-| ft_printf | intégré : conversions, retour, `malloc` en échec, stress |
-| Exam (C) | intégré : 57 exercices sur 4 niveaux, chronomètre de 3 h, `grademe` |
-| Banque d'exercices | intégré : 94 exercices (57 de l'exam, 21 d'entraînement Libft, 16 d'entraînement printf), au choix |
-| get_next_line | intégré : 7 BUFFER_SIZE et sans -D, stdin, tubes, fd invalides, read et malloc qui échouent, fuites, Norme, README |
-| push_swap | plus tard |
-
-Pour printf, le testeur écrit aussi une trace au format de la moulinette (mêmes blocs, mêmes intitulés) dans `~/.testeur_des_fous/traces/`, et compile ton projet comme elle, `CFLAGS` imposés compris. Il signale les fichiers parasites, y compris ceux qu'un `git add .` enverrait.
-
-Le testeur ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te dit où regarder.
-
-Langues : français, anglais, espagnol, allemand, italien, portugais, turc, russe (premier lancement ou Paramètres). Tout se passe dans un seul terminal ; les images s'affichent si ton terminal le permet, sinon en cellules ou en texte.
-
-## L'exam
-
-Avant de commencer, tu règles ta session : examen ou entraînement sur un niveau, chronomètre, attente après un échec, trace, langue du sujet, ou « conditions réelles ». Ensuite :
-
-- le sujet est dans `testeur_des_fous/exam/sujet/<exercice>/` ;
-- tu écris ton code dans `testeur_des_fous/exam/rendu/<exercice>/` ;
-- dans l'examshell : `grademe` corrige, `status` donne le temps restant, `sujet` relit le sujet, `finish` termine.
-
-La correction compile avec `cc -Wall -Wextra -Werror`, refuse les fonctions non autorisées et compare ta sortie octet par octet, comme le vrai. En plus, elle te signale les erreurs mémoire et les fuites. `skip`, `reroll` et `trace` demandent un code, à demander à splatch_afk sur Discord.
+Elle est dans `~/.testeur_des_fous/save.txt`, hors du dossier du testeur : tu peux supprimer ou recloner le testeur sans rien perdre. Une sauvegarde des anciens testeurs Libft et printf est reprise telle quelle.
 
 ## Un problème ?
 
-Chaque lancement est noté dans `~/.testeur_des_fous/debug/` : ta machine, chaque étape avec sa durée, les erreurs.
+Chaque lancement est noté dans `~/.testeur_des_fous/debug/`.
 
 ```bash
 bash testeur_des_fous/run.sh debug          # la dernière session, erreurs en rouge
-bash testeur_des_fous/run.sh debug liste    # les 15 dernières sessions
-bash testeur_des_fous/run.sh debug suivre   # en direct, depuis un 2e terminal
 bash testeur_des_fous/run.sh debug paquet   # un fichier à envoyer (sans ton code ni ton login)
 ```
 
-Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests et ouvre le menu.
+Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests.
 
 ## Discord
 
-Entraide, bugs, idées : [discord.gg/SwAmfRcXCH](https://discord.gg/SwAmfRcXCH) · si le lien ne marche plus, contacte **splatch_afk** sur Discord
+Entraide, bugs, idées : [discord.gg/SwAmfRcXCH](https://discord.gg/SwAmfRcXCH) · si le lien ne marche plus, contacte **splatch_afk** sur Discord.
 
 ## Crédits et licence
 
