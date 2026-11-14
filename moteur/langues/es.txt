@@ -1357,3 +1357,28 @@ Back to the list	Volver a la lista
   unknown command: %s. Did you mean %s%s%s? %s(Enter = yes, any other key = no)%s 	  comando desconocido: %s. ¿Querías decir %s%s%s? %s(Intro = sí, otra tecla = no)%s 
   %shelp%s gives the list of commands\n	  %shelp%s muestra la lista de comandos\n
   %saide%s gives the list of commands\n	  %saide%s muestra la lista de comandos\n
+Welcome	Bienvenida
+Test a project	Probar un proyecto
+Exercise bank	Banco de ejercicios
+Knight, Lore and Stats	Caballero, Lore y Estadísticas
+The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc or q to go back.	El testeur des fous prueba tu Libft, tu ft_printf y tu get_next_line como la moulinette, y te entrena para el examen. Todo se hace con las flechas: ↑ ↓ para elegir, Intro para confirmar, Esc o q para volver.
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. At the end of the report, Enter brings you back to the menu.	El menú lista los proyectos encontrados en esta carpeta o junto al tester. Elige uno: pruebas de funciones, fugas de memoria, Norma, archivos sobrantes y auditoría de la moulinette. Al final del informe, Intro te devuelve al menú.
+3-hour mock exam, exercise series or free training. You write your code in another terminal, then type grademe in the examshell. Mistyped a command? The tester suggests the right one.	Examen de prueba de 3 h, serie de ejercicios o entrenamiento libre. Escribes tu código en otra terminal y luego tecleas grademe en el examshell. ¿Comando mal escrito? El tester te propone el correcto.
+Every exercise of the tester, in any order. ◀ ▶ switches tabs (Exam, Libft, printf), Enter opens the subject, then 'Grade my code'. Every subject exists in 8 languages.	Todos los ejercicios del tester, en el orden que quieras. ◀ ▶ cambia de pestaña (Exam, Libft, printf), Intro abre el enunciado y luego « Corregir mi código ». Cada enunciado existe en 8 idiomas.
+Every function you pass earns experience and Octets. Dress your knight, unlock the story of the City that compiles and follow your progress in Stats.	Cada función validada da experiencia y Octetos. Viste a tu caballero, desbloquea la historia de la Ciudad que compila y sigue tu progreso en Estadísticas.
+Language, graphical or text interface, and the tdf command to start the tester from any folder. This tutorial and the news can be replayed from Settings.	Idioma, interfaz gráfica o texto, y el comando tdf para lanzar el tester desde cualquier carpeta. Este tutorial y las novedades se vuelven a ver desde Ajustes.
+Previous|	Anterior|
+Skip the tutorial|	Saltar el tutorial|
+Next|	Siguiente|
+Let's go|	¡Vamos!|
+Tutorial	Tutorial
+• One single menu: bash run.sh or tdf opens the menu directly, and everything happens there.	• Un solo menú: bash run.sh o tdf abre directamente el menú, y todo pasa ahí.
+• Exercise bank with the arrows: tabs, subject, grading in one click.	• Banco de ejercicios con flechas: pestañas, enunciado, corrección en un clic.
+• Exam and bank subjects in 8 languages.	• Enunciados del examen y del banco en 8 idiomas.
+• Mistyped a command in the examshell? The tester suggests the right one.	• ¿Comando mal escrito en el examshell? El tester propone el correcto.
+• A tutorial, to replay from Settings.	• Un tutorial, para volver a ver desde Ajustes.
+What's new in version %s	Novedades de la versión %s
+Continue|	Continuar|
+See the tutorial|	Ver el tutorial|
+Replay the tutorial|The 6 screens that present the tester	Volver a ver el tutorial|Las 6 pantallas que presentan el tester
+What's new in version %s|	Novedades de la versión %s|

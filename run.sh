@@ -130,8 +130,63 @@ ecrire_interface() {
 	INTERFACE="$1"
 }
 
+tuto() {
+	local i n=6 titres=() textes=() items=() prec suiv passer
+	titres=(
+		"$(tt "Bienvenue" "Welcome")"
+		"$(tt "Tester un projet" "Test a project")"
+		"$(tt "Exam en C" "C exam")"
+		"$(tt "Banque d'exercices" "Exercise bank")"
+		"$(tt "Chevalier, Lore et Stats" "Knight, Lore and Stats")"
+		"$(tt "Paramètres" "Settings")"
+	)
+	textes=(
+		"$(tt "Le testeur des fous teste ta Libft, ton ft_printf et ton get_next_line comme la moulinette, et t'entraîne à l'exam. Tout se fait aux flèches : ↑ ↓ pour choisir, Entrée pour valider, Échap ou q pour revenir." "The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc or q to go back.")"
+		"$(tt "Le menu liste les projets trouvés dans ce dossier ou à côté du testeur. Choisis-en un : tests des fonctions, fuites mémoire, Norme, fichiers parasites et audit de la moulinette. À la fin du rapport, Entrée te ramène au menu." "The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. At the end of the report, Enter brings you back to the menu.")"
+		"$(tt "Examen blanc de 3 h, série d'exercices ou entraînement libre. Tu écris ton code dans un autre terminal, puis tu tapes grademe dans l'examshell. Une commande mal tapée ? Le testeur te propose la bonne." "3-hour mock exam, exercise series or free training. You write your code in another terminal, then type grademe in the examshell. Mistyped a command? The tester suggests the right one.")"
+		"$(tt "Tous les exercices du testeur, dans l'ordre que tu veux. ◀ ▶ change d'onglet (Exam, Libft, printf), Entrée ouvre le sujet, puis « Corriger mon code ». Chaque sujet existe en 8 langues." "Every exercise of the tester, in any order. ◀ ▶ switches tabs (Exam, Libft, printf), Enter opens the subject, then 'Grade my code'. Every subject exists in 8 languages.")"
+		"$(tt "Chaque fonction validée rapporte de l'expérience et des Octets. Habille ton chevalier, débloque l'histoire de la Cité qui compile et suis ta progression dans Stats." "Every function you pass earns experience and Octets. Dress your knight, unlock the story of the City that compiles and follow your progress in Stats.")"
+		"$(tt "Langue, interface graphique ou texte, et la commande tdf pour lancer le testeur depuis n'importe quel dossier. Ce tuto et les nouveautés se relancent depuis Paramètres." "Language, graphical or text interface, and the tdf command to start the tester from any folder. This tutorial and the news can be replayed from Settings.")"
+	)
+	prec="$(tt "Précédent|" "Previous|")"
+	passer="$(tt "Passer le tuto|" "Skip the tutorial|")"
+	i=0
+	while [ "$i" -lt "$n" ]; do
+		items=()
+		if [ "$i" -lt $((n - 1)) ]; then
+			suiv="$(tt "Suivant|" "Next|")"
+		else
+			suiv="$(tt "C'est parti|" "Let's go|")"
+		fi
+		items+=("$suiv")
+		[ "$i" -gt 0 ] && items+=("$prec")
+		[ "$i" -lt $((n - 1)) ] && items+=("$passer")
+		tdf_page "$(tt "Tuto" "Tutorial") · $((i + 1))/$n · ${titres[$i]}" "${textes[$i]}" "${items[@]}"
+		[ "$CHOIX_MENU" -ge 0 ] || return 0
+		case "${items[$CHOIX_MENU]}" in
+			"$prec") i=$((i - 1)) ;;
+			"$passer") return 0 ;;
+			*) i=$((i + 1)) ;;
+		esac
+	done
+}
+
+nouveautes() {
+	local t
+	t="$(tt "• Un seul menu : bash run.sh ou tdf ouvre directement le menu, et tout s'y passe." "• One single menu: bash run.sh or tdf opens the menu directly, and everything happens there.")"
+	t+=$'\n'"$(tt "• Banque d'exercices aux flèches : onglets, sujet, correction en un clic." "• Exercise bank with the arrows: tabs, subject, grading in one click.")"
+	t+=$'\n'"$(tt "• Sujets de l'exam et de la banque en 8 langues." "• Exam and bank subjects in 8 languages.")"
+	t+=$'\n'"$(tt "• Une commande mal tapée dans l'examshell ? Le testeur propose la bonne." "• Mistyped a command in the examshell? The tester suggests the right one.")"
+	t+=$'\n'"$(tt "• Un tuto, à revoir depuis Paramètres." "• A tutorial, to replay from Settings.")"
+	tdf_page "$(printf "$(tt "Nouveautés de la version %s" "What's new in version %s")" "$TDF_VERSION")" "$t" \
+		"$(tt "Continuer|" "Continue|")" "$(tt "Voir le tuto|" "See the tutorial|")"
+	[ "$CHOIX_MENU" = 1 ] && tuto
+	return 0
+}
+
 premiers_pas() {
-	local i noms=()
+	local i noms=() nouveau=0 vu
+	[ -f "$LANCEUR" ] || [ -f "$DOSSIER/save.txt" ] || nouveau=1
 	if [ -z "${TDF_LANGUE_N:-}" ]; then
 		for i in 0 1 2 3 4 5 6 7; do noms+=("${TDF_NOMS[$i]}|"); done
 		tdf_choisir "TESTEUR" "DES FOUS" "Langue · Language · Idioma · Sprache · Lingua · Dil · Язык" "${noms[@]}"
@@ -139,6 +194,12 @@ premiers_pas() {
 		tdf_langue_ecrire "$CHOIX_MENU"
 	fi
 	[ -n "$INTERFACE" ] || ecrire_interface graphique
+	vu="$(head -1 "$DOSSIER/nouveautes.txt" 2>/dev/null)"
+	if [ "$vu" != "$TDF_VERSION" ]; then
+		if [ "$nouveau" = 1 ]; then tuto; else nouveautes; fi
+		mkdir -p "$DOSSIER" 2>/dev/null
+		printf '%s\n' "$TDF_VERSION" > "$DOSSIER/nouveautes.txt"
+	fi
 }
 
 menu_params() {
@@ -157,12 +218,18 @@ menu_params() {
 		items+=("$(tt "Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo)" "Install the tdf command|Then you just type \"tdf\" in any folder (no sudo)")")
 		acts+=("installer")
 	fi
+	items+=("$(tt "Revoir le tuto|Les 6 écrans qui présentent le testeur" "Replay the tutorial|The 6 screens that present the tester")")
+	acts+=("tuto")
+	items+=("$(printf "$(tt "Nouveautés de la version %s|" "What's new in version %s|")" "$TDF_VERSION")")
+	acts+=("nouveautes")
 	items+=("$(tt "Retour|" "Back|")")
 	acts+=("retour")
 	tdf_choisir "TESTEUR" "DES FOUS" "$(tt "Paramètres" "Settings")" "${items[@]}"
 	[ "$CHOIX_MENU" -ge 0 ] || return 1
 	case "${acts[$CHOIX_MENU]}" in
 		params) return 0 ;;
+		tuto) tuto ;;
+		nouveautes) nouveautes ;;
 		langue)
 			local i noms=()
 			for i in 0 1 2 3 4 5 6 7; do noms+=("${TDF_NOMS[$i]}|"); done

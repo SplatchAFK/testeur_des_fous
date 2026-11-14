@@ -157,3 +157,20 @@ tdf_choisir() {
 	fi
 	tdf_menu_fleches "$l1 $l2" "$sous" "$@"
 }
+
+tdf_page() {
+	local sous="$1" texte="$2" rc
+	shift 2
+	if [ -n "${ACCUEIL:-}" ] || tdf_accueil_bin; then
+		"$ACCUEIL" --titre "TESTEUR" "DES FOUS" --sous "$sous" --texte "$texte" \
+			--aide "$(tt "↑ ↓ choisir   Entrée valider   Échap ou q : retour" "↑ ↓ pick   Enter confirm   Esc or q: back")" "$@"
+		rc=$?
+		if [ "$rc" != 254 ]; then
+			if [ "$rc" = 255 ]; then CHOIX_MENU=-1; else CHOIX_MENU=$rc; fi
+			return 0
+		fi
+	fi
+	tdf_menu_fleches "TESTEUR DES FOUS" "$sous
+
+$texte" "$@"
+}

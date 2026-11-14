@@ -1357,3 +1357,28 @@ Back to the list	Назад к списку
   unknown command: %s. Did you mean %s%s%s? %s(Enter = yes, any other key = no)%s 	  неизвестная команда: %s. Может быть, %s%s%s? %s(Enter = да, другая клавиша = нет)%s 
   %shelp%s gives the list of commands\n	  %shelp%s показывает список команд\n
   %saide%s gives the list of commands\n	  %saide%s показывает список команд\n
+Welcome	Добро пожаловать
+Test a project	Проверить проект
+Exercise bank	Банк упражнений
+Knight, Lore and Stats	Рыцарь, лор и статистика
+The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc or q to go back.	testeur des fous проверяет твою Libft, ft_printf и get_next_line как мулинетт и готовит тебя к экзамену. Всё делается стрелками: ↑ ↓ выбор, Enter подтвердить, Esc или q назад.
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. At the end of the report, Enter brings you back to the menu.	Меню показывает проекты в этой папке или рядом с тестером. Выбери один: тесты функций, утечки памяти, Норма, лишние файлы и аудит мулинетт. В конце отчёта Enter вернёт тебя в меню.
+3-hour mock exam, exercise series or free training. You write your code in another terminal, then type grademe in the examshell. Mistyped a command? The tester suggests the right one.	Пробный экзамен на 3 часа, серия упражнений или свободная тренировка. Пишешь код в другом терминале, затем вводишь grademe в examshell. Ошибся в команде? Тестер предложит правильную.
+Every exercise of the tester, in any order. ◀ ▶ switches tabs (Exam, Libft, printf), Enter opens the subject, then 'Grade my code'. Every subject exists in 8 languages.	Все упражнения тестера в любом порядке. ◀ ▶ переключает вкладки (Exam, Libft, printf), Enter открывает задание, затем « Проверить мой код ». Каждое задание есть на 8 языках.
+Every function you pass earns experience and Octets. Dress your knight, unlock the story of the City that compiles and follow your progress in Stats.	Каждая сданная функция приносит опыт и Октеты. Одень своего рыцаря, открой историю Компилирующего Города и следи за прогрессом в Статистике.
+Language, graphical or text interface, and the tdf command to start the tester from any folder. This tutorial and the news can be replayed from Settings.	Язык, графический или текстовый интерфейс и команда tdf, чтобы запускать тестер из любой папки. Это обучение и новости можно снова открыть в Настройках.
+Previous|	Назад|
+Skip the tutorial|	Пропустить обучение|
+Next|	Далее|
+Let's go|	Поехали|
+Tutorial	Обучение
+• One single menu: bash run.sh or tdf opens the menu directly, and everything happens there.	• Одно меню: bash run.sh или tdf сразу открывает меню, и всё происходит там.
+• Exercise bank with the arrows: tabs, subject, grading in one click.	• Банк упражнений стрелками: вкладки, задание, проверка в один клик.
+• Exam and bank subjects in 8 languages.	• Задания экзамена и банка на 8 языках.
+• Mistyped a command in the examshell? The tester suggests the right one.	• Ошибся в команде в examshell? Тестер предложит правильную.
+• A tutorial, to replay from Settings.	• Обучение, которое можно снова открыть в Настройках.
+What's new in version %s	Что нового в версии %s
+Continue|	Продолжить|
+See the tutorial|	Посмотреть обучение|
+Replay the tutorial|The 6 screens that present the tester	Пройти обучение снова|6 экранов о тестере
+What's new in version %s|	Что нового в версии %s|

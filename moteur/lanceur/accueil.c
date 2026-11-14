@@ -71,6 +71,7 @@ typedef struct s_acc
 	const char	*l1;
 	const char	*l2;
 	const char	*sous;
+	const char	*texte;
 	const char	*aide;
 	const char	*items[MAXI];
 	int			n;
@@ -128,7 +129,11 @@ static int	envelopper(int y, int x, int w, const char *s, int voir)
 			break ;
 		n = octets_pour(s, w);
 		coupe = n;
-		if (s[n])
+		for (i = 0; i < n && s[i] != '\n'; i++)
+			;
+		if (i < n)
+			coupe = i;
+		else if (s[n])
 		{
 			for (i = n; i > 0 && s[i] != ' '; i--)
 				;
@@ -139,6 +144,15 @@ static int	envelopper(int y, int x, int w, const char *s, int voir)
 		if (voir)
 			printf("\033[%d;%dH%.*s", y + lignes, x, coupe - debut, s);
 		s += coupe;
+		if (*s == '\n')
+		{
+			s++;
+			if (*s == '\n')
+			{
+				s++;
+				lignes++;
+			}
+		}
 		lignes++;
 	}
 	return (lignes);
@@ -172,6 +186,8 @@ static int	boite(t_acc *a, int cols, int *x)
 	}
 	if (a->sous && largeur_utf8(a->sous, (int)strlen(a->sous)) > w)
 		w = largeur_utf8(a->sous, (int)strlen(a->sous));
+	if (a->texte && *a->texte && w < 72)
+		w = 72;
 	if (w > cols - 4)
 		w = cols - 4;
 	if (w < 10)
@@ -203,7 +219,8 @@ static int	reste(t_acc *a)
 		if (d > m)
 			m = d;
 	}
-	return (a->n + m + 4 + ((a->sous && *a->sous) ? envelopper(0, 0, w, a->sous, 0) + 1 : 0));
+	return (a->n + m + 4 + ((a->sous && *a->sous) ? envelopper(0, 0, w, a->sous, 0) + 1 : 0)
+		+ ((a->texte && *a->texte) ? envelopper(0, 0, w, a->texte, 0) + 1 : 0));
 }
 
 static int	haut_ecran(t_acc *a, int haut)
@@ -243,6 +260,8 @@ static void	dessiner(t_acc *a, int haut)
 		y += envelopper(y, x, w, a->sous, 1) + 1;
 		printf("\033[0m");
 	}
+	if (a->texte && *a->texte)
+		y += envelopper(y, x, w, a->texte, 1) + 1;
 	for (i = 0; i < a->n; i++)
 	{
 		bar = strchr(a->items[i], '|');
@@ -330,6 +349,8 @@ int	main(int ac, char **av)
 		}
 		else if (!strcmp(av[i], "--sous") && i + 1 < ac)
 			a.sous = av[++i];
+		else if (!strcmp(av[i], "--texte") && i + 1 < ac)
+			a.texte = av[++i];
 		else if (!strcmp(av[i], "--aide") && i + 1 < ac)
 			a.aide = av[++i];
 		else if (!strcmp(av[i], "--choix") && i + 1 < ac)

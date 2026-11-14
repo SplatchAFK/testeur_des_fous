@@ -1357,3 +1357,28 @@ Back to the list	Listeye dön
   unknown command: %s. Did you mean %s%s%s? %s(Enter = yes, any other key = no)%s 	  bilinmeyen komut: %s. Bunu mu demek istedin: %s%s%s? %s(Enter = evet, başka tuş = hayır)%s 
   %shelp%s gives the list of commands\n	  %shelp%s komut listesini gösterir\n
   %saide%s gives the list of commands\n	  %saide%s komut listesini gösterir\n
+Welcome	Hoş geldin
+Test a project	Bir projeyi test et
+Exercise bank	Alıştırma bankası
+Knight, Lore and Stats	Şövalye, Lore ve İstatistikler
+The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc or q to go back.	testeur des fous, Libft'ini, ft_printf'ini ve get_next_line'ını moulinette gibi test eder ve seni sınava hazırlar. Her şey ok tuşlarıyla: ↑ ↓ seç, Enter onayla, Esc ya da q geri.
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. At the end of the report, Enter brings you back to the menu.	Menü, bu klasörde ya da testerin yanında bulunan projeleri listeler. Birini seç: fonksiyon testleri, bellek sızıntıları, Norm, fazla dosyalar ve moulinette denetimi. Rapor bitince Enter seni menüye döndürür.
+3-hour mock exam, exercise series or free training. You write your code in another terminal, then type grademe in the examshell. Mistyped a command? The tester suggests the right one.	3 saatlik deneme sınavı, alıştırma serisi ya da serbest çalışma. Kodunu başka bir terminalde yazarsın, sonra examshell'de grademe yazarsın. Komutu yanlış mı yazdın? Tester doğrusunu önerir.
+Every exercise of the tester, in any order. ◀ ▶ switches tabs (Exam, Libft, printf), Enter opens the subject, then 'Grade my code'. Every subject exists in 8 languages.	Testerin tüm alıştırmaları, istediğin sırayla. ◀ ▶ sekmeyi değiştirir (Exam, Libft, printf), Enter konuyu açar, sonra « Kodumu düzelt ». Her konu 8 dilde var.
+Every function you pass earns experience and Octets. Dress your knight, unlock the story of the City that compiles and follow your progress in Stats.	Geçen her fonksiyon deneyim ve Octet kazandırır. Şövalyeni giydir, derleyen Şehrin hikâyesini aç ve ilerlemeni İstatistikler'de takip et.
+Language, graphical or text interface, and the tdf command to start the tester from any folder. This tutorial and the news can be replayed from Settings.	Dil, grafik ya da metin arayüzü ve testeri her klasörden başlatmak için tdf komutu. Bu eğitim ve yenilikler Ayarlar'dan tekrar açılır.
+Previous|	Önceki|
+Skip the tutorial|	Eğitimi atla|
+Next|	İleri|
+Let's go|	Başlayalım|
+Tutorial	Eğitim
+• One single menu: bash run.sh or tdf opens the menu directly, and everything happens there.	• Tek bir menü: bash run.sh ya da tdf doğrudan menüyü açar, her şey orada olur.
+• Exercise bank with the arrows: tabs, subject, grading in one click.	• Ok tuşlarıyla alıştırma bankası: sekmeler, konu, tek tıkla düzeltme.
+• Exam and bank subjects in 8 languages.	• Sınav ve banka konuları 8 dilde.
+• Mistyped a command in the examshell? The tester suggests the right one.	• examshell'de komutu yanlış mı yazdın? Tester doğrusunu önerir.
+• A tutorial, to replay from Settings.	• Ayarlar'dan tekrar açılabilen bir eğitim.
+What's new in version %s	%s sürümündeki yenilikler
+Continue|	Devam|
+See the tutorial|	Eğitimi gör|
+Replay the tutorial|The 6 screens that present the tester	Eğitimi tekrar aç|Testeri tanıtan 6 ekran
+What's new in version %s|	%s sürümündeki yenilikler|
