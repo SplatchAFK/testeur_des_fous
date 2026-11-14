@@ -1609,6 +1609,88 @@ static int	lire_ligne(const char *invite, char *buf, size_t n, const char *const
 	return (0);
 }
 
+static int	touche(int haut, long t0);
+
+static int	distance(const char *a, const char *b)
+{
+	int	d[24][24];
+	int	la;
+	int	lb;
+	int	i;
+	int	j;
+	int	c;
+
+	la = strlen(a);
+	lb = strlen(b);
+	if (la > 22 || lb > 22)
+		return (99);
+	for (i = 0; i <= la; i++)
+		d[i][0] = i;
+	for (j = 0; j <= lb; j++)
+		d[0][j] = j;
+	for (i = 1; i <= la; i++)
+		for (j = 1; j <= lb; j++)
+		{
+			c = d[i - 1][j - 1] + (a[i - 1] != b[j - 1]);
+			if (d[i - 1][j] + 1 < c)
+				c = d[i - 1][j] + 1;
+			if (d[i][j - 1] + 1 < c)
+				c = d[i][j - 1] + 1;
+			if (i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1] && d[i - 2][j - 2] + 1 < c)
+				c = d[i - 2][j - 2] + 1;
+			d[i][j] = c;
+		}
+	return (d[la][lb]);
+}
+
+static int	connue(const char *cmd, const char *const *noms)
+{
+	int	i;
+
+	for (i = 0; noms[i]; i++)
+		if (!strcmp(cmd, noms[i]))
+			return (1);
+	return (0);
+}
+
+static const char	*suggerer(const char *cmd, const char *const *liste)
+{
+	const char	*best;
+	int			bd;
+	int			d;
+	int			i;
+	int			k;
+
+	best = NULL;
+	bd = 99;
+	for (i = 0; liste[i]; i++)
+	{
+		d = distance(cmd, liste[i]);
+		if (strlen(cmd) >= 2 && !strncmp(liste[i], cmd, strlen(cmd)))
+			d = 1;
+		if (d < bd)
+		{
+			bd = d;
+			best = liste[i];
+		}
+	}
+	if (!best || bd > (strlen(cmd) <= 3 ? 1 : 2))
+	{
+		printf(L("  commande inconnue : %s\n", "  unknown command: %s\n"), cmd);
+		return (NULL);
+	}
+	if (!g_tty)
+	{
+		printf(L("  commande inconnue : %s. Tu voulais dire %s%s%s ?\n", "  unknown command: %s. Did you mean %s%s%s?\n"), cmd, C_B, best, C_R);
+		return (NULL);
+	}
+	printf(L("  commande inconnue : %s. Tu voulais dire %s%s%s ? %s(Entrée = oui, autre touche = non)%s ",
+			"  unknown command: %s. Did you mean %s%s%s? %s(Enter = yes, any other key = no)%s "), cmd, C_B, best, C_R, C_D, C_R);
+	k = touche(0, 0);
+	printf("\n");
+	return (k == '\n' || k == '\r' ? best : NULL);
+}
+
 static void	shell(void)
 {
 	char	line[1000];
@@ -1632,6 +1714,16 @@ static void	shell(void)
 			continue ;
 		if (g_st.limit && remaining() <= 0)
 			return (finish(1));
+		if (!connue(cmd, (const char *const []){"grademe", "status", "sujet", "subject", "help", "aide", "skip",
+				"reroll", "trace", "code", "clear", "finish", "exit", "quit", NULL}))
+		{
+			if (!(cmd = (char *)suggerer(cmd, g_cmd_exam)))
+			{
+				if (g_tty)
+					printf(L("  %shelp%s donne la liste des commandes\n", "  %shelp%s gives the list of commands\n"), C_B, C_R);
+				continue ;
+			}
+		}
 		if (!strcmp(cmd, "grademe"))
 			end = do_grademe();
 		else if (!strcmp(cmd, "status"))
@@ -1658,8 +1750,6 @@ static void	shell(void)
 			if (fgets(line, sizeof(line), stdin) && (line[0] == 'o' || line[0] == 'O' || line[0] == 'y'))
 				end = 1;
 		}
-		else
-			printf(L("  commande inconnue : %s (help pour la liste)\n", "  unknown command: %s (help for the list)\n"), cmd);
 	}
 	finish(0);
 }
@@ -2669,6 +2759,13 @@ static int	banque(void)
 			continue ;
 		a1 = strtok(NULL, " \t\r\n");
 		a2 = strtok(NULL, " \t\r\n");
+		if (!connue(cmd, (const char *const []){"liste", "ls", "cherche", "ouvre", "ouvrir", "grademe", "sujet", "subject",
+				"fait", "aide", "help", "accueil", "clear", "quitter", "exit", "quit", "q", NULL})
+			&& !(cmd = (char *)suggerer(cmd, g_cmd_banque)))
+		{
+			printf(L("  %saide%s donne la liste des commandes\n", "  %saide%s gives the list of commands\n"), C_B, C_R);
+			continue ;
+		}
 		if (!strcmp(cmd, "liste") || !strcmp(cmd, "ls"))
 		{
 			if (a1 && a1[0] >= '0' && a1[0] <= '9')

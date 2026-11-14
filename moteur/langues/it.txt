@@ -1352,3 +1352,8 @@ All	Tutti
 Grade my code	Correggi il mio codice
 Back to the list	Torna alla lista
 \n  %s↑ ↓ pick   ◀ ▶ change the language   Enter confirm   q back%s\n	\n  %s↑ ↓ scegli   ◀ ▶ cambia lingua   Invio conferma   q indietro%s\n
+  unknown command: %s\n	  comando sconosciuto: %s\n
+  unknown command: %s. Did you mean %s%s%s?\n	  comando sconosciuto: %s. Intendevi %s%s%s?\n
+  unknown command: %s. Did you mean %s%s%s? %s(Enter = yes, any other key = no)%s 	  comando sconosciuto: %s. Intendevi %s%s%s? %s(Invio = sì, altro tasto = no)%s 
+  %shelp%s gives the list of commands\n	  %shelp%s mostra l'elenco dei comandi\n
+  %saide%s gives the list of commands\n	  %saide%s mostra l'elenco dei comandi\n

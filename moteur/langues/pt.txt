@@ -1352,3 +1352,8 @@ All	Todos
 Grade my code	Corrigir o meu código
 Back to the list	Voltar à lista
 \n  %s↑ ↓ pick   ◀ ▶ change the language   Enter confirm   q back%s\n	\n  %s↑ ↓ escolher   ◀ ▶ mudar o idioma   Enter confirmar   q voltar%s\n
+  unknown command: %s\n	  comando desconhecido: %s\n
+  unknown command: %s. Did you mean %s%s%s?\n	  comando desconhecido: %s. Querias dizer %s%s%s?\n
+  unknown command: %s. Did you mean %s%s%s? %s(Enter = yes, any other key = no)%s 	  comando desconhecido: %s. Querias dizer %s%s%s? %s(Enter = sim, outra tecla = não)%s 
+  %shelp%s gives the list of commands\n	  %shelp%s mostra a lista de comandos\n
+  %saide%s gives the list of commands\n	  %saide%s mostra a lista de comandos\n

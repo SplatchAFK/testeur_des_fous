@@ -1352,3 +1352,8 @@ All	Все
 Grade my code	Проверить мой код
 Back to the list	Назад к списку
 \n  %s↑ ↓ pick   ◀ ▶ change the language   Enter confirm   q back%s\n	\n  %s↑ ↓ выбор   ◀ ▶ сменить язык   Enter подтвердить   q назад%s\n
+  unknown command: %s\n	  неизвестная команда: %s\n
+  unknown command: %s. Did you mean %s%s%s?\n	  неизвестная команда: %s. Может быть, %s%s%s?\n
+  unknown command: %s. Did you mean %s%s%s? %s(Enter = yes, any other key = no)%s 	  неизвестная команда: %s. Может быть, %s%s%s? %s(Enter = да, другая клавиша = нет)%s 
+  %shelp%s gives the list of commands\n	  %shelp%s показывает список команд\n
+  %saide%s gives the list of commands\n	  %saide%s показывает список команд\n
