@@ -60,6 +60,21 @@ static void	version_notice(void)
 	}
 }
 
+static int	ecran_direct(const char *e)
+{
+	if (!strcmp(e, "chevalier"))
+		tdf_menu_chevalier(screen_profile);
+	else if (!strcmp(e, "lore"))
+		tdf_menu_lore(screen_boss_menu);
+	else if (!strcmp(e, "stats"))
+		tdf_menu_stats();
+	else if (!strcmp(e, "params"))
+		tdf_menu_params(screen_credits);
+	else
+		return (0);
+	return (1);
+}
+
 static int	menu_loop(void)
 {
 	int	i;
@@ -105,7 +120,11 @@ int	main(int ac, char **av)
 	int			code;
 	int			bad;
 	int			first;
+	const char	*ecran;
+	int			unique;
 
+	ecran = getenv("TDF_ECRAN");
+	unique = getenv("TDF_MENU_UNIQUE") != NULL;
 	results = NULL;
 	reco = NULL;
 	pid = 0;
@@ -187,7 +206,14 @@ int	main(int ac, char **av)
 				rewards_quiet();
 		}
 	}
-	if (code != 42)
+	if (!results && ecran && ecran[0])
+	{
+		ecran_direct(ecran);
+		save_write();
+		term_end();
+		return (0);
+	}
+	if (code != 42 && !(unique && results))
 		code = menu_loop();
 	save_write();
 	term_end();

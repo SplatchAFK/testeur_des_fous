@@ -1338,3 +1338,9 @@ Part 3 · linked list	Bölüm 3 · bağlı liste
 file not found: the subject wants the three files at the root of the repository	dosya bulunamadı: subject üç dosyanın da depo kökünde olmasını ister
 (required by the subject, check it yourself: the tester does not judge the content)	(subject ister, sen kontrol et: tester içeriği değerlendirmez)
   %s(%d warning(s))%s	  %s(%d uyarı)%s
+Tester settings|Animations, story, help level, save, credits	Tester ayarları|Animasyonlar, hikâye, yardım seviyesi, kayıt, emeği geçenler
+Back|	Geri|
+Knight|Your avatar, the shop, your profile and achievements	Şövalye|Avatarın, dükkân, profilin ve başarıların
+Lore|The bosses, the cutscenes and the map of the City	Lore|Boss'lar, ara sahneler ve Şehir haritası
+Stats|Your progress, your badges and the 42 Next holygraph	İstatistikler|İlerlemen, rozetlerin ve 42 Next holygraph
+Settings|Settings, language, interface, tdf command	Ayarlar|Ayarlar, dil, arayüz, tdf komutu

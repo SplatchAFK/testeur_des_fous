@@ -264,7 +264,7 @@ int	main(int ac, char **av)
 	code = 0;
 	if (results && !dlc && !pf_all_ok() && pf_results(1) == 42)
 		code = 42;
-	if (code != 42)
+	if (code != 42 && !(results && getenv("TDF_MENU_UNIQUE")))
 		code = menu_loop();
 	save_write();
 	term_end();

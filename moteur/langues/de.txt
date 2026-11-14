@@ -1338,3 +1338,9 @@ Part 3 · linked list	Teil 3 · verkettete Liste
 file not found: the subject wants the three files at the root of the repository	Datei nicht gefunden: das Subject will die drei Dateien im Hauptordner des Repositorys
 (required by the subject, check it yourself: the tester does not judge the content)	(vom Subject verlangt, prüf es selbst: der Tester bewertet den Inhalt nicht)
   %s(%d warning(s))%s	  %s(%d Warnung(en))%s
+Tester settings|Animations, story, help level, save, credits	Tester-Einstellungen|Animationen, Geschichte, Hilfestufe, Speicherstand, Credits
+Back|	Zurück|
+Knight|Your avatar, the shop, your profile and achievements	Ritter|Dein Avatar, der Laden, dein Profil und deine Erfolge
+Lore|The bosses, the cutscenes and the map of the City	Lore|Die Bosse, die Zwischensequenzen und die Karte der Stadt
+Stats|Your progress, your badges and the 42 Next holygraph	Statistiken|Dein Fortschritt, deine Abzeichen und der 42 Next Holygraph
+Settings|Settings, language, interface, tdf command	Einstellungen|Einstellungen, Sprache, Oberfläche, Befehl tdf

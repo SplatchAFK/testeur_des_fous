@@ -1338,3 +1338,9 @@ Part 3 · linked list	Parte 3 · lista ligada
 file not found: the subject wants the three files at the root of the repository	ficheiro não encontrado: o subject quer os três ficheiros na raiz do repositório
 (required by the subject, check it yourself: the tester does not judge the content)	(exigido pelo subject, verifica tu: o tester não avalia o conteúdo)
   %s(%d warning(s))%s	  %s(%d aviso(s))%s
+Tester settings|Animations, story, help level, save, credits	Definições do tester|Animações, história, nível de ajuda, gravação, créditos
+Back|	Voltar|
+Knight|Your avatar, the shop, your profile and achievements	Cavaleiro|O teu avatar, a loja, o teu perfil e as tuas conquistas
+Lore|The bosses, the cutscenes and the map of the City	Lore|Os chefes, as cinemáticas e o mapa da Cidade
+Stats|Your progress, your badges and the 42 Next holygraph	Estatísticas|O teu progresso, os teus emblemas e o holygraph do 42 Next
+Settings|Settings, language, interface, tdf command	Definições|Definições, idioma, interface, comando tdf

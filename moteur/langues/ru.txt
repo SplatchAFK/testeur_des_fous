@@ -1338,3 +1338,9 @@ Part 3 · linked list	Часть 3 · связный список
 file not found: the subject wants the three files at the root of the repository	файл не найден: subject требует три файла в корне репозитория
 (required by the subject, check it yourself: the tester does not judge the content)	(требует subject, проверь сам: тестер не оценивает содержание)
   %s(%d warning(s))%s	  %s(предупреждений: %d)%s
+Tester settings|Animations, story, help level, save, credits	Настройки тестера|Анимации, история, уровень подсказок, сохранение, авторы
+Back|	Назад|
+Knight|Your avatar, the shop, your profile and achievements	Рыцарь|Твой аватар, магазин, профиль и достижения
+Lore|The bosses, the cutscenes and the map of the City	Лор|Боссы, ролики и карта Города
+Stats|Your progress, your badges and the 42 Next holygraph	Статистика|Твой прогресс, значки и holygraph 42 Next
+Settings|Settings, language, interface, tdf command	Настройки|Настройки, язык, интерфейс, команда tdf
