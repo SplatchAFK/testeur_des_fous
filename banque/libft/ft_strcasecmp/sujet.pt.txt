@@ -1,6 +1,6 @@
 Exercício           : ft_strcasecmp
 Ficheiros esperados : ft_strcasecmp.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Compara s1 e s2 ignorando maiúsculas e minúsculas, mesmo sinal que strcasecmp(3).

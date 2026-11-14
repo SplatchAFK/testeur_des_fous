@@ -1,6 +1,6 @@
 Aufgabe             : ft_strcasecmp
 Erwartete Dateien   : ft_strcasecmp.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Vergleiche s1 und s2 ohne Beachtung der Groß- und Kleinschreibung, gleiches Vorzeichen wie strcasecmp(3).

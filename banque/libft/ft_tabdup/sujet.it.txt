@@ -1,6 +1,6 @@
 Esercizio           : ft_tabdup
 File attesi         : ft_tabdup.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Copia in profondità un array di stringhe terminato da NULL. Libera tutto se un malloc fallisce.

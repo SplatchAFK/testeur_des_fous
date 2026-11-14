@@ -1,6 +1,6 @@
 Задание             : ft_lstfind
 Ожидаемые файлы     : ft_lstfind.c
-Разрешённые функции : malloc, free, write, your libft
+Разрешённые функции : malloc, free, write, твоя libft
 --------------------------------------------------------------
 
 Верни первый узел, где cmp(content, ref) == 0, иначе NULL.

@@ -1,6 +1,6 @@
 Esercizio           : ft_sort_strs
 File attesi         : ft_sort_strs.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Ordina sul posto un array terminato da NULL usando cmp. Scambia solo i puntatori.

@@ -1,6 +1,6 @@
 Ejercicio            : ft_str_replace
 Archivos esperados   : ft_str_replace.c
-Funciones permitidas : malloc, free, write, your libft
+Funciones permitidas : malloc, free, write, tu libft
 --------------------------------------------------------------
 
 Sustituye cada aparición de old por new, de izquierda a derecha, en una cadena nueva.

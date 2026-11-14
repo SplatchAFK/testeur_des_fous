@@ -1,6 +1,6 @@
 Alıştırma                 : ft_atoi_base
 Beklenen dosyalar         : ft_atoi_base.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 base tabanında yazılmış str'yi int'e dönüştür. Geçersiz bir taban 0 döndürür.

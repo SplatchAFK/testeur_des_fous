@@ -1,6 +1,6 @@
 Exercício           : ft_split_set
 Ficheiros esperados : ft_split_set.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Como ft_split, mas corta em qualquer carácter de set.

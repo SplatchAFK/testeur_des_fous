@@ -1,6 +1,6 @@
 Esercizio           : ft_str_replace
 File attesi         : ft_str_replace.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Sostituisci ogni occorrenza di old con new, da sinistra a destra, in una nuova stringa.

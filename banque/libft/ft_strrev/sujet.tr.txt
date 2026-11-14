@@ -1,6 +1,6 @@
 Alıştırma                 : ft_strrev
 Beklenen dosyalar         : ft_strrev.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 s'yi yerinde (malloc olmadan) ters çevir ve s'yi döndür.

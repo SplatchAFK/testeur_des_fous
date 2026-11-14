@@ -1,6 +1,6 @@
 Aufgabe             : ft_lstreverse
 Erwartete Dateien   : ft_lstreverse.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Kehre die Liste an Ort und Stelle um und verwende dabei die Knoten wieder.

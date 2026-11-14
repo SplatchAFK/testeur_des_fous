@@ -1,6 +1,6 @@
 Alıştırma                 : ft_sort_strs
 Beklenen dosyalar         : ft_sort_strs.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 NULL ile biten bir diziyi cmp kullanarak yerinde sırala. Yalnızca işaretçileri değiş tokuş et.

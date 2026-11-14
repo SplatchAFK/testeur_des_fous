@@ -1,6 +1,6 @@
 Aufgabe             : ft_lstremove_if
 Erwartete Dateien   : ft_lstremove_if.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Entferne jeden Knoten, bei dem cmp(content, ref) == 0 ist (erst del, dann free).

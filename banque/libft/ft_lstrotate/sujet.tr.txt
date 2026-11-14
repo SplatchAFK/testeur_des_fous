@@ -1,6 +1,6 @@
 Alıştırma                 : ft_lstrotate
 Beklenen dosyalar         : ft_lstrotate.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 Listeyi n kadar döndür (negatif geriye gider, n boyutu aşabilir ya da INT_MIN olabilir).

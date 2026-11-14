@@ -1,6 +1,6 @@
 Alıştırma                 : ft_split_set
 Beklenen dosyalar         : ft_split_set.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 ft_split gibi, ama set içindeki herhangi bir karakterde böler.

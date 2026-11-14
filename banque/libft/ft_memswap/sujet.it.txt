@@ -1,6 +1,6 @@
 Esercizio           : ft_memswap
 File attesi         : ft_memswap.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Scambia i primi n byte di a e b. Funziona con qualsiasi tipo.

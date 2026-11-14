@@ -1,6 +1,6 @@
 Alıştırma                 : ft_memswap
 Beklenen dosyalar         : ft_memswap.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 a ve b'nin ilk n baytını değiş tokuş et. Her türle çalışır.

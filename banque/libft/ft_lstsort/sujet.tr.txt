@@ -1,6 +1,6 @@
 Alıştırma                 : ft_lstsort
 Beklenen dosyalar         : ft_lstsort.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 Listeyi cmp'ye göre artan sırayla sırala.

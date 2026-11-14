@@ -1,6 +1,6 @@
 Aufgabe             : ft_putnbr_base_fd
 Erwartete Dateien   : ft_putnbr_base_fd.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Schreibe n in base auf fd. Eine ungültige Basis schreibt nichts. Behandle LONG_MIN.

@@ -1,6 +1,6 @@
 Aufgabe             : ft_lstrotate
 Erwartete Dateien   : ft_lstrotate.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Rotiere die Liste um n (negativ geht rückwärts, n kann größer als die Länge oder INT_MIN sein).

@@ -8,6 +8,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <sys/ioctl.h>
 #include <sys/select.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
@@ -2331,7 +2332,7 @@ static void	b_sujet(void)
 	else
 		printf("%s.c", b->name);
 	printf("%s\n", C_R);
-	printf(L("   %sÉcris ton code dans un autre terminal, puis tape grademe ici.%s\n\n", "   %sWrite your code in another terminal, then type grademe here.%s\n\n"), C_D, C_R);
+	printf(L("   %sÉcris ton code dans un autre terminal, puis lance la correction ici.%s\n\n", "   %sWrite your code in another terminal, then run the grading here.%s\n\n"), C_D, C_R);
 	snprintf(path, sizeof(path), "%s/banque/%s/%s", g_root, b->src, b->name);
 	sujet_chemin(path, sizeof(path), g_blang);
 	txt = slurp(path, NULL);
@@ -2343,7 +2344,7 @@ static void	b_sujet(void)
 		printf("   %.*s\n", (int)(e - s), s);
 	}
 	free(txt);
-	b_commandes();
+	printf("\n");
 }
 
 static void	b_ouvre(const char *arg)
@@ -2371,6 +2372,7 @@ static void	b_ouvre(const char *arg)
 	b_workdir(&g_b[k], path, sizeof(path));
 	sh("mkdir -p %s && cp %s/banque/%s/%s/sujet.*.txt %s/ 2>/dev/null; true", q(path), q(g_root), g_b[k].src, g_b[k].name, q(path));
 	b_sujet();
+	b_commandes();
 }
 
 static int	b_ext_grade(const t_bexo *b)
@@ -2474,7 +2476,6 @@ static void	b_grademe(void)
 		printf("  %s║           FAILURE            ║%s\n", C_KO, C_R);
 		printf("  %s╚══════════════════════════════╝%s\n", C_KO, C_R);
 	}
-	b_commandes();
 }
 
 static void	b_aide(void)
@@ -2493,6 +2494,144 @@ static void	b_aide(void)
 	b_commandes();
 }
 
+static int	b_lignes(void)
+{
+	struct winsize	w;
+
+	if (ioctl(1, TIOCGWINSZ, &w) == 0 && w.ws_row > 10)
+		return (w.ws_row);
+	return (24);
+}
+
+static void	b_filtre(int onglet)
+{
+	static const char	*src[3] = {"exam", "libft", "printf"};
+	int					i;
+
+	g_nvue = 0;
+	for (i = 0; i < g_nb; i++)
+		if (onglet == 0 || !strcmp(g_b[i].src, src[onglet - 1]))
+			g_vue[g_nvue++] = i;
+}
+
+static int	b_choisir(int *onglet, int *sel, int *top)
+{
+	static const char	*src[3] = {"exam", "libft", "printf"};
+	t_bexo				*b;
+	int					k;
+	int					i;
+	int					h;
+
+	while (1)
+	{
+		b_filtre(*onglet);
+		if (*sel >= g_nvue)
+			*sel = g_nvue ? g_nvue - 1 : 0;
+		h = b_lignes() - 12;
+		if (h < 5)
+			h = 5;
+		if (*sel < *top)
+			*top = *sel;
+		if (*sel >= *top + h)
+			*top = *sel - h + 1;
+		b_entete(L("Choisis un exercice", "Pick an exercise"));
+		printf("  ");
+		for (i = 0; i < 4; i++)
+		{
+			if (i == *onglet)
+				printf(" %s[ %s ]%s", C_AC, i ? b_srcname(src[i - 1]) : L("Tout", "All"), C_R);
+			else
+				printf("   %s%s%s  ", C_D, i ? b_srcname(src[i - 1]) : L("Tout", "All"), C_R);
+		}
+		printf("\n\n");
+		for (i = *top; i < g_nvue && i < *top + h; i++)
+		{
+			b = &g_b[g_vue[i]];
+			printf("  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%.38s%s\n",
+				C_AC, i == *sel ? "❯" : " ", C_R,
+				b_done(b) ? C_OK : C_D, b_done(b) ? "✔" : "·", C_R,
+				i == *sel ? C_B : "", b->name, C_R, b_srcname(b->src),
+				level_color(b->niv < 1 ? 1 : b->niv > XLEVELS ? XLEVELS : b->niv), b->niv, C_R, C_D, b->notion, C_R);
+		}
+		if (g_nvue > h)
+			printf(L("  %s%d-%d sur %d%s\n", "  %s%d-%d of %d%s\n"), C_D, *top + 1, i, g_nvue, C_R);
+		printf(L("\n  %s↑ ↓ choisir   ◀ ▶ Tout, Exam, Libft, printf   Entrée ouvrir   q quitter%s\n",
+				"\n  %s↑ ↓ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   q quit%s\n"), C_D, C_R);
+		k = touche(0, 0);
+		if (k < 0 || k == 'q' || k == 'Q' || k == 27)
+			return (-1);
+		if (k == 1000 && g_nvue)
+			*sel = (*sel + g_nvue - 1) % g_nvue;
+		else if (k == 1001 && g_nvue)
+			*sel = (*sel + 1) % g_nvue;
+		else if (k == 1002 || k == 1003)
+		{
+			*onglet = (*onglet + (k == 1002 ? 1 : 3)) % 4;
+			*sel = 0;
+			*top = 0;
+		}
+		else if ((k == '\n' || k == '\r' || k == ' ') && g_nvue)
+			return (g_vue[*sel]);
+	}
+}
+
+static void	b_preparer(int k)
+{
+	char	path[1300];
+
+	g_bcur = k;
+	b_workdir(&g_b[k], path, sizeof(path));
+	sh("mkdir -p %s && cp %s/banque/%s/%s/sujet.*.txt %s/ 2>/dev/null; true", q(path), q(g_root), g_b[k].src, g_b[k].name, q(path));
+}
+
+static void	b_exercice(int k)
+{
+	const char	*it[3];
+	int			sel;
+	int			key;
+	int			i;
+
+	b_preparer(k);
+	sel = 0;
+	while (1)
+	{
+		b_sujet();
+		it[0] = L("Corriger mon code", "Grade my code");
+		it[1] = L("Langue du sujet", "Subject language");
+		it[2] = L("Retour à la liste", "Back to the list");
+		for (i = 0; i < 3; i++)
+		{
+			printf("  %s%s %s%s", i == sel ? C_AC : "", i == sel ? "❯" : " ", it[i], C_R);
+			if (i == 1)
+				printf("   %s◀ %s ▶%s", C_B, langue_nom(g_blang), C_R);
+			printf("\n");
+		}
+		printf(L("\n  %s↑ ↓ choisir   ◀ ▶ changer la langue   Entrée valider   q retour%s\n",
+				"\n  %s↑ ↓ pick   ◀ ▶ change the language   Enter confirm   q back%s\n"), C_D, C_R);
+		key = touche(0, 0);
+		if (key < 0 || key == 'q' || key == 'Q' || key == 27)
+			return ;
+		if (key == 1000)
+			sel = (sel + 2) % 3;
+		else if (key == 1001)
+			sel = (sel + 1) % 3;
+		else if ((key == 1002 || key == 1003) && sel == 1)
+			g_blang = (g_blang + (key == 1002 ? 1 : NLANG - 1)) % NLANG;
+		else if (key == '\n' || key == '\r' || key == ' ')
+		{
+			if (sel == 0)
+			{
+				b_grademe();
+				pause_x();
+			}
+			else if (sel == 1)
+				g_blang = (g_blang + 1) % NLANG;
+			else
+				return ;
+		}
+	}
+}
+
 static int	banque(void)
 {
 	char	invite[64];
@@ -2504,6 +2643,21 @@ static int	banque(void)
 	b_load();
 	sh("mkdir -p %s/banque_travail %s/traces", q(g_root), q(g_work));
 	g_blang = g_cfg.lang;
+	if (g_tty)
+	{
+		int	onglet;
+		int	sel;
+		int	top;
+		int	k;
+
+		onglet = 0;
+		sel = 0;
+		top = 0;
+		while ((k = b_choisir(&onglet, &sel, &top)) >= 0)
+			b_exercice(k);
+		save_write();
+		return (0);
+	}
 	b_accueil();
 	while (1)
 	{
@@ -2527,12 +2681,16 @@ static int	banque(void)
 		else if (!strcmp(cmd, "ouvre") || !strcmp(cmd, "ouvrir"))
 			b_ouvre(a1);
 		else if (!strcmp(cmd, "grademe"))
+		{
 			b_grademe();
+			b_commandes();
+		}
 		else if (!strcmp(cmd, "sujet") || !strcmp(cmd, "subject"))
 		{
 			if (code_langue(a1) >= 0)
 				g_blang = code_langue(a1);
 			b_sujet();
+			b_commandes();
 		}
 		else if (!strcmp(cmd, "fait"))
 		{

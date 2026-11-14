@@ -1,6 +1,6 @@
 Esercizio           : ft_lstremove_if
 File attesi         : ft_lstremove_if.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Rimuovi ogni nodo in cui cmp(content, ref) == 0 (del poi free).

@@ -1,6 +1,6 @@
 Alıştırma                 : ft_strndup
 Beklenen dosyalar         : ft_strndup.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 s'nin en fazla n karakterini kopyala. malloc başarısız olursa NULL.

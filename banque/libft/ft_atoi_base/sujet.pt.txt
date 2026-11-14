@@ -1,6 +1,6 @@
 Exercício           : ft_atoi_base
 Ficheiros esperados : ft_atoi_base.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Converte str, escrita em base, num int. Uma base inválida devolve 0.

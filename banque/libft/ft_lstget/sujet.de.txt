@@ -1,6 +1,6 @@
 Aufgabe             : ft_lstget
 Erwartete Dateien   : ft_lstget.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Gib den Knoten an Position index zurück (0 ist der erste), oder NULL.

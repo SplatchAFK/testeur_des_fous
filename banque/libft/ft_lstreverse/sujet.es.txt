@@ -1,6 +1,6 @@
 Ejercicio            : ft_lstreverse
 Archivos esperados   : ft_lstreverse.c
-Funciones permitidas : malloc, free, write, your libft
+Funciones permitidas : malloc, free, write, tu libft
 --------------------------------------------------------------
 
 Invierte la lista en el sitio, reutilizando los nodos.

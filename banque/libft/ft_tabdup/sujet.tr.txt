@@ -1,6 +1,6 @@
 Alıştırma                 : ft_tabdup
 Beklenen dosyalar         : ft_tabdup.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 NULL ile biten bir dize dizisinin derin kopyasını çıkar. Bir malloc başarısız olursa her şeyi serbest bırak.

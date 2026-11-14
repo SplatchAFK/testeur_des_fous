@@ -1,6 +1,6 @@
 Alıştırma                 : ft_lstremove_if
 Beklenen dosyalar         : ft_lstremove_if.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 cmp(content, ref) == 0 olan her düğümü çıkar (önce del, sonra free).

@@ -1344,3 +1344,11 @@ Knight|Your avatar, the shop, your profile and achievements	Рыцарь|Тво�
 Lore|The bosses, the cutscenes and the map of the City	Лор|Боссы, ролики и карта Города
 Stats|Your progress, your badges and the 42 Next holygraph	Статистика|Твой прогресс, значки и holygraph 42 Next
 Settings|Settings, language, interface, tdf command	Настройки|Настройки, язык, интерфейс, команда tdf
+   %sWrite your code in another terminal, then run the grading here.%s\n\n	   %sНапиши код в другом терминале, затем запусти проверку здесь.%s\n\n
+Pick an exercise	Выбери упражнение
+All	Все
+  %s%d-%d of %d%s\n	  %s%d-%d из %d%s\n
+\n  %s↑ ↓ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   q quit%s\n	\n  %s↑ ↓ выбор   ◀ ▶ Все, Exam, Libft, printf   Enter открыть   q выход%s\n
+Grade my code	Проверить мой код
+Back to the list	Назад к списку
+\n  %s↑ ↓ pick   ◀ ▶ change the language   Enter confirm   q back%s\n	\n  %s↑ ↓ выбор   ◀ ▶ сменить язык   Enter подтвердить   q назад%s\n

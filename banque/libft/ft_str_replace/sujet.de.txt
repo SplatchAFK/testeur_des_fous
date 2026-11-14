@@ -1,6 +1,6 @@
 Aufgabe             : ft_str_replace
 Erwartete Dateien   : ft_str_replace.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Ersetze jedes Vorkommen von old durch new, von links nach rechts, in einem neuen String.

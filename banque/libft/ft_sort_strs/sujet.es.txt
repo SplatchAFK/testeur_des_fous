@@ -1,6 +1,6 @@
 Ejercicio            : ft_sort_strs
 Archivos esperados   : ft_sort_strs.c
-Funciones permitidas : malloc, free, write, your libft
+Funciones permitidas : malloc, free, write, tu libft
 --------------------------------------------------------------
 
 Ordena en el sitio un array terminado en NULL usando cmp. Intercambia solo los punteros.

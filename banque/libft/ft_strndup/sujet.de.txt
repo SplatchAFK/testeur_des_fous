@@ -1,6 +1,6 @@
 Aufgabe             : ft_strndup
 Erwartete Dateien   : ft_strndup.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Dupliziere höchstens n Zeichen von s. NULL, wenn malloc fehlschlägt.

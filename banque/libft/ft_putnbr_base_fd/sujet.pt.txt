@@ -1,6 +1,6 @@
 Exercício           : ft_putnbr_base_fd
 Ficheiros esperados : ft_putnbr_base_fd.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Escreve n em base no fd. Uma base inválida não escreve nada. Trata LONG_MIN.

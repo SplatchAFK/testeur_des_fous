@@ -1,6 +1,6 @@
 Aufgabe             : ft_bitcount
 Erwartete Dateien   : ft_bitcount.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Gib die Anzahl der auf 1 gesetzten Bits in n zurück.

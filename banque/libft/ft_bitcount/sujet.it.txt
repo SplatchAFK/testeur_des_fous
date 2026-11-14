@@ -1,6 +1,6 @@
 Esercizio           : ft_bitcount
 File attesi         : ft_bitcount.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Restituisci il numero di bit a 1 in n.

@@ -1,6 +1,6 @@
 Esercizio           : ft_lstrotate
 File attesi         : ft_lstrotate.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Ruota la lista di n (negativo va all'indietro, n può superare la dimensione o valere INT_MIN).

@@ -1,6 +1,6 @@
 Exercício           : ft_lst_to_array
 Ficheiros esperados : ft_lst_to_array.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Devolve um array terminado em NULL com os ponteiros content, por ordem.

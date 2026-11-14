@@ -1,6 +1,6 @@
 Exercício           : ft_strspn
 Ficheiros esperados : ft_strspn.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Comprimento do segmento inicial de s formado apenas por caracteres de accept, como strspn(3).

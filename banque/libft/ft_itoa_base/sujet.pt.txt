@@ -1,6 +1,6 @@
 Exercício           : ft_itoa_base
 Ficheiros esperados : ft_itoa_base.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Escreve n em base numa nova string. Trata LONG_MIN. NULL se a base for inválida.

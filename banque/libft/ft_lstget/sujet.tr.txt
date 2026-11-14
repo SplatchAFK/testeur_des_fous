@@ -1,6 +1,6 @@
 Alıştırma                 : ft_lstget
 Beklenen dosyalar         : ft_lstget.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 index konumundaki düğümü (0 ilkidir) ya da NULL döndür.

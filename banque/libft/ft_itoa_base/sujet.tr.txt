@@ -1,6 +1,6 @@
 Alıştırma                 : ft_itoa_base
 Beklenen dosyalar         : ft_itoa_base.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 n'yi base tabanında yeni bir dizeye yaz. LONG_MIN'i işle. Geçersiz tabanda NULL.

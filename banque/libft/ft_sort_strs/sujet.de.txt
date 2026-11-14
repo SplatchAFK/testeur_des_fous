@@ -1,6 +1,6 @@
 Aufgabe             : ft_sort_strs
 Erwartete Dateien   : ft_sort_strs.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Sortiere ein mit NULL abgeschlossenes Array an Ort und Stelle mit cmp. Vertausche nur die Zeiger.

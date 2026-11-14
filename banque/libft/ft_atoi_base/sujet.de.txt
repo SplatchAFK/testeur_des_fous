@@ -1,6 +1,6 @@
 Aufgabe             : ft_atoi_base
 Erwartete Dateien   : ft_atoi_base.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Wandle str, geschrieben in base, in einen int um. Eine ungültige Basis ergibt 0.

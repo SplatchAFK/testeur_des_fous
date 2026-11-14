@@ -1,6 +1,6 @@
 Aufgabe             : ft_strrev
 Erwartete Dateien   : ft_strrev.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Kehre s an Ort und Stelle um (ohne malloc) und gib s zurück.

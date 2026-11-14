@@ -1,6 +1,6 @@
 Alıştırma                 : ft_lstfind
 Beklenen dosyalar         : ft_lstfind.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 cmp(content, ref) == 0 olan ilk düğümü döndür, yoksa NULL.

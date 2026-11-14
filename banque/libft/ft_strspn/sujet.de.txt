@@ -1,6 +1,6 @@
 Aufgabe             : ft_strspn
 Erwartete Dateien   : ft_strspn.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Länge des Anfangsstücks von s, das nur aus Zeichen aus accept besteht, wie strspn(3).

@@ -1,6 +1,6 @@
 Ejercicio            : ft_memrchr
 Archivos esperados   : ft_memrchr.c
-Funciones permitidas : malloc, free, write, your libft
+Funciones permitidas : malloc, free, write, tu libft
 --------------------------------------------------------------
 
 Busca el ÚLTIMO byte c (como unsigned char) en los n primeros bytes de s, o NULL.

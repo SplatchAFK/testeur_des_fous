@@ -1,6 +1,6 @@
 Exercício           : ft_strndup
 Ficheiros esperados : ft_strndup.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Duplica no máximo n caracteres de s. NULL se malloc falhar.

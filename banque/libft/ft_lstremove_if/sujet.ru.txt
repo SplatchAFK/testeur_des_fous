@@ -1,6 +1,6 @@
 Задание             : ft_lstremove_if
 Ожидаемые файлы     : ft_lstremove_if.c
-Разрешённые функции : malloc, free, write, your libft
+Разрешённые функции : malloc, free, write, твоя libft
 --------------------------------------------------------------
 
 Удали каждый узел, где cmp(content, ref) == 0 (сначала del, потом free).

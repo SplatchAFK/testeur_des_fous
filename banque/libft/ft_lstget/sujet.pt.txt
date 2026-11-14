@@ -1,6 +1,6 @@
 Exercício           : ft_lstget
 Ficheiros esperados : ft_lstget.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Devolve o nó na posição index (0 é o primeiro), ou NULL.

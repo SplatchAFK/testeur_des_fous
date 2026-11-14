@@ -1,6 +1,6 @@
 Aufgabe             : ft_lst_to_array
 Erwartete Dateien   : ft_lst_to_array.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Gib ein mit NULL abgeschlossenes Array der content-Zeiger zurück, in Reihenfolge.

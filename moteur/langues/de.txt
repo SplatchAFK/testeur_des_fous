@@ -1344,3 +1344,11 @@ Knight|Your avatar, the shop, your profile and achievements	Ritter|Dein Avatar, 
 Lore|The bosses, the cutscenes and the map of the City	Lore|Die Bosse, die Zwischensequenzen und die Karte der Stadt
 Stats|Your progress, your badges and the 42 Next holygraph	Statistiken|Dein Fortschritt, deine Abzeichen und der 42 Next Holygraph
 Settings|Settings, language, interface, tdf command	Einstellungen|Einstellungen, Sprache, Oberfläche, Befehl tdf
+   %sWrite your code in another terminal, then run the grading here.%s\n\n	   %sSchreib deinen Code in einem anderen Terminal und starte dann hier die Korrektur.%s\n\n
+Pick an exercise	Wähle eine Aufgabe
+All	Alle
+  %s%d-%d of %d%s\n	  %s%d-%d von %d%s\n
+\n  %s↑ ↓ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   q quit%s\n	\n  %s↑ ↓ wählen   ◀ ▶ Alle, Exam, Libft, printf   Enter öffnen   q beenden%s\n
+Grade my code	Meinen Code korrigieren
+Back to the list	Zurück zur Liste
+\n  %s↑ ↓ pick   ◀ ▶ change the language   Enter confirm   q back%s\n	\n  %s↑ ↓ wählen   ◀ ▶ Sprache ändern   Enter bestätigen   q zurück%s\n

@@ -1,6 +1,6 @@
 Exercício           : ft_lstsort
 Ficheiros esperados : ft_lstsort.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Ordena a lista por ordem crescente segundo cmp.

@@ -1,6 +1,6 @@
 Aufgabe             : ft_split_set
 Erwartete Dateien   : ft_split_set.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Wie ft_split, trennt aber bei jedem Zeichen aus set.

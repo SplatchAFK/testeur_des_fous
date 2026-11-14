@@ -1,6 +1,6 @@
 Aufgabe             : ft_tabdup
 Erwartete Dateien   : ft_tabdup.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Erstelle eine tiefe Kopie eines mit NULL abgeschlossenen Arrays von Strings. Gib alles frei, wenn ein malloc fehlschlägt.

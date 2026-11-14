@@ -1,6 +1,6 @@
 Exercício           : ft_lstreverse
 Ficheiros esperados : ft_lstreverse.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Inverte a lista no próprio lugar, reutilizando os nós.

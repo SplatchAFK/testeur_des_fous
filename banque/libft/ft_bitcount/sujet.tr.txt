@@ -1,6 +1,6 @@
 Alıştırma                 : ft_bitcount
 Beklenen dosyalar         : ft_bitcount.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 n içindeki 1 olan bit sayısını döndür.

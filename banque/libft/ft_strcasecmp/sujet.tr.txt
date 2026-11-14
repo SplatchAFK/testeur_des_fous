@@ -1,6 +1,6 @@
 Alıştırma                 : ft_strcasecmp
 Beklenen dosyalar         : ft_strcasecmp.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 s1 ve s2'yi büyük/küçük harfi yok sayarak karşılaştır, strcasecmp(3) ile aynı işaret.

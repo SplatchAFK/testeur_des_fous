@@ -1,6 +1,6 @@
 Ejercicio            : ft_lstget
 Archivos esperados   : ft_lstget.c
-Funciones permitidas : malloc, free, write, your libft
+Funciones permitidas : malloc, free, write, tu libft
 --------------------------------------------------------------
 
 Devuelve el nodo en la posición index (0 es el primero), o NULL.

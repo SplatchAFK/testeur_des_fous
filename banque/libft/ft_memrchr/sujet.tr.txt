@@ -1,6 +1,6 @@
 Alıştırma                 : ft_memrchr
 Beklenen dosyalar         : ft_memrchr.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 s'nin ilk n baytı içindeki SON c baytını (unsigned char olarak) bul, yoksa NULL.

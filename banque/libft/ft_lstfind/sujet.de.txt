@@ -1,6 +1,6 @@
 Aufgabe             : ft_lstfind
 Erwartete Dateien   : ft_lstfind.c
-Erlaubte Funktionen : malloc, free, write, your libft
+Erlaubte Funktionen : malloc, free, write, deine libft
 --------------------------------------------------------------
 
 Gib den ersten Knoten zurück, bei dem cmp(content, ref) == 0 ist, sonst NULL.

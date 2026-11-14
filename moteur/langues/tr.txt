@@ -1344,3 +1344,11 @@ Knight|Your avatar, the shop, your profile and achievements	Şövalye|Avatarın,
 Lore|The bosses, the cutscenes and the map of the City	Lore|Boss'lar, ara sahneler ve Şehir haritası
 Stats|Your progress, your badges and the 42 Next holygraph	İstatistikler|İlerlemen, rozetlerin ve 42 Next holygraph
 Settings|Settings, language, interface, tdf command	Ayarlar|Ayarlar, dil, arayüz, tdf komutu
+   %sWrite your code in another terminal, then run the grading here.%s\n\n	   %sKodunu başka bir terminalde yaz, sonra düzeltmeyi buradan başlat.%s\n\n
+Pick an exercise	Bir alıştırma seç
+All	Tümü
+  %s%d-%d of %d%s\n	  %s%d-%d / %d%s\n
+\n  %s↑ ↓ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   q quit%s\n	\n  %s↑ ↓ seç   ◀ ▶ Tümü, Exam, Libft, printf   Enter aç   q çık%s\n
+Grade my code	Kodumu düzelt
+Back to the list	Listeye dön
+\n  %s↑ ↓ pick   ◀ ▶ change the language   Enter confirm   q back%s\n	\n  %s↑ ↓ seç   ◀ ▶ dili değiştir   Enter onayla   q geri%s\n

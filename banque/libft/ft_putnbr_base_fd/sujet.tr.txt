@@ -1,6 +1,6 @@
 Alıştırma                 : ft_putnbr_base_fd
 Beklenen dosyalar         : ft_putnbr_base_fd.c
-İzin verilen fonksiyonlar : malloc, free, write, your libft
+İzin verilen fonksiyonlar : malloc, free, write, kendi libft'in
 --------------------------------------------------------------
 
 n'yi base tabanında fd'ye yaz. Geçersiz bir taban hiçbir şey yazmaz. LONG_MIN'i işle.

@@ -1,6 +1,6 @@
 Exercício           : ft_strrev
 Ficheiros esperados : ft_strrev.c
-Funções permitidas  : malloc, free, write, your libft
+Funções permitidas  : malloc, free, write, a tua libft
 --------------------------------------------------------------
 
 Inverte s no próprio lugar (sem malloc) e devolve s.

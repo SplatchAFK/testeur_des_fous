@@ -1,6 +1,6 @@
 Esercizio           : ft_lstfind
 File attesi         : ft_lstfind.c
-Funzioni consentite : malloc, free, write, your libft
+Funzioni consentite : malloc, free, write, la tua libft
 --------------------------------------------------------------
 
 Restituisci il primo nodo in cui cmp(content, ref) == 0, altrimenti NULL.
