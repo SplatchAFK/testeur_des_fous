@@ -1,0 +1,12 @@
+Alıştırma                 : ft_strrev
+Beklenen dosyalar         : ft_strrev.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+str dizesini yerinde ters çeviren ve str'yi döndüren bir fonksiyon yaz.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_strrev(char *str);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

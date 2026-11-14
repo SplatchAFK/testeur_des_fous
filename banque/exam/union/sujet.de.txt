@@ -1,0 +1,24 @@
+Aufgabe             : union
+Erwartete Dateien   : union.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das zwei Strings erhält und ohne Wiederholungen
+jedes Zeichen aus einem der beiden anzeigt, in der Reihenfolge ihres
+Auftretens: zuerst der erste String, dann der zweite. Es endet mit einem
+Zeilenumbruch.
+
+Wenn das Programm nicht genau zwei Argumente erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./union "zpadinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+zpadintoqefwjy$
+$> ./union "le testeur" "des fous" | cat -e
+le tsurdfo$
+$> ./union "rien" "" | cat -e
+rien$
+$> ./union "seul" | cat -e
+$
+$>

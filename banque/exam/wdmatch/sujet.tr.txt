@@ -1,0 +1,24 @@
+Alıştırma                 : wdmatch
+Beklenen dosyalar         : wdmatch.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+İki dize alan ve birincinin her karakterinin ikincide aynı sırayla (yan
+yana olması gerekmeden) bulunduğunu kontrol eden bir program yaz.
+
+Mümkünse birinci dizeyi ve ardından bir satır sonu gösterir. Değilse
+yalnızca bir satır sonu gösterir.
+
+Program tam olarak iki argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./wdmatch "chat" "le chevalier a trouve" | cat -e
+chat$
+$> ./wdmatch "tour" "ta tour est en haut" | cat -e
+tour$
+$> ./wdmatch "zzz" "zz" | cat -e
+$
+$> ./wdmatch "seul" | cat -e
+$
+$>

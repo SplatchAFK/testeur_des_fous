@@ -1,0 +1,21 @@
+Alıştırma                 : inter
+Beklenen dosyalar         : inter.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+İki dize alan ve her ikisinde de geçen karakterleri, tekrarsız ve
+birincideki sırayla, ardından bir satır sonuyla gösteren bir program yaz.
+
+Program tam olarak iki argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$> ./inter "le testeur" "des fous" | cat -e
+e su$
+$> ./inter "rien" "zzz" | cat -e
+$
+$> ./inter "seul" | cat -e
+$
+$>

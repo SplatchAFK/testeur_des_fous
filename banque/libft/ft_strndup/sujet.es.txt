@@ -1,0 +1,13 @@
+Ejercicio            : ft_strndup
+Archivos esperados   : ft_strndup.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Duplica como mucho n caracteres de s. NULL si malloc falla.
+
+Tu función debe tener este prototipo:
+
+char	*ft_strndup(const char *s, size_t n);
+
+Concepto: tamaño de reserva exacto
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

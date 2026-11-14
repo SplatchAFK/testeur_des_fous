@@ -1,0 +1,25 @@
+Ejercicio            : rstr_capitalizer
+Archivos esperados   : rstr_capitalizer.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una o varias cadenas y, para cada una, pone
+en mayúscula la última letra de cada palabra y en minúscula todas las
+demás letras, y luego muestra el resultado seguido de un salto de línea.
+
+Una palabra es una secuencia de caracteres delimitada por espacios,
+tabulaciones, o por el principio y el final de la cadena. Si el último
+carácter de una palabra no es una letra, no cambia.
+
+Sin argumentos, el programa solo muestra un salto de línea.
+
+Ejemplos:
+
+$> ./rstr_capitalizer "le TESTEUR des fous" | cat -e
+lE testeuR deS fouS$
+$> ./rstr_capitalizer "une PHRASE " "Deux Phrases	avec tab" | cat -e
+unE phrasE $
+deuX phraseS^IaveC taB$
+$> ./rstr_capitalizer | cat -e
+$
+$>

@@ -1,0 +1,24 @@
+Alıştırma                 : rstr_capitalizer
+Beklenen dosyalar         : rstr_capitalizer.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir ya da birden fazla dize alan ve her biri için her kelimenin son
+harfini büyük, diğer tüm harfleri küçük yapan, sonra sonucu bir satır
+sonuyla gösteren bir program yaz.
+
+Bir kelime, boşluklar, sekmeler ya da dizenin başı ve sonuyla sınırlanan
+bir karakter dizisidir. Bir kelimenin son karakteri harf değilse değişmez.
+
+Argüman yoksa program yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./rstr_capitalizer "le TESTEUR des fous" | cat -e
+lE testeuR deS fouS$
+$> ./rstr_capitalizer "une PHRASE " "Deux Phrases	avec tab" | cat -e
+unE phrasE $
+deuX phraseS^IaveC taB$
+$> ./rstr_capitalizer | cat -e
+$
+$>

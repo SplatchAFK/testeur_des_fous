@@ -1,0 +1,13 @@
+Ejercicio            : ft_count_conv
+Archivos esperados   : ft_count_conv.c
+Funciones permitidas : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Cuenta las conversiones de fmt ("%%" cuenta como una). Un '%' solo al final no cuenta. Nunca leas más allá del '\0'.
+
+Tu función debe tener este prototipo:
+
+int	ft_count_conv(const char *fmt);
+
+Concepto: el '%' final
+La Norma es obligatoria. Aquí no hay libft.

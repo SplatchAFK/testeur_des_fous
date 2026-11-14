@@ -1,0 +1,13 @@
+Ejercicio            : ft_str_replace
+Archivos esperados   : ft_str_replace.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Sustituye cada aparición de old por new, de izquierda a derecha, en una cadena nueva.
+
+Tu función debe tener este prototipo:
+
+char	*ft_str_replace(const char *s, const char *old, const char *new);
+
+Concepto: dos pasadas: contar y luego construir
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

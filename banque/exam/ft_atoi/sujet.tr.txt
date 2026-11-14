@@ -1,0 +1,17 @@
+Alıştırma                 : ft_atoi
+Beklenen dosyalar         : ft_atoi.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+str dizesinin başını atoi gibi (man atoi) bir int'e dönüştüren bir
+fonksiyon yaz.
+
+Baştaki boşluk karakterlerini (boşluk, \t, \n, \v, \f, \r) atlar, tek bir
+'+' ya da '-' işaretini kabul eder, sonra rakam olmayan ilk karaktere
+kadar rakamları okur. Tester yalnızca bir int içine sığan sayılar verir.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_atoi(const char *str);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

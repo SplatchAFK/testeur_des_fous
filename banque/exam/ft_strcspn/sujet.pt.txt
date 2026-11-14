@@ -1,0 +1,15 @@
+Exercício           : ft_strcspn
+Ficheiros esperados : ft_strcspn.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que devolve o comprimento do maior início de s que não
+contém nenhum carácter de reject, como strcspn (man strcspn).
+
+Podes incluir <stddef.h> para size_t.
+
+A tua função deve ter este protótipo:
+
+size_t	ft_strcspn(const char *s, const char *reject);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

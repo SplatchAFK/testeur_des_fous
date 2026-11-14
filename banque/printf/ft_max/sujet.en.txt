@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_max(int n, ...);
 
-Notion : va_arg en boucle
-Norme obligatoire. Pas de libft ici.
+Concept: va_arg in a loop
+The Norm is mandatory. No libft here.

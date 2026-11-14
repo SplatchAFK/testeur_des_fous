@@ -1,0 +1,13 @@
+Esercizio           : ft_itoa
+File attesi         : ft_itoa.c
+Funzioni consentite : malloc
+--------------------------------------------------------------
+
+Scrivi una funzione che restituisce una stringa, allocata con malloc, che
+scrive nbr in base 10. Gestisce ogni int, compreso il più piccolo.
+
+La tua funzione deve avere questo prototipo:
+
+char	*ft_itoa(int nbr);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

@@ -1,0 +1,15 @@
+Exercício           : ft_strcpy
+Ficheiros esperados : ft_strcpy.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que copia a string s2 para s1, incluindo o nulo final,
+e devolve s1. Comporta-se como strcpy (man strcpy).
+
+A zona apontada por s1 é sempre grande o suficiente.
+
+A tua função deve ter este protótipo:
+
+char	*ft_strcpy(char *s1, char *s2);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

@@ -1,0 +1,13 @@
+Exercício           : ft_is_conv
+Ficheiros esperados : ft_is_conv.c
+Funções permitidas  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Devolve 1 se c for uma conversão do subject (cspdiuxX%), 0 caso contrário.
+
+A tua função deve ter este protótipo:
+
+int	ft_is_conv(char c);
+
+Conceito: leitura do formato
+A Norma é obrigatória. Sem libft aqui.

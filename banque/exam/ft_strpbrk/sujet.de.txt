@@ -1,0 +1,14 @@
+Aufgabe             : ft_strpbrk
+Erwartete Dateien   : ft_strpbrk.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die einen Zeiger auf das erste Zeichen von s1
+zurückgibt, das in s2 vorkommt, oder NULL, wenn es keines gibt, wie
+strpbrk (man strpbrk).
+
+Deine Funktion muss diesen Prototyp haben:
+
+char	*ft_strpbrk(const char *s1, const char *s2);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

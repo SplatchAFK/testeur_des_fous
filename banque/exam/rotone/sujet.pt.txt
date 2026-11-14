@@ -1,0 +1,25 @@
+Exercício           : rotone
+Ficheiros esperados : rotone.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma string e a mostra, substituindo cada
+letra pela seguinte no alfabeto, seguida de uma quebra de linha.
+
+'z' passa a 'a' e 'Z' passa a 'A'. Maiúsculas e minúsculas mantêm-se. Os
+outros caracteres não mudam.
+
+Se o programa não receber exatamente um argumento, só mostra uma quebra de
+linha.
+
+Exemplos:
+
+$> ./rotone "abc" | cat -e
+bcd$
+$> ./rotone "Le chevalier monte la tour sans se retourner." | cat -e
+Mf difwbmjfs npouf mb upvs tbot tf sfupvsofs.$
+$> ./rotone "ZyxwA aBCDEf , 42z " | cat -e
+AzyxB bCDEFg , 42a $
+$> ./rotone | cat -e
+$
+$>

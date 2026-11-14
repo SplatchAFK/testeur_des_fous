@@ -1,0 +1,12 @@
+Ejercicio            : ft_strrev
+Archivos esperados   : ft_strrev.c
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que invierte la cadena str en el sitio y devuelve str.
+
+Tu función debe tener este prototipo:
+
+char	*ft_strrev(char *str);
+
+El tester la llama desde su propio main: no entregues ninguno.

@@ -1,0 +1,20 @@
+Ejercicio            : rev_print
+Archivos esperados   : rev_print.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y la muestra al revés, seguida
+de un salto de línea.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./rev_print "kayak" | cat -e
+kayak$
+$> ./rev_print "Le Testeur" | cat -e
+ruetseT eL$
+$> ./rev_print | cat -e
+$
+$>

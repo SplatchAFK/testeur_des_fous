@@ -1,0 +1,13 @@
+Aufgabe             : max
+Erwartete Dateien   : max.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die die größte der len ganzen Zahlen des Arrays
+tab zurückgibt. Ist len gleich 0, gibt sie 0 zurück.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	max(int *tab, unsigned int len);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

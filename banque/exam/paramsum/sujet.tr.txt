@@ -1,0 +1,17 @@
+Alıştırma                 : paramsum
+Beklenen dosyalar         : paramsum.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Aldığı argüman sayısını, ardından bir satır sonu gösteren bir program yaz.
+Argüman yoksa 0 gösterir.
+
+Örnekler:
+
+$> ./paramsum | cat -e
+0$
+$> ./paramsum "1" "2" "3" | cat -e
+3$
+$> ./paramsum "le testeur" "des fous" | cat -e
+2$
+$>

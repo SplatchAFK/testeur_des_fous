@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_dprintf_mini(int fd, const char *fmt, ...);
 
-Notion : dprintf
-Norme obligatoire. Pas de libft ici.
+Concept: dprintf
+The Norm is mandatory. No libft here.

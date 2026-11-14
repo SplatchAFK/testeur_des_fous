@@ -1,0 +1,22 @@
+Exercício           : ulstr
+Ficheiros esperados : ulstr.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma string e a mostra invertendo maiúsculas
+e minúsculas de cada letra, seguida de uma quebra de linha. As minúsculas
+passam a maiúsculas, as maiúsculas passam a minúsculas. Os outros
+caracteres não mudam.
+
+Se o programa não receber exatamente um argumento, só mostra uma quebra de
+linha.
+
+Exemplos:
+
+$> ./ulstr "Le TeSTeuR dEs fOUs cAsSe toN cOde eT te diT oU reGarDer." | cat -e
+lE tEstEUr DeS FouS CaSsE TOn CoDE Et TE DIt Ou REgARdER.$
+$> ./ulstr "3:21 uN peU de ToUt, 42 fOiS" | cat -e
+3:21 Un PEu DE tOuT, 42 FoIs$
+$> ./ulstr | cat -e
+$
+$>

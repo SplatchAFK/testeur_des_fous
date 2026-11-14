@@ -1,0 +1,31 @@
+Exercício           : sort_list
+Ficheiros esperados : sort_list.c, list.h
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que ordena a lista lst usando a função cmp e devolve um
+ponteiro para o primeiro elemento da lista ordenada.
+
+cmp(a, b) devolve um valor diferente de zero quando a e b estão pela ordem
+certa, e 0 caso contrário. Por exemplo, para uma ordenação crescente:
+
+int ascending(int a, int b)
+{
+    return (a <= b);
+}
+
+Entrega também o ficheiro list.h, que declara:
+
+typedef struct s_list t_list;
+
+struct s_list
+{
+    int     data;
+    t_list  *next;
+};
+
+A tua função deve ter este protótipo:
+
+t_list	*sort_list(t_list *lst, int (*cmp)(int, int));
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

@@ -1,0 +1,13 @@
+Aufgabe             : ft_bitcount
+Erwartete Dateien   : ft_bitcount.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Gib die Anzahl der auf 1 gesetzten Bits in n zurück.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int		ft_bitcount(unsigned int n);
+
+Konzept: Bitoperatoren
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

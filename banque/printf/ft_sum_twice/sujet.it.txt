@@ -1,0 +1,13 @@
+Esercizio           : ft_sum_twice
+File attesi         : ft_sum_twice.c
+Funzioni consentite : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Leggi gli n interi due volte con va_copy: restituisci (somma degli n interi) per (numero di interi pari).
+
+La tua funzione deve avere questo prototipo:
+
+int	ft_sum_twice(int n, ...);
+
+Concetto: va_copy
+La Norma è obbligatoria. Niente libft qui.

@@ -1,0 +1,13 @@
+Exercício           : ft_sort_strs
+Ficheiros esperados : ft_sort_strs.c
+Funções permitidas  : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Ordena no próprio lugar um array terminado em NULL usando cmp. Troca apenas os ponteiros.
+
+A tua função deve ter este protótipo:
+
+void	ft_sort_strs(char **tab, int (*cmp)(const char *, const char *));
+
+Conceito: ponteiros para função e ordenação
+A Norma é obrigatória. As funções auxiliares têm de ser static.

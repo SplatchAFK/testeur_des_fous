@@ -1,0 +1,13 @@
+Alıştırma                 : ft_tabdup
+Beklenen dosyalar         : ft_tabdup.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+NULL ile biten bir dize dizisinin derin kopyasını çıkar. Bir malloc başarısız olursa her şeyi serbest bırak.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	**ft_tabdup(char **tab);
+
+Kavram: 2D dizi ve kısmi serbest bırakma
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

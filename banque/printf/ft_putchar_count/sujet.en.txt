@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_putchar_count(char c);
 
-Notion : write et sa valeur de retour
-Norme obligatoire. Pas de libft ici.
+Concept: write and its return value
+The Norm is mandatory. No libft here.

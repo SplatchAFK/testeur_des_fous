@@ -1,0 +1,13 @@
+Aufgabe             : is_power_of_2
+Erwartete Dateien   : is_power_of_2.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die 1 zurückgibt, wenn n eine Zweierpotenz ist,
+und sonst 0. 0 ist keine Zweierpotenz.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	is_power_of_2(unsigned int n);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

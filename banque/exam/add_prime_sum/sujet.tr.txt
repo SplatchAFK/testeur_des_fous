@@ -1,0 +1,25 @@
+Alıştırma                 : add_prime_sum
+Beklenen dosyalar         : add_prime_sum.c
+İzin verilen fonksiyonlar : write, exit
+--------------------------------------------------------------
+
+Kesinlikle pozitif bir tam sayı alan ve ondan küçük ya da ona eşit tüm
+asal sayıların toplamını, ardından bir satır sonu gösteren bir program
+yaz.
+
+Program tam olarak bir argüman almazsa ya da sayı kesinlikle pozitif
+değilse, 0 ve ardından bir satır sonu gösterir.
+
+atoi yasak: kendi dönüşümünü yaz.
+
+Örnekler:
+
+$> ./add_prime_sum "5" | cat -e
+10$
+$> ./add_prime_sum "7" | cat -e
+17$
+$> ./add_prime_sum | cat -e
+0$
+$> ./add_prime_sum "-5" | cat -e
+0$
+$>

@@ -1,0 +1,26 @@
+Ejercicio            : rot_13
+Archivos esperados   : rot_13.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y la muestra, sustituyendo cada
+letra por la que está trece posiciones más adelante en el alfabeto,
+seguida de un salto de línea.
+
+Después de 'z' vuelve a 'a', después de 'Z' vuelve a 'A'. Se conserva la
+mayúscula o minúscula. Los demás caracteres no cambian.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./rot_13 "abc" | cat -e
+nop$
+$> ./rot_13 "Mon chat est Gris." | cat -e
+Zba pung rfg Tevf.$
+$> ./rot_13 "ZyxwA aBCDEf , 42z " | cat -e
+MlkjN nOPQRs , 42m $
+$> ./rot_13 | cat -e
+$
+$>

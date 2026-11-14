@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_puthex_count(unsigned int n, int upper);
 
-Notion : hexadécimal et casse
-Norme obligatoire. Pas de libft ici.
+Concept: hexadecimal and case
+The Norm is mandatory. No libft here.

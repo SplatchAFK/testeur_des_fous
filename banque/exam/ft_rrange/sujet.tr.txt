@@ -1,0 +1,19 @@
+Alıştırma                 : ft_rrange
+Beklenen dosyalar         : ft_rrange.c
+İzin verilen fonksiyonlar : malloc
+--------------------------------------------------------------
+
+malloc ile bir tam sayı dizisi ayıran, onu end'den start'a giden ardışık
+değerlerle, ikisi de dahil, dolduran ve bu diziyi döndüren bir fonksiyon
+yaz.
+
+Dizi her zaman end ile başlar.
+
+Örneğin: (1, 3) 3, 2, 1 verir; (-1, 2) 2, 1, 0, -1 verir; (0, -3) -3, -2,
+-1, 0 verir.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	*ft_rrange(int start, int end);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

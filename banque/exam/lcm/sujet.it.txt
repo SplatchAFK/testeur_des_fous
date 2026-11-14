@@ -1,0 +1,14 @@
+Esercizio           : lcm
+File attesi         : lcm.c
+Funzioni consentite : nessuna
+--------------------------------------------------------------
+
+Scrivi una funzione che restituisce il minimo comune multiplo di a e b,
+cioè il più piccolo intero non nullo divisibile sia per a sia per b. Se a
+o b vale 0, restituisce 0.
+
+La tua funzione deve avere questo prototipo:
+
+unsigned int	lcm(unsigned int a, unsigned int b);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

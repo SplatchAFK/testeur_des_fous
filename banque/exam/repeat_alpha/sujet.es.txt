@@ -1,0 +1,27 @@
+Ejercicio            : repeat_alpha
+Archivos esperados   : repeat_alpha.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y la muestra, repitiendo cada
+letra tantas veces como su posición en el alfabeto, seguida de un salto de
+línea.
+
+'a' se muestra una vez, 'b' dos veces, 'c' tres veces, y así hasta 'z',
+veintiséis veces. Se conserva la mayúscula o minúscula. Los caracteres que
+no son letras se muestran una vez.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./repeat_alpha "abc" | cat -e
+abbccc$
+$> ./repeat_alpha "Marvin." | cat -e
+MMMMMMMMMMMMMarrrrrrrrrrrrrrrrrrvvvvvvvvvvvvvvvvvvvvvviiiiiiiiinnnnnnnnnnnnnn.$
+$> ./repeat_alpha "moulinette 42!" | cat -e
+mmmmmmmmmmmmmooooooooooooooouuuuuuuuuuuuuuuuuuuuulllllllllllliiiiiiiiinnnnnnnnnnnnnneeeeetttttttttttttttttttttttttttttttttttttttteeeee 42!$
+$> ./repeat_alpha | cat -e
+$
+$>

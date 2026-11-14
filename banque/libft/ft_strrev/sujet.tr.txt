@@ -1,0 +1,13 @@
+Alıştırma                 : ft_strrev
+Beklenen dosyalar         : ft_strrev.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+s'yi yerinde (malloc olmadan) ters çevir ve s'yi döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_strrev(char *s);
+
+Kavram: yerinde değiş tokuş, iki indeks
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

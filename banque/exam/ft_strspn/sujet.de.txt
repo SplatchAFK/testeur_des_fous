@@ -1,0 +1,16 @@
+Aufgabe             : ft_strspn
+Erwartete Dateien   : ft_strspn.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die die Länge des längsten Anfangs von s
+zurückgibt, der nur aus Zeichen aus accept besteht, wie strspn (man
+strspn).
+
+Du darfst <stddef.h> für size_t einbinden.
+
+Deine Funktion muss diesen Prototyp haben:
+
+size_t	ft_strspn(const char *s, const char *accept);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

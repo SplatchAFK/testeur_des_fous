@@ -1,0 +1,13 @@
+Ejercicio            : ft_lstsort
+Archivos esperados   : ft_lstsort.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Ordena la lista en orden ascendente según cmp.
+
+Tu función debe tener este prototipo:
+
+void	ft_lstsort(t_list **lst, int (*cmp)(const void *, const void *));
+
+Concepto: ordenar una lista enlazada
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

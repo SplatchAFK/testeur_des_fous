@@ -1,0 +1,13 @@
+Esercizio           : ft_putchar_count
+File attesi         : ft_putchar_count.c
+Funzioni consentite : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Scrivi c sull'output standard. Restituisci il numero di byte scritti (1), o -1 se write fallisce.
+
+La tua funzione deve avere questo prototipo:
+
+int	ft_putchar_count(char c);
+
+Concetto: write e il suo valore di ritorno
+La Norma è obbligatoria. Niente libft qui.

@@ -1,0 +1,27 @@
+Aufgabe             : fprime
+Erwartete Dateien   : fprime.c
+Erlaubte Funktionen : printf, atoi
+--------------------------------------------------------------
+
+Schreibe ein Programm, das eine streng positive ganze Zahl erhält und ihre
+Primfaktorzerlegung anzeigt, vom kleinsten zum größten Faktor, getrennt
+durch '*', gefolgt von einem Zeilenumbruch. Für 1 zeigt es 1 an.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an. Der Tester gibt nur Zahlen, die in einen int passen.
+
+Beispiele:
+
+$> ./fprime "225225" | cat -e
+3*3*5*5*7*11*13$
+$> ./fprime "8333325" | cat -e
+3*3*5*5*7*11*13*37$
+$> ./fprime "9539" | cat -e
+9539$
+$> ./fprime "42" | cat -e
+2*3*7$
+$> ./fprime "1" | cat -e
+1$
+$> ./fprime | cat -e
+$
+$>

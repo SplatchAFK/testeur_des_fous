@@ -1,0 +1,13 @@
+Esercizio           : ft_strlen
+File attesi         : ft_strlen.c
+Funzioni consentite : nessuna
+--------------------------------------------------------------
+
+Scrivi una funzione che restituisce la lunghezza di una stringa, cioè il
+numero di caratteri prima del terminatore nullo.
+
+La tua funzione deve avere questo prototipo:
+
+int	ft_strlen(char *str);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

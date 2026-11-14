@@ -1,0 +1,15 @@
+Alıştırma                 : ft_strspn
+Beklenen dosyalar         : ft_strspn.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+s'nin yalnızca accept içindeki karakterlerden oluşan en uzun başlangıç
+kısmının uzunluğunu strspn gibi (man strspn) döndüren bir fonksiyon yaz.
+
+size_t için <stddef.h> ekleyebilirsin.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+size_t	ft_strspn(const char *s, const char *accept);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

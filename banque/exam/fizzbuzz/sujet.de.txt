@@ -1,0 +1,29 @@
+Aufgabe             : fizzbuzz
+Erwartete Dateien   : fizzbuzz.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das die Zahlen von 1 bis 100 anzeigt, eine pro Zeile.
+
+Drei Regeln ersetzen einige der Zahlen:
+- ein Vielfaches von 3 wird durch "fizz" ersetzt;
+- ein Vielfaches von 5 wird durch "buzz" ersetzt;
+- ein Vielfaches von 3 und von 5 zugleich wird durch "fizzbuzz" ersetzt.
+
+Das Programm ignoriert seine Argumente.
+
+Anfang der erwarteten Ausgabe:
+
+$> ./fizzbuzz
+1
+2
+fizz
+4
+buzz
+fizz
+7
+[...]
+14
+fizzbuzz
+16
+[...]

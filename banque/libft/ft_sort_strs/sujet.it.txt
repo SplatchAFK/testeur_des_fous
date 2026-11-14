@@ -1,0 +1,13 @@
+Esercizio           : ft_sort_strs
+File attesi         : ft_sort_strs.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Ordina sul posto un array terminato da NULL usando cmp. Scambia solo i puntatori.
+
+La tua funzione deve avere questo prototipo:
+
+void	ft_sort_strs(char **tab, int (*cmp)(const char *, const char *));
+
+Concetto: puntatori a funzione e ordinamento
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

@@ -1,0 +1,22 @@
+Esercizio           : print_hex
+File attesi         : print_hex.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve un intero positivo scritto in base 10 e lo
+mostra in base 16, in minuscolo, seguito da un a capo.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./print_hex "10" | cat -e
+a$
+$> ./print_hex "255" | cat -e
+ff$
+$> ./print_hex "5156454" | cat -e
+4eae66$
+$> ./print_hex | cat -e
+$
+$>

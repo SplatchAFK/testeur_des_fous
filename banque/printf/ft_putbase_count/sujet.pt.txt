@@ -1,0 +1,13 @@
+Exercício           : ft_putbase_count
+Ficheiros esperados : ft_putbase_count.c
+Funções permitidas  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Escreve n na base dada (base = "0123456789abcdef" por exemplo). Devolve o número de caracteres escritos.
+
+A tua função deve ter este protótipo:
+
+int	ft_putbase_count(unsigned long n, char *base);
+
+Conceito: conversão de base
+A Norma é obrigatória. Sem libft aqui.

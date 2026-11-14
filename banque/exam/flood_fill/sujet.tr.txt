@@ -1,0 +1,26 @@
+Alıştırma                 : flood_fill
+Beklenen dosyalar         : flood_fill.c, t_point.h
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+İki boyutlu bir karakter dizisinin bir bölgesini "dolduran" bir fonksiyon
+yaz.
+
+tab, size.y satır ve size.x sütundan oluşur. Bölge begin hücresinden
+(sütun begin.x, satır begin.y) başlar ve aynı karaktere sahip olup yatay
+ya da dikey hareketle, asla çapraz değil, ulaşılabilen her hücreyi kapsar.
+Bölgenin her hücresi 'F' ile değiştirilir.
+
+Şunu bildiren t_point.h dosyasını da teslim et:
+
+typedef struct  s_point
+{
+    int         x;
+    int         y;
+}               t_point;
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	flood_fill(char **tab, t_point size, t_point begin);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

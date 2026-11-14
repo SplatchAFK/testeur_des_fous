@@ -1,0 +1,26 @@
+Alıştırma                 : ft_list_remove_if
+Beklenen dosyalar         : ft_list_remove_if.c, ft_list.h
+İzin verilen fonksiyonlar : free
+--------------------------------------------------------------
+
+*begin_list ile başlayan listeden verisi data_ref'e "eşit" olan her
+elemanı çıkaran ve bu elemanları free ile serbest bırakan bir fonksiyon
+yaz.
+
+cmp(element->data, data_ref) 0 döndürdüğünde bir eleman eşittir. Fonksiyon
+verinin kendisini serbest bırakmaz. İlk eleman çıkarıldığında bile
+*begin_list doğru kalmalıdır.
+
+Aşağıdaki yapıyı bildiren ft_list.h dosyasını da teslim et:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
+
+Tester onu kendi main'inden çağırır: main teslim etme.

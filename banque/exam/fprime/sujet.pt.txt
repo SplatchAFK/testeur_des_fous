@@ -1,0 +1,27 @@
+Exercício           : fprime
+Ficheiros esperados : fprime.c
+Funções permitidas  : printf, atoi
+--------------------------------------------------------------
+
+Escreve um programa que recebe um inteiro estritamente positivo e mostra a
+sua decomposição em fatores primos, do menor fator para o maior, separados
+por '*', seguida de uma quebra de linha. Para 1, mostra 1.
+
+Se o programa não receber exatamente um argumento, só mostra uma quebra de
+linha. O tester só dá números que cabem num int.
+
+Exemplos:
+
+$> ./fprime "225225" | cat -e
+3*3*5*5*7*11*13$
+$> ./fprime "8333325" | cat -e
+3*3*5*5*7*11*13*37$
+$> ./fprime "9539" | cat -e
+9539$
+$> ./fprime "42" | cat -e
+2*3*7$
+$> ./fprime "1" | cat -e
+1$
+$> ./fprime | cat -e
+$
+$>

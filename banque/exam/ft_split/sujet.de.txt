@@ -1,0 +1,16 @@
+Aufgabe             : ft_split
+Erwartete Dateien   : ft_split.c
+Erlaubte Funktionen : malloc
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die den String str in Wörter zerlegt und ein mit
+malloc reserviertes, mit NULL abgeschlossenes Array von Strings
+zurückgibt. Jedes Wort wird ebenfalls mit malloc reserviert.
+
+Wörter werden durch Leerzeichen, Tabulatoren oder Zeilenumbrüche getrennt.
+
+Deine Funktion muss diesen Prototyp haben:
+
+char	**ft_split(char *str);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

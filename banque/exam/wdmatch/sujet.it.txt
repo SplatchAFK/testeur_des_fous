@@ -1,0 +1,26 @@
+Esercizio           : wdmatch
+File attesi         : wdmatch.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve due stringhe e verifica che ogni carattere
+della prima si trovi nella seconda, nello stesso ordine (non
+necessariamente uno accanto all'altro).
+
+Se è possibile, mostra la prima stringa seguita da un a capo. Altrimenti,
+mostra solo un a capo.
+
+Se il programma non riceve esattamente due argomenti, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./wdmatch "chat" "le chevalier a trouve" | cat -e
+chat$
+$> ./wdmatch "tour" "ta tour est en haut" | cat -e
+tour$
+$> ./wdmatch "zzz" "zz" | cat -e
+$
+$> ./wdmatch "seul" | cat -e
+$
+$>

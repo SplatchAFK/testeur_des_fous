@@ -1,0 +1,17 @@
+Aufgabe             : paramsum
+Erwartete Dateien   : paramsum.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das die Anzahl der erhaltenen Argumente anzeigt,
+gefolgt von einem Zeilenumbruch. Ohne Argumente zeigt es 0 an.
+
+Beispiele:
+
+$> ./paramsum | cat -e
+0$
+$> ./paramsum "1" "2" "3" | cat -e
+3$
+$> ./paramsum "le testeur" "des fous" | cat -e
+2$
+$>

@@ -1,0 +1,27 @@
+Alıştırma                 : search_and_replace
+Beklenen dosyalar         : search_and_replace.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Üç argüman alan bir program yaz: bir dize, aranacak bir karakter ve yerine
+konacak bir karakter. Dizeyi, birinci karakterin her geçtiği yeri
+ikinciyle değiştirerek, ardından bir satır sonuyla gösterir.
+
+Program tam olarak üç argüman almazsa ya da ikinci veya üçüncü argüman tam
+olarak bir karakter uzunluğunda değilse, yalnızca bir satır sonu gösterir.
+
+Aranan karakter yoksa dize değişmeden gösterilir.
+
+Örnekler:
+
+$> ./search_and_replace "Marvin garde la tour" "a" "o" | cat -e
+Morvin gorde lo tour$
+$> ./search_and_replace "tour" "abc" "xyz" | cat -e
+$
+$> ./search_and_replace "tour" "r" "l" | cat -e
+toul$
+$> ./search_and_replace "marvin" "a" "b" "c" "e" | cat -e
+$
+$> ./search_and_replace "wncorw un wxwmplw pas facilw a wcrirw " "w" "e" | cat -e
+encore un exemple pas facile a ecrire $
+$>

@@ -1,0 +1,13 @@
+Aufgabe             : ft_strjoin_n
+Erwartete Dateien   : ft_strjoin_n.c
+Erlaubte Funktionen : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Gib einen neuen String zurück (malloc mit exakter Größe), der die n Strings nach n verbindet. NULL, wenn malloc fehlschlägt.
+
+Deine Funktion muss diesen Prototyp haben:
+
+char	*ft_strjoin_n(int n, ...);
+
+Konzept: zwei Durchgänge über die Argumente
+Die Norm ist Pflicht. Keine libft hier.

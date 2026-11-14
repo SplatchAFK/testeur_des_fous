@@ -1,0 +1,12 @@
+Exercício           : ft_strrev
+Ficheiros esperados : ft_strrev.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que inverte a string str no próprio lugar e devolve str.
+
+A tua função deve ter este protótipo:
+
+char	*ft_strrev(char *str);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

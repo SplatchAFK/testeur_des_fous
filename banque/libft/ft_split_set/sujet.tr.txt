@@ -1,0 +1,13 @@
+Alıştırma                 : ft_split_set
+Beklenen dosyalar         : ft_split_set.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+ft_split gibi, ama set içindeki herhangi bir karakterde böler.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	**ft_split_set(char const *s, char const *set);
+
+Kavram: genelleştirilmiş split
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

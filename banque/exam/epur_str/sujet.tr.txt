@@ -1,0 +1,25 @@
+Alıştırma                 : epur_str
+Beklenen dosyalar         : epur_str.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve onu kelimeler arasında tam olarak bir boşlukla, başında
+ve sonunda boşluk ya da sekme olmadan, ardından bir satır sonuyla gösteren
+bir program yaz.
+
+Bir kelime, boşluklar, sekmeler ya da dizenin başı ve sonuyla sınırlanan
+bir karakter dizisidir.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./epur_str "  le   testeur	 des    fous  " | cat -e
+le testeur des fous$
+$> ./epur_str "un mot" | cat -e
+un mot$
+$> ./epur_str "   " | cat -e
+$
+$> ./epur_str | cat -e
+$
+$>

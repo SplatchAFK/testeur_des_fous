@@ -1,0 +1,27 @@
+Aufgabe             : flood_fill
+Erwartete Dateien   : flood_fill.c, t_point.h
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die einen Bereich eines zweidimensionalen Arrays
+von Zeichen "füllt".
+
+tab hat size.y Zeilen und size.x Spalten. Der Bereich beginnt bei der
+Zelle begin (Spalte begin.x, Zeile begin.y) und umfasst jede Zelle mit
+demselben Zeichen, die sich durch waagerechte oder senkrechte Schritte
+erreichen lässt, nie diagonal. Jede Zelle des Bereichs wird durch 'F'
+ersetzt.
+
+Gib auch die Datei t_point.h ab, die Folgendes deklariert:
+
+typedef struct  s_point
+{
+    int         x;
+    int         y;
+}               t_point;
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	flood_fill(char **tab, t_point size, t_point begin);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

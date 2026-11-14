@@ -1,0 +1,13 @@
+Ejercicio            : ft_lstrotate
+Archivos esperados   : ft_lstrotate.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Rota la lista n posiciones (negativo va hacia atrás, n puede superar el tamaño o valer INT_MIN).
+
+Tu función debe tener este prototipo:
+
+void	ft_lstrotate(t_list **lst, int n);
+
+Concepto: módulo, negativos, enlazar la cola
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

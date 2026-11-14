@@ -1,0 +1,13 @@
+Aufgabe             : ft_sort_strs
+Erwartete Dateien   : ft_sort_strs.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Sortiere ein mit NULL abgeschlossenes Array an Ort und Stelle mit cmp. Vertausche nur die Zeiger.
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	ft_sort_strs(char **tab, int (*cmp)(const char *, const char *));
+
+Konzept: Funktionszeiger und Sortieren
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

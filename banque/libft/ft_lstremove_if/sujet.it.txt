@@ -1,0 +1,14 @@
+Esercizio           : ft_lstremove_if
+File attesi         : ft_lstremove_if.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Rimuovi ogni nodo in cui cmp(content, ref) == 0 (del poi free).
+
+La tua funzione deve avere questo prototipo:
+
+void	ft_lstremove_if(t_list **lst, const void *ref,
+			int (*cmp)(const void *, const void *), void (*del)(void *));
+
+Concetto: rimuovere mentre si scorre, t_list **
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

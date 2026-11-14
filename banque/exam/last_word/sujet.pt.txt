@@ -1,0 +1,25 @@
+Exercício           : last_word
+Ficheiros esperados : last_word.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma string e mostra a sua última palavra,
+seguida de uma quebra de linha.
+
+Uma palavra é uma sequência de caracteres delimitada por espaços,
+tabulações, ou pelo início e pelo fim da string.
+
+Se o programa não receber exatamente um argumento, ou se a string não
+contiver nenhuma palavra, só mostra uma quebra de linha.
+
+Exemplos:
+
+$> ./last_word "le dernier mot" | cat -e
+mot$
+$> ./last_word "   espaces a la fin   " | cat -e
+fin$
+$> ./last_word "   " | cat -e
+$
+$> ./last_word "a" "b" | cat -e
+$
+$>

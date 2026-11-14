@@ -1,0 +1,25 @@
+Ejercicio            : camel_to_snake
+Archivos esperados   : camel_to_snake.c
+Funciones permitidas : malloc, free, realloc, write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena escrita en lowerCamelCase y la
+muestra en snake_case, seguida de un salto de línea.
+
+Cada letra mayúscula se convierte en un '_' seguido de la misma letra en
+minúscula. El resto no cambia.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./camel_to_snake "leTesteurDesFous" | cat -e
+le_testeur_des_fous$
+$> ./camel_to_snake "unMotSimple" | cat -e
+un_mot_simple$
+$> ./camel_to_snake "dejaenminuscule" | cat -e
+dejaenminuscule$
+$> ./camel_to_snake | cat -e
+$
+$>

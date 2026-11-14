@@ -1,6 +1,6 @@
 Assignment name    : ft_strrev
 Expected files     : ft_strrev.c
-Allowed functions  : malloc, free, write, ta libft
+Allowed functions  : malloc, free, write, your libft
 --------------------------------------------------------------
 
 Reverse s in place (no malloc) and return s.
@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 char	*ft_strrev(char *s);
 
-Notion : échange en place, deux index
-Norme obligatoire. Les fonctions d'aide doivent être static.
+Concept: in-place swap, two indexes
+The Norm is mandatory. Helper functions must be static.

@@ -1,0 +1,15 @@
+Alıştırma                 : swap_bits
+Beklenen dosyalar         : swap_bits.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+octet'in iki yarısını değiş tokuş eden bir fonksiyon yaz: 4 yüksek bit 4
+düşük bitin yerini alır ve tersi.
+
+Örneğin 01000001, 00010100 olur.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+unsigned char	swap_bits(unsigned char octet);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

@@ -1,0 +1,13 @@
+Aufgabe             : ft_strlen
+Erwartete Dateien   : ft_strlen.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die die Länge eines Strings zurückgibt, also die
+Anzahl der Zeichen vor dem abschließenden Nullzeichen.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_strlen(char *str);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

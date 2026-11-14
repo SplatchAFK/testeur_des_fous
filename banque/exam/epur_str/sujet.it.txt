@@ -1,0 +1,26 @@
+Esercizio           : epur_str
+File attesi         : epur_str.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una stringa e la mostra con esattamente uno
+spazio tra le parole, senza spazi né tabulazioni all'inizio o alla fine,
+seguita da un a capo.
+
+Una parola è una sequenza di caratteri delimitata da spazi, tabulazioni, o
+dall'inizio e dalla fine della stringa.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./epur_str "  le   testeur	 des    fous  " | cat -e
+le testeur des fous$
+$> ./epur_str "un mot" | cat -e
+un mot$
+$> ./epur_str "   " | cat -e
+$
+$> ./epur_str | cat -e
+$
+$>

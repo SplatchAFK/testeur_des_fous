@@ -1,0 +1,13 @@
+Exercício           : ft_putnbr_base_fd
+Ficheiros esperados : ft_putnbr_base_fd.c
+Funções permitidas  : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Escreve n em base no fd. Uma base inválida não escreve nada. Trata LONG_MIN.
+
+A tua função deve ter este protótipo:
+
+void	ft_putnbr_base_fd(long n, const char *base, int fd);
+
+Conceito: recursão e write
+A Norma é obrigatória. As funções auxiliares têm de ser static.

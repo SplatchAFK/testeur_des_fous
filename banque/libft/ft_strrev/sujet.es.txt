@@ -1,0 +1,13 @@
+Ejercicio            : ft_strrev
+Archivos esperados   : ft_strrev.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Invierte s en el sitio (sin malloc) y devuelve s.
+
+Tu función debe tener este prototipo:
+
+char	*ft_strrev(char *s);
+
+Concepto: intercambio en el sitio, dos índices
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

@@ -1,0 +1,13 @@
+Alıştırma                 : ft_sort_strs
+Beklenen dosyalar         : ft_sort_strs.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+NULL ile biten bir diziyi cmp kullanarak yerinde sırala. Yalnızca işaretçileri değiş tokuş et.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_sort_strs(char **tab, int (*cmp)(const char *, const char *));
+
+Kavram: fonksiyon işaretçileri ve sıralama
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

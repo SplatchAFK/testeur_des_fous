@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_putbase_count(unsigned long n, char *base);
 
-Notion : conversion de base
-Norme obligatoire. Pas de libft ici.
+Concept: base conversion
+The Norm is mandatory. No libft here.

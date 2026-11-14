@@ -1,0 +1,31 @@
+Alıştırma                 : sort_list
+Beklenen dosyalar         : sort_list.c, list.h
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+lst listesini cmp fonksiyonunu kullanarak sıralayan ve sıralı listenin ilk
+elemanına bir işaretçi döndüren bir fonksiyon yaz.
+
+cmp(a, b), a ve b doğru sıradaysa sıfırdan farklı bir değer, aksi halde 0
+döndürür. Örneğin artan bir sıralama için:
+
+int ascending(int a, int b)
+{
+    return (a <= b);
+}
+
+Şunu bildiren list.h dosyasını da teslim et:
+
+typedef struct s_list t_list;
+
+struct s_list
+{
+    int     data;
+    t_list  *next;
+};
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+t_list	*sort_list(t_list *lst, int (*cmp)(int, int));
+
+Tester onu kendi main'inden çağırır: main teslim etme.

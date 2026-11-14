@@ -1,0 +1,15 @@
+Esercizio           : print_bits
+File attesi         : print_bits.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi una funzione che mostra gli 8 bit di octet, dal più alto al più
+basso, senza a capo.
+
+Per esempio, 2 è mostrato come 00000010.
+
+La tua funzione deve avere questo prototipo:
+
+void	print_bits(unsigned char octet);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

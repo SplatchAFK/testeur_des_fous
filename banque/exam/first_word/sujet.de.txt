@@ -1,0 +1,27 @@
+Aufgabe             : first_word
+Erwartete Dateien   : first_word.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und sein erstes Wort
+anzeigt, gefolgt von einem Zeilenumbruch.
+
+Ein Wort ist eine Folge von Zeichen, die durch Leerzeichen, Tabulatoren
+oder durch den Anfang und das Ende des Strings begrenzt ist.
+
+Wenn das Programm nicht genau ein Argument erhält oder der String kein
+Wort enthält, zeigt es nur einen Zeilenumbruch an.
+
+Beispiele:
+
+$> ./first_word "PREMIER mot" | cat -e
+PREMIER$
+$> ./first_word "un        ...       test avec, des    espaces" | cat -e
+un$
+$> ./first_word "   " | cat -e
+$
+$> ./first_word "a" "b" | cat -e
+$
+$> ./first_word "  deux,mots  " | cat -e
+deux,mots$
+$>

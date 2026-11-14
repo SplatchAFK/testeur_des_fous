@@ -1,0 +1,16 @@
+Aufgabe             : ft_strcpy
+Erwartete Dateien   : ft_strcpy.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die den String s2 samt abschließendem Nullzeichen
+nach s1 kopiert und s1 zurückgibt. Sie verhält sich wie strcpy (man
+strcpy).
+
+Der Bereich, auf den s1 zeigt, ist immer groß genug.
+
+Deine Funktion muss diesen Prototyp haben:
+
+char	*ft_strcpy(char *s1, char *s2);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

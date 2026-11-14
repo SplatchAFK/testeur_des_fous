@@ -1,0 +1,13 @@
+Alıştırma                 : ft_str_replace
+Beklenen dosyalar         : ft_str_replace.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+old'un her geçtiği yeri soldan sağa new ile değiştirerek yeni bir dizede döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_str_replace(const char *s, const char *old, const char *new);
+
+Kavram: iki geçiş: önce say, sonra kur
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

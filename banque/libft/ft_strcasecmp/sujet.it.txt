@@ -1,0 +1,13 @@
+Esercizio           : ft_strcasecmp
+File attesi         : ft_strcasecmp.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Confronta s1 e s2 ignorando maiuscole e minuscole, stesso segno di strcasecmp(3).
+
+La tua funzione deve avere questo prototipo:
+
+int		ft_strcasecmp(const char *s1, const char *s2);
+
+Concetto: unsigned char e tolower
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

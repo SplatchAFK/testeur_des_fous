@@ -1,0 +1,23 @@
+Ejercicio            : inter
+Archivos esperados   : inter.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe dos cadenas y muestra, sin duplicados, los
+caracteres que aparecen en ambas, en el orden en que aparecen en la
+primera, seguidos de un salto de línea.
+
+Si el programa no recibe exactamente dos argumentos, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$> ./inter "le testeur" "des fous" | cat -e
+e su$
+$> ./inter "rien" "zzz" | cat -e
+$
+$> ./inter "seul" | cat -e
+$
+$>

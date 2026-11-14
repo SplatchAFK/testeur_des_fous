@@ -1,0 +1,26 @@
+Ejercicio            : do_op
+Archivos esperados   : do_op.c
+Funciones permitidas : atoi, printf, write
+--------------------------------------------------------------
+
+Escribe un programa que recibe tres argumentos: un número, un operador y
+otro número. Muestra el resultado de la operación, seguido de un salto de
+línea.
+
+Los operadores son '+', '-', '*', '/' y '%'. Los números caben en un int,
+y el tester nunca divide por cero.
+
+Si el programa no recibe exactamente tres argumentos, solo muestra un
+salto de línea.
+
+Ejemplos:
+
+$> ./do_op "123" "*" "456" | cat -e
+56088$
+$> ./do_op "9828" "/" "234" | cat -e
+42$
+$> ./do_op "10" "+" "-43" | cat -e
+-33$
+$> ./do_op | cat -e
+$
+$>

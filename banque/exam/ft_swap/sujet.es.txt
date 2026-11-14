@@ -1,0 +1,13 @@
+Ejercicio            : ft_swap
+Archivos esperados   : ft_swap.c
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que intercambia los valores de los dos enteros cuyas
+direcciones recibe.
+
+Tu función debe tener este prototipo:
+
+void	ft_swap(int *a, int *b);
+
+El tester la llama desde su propio main: no entregues ninguno.

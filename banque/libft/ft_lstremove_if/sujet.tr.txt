@@ -1,0 +1,14 @@
+Alıştırma                 : ft_lstremove_if
+Beklenen dosyalar         : ft_lstremove_if.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+cmp(content, ref) == 0 olan her düğümü çıkar (önce del, sonra free).
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_lstremove_if(t_list **lst, const void *ref,
+			int (*cmp)(const void *, const void *), void (*del)(void *));
+
+Kavram: dolaşırken silme, t_list **
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

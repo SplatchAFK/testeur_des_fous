@@ -1,0 +1,21 @@
+Ejercicio            : ft_list_foreach
+Archivos esperados   : ft_list_foreach.c, ft_list.h
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que aplica la función f a los datos de cada elemento
+de la lista que empieza en begin_list, en el orden de la lista.
+
+Entrega también el archivo ft_list.h, que declara la siguiente estructura:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Tu función debe tener este prototipo:
+
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
+
+El tester la llama desde su propio main: no entregues ninguno.

@@ -1,0 +1,24 @@
+Alıştırma                 : rotone
+Beklenen dosyalar         : rotone.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve her harfi alfabedeki bir sonrakiyle değiştirerek,
+ardından bir satır sonuyla gösteren bir program yaz.
+
+'z' 'a' olur ve 'Z' 'A' olur. Büyük/küçük harf korunur. Diğer karakterler
+değişmez.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./rotone "abc" | cat -e
+bcd$
+$> ./rotone "Le chevalier monte la tour sans se retourner." | cat -e
+Mf difwbmjfs npouf mb upvs tbot tf sfupvsofs.$
+$> ./rotone "ZyxwA aBCDEf , 42z " | cat -e
+AzyxB bCDEFg , 42a $
+$> ./rotone | cat -e
+$
+$>

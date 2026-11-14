@@ -1,0 +1,19 @@
+Esercizio           : ft_rrange
+File attesi         : ft_rrange.c
+Funzioni consentite : malloc
+--------------------------------------------------------------
+
+Scrivi una funzione che alloca con malloc un array di interi, lo riempie
+con i valori consecutivi che vanno da end a start, entrambi inclusi, e
+restituisce questo array.
+
+L'array inizia sempre con end.
+
+Per esempio: (1, 3) dà 3, 2, 1; (-1, 2) dà 2, 1, 0, -1; (0, -3) dà -3, -2,
+-1, 0.
+
+La tua funzione deve avere questo prototipo:
+
+int	*ft_rrange(int start, int end);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

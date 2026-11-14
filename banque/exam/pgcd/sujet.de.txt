@@ -1,0 +1,24 @@
+Aufgabe             : pgcd
+Erwartete Dateien   : pgcd.c
+Erlaubte Funktionen : printf, atoi, malloc, free
+--------------------------------------------------------------
+
+Schreibe ein Programm, das zwei streng positive ganze Zahlen erhält und
+ihren größten gemeinsamen Teiler anzeigt, gefolgt von einem Zeilenumbruch.
+
+Wenn das Programm nicht genau zwei Argumente erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./pgcd "42" "10" | cat -e
+2$
+$> ./pgcd "42" "12" | cat -e
+6$
+$> ./pgcd "14" "77" | cat -e
+7$
+$> ./pgcd "17" "3" | cat -e
+1$
+$> ./pgcd | cat -e
+$
+$>

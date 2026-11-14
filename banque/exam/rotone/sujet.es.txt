@@ -1,0 +1,25 @@
+Ejercicio            : rotone
+Archivos esperados   : rotone.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y la muestra, sustituyendo cada
+letra por la siguiente en el alfabeto, seguida de un salto de línea.
+
+'z' se convierte en 'a' y 'Z' en 'A'. Se conserva la mayúscula o
+minúscula. Los demás caracteres no cambian.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./rotone "abc" | cat -e
+bcd$
+$> ./rotone "Le chevalier monte la tour sans se retourner." | cat -e
+Mf difwbmjfs npouf mb upvs tbot tf sfupvsofs.$
+$> ./rotone "ZyxwA aBCDEf , 42z " | cat -e
+AzyxB bCDEFg , 42a $
+$> ./rotone | cat -e
+$
+$>

@@ -1,0 +1,13 @@
+Exercício           : ft_putstr_fd_count
+Ficheiros esperados : ft_putstr_fd_count.c
+Funções permitidas  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Escreve s no fd. Devolve o número de bytes escritos, ou -1 se um write falhar (fd fechado por exemplo).
+
+A tua função deve ter este protótipo:
+
+int	ft_putstr_fd_count(int fd, char *s);
+
+Conceito: descritores e erros
+A Norma é obrigatória. Sem libft aqui.

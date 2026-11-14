@@ -1,0 +1,26 @@
+Ejercicio            : rostring
+Archivos esperados   : rostring.c
+Funciones permitidas : write, malloc, free
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y la muestra con su primera
+palabra movida al final, seguida de un salto de línea. En la salida, las
+palabras van separadas por un solo espacio, sin espacio al principio ni al
+final.
+
+Una palabra es una secuencia de caracteres delimitada por espacios o tabulaciones.
+
+Si el programa recibe varios argumentos, solo trata el primero. Sin
+argumentos, solo muestra un salto de línea.
+
+Ejemplos:
+
+$> ./rostring "le testeur des fous" | cat -e
+testeur des fous le$
+$> ./rostring "  Marvin   monte la tour  " | cat -e
+monte la tour Marvin$
+$> ./rostring "unseul" | cat -e
+unseul$
+$> ./rostring | cat -e
+$
+$>

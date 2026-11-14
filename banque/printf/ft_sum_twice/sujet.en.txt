@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_sum_twice(int n, ...);
 
-Notion : va_copy
-Norme obligatoire. Pas de libft ici.
+Concept: va_copy
+The Norm is mandatory. No libft here.

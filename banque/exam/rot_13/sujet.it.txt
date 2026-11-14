@@ -1,0 +1,26 @@
+Esercizio           : rot_13
+File attesi         : rot_13.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una stringa e la mostra, sostituendo ogni
+lettera con quella che si trova tredici posizioni più avanti
+nell'alfabeto, seguita da un a capo.
+
+Dopo 'z' si ricomincia da 'a', dopo 'Z' da 'A'. Maiuscole e minuscole
+restano tali. Gli altri caratteri non cambiano.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./rot_13 "abc" | cat -e
+nop$
+$> ./rot_13 "Mon chat est Gris." | cat -e
+Zba pung rfg Tevf.$
+$> ./rot_13 "ZyxwA aBCDEf , 42z " | cat -e
+MlkjN nOPQRs , 42m $
+$> ./rot_13 | cat -e
+$
+$>

@@ -1,0 +1,26 @@
+Ejercicio            : ft_list_remove_if
+Archivos esperados   : ft_list_remove_if.c, ft_list.h
+Funciones permitidas : free
+--------------------------------------------------------------
+
+Escribe una función que elimina de la lista que empieza en *begin_list
+todos los elementos cuyos datos son "iguales" a data_ref, y libera esos
+elementos con free.
+
+Un elemento es igual cuando cmp(element->data, data_ref) devuelve 0. La
+función no libera los datos en sí. *begin_list debe seguir siendo
+correcto, incluso cuando se elimina el primer elemento.
+
+Entrega también el archivo ft_list.h, que declara la siguiente estructura:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Tu función debe tener este prototipo:
+
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
+
+El tester la llama desde su propio main: no entregues ninguno.

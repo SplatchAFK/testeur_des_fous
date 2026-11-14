@@ -1,0 +1,25 @@
+Esercizio           : do_op
+File attesi         : do_op.c
+Funzioni consentite : atoi, printf, write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve tre argomenti: un numero, un operatore e un
+altro numero. Mostra il risultato dell'operazione, seguito da un a capo.
+
+Gli operatori sono '+', '-', '*', '/' e '%'. I numeri stanno in un int, e
+il tester non divide mai per zero.
+
+Se il programma non riceve esattamente tre argomenti, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./do_op "123" "*" "456" | cat -e
+56088$
+$> ./do_op "9828" "/" "234" | cat -e
+42$
+$> ./do_op "10" "+" "-43" | cat -e
+-33$
+$> ./do_op | cat -e
+$
+$>

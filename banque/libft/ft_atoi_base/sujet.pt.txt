@@ -1,0 +1,13 @@
+Exercício           : ft_atoi_base
+Ficheiros esperados : ft_atoi_base.c
+Funções permitidas  : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Converte str, escrita em base, num int. Uma base inválida devolve 0.
+
+A tua função deve ter este protótipo:
+
+int		ft_atoi_base(const char *str, const char *base);
+
+Conceito: conversão de base e validação
+A Norma é obrigatória. As funções auxiliares têm de ser static.

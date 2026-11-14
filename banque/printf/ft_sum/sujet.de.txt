@@ -1,0 +1,13 @@
+Aufgabe             : ft_sum
+Erwartete Dateien   : ft_sum.c
+Erlaubte Funktionen : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Gib die Summe der n ganzen Zahlen nach n zurück. Verwende va_start, va_arg und va_end.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_sum(int n, ...);
+
+Konzept: variadische Funktionen
+Die Norm ist Pflicht. Keine libft hier.

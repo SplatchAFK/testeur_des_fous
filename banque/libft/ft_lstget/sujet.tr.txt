@@ -1,0 +1,13 @@
+Alıştırma                 : ft_lstget
+Beklenen dosyalar         : ft_lstget.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+index konumundaki düğümü (0 ilkidir) ya da NULL döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+t_list	*ft_lstget(t_list *lst, size_t index);
+
+Kavram: dolaşma ve sınırlar
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

@@ -1,0 +1,27 @@
+Ejercicio            : flood_fill
+Archivos esperados   : flood_fill.c, t_point.h
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que "rellena" una zona de un array bidimensional de
+caracteres.
+
+tab tiene size.y filas y size.x columnas. La zona empieza en la casilla
+begin (columna begin.x, fila begin.y) y contiene todas las casillas que
+tienen el mismo carácter y se pueden alcanzar moviéndose en horizontal o
+en vertical, nunca en diagonal. Cada casilla de la zona se sustituye por
+'F'.
+
+Entrega también el archivo t_point.h, que declara:
+
+typedef struct  s_point
+{
+    int         x;
+    int         y;
+}               t_point;
+
+Tu función debe tener este prototipo:
+
+void	flood_fill(char **tab, t_point size, t_point begin);
+
+El tester la llama desde su propio main: no entregues ninguno.

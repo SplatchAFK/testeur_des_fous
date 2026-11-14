@@ -1,0 +1,13 @@
+Ejercicio            : is_power_of_2
+Archivos esperados   : is_power_of_2.c
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que devuelve 1 si n es una potencia de 2, y 0 en otro
+caso. 0 no es una potencia de 2.
+
+Tu función debe tener este prototipo:
+
+int	is_power_of_2(unsigned int n);
+
+El tester la llama desde su propio main: no entregues ninguno.

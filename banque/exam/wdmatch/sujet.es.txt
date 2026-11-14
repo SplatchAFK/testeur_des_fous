@@ -1,0 +1,26 @@
+Ejercicio            : wdmatch
+Archivos esperados   : wdmatch.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe dos cadenas y comprueba que cada carácter
+de la primera se encuentra en la segunda, en el mismo orden (no
+necesariamente seguidos).
+
+Si es posible, muestra la primera cadena seguida de un salto de línea. Si
+no, solo muestra un salto de línea.
+
+Si el programa no recibe exactamente dos argumentos, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./wdmatch "chat" "le chevalier a trouve" | cat -e
+chat$
+$> ./wdmatch "tour" "ta tour est en haut" | cat -e
+tour$
+$> ./wdmatch "zzz" "zz" | cat -e
+$
+$> ./wdmatch "seul" | cat -e
+$
+$>

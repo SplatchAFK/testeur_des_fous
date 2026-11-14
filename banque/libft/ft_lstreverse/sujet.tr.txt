@@ -1,0 +1,13 @@
+Alıştırma                 : ft_lstreverse
+Beklenen dosyalar         : ft_lstreverse.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Düğümleri yeniden kullanarak listeyi yerinde ters çevir.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_lstreverse(t_list **lst);
+
+Kavram: üç işaretçiyle hokkabazlık
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

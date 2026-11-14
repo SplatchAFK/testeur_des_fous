@@ -1,0 +1,26 @@
+Задание             : repeat_alpha
+Ожидаемые файлы     : repeat_alpha.c
+Разрешённые функции : write
+--------------------------------------------------------------
+
+Напиши программу, которая получает строку и выводит её, повторяя каждую
+букву столько раз, каков её номер в алфавите, а затем перевод строки.
+
+'a' выводится один раз, 'b' два раза, 'c' три раза и так далее до 'z',
+двадцать шесть раз. Регистр сохраняется. Символы, не являющиеся буквами,
+выводятся один раз.
+
+Если программа получает не ровно один аргумент, она выводит только перевод
+строки.
+
+Примеры:
+
+$> ./repeat_alpha "abc" | cat -e
+abbccc$
+$> ./repeat_alpha "Marvin." | cat -e
+MMMMMMMMMMMMMarrrrrrrrrrrrrrrrrrvvvvvvvvvvvvvvvvvvvvvviiiiiiiiinnnnnnnnnnnnnn.$
+$> ./repeat_alpha "moulinette 42!" | cat -e
+mmmmmmmmmmmmmooooooooooooooouuuuuuuuuuuuuuuuuuuuulllllllllllliiiiiiiiinnnnnnnnnnnnnneeeeetttttttttttttttttttttttttttttttttttttttteeeee 42!$
+$> ./repeat_alpha | cat -e
+$
+$>

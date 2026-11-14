@@ -1,0 +1,21 @@
+Alıştırma                 : print_hex
+Beklenen dosyalar         : print_hex.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+10 tabanında yazılmış pozitif bir tam sayı alan ve onu 16 tabanında, küçük
+harfle, ardından bir satır sonuyla gösteren bir program yaz.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./print_hex "10" | cat -e
+a$
+$> ./print_hex "255" | cat -e
+ff$
+$> ./print_hex "5156454" | cat -e
+4eae66$
+$> ./print_hex | cat -e
+$
+$>

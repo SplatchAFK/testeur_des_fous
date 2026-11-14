@@ -1,0 +1,25 @@
+Задание             : camel_to_snake
+Ожидаемые файлы     : camel_to_snake.c
+Разрешённые функции : malloc, free, realloc, write
+--------------------------------------------------------------
+
+Напиши программу, которая получает строку в lowerCamelCase и выводит её в
+snake_case, а затем перевод строки.
+
+Каждая заглавная буква становится '_' и той же буквой в нижнем регистре.
+Остальное не меняется.
+
+Если программа получает не ровно один аргумент, она выводит только перевод
+строки.
+
+Примеры:
+
+$> ./camel_to_snake "leTesteurDesFous" | cat -e
+le_testeur_des_fous$
+$> ./camel_to_snake "unMotSimple" | cat -e
+un_mot_simple$
+$> ./camel_to_snake "dejaenminuscule" | cat -e
+dejaenminuscule$
+$> ./camel_to_snake | cat -e
+$
+$>

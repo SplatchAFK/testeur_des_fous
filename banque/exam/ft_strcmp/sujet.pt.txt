@@ -1,0 +1,17 @@
+Exercício           : ft_strcmp
+Ficheiros esperados : ft_strcmp.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que compara as strings s1 e s2, como strcmp (man
+strcmp). Devolve um número negativo se s1 vier antes de s2, zero se forem
+iguais, e um número positivo caso contrário. A comparação é feita carácter
+a carácter.
+
+O tester só olha para o sinal do resultado.
+
+A tua função deve ter este protótipo:
+
+int	ft_strcmp(char *s1, char *s2);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

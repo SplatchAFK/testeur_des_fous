@@ -1,0 +1,13 @@
+Exercício           : ft_utoa_base
+Ficheiros esperados : ft_utoa_base.c
+Funções permitidas  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Devolve n escrito em base, numa string alocada com o tamanho exato. NULL se malloc falhar.
+
+A tua função deve ter este protótipo:
+
+char	*ft_utoa_base(unsigned long n, const char *base);
+
+Conceito: malloc de tamanho exato
+A Norma é obrigatória. Sem libft aqui.

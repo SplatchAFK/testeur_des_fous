@@ -1,0 +1,16 @@
+Aufgabe             : reverse_bits
+Erwartete Dateien   : reverse_bits.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die octet mit seinen 8 Bits in umgekehrter
+Reihenfolge zurückgibt: das höchste Bit wird zum niedrigsten und so
+weiter.
+
+Zum Beispiel wird aus 00100110 der Wert 01100100.
+
+Deine Funktion muss diesen Prototyp haben:
+
+unsigned char	reverse_bits(unsigned char octet);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

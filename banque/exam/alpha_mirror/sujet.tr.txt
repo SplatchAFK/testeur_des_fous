@@ -1,0 +1,24 @@
+Alıştırma                 : alpha_mirror
+Beklenen dosyalar         : alpha_mirror.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve her harfi alfabedeki aynadaki karşılığıyla değiştirerek,
+ardından bir satır sonuyla gösteren bir program yaz.
+
+'a' 'z' olur, 'b' 'y' olur, 'c' 'x' olur ve böyle devam eder; aynı şekilde
+'A' 'Z' olur. Büyük/küçük harf korunur. Diğer karakterler değişmez.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./alpha_mirror "abc" | cat -e
+zyx$
+$> ./alpha_mirror "Le Chat Gris" | cat -e
+Ov Xszg Tirh$
+$> ./alpha_mirror "miroir, 42 !" | cat -e
+nrilri, 42 !$
+$> ./alpha_mirror | cat -e
+$
+$>

@@ -1,0 +1,13 @@
+Ejercicio            : ft_memswap
+Archivos esperados   : ft_memswap.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Intercambia los n primeros bytes de a y b. Funciona con cualquier tipo.
+
+Tu función debe tener este prototipo:
+
+void	ft_memswap(void *a, void *b, size_t n);
+
+Concepto: void * y bytes
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

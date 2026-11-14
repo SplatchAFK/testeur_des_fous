@@ -1,0 +1,28 @@
+Esercizio           : tab_mult
+File attesi         : tab_mult.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve un intero strettamente positivo e mostra la
+sua tabellina da 1 a 9, una riga per prodotto, nella forma "1 x 7 = 7".
+
+Il tester dà solo numeri la cui tabellina sta in un int.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./tab_mult "9" | cat -e
+1 x 9 = 9$
+2 x 9 = 18$
+3 x 9 = 27$
+4 x 9 = 36$
+5 x 9 = 45$
+6 x 9 = 54$
+7 x 9 = 63$
+8 x 9 = 72$
+9 x 9 = 81$
+$> ./tab_mult | cat -e
+$
+$>

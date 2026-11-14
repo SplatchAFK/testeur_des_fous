@@ -1,0 +1,14 @@
+Задание             : ft_lstremove_if
+Ожидаемые файлы     : ft_lstremove_if.c
+Разрешённые функции : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Удали каждый узел, где cmp(content, ref) == 0 (сначала del, потом free).
+
+Твоя функция должна иметь такой прототип:
+
+void	ft_lstremove_if(t_list **lst, const void *ref,
+			int (*cmp)(const void *, const void *), void (*del)(void *));
+
+Тема: удаление во время обхода, t_list **
+Норма обязательна. Вспомогательные функции должны быть static.

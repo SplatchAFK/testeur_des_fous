@@ -1,0 +1,26 @@
+Aufgabe             : wdmatch
+Erwartete Dateien   : wdmatch.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das zwei Strings erhält und prüft, ob jedes Zeichen
+des ersten im zweiten in derselben Reihenfolge vorkommt (nicht unbedingt
+nebeneinander).
+
+Wenn das möglich ist, zeigt es den ersten String gefolgt von einem
+Zeilenumbruch an. Sonst zeigt es nur einen Zeilenumbruch an.
+
+Wenn das Programm nicht genau zwei Argumente erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./wdmatch "chat" "le chevalier a trouve" | cat -e
+chat$
+$> ./wdmatch "tour" "ta tour est en haut" | cat -e
+tour$
+$> ./wdmatch "zzz" "zz" | cat -e
+$
+$> ./wdmatch "seul" | cat -e
+$
+$>

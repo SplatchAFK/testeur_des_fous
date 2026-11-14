@@ -1,0 +1,13 @@
+Alıştırma                 : ft_count_conv
+Beklenen dosyalar         : ft_count_conv.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+fmt içindeki dönüşümleri say ("%%" bir sayılır). Sondaki tek bir '%' sayılmaz. '\0'ın ötesini asla okuma.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_count_conv(const char *fmt);
+
+Kavram: sondaki '%'
+Norm zorunludur. Burada libft yok.

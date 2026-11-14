@@ -1,0 +1,14 @@
+Задание             : ft_lstfind
+Ожидаемые файлы     : ft_lstfind.c
+Разрешённые функции : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Верни первый узел, где cmp(content, ref) == 0, иначе NULL.
+
+Твоя функция должна иметь такой прототип:
+
+t_list	*ft_lstfind(t_list *lst, const void *ref,
+			int (*cmp)(const void *, const void *));
+
+Тема: callback с контекстом
+Норма обязательна. Вспомогательные функции должны быть static.

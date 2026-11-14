@@ -1,0 +1,26 @@
+Esercizio           : alpha_mirror
+File attesi         : alpha_mirror.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una stringa e la mostra, sostituendo ogni
+lettera con la sua lettera speculare nell'alfabeto, seguita da un a capo.
+
+'a' diventa 'z', 'b' diventa 'y', 'c' diventa 'x', e così via; allo stesso
+modo 'A' diventa 'Z'. Maiuscole e minuscole restano tali. Gli altri
+caratteri non cambiano.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./alpha_mirror "abc" | cat -e
+zyx$
+$> ./alpha_mirror "Le Chat Gris" | cat -e
+Ov Xszg Tirh$
+$> ./alpha_mirror "miroir, 42 !" | cat -e
+nrilri, 42 !$
+$> ./alpha_mirror | cat -e
+$
+$>

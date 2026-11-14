@@ -1,0 +1,26 @@
+Aufgabe             : expand_str
+Erwartete Dateien   : expand_str.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und ihn mit genau drei
+Leerzeichen zwischen den Wörtern anzeigt, ohne Leerzeichen oder
+Tabulatoren am Anfang oder am Ende, gefolgt von einem Zeilenumbruch.
+
+Ein Wort ist eine Folge von Zeichen, die durch Leerzeichen, Tabulatoren
+oder durch den Anfang und das Ende des Strings begrenzt ist.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./expand_str "  le   testeur	 des    fous  " | cat -e
+le   testeur   des   fous$
+$> ./expand_str "un mot" | cat -e
+un   mot$
+$> ./expand_str "   " | cat -e
+$
+$> ./expand_str | cat -e
+$
+$>

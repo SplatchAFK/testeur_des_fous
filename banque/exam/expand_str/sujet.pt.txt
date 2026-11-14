@@ -1,0 +1,26 @@
+Exercício           : expand_str
+Ficheiros esperados : expand_str.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma string e a mostra com exatamente três
+espaços entre as palavras, sem espaços nem tabulações no início ou no fim,
+seguida de uma quebra de linha.
+
+Uma palavra é uma sequência de caracteres delimitada por espaços,
+tabulações, ou pelo início e pelo fim da string.
+
+Se o programa não receber exatamente um argumento, só mostra uma quebra de
+linha.
+
+Exemplos:
+
+$> ./expand_str "  le   testeur	 des    fous  " | cat -e
+le   testeur   des   fous$
+$> ./expand_str "un mot" | cat -e
+un   mot$
+$> ./expand_str "   " | cat -e
+$
+$> ./expand_str | cat -e
+$
+$>

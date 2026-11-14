@@ -1,0 +1,13 @@
+Aufgabe             : ft_putstr_count
+Erwartete Dateien   : ft_putstr_count.c
+Erlaubte Funktionen : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Schreibe s. Ist s NULL, schreibe "(null)" wie printf unter Linux. Gib die Anzahl der geschriebenen Bytes zurück, -1, wenn write fehlschlägt.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_putstr_count(char *s);
+
+Konzept: NULL-String
+Die Norm ist Pflicht. Keine libft hier.

@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 char	*ft_utoa_base(unsigned long n, const char *base);
 
-Notion : malloc de taille exacte
-Norme obligatoire. Pas de libft ici.
+Concept: exact-size malloc
+The Norm is mandatory. No libft here.

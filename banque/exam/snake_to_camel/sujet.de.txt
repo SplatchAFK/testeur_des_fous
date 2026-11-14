@@ -1,0 +1,25 @@
+Aufgabe             : snake_to_camel
+Erwartete Dateien   : snake_to_camel.c
+Erlaubte Funktionen : malloc, free, realloc, write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen in snake_case geschriebenen String erhält
+und ihn in lowerCamelCase anzeigt, gefolgt von einem Zeilenumbruch.
+
+Jedes '_' verschwindet, und der Buchstabe danach wird großgeschrieben. Der
+Rest bleibt unverändert.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./snake_to_camel "le_testeur_des_fous" | cat -e
+leTesteurDesFous$
+$> ./snake_to_camel "un_mot_simple" | cat -e
+unMotSimple$
+$> ./snake_to_camel "deja" | cat -e
+deja$
+$> ./snake_to_camel | cat -e
+$
+$>

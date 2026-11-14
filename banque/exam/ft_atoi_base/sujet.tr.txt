@@ -1,0 +1,18 @@
+Alıştırma                 : ft_atoi_base
+Beklenen dosyalar         : ft_atoi_base.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+str_base tabanında (2'den 16'ya) yazılmış str dizesini bir int'e
+dönüştüren bir fonksiyon yaz.
+
+Rakamlar 0'dan 9'a, sonra küçük ya da büyük a'dan f'ye harflerdir. Baştaki
+tek bir '-' sayıyı negatif yapar. Okuma, tabanın geçerli bir rakamı
+olmayan ilk karakterde durur. Tester yalnızca bir int içine sığan sayılar
+verir.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_atoi_base(const char *str, int str_base);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

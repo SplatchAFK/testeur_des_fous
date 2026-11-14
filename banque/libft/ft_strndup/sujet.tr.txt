@@ -1,0 +1,13 @@
+Alıştırma                 : ft_strndup
+Beklenen dosyalar         : ft_strndup.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+s'nin en fazla n karakterini kopyala. malloc başarısız olursa NULL.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_strndup(const char *s, size_t n);
+
+Kavram: tam ayırma boyutu
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

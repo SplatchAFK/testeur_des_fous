@@ -1,0 +1,25 @@
+Ejercicio            : add_prime_sum
+Archivos esperados   : add_prime_sum.c
+Funciones permitidas : write, exit
+--------------------------------------------------------------
+
+Escribe un programa que recibe un entero estrictamente positivo y muestra
+la suma de todos los números primos menores o iguales que él, seguida de
+un salto de línea.
+
+Si el programa no recibe exactamente un argumento, o si el número no es
+estrictamente positivo, muestra 0 seguido de un salto de línea.
+
+atoi no está permitida: escribe tu propia conversión.
+
+Ejemplos:
+
+$> ./add_prime_sum "5" | cat -e
+10$
+$> ./add_prime_sum "7" | cat -e
+17$
+$> ./add_prime_sum | cat -e
+0$
+$> ./add_prime_sum "-5" | cat -e
+0$
+$>

@@ -1,0 +1,27 @@
+Alıştırma                 : first_word
+Beklenen dosyalar         : first_word.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve ilk kelimesini, ardından bir satır sonu gösteren bir
+program yaz.
+
+Bir kelime, boşluklar, sekmeler ya da dizenin başı ve sonuyla sınırlanan
+bir karakter dizisidir.
+
+Program tam olarak bir argüman almazsa ya da dizede hiç kelime yoksa,
+yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./first_word "PREMIER mot" | cat -e
+PREMIER$
+$> ./first_word "un        ...       test avec, des    espaces" | cat -e
+un$
+$> ./first_word "   " | cat -e
+$
+$> ./first_word "a" "b" | cat -e
+$
+$> ./first_word "  deux,mots  " | cat -e
+deux,mots$
+$>

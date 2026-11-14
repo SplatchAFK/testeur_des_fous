@@ -1,0 +1,13 @@
+Alıştırma                 : ft_sum
+Beklenen dosyalar         : ft_sum.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+n'den sonraki n tam sayının toplamını döndür. va_start, va_arg ve va_end kullan.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_sum(int n, ...);
+
+Kavram: değişken argümanlı fonksiyonlar
+Norm zorunludur. Burada libft yok.

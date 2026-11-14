@@ -1,0 +1,27 @@
+Alıştırma                 : fprime
+Beklenen dosyalar         : fprime.c
+İzin verilen fonksiyonlar : printf, atoi
+--------------------------------------------------------------
+
+Kesinlikle pozitif bir tam sayı alan ve onun asal çarpanlarına ayrılışını,
+en küçük çarpandan en büyüğe, '*' ile ayrılmış olarak, ardından bir satır
+sonuyla gösteren bir program yaz. 1 için 1 gösterir.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+Tester yalnızca bir int içine sığan sayılar verir.
+
+Örnekler:
+
+$> ./fprime "225225" | cat -e
+3*3*5*5*7*11*13$
+$> ./fprime "8333325" | cat -e
+3*3*5*5*7*11*13*37$
+$> ./fprime "9539" | cat -e
+9539$
+$> ./fprime "42" | cat -e
+2*3*7$
+$> ./fprime "1" | cat -e
+1$
+$> ./fprime | cat -e
+$
+$>

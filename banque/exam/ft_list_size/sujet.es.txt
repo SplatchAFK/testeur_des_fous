@@ -1,0 +1,21 @@
+Ejercicio            : ft_list_size
+Archivos esperados   : ft_list_size.c, ft_list.h
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que devuelve el número de elementos de la lista
+enlazada que empieza en begin_list.
+
+Entrega también el archivo ft_list.h, que declara la siguiente estructura:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Tu función debe tener este prototipo:
+
+int	ft_list_size(t_list *begin_list);
+
+El tester la llama desde su propio main: no entregues ninguno.

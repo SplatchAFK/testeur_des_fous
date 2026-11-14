@@ -1,0 +1,13 @@
+Задание             : ft_strcasecmp
+Ожидаемые файлы     : ft_strcasecmp.c
+Разрешённые функции : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Сравни s1 и s2 без учёта регистра, тот же знак, что у strcasecmp(3).
+
+Твоя функция должна иметь такой прототип:
+
+int		ft_strcasecmp(const char *s1, const char *s2);
+
+Тема: unsigned char и tolower
+Норма обязательна. Вспомогательные функции должны быть static.

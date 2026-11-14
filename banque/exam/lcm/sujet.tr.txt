@@ -1,0 +1,14 @@
+Alıştırma                 : lcm
+Beklenen dosyalar         : lcm.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+a ve b'nin en küçük ortak katını, yani hem a'ya hem b'ye bölünebilen
+sıfırdan farklı en küçük tam sayıyı döndüren bir fonksiyon yaz. a ya da b
+0 ise 0 döndürür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+unsigned int	lcm(unsigned int a, unsigned int b);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

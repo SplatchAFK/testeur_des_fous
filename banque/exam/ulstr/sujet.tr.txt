@@ -1,0 +1,20 @@
+Alıştırma                 : ulstr
+Beklenen dosyalar         : ulstr.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve her harfin büyük/küçük durumunu tersine çevirerek,
+ardından bir satır sonuyla gösteren bir program yaz. Küçük harfler büyük,
+büyük harfler küçük olur. Diğer karakterler değişmez.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./ulstr "Le TeSTeuR dEs fOUs cAsSe toN cOde eT te diT oU reGarDer." | cat -e
+lE tEstEUr DeS FouS CaSsE TOn CoDE Et TE DIt Ou REgARdER.$
+$> ./ulstr "3:21 uN peU de ToUt, 42 fOiS" | cat -e
+3:21 Un PEu DE tOuT, 42 FoIs$
+$> ./ulstr | cat -e
+$
+$>

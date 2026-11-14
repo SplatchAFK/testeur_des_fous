@@ -1,0 +1,13 @@
+Ejercicio            : ft_lst_to_array
+Archivos esperados   : ft_lst_to_array.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Devuelve un array terminado en NULL con los punteros content, en orden.
+
+Tu función debe tener este prototipo:
+
+void	**ft_lst_to_array(t_list *lst);
+
+Concepto: de lista a array
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

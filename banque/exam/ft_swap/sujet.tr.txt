@@ -1,0 +1,13 @@
+Alıştırma                 : ft_swap
+Beklenen dosyalar         : ft_swap.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+Adreslerini aldığı iki tam sayının değerlerini değiş tokuş eden bir
+fonksiyon yaz.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_swap(int *a, int *b);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

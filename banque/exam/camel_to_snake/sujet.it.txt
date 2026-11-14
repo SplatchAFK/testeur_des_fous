@@ -1,0 +1,25 @@
+Esercizio           : camel_to_snake
+File attesi         : camel_to_snake.c
+Funzioni consentite : malloc, free, realloc, write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una stringa scritta in lowerCamelCase e la
+mostra in snake_case, seguita da un a capo.
+
+Ogni lettera maiuscola diventa un '_' seguito dalla stessa lettera in
+minuscolo. Il resto non cambia.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./camel_to_snake "leTesteurDesFous" | cat -e
+le_testeur_des_fous$
+$> ./camel_to_snake "unMotSimple" | cat -e
+un_mot_simple$
+$> ./camel_to_snake "dejaenminuscule" | cat -e
+dejaenminuscule$
+$> ./camel_to_snake | cat -e
+$
+$>

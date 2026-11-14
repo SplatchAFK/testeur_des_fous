@@ -1,0 +1,13 @@
+Alıştırma                 : ft_max
+Beklenen dosyalar         : ft_max.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+n'den sonraki n tam sayının en büyüğünü döndür (n >= 1).
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_max(int n, ...);
+
+Kavram: döngüde va_arg
+Norm zorunludur. Burada libft yok.

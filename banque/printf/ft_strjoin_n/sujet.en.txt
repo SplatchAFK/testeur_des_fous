@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 char	*ft_strjoin_n(int n, ...);
 
-Notion : deux passages sur les arguments
-Norme obligatoire. Pas de libft ici.
+Concept: two passes over the arguments
+The Norm is mandatory. No libft here.

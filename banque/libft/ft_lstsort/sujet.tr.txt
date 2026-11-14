@@ -1,0 +1,13 @@
+Alıştırma                 : ft_lstsort
+Beklenen dosyalar         : ft_lstsort.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Listeyi cmp'ye göre artan sırayla sırala.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_lstsort(t_list **lst, int (*cmp)(const void *, const void *));
+
+Kavram: bağlı liste sıralama
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

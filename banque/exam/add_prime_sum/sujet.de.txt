@@ -1,0 +1,25 @@
+Aufgabe             : add_prime_sum
+Erwartete Dateien   : add_prime_sum.c
+Erlaubte Funktionen : write, exit
+--------------------------------------------------------------
+
+Schreibe ein Programm, das eine streng positive ganze Zahl erhält und die
+Summe aller Primzahlen anzeigt, die kleiner oder gleich dieser Zahl sind,
+gefolgt von einem Zeilenumbruch.
+
+Wenn das Programm nicht genau ein Argument erhält oder die Zahl nicht
+streng positiv ist, zeigt es 0 gefolgt von einem Zeilenumbruch an.
+
+atoi ist nicht erlaubt: schreibe deine eigene Umwandlung.
+
+Beispiele:
+
+$> ./add_prime_sum "5" | cat -e
+10$
+$> ./add_prime_sum "7" | cat -e
+17$
+$> ./add_prime_sum | cat -e
+0$
+$> ./add_prime_sum "-5" | cat -e
+0$
+$>

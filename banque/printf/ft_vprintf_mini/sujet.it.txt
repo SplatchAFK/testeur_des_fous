@@ -1,0 +1,13 @@
+Esercizio           : ft_vprintf_mini
+File attesi         : ft_vprintf_mini.c
+Funzioni consentite : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Come printf con solo %d, %s e %%, ma riceve una va_list già avviata (come vprintf). Restituisci il numero di byte scritti.
+
+La tua funzione deve avere questo prototipo:
+
+int	ft_vprintf_mini(const char *fmt, va_list ap);
+
+Concetto: passare una va_list
+La Norma è obbligatoria. Niente libft qui.

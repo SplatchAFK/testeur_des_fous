@@ -1,0 +1,13 @@
+Aufgabe             : ft_puthex_count
+Erwartete Dateien   : ft_puthex_count.c
+Erlaubte Funktionen : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Schreibe n hexadezimal, in Großbuchstaben, wenn upper gleich 1 ist. Gib die Anzahl der geschriebenen Zeichen zurück.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_puthex_count(unsigned int n, int upper);
+
+Konzept: Hexadezimal und Groß-/Kleinschreibung
+Die Norm ist Pflicht. Keine libft hier.

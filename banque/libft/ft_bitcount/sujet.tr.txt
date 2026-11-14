@@ -1,0 +1,13 @@
+Alıştırma                 : ft_bitcount
+Beklenen dosyalar         : ft_bitcount.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+n içindeki 1 olan bit sayısını döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int		ft_bitcount(unsigned int n);
+
+Kavram: bit operatörleri
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

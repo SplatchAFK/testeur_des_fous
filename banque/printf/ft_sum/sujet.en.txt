@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_sum(int n, ...);
 
-Notion : fonctions variadiques
-Norme obligatoire. Pas de libft ici.
+Concept: variadic functions
+The Norm is mandatory. No libft here.

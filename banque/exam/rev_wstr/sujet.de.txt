@@ -1,0 +1,27 @@
+Aufgabe             : rev_wstr
+Erwartete Dateien   : rev_wstr.c
+Erlaubte Funktionen : write, malloc, free
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und seine Wörter in
+umgekehrter Reihenfolge anzeigt, getrennt durch ein einzelnes Leerzeichen,
+gefolgt von einem Zeilenumbruch.
+
+Ein Wort ist eine Folge von Zeichen, die durch Leerzeichen oder
+Tabulatoren begrenzt ist. Am Anfang oder Ende der Ausgabe steht nie ein
+Leerzeichen oder Tabulator.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./rev_wstr "le testeur des fous" | cat -e
+fous des testeur le$
+$> ./rev_wstr "Marvin monte la tour" | cat -e
+tour la monte Marvin$
+$> ./rev_wstr "unseul" | cat -e
+unseul$
+$> ./rev_wstr | cat -e
+$
+$>

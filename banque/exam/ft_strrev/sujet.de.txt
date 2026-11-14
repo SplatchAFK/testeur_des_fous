@@ -1,0 +1,12 @@
+Aufgabe             : ft_strrev
+Erwartete Dateien   : ft_strrev.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die den String str an Ort und Stelle umkehrt und str zurückgibt.
+
+Deine Funktion muss diesen Prototyp haben:
+
+char	*ft_strrev(char *str);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

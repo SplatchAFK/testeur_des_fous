@@ -1,0 +1,27 @@
+Aufgabe             : alpha_mirror
+Erwartete Dateien   : alpha_mirror.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und ihn anzeigt, wobei
+jeder Buchstabe durch sein Spiegelbild im Alphabet ersetzt wird, gefolgt
+von einem Zeilenumbruch.
+
+Aus 'a' wird 'z', aus 'b' wird 'y', aus 'c' wird 'x' und so weiter; ebenso
+wird aus 'A' ein 'Z'. Groß- und Kleinschreibung bleiben erhalten. Andere
+Zeichen bleiben unverändert.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./alpha_mirror "abc" | cat -e
+zyx$
+$> ./alpha_mirror "Le Chat Gris" | cat -e
+Ov Xszg Tirh$
+$> ./alpha_mirror "miroir, 42 !" | cat -e
+nrilri, 42 !$
+$> ./alpha_mirror | cat -e
+$
+$>

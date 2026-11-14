@@ -1,0 +1,22 @@
+Aufgabe             : ulstr
+Erwartete Dateien   : ulstr.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und ihn mit umgekehrter
+Groß- und Kleinschreibung jedes Buchstabens anzeigt, gefolgt von einem
+Zeilenumbruch. Kleinbuchstaben werden groß, Großbuchstaben werden klein.
+Andere Zeichen bleiben unverändert.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./ulstr "Le TeSTeuR dEs fOUs cAsSe toN cOde eT te diT oU reGarDer." | cat -e
+lE tEstEUr DeS FouS CaSsE TOn CoDE Et TE DIt Ou REgARdER.$
+$> ./ulstr "3:21 uN peU de ToUt, 42 fOiS" | cat -e
+3:21 Un PEu DE tOuT, 42 FoIs$
+$> ./ulstr | cat -e
+$
+$>

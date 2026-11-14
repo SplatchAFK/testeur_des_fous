@@ -1,0 +1,13 @@
+Esercizio           : ft_strrev
+File attesi         : ft_strrev.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Inverti s sul posto (senza malloc) e restituisci s.
+
+La tua funzione deve avere questo prototipo:
+
+char	*ft_strrev(char *s);
+
+Concetto: scambio sul posto, due indici
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

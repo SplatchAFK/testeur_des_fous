@@ -1,0 +1,13 @@
+Alıştırma                 : ft_putstr_count
+Beklenen dosyalar         : ft_putstr_count.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+s'yi yaz. s NULL ise Linux'taki printf gibi "(null)" yaz. Yazılan bayt sayısını, write başarısız olursa -1 döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_putstr_count(char *s);
+
+Kavram: NULL dize
+Norm zorunludur. Burada libft yok.

@@ -1,0 +1,27 @@
+Esercizio           : repeat_alpha
+File attesi         : repeat_alpha.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una stringa e la mostra, ripetendo ogni
+lettera tante volte quanto la sua posizione nell'alfabeto, seguita da un a
+capo.
+
+'a' è mostrata una volta, 'b' due volte, 'c' tre volte, e così via fino a
+'z', ventisei volte. Maiuscole e minuscole restano tali. I caratteri che
+non sono lettere sono mostrati una volta.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./repeat_alpha "abc" | cat -e
+abbccc$
+$> ./repeat_alpha "Marvin." | cat -e
+MMMMMMMMMMMMMarrrrrrrrrrrrrrrrrrvvvvvvvvvvvvvvvvvvvvvviiiiiiiiinnnnnnnnnnnnnn.$
+$> ./repeat_alpha "moulinette 42!" | cat -e
+mmmmmmmmmmmmmooooooooooooooouuuuuuuuuuuuuuuuuuuuulllllllllllliiiiiiiiinnnnnnnnnnnnnneeeeetttttttttttttttttttttttttttttttttttttttteeeee 42!$
+$> ./repeat_alpha | cat -e
+$
+$>

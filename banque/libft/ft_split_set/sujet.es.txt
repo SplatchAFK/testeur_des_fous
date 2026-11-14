@@ -1,0 +1,13 @@
+Ejercicio            : ft_split_set
+Archivos esperados   : ft_split_set.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Como ft_split, pero corta en cualquier carácter de set.
+
+Tu función debe tener este prototipo:
+
+char	**ft_split_set(char const *s, char const *set);
+
+Concepto: split generalizado
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

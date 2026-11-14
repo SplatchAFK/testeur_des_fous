@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_vprintf_mini(const char *fmt, va_list ap);
 
-Notion : passer une va_list
-Norme obligatoire. Pas de libft ici.
+Concept: passing a va_list
+The Norm is mandatory. No libft here.

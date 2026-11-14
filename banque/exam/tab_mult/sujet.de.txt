@@ -1,0 +1,29 @@
+Aufgabe             : tab_mult
+Erwartete Dateien   : tab_mult.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das eine streng positive ganze Zahl erhält und ihr
+Einmaleins von 1 bis 9 anzeigt, eine Zeile pro Produkt, in der Form "1 x 7
+= 7".
+
+Der Tester gibt nur Zahlen, deren Einmaleins in einen int passt.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./tab_mult "9" | cat -e
+1 x 9 = 9$
+2 x 9 = 18$
+3 x 9 = 27$
+4 x 9 = 36$
+5 x 9 = 45$
+6 x 9 = 54$
+7 x 9 = 63$
+8 x 9 = 72$
+9 x 9 = 81$
+$> ./tab_mult | cat -e
+$
+$>

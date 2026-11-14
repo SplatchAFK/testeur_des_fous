@@ -1,0 +1,13 @@
+Esercizio           : ft_itoa_base
+File attesi         : ft_itoa_base.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Scrivi n in base in una nuova stringa. Gestisci LONG_MIN. NULL se la base non è valida.
+
+La tua funzione deve avere questo prototipo:
+
+char	*ft_itoa_base(long n, const char *base);
+
+Concetto: LONG_MIN, contare le cifre, malloc esatto
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

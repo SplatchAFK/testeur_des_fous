@@ -1,0 +1,21 @@
+Alıştırma                 : ft_list_foreach
+Beklenen dosyalar         : ft_list_foreach.c, ft_list.h
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+f fonksiyonunu, begin_list ile başlayan listenin her elemanının verisine,
+liste sırasıyla uygulayan bir fonksiyon yaz.
+
+Aşağıdaki yapıyı bildiren ft_list.h dosyasını da teslim et:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
+
+Tester onu kendi main'inden çağırır: main teslim etme.

@@ -1,0 +1,23 @@
+Aufgabe             : inter
+Erwartete Dateien   : inter.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das zwei Strings erhält und ohne Wiederholungen die
+Zeichen anzeigt, die in beiden vorkommen, in der Reihenfolge ihres
+Auftretens im ersten, gefolgt von einem Zeilenumbruch.
+
+Wenn das Programm nicht genau zwei Argumente erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$> ./inter "le testeur" "des fous" | cat -e
+e su$
+$> ./inter "rien" "zzz" | cat -e
+$
+$> ./inter "seul" | cat -e
+$
+$>

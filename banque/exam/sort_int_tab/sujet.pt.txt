@@ -1,0 +1,13 @@
+Exercício           : sort_int_tab
+Ficheiros esperados : sort_int_tab.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que ordena os size inteiros do array tab por ordem
+crescente, no próprio lugar. As repetições mantêm-se.
+
+A tua função deve ter este protótipo:
+
+void	sort_int_tab(int *tab, unsigned int size);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

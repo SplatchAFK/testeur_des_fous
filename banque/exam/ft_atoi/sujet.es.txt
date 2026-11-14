@@ -1,0 +1,17 @@
+Ejercicio            : ft_atoi
+Archivos esperados   : ft_atoi.c
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que convierte el principio de la cadena str en un int,
+como atoi (man atoi).
+
+Salta los espacios en blanco iniciales (espacio, \t, \n, \v, \f, \r),
+acepta un único signo '+' o '-', y luego lee cifras hasta el primer
+carácter que no lo sea. El tester solo da números que caben en un int.
+
+Tu función debe tener este prototipo:
+
+int	ft_atoi(const char *str);
+
+El tester la llama desde su propio main: no entregues ninguno.

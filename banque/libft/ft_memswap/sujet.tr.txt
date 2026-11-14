@@ -1,0 +1,13 @@
+Alıştırma                 : ft_memswap
+Beklenen dosyalar         : ft_memswap.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+a ve b'nin ilk n baytını değiş tokuş et. Her türle çalışır.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_memswap(void *a, void *b, size_t n);
+
+Kavram: void * ve baytlar
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

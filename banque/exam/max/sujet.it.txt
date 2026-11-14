@@ -1,0 +1,13 @@
+Esercizio           : max
+File attesi         : max.c
+Funzioni consentite : nessuna
+--------------------------------------------------------------
+
+Scrivi una funzione che restituisce il più grande dei len interi
+dell'array tab. Se len vale 0, restituisce 0.
+
+La tua funzione deve avere questo prototipo:
+
+int	max(int *tab, unsigned int len);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

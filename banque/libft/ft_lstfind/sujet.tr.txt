@@ -1,0 +1,14 @@
+Alıştırma                 : ft_lstfind
+Beklenen dosyalar         : ft_lstfind.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+cmp(content, ref) == 0 olan ilk düğümü döndür, yoksa NULL.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+t_list	*ft_lstfind(t_list *lst, const void *ref,
+			int (*cmp)(const void *, const void *));
+
+Kavram: bağlamlı callback
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

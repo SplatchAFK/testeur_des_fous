@@ -1,0 +1,26 @@
+Aufgabe             : do_op
+Erwartete Dateien   : do_op.c
+Erlaubte Funktionen : atoi, printf, write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das drei Argumente erhält: eine Zahl, einen
+Operator und eine weitere Zahl. Es zeigt das Ergebnis der Rechnung an,
+gefolgt von einem Zeilenumbruch.
+
+Die Operatoren sind '+', '-', '*', '/' und '%'. Die Zahlen passen in einen
+int, und der Tester teilt nie durch null.
+
+Wenn das Programm nicht genau drei Argumente erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./do_op "123" "*" "456" | cat -e
+56088$
+$> ./do_op "9828" "/" "234" | cat -e
+42$
+$> ./do_op "10" "+" "-43" | cat -e
+-33$
+$> ./do_op | cat -e
+$
+$>

@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_putstr_fd_count(int fd, char *s);
 
-Notion : descripteurs et erreurs
-Norme obligatoire. Pas de libft ici.
+Concept: descriptors and errors
+The Norm is mandatory. No libft here.

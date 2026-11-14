@@ -1,0 +1,13 @@
+Alıştırma                 : ft_atoi_base
+Beklenen dosyalar         : ft_atoi_base.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+base tabanında yazılmış str'yi int'e dönüştür. Geçersiz bir taban 0 döndürür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int		ft_atoi_base(const char *str, const char *base);
+
+Kavram: taban dönüşümü ve doğrulama
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

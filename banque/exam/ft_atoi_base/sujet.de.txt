@@ -1,0 +1,18 @@
+Aufgabe             : ft_atoi_base
+Erwartete Dateien   : ft_atoi_base.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die den String str, geschrieben in der Basis
+str_base (von 2 bis 16), in einen int umwandelt.
+
+Die Ziffern sind 0 bis 9, dann die Buchstaben a bis f, klein oder groß.
+Ein einzelnes führendes '-' macht die Zahl negativ. Das Lesen endet beim
+ersten Zeichen, das keine gültige Ziffer der Basis ist. Der Tester gibt
+nur Zahlen, die in einen int passen.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_atoi_base(const char *str, int str_base);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

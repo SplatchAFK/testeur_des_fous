@@ -1,0 +1,15 @@
+Alıştırma                 : ft_strcpy
+Beklenen dosyalar         : ft_strcpy.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+s2 dizesini, sondaki null dahil, s1'e kopyalayan ve s1'i döndüren bir
+fonksiyon yaz. strcpy gibi davranır (man strcpy).
+
+s1'in gösterdiği alan her zaman yeterince büyüktür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_strcpy(char *s1, char *s2);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

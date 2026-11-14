@@ -1,0 +1,24 @@
+Exercício           : union
+Ficheiros esperados : union.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe duas strings e mostra, sem repetições,
+todos os caracteres de uma ou de outra, pela ordem em que aparecem:
+primeiro a primeira string, depois a segunda. Termina com uma quebra de
+linha.
+
+Se o programa não receber exatamente dois argumentos, só mostra uma quebra
+de linha.
+
+Exemplos:
+
+$> ./union "zpadinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+zpadintoqefwjy$
+$> ./union "le testeur" "des fous" | cat -e
+le tsurdfo$
+$> ./union "rien" "" | cat -e
+rien$
+$> ./union "seul" | cat -e
+$
+$>

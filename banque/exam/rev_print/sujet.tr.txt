@@ -1,0 +1,19 @@
+Alıştırma                 : rev_print
+Beklenen dosyalar         : rev_print.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve onu tersten, ardından bir satır sonuyla gösteren bir
+program yaz.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./rev_print "kayak" | cat -e
+kayak$
+$> ./rev_print "Le Testeur" | cat -e
+ruetseT eL$
+$> ./rev_print | cat -e
+$
+$>

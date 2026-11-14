@@ -1,0 +1,17 @@
+Exercício           : paramsum
+Ficheiros esperados : paramsum.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que mostra o número de argumentos que recebe, seguido
+de uma quebra de linha. Sem argumentos, mostra 0.
+
+Exemplos:
+
+$> ./paramsum | cat -e
+0$
+$> ./paramsum "1" "2" "3" | cat -e
+3$
+$> ./paramsum "le testeur" "des fous" | cat -e
+2$
+$>

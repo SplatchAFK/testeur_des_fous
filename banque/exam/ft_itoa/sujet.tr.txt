@@ -1,0 +1,13 @@
+Alıştırma                 : ft_itoa
+Beklenen dosyalar         : ft_itoa.c
+İzin verilen fonksiyonlar : malloc
+--------------------------------------------------------------
+
+nbr'yi 10 tabanında yazan, malloc ile ayrılmış bir dize döndüren bir
+fonksiyon yaz. En küçüğü dahil her int'i işler.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_itoa(int nbr);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

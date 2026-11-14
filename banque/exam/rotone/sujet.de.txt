@@ -1,0 +1,26 @@
+Aufgabe             : rotone
+Erwartete Dateien   : rotone.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und ihn anzeigt, wobei
+jeder Buchstabe durch den nächsten im Alphabet ersetzt wird, gefolgt von
+einem Zeilenumbruch.
+
+Aus 'z' wird 'a' und aus 'Z' wird 'A'. Groß- und Kleinschreibung bleiben
+erhalten. Andere Zeichen bleiben unverändert.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./rotone "abc" | cat -e
+bcd$
+$> ./rotone "Le chevalier monte la tour sans se retourner." | cat -e
+Mf difwbmjfs npouf mb upvs tbot tf sfupvsofs.$
+$> ./rotone "ZyxwA aBCDEf , 42z " | cat -e
+AzyxB bCDEFg , 42a $
+$> ./rotone | cat -e
+$
+$>

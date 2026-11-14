@@ -1,0 +1,26 @@
+Exercício           : alpha_mirror
+Ficheiros esperados : alpha_mirror.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma string e a mostra, substituindo cada
+letra pelo seu espelho no alfabeto, seguida de uma quebra de linha.
+
+'a' passa a 'z', 'b' passa a 'y', 'c' passa a 'x', e assim por diante; da
+mesma forma 'A' passa a 'Z'. Maiúsculas e minúsculas mantêm-se. Os outros
+caracteres não mudam.
+
+Se o programa não receber exatamente um argumento, só mostra uma quebra de
+linha.
+
+Exemplos:
+
+$> ./alpha_mirror "abc" | cat -e
+zyx$
+$> ./alpha_mirror "Le Chat Gris" | cat -e
+Ov Xszg Tirh$
+$> ./alpha_mirror "miroir, 42 !" | cat -e
+nrilri, 42 !$
+$> ./alpha_mirror | cat -e
+$
+$>

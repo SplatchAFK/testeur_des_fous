@@ -1,0 +1,27 @@
+Aufgabe             : repeat_alpha
+Erwartete Dateien   : repeat_alpha.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und ihn anzeigt, wobei
+jeder Buchstabe so oft wiederholt wird wie seine Position im Alphabet,
+gefolgt von einem Zeilenumbruch.
+
+'a' wird einmal angezeigt, 'b' zweimal, 'c' dreimal und so weiter bis 'z',
+sechsundzwanzigmal. Groß- und Kleinschreibung bleiben erhalten. Zeichen,
+die keine Buchstaben sind, werden einmal angezeigt.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./repeat_alpha "abc" | cat -e
+abbccc$
+$> ./repeat_alpha "Marvin." | cat -e
+MMMMMMMMMMMMMarrrrrrrrrrrrrrrrrrvvvvvvvvvvvvvvvvvvvvvviiiiiiiiinnnnnnnnnnnnnn.$
+$> ./repeat_alpha "moulinette 42!" | cat -e
+mmmmmmmmmmmmmooooooooooooooouuuuuuuuuuuuuuuuuuuuulllllllllllliiiiiiiiinnnnnnnnnnnnnneeeeetttttttttttttttttttttttttttttttttttttttteeeee 42!$
+$> ./repeat_alpha | cat -e
+$
+$>

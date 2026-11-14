@@ -1,0 +1,23 @@
+Esercizio           : inter
+File attesi         : inter.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve due stringhe e mostra, senza doppioni, i
+caratteri che compaiono in entrambe, nell'ordine in cui compaiono nella
+prima, seguiti da un a capo.
+
+Se il programma non riceve esattamente due argomenti, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$> ./inter "le testeur" "des fous" | cat -e
+e su$
+$> ./inter "rien" "zzz" | cat -e
+$
+$> ./inter "seul" | cat -e
+$
+$>

@@ -1,0 +1,13 @@
+Aufgabe             : ft_max
+Erwartete Dateien   : ft_max.c
+Erlaubte Funktionen : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Gib die größte der n ganzen Zahlen nach n zurück (n >= 1).
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_max(int n, ...);
+
+Konzept: va_arg in einer Schleife
+Die Norm ist Pflicht. Keine libft hier.

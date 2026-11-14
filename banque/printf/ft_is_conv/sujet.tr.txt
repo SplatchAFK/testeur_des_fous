@@ -1,0 +1,13 @@
+Alıştırma                 : ft_is_conv
+Beklenen dosyalar         : ft_is_conv.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+c subject'teki bir dönüşümse (cspdiuxX%) 1, aksi halde 0 döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_is_conv(char c);
+
+Kavram: formatı okuma
+Norm zorunludur. Burada libft yok.

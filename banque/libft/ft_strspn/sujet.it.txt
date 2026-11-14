@@ -1,0 +1,13 @@
+Esercizio           : ft_strspn
+File attesi         : ft_strspn.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Lunghezza del segmento iniziale di s composto solo da caratteri di accept, come strspn(3).
+
+La tua funzione deve avere questo prototipo:
+
+size_t	ft_strspn(const char *s, const char *accept);
+
+Concetto: ricerca annidata, come la libc
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

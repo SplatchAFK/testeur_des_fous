@@ -1,0 +1,21 @@
+Alıştırma                 : ft_list_size
+Beklenen dosyalar         : ft_list_size.c, ft_list.h
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+begin_list ile başlayan bağlı listenin eleman sayısını döndüren bir
+fonksiyon yaz.
+
+Aşağıdaki yapıyı bildiren ft_list.h dosyasını da teslim et:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_list_size(t_list *begin_list);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

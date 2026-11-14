@@ -1,0 +1,13 @@
+Aufgabe             : ft_sum_twice
+Erwartete Dateien   : ft_sum_twice.c
+Erlaubte Funktionen : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Lies die n ganzen Zahlen zweimal mit va_copy: gib (Summe der n Zahlen) mal (Anzahl der geraden Zahlen) zurück.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_sum_twice(int n, ...);
+
+Konzept: va_copy
+Die Norm ist Pflicht. Keine libft hier.

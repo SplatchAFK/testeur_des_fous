@@ -1,0 +1,26 @@
+Aufgabe             : rostring
+Erwartete Dateien   : rostring.c
+Erlaubte Funktionen : write, malloc, free
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und ihn anzeigt, wobei sein
+erstes Wort ans Ende verschoben wird, gefolgt von einem Zeilenumbruch. In
+der Ausgabe sind die Wörter durch ein einzelnes Leerzeichen getrennt, ohne
+Leerzeichen am Anfang oder Ende.
+
+Ein Wort ist eine Folge von Zeichen, die durch Leerzeichen oder Tabulatoren begrenzt ist.
+
+Erhält das Programm mehrere Argumente, behandelt es nur das erste. Ohne
+Argumente zeigt es nur einen Zeilenumbruch an.
+
+Beispiele:
+
+$> ./rostring "le testeur des fous" | cat -e
+testeur des fous le$
+$> ./rostring "  Marvin   monte la tour  " | cat -e
+monte la tour Marvin$
+$> ./rostring "unseul" | cat -e
+unseul$
+$> ./rostring | cat -e
+$
+$>

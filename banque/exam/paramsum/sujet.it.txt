@@ -1,0 +1,17 @@
+Esercizio           : paramsum
+File attesi         : paramsum.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che mostra il numero di argomenti che riceve, seguito
+da un a capo. Senza argomenti, mostra 0.
+
+Esempi:
+
+$> ./paramsum | cat -e
+0$
+$> ./paramsum "1" "2" "3" | cat -e
+3$
+$> ./paramsum "le testeur" "des fous" | cat -e
+2$
+$>

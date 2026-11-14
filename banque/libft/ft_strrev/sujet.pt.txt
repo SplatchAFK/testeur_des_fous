@@ -1,0 +1,13 @@
+Exercício           : ft_strrev
+Ficheiros esperados : ft_strrev.c
+Funções permitidas  : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Inverte s no próprio lugar (sem malloc) e devolve s.
+
+A tua função deve ter este protótipo:
+
+char	*ft_strrev(char *s);
+
+Conceito: troca no próprio lugar, dois índices
+A Norma é obrigatória. As funções auxiliares têm de ser static.

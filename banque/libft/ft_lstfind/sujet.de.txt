@@ -1,0 +1,14 @@
+Aufgabe             : ft_lstfind
+Erwartete Dateien   : ft_lstfind.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Gib den ersten Knoten zurück, bei dem cmp(content, ref) == 0 ist, sonst NULL.
+
+Deine Funktion muss diesen Prototyp haben:
+
+t_list	*ft_lstfind(t_list *lst, const void *ref,
+			int (*cmp)(const void *, const void *));
+
+Konzept: Callback mit Kontext
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

@@ -1,0 +1,25 @@
+Ejercicio            : last_word
+Archivos esperados   : last_word.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y muestra su última palabra,
+seguida de un salto de línea.
+
+Una palabra es una secuencia de caracteres delimitada por espacios,
+tabulaciones, o por el principio y el final de la cadena.
+
+Si el programa no recibe exactamente un argumento, o si la cadena no
+contiene ninguna palabra, solo muestra un salto de línea.
+
+Ejemplos:
+
+$> ./last_word "le dernier mot" | cat -e
+mot$
+$> ./last_word "   espaces a la fin   " | cat -e
+fin$
+$> ./last_word "   " | cat -e
+$
+$> ./last_word "a" "b" | cat -e
+$
+$>

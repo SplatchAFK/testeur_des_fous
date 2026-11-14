@@ -1,0 +1,26 @@
+Ejercicio            : alpha_mirror
+Archivos esperados   : alpha_mirror.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y la muestra, sustituyendo cada
+letra por su espejo en el alfabeto, seguida de un salto de línea.
+
+'a' se convierte en 'z', 'b' en 'y', 'c' en 'x', y así sucesivamente;
+igualmente 'A' se convierte en 'Z'. Se conserva la mayúscula o minúscula.
+Los demás caracteres no cambian.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./alpha_mirror "abc" | cat -e
+zyx$
+$> ./alpha_mirror "Le Chat Gris" | cat -e
+Ov Xszg Tirh$
+$> ./alpha_mirror "miroir, 42 !" | cat -e
+nrilri, 42 !$
+$> ./alpha_mirror | cat -e
+$
+$>

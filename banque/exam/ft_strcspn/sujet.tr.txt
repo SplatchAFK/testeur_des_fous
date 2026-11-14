@@ -1,0 +1,15 @@
+Alıştırma                 : ft_strcspn
+Beklenen dosyalar         : ft_strcspn.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+s'nin reject içindeki hiçbir karakteri içermeyen en uzun başlangıç
+kısmının uzunluğunu strcspn gibi (man strcspn) döndüren bir fonksiyon yaz.
+
+size_t için <stddef.h> ekleyebilirsin.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+size_t	ft_strcspn(const char *s, const char *reject);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

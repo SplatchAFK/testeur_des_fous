@@ -1,0 +1,13 @@
+Exercício           : ft_putnbr_count
+Ficheiros esperados : ft_putnbr_count.c
+Funções permitidas  : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Escreve n em base 10 (INT_MIN incluído, sem comportamento indefinido). Devolve o número de caracteres escritos.
+
+A tua função deve ter este protótipo:
+
+int	ft_putnbr_count(int n);
+
+Conceito: INT_MIN sem overflow
+A Norma é obrigatória. Sem libft aqui.

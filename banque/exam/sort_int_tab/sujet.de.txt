@@ -1,0 +1,13 @@
+Aufgabe             : sort_int_tab
+Erwartete Dateien   : sort_int_tab.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die die size ganzen Zahlen des Arrays tab an Ort
+und Stelle aufsteigend sortiert. Doppelte Werte bleiben erhalten.
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	sort_int_tab(int *tab, unsigned int size);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

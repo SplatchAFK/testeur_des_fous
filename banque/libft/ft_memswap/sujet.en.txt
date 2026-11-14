@@ -1,6 +1,6 @@
 Assignment name    : ft_memswap
 Expected files     : ft_memswap.c
-Allowed functions  : malloc, free, write, ta libft
+Allowed functions  : malloc, free, write, your libft
 --------------------------------------------------------------
 
 Swap the first n bytes of a and b. Works for any type.
@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 void	ft_memswap(void *a, void *b, size_t n);
 
-Notion : void * et octets
-Norme obligatoire. Les fonctions d'aide doivent être static.
+Concept: void * and bytes
+The Norm is mandatory. Helper functions must be static.

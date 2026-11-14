@@ -1,0 +1,20 @@
+Aufgabe             : rev_print
+Erwartete Dateien   : rev_print.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und ihn rückwärts anzeigt,
+gefolgt von einem Zeilenumbruch.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./rev_print "kayak" | cat -e
+kayak$
+$> ./rev_print "Le Testeur" | cat -e
+ruetseT eL$
+$> ./rev_print | cat -e
+$
+$>

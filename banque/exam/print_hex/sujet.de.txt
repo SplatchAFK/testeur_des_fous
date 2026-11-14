@@ -1,0 +1,23 @@
+Aufgabe             : print_hex
+Erwartete Dateien   : print_hex.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das eine positive ganze Zahl in Basis 10 erhält und
+sie in Basis 16 anzeigt, in Kleinbuchstaben, gefolgt von einem
+Zeilenumbruch.
+
+Wenn das Programm nicht genau ein Argument erhält, zeigt es nur einen
+Zeilenumbruch an.
+
+Beispiele:
+
+$> ./print_hex "10" | cat -e
+a$
+$> ./print_hex "255" | cat -e
+ff$
+$> ./print_hex "5156454" | cat -e
+4eae66$
+$> ./print_hex | cat -e
+$
+$>

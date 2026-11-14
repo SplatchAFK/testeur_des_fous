@@ -1,0 +1,13 @@
+Ejercicio            : ft_tabdup
+Archivos esperados   : ft_tabdup.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Copia en profundidad un array de cadenas terminado en NULL. Libéralo todo si un malloc falla.
+
+Tu función debe tener este prototipo:
+
+char	**ft_tabdup(char **tab);
+
+Concepto: array 2D y liberación parcial
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

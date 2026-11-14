@@ -1,0 +1,13 @@
+Alıştırma                 : ft_strspn
+Beklenen dosyalar         : ft_strspn.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+s'nin yalnızca accept içindeki karakterlerden oluşan başlangıç kısmının uzunluğu, strspn(3) gibi.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+size_t	ft_strspn(const char *s, const char *accept);
+
+Kavram: iç içe arama, libc gibi
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

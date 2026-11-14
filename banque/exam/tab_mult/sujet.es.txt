@@ -1,0 +1,29 @@
+Ejercicio            : tab_mult
+Archivos esperados   : tab_mult.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe un entero estrictamente positivo y muestra
+su tabla de multiplicar del 1 al 9, una línea por producto, con la forma
+"1 x 7 = 7".
+
+El tester solo da números cuya tabla cabe en un int.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./tab_mult "9" | cat -e
+1 x 9 = 9$
+2 x 9 = 18$
+3 x 9 = 27$
+4 x 9 = 36$
+5 x 9 = 45$
+6 x 9 = 54$
+7 x 9 = 63$
+8 x 9 = 72$
+9 x 9 = 81$
+$> ./tab_mult | cat -e
+$
+$>

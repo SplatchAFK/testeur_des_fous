@@ -1,0 +1,18 @@
+Exercício           : ft_atoi_base
+Ficheiros esperados : ft_atoi_base.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que converte a string str, escrita na base str_base (de
+2 a 16), num int.
+
+Os dígitos são 0 a 9 e depois as letras a a f, minúsculas ou maiúsculas.
+Um único '-' inicial torna o número negativo. A leitura pára no primeiro
+carácter que não é um dígito válido da base. O tester só dá números que
+cabem num int.
+
+A tua função deve ter este protótipo:
+
+int	ft_atoi_base(const char *str, int str_base);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

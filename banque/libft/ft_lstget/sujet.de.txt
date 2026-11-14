@@ -1,0 +1,13 @@
+Aufgabe             : ft_lstget
+Erwartete Dateien   : ft_lstget.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Gib den Knoten an Position index zurück (0 ist der erste), oder NULL.
+
+Deine Funktion muss diesen Prototyp haben:
+
+t_list	*ft_lstget(t_list *lst, size_t index);
+
+Konzept: Durchlauf und Grenzen
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

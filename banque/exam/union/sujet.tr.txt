@@ -1,0 +1,22 @@
+Alıştırma                 : union
+Beklenen dosyalar         : union.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+İki dize alan ve ikisinden birinde geçen her karakteri, tekrarsız ve
+göründükleri sırayla gösteren bir program yaz: önce birinci dize, sonra
+ikinci. Bir satır sonuyla biter.
+
+Program tam olarak iki argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./union "zpadinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+zpadintoqefwjy$
+$> ./union "le testeur" "des fous" | cat -e
+le tsurdfo$
+$> ./union "rien" "" | cat -e
+rien$
+$> ./union "seul" | cat -e
+$
+$>

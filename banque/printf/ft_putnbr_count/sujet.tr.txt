@@ -1,0 +1,13 @@
+Alıştırma                 : ft_putnbr_count
+Beklenen dosyalar         : ft_putnbr_count.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+n'yi 10 tabanında yaz (INT_MIN dahil, tanımsız davranış olmadan). Yazılan karakter sayısını döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_putnbr_count(int n);
+
+Kavram: taşma olmadan INT_MIN
+Norm zorunludur. Burada libft yok.

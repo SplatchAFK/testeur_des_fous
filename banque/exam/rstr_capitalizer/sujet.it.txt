@@ -1,0 +1,25 @@
+Esercizio           : rstr_capitalizer
+File attesi         : rstr_capitalizer.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una o più stringhe e, per ciascuna, mette
+in maiuscolo l'ultima lettera di ogni parola e in minuscolo tutte le altre
+lettere, poi mostra il risultato seguito da un a capo.
+
+Una parola è una sequenza di caratteri delimitata da spazi, tabulazioni, o
+dall'inizio e dalla fine della stringa. Se l'ultimo carattere di una
+parola non è una lettera, non cambia.
+
+Senza argomenti, il programma mostra solo un a capo.
+
+Esempi:
+
+$> ./rstr_capitalizer "le TESTEUR des fous" | cat -e
+lE testeuR deS fouS$
+$> ./rstr_capitalizer "une PHRASE " "Deux Phrases	avec tab" | cat -e
+unE phrasE $
+deuX phraseS^IaveC taB$
+$> ./rstr_capitalizer | cat -e
+$
+$>

@@ -1,0 +1,13 @@
+Alıştırma                 : ft_strdup
+Beklenen dosyalar         : ft_strdup.c
+İzin verilen fonksiyonlar : malloc
+--------------------------------------------------------------
+
+src dizesinin malloc ile alınmış bellekteki bir kopyasını strdup gibi (man
+strdup) döndüren bir fonksiyon yaz. Ayırma başarısız olursa NULL döndürür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_strdup(char *src);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

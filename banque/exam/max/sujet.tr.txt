@@ -1,0 +1,13 @@
+Alıştırma                 : max
+Beklenen dosyalar         : max.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+tab dizisinin len tam sayısının en büyüğünü döndüren bir fonksiyon yaz.
+len 0 ise 0 döndürür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	max(int *tab, unsigned int len);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

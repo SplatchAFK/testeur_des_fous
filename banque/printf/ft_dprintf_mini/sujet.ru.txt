@@ -1,0 +1,13 @@
+Задание             : ft_dprintf_mini
+Ожидаемые файлы     : ft_dprintf_mini.c
+Разрешённые функции : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Как dprintf только с %c, %s и %d: пишет в fd. Верни число записанных байтов, -1, если write не удался.
+
+Твоя функция должна иметь такой прототип:
+
+int	ft_dprintf_mini(int fd, const char *fmt, ...);
+
+Тема: dprintf
+Норма обязательна. Здесь без libft.

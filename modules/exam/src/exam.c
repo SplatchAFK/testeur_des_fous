@@ -82,6 +82,16 @@ typedef struct s_xsave
 static t_xexo	g_bank[XMAXEXO];
 static int		g_nbank;
 static t_xcfg	g_cfg = {0, 1, 0, 2, 0, 0, 1, 4, 0};
+
+static void	sujet_chemin(char *dst, size_t n, int lang)
+{
+	char	dir[4096];
+
+	snprintf(dir, sizeof(dir), "%s", dst);
+	snprintf(dst, n, "%s/sujet.%s.txt", dir, langue_code(lang));
+	if (access(dst, R_OK) != 0)
+		snprintf(dst, n, "%s/sujet.%s.txt", dir, lang == 0 ? "fr" : "en");
+}
 static t_xstate	g_st;
 static t_xsave	g_xs;
 static char		g_root[900];
@@ -340,8 +350,8 @@ static void	cfg_load(void)
 			g_cfg.wait = v != 0;
 		else if (!strcmp(k, "trace") && v >= 0 && v <= 2)
 			g_cfg.trace = v;
-		else if (!strcmp(k, "langue"))
-			g_cfg.lang = v != 0;
+		else if (!strcmp(k, "langue") && v >= 0 && v < NLANG)
+			g_cfg.lang = v;
 		else if (!strcmp(k, "reel"))
 			g_cfg.real = v != 0;
 		else if (!strcmp(k, "niveau") && v >= 1 && v <= XLEVELS)
@@ -485,8 +495,7 @@ static void	install(void)
 	sh("cd %s && for d in rendu/*/; do [ -d \"$d\" ] && mv \"$d\" \"archive/$(basename \"$d\")_%s\"; done; "
 		"rm -rf sujet/* 2>/dev/null; true", q(g_work), ts);
 	sh("cd %s && mkdir -p rendu/%s sujet/%s", q(g_work), q(x->name), q(x->name));
-	sh("cd %s && cp %s/sujet.fr.txt %s/sujet.en.txt %s/sujet/%s/ 2>/dev/null", q(g_bankdir), q(x->name),
-		q(x->name), q(g_work), q(x->name));
+	sh("cd %s && cp %s/sujet.*.txt %s/sujet/%s/ 2>/dev/null", q(g_bankdir), q(x->name), q(g_work), q(x->name));
 }
 
 static int	g_tty;
@@ -531,7 +540,8 @@ static void	show_subject_text(void)
 	char	*e;
 
 	x = &g_bank[g_st.exo];
-	snprintf(path, sizeof(path), "%s/%s/sujet.%s.txt", g_bankdir, x->name, g_st.lang ? "en" : "fr");
+	snprintf(path, sizeof(path), "%s/%s", g_bankdir, x->name);
+	sujet_chemin(path, sizeof(path), g_st.lang);
 	txt = slurp(path, NULL);
 	if (!txt)
 	{
@@ -1423,9 +1433,19 @@ static int	g_nhist;
 static const char	*const g_cmd_exam[] = {"grademe", "sujet", "status", "clear", "help", "aide", "finish", NULL};
 static const char	*const g_cmd_banque[] = {"liste", "cherche", "ouvre", "grademe", "sujet", "fait", "aide", "quitter", NULL};
 
+static int	code_langue(const char *c)
+{
+	int	i;
+
+	for (i = 0; c && i < NLANG; i++)
+		if (!strcmp(c, langue_code(i)))
+			return (i);
+	return (-1);
+}
+
 static const char	*const	*args_de(const char *cmd)
 {
-	static const char	*const	langues[] = {"fr", "en", NULL};
+	static const char	*const	langues[] = {"fr", "en", "es", "de", "it", "pt", "tr", "ru", NULL};
 	static const char	*const	sources[] = {"exam", "libft", "printf", NULL};
 
 	if (!strcmp(cmd, "sujet") || !strcmp(cmd, "subject"))
@@ -1618,8 +1638,8 @@ static void	shell(void)
 		else if (!strcmp(cmd, "sujet") || !strcmp(cmd, "subject"))
 		{
 			cmd = strtok(NULL, " \t\r\n");
-			if (cmd && (!strcmp(cmd, "en") || !strcmp(cmd, "fr")))
-				g_st.lang = !strcmp(cmd, "en");
+			if (code_langue(cmd) >= 0)
+				g_st.lang = code_langue(cmd);
 			show_subject();
 		}
 		else if (!strcmp(cmd, "help") || !strcmp(cmd, "aide"))
@@ -1824,7 +1844,7 @@ static int	reglages_fleches(void)
 		id[n] = 6;
 		n = reglage_ligne(n, sel, "Trace", trace_nom(g_cfg.trace), L("Quand afficher le détail des tests ratés.", "When to show the details of failed tests."), &desc);
 		id[n] = 7;
-		n = reglage_ligne(n, sel, L("Langue du sujet", "Subject language"), g_cfg.lang ? L("anglais", "English") : L("français", "French"), L("La langue des sujets.", "The language of the subjects."), &desc);
+		n = reglage_ligne(n, sel, L("Langue du sujet", "Subject language"), langue_nom(g_cfg.lang), L("La langue des sujets.", "The language of the subjects."), &desc);
 		id[n] = 8;
 		n = reglage_ligne(n, sel, L("Conditions réelles", "Real conditions"), g_cfg.real ? L("oui", "yes") : L("non", "no"),
 				L("Oui : examen blanc, 3 heures, attente, trace à la fin, aucun cheat. Verrouille les autres réglages.", "Yes: mock exam, 3 hours, wait, trace at the end, no cheats. Locks the other settings."), &desc);
@@ -1879,7 +1899,7 @@ static int	reglages_fleches(void)
 			else if (id[sel] == 6)
 				g_cfg.trace = (g_cfg.trace + (k == 1003 ? 2 : 1)) % 3;
 			else if (id[sel] == 7)
-				g_cfg.lang = !g_cfg.lang;
+				g_cfg.lang = (g_cfg.lang + (k == 1003 ? NLANG - 1 : 1)) % NLANG;
 			if (sel >= n)
 				sel = 0;
 		}
@@ -1927,7 +1947,7 @@ static int	settings(void)
 		printf("  %s3%s  Attente après un échec  %s\n", C_AC, C_R,
 			onoff(g_cfg.wait, L("progressive (1 min de plus à chaque échec, 10 au plus)", "progressive (1 more min on each failure, 10 at most)"), L("aucune", "none")));
 		printf("  %s4%s  Trace                   %s\n", C_AC, C_R, trace_nom(g_cfg.trace));
-		printf("  %s5%s  Langue du sujet         %s\n", C_AC, C_R, onoff(g_cfg.lang, L("anglais", "English"), L("français", "French")));
+		printf("  %s5%s  Langue du sujet         %s\n", C_AC, C_R, langue_nom(g_cfg.lang));
 		printf("  %s6%s  Conditions réelles      %s\n\n", C_AC, C_R,
 			onoff(g_cfg.real, L("oui : examen, 3 heures, attente, trace à la fin, aucun cheat", "yes: exam, 3 hours, wait, trace at the end, no cheats"), L("non", "no")));
 		printf(L("  %sEntrée%s commencer   %s1 à %d%s changer un réglage   %sq%s quitter\n\n  > ", "  %sEnter%s start   %s1 to %d%s change a setting   %sq%s quit\n\n  > "), C_B, C_R, C_B,
@@ -1959,7 +1979,7 @@ static int	settings(void)
 		else if (c == '4')
 			g_cfg.trace = (g_cfg.trace + 1) % 3;
 		else if (c == '5')
-			g_cfg.lang = !g_cfg.lang;
+			g_cfg.lang = (g_cfg.lang + 1) % NLANG;
 	}
 	cfg_save();
 	return (1);
@@ -2312,7 +2332,8 @@ static void	b_sujet(void)
 		printf("%s.c", b->name);
 	printf("%s\n", C_R);
 	printf(L("   %sÉcris ton code dans un autre terminal, puis tape grademe ici.%s\n\n", "   %sWrite your code in another terminal, then type grademe here.%s\n\n"), C_D, C_R);
-	snprintf(path, sizeof(path), "%s/banque/%s/%s/sujet.%s.txt", g_root, b->src, b->name, g_blang ? "en" : "fr");
+	snprintf(path, sizeof(path), "%s/banque/%s/%s", g_root, b->src, b->name);
+	sujet_chemin(path, sizeof(path), g_blang);
 	txt = slurp(path, NULL);
 	for (s = txt; s && *s; s = *e ? e + 1 : e)
 	{
@@ -2509,8 +2530,8 @@ static int	banque(void)
 			b_grademe();
 		else if (!strcmp(cmd, "sujet") || !strcmp(cmd, "subject"))
 		{
-			if (a1)
-				g_blang = !strcmp(a1, "en");
+			if (code_langue(a1) >= 0)
+				g_blang = code_langue(a1);
 			b_sujet();
 		}
 		else if (!strcmp(cmd, "fait"))
@@ -2589,6 +2610,7 @@ int	main(int ac, char **av)
 		g_save.cfg.lang = *getenv("TDF_LANGUE_N") - '0';
 	if (g_save.valid == -1)
 		printf(L("  %ssauvegarde modifiée à la main : remise à zéro (ancienne copie : save.txt.triche)%s\n", "  %ssave edited by hand: reset (old copy: save.txt.triche)%s\n"), C_KO, C_R);
+	g_cfg.lang = g_save.cfg.lang;
 	cfg_load();
 	if (i < ac && !strcmp(av[i], "--banque"))
 		return (banque());

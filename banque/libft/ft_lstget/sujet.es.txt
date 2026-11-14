@@ -1,0 +1,13 @@
+Ejercicio            : ft_lstget
+Archivos esperados   : ft_lstget.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Devuelve el nodo en la posición index (0 es el primero), o NULL.
+
+Tu función debe tener este prototipo:
+
+t_list	*ft_lstget(t_list *lst, size_t index);
+
+Concepto: recorrido y límites
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

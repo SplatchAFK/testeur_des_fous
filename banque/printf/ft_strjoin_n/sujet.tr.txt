@@ -1,0 +1,13 @@
+Alıştırma                 : ft_strjoin_n
+Beklenen dosyalar         : ft_strjoin_n.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+n'den sonraki n dizeyi birleştiren yeni bir dize döndür (tam boyutta malloc). malloc başarısız olursa NULL.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_strjoin_n(int n, ...);
+
+Kavram: argümanlar üzerinde iki geçiş
+Norm zorunludur. Burada libft yok.

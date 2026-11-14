@@ -1,0 +1,13 @@
+Alıştırma                 : ft_sum_twice
+Beklenen dosyalar         : ft_sum_twice.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+n tam sayıyı va_copy ile iki kez oku: (n tam sayının toplamı) çarpı (çift tam sayıların sayısı) döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_sum_twice(int n, ...);
+
+Kavram: va_copy
+Norm zorunludur. Burada libft yok.

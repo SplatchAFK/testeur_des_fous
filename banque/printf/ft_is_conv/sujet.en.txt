@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_is_conv(char c);
 
-Notion : lecture du format
-Norme obligatoire. Pas de libft ici.
+Concept: reading the format
+The Norm is mandatory. No libft here.

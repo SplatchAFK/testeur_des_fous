@@ -1,0 +1,23 @@
+Alıştırma                 : snake_to_camel
+Beklenen dosyalar         : snake_to_camel.c
+İzin verilen fonksiyonlar : malloc, free, realloc, write
+--------------------------------------------------------------
+
+snake_case ile yazılmış bir dize alan ve onu lowerCamelCase olarak,
+ardından bir satır sonuyla gösteren bir program yaz.
+
+Her '_' kaybolur ve ondan sonraki harf büyük olur. Geri kalanı değişmez.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./snake_to_camel "le_testeur_des_fous" | cat -e
+leTesteurDesFous$
+$> ./snake_to_camel "un_mot_simple" | cat -e
+unMotSimple$
+$> ./snake_to_camel "deja" | cat -e
+deja$
+$> ./snake_to_camel | cat -e
+$
+$>

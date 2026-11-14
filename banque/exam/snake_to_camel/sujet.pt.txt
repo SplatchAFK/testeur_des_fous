@@ -1,0 +1,25 @@
+Exercício           : snake_to_camel
+Ficheiros esperados : snake_to_camel.c
+Funções permitidas  : malloc, free, realloc, write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma string escrita em snake_case e a mostra
+em lowerCamelCase, seguida de uma quebra de linha.
+
+Cada '_' desaparece e a letra seguinte passa a maiúscula. O resto não
+muda.
+
+Se o programa não receber exatamente um argumento, só mostra uma quebra de
+linha.
+
+Exemplos:
+
+$> ./snake_to_camel "le_testeur_des_fous" | cat -e
+leTesteurDesFous$
+$> ./snake_to_camel "un_mot_simple" | cat -e
+unMotSimple$
+$> ./snake_to_camel "deja" | cat -e
+deja$
+$> ./snake_to_camel | cat -e
+$
+$>

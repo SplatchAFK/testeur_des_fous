@@ -1,0 +1,13 @@
+Esercizio           : ft_lstreverse
+File attesi         : ft_lstreverse.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Inverti la lista sul posto, riutilizzando i nodi.
+
+La tua funzione deve avere questo prototipo:
+
+void	ft_lstreverse(t_list **lst);
+
+Concetto: destreggiarsi con tre puntatori
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

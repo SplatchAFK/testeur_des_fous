@@ -1,0 +1,13 @@
+Aufgabe             : ft_putstr
+Erwartete Dateien   : ft_putstr.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die einen String auf der Standardausgabe anzeigt.
+Sie fügt nach dem String nichts hinzu.
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	ft_putstr(char *str);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

@@ -1,0 +1,13 @@
+Alıştırma                 : ft_vprintf_mini
+Beklenen dosyalar         : ft_vprintf_mini.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Yalnızca %d, %s ve %% ile printf gibi, ama önceden başlatılmış bir va_list alır (vprintf gibi). Yazılan bayt sayısını döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_vprintf_mini(const char *fmt, va_list ap);
+
+Kavram: bir va_list geçirme
+Norm zorunludur. Burada libft yok.

@@ -1,6 +1,6 @@
 Assignment name    : ft_bitcount
 Expected files     : ft_bitcount.c
-Allowed functions  : malloc, free, write, ta libft
+Allowed functions  : malloc, free, write, your libft
 --------------------------------------------------------------
 
 Return the number of bits set to 1 in n.
@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int		ft_bitcount(unsigned int n);
 
-Notion : opérateurs binaires
-Norme obligatoire. Les fonctions d'aide doivent être static.
+Concept: bitwise operators
+The Norm is mandatory. Helper functions must be static.

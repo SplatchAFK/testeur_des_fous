@@ -1,0 +1,25 @@
+Esercizio           : rotone
+File attesi         : rotone.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una stringa e la mostra, sostituendo ogni
+lettera con la successiva nell'alfabeto, seguita da un a capo.
+
+'z' diventa 'a' e 'Z' diventa 'A'. Maiuscole e minuscole restano tali. Gli
+altri caratteri non cambiano.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./rotone "abc" | cat -e
+bcd$
+$> ./rotone "Le chevalier monte la tour sans se retourner." | cat -e
+Mf difwbmjfs npouf mb upvs tbot tf sfupvsofs.$
+$> ./rotone "ZyxwA aBCDEf , 42z " | cat -e
+AzyxB bCDEFg , 42a $
+$> ./rotone | cat -e
+$
+$>

@@ -1,0 +1,15 @@
+Exercício           : ft_strspn
+Ficheiros esperados : ft_strspn.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que devolve o comprimento do maior início de s formado
+apenas por caracteres de accept, como strspn (man strspn).
+
+Podes incluir <stddef.h> para size_t.
+
+A tua função deve ter este protótipo:
+
+size_t	ft_strspn(const char *s, const char *accept);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

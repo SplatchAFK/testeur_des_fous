@@ -1,0 +1,13 @@
+Ejercicio            : ft_strlen
+Archivos esperados   : ft_strlen.c
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que devuelve la longitud de una cadena, es decir el
+número de caracteres antes del nulo final.
+
+Tu función debe tener este prototipo:
+
+int	ft_strlen(char *str);
+
+El tester la llama desde su propio main: no entregues ninguno.

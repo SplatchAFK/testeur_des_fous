@@ -1,0 +1,25 @@
+Aufgabe             : rstr_capitalizer
+Erwartete Dateien   : rstr_capitalizer.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen oder mehrere Strings erhält und bei jedem
+den letzten Buchstaben jedes Wortes groß und alle anderen Buchstaben klein
+schreibt, dann das Ergebnis gefolgt von einem Zeilenumbruch anzeigt.
+
+Ein Wort ist eine Folge von Zeichen, die durch Leerzeichen, Tabulatoren
+oder durch den Anfang und das Ende des Strings begrenzt ist. Ist das
+letzte Zeichen eines Wortes kein Buchstabe, bleibt es unverändert.
+
+Ohne Argumente zeigt das Programm nur einen Zeilenumbruch an.
+
+Beispiele:
+
+$> ./rstr_capitalizer "le TESTEUR des fous" | cat -e
+lE testeuR deS fouS$
+$> ./rstr_capitalizer "une PHRASE " "Deux Phrases	avec tab" | cat -e
+unE phrasE $
+deuX phraseS^IaveC taB$
+$> ./rstr_capitalizer | cat -e
+$
+$>

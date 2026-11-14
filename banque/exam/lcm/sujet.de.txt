@@ -1,0 +1,15 @@
+Aufgabe             : lcm
+Erwartete Dateien   : lcm.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die das kleinste gemeinsame Vielfache von a und b
+zurückgibt, also die kleinste von null verschiedene ganze Zahl, die sowohl
+durch a als auch durch b teilbar ist. Ist a oder b gleich 0, gibt sie 0
+zurück.
+
+Deine Funktion muss diesen Prototyp haben:
+
+unsigned int	lcm(unsigned int a, unsigned int b);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

@@ -1,0 +1,13 @@
+Esercizio           : ft_putstr
+File attesi         : ft_putstr.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi una funzione che mostra una stringa sull'output standard. Non
+aggiunge nulla dopo la stringa.
+
+La tua funzione deve avere questo prototipo:
+
+void	ft_putstr(char *str);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

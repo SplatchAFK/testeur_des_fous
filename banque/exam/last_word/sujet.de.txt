@@ -1,0 +1,25 @@
+Aufgabe             : last_word
+Erwartete Dateien   : last_word.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das einen String erhält und sein letztes Wort
+anzeigt, gefolgt von einem Zeilenumbruch.
+
+Ein Wort ist eine Folge von Zeichen, die durch Leerzeichen, Tabulatoren
+oder durch den Anfang und das Ende des Strings begrenzt ist.
+
+Wenn das Programm nicht genau ein Argument erhält oder der String kein
+Wort enthält, zeigt es nur einen Zeilenumbruch an.
+
+Beispiele:
+
+$> ./last_word "le dernier mot" | cat -e
+mot$
+$> ./last_word "   espaces a la fin   " | cat -e
+fin$
+$> ./last_word "   " | cat -e
+$
+$> ./last_word "a" "b" | cat -e
+$
+$>

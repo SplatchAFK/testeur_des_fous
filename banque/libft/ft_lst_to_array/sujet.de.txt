@@ -1,0 +1,13 @@
+Aufgabe             : ft_lst_to_array
+Erwartete Dateien   : ft_lst_to_array.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Gib ein mit NULL abgeschlossenes Array der content-Zeiger zurück, in Reihenfolge.
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	**ft_lst_to_array(t_list *lst);
+
+Konzept: Liste zu Array
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

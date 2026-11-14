@@ -1,0 +1,23 @@
+Ejercicio            : union
+Archivos esperados   : union.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe dos cadenas y muestra, sin duplicados,
+todos los caracteres de una u otra, en el orden en que aparecen: primero
+la primera cadena, luego la segunda. Termina con un salto de línea.
+
+Si el programa no recibe exactamente dos argumentos, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./union "zpadinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+zpadintoqefwjy$
+$> ./union "le testeur" "des fous" | cat -e
+le tsurdfo$
+$> ./union "rien" "" | cat -e
+rien$
+$> ./union "seul" | cat -e
+$
+$>

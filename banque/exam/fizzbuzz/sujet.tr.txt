@@ -1,0 +1,29 @@
+Alıştırma                 : fizzbuzz
+Beklenen dosyalar         : fizzbuzz.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+1'den 100'e kadar sayıları, her satıra bir tane olmak üzere gösteren bir program yaz.
+
+Üç kural bazı sayıların yerine geçer:
+- 3'ün katı "fizz" ile değiştirilir;
+- 5'in katı "buzz" ile değiştirilir;
+- hem 3'ün hem 5'in katı "fizzbuzz" ile değiştirilir.
+
+Program argümanlarını yok sayar.
+
+Beklenen çıktının başı:
+
+$> ./fizzbuzz
+1
+2
+fizz
+4
+buzz
+fizz
+7
+[...]
+14
+fizzbuzz
+16
+[...]

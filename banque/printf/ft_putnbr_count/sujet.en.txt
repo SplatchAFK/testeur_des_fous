@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_putnbr_count(int n);
 
-Notion : INT_MIN sans dépassement
-Norme obligatoire. Pas de libft ici.
+Concept: INT_MIN without overflow
+The Norm is mandatory. No libft here.

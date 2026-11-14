@@ -1,0 +1,29 @@
+Exercício           : search_and_replace
+Ficheiros esperados : search_and_replace.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe três argumentos: uma string, um carácter a
+procurar e um carácter de substituição. Mostra a string, substituindo cada
+ocorrência do primeiro carácter pelo segundo, seguida de uma quebra de
+linha.
+
+Se o programa não receber exatamente três argumentos, ou se o segundo ou o
+terceiro argumento não tiver exatamente um carácter, só mostra uma quebra
+de linha.
+
+Se o carácter procurado não existir, a string é mostrada sem alterações.
+
+Exemplos:
+
+$> ./search_and_replace "Marvin garde la tour" "a" "o" | cat -e
+Morvin gorde lo tour$
+$> ./search_and_replace "tour" "abc" "xyz" | cat -e
+$
+$> ./search_and_replace "tour" "r" "l" | cat -e
+toul$
+$> ./search_and_replace "marvin" "a" "b" "c" "e" | cat -e
+$
+$> ./search_and_replace "wncorw un wxwmplw pas facilw a wcrirw " "w" "e" | cat -e
+encore un exemple pas facile a ecrire $
+$>

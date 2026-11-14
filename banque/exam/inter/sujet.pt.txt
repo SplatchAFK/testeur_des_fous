@@ -1,0 +1,23 @@
+Exercício           : inter
+Ficheiros esperados : inter.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe duas strings e mostra, sem repetições, os
+caracteres que aparecem em ambas, pela ordem em que aparecem na primeira,
+seguidos de uma quebra de linha.
+
+Se o programa não receber exatamente dois argumentos, só mostra uma quebra
+de linha.
+
+Exemplos:
+
+$> ./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$> ./inter "le testeur" "des fous" | cat -e
+e su$
+$> ./inter "rien" "zzz" | cat -e
+$
+$> ./inter "seul" | cat -e
+$
+$>

@@ -1,0 +1,13 @@
+Aufgabe             : ft_strrev
+Erwartete Dateien   : ft_strrev.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Kehre s an Ort und Stelle um (ohne malloc) und gib s zurück.
+
+Deine Funktion muss diesen Prototyp haben:
+
+char	*ft_strrev(char *s);
+
+Konzept: Tausch an Ort und Stelle, zwei Indizes
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

@@ -1,6 +1,6 @@
 Assignment name    : ft_lstreverse
 Expected files     : ft_lstreverse.c
-Allowed functions  : malloc, free, write, ta libft
+Allowed functions  : malloc, free, write, your libft
 --------------------------------------------------------------
 
 Reverse the list in place, reusing the nodes.
@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 void	ft_lstreverse(t_list **lst);
 
-Notion : jongler avec trois pointeurs
-Norme obligatoire. Les fonctions d'aide doivent être static.
+Concept: juggling three pointers
+The Norm is mandatory. Helper functions must be static.

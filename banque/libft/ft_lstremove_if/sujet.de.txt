@@ -1,0 +1,14 @@
+Aufgabe             : ft_lstremove_if
+Erwartete Dateien   : ft_lstremove_if.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Entferne jeden Knoten, bei dem cmp(content, ref) == 0 ist (erst del, dann free).
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	ft_lstremove_if(t_list **lst, const void *ref,
+			int (*cmp)(const void *, const void *), void (*del)(void *));
+
+Konzept: Entfernen beim Durchlaufen, t_list **
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

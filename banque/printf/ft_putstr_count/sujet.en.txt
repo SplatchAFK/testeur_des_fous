@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 int	ft_putstr_count(char *s);
 
-Notion : chaîne NULL
-Norme obligatoire. Pas de libft ici.
+Concept: NULL string
+The Norm is mandatory. No libft here.

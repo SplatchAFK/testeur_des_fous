@@ -1,0 +1,13 @@
+Alıştırma                 : sort_int_tab
+Beklenen dosyalar         : sort_int_tab.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+tab dizisinin size tam sayısını yerinde artan sırayla sıralayan bir
+fonksiyon yaz. Tekrarlar korunur.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	sort_int_tab(int *tab, unsigned int size);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

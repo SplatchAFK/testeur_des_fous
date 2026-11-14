@@ -1,0 +1,13 @@
+Exercício           : ft_strlen
+Ficheiros esperados : ft_strlen.c
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que devolve o comprimento de uma string, ou seja o
+número de caracteres antes do nulo final.
+
+A tua função deve ter este protótipo:
+
+int	ft_strlen(char *str);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

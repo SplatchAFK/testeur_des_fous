@@ -1,0 +1,20 @@
+Ejercicio            : ft_range
+Archivos esperados   : ft_range.c
+Funciones permitidas : malloc
+--------------------------------------------------------------
+
+Escribe una función que reserva con malloc un array de enteros, lo rellena
+con los valores consecutivos que van de start a end, ambos incluidos, y
+devuelve ese array.
+
+El array siempre empieza por start. Si start es mayor que end, los valores
+bajan.
+
+Por ejemplo: (1, 3) da 1, 2, 3; (-1, 2) da -1, 0, 1, 2; (0, -3) da 0, -1,
+-2, -3.
+
+Tu función debe tener este prototipo:
+
+int	*ft_range(int start, int end);
+
+El tester la llama desde su propio main: no entregues ninguno.

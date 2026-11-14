@@ -1,0 +1,25 @@
+Alıştırma                 : rostring
+Beklenen dosyalar         : rostring.c
+İzin verilen fonksiyonlar : write, malloc, free
+--------------------------------------------------------------
+
+Bir dize alan ve onu ilk kelimesi sona taşınmış olarak, ardından bir satır
+sonuyla gösteren bir program yaz. Çıktıda kelimeler tek bir boşlukla
+ayrılır, başta ve sonda boşluk olmaz.
+
+Bir kelime, boşluklar ya da sekmelerle sınırlanan bir karakter dizisidir.
+
+Program birden fazla argüman alırsa yalnızca ilkini işler. Argüman yoksa
+yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./rostring "le testeur des fous" | cat -e
+testeur des fous le$
+$> ./rostring "  Marvin   monte la tour  " | cat -e
+monte la tour Marvin$
+$> ./rostring "unseul" | cat -e
+unseul$
+$> ./rostring | cat -e
+$
+$>

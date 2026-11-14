@@ -1,0 +1,21 @@
+Exercício           : ft_list_size
+Ficheiros esperados : ft_list_size.c, ft_list.h
+Funções permitidas  : nenhuma
+--------------------------------------------------------------
+
+Escreve uma função que devolve o número de elementos da lista ligada que
+começa em begin_list.
+
+Entrega também o ficheiro ft_list.h, que declara a seguinte estrutura:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+A tua função deve ter este protótipo:
+
+int	ft_list_size(t_list *begin_list);
+
+O tester chama-a a partir do seu próprio main: não entregues nenhum.

@@ -1,0 +1,24 @@
+Esercizio           : pgcd
+File attesi         : pgcd.c
+Funzioni consentite : printf, atoi, malloc, free
+--------------------------------------------------------------
+
+Scrivi un programma che riceve due interi strettamente positivi e mostra
+il loro massimo comun divisore, seguito da un a capo.
+
+Se il programma non riceve esattamente due argomenti, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./pgcd "42" "10" | cat -e
+2$
+$> ./pgcd "42" "12" | cat -e
+6$
+$> ./pgcd "14" "77" | cat -e
+7$
+$> ./pgcd "17" "3" | cat -e
+1$
+$> ./pgcd | cat -e
+$
+$>

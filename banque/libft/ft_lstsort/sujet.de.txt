@@ -1,0 +1,13 @@
+Aufgabe             : ft_lstsort
+Erwartete Dateien   : ft_lstsort.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Sortiere die Liste aufsteigend nach cmp.
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	ft_lstsort(t_list **lst, int (*cmp)(const void *, const void *));
+
+Konzept: eine verkettete Liste sortieren
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

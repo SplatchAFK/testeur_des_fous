@@ -1,0 +1,13 @@
+Задание             : ft_vprintf_mini
+Ожидаемые файлы     : ft_vprintf_mini.c
+Разрешённые функции : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Как printf только с %d, %s и %%, но получает уже начатый va_list (как vprintf). Верни число записанных байтов.
+
+Твоя функция должна иметь такой прототип:
+
+int	ft_vprintf_mini(const char *fmt, va_list ap);
+
+Тема: передача va_list
+Норма обязательна. Здесь без libft.

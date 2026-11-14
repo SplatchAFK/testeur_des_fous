@@ -1,0 +1,13 @@
+Alıştırma                 : ft_putptr_count
+Beklenen dosyalar         : ft_putptr_count.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+p adresini Linux'taki printf'in %p'si gibi yaz (0x... ; NULL "(nil)" verir). Yazılan karakter sayısını döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_putptr_count(void *p);
+
+Kavram: işaretçiler ve unsigned long
+Norm zorunludur. Burada libft yok.

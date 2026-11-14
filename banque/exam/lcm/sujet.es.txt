@@ -1,0 +1,14 @@
+Ejercicio            : lcm
+Archivos esperados   : lcm.c
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que devuelve el mínimo común múltiplo de a y b, es
+decir el menor entero no nulo divisible a la vez por a y por b. Si a o b
+vale 0, devuelve 0.
+
+Tu función debe tener este prototipo:
+
+unsigned int	lcm(unsigned int a, unsigned int b);
+
+El tester la llama desde su propio main: no entregues ninguno.

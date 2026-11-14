@@ -1,0 +1,25 @@
+Alıştırma                 : expand_str
+Beklenen dosyalar         : expand_str.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve onu kelimeler arasında tam olarak üç boşlukla, başında ve
+sonunda boşluk ya da sekme olmadan, ardından bir satır sonuyla gösteren
+bir program yaz.
+
+Bir kelime, boşluklar, sekmeler ya da dizenin başı ve sonuyla sınırlanan
+bir karakter dizisidir.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./expand_str "  le   testeur	 des    fous  " | cat -e
+le   testeur   des   fous$
+$> ./expand_str "un mot" | cat -e
+un   mot$
+$> ./expand_str "   " | cat -e
+$
+$> ./expand_str | cat -e
+$
+$>

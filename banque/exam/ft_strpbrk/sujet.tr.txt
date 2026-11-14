@@ -1,0 +1,13 @@
+Alıştırma                 : ft_strpbrk
+Beklenen dosyalar         : ft_strpbrk.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+s1'in s2'ye ait ilk karakterine bir işaretçi, yoksa NULL döndüren bir
+fonksiyon yaz, strpbrk gibi (man strpbrk).
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_strpbrk(const char *s1, const char *s2);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

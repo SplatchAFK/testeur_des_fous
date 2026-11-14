@@ -1,0 +1,13 @@
+Alıştırma                 : ft_lst_to_array
+Beklenen dosyalar         : ft_lst_to_array.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+content işaretçilerinden oluşan, NULL ile biten bir diziyi sırayla döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	**ft_lst_to_array(t_list *lst);
+
+Kavram: listeden diziye
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

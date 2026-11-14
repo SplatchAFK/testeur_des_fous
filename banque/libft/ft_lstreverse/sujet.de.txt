@@ -1,0 +1,13 @@
+Aufgabe             : ft_lstreverse
+Erwartete Dateien   : ft_lstreverse.c
+Erlaubte Funktionen : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Kehre die Liste an Ort und Stelle um und verwende dabei die Knoten wieder.
+
+Deine Funktion muss diesen Prototyp haben:
+
+void	ft_lstreverse(t_list **lst);
+
+Konzept: mit drei Zeigern jonglieren
+Die Norm ist Pflicht. Hilfsfunktionen müssen static sein.

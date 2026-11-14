@@ -1,0 +1,15 @@
+Esercizio           : ft_strcspn
+File attesi         : ft_strcspn.c
+Funzioni consentite : nessuna
+--------------------------------------------------------------
+
+Scrivi una funzione che restituisce la lunghezza del più lungo inizio di s
+che non contiene alcun carattere di reject, come strcspn (man strcspn).
+
+Puoi includere <stddef.h> per size_t.
+
+La tua funzione deve avere questo prototipo:
+
+size_t	ft_strcspn(const char *s, const char *reject);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

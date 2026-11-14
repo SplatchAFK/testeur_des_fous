@@ -1,0 +1,14 @@
+Esercizio           : ft_strpbrk
+File attesi         : ft_strpbrk.c
+Funzioni consentite : nessuna
+--------------------------------------------------------------
+
+Scrivi una funzione che restituisce un puntatore al primo carattere di s1
+che appartiene a s2, o NULL se non ce n'è nessuno, come strpbrk (man
+strpbrk).
+
+La tua funzione deve avere questo prototipo:
+
+char	*ft_strpbrk(const char *s1, const char *s2);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

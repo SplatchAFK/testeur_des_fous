@@ -1,6 +1,6 @@
 Assignment name    : ft_lstsort
 Expected files     : ft_lstsort.c
-Allowed functions  : malloc, free, write, ta libft
+Allowed functions  : malloc, free, write, your libft
 --------------------------------------------------------------
 
 Sort the list in ascending order according to cmp.
@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 void	ft_lstsort(t_list **lst, int (*cmp)(const void *, const void *));
 
-Notion : trier une liste chaînée
-Norme obligatoire. Les fonctions d'aide doivent être static.
+Concept: sorting a linked list
+The Norm is mandatory. Helper functions must be static.

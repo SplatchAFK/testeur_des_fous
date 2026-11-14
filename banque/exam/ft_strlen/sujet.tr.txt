@@ -1,0 +1,13 @@
+Alıştırma                 : ft_strlen
+Beklenen dosyalar         : ft_strlen.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+Bir dizenin uzunluğunu, yani sondaki null'dan önceki karakter sayısını
+döndüren bir fonksiyon yaz.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_strlen(char *str);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

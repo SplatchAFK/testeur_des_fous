@@ -1,0 +1,25 @@
+Alıştırma                 : repeat_alpha
+Beklenen dosyalar         : repeat_alpha.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dize alan ve her harfi alfabedeki sırası kadar tekrarlayarak, ardından
+bir satır sonuyla gösteren bir program yaz.
+
+'a' bir kez, 'b' iki kez, 'c' üç kez gösterilir ve böyle 'z'ye kadar,
+yirmi altı kez. Büyük/küçük harf korunur. Harf olmayan karakterler bir kez
+gösterilir.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./repeat_alpha "abc" | cat -e
+abbccc$
+$> ./repeat_alpha "Marvin." | cat -e
+MMMMMMMMMMMMMarrrrrrrrrrrrrrrrrrvvvvvvvvvvvvvvvvvvvvvviiiiiiiiinnnnnnnnnnnnnn.$
+$> ./repeat_alpha "moulinette 42!" | cat -e
+mmmmmmmmmmmmmooooooooooooooouuuuuuuuuuuuuuuuuuuuulllllllllllliiiiiiiiinnnnnnnnnnnnnneeeeetttttttttttttttttttttttttttttttttttttttteeeee 42!$
+$> ./repeat_alpha | cat -e
+$
+$>

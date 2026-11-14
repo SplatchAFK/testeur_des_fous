@@ -1,0 +1,27 @@
+Exercício           : first_word
+Ficheiros esperados : first_word.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma string e mostra a sua primeira palavra,
+seguida de uma quebra de linha.
+
+Uma palavra é uma sequência de caracteres delimitada por espaços,
+tabulações, ou pelo início e pelo fim da string.
+
+Se o programa não receber exatamente um argumento, ou se a string não
+contiver nenhuma palavra, só mostra uma quebra de linha.
+
+Exemplos:
+
+$> ./first_word "PREMIER mot" | cat -e
+PREMIER$
+$> ./first_word "un        ...       test avec, des    espaces" | cat -e
+un$
+$> ./first_word "   " | cat -e
+$
+$> ./first_word "a" "b" | cat -e
+$
+$> ./first_word "  deux,mots  " | cat -e
+deux,mots$
+$>

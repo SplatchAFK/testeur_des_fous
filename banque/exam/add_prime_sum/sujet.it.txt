@@ -1,0 +1,25 @@
+Esercizio           : add_prime_sum
+File attesi         : add_prime_sum.c
+Funzioni consentite : write, exit
+--------------------------------------------------------------
+
+Scrivi un programma che riceve un intero strettamente positivo e mostra la
+somma di tutti i numeri primi minori o uguali a esso, seguita da un a
+capo.
+
+Se il programma non riceve esattamente un argomento, o se il numero non è
+strettamente positivo, mostra 0 seguito da un a capo.
+
+atoi non è consentita: scrivi la tua conversione.
+
+Esempi:
+
+$> ./add_prime_sum "5" | cat -e
+10$
+$> ./add_prime_sum "7" | cat -e
+17$
+$> ./add_prime_sum | cat -e
+0$
+$> ./add_prime_sum "-5" | cat -e
+0$
+$>

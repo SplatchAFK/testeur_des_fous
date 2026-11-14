@@ -1,0 +1,23 @@
+Esercizio           : hidenp
+File attesi         : hidenp.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che riceve due stringhe e mostra 1 se ogni carattere
+della prima si trova nella seconda, nello stesso ordine, e 0 altrimenti,
+seguito da un a capo. Una prima stringa vuota è sempre nascosta.
+
+Se il programma non riceve esattamente due argomenti, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./hidenp "fgex.;" "tyf34gdgf;'ektufjhgdgex.;.;rtjynur6" | cat -e
+1$
+$> ./hidenp "abc" "2altrb53c.sse" | cat -e
+1$
+$> ./hidenp "abc" "btarc" | cat -e
+0$
+$> ./hidenp | cat -e
+$
+$>

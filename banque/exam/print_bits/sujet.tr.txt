@@ -1,0 +1,15 @@
+Alıştırma                 : print_bits
+Beklenen dosyalar         : print_bits.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+octet'in 8 bitini en yüksekten en düşüğe, satır sonu olmadan gösteren bir
+fonksiyon yaz.
+
+Örneğin 2, 00000010 olarak gösterilir.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	print_bits(unsigned char octet);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

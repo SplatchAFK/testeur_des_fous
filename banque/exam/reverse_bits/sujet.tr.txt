@@ -1,0 +1,15 @@
+Alıştırma                 : reverse_bits
+Beklenen dosyalar         : reverse_bits.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+octet'i 8 biti ters sırada olacak şekilde döndüren bir fonksiyon yaz: en
+yüksek bit en düşük olur ve böyle devam eder.
+
+Örneğin 00100110, 01100100 olur.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+unsigned char	reverse_bits(unsigned char octet);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

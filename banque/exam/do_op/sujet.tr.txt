@@ -1,0 +1,24 @@
+Alıştırma                 : do_op
+Beklenen dosyalar         : do_op.c
+İzin verilen fonksiyonlar : atoi, printf, write
+--------------------------------------------------------------
+
+Üç argüman alan bir program yaz: bir sayı, bir operatör ve başka bir sayı.
+İşlemin sonucunu, ardından bir satır sonu gösterir.
+
+Operatörler '+', '-', '*', '/' ve '%'. Sayılar bir int içine sığar ve
+tester asla sıfıra bölmez.
+
+Program tam olarak üç argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./do_op "123" "*" "456" | cat -e
+56088$
+$> ./do_op "9828" "/" "234" | cat -e
+42$
+$> ./do_op "10" "+" "-43" | cat -e
+-33$
+$> ./do_op | cat -e
+$
+$>

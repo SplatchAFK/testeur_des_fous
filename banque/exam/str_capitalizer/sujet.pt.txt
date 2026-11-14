@@ -1,0 +1,25 @@
+Exercício           : str_capitalizer
+Ficheiros esperados : str_capitalizer.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe uma ou várias strings e, para cada uma, põe
+em maiúscula a primeira letra de cada palavra e em minúscula todas as
+outras letras, e depois mostra o resultado seguido de uma quebra de linha.
+
+Uma palavra é uma sequência de caracteres delimitada por espaços,
+tabulações, ou pelo início e pelo fim da string. Se o primeiro carácter de
+uma palavra não for uma letra, não muda.
+
+Sem argumentos, o programa só mostra uma quebra de linha.
+
+Exemplos:
+
+$> ./str_capitalizer "le TESTEUR des fous" | cat -e
+Le Testeur Des Fous$
+$> ./str_capitalizer "une PHRASE " "Deux Phrases	avec tab" | cat -e
+Une Phrase $
+Deux Phrases^IAvec Tab$
+$> ./str_capitalizer | cat -e
+$
+$>

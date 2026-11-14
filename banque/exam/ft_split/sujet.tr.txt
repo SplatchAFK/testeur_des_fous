@@ -1,0 +1,15 @@
+Alıştırma                 : ft_split
+Beklenen dosyalar         : ft_split.c
+İzin verilen fonksiyonlar : malloc
+--------------------------------------------------------------
+
+str dizesini kelimelere bölen ve malloc ile ayrılmış, NULL ile biten bir
+dize dizisi döndüren bir fonksiyon yaz. Her kelime de malloc ile ayrılır.
+
+Kelimeler boşluklar, sekmeler ya da satır sonlarıyla ayrılır.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	**ft_split(char *str);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

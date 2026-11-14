@@ -1,0 +1,13 @@
+Alıştırma                 : ft_putstr
+Beklenen dosyalar         : ft_putstr.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Bir dizeyi standart çıktıda gösteren bir fonksiyon yaz. Dizeden sonra
+hiçbir şey eklemez.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_putstr(char *str);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

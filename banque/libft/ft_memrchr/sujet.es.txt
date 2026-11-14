@@ -1,0 +1,13 @@
+Ejercicio            : ft_memrchr
+Archivos esperados   : ft_memrchr.c
+Funciones permitidas : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Busca el ÚLTIMO byte c (como unsigned char) en los n primeros bytes de s, o NULL.
+
+Tu función debe tener este prototipo:
+
+void	*ft_memrchr(const void *s, int c, size_t n);
+
+Concepto: bucle hacia atrás con un size_t
+La Norma es obligatoria. Las funciones auxiliares deben ser static.

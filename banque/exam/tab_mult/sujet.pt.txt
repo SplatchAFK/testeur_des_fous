@@ -1,0 +1,28 @@
+Exercício           : tab_mult
+Ficheiros esperados : tab_mult.c
+Funções permitidas  : write
+--------------------------------------------------------------
+
+Escreve um programa que recebe um inteiro estritamente positivo e mostra a
+sua tabuada de 1 a 9, uma linha por produto, na forma "1 x 7 = 7".
+
+O tester só dá números cuja tabuada cabe num int.
+
+Se o programa não receber exatamente um argumento, só mostra uma quebra de
+linha.
+
+Exemplos:
+
+$> ./tab_mult "9" | cat -e
+1 x 9 = 9$
+2 x 9 = 18$
+3 x 9 = 27$
+4 x 9 = 36$
+5 x 9 = 45$
+6 x 9 = 54$
+7 x 9 = 63$
+8 x 9 = 72$
+9 x 9 = 81$
+$> ./tab_mult | cat -e
+$
+$>

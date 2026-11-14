@@ -1,0 +1,16 @@
+Alıştırma                 : ft_strcmp
+Beklenen dosyalar         : ft_strcmp.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+s1 ve s2 dizelerini strcmp gibi (man strcmp) karşılaştıran bir fonksiyon
+yaz. s1, s2'den önce geliyorsa negatif bir sayı, eşitlerse sıfır, aksi
+halde pozitif bir sayı döndürür. Karşılaştırma karakter karakter yapılır.
+
+Tester yalnızca sonucun işaretine bakar.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_strcmp(char *s1, char *s2);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

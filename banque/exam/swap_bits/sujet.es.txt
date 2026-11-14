@@ -1,0 +1,15 @@
+Ejercicio            : swap_bits
+Archivos esperados   : swap_bits.c
+Funciones permitidas : ninguna
+--------------------------------------------------------------
+
+Escribe una función que intercambia las dos mitades de octet: los 4 bits
+altos ocupan el lugar de los 4 bits bajos, y al revés.
+
+Por ejemplo, 01000001 se convierte en 00010100.
+
+Tu función debe tener este prototipo:
+
+unsigned char	swap_bits(unsigned char octet);
+
+El tester la llama desde su propio main: no entregues ninguno.

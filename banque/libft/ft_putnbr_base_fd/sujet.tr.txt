@@ -1,0 +1,13 @@
+Alıştırma                 : ft_putnbr_base_fd
+Beklenen dosyalar         : ft_putnbr_base_fd.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+n'yi base tabanında fd'ye yaz. Geçersiz bir taban hiçbir şey yazmaz. LONG_MIN'i işle.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	ft_putnbr_base_fd(long n, const char *base, int fd);
+
+Kavram: özyineleme ve write
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

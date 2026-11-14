@@ -1,0 +1,13 @@
+Alıştırma                 : ft_puthex_count
+Beklenen dosyalar         : ft_puthex_count.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+n'yi onaltılık tabanda, upper 1 ise büyük harfle yaz. Yazılan karakter sayısını döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_puthex_count(unsigned int n, int upper);
+
+Kavram: onaltılık taban ve harf büyüklüğü
+Norm zorunludur. Burada libft yok.

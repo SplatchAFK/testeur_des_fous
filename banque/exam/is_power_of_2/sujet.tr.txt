@@ -1,0 +1,13 @@
+Alıştırma                 : is_power_of_2
+Beklenen dosyalar         : is_power_of_2.c
+İzin verilen fonksiyonlar : yok
+--------------------------------------------------------------
+
+n, 2'nin bir kuvvetiyse 1, aksi halde 0 döndüren bir fonksiyon yaz. 0,
+2'nin bir kuvveti değildir.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	is_power_of_2(unsigned int n);
+
+Tester onu kendi main'inden çağırır: main teslim etme.

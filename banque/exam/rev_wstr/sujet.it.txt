@@ -1,0 +1,26 @@
+Esercizio           : rev_wstr
+File attesi         : rev_wstr.c
+Funzioni consentite : write, malloc, free
+--------------------------------------------------------------
+
+Scrivi un programma che riceve una stringa e mostra le sue parole in
+ordine inverso, separate da un solo spazio, seguite da un a capo.
+
+Una parola è una sequenza di caratteri delimitata da spazi o tabulazioni.
+Non c'è mai uno spazio o una tabulazione all'inizio o alla fine
+dell'output.
+
+Se il programma non riceve esattamente un argomento, mostra solo un a
+capo.
+
+Esempi:
+
+$> ./rev_wstr "le testeur des fous" | cat -e
+fous des testeur le$
+$> ./rev_wstr "Marvin monte la tour" | cat -e
+tour la monte Marvin$
+$> ./rev_wstr "unseul" | cat -e
+unseul$
+$> ./rev_wstr | cat -e
+$
+$>

@@ -1,0 +1,24 @@
+Alıştırma                 : rev_wstr
+Beklenen dosyalar         : rev_wstr.c
+İzin verilen fonksiyonlar : write, malloc, free
+--------------------------------------------------------------
+
+Bir dize alan ve kelimelerini ters sırayla, tek bir boşlukla ayrılmış
+olarak, ardından bir satır sonuyla gösteren bir program yaz.
+
+Bir kelime, boşluklar ya da sekmelerle sınırlanan bir karakter dizisidir.
+Çıktının başında ya da sonunda asla boşluk ya da sekme olmaz.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./rev_wstr "le testeur des fous" | cat -e
+fous des testeur le$
+$> ./rev_wstr "Marvin monte la tour" | cat -e
+tour la monte Marvin$
+$> ./rev_wstr "unseul" | cat -e
+unseul$
+$> ./rev_wstr | cat -e
+$
+$>

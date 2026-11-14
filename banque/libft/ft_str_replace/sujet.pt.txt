@@ -1,0 +1,13 @@
+Exercício           : ft_str_replace
+Ficheiros esperados : ft_str_replace.c
+Funções permitidas  : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Substitui cada ocorrência de old por new, da esquerda para a direita, numa nova string.
+
+A tua função deve ter este protótipo:
+
+char	*ft_str_replace(const char *s, const char *old, const char *new);
+
+Conceito: duas passagens: contar e depois construir
+A Norma é obrigatória. As funções auxiliares têm de ser static.

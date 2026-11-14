@@ -1,0 +1,14 @@
+Aufgabe             : ft_strdup
+Erwartete Dateien   : ft_strdup.c
+Erlaubte Funktionen : malloc
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die eine Kopie des Strings src in mit malloc
+reserviertem Speicher zurückgibt, wie strdup (man strdup). Schlägt die
+Reservierung fehl, gibt sie NULL zurück.
+
+Deine Funktion muss diesen Prototyp haben:
+
+char	*ft_strdup(char *src);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

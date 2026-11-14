@@ -1,0 +1,13 @@
+Esercizio           : ft_swap
+File attesi         : ft_swap.c
+Funzioni consentite : nessuna
+--------------------------------------------------------------
+
+Scrivi una funzione che scambia i valori dei due interi di cui riceve gli
+indirizzi.
+
+La tua funzione deve avere questo prototipo:
+
+void	ft_swap(int *a, int *b);
+
+Il tester la chiama dal proprio main: non consegnarne uno.

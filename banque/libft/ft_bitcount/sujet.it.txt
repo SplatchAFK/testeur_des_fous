@@ -1,0 +1,13 @@
+Esercizio           : ft_bitcount
+File attesi         : ft_bitcount.c
+Funzioni consentite : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Restituisci il numero di bit a 1 in n.
+
+La tua funzione deve avere questo prototipo:
+
+int		ft_bitcount(unsigned int n);
+
+Concetto: operatori bit a bit
+La Norma è obbligatoria. Le funzioni di supporto devono essere static.

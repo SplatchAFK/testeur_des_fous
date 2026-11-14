@@ -1,0 +1,26 @@
+Ejercicio            : rev_wstr
+Archivos esperados   : rev_wstr.c
+Funciones permitidas : write, malloc, free
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y muestra sus palabras en orden
+inverso, separadas por un solo espacio, seguidas de un salto de línea.
+
+Una palabra es una secuencia de caracteres delimitada por espacios o
+tabulaciones. Nunca hay un espacio ni una tabulación al principio ni al
+final de la salida.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./rev_wstr "le testeur des fous" | cat -e
+fous des testeur le$
+$> ./rev_wstr "Marvin monte la tour" | cat -e
+tour la monte Marvin$
+$> ./rev_wstr "unseul" | cat -e
+unseul$
+$> ./rev_wstr | cat -e
+$
+$>

@@ -1,0 +1,27 @@
+Alıştırma                 : tab_mult
+Beklenen dosyalar         : tab_mult.c
+İzin verilen fonksiyonlar : write
+--------------------------------------------------------------
+
+Kesinlikle pozitif bir tam sayı alan ve 1'den 9'a çarpım tablosunu, her
+çarpım için bir satır, "1 x 7 = 7" biçiminde gösteren bir program yaz.
+
+Tester yalnızca çarpım tablosu bir int içine sığan sayılar verir.
+
+Program tam olarak bir argüman almazsa yalnızca bir satır sonu gösterir.
+
+Örnekler:
+
+$> ./tab_mult "9" | cat -e
+1 x 9 = 9$
+2 x 9 = 18$
+3 x 9 = 27$
+4 x 9 = 36$
+5 x 9 = 45$
+6 x 9 = 54$
+7 x 9 = 63$
+8 x 9 = 72$
+9 x 9 = 81$
+$> ./tab_mult | cat -e
+$
+$>

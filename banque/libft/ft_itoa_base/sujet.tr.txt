@@ -1,0 +1,13 @@
+Alıştırma                 : ft_itoa_base
+Beklenen dosyalar         : ft_itoa_base.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+n'yi base tabanında yeni bir dizeye yaz. LONG_MIN'i işle. Geçersiz tabanda NULL.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+char	*ft_itoa_base(long n, const char *base);
+
+Kavram: LONG_MIN, rakam sayma, tam malloc
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

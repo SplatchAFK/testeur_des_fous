@@ -1,6 +1,6 @@
 Assignment name    : ft_strndup
 Expected files     : ft_strndup.c
-Allowed functions  : malloc, free, write, ta libft
+Allowed functions  : malloc, free, write, your libft
 --------------------------------------------------------------
 
 Duplicate at most n characters of s. NULL if malloc fails.
@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 char	*ft_strndup(const char *s, size_t n);
 
-Notion : taille d'allocation exacte
-Norme obligatoire. Les fonctions d'aide doivent être static.
+Concept: exact allocation size
+The Norm is mandatory. Helper functions must be static.

@@ -1,0 +1,14 @@
+Exercício           : ft_lstfind
+Ficheiros esperados : ft_lstfind.c
+Funções permitidas  : malloc, free, write, your libft
+--------------------------------------------------------------
+
+Devolve o primeiro nó em que cmp(content, ref) == 0, senão NULL.
+
+A tua função deve ter este protótipo:
+
+t_list	*ft_lstfind(t_list *lst, const void *ref,
+			int (*cmp)(const void *, const void *));
+
+Conceito: callback com contexto
+A Norma é obrigatória. As funções auxiliares têm de ser static.

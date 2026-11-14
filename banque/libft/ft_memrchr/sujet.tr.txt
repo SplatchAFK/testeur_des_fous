@@ -1,0 +1,13 @@
+Alıştırma                 : ft_memrchr
+Beklenen dosyalar         : ft_memrchr.c
+İzin verilen fonksiyonlar : malloc, free, write, your libft
+--------------------------------------------------------------
+
+s'nin ilk n baytı içindeki SON c baytını (unsigned char olarak) bul, yoksa NULL.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+void	*ft_memrchr(const void *s, int c, size_t n);
+
+Kavram: size_t ile geriye doğru döngü
+Norm zorunludur. Yardımcı fonksiyonlar static olmalıdır.

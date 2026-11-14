@@ -1,0 +1,13 @@
+Aufgabe             : ft_count_conv
+Erwartete Dateien   : ft_count_conv.c
+Erlaubte Funktionen : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Zähle die Umwandlungen in fmt ("%%" zählt als eine). Ein einzelnes '%' am Ende zählt nicht. Lies nie über das '\0' hinaus.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_count_conv(const char *fmt);
+
+Konzept: das abschließende '%'
+Die Norm ist Pflicht. Keine libft hier.

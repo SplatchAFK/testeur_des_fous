@@ -1,0 +1,13 @@
+Alıştırma                 : ft_putchar_count
+Beklenen dosyalar         : ft_putchar_count.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+c'yi standart çıktıya yaz. Yazılan bayt sayısını (1) ya da write başarısız olursa -1 döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_putchar_count(char c);
+
+Kavram: write ve dönüş değeri
+Norm zorunludur. Burada libft yok.

@@ -1,0 +1,21 @@
+Aufgabe             : ft_list_size
+Erwartete Dateien   : ft_list_size.c, ft_list.h
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die die Anzahl der Elemente der verketteten Liste
+zurückgibt, die bei begin_list beginnt.
+
+Gib auch die Datei ft_list.h ab, die folgende Struktur deklariert:
+
+typedef struct    s_list
+{
+    struct s_list *next;
+    void          *data;
+}                 t_list;
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_list_size(t_list *begin_list);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

@@ -1,0 +1,18 @@
+Aufgabe             : ft_atoi
+Erwartete Dateien   : ft_atoi.c
+Erlaubte Funktionen : keine
+--------------------------------------------------------------
+
+Schreibe eine Funktion, die den Anfang des Strings str in einen int
+umwandelt, wie atoi (man atoi).
+
+Sie überspringt führende Leerraumzeichen (Leerzeichen, \t, \n, \v, \f,
+\r), akzeptiert ein einzelnes Vorzeichen '+' oder '-' und liest dann
+Ziffern bis zum ersten Zeichen, das keine Ziffer ist. Der Tester gibt nur
+Zahlen, die in einen int passen.
+
+Deine Funktion muss diesen Prototyp haben:
+
+int	ft_atoi(const char *str);
+
+Der Tester ruft sie aus seiner eigenen main auf: gib keine ab.

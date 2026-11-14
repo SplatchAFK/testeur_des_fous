@@ -1,6 +1,6 @@
 Assignment name    : ft_lst_to_array
 Expected files     : ft_lst_to_array.c
-Allowed functions  : malloc, free, write, ta libft
+Allowed functions  : malloc, free, write, your libft
 --------------------------------------------------------------
 
 Return a NULL-terminated array of the content pointers, in order.
@@ -9,5 +9,5 @@ Your function must have this prototype:
 
 void	**ft_lst_to_array(t_list *lst);
 
-Notion : liste vers tableau
-Norme obligatoire. Les fonctions d'aide doivent être static.
+Concept: list to array
+The Norm is mandatory. Helper functions must be static.

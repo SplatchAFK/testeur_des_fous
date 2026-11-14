@@ -1,0 +1,29 @@
+Esercizio           : fizzbuzz
+File attesi         : fizzbuzz.c
+Funzioni consentite : write
+--------------------------------------------------------------
+
+Scrivi un programma che mostra i numeri da 1 a 100, uno per riga.
+
+Tre regole sostituiscono alcuni numeri:
+- un multiplo di 3 è sostituito da "fizz";
+- un multiplo di 5 è sostituito da "buzz";
+- un multiplo sia di 3 sia di 5 è sostituito da "fizzbuzz".
+
+Il programma ignora i suoi argomenti.
+
+Inizio dell'output atteso:
+
+$> ./fizzbuzz
+1
+2
+fizz
+4
+buzz
+fizz
+7
+[...]
+14
+fizzbuzz
+16
+[...]

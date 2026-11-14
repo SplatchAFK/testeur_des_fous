@@ -1,0 +1,28 @@
+Задание             : search_and_replace
+Ожидаемые файлы     : search_and_replace.c
+Разрешённые функции : write
+--------------------------------------------------------------
+
+Напиши программу, которая получает три аргумента: строку, искомый символ и
+символ замены. Она выводит строку, заменяя каждое вхождение первого
+символа вторым, а затем перевод строки.
+
+Если программа получает не ровно три аргумента или второй или третий
+аргумент не состоит ровно из одного символа, она выводит только перевод
+строки.
+
+Если искомого символа нет, строка выводится без изменений.
+
+Примеры:
+
+$> ./search_and_replace "Marvin garde la tour" "a" "o" | cat -e
+Morvin gorde lo tour$
+$> ./search_and_replace "tour" "abc" "xyz" | cat -e
+$
+$> ./search_and_replace "tour" "r" "l" | cat -e
+toul$
+$> ./search_and_replace "marvin" "a" "b" "c" "e" | cat -e
+$
+$> ./search_and_replace "wncorw un wxwmplw pas facilw a wcrirw " "w" "e" | cat -e
+encore un exemple pas facile a ecrire $
+$>

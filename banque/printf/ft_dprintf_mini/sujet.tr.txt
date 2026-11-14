@@ -1,0 +1,13 @@
+Alıştırma                 : ft_dprintf_mini
+Beklenen dosyalar         : ft_dprintf_mini.c
+İzin verilen fonksiyonlar : write, malloc, free, va_start, va_arg, va_copy, va_end
+--------------------------------------------------------------
+
+Yalnızca %c, %s ve %d ile dprintf gibi: fd'ye yazar. Yazılan bayt sayısını, write başarısız olursa -1 döndür.
+
+Fonksiyonun bu prototipe sahip olmalı:
+
+int	ft_dprintf_mini(int fd, const char *fmt, ...);
+
+Kavram: dprintf
+Norm zorunludur. Burada libft yok.

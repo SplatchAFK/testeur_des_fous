@@ -1,0 +1,29 @@
+Aufgabe             : search_and_replace
+Erwartete Dateien   : search_and_replace.c
+Erlaubte Funktionen : write
+--------------------------------------------------------------
+
+Schreibe ein Programm, das drei Argumente erhält: einen String, ein zu
+suchendes Zeichen und ein Ersatzzeichen. Es zeigt den String an, wobei
+jedes Vorkommen des ersten Zeichens durch das zweite ersetzt wird, gefolgt
+von einem Zeilenumbruch.
+
+Wenn das Programm nicht genau drei Argumente erhält oder das zweite oder
+dritte Argument nicht genau ein Zeichen lang ist, zeigt es nur einen
+Zeilenumbruch an.
+
+Kommt das gesuchte Zeichen nicht vor, wird der String unverändert angezeigt.
+
+Beispiele:
+
+$> ./search_and_replace "Marvin garde la tour" "a" "o" | cat -e
+Morvin gorde lo tour$
+$> ./search_and_replace "tour" "abc" "xyz" | cat -e
+$
+$> ./search_and_replace "tour" "r" "l" | cat -e
+toul$
+$> ./search_and_replace "marvin" "a" "b" "c" "e" | cat -e
+$
+$> ./search_and_replace "wncorw un wxwmplw pas facilw a wcrirw " "w" "e" | cat -e
+encore un exemple pas facile a ecrire $
+$>

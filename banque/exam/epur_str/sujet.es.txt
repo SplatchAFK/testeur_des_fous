@@ -1,0 +1,26 @@
+Ejercicio            : epur_str
+Archivos esperados   : epur_str.c
+Funciones permitidas : write
+--------------------------------------------------------------
+
+Escribe un programa que recibe una cadena y la muestra con exactamente un
+espacio entre las palabras, sin espacios ni tabulaciones al principio ni
+al final, seguida de un salto de línea.
+
+Una palabra es una secuencia de caracteres delimitada por espacios,
+tabulaciones, o por el principio y el final de la cadena.
+
+Si el programa no recibe exactamente un argumento, solo muestra un salto
+de línea.
+
+Ejemplos:
+
+$> ./epur_str "  le   testeur	 des    fous  " | cat -e
+le testeur des fous$
+$> ./epur_str "un mot" | cat -e
+un mot$
+$> ./epur_str "   " | cat -e
+$
+$> ./epur_str | cat -e
+$
+$>
