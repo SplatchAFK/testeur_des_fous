@@ -13,6 +13,26 @@ Le numéro de version est dans `moteur/version.h`.
 - premier lancement : la langue, l'écran d'accueil, le login, puis le tuto ; ensuite plus rien avant le menu ;
 - si l'interface graphique ne compile pas, l'ancien menu texte prend le relais.
 
+### Tester mon projet
+
+- aux flèches : « Tester ce dossier » en haut, puis tes derniers tests (chemin, score, date) qu'Entrée relance, puis les projets trouvés à côté du testeur ;
+- ↑ tout en haut pour écrire un chemin : Tab complète comme zsh, sans tenir compte des majuscules, Tab répété fait défiler, ▶ ouvre, ◀ remonte ;
+- les 10 derniers projets testés sont gardés.
+
+### Discord, crédits et Changelog
+
+- le Discord s'appelle « 42 Next Global - Serveur non Officiel » ; contact : @splatch_afk ;
+- crédits du testeur des fous (et non plus d'une édition Libft ou printf), avec le rappel que c'est un testeur et pas un jeu vidéo ;
+- « Nouveautés » devient « Changelog », avec le lien du Discord, cliquable (Ctrl + clic) dans les terminaux qui le permettent ;
+- la trace « Nous aider » (touche t) est créée dans `testeur_des_fous/trace/` ;
+- le mode texte, qui ne changeait rien, est retiré.
+
+### Progression
+
+- la cape et le casque du vétéran se débloquent dès qu'un passage Libft sans échec est enregistré ;
+- holygraph : un projet réussi une fois sans échec reste validé pour toujours ; les modules après Programming Fundamentals sont grisés en attendant leurs testeurs ;
+- banque : le nombre d'exercices et de réussites s'affiche pour chaque catégorie.
+
 ### Après un test
 
 - l'écran des résultats s'affiche directement avec tous les tests et leur détail ; en le quittant, retour au menu, sans « Entrée pour continuer » ;
