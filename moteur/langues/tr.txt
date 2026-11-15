@@ -1483,3 +1483,8 @@ Type a path: ~/ for your home, / for the root, . for here.	Bir yol yaz: ana klas
 Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list	Tab tamamla   ▲ ▼ seç   ▶ aç   ◀ yukarı   Enter onayla   Esc: liste
 ▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back	▲ ▼ seç   en üstte ↑: yol yaz   Enter test et   Esc geri
 this folder no longer exists	bu klasör artık yok
+• Your terminal is %d × %d: make it full screen (F11 or double-click the title bar). Best: at least 120 × 38.\n	• Terminalin %d × %d: tam ekran yap (F11 ya da başlık çubuğuna çift tık). İdeal: en az 120 × 38.\n
+• Your terminal is not in UTF-8: some drawings and accents may look wrong. Add 'export LANG=C.UTF-8' to your ~/.zshrc.\n	• Terminalin UTF-8 değil: bazı çizimler ve aksanlar bozuk görünebilir. ~/.zshrc dosyana « export LANG=C.UTF-8 » ekle.\n
+• Your terminal does not announce 24-bit colours: colours will be approximated. A recent terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) shows them all.\n	• Terminalin 24 bit renk bildirmiyor: renkler yaklaşık olacak. Yeni bir terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) hepsini gösterir.\n
+• Most handy: the tester on one side of the screen, and VS Code, vim or your editor large next to it. The tester adapts to the space it has.\n• If the display shifts or gets cut, enlarge the window and start the tester again.	• En pratiği: tester ekranın bir yanında, VS Code, vim ya da editörün yanında büyük. Tester eldeki alana uyum sağlar.\n• Görüntü kayar ya da kesilirse pencereyi büyüt ve testeri yeniden başlat.
+DISPLAY TIPS	GÖRÜNTÜ İPUÇLARI

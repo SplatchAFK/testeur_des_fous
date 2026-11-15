@@ -1483,3 +1483,8 @@ Type a path: ~/ for your home, / for the root, . for here.	Escreve um caminho: ~
 Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list	Tab completar   ▲ ▼ escolher   ▶ abrir   ◀ subir   Enter confirmar   Esc: lista
 ▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back	▲ ▼ escolher   ↑ no topo: escrever um caminho   Enter testar   Esc voltar
 this folder no longer exists	esta pasta já não existe
+• Your terminal is %d × %d: make it full screen (F11 or double-click the title bar). Best: at least 120 × 38.\n	• O teu terminal tem %d × %d: põe-no em ecrã inteiro (F11 ou duplo clique na barra de título). Ideal: pelo menos 120 × 38.\n
+• Your terminal is not in UTF-8: some drawings and accents may look wrong. Add 'export LANG=C.UTF-8' to your ~/.zshrc.\n	• O teu terminal não está em UTF-8: alguns desenhos e acentos podem aparecer mal. Acrescenta « export LANG=C.UTF-8 » ao teu ~/.zshrc.\n
+• Your terminal does not announce 24-bit colours: colours will be approximated. A recent terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) shows them all.\n	• O teu terminal não anuncia cores de 24 bits: as cores serão aproximadas. Um terminal recente (GNOME Terminal, Ptyxis, Windows Terminal, kitty) mostra-as todas.\n
+• Most handy: the tester on one side of the screen, and VS Code, vim or your editor large next to it. The tester adapts to the space it has.\n• If the display shifts or gets cut, enlarge the window and start the tester again.	• O mais prático: o tester num lado do ecrã, e o VS Code, vim ou o teu editor em grande ao lado. O tester adapta-se ao espaço que tem.\n• Se o ecrã se desalinhar ou cortar, aumenta a janela e volta a lançar o tester.
+DISPLAY TIPS	DICAS DE ECRÃ

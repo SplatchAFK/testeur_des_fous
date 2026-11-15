@@ -210,12 +210,12 @@ int	main(int ac, char **av)
 	}
 	term_init();
 	first = g_save.runs == 0;
-	if (unique && !results && !(ecran && ecran[0]))
-		tdf_conseil_plein_ecran();
-	if (!relance)
-		lore_setup();
 	if (!relance)
 		version_notice();
+	if (unique && !results && !(ecran && ecran[0]))
+		tdf_conseil(g_accueil != 0);
+	if (!relance)
+		lore_setup();
 	if (!relance && first && (!unique || g_accueil == 1))
 		screen_intro();
 	if (g_save.valid == -1)
@@ -229,7 +229,10 @@ int	main(int ac, char **av)
 	if (g_accueil == 1)
 		tdf_tuto();
 	else if (g_accueil == 2)
+	{
+		tdf_tuto();
 		tdf_nouveautes();
+	}
 	if (results && !relance && first && !unique)
 		story_libft_intro();
 	code = 0;

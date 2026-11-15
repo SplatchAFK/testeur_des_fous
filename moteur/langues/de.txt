@@ -1483,3 +1483,8 @@ Type a path: ~/ for your home, / for the root, . for here.	Tippe einen Pfad: ~/ 
 Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list	Tab ergänzen   ▲ ▼ wählen   ▶ öffnen   ◀ hoch   Enter bestätigen   Esc: Liste
 ▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back	▲ ▼ wählen   ↑ ganz oben: Pfad tippen   Enter testen   Esc zurück
 this folder no longer exists	dieser Ordner existiert nicht mehr
+• Your terminal is %d × %d: make it full screen (F11 or double-click the title bar). Best: at least 120 × 38.\n	• Dein Terminal ist %d × %d groß: stell es auf Vollbild (F11 oder Doppelklick auf die Titelleiste). Ideal: mindestens 120 × 38.\n
+• Your terminal is not in UTF-8: some drawings and accents may look wrong. Add 'export LANG=C.UTF-8' to your ~/.zshrc.\n	• Dein Terminal läuft nicht in UTF-8: manche Zeichnungen und Akzente sehen falsch aus. Füge « export LANG=C.UTF-8 » in deine ~/.zshrc ein.\n
+• Your terminal does not announce 24-bit colours: colours will be approximated. A recent terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) shows them all.\n	• Dein Terminal meldet keine 24-Bit-Farben: die Farben werden angenähert. Ein aktuelles Terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) zeigt alle.\n
+• Most handy: the tester on one side of the screen, and VS Code, vim or your editor large next to it. The tester adapts to the space it has.\n• If the display shifts or gets cut, enlarge the window and start the tester again.	• Am praktischsten: der Tester auf einer Seite des Bildschirms, VS Code, vim oder dein Editor groß daneben. Der Tester passt sich dem Platz an.\n• Wenn sich die Anzeige verschiebt oder abgeschnitten wird, vergrößere das Fenster und starte den Tester neu.
+DISPLAY TIPS	ANZEIGETIPPS

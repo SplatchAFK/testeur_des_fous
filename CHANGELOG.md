@@ -9,7 +9,8 @@ Le numéro de version est dans `moteur/version.h`.
 - `bash run.sh` ou `tdf` ouvre directement le menu graphique d'origine : titre puis fou centrés en haut, chevalier à gauche, choix centrés ;
 - premier bouton « Tester mon projet » : « . » pour le dossier où tu es, les projets trouvés en raccourci, ou le parcours du PC comme dans zsh (Tab, Tab répété, ▶ ouvre, ◀ remonte) ;
 - puis Exam en C, Banque d'exercices, Revoir la dernière tentative, Chevalier, Lore, Stats, Paramètres, Quitter ;
-- au lancement, un conseil de passer le terminal en plein écran s'il fait moins de 120 × 38 ;
+- conseils d'affichage au premier lancement, après chaque mise à jour, et dès qu'un problème est détecté (terminal plus petit que 120 × 38, pas d'UTF-8, couleurs limitées) ; ils rappellent aussi de mettre le testeur sur un côté et l'éditeur en grand à côté ;
+- après une mise à jour (`git pull`), tout se passe comme à la première installation (conseils, tuto, changelog), sans perdre ta progression ;
 - premier lancement : la langue, l'écran d'accueil, le login, puis le tuto ; ensuite plus rien avant le menu ;
 - si l'interface graphique ne compile pas, l'ancien menu texte prend le relais.
 

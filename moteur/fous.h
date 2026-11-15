@@ -712,6 +712,7 @@ int				tdf_choisir_dossier(char *out, size_t n);
 int				tdf_derniere_existe(void);
 void			tdf_derniere_ecrire(const char *module, const char *fichier);
 void			tdf_conseil_plein_ecran(void);
+void			tdf_conseil(int force);
 void			tdf_rapport(const char *path, const char *titre);
 void			tdf_banque(void);
 void			tdf_lien(int x, int y, const char *url);

@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <dirent.h>
 #include <limits.h>
 #include <math.h>
@@ -1012,19 +1013,53 @@ void	tdf_derniere_ecrire(const char *module, const char *fichier)
 	}
 }
 
-void	tdf_conseil_plein_ecran(void)
+static int	utf8_ok(void)
+{
+	const char	*v[3];
+	int			i;
+
+	v[0] = getenv("LC_ALL");
+	v[1] = getenv("LC_CTYPE");
+	v[2] = getenv("LANG");
+	for (i = 0; i < 3; i++)
+		if (v[i] && *v[i])
+			return (strcasestr(v[i], "utf-8") || strcasestr(v[i], "utf8"));
+	return (0);
+}
+
+void	tdf_conseil(int force)
 {
 	const char	*items[1];
-	char		texte[600];
+	char		texte[1600];
+	int			n;
+	int			petit;
 	int			sel;
 
-	if (term_cols() >= 120 && term_rows() >= 38)
+	petit = term_cols() < 120 || term_rows() < 38;
+	if (!force && !petit && utf8_ok() && entete_24bits())
 		return ;
-	snprintf(texte, sizeof(texte), L("Ton terminal fait %d × %d. Mets-le en plein écran (F11 ou double-clic sur la barre de titre) avant de continuer : le menu, les tests et les cinématiques s'affichent mieux, sans texte coupé. Idéal : au moins 120 × 38.",
-			"Your terminal is %d × %d. Make it full screen (F11 or double-click the title bar) before you go on: the menu, the tests and the cutscenes display better, with no cut text. Best: at least 120 × 38."), term_cols(), term_rows());
+	n = 0;
+	if (petit)
+		n += snprintf(texte + n, sizeof(texte) - n, L("• Ton terminal fait %d × %d : mets-le en plein écran (F11 ou double-clic sur la barre de titre). Idéal : au moins 120 × 38.\n",
+				"• Your terminal is %d × %d: make it full screen (F11 or double-click the title bar). Best: at least 120 × 38.\n"), term_cols(), term_rows());
+	if (!utf8_ok())
+		n += snprintf(texte + n, sizeof(texte) - n, "%s", L("• Ton terminal n'est pas en UTF-8 : certains dessins et accents peuvent mal s'afficher. Ajoute « export LANG=C.UTF-8 » à ton ~/.zshrc.\n",
+				"• Your terminal is not in UTF-8: some drawings and accents may look wrong. Add 'export LANG=C.UTF-8' to your ~/.zshrc.\n"));
+	if (!entete_24bits())
+		n += snprintf(texte + n, sizeof(texte) - n, "%s", L("• Ton terminal n'annonce pas les couleurs 24 bits : les couleurs seront approchées. Un terminal récent (GNOME Terminal, Ptyxis, Windows Terminal, kitty) les affiche toutes.\n",
+				"• Your terminal does not announce 24-bit colours: colours will be approximated. A recent terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) shows them all.\n"));
+	n += snprintf(texte + n, sizeof(texte) - n, "%s", L("• Le plus pratique : le testeur sur un côté de l'écran, et VS Code, vim ou ton éditeur en grand à côté. Le testeur s'adapte à la place qu'il a.\n"
+			"• Si l'affichage se décale ou se coupe, agrandis la fenêtre puis relance le testeur.",
+			"• Most handy: the tester on one side of the screen, and VS Code, vim or your editor large next to it. The tester adapts to the space it has.\n"
+			"• If the display shifts or gets cut, enlarge the window and start the tester again."));
 	items[0] = L("C'est fait, continuer|", "Done, continue|");
 	sel = 0;
-	page(L("CONSEIL", "TIP"), texte, items, 1, &sel);
+	page(L("CONSEILS D'AFFICHAGE", "DISPLAY TIPS"), texte, items, 1, &sel);
+}
+
+void	tdf_conseil_plein_ecran(void)
+{
+	tdf_conseil(0);
 }
 
 static int	rapport_lire(const char *path, char lignes[][400], int max)
