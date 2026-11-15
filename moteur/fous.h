@@ -729,6 +729,7 @@ void			tdf_screen_stats(void);
 void			tdf_stats_begin(const char *module);
 void			tdf_stats_fail(const char *name, const char *kind);
 void			tdf_stats_end(int ok, int total);
+void			tdf_stats_xp(long xp);
 void			screen_help_us(void);
 void			discord_card(int x, int y);
 void			discord_line(int y);

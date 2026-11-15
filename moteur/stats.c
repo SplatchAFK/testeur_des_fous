@@ -9,7 +9,9 @@
 #define SMAXITEM 120
 #define SMAXRUN 3000
 #define SMAXKIND 10
-#define SMAXFILE 400000
+#define SMAXX 3000
+#define SGARDE 49
+#define SVUE 50
 
 typedef struct s_sitem
 {
@@ -44,12 +46,16 @@ typedef struct s_sdata
 	char	kind[SMAXKIND][16];
 	int		kn[SMAXKIND];
 	int		nk;
+	long	xt[SMAXX];
+	long	xv[SMAXX];
+	int		nx;
 }	t_sdata;
 
 static FILE		*g_sf;
 static char		g_smod[12];
 static long		g_st;
 static t_sdata	g_sd;
+static int		g_w = 80;
 
 static void	stats_path(char *b, size_t n)
 {
@@ -60,21 +66,29 @@ static void	stats_trim(const char *path)
 {
 	FILE	*f;
 	char	*buf;
-	char	*cut;
+	char	**ln;
+	char	vu[8][12];
+	char	m[12];
+	char	tmpf[640];
 	long	size;
+	long	t;
+	long	cut;
+	int		n;
+	int		nr;
+	int		nv;
+	int		ok;
+	int		tot;
+	int		dx;
+	int		i;
+	int		k;
 
 	f = fopen(path, "rb");
 	if (!f)
 		return ;
 	fseek(f, 0, SEEK_END);
 	size = ftell(f);
-	if (size < SMAXFILE)
-	{
-		fclose(f);
-		return ;
-	}
 	rewind(f);
-	buf = malloc(size + 1);
+	buf = size >= 0 ? malloc(size + 1) : NULL;
 	if (!buf || fread(buf, 1, size, f) != (size_t)size)
 	{
 		free(buf);
@@ -83,14 +97,93 @@ static void	stats_trim(const char *path)
 	}
 	fclose(f);
 	buf[size] = '\0';
-	cut = strchr(buf + size / 2, '\n');
-	f = cut ? fopen(path, "wb") : NULL;
+	for (n = 1, i = 0; i < size; i++)
+		n += buf[i] == '\n';
+	ln = malloc(sizeof(char *) * n);
+	if (!ln)
+	{
+		free(buf);
+		return ;
+	}
+	for (n = 0, nr = 0, i = 0; i <= size; n++)
+	{
+		ln[n] = buf + i;
+		while (i < size && buf[i] != '\n')
+			i++;
+		buf[i++] = '\0';
+		nr += ln[n][0] == 'R';
+	}
+	cut = 0;
+	for (k = 0, i = 0; nr > SGARDE && i < n; i++)
+		if (ln[i][0] == 'R' && ++k == nr - SGARDE + 1 && sscanf(ln[i], "R %ld", &cut) != 1)
+			cut = 0;
+	snprintf(tmpf, sizeof(tmpf), "%s.tmp", path);
+	f = cut ? fopen(tmpf, "wb") : NULL;
 	if (f)
 	{
-		fputs(cut + 1, f);
+		nv = 0;
+		dx = -1;
+		for (i = 0; i < n; i++)
+		{
+			if (sscanf(ln[i], "V %ld %11s", &t, m) == 2
+				|| (sscanf(ln[i], "R %ld %11s %d %d", &t, m, &ok, &tot) == 4 && tot > 0 && ok == tot && t < cut))
+			{
+				for (k = 0; k < nv && strcmp(vu[k], m); k++)
+					;
+				if (k == nv && nv < 8)
+				{
+					snprintf(vu[nv++], 12, "%s", m);
+					fprintf(f, "V %ld %s\n", t, m);
+				}
+			}
+			else if (sscanf(ln[i], "X %ld", &t) == 1 && t < cut)
+				dx = i;
+		}
+		if (dx >= 0)
+			fprintf(f, "%s\n", ln[dx]);
+		for (i = 0; i < n; i++)
+			if (ln[i][0] && ln[i][0] != 'V' && sscanf(ln[i] + 1, " %ld", &t) == 1 && t >= cut)
+				fprintf(f, "%s\n", ln[i]);
 		fclose(f);
+		rename(tmpf, path);
+		chmod(path, 0600);
 	}
+	free(ln);
 	free(buf);
+}
+
+void	tdf_stats_xp(long xp)
+{
+	static int	lu;
+	static long	dernier = -1;
+	FILE		*f;
+	char		path[620];
+	char		l[200];
+	long		t;
+	long		v;
+
+	if (!g_savedir || xp <= 0)
+		return ;
+	stats_path(path, sizeof(path));
+	if (!lu)
+	{
+		lu = 1;
+		f = fopen(path, "r");
+		while (f && fgets(l, sizeof(l), f))
+			if (sscanf(l, "X %ld %ld", &t, &v) == 2)
+				dernier = v;
+		if (f)
+			fclose(f);
+	}
+	if (xp == dernier)
+		return ;
+	f = fopen(path, "a");
+	if (!f)
+		return ;
+	fprintf(f, "X %ld %ld\n", (long)time(NULL), xp);
+	fclose(f);
+	chmod(path, 0600);
+	dernier = xp;
 }
 
 static void	stats_word(char *dst, size_t n, const char *src)
@@ -322,6 +415,17 @@ static void	stats_load(void)
 		}
 		else if (sscanf(line, "K %ld %11s %39s %15s", &t, mod, name, kind) == 4)
 			item_add(t, mod, name, kind);
+		else if (sscanf(line, "X %ld %d", &t, &ok) == 2)
+		{
+			if (g_sd.nx == SMAXX)
+			{
+				memmove(g_sd.xt, g_sd.xt + 1, sizeof(long) * (SMAXX - 1));
+				memmove(g_sd.xv, g_sd.xv + 1, sizeof(long) * (SMAXX - 1));
+				g_sd.nx--;
+			}
+			g_sd.xt[g_sd.nx] = t;
+			g_sd.xv[g_sd.nx++] = ok;
+		}
 	}
 	if (f)
 		fclose(f);
@@ -581,12 +685,12 @@ static void	page_resume(int x, int y, int maxy)
 	int		yy;
 
 	yy = draw_progress(x, y);
-	draw_activity(x + 42, y);
+	draw_activity(x + g_w / 2, y);
 	snprintf(tmp, sizeof(tmp), L("Plus longue série : %d j · lancements suivis : %d", "Longest streak: %d d · tracked runs: %d"),
 		g_sd.best, g_sd.nratio);
-	text_at(x + 42, y + 9, theme()->text, tmp);
-	spark(x, yy + 1, 70, -1, L("TES 70 DERNIERS LANCEMENTS (tous modules)", "YOUR LAST 70 RUNS (all modules)"));
-	weak(x, yy + 5, maxy, -1, 6);
+	text_at(x + g_w / 2, y + 9, theme()->text, tmp);
+	spark(x, yy + 2, g_w - 4, -1, L("TES DERNIERS LANCEMENTS (tous modules)", "YOUR LATEST RUNS (all modules)"));
+	weak(x, yy + 7, maxy, -1, 8);
 }
 
 static void	page_libft(int x, int y, int maxy)
@@ -616,9 +720,9 @@ static void	page_libft(int x, int y, int maxy)
 	for (i = 0; i < NFN; i++)
 		if (g_save.cleared[i] != '1' && n < sizeof(tmp) - 20)
 			n += snprintf(tmp + n, sizeof(tmp) - n, "%sft_%s", n ? ", " : "", g_lf[i]);
-	yy = text_wrap(x, y, y + 4, 78, n ? orange() : vert(), n ? tmp : L("Toutes ! Bravo.", "All of them! Well done."));
+	yy = text_wrap(x, y, y + 4, g_w / 2 - 4, n ? orange() : vert(), n ? tmp : L("Toutes ! Bravo.", "All of them! Well done."));
 	y = (yy > y ? yy : y + 1) + 1;
-	spark(x + 42, 3, 34, 0, L("TES LANCEMENTS LIBFT", "YOUR LIBFT RUNS"));
+	spark(x + g_w / 2, 4, g_w / 2 - 4, 0, L("TES LANCEMENTS LIBFT", "YOUR LIBFT RUNS"));
 	weak(x, y, maxy, 0, 8);
 }
 
@@ -656,7 +760,7 @@ static void	page_printf(int x, int y, int maxy)
 	save_key("printf.runs", v, sizeof(v));
 	snprintf(tmp, sizeof(tmp), L("Lancements printf : %s", "printf runs: %s"), v[0] ? v : "0");
 	text_at(x, y++, theme()->text, tmp);
-	spark(x + 42, 3, 34, 1, L("TES LANCEMENTS PRINTF", "YOUR PRINTF RUNS"));
+	spark(x + g_w / 2, 4, g_w / 2 - 4, 1, L("TES LANCEMENTS PRINTF", "YOUR PRINTF RUNS"));
 	weak(x, y + 1, maxy, 1, 8);
 }
 
@@ -753,58 +857,353 @@ static void	page_exam(int x, int y, int maxy)
 		snprintf(tmp, sizeof(tmp), L("Niveau %d", "Level %d"), lv);
 		line_bar(x, y++, tmp, got[lv], tot[lv]);
 	}
-	spark(x + 42, 3, 34, 2, L("TES PASSAGES (corrections et exams)", "YOUR ATTEMPTS (gradings and exams)"));
+	spark(x + g_w / 2, 4, g_w / 2 - 4, 2, L("TES PASSAGES (corrections et exams)", "YOUR ATTEMPTS (gradings and exams)"));
 	weak(x, y + 1, maxy, 2, 8);
+}
+
+static t_rgb	coul_mod(int m)
+{
+	static const int	c[4][3] = {{90, 200, 255}, {230, 120, 255}, {255, 215, 0}, {120, 230, 150}};
+
+	return (rgb(c[m & 3][0], c[m & 3][1], c[m & 3][2]));
+}
+
+static const char	*nom_mod(int m)
+{
+	static const char	*n[4] = {"Libft", "ft_printf", "Exam", "get_next_line"};
+
+	return (n[m & 3]);
+}
+
+static void	colonnes(int x, int y, int h, int n, const double *v, const t_rgb *c)
+{
+	static const char	*b[9] = {" ", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"};
+	int					k;
+	int					r;
+	int					q;
+
+	for (k = 0; k < n; k++)
+	{
+		for (r = 0; r < h; r++)
+		{
+			q = (int)(v[k] * h * 8 + 0.5) - r * 8;
+			if (r == 0 && q < 1 && v[k] > 0)
+				q = 1;
+			q = q < 0 ? 0 : q > 8 ? 8 : q;
+			at(x + k, y + h - 1 - r);
+			fg(c[k]);
+			out(b[q]);
+		}
+	}
+	at(x, y + h);
+	fg(theme()->dim);
+	for (k = 0; k < n; k++)
+		out("▔");
+}
+
+static long	xp_a(int i)
+{
+	long	lim;
+	long	v;
+	int		k;
+
+	lim = i + 1 < g_sd.nratio ? g_sd.rt[i + 1] : 0;
+	v = -1;
+	for (k = 0; k < g_sd.nx; k++)
+		if (!lim || g_sd.xt[k] < lim)
+			v = g_sd.xv[k];
+	if (!lim && g_save.xp > v)
+		v = g_save.xp;
+	return (v);
+}
+
+static void	cadre_courbe(int x, int y, int h, const char *titre, const char *haut, const char *bas)
+{
+	title(x, y, titre);
+	if (haut)
+		text_at(x, y + 1, theme()->dim, haut);
+	if (bas)
+		text_at(x, y + h, theme()->dim, bas);
+}
+
+static void	page_courbes(int x, int y, int maxy)
+{
+	double	v[SVUE];
+	t_rgb	c[SVUE];
+	long	xp[SVUE];
+	int		jour[SVUE];
+	char	tmp[200];
+	char	h1[16];
+	int		cw;
+	int		ch;
+	int		n;
+	int		d;
+	int		k;
+	int		x2;
+	int		y2;
+	long	lo;
+	long	hi;
+	long	d0;
+	int		nj;
+	int		mx;
+	int		s;
+
+	cw = g_w / 2 - 4;
+	n = g_sd.nratio < SVUE ? g_sd.nratio : SVUE;
+	if (n > cw - 6)
+		n = cw - 6;
+	if (n <= 0)
+	{
+		title(x, y, L("COURBES", "CHARTS"));
+		text_at(x, y + 2, theme()->dim, L("Pas encore de tentative : lance des tests pour voir tes courbes.", "No attempt yet: run some tests to see your charts."));
+		return ;
+	}
+	d = g_sd.nratio - n;
+	ch = (maxy - y - 9) / 2;
+	ch = ch < 3 ? 3 : ch > 9 ? 9 : ch;
+	x2 = x + g_w / 2 + 1;
+	y2 = y + ch + 4;
+	for (k = 0; k < n; k++)
+	{
+		v[k] = g_sd.ratio[d + k];
+		c[k] = coul_mod(g_sd.rmod[d + k]);
+	}
+	cadre_courbe(x, y, ch + 3, L("RÉUSSITE PAR TENTATIVE", "SUCCESS PER ATTEMPT"), "100%", NULL);
+	text_at(x, y + ch, theme()->dim, "  0%");
+	colonnes(x + 5, y + 1, ch, n, v, c);
+	at(x + 5, y + ch + 2);
+	for (k = 0; k < 4; k++)
+	{
+		fg(coul_mod(k));
+		outf("■ %s  ", nom_mod(k));
+	}
+	lo = -1;
+	hi = -1;
+	for (k = 0; k < n; k++)
+	{
+		xp[k] = xp_a(d + k);
+		if (xp[k] >= 0 && (lo < 0 || xp[k] < lo))
+			lo = xp[k];
+		if (xp[k] > hi)
+			hi = xp[k];
+	}
+	for (k = 0; k < n; k++)
+	{
+		v[k] = xp[k] < 0 ? 0 : hi > lo ? 0.12 + 0.88 * (xp[k] - lo) / (double)(hi - lo) : 1;
+		c[k] = theme()->accent2;
+	}
+	title(x2, y, L("NIVEAU ET XP", "LEVEL AND XP"));
+	colonnes(x2 + 5, y + 1, ch, n, v, c);
+	if (lo >= 0)
+		snprintf(tmp, sizeof(tmp), L("niveau %d → %d · %ld → %ld XP", "level %d → %d · %ld → %ld XP"), level_of(lo), level_of(hi), lo, hi);
+	else
+		snprintf(tmp, sizeof(tmp), "%s", L("XP pas encore enregistrée", "XP not recorded yet"));
+	text_at(x2 + 5, y + ch + 2, theme()->dim, tmp);
+	d0 = g_sd.day[d];
+	nj = (int)(day_of((long)time(NULL)) - d0 + 1);
+	if (nj > cw - 6)
+	{
+		d0 += nj - (cw - 6);
+		nj = cw - 6;
+	}
+	if (nj > SVUE)
+	{
+		d0 += nj - SVUE;
+		nj = SVUE;
+	}
+	memset(jour, 0, sizeof(jour));
+	for (k = 0; k < g_sd.nratio; k++)
+		if (g_sd.day[k] >= d0 && g_sd.day[k] < d0 + nj)
+			jour[g_sd.day[k] - d0]++;
+	for (mx = 1, k = 0; k < nj; k++)
+		mx = jour[k] > mx ? jour[k] : mx;
+	for (k = 0; k < nj; k++)
+	{
+		v[k] = (double)jour[k] / mx;
+		c[k] = theme()->accent;
+	}
+	snprintf(h1, sizeof(h1), "%4d", mx);
+	cadre_courbe(x, y2, ch + 3, L("ACTIVITÉ PAR JOUR", "ACTIVITY PER DAY"), h1, NULL);
+	text_at(x, y2 + ch, theme()->dim, "   0");
+	colonnes(x + 5, y2 + 1, ch, nj, v, c);
+	snprintf(tmp, sizeof(tmp), L("%d jours · au plus %d tentatives en un jour", "%d days · at most %d attempts in a day"), nj, mx);
+	text_at(x + 5, y2 + ch + 2, theme()->dim, tmp);
+	for (s = 0, k = 0; k < n; k++)
+	{
+		if (g_sd.rmod[d + k] == 2)
+			s += g_sd.rok[d + k];
+		xp[k] = s;
+	}
+	for (k = 0; k < n; k++)
+	{
+		v[k] = s ? (double)xp[k] / s : 0;
+		c[k] = rgb(255, 215, 0);
+	}
+	title(x2, y2, L("EXERCICES RÉUSSIS CUMULÉS", "EXERCISES PASSED, CUMULATED"));
+	colonnes(x2 + 5, y2 + 1, ch, n, v, c);
+	snprintf(tmp, sizeof(tmp), L("%d exercices d'exam et de la banque réussis", "%d exam and bank exercises passed"), s);
+	text_at(x2 + 5, y2 + ch + 2, s ? theme()->dim : orange(), tmp);
+	snprintf(tmp, sizeof(tmp), L("Axe horizontal : tes %d dernières tentatives, de la plus ancienne à la plus récente.", "Horizontal axis: your last %d attempts, from oldest to newest."), n);
+	if (y2 + ch + 4 < maxy)
+		text_at(x, y2 + ch + 4, theme()->dim, tmp);
+}
+
+static int	g_hsel;
+static int	g_htop;
+
+static int	echecs_de(int x, int y, int maxy, int w, long t, int mod)
+{
+	static const char	*mods[4] = {"libft", "printf", "exam", "gnl"};
+	FILE				*f;
+	char				path[620];
+	char				l[200];
+	char				m[12];
+	char				nom[40];
+	char				kind[16];
+	char				tmp[120];
+	long				tt;
+	int					col;
+	int					n;
+
+	stats_path(path, sizeof(path));
+	f = fopen(path, "r");
+	n = 0;
+	col = 0;
+	while (f && fgets(l, sizeof(l), f))
+	{
+		if (sscanf(l, "K %ld %11s %39s %15s", &tt, m, nom, kind) != 4 || tt != t || strcmp(m, mods[mod & 3]))
+			continue ;
+		if (y >= maxy)
+		{
+			n++;
+			continue ;
+		}
+		snprintf(tmp, sizeof(tmp), "✗ %s (%s)", nom, kind);
+		text_clip(x + col * (w / 2), y, orange(), tmp, w / 2 - 1);
+		col = w >= 44 ? !col : 0;
+		if (!col)
+			y++;
+		n++;
+	}
+	if (f)
+		fclose(f);
+	return (n);
 }
 
 static void	page_histo(int x, int y, int maxy)
 {
-	static const char	*mods[4] = {"Libft ", "printf", "Exam  ", "GNL   "};
-	char				tmp[200];
-	char				d[40];
-	time_t				tt;
-	int					i;
+	char	tmp[200];
+	char	d[40];
+	time_t	tt;
+	int		n;
+	int		h;
+	int		i;
+	int		r;
+	int		p;
+	int		xd;
+	int		wd;
 
-	title(x, y++, L("HISTORIQUE · les derniers lancements", "HISTORY · latest runs"));
-	if (!g_sd.nratio)
-		text_at(x, y, theme()->dim, L("Rien pour l'instant : lance des tests.", "Nothing yet: run some tests."));
-	for (i = g_sd.nratio - 1; i >= 0 && y < maxy; i--)
+	n = g_sd.nratio < SVUE ? g_sd.nratio : SVUE;
+	snprintf(tmp, sizeof(tmp), L("HISTORIQUE · tes %d dernières tentatives", "HISTORY · your last %d attempts"), n);
+	title(x, y++, tmp);
+	y = text_wrap(x, y, y + 2, g_w - 2, rgb(255, 190, 70), L("⚠ Seules les 50 dernières tentatives sont gardées : au-delà, les plus anciennes sont supprimées.", "⚠ Only the last 50 attempts are kept: beyond that, the oldest ones are deleted.")) + 1;
+	if (!n)
 	{
+		text_at(x, y, theme()->dim, L("Rien pour l'instant : lance des tests.", "Nothing yet: run some tests."));
+		return ;
+	}
+	if (g_hsel >= n)
+		g_hsel = n - 1;
+	if (g_hsel < 0)
+		g_hsel = 0;
+	h = maxy - y;
+	if (h < 3)
+		h = 3;
+	if (g_hsel < g_htop)
+		g_htop = g_hsel;
+	if (g_hsel >= g_htop + h)
+		g_htop = g_hsel - h + 1;
+	for (r = g_htop; r < n && r < g_htop + h; r++)
+	{
+		i = g_sd.nratio - 1 - r;
 		tt = (time_t)g_sd.rt[i];
 		strftime(d, sizeof(d), "%d/%m %H:%M", localtime(&tt));
-		snprintf(tmp, sizeof(tmp), "%s  %s  %3d/%-3d", d, mods[(int)g_sd.rmod[i] % 4], g_sd.rok[i], g_sd.rtot[i]);
-		text_at(x, y, theme()->text, tmp);
-		bar(x + 32, y, 20, g_sd.ratio[i], g_sd.ratio[i] >= 0.999f ? vert() : orange(), g_sd.ratio[i] >= 0.999f ? vert() : rgb(255, 215, 0));
-		snprintf(tmp, sizeof(tmp), "%3d %%", (int)(g_sd.ratio[i] * 100 + 0.5f));
-		text_at(x + 54, y++, theme()->dim, tmp);
+		at(x, y + r - g_htop);
+		if (r == g_hsel)
+			bgc(mix(theme()->bg, theme()->accent, 0.22));
+		fg(r == g_hsel ? theme()->text : theme()->dim);
+		outf(" %s %s  ", r == g_hsel ? "▶" : " ", d);
+		fg(coul_mod(g_sd.rmod[i]));
+		outf("%-13s", nom_mod(g_sd.rmod[i]));
+		fg(g_sd.ratio[i] >= 0.999f ? vert() : orange());
+		outf("%3d/%-3d ", g_sd.rok[i], g_sd.rtot[i]);
+		bgc(theme()->bg);
 	}
+	if (g_htop > 0)
+		text_at(x + 36, y, theme()->dim, "▲");
+	if (g_htop + h < n)
+		text_at(x + 36, y + h - 1, theme()->dim, "▼");
+	i = g_sd.nratio - 1 - g_hsel;
+	xd = x + 40;
+	wd = g_w - 42;
+	tt = (time_t)g_sd.rt[i];
+	strftime(d, sizeof(d), "%d/%m/%Y %H:%M", localtime(&tt));
+	snprintf(tmp, sizeof(tmp), L("TENTATIVE %d SUR %d", "ATTEMPT %d OF %d"), n - g_hsel, n);
+	title(xd, y, tmp);
+	text_at(xd, y + 1, theme()->dim, d);
+	text_at(xd, y + 2, coul_mod(g_sd.rmod[i]), nom_mod(g_sd.rmod[i]));
+	snprintf(tmp, sizeof(tmp), L("Score : %d/%d · %d %%", "Score: %d/%d · %d %%"), g_sd.rok[i], g_sd.rtot[i], (int)(g_sd.ratio[i] * 100 + 0.5f));
+	text_at(xd, y + 4, theme()->text, tmp);
+	bar(xd, y + 5, wd < 40 ? wd : 40, g_sd.ratio[i], g_sd.ratio[i] >= 0.999f ? vert() : orange(), g_sd.ratio[i] >= 0.999f ? vert() : rgb(255, 215, 0));
+	for (p = i - 1; p >= 0 && g_sd.rmod[p] != g_sd.rmod[i]; p--)
+		;
+	if (p < 0)
+		snprintf(tmp, sizeof(tmp), "%s", L("Première tentative gardée pour ce projet.", "First attempt kept for this project."));
+	else if (g_sd.rok[i] == g_sd.rok[p])
+		snprintf(tmp, sizeof(tmp), "%s", L("Même score que la tentative d'avant.", "Same score as the attempt before."));
+	else
+		snprintf(tmp, sizeof(tmp), L("%+d par rapport à la tentative d'avant.", "%+d compared to the attempt before."), g_sd.rok[i] - g_sd.rok[p]);
+	text_at(xd, y + 6, p >= 0 && g_sd.rok[i] < g_sd.rok[p] ? orange() : vert(), tmp);
+	title(xd, y + 8, L("CE QUI A ÉCHOUÉ", "WHAT FAILED"));
+	if (g_sd.rok[i] >= g_sd.rtot[i])
+		text_at(xd, y + 9, vert(), L("Rien : tout est passé.", "Nothing: everything passed."));
+	else if (!echecs_de(xd, y + 9, maxy, wd, g_sd.rt[i], g_sd.rmod[i]))
+		text_at(xd, y + 9, theme()->dim, L("Détail pas enregistré pour cette tentative.", "No detail recorded for this attempt."));
 }
 
 void	tdf_screen_stats(void)
 {
 	static int	page;
-	const char	*noms[5];
+	const char	*noms[6];
 	int			x;
 	int			i;
 	int			k;
 
 	noms[0] = L("Résumé", "Summary");
-	noms[1] = "Libft";
-	noms[2] = "ft_printf";
-	noms[3] = "Exam";
-	noms[4] = L("Historique", "History");
+	noms[1] = L("Courbes", "Charts");
+	noms[2] = "Libft";
+	noms[3] = "ft_printf";
+	noms[4] = "Exam";
+	noms[5] = L("Historique", "History");
 	save_write();
 	stats_load();
+	g_hsel = 0;
+	g_htop = 0;
 	cls();
 	while (1)
 	{
-		x = (term_cols() - 80) / 2;
+		g_w = term_cols() - 8;
+		if (g_w > 140)
+			g_w = 140;
+		if (g_w < 80)
+			g_w = 80;
+		x = (term_cols() - g_w) / 2;
 		if (x < 0)
 			x = 0;
 		bgc(theme()->bg);
 		frame();
 		at(x, 1);
-		for (i = 0; i < 5; i++)
+		for (i = 0; i < 6; i++)
 		{
 			if (i == page)
 			{
@@ -818,23 +1217,32 @@ void	tdf_screen_stats(void)
 			outf("  ");
 		}
 		if (page == 0)
-			page_resume(x, 3, term_rows() - 2);
+			page_resume(x, 4, term_rows() - 3);
 		else if (page == 1)
-			page_libft(x, 3, term_rows() - 2);
+			page_courbes(x, 4, term_rows() - 3);
 		else if (page == 2)
-			page_printf(x, 3, term_rows() - 2);
+			page_libft(x, 4, term_rows() - 3);
 		else if (page == 3)
-			page_exam(x, 3, term_rows() - 2);
+			page_printf(x, 4, term_rows() - 3);
+		else if (page == 4)
+			page_exam(x, 4, term_rows() - 3);
 		else
-			page_histo(x, 3, term_rows() - 2);
-		foot_line(x, L("◀ ▶ changer de page   Échap : retour", "◀ ▶ change page   Esc: back"));
+			page_histo(x, 4, term_rows() - 3);
+		if (page == 5)
+			foot_line(x, L("▲ ▼ choisir une tentative   ◀ ▶ changer de page   Échap : retour", "▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back"));
+		else
+			foot_line(x, L("◀ ▶ changer de page   Échap : retour", "◀ ▶ change page   Esc: back"));
 		flush();
 		k = key_dir(key_read(200));
 		if (k == 1003)
-			page = (page + 4) % 5;
+			page = (page + 5) % 6;
 		else if (k == 1002)
-			page = (page + 1) % 5;
-		else if (k >= '1' && k <= '5')
+			page = (page + 1) % 6;
+		else if (k == 1000 && page == 5)
+			g_hsel--;
+		else if (k == 1001 && page == 5)
+			g_hsel++;
+		else if (k >= '1' && k <= '6')
 			page = k - '1';
 		else if (key_quit(k) || k == 127 || k == 8 || k == '\r' || k == '\n')
 			break ;

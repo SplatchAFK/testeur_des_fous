@@ -329,7 +329,8 @@ int	tdf_stats_valide(const char *mod)
 	f = fopen(path, "r");
 	v = 0;
 	while (f && fgets(l, sizeof(l), f))
-		if (sscanf(l, "R %ld %15s %d %d", &t, m, &ok, &tot) == 4 && tot > 0 && ok == tot && !strcmp(m, mod))
+		if ((sscanf(l, "R %ld %15s %d %d", &t, m, &ok, &tot) == 4 && tot > 0 && ok == tot && !strcmp(m, mod))
+			|| (sscanf(l, "V %ld %15s", &t, m) == 2 && !strcmp(m, mod)))
 			v = 1;
 	if (f)
 		fclose(f);

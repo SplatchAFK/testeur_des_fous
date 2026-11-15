@@ -44,6 +44,13 @@ Le numéro de version est dans `moteur/version.h`.
 - holygraph : un projet réussi une fois sans échec reste validé pour toujours ; les modules après Programming Fundamentals sont grisés en attendant leurs testeurs ;
 - banque : le nombre d'exercices et de réussites s'affiche pour chaque catégorie.
 
+### Stats
+
+- les pages prennent toute la largeur du terminal ;
+- nouvelle page Courbes, sur tes 50 dernières tentatives : réussite par tentative (couleur du projet), niveau et XP, activité par jour, exercices d'exam et de la banque réussis cumulés ;
+- Historique : les 50 dernières tentatives se parcourent aux flèches, avec pour chacune la date, le projet, le score, l'écart avec la tentative d'avant et ce qui a échoué ;
+- seules les 50 dernières tentatives sont gardées (c'est écrit sur la page) ; un projet validé une fois reste validé même quand sa tentative est supprimée.
+
 ### Après un test
 
 - l'écran des résultats s'affiche directement avec tous les tests et leur détail ; en le quittant, retour au menu, sans « Entrée pour continuer » ;

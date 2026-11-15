@@ -1572,3 +1572,27 @@ Unlocked	Открыто
 Not unlocked yet	Ещё не открыто
 How to unlock it:	Как открыть:
 ▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ листать достижения   e: изменить профиль   Esc: назад
+YOUR LATEST RUNS (all modules)	ТВОИ ПОСЛЕДНИЕ ЗАПУСКИ (все модули)
+CHARTS	ГРАФИКИ
+No attempt yet: run some tests to see your charts.	Пока нет попыток: запусти тесты, чтобы увидеть графики.
+SUCCESS PER ATTEMPT	УСПЕХ ПО ПОПЫТКАМ
+LEVEL AND XP	УРОВЕНЬ И XP
+level %d → %d · %ld → %ld XP	уровень %d → %d · %ld → %ld XP
+XP not recorded yet	XP пока не записан
+ACTIVITY PER DAY	АКТИВНОСТЬ ПО ДНЯМ
+%d days · at most %d attempts in a day	%d дн. · не более %d попыток за день
+EXERCISES PASSED, CUMULATED	РЕШЁННЫЕ УПРАЖНЕНИЯ, НАКОПЛЕНО
+%d exam and bank exercises passed	решено упражнений экзамена и банка: %d
+Horizontal axis: your last %d attempts, from oldest to newest.	Горизонтальная ось: твои последние %d попыток, от старых к новым.
+HISTORY · your last %d attempts	ИСТОРИЯ · твои последние %d попыток
+⚠ Only the last 50 attempts are kept: beyond that, the oldest ones are deleted.	⚠ Хранятся только последние 50 попыток: более старые удаляются.
+ATTEMPT %d OF %d	ПОПЫТКА %d ИЗ %d
+Score: %d/%d · %d %%	Счёт: %d/%d · %d %%
+First attempt kept for this project.	Первая сохранённая попытка для этого проекта.
+Same score as the attempt before.	Тот же счёт, что и в прошлой попытке.
+%+d compared to the attempt before.	%+d по сравнению с прошлой попыткой.
+WHAT FAILED	ЧТО НЕ ПРОШЛО
+Nothing: everything passed.	Ничего: всё прошло.
+No detail recorded for this attempt.	Для этой попытки нет подробностей.
+Charts	Графики
+▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back	▲ ▼ выбрать попытку   ◀ ▶ сменить страницу   Esc: назад

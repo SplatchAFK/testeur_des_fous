@@ -1572,3 +1572,27 @@ Unlocked	Sbloccato
 Not unlocked yet	Non ancora sbloccato
 How to unlock it:	Per sbloccarlo:
 ▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ scorri i successi   e: modifica il profilo   Esc: indietro
+YOUR LATEST RUNS (all modules)	LE TUE ULTIME ESECUZIONI (tutti i moduli)
+CHARTS	GRAFICI
+No attempt yet: run some tests to see your charts.	Ancora nessun tentativo: lancia dei test per vedere i tuoi grafici.
+SUCCESS PER ATTEMPT	SUCCESSO PER TENTATIVO
+LEVEL AND XP	LIVELLO E XP
+level %d → %d · %ld → %ld XP	livello %d → %d · %ld → %ld XP
+XP not recorded yet	XP non ancora registrata
+ACTIVITY PER DAY	ATTIVITÀ PER GIORNO
+%d days · at most %d attempts in a day	%d giorni · al massimo %d tentativi in un giorno
+EXERCISES PASSED, CUMULATED	ESERCIZI SUPERATI, CUMULATI
+%d exam and bank exercises passed	%d esercizi d'esame e della banca superati
+Horizontal axis: your last %d attempts, from oldest to newest.	Asse orizzontale: i tuoi ultimi %d tentativi, dal più vecchio al più recente.
+HISTORY · your last %d attempts	CRONOLOGIA · i tuoi ultimi %d tentativi
+⚠ Only the last 50 attempts are kept: beyond that, the oldest ones are deleted.	⚠ Vengono tenuti solo gli ultimi 50 tentativi: oltre, i più vecchi vengono eliminati.
+ATTEMPT %d OF %d	TENTATIVO %d DI %d
+Score: %d/%d · %d %%	Punteggio: %d/%d · %d %%
+First attempt kept for this project.	Primo tentativo conservato per questo progetto.
+Same score as the attempt before.	Stesso punteggio del tentativo precedente.
+%+d compared to the attempt before.	%+d rispetto al tentativo precedente.
+WHAT FAILED	COSA NON È ANDATO
+Nothing: everything passed.	Niente: è passato tutto.
+No detail recorded for this attempt.	Nessun dettaglio registrato per questo tentativo.
+Charts	Grafici
+▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back	▲ ▼ scegli un tentativo   ◀ ▶ cambia pagina   Esc: indietro

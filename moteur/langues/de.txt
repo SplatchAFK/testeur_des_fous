@@ -1572,3 +1572,27 @@ Unlocked	Freigeschaltet
 Not unlocked yet	Noch nicht freigeschaltet
 How to unlock it:	So schaltest du ihn frei:
 ▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ Erfolge durchgehen   e: Profil bearbeiten   Esc: zurück
+YOUR LATEST RUNS (all modules)	DEINE LETZTEN LÄUFE (alle Module)
+CHARTS	DIAGRAMME
+No attempt yet: run some tests to see your charts.	Noch kein Versuch: starte Tests, um deine Diagramme zu sehen.
+SUCCESS PER ATTEMPT	ERFOLG PRO VERSUCH
+LEVEL AND XP	LEVEL UND XP
+level %d → %d · %ld → %ld XP	Level %d → %d · %ld → %ld XP
+XP not recorded yet	XP noch nicht erfasst
+ACTIVITY PER DAY	AKTIVITÄT PRO TAG
+%d days · at most %d attempts in a day	%d Tage · höchstens %d Versuche an einem Tag
+EXERCISES PASSED, CUMULATED	BESTANDENE ÜBUNGEN, KUMULIERT
+%d exam and bank exercises passed	%d Prüfungs- und Bankübungen bestanden
+Horizontal axis: your last %d attempts, from oldest to newest.	Horizontale Achse: deine letzten %d Versuche, vom ältesten zum neuesten.
+HISTORY · your last %d attempts	VERLAUF · deine letzten %d Versuche
+⚠ Only the last 50 attempts are kept: beyond that, the oldest ones are deleted.	⚠ Nur die letzten 50 Versuche werden behalten: darüber hinaus werden die ältesten gelöscht.
+ATTEMPT %d OF %d	VERSUCH %d VON %d
+Score: %d/%d · %d %%	Ergebnis: %d/%d · %d %%
+First attempt kept for this project.	Erster gespeicherter Versuch für dieses Projekt.
+Same score as the attempt before.	Gleiches Ergebnis wie beim Versuch davor.
+%+d compared to the attempt before.	%+d im Vergleich zum Versuch davor.
+WHAT FAILED	WAS FEHLGESCHLAGEN IST
+Nothing: everything passed.	Nichts: alles bestanden.
+No detail recorded for this attempt.	Für diesen Versuch ist kein Detail gespeichert.
+Charts	Diagramme
+▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back	▲ ▼ Versuch wählen   ◀ ▶ Seite wechseln   Esc: zurück

@@ -1572,3 +1572,27 @@ Unlocked	Açıldı
 Not unlocked yet	Henüz açılmadı
 How to unlock it:	Açmak için:
 ▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ başarılara göz at   e: profilimi düzenle   Esc: geri
+YOUR LATEST RUNS (all modules)	SON ÇALIŞTIRMALARIN (tüm modüller)
+CHARTS	GRAFİKLER
+No attempt yet: run some tests to see your charts.	Henüz deneme yok: grafiklerini görmek için test çalıştır.
+SUCCESS PER ATTEMPT	DENEME BAŞINA BAŞARI
+LEVEL AND XP	SEVİYE VE XP
+level %d → %d · %ld → %ld XP	seviye %d → %d · %ld → %ld XP
+XP not recorded yet	XP henüz kaydedilmedi
+ACTIVITY PER DAY	GÜNLÜK ETKİNLİK
+%d days · at most %d attempts in a day	%d gün · bir günde en fazla %d deneme
+EXERCISES PASSED, CUMULATED	GEÇİLEN ALIŞTIRMALAR, TOPLAM
+%d exam and bank exercises passed	%d sınav ve banka alıştırması geçildi
+Horizontal axis: your last %d attempts, from oldest to newest.	Yatay eksen: son %d denemen, en eskiden en yeniye.
+HISTORY · your last %d attempts	GEÇMİŞ · son %d denemen
+⚠ Only the last 50 attempts are kept: beyond that, the oldest ones are deleted.	⚠ Yalnızca son 50 deneme saklanır: fazlası olunca en eskiler silinir.
+ATTEMPT %d OF %d	DENEME %d / %d
+Score: %d/%d · %d %%	Puan: %d/%d · %d %%
+First attempt kept for this project.	Bu proje için saklanan ilk deneme.
+Same score as the attempt before.	Önceki denemeyle aynı puan.
+%+d compared to the attempt before.	önceki denemeye göre %+d.
+WHAT FAILED	BAŞARISIZ OLANLAR
+Nothing: everything passed.	Hiçbir şey: her şey geçti.
+No detail recorded for this attempt.	Bu deneme için ayrıntı kaydedilmedi.
+Charts	Grafikler
+▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back	▲ ▼ bir deneme seç   ◀ ▶ sayfa değiştir   Esc: geri
