@@ -394,7 +394,7 @@ static const char	*astuce(int i)
 		case 68:
 			return (L("Moulinette est la meilleure chatte du monde.", "Moulinette is the best cat in the world."));
 		case 69:
-			return (L("f6, c'est pour les sportifs olympiques.", "f6 is for Olympic athletes."));
+			return (L("L'étape f6, c'est pour les sportifs olympiques.", "The f6 step is for Olympic athletes."));
 	}
 	return ("");
 }
@@ -539,6 +539,11 @@ static void	bulle(t_zone *z, int nz, long anim)
 	int		cx;
 	int		i;
 
+	if ((g_bulle.cur >= 0 && anim < g_bulle.t0) || g_bulle.suite > anim + 10000)
+	{
+		g_bulle.cur = -1;
+		g_bulle.suite = anim + 1500;
+	}
 	if (g_bulle.cur < 0)
 	{
 		if (anim >= g_bulle.suite)

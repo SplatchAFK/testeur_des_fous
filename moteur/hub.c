@@ -560,10 +560,12 @@ static int	trace_write(char *path, size_t n)
 void	screen_help_us(void)
 {
 	char	path[600];
+	char	faite[700];
 	int		x;
 	int		k;
 	int		y;
 
+	faite[0] = '\0';
 	cls();
 	while (1)
 	{
@@ -591,6 +593,13 @@ void	screen_help_us(void)
 				"résultats des tests, la version du testeur et ton système. Le testeur n'envoie rien sur internet : "
 				"c'est toi qui choisis de l'envoyer.", "The trace holds neither your code nor your login: only test results, "
 				"the tester version and your system. The tester sends nothing over the internet: you choose to send it."));
+		if (faite[0])
+		{
+			y++;
+			text_at(x, y++, rgb(80, 230, 140), L("✓ TRACE CRÉÉE", "✓ TRACE CREATED"));
+			y = text_wrap(x, y, y + 3, 76, theme()->text, faite);
+			text_at(x, y, theme()->dim, L("Envoie ce fichier à @splatch_afk sur Discord.", "Send this file to @splatch_afk on Discord."));
+		}
 		foot_line(x, L("t : créer ma trace   Échap : retour",
 				"t: create my trace   Esc: back"));
 		flush();
@@ -601,6 +610,7 @@ void	screen_help_us(void)
 		{
 			if (trace_write(path, sizeof(path)) == 0)
 			{
+				snprintf(faite, sizeof(faite), "%s", path);
 				toast(L("TRACE CRÉÉE", "TRACE CREATED"), path, rgb(80, 230, 140));
 				badge_give(11);
 				save_write();

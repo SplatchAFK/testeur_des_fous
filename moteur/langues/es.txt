@@ -1639,3 +1639,21 @@ Clockmaker of the Mechanism	Relojero del Mecanismo
 Architect of the City	Arquitecto de la Ciudad
 Legend of the City	Leyenda de la Ciudad
 Rank: %s · next rank at level %d	Rango: %s · próximo rango en el nivel %d
+✓ TRACE CREATED	✓ TRAZA CREADA
+Send this file to @splatch_afk on Discord.	Envía este archivo a @splatch_afk en Discord.
+R A N K S	R A N G O S
+A new rank every 10 levels. XP comes from tests, the bank and the exam.	Un nuevo rango cada 10 niveles. La XP viene de las pruebas, el banco y el examen.
+lvl 101 and up	niv. 101 y más
+lvl %d to %d	niv. %d a %d
+YOUR RANK: %s · level %d	TU RANGO: %s · nivel %d
+%ld more XP to become %s (level %d).	Faltan %ld XP para ser %s (nivel %d).
+Esc: back	Esc: volver
+Ranks|Your rank, how close the next one is, and the ranks to come.	Rangos|Tu rango, cuánto falta para el siguiente y los rangos por venir.
+You are in: %.240s	Estás en: %.240s
+WHERE IS YOUR PROJECT?	¿DÓNDE ESTÁ TU PROYECTO?
+• The testeur des fous is next to your project? Start with ../ : for example ../libft	• ¿El testeur des fous está al lado de tu proyecto? Empieza por ../ : por ejemplo ../libft
+• Your project is the folder you started the tester from? Type . (a dot).	• ¿Tu proyecto es la carpeta desde la que lanzaste el tester? Escribe . (un punto).
+• ~/ starts from your home folder, / from the root. Tab completes, pressing Tab again cycles the choices.	• ~/ parte de tu carpeta personal, / de la raíz. Tab completa, pulsar Tab otra vez recorre las opciones.
+• The folder must contain libft.h, ft_printf.h, or get_next_line.c and get_next_line.h.	• La carpeta debe contener libft.h, ft_printf.h, o get_next_line.c y get_next_line.h.
+being improved · BETA	en mejora · BETA
+The f6 step is for Olympic athletes.	La etapa f6 es para atletas olímpicos.

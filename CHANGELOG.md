@@ -48,7 +48,17 @@ Le numéro de version est dans `moteur/version.h`.
 
 - le niveau monte sans limite avec l'XP (tests Libft et ft_printf, banque, exam) ;
 - un nouveau rang tous les 10 niveaux, avec des noms tirés de la Cité : Apprenti de la Tour, Gardien des Fondations, Forgeron des Formats, Porteur de Lanterne, Plongeur du Puits, Trieur des Deux Piles, Veilleur du Silence, Ouvreur de Portes, Horloger du Mécanisme, Architecte de la Cité, puis Légende de la Cité (II, III…) ;
-- le rang s'affiche sous ton chevalier dans le menu, sur le profil et dans les Stats (avec le niveau du prochain rang) ; un écran « Nouveau rang » apparaît quand tu en changes.
+- le rang s'affiche sous ton chevalier dans le menu, sur le profil et dans les Stats (avec le niveau du prochain rang) ; un écran « Nouveau rang » apparaît quand tu en changes ;
+- Chevalier › Rangs : tous les rangs, ceux déjà passés en vert, le tien en surbrillance, ceux à venir grisés, et en bas ta progression vers le prochain.
+
+### Confort
+
+- le testeur reste à l'écran entre deux choix : plus de retour furtif au terminal, sauf pour l'examshell ;
+- les conseils d'affichage ne reviennent plus à chaque retour au menu : une fois par problème détecté (et toujours au premier lancement et après une mise à jour) ;
+- Tester mon projet : un encadré explique où chercher ton projet (../ quand le testeur est à côté, . pour ici, ~/ et /, fichiers attendus) et rappelle le dossier où tu es ;
+- « Le savais-tu ? » ne reste plus bloqué en blanc quand tu reviens au menu ;
+- Nous aider : après « t », le chemin de la trace reste affiché sur la page ;
+- Stats › Courbes : mention « en cours d'amélioration · BETA ».
 
 ### Stats
 

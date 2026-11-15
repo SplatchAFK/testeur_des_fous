@@ -995,6 +995,8 @@ static void	page_courbes(int x, int y, int maxy)
 		v[k] = xp[k] < 0 ? 0 : hi > lo ? 0.12 + 0.88 * (xp[k] - lo) / (double)(hi - lo) : 1;
 		c[k] = theme()->accent2;
 	}
+	text_at(x + g_w - 2 - ulen(L("en cours d'amélioration · BETA", "being improved · BETA")), y - 1, rgb(255, 190, 70),
+		L("en cours d'amélioration · BETA", "being improved · BETA"));
 	title(x2, y, L("NIVEAU ET XP", "LEVEL AND XP"));
 	colonnes(x2 + 5, y + 1, ch, n, v, c);
 	if (lo >= 0)

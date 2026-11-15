@@ -188,26 +188,98 @@ int	tdf_menu_tester(const char *train, const char *other, const char *other_labe
 	}
 }
 
+static void	ecran_rangs(void)
+{
+	char	tmp[220];
+	char	nom[80];
+	char	suiv[80];
+	long	a;
+	long	b;
+	int		lv;
+	int		cur;
+	int		x;
+	int		y;
+	int		i;
+	int		k;
+	int		bas;
+
+	cls();
+	while (1)
+	{
+		lv = level_of(g_save.xp);
+		cur = (lv - 1) / 10;
+		x = (term_cols() - 72) / 2;
+		if (x < 0)
+			x = 0;
+		bgc(theme()->bg);
+		frame();
+		center(1, theme()->accent2, L("R A N G S", "R A N K S"));
+		center(2, theme()->dim, L("Un nouveau rang tous les 10 niveaux. L'XP vient des tests, de la banque et de l'exam.",
+				"A new rank every 10 levels. XP comes from tests, the bank and the exam."));
+		y = 4;
+		for (i = 0; i <= 10 && y < term_rows() - 9; i++, y++)
+		{
+			tdf_rang(i * 10 + 1, nom, sizeof(nom));
+			if (i == 10)
+				snprintf(tmp, sizeof(tmp), "%s", L("niv. 101 et plus", "lvl 101 and up"));
+			else
+				snprintf(tmp, sizeof(tmp), L("niv. %d à %d", "lvl %d to %d"), i * 10 + 1, i * 10 + 10);
+			at(x, y);
+			if (i == (cur > 10 ? 10 : cur))
+				bgc(mix(theme()->bg, theme()->accent, 0.22));
+			fg(i < cur ? rgb(80, 230, 140) : i == (cur > 10 ? 10 : cur) ? theme()->accent2 : theme()->dim);
+			outf(" %s %-20s %-34s ", i < cur ? "✓" : i == (cur > 10 ? 10 : cur) ? "▶" : "·", tmp, nom);
+			bgc(theme()->bg);
+		}
+		bas = term_rows() - 7;
+		if (bas < y + 1)
+			bas = y + 1;
+		tdf_rang(lv, nom, sizeof(nom));
+		snprintf(tmp, sizeof(tmp), L("TON RANG : %s · niveau %d", "YOUR RANK: %s · level %d"), nom, lv);
+		text_at(x, bas, rgb(255, 215, 0), tmp);
+		a = xp_for(cur * 10 + 1);
+		b = xp_for(cur * 10 + 11);
+		bar(x, bas + 1, 50, b > a ? (g_save.xp - a) / (double)(b - a) : 1, theme()->accent, theme()->accent2);
+		snprintf(tmp, sizeof(tmp), "%d %%", b > a ? (int)(100.0 * (g_save.xp - a) / (b - a)) : 100);
+		text_at(x + 52, bas + 1, theme()->text, tmp);
+		tdf_rang(cur * 10 + 11, suiv, sizeof(suiv));
+		snprintf(tmp, sizeof(tmp), L("Encore %ld XP pour devenir « %s » (niveau %d).", "%ld more XP to become %s (level %d)."),
+			b - g_save.xp > 0 ? b - g_save.xp : 0, suiv, cur * 10 + 11);
+		text_at(x, bas + 2, theme()->dim, tmp);
+		foot_line(x, L("Échap : retour", "Esc: back"));
+		flush();
+		k = key_read(200);
+		if (key_quit(k) || k == 127 || k == 8 || k == '\r' || k == '\n')
+			break ;
+		if (k > 0)
+			cls();
+	}
+	cls();
+}
+
 void	tdf_menu_chevalier(void (*profile)(void))
 {
 	static int	sel;
-	const char	*items[3];
+	const char	*items[4];
 	int			i;
 
 	items[0] = L("Avatar (garde-robe)|Équipe les objets que tu possèdes et choisis leurs couleurs.", "Avatar (wardrobe)|Equip the items you own and pick their colours.");
 	items[1] = L("Boutique|Dépense tes Octets : objets, thèmes, titres. Les Octets se gagnent en validant.", "Shop|Spend your Octets: items, themes, titles. You earn Octets by passing tests.");
 	items[2] = L("Profil et succès|Bannière, photo, bio et tous tes succès.", "Profile and achievements|Banner, picture, bio and all your achievements.");
+	items[3] = L("Rangs|Ton rang, où tu en es avant le prochain, et les rangs à venir.", "Ranks|Your rank, how close the next one is, and the ranks to come.");
 	while (1)
 	{
-		i = tdf_list_menu(L("CHEVALIER", "KNIGHT"), items, 3, &sel, NULL);
+		i = tdf_list_menu(L("CHEVALIER", "KNIGHT"), items, 4, &sel, NULL);
 		if (i < 0)
 			return ;
 		if (i == 0)
 			screen_shop(1);
 		else if (i == 1)
 			screen_shop(0);
-		else
+		else if (i == 2)
 			profile();
+		else
+			ecran_rangs();
 	}
 }
 
@@ -822,6 +894,39 @@ static void	dessiner_entrees(t_ent *e, int n, int sel, int x, int y, int h)
 	}
 }
 
+static void	aide_chemin(int y0, int y1)
+{
+	const char	*l[6];
+	char		dep[300];
+	int			w;
+	int			x;
+	int			i;
+	int			y;
+
+	snprintf(dep, sizeof(dep), L("Tu es dans : %.240s", "You are in: %.240s"), getenv("TDF_DEPART") ? getenv("TDF_DEPART") : ".");
+	l[0] = L("OÙ EST TON PROJET ?", "WHERE IS YOUR PROJECT?");
+	l[1] = dep;
+	l[2] = L("• Le testeur des fous est à côté de ton projet ? Commence par ../ : par exemple ../libft",
+			"• The testeur des fous is next to your project? Start with ../ : for example ../libft");
+	l[3] = L("• Ton projet est le dossier où tu as lancé le testeur ? Tape . (un point).",
+			"• Your project is the folder you started the tester from? Type . (a dot).");
+	l[4] = L("• ~/ part de ton dossier perso, / de la racine. Tab complète, Tab répété fait défiler les choix.",
+			"• ~/ starts from your home folder, / from the root. Tab completes, pressing Tab again cycles the choices.");
+	l[5] = L("• Le dossier doit contenir libft.h, ft_printf.h, ou get_next_line.c et get_next_line.h.",
+			"• The folder must contain libft.h, ft_printf.h, or get_next_line.c and get_next_line.h.");
+	if (y1 - y0 < 8)
+		return ;
+	w = term_cols() - 8 < 112 ? term_cols() - 8 : 112;
+	x = (term_cols() - w) / 2;
+	y = y0 + (y1 - y0 - 8) / 2;
+	fill(x, y, w, 8, mix(theme()->bg, theme()->accent, 0.08));
+	box(x, y, w, 8, mix(theme()->bg, theme()->accent, 0.45));
+	bgc(mix(theme()->bg, theme()->accent, 0.08));
+	for (i = 0; i < 6; i++)
+		text_clip(x + 3, y + 1 + i, i == 0 ? theme()->accent2 : i == 1 ? theme()->dim : i == 2 ? rgb(255, 215, 120) : theme()->text, l[i], w - 6);
+	bgc(theme()->bg);
+}
+
 int	tdf_choisir_dossier(char *out, size_t n)
 {
 	static t_cand	c[400];
@@ -852,6 +957,10 @@ int	tdf_choisir_dossier(char *out, size_t n)
 	while (1)
 	{
 		h = term_rows() - 12;
+		if (h > ne + 6 && !mode)
+			h = ne + 6;
+		if (h > 14)
+			h = 14;
 		if (h < 4)
 			h = 4;
 		x = (term_cols() - 80) / 2;
@@ -909,6 +1018,7 @@ int	tdf_choisir_dossier(char *out, size_t n)
 				text_at(x, 6, theme()->dim, L("Tape un chemin : ~/ pour ton dossier perso, / pour la racine, . pour ici.",
 						"Type a path: ~/ for your home, / for the root, . for here."));
 		}
+		aide_chemin(8 + h, term_rows() - 4);
 		if (msg)
 			text_at(x, term_rows() - 3, rgb(255, 120, 120), msg);
 		foot_line(x, mode ? L("Tab compléter   ▲ ▼ choisir   ▶ ouvrir   ◀ remonter   Entrée valider   Échap : liste",
@@ -1063,6 +1173,10 @@ void	tdf_conseil(int force)
 {
 	const char	*items[1];
 	char		texte[1600];
+	char		sig[32];
+	char		vu[32];
+	char		chemin[700];
+	FILE		*f;
 	int			n;
 	int			petit;
 	int			sel;
@@ -1070,6 +1184,22 @@ void	tdf_conseil(int force)
 	petit = term_cols() < 120 || term_rows() < 38;
 	if (!force && !petit && utf8_ok() && entete_24bits())
 		return ;
+	snprintf(sig, sizeof(sig), "%d %d %d", petit, utf8_ok(), entete_24bits());
+	snprintf(chemin, sizeof(chemin), "%s/conseil_vu", g_savedir);
+	vu[0] = '\0';
+	f = fopen(chemin, "r");
+	if (f && fgets(vu, sizeof(vu), f))
+		vu[strcspn(vu, "\n")] = '\0';
+	if (f)
+		fclose(f);
+	if (!force && !strcmp(vu, sig))
+		return ;
+	f = fopen(chemin, "w");
+	if (f)
+	{
+		fprintf(f, "%s\n", sig);
+		fclose(f);
+	}
 	n = 0;
 	if (petit)
 		n += snprintf(texte + n, sizeof(texte) - n, L("• Ton terminal fait %d × %d : mets-le en plein écran (F11 ou double-clic sur la barre de titre). Idéal : au moins 120 × 38.\n",

@@ -1639,3 +1639,21 @@ Clockmaker of the Mechanism	Часовщик Механизма
 Architect of the City	Архитектор Города
 Legend of the City	Легенда Города
 Rank: %s · next rank at level %d	Ранг: %s · следующий ранг на уровне %d
+✓ TRACE CREATED	✓ ТРАССА СОЗДАНА
+Send this file to @splatch_afk on Discord.	Отправь этот файл @splatch_afk в Discord.
+R A N K S	Р А Н Г И
+A new rank every 10 levels. XP comes from tests, the bank and the exam.	Новый ранг каждые 10 уровней. XP дают тесты, банк и экзамен.
+lvl 101 and up	ур. 101 и выше
+lvl %d to %d	ур. %d–%d
+YOUR RANK: %s · level %d	ТВОЙ РАНГ: %s · уровень %d
+%ld more XP to become %s (level %d).	Ещё %ld XP до ранга %s (уровень %d).
+Esc: back	Esc: назад
+Ranks|Your rank, how close the next one is, and the ranks to come.	Ранги|Твой ранг, сколько до следующего и будущие ранги.
+You are in: %.240s	Ты здесь: %.240s
+WHERE IS YOUR PROJECT?	ГДЕ ТВОЙ ПРОЕКТ?
+• The testeur des fous is next to your project? Start with ../ : for example ../libft	• testeur des fous лежит рядом с проектом? Начни с ../ : например ../libft
+• Your project is the folder you started the tester from? Type . (a dot).	• Проект — это папка, откуда ты запустил тестер? Введи . (точку).
+• ~/ starts from your home folder, / from the root. Tab completes, pressing Tab again cycles the choices.	• ~/ — от домашней папки, / — от корня. Tab дополняет, повторный Tab листает варианты.
+• The folder must contain libft.h, ft_printf.h, or get_next_line.c and get_next_line.h.	• В папке должен быть libft.h, ft_printf.h или get_next_line.c и get_next_line.h.
+being improved · BETA	в доработке · BETA
+The f6 step is for Olympic athletes.	Этап f6 — для олимпийских спортсменов.

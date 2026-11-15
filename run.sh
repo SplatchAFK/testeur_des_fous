@@ -722,6 +722,23 @@ tdf_journal "projets trouvés : libft ${#LIBFTS[@]}, ft_printf ${#PRINTFS[@]}, g
 trap 'tdf_journal "interrompu (Ctrl+C)"; debug_fermer "interrompu"; exit 130' INT
 trap 'debug_fermer "arrêté"; exit 143' TERM HUP
 
+garde_quitter() {
+	[ "${TDF_GARDE_ECRAN:-0}" = 1 ] || return 0
+	printf '\033[0m\033[?25h\033[?1049l'
+	export TDF_GARDE_ECRAN=0
+}
+
+garde_reprendre() {
+	[ "$MENU_UNIQUE" = 1 ] && [ -t 1 ] || return 0
+	export TDF_GARDE_ECRAN=1
+	printf '\033[?1049h\033[?25l'
+}
+
+if [ "$MENU_UNIQUE" = 1 ] && [ -t 1 ]; then
+	garde_reprendre
+	trap 'printf "\033[0m\033[?25h\033[?1049l"' EXIT
+fi
+
 while :; do
 	if [ "$MENU_A_FAIRE" = 1 ]; then
 		choisir_au_menu || continue
@@ -731,15 +748,24 @@ while :; do
 	export TDF_PROJET="$PROJET"
 	tdf_journal "lancement du module $MODULE ${SUITE[*]:-}"
 	tdf_chrono_debut mod "module $MODULE"
+	examshell=0
+	[ "$MODULE" = exam ] && case " ${SUITE[*]:-} " in *" --banque "*) ;; *) examshell=1 ;; esac
+	[ "$examshell" = 1 ] && garde_quitter
 	if [ "$MENU_UNIQUE" = 1 ] && rapport_texte; then
 		mkdir -p "$DOSSIER/derniere"
-		bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"} 2>&1 | tee "$DOSSIER/derniere/rapport.txt"
-		code=${PIPESTATUS[0]}
+		if [ "${TDF_GARDE_ECRAN:-0}" = 1 ]; then
+			bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"} > "$DOSSIER/derniere/rapport.txt" 2>&1
+			code=$?
+		else
+			bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"} 2>&1 | tee "$DOSSIER/derniere/rapport.txt"
+			code=${PIPESTATUS[0]}
+		fi
 		printf 'rapport\n' > "$DOSSIER/derniere/module"
 	else
 		bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"}
 		code=$?
 	fi
+	[ "$examshell" = 1 ] && garde_reprendre
 	tdf_chrono_fin mod "module $MODULE" "code $code"
 	[ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && noter_historique "$MODULE" "$PROJET"
 	if [ "$code" != 0 ] && [ "$code" != 1 ] && [ "$code" != 45 ] && [ "$code" != 130 ]; then

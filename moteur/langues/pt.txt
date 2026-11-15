@@ -1639,3 +1639,21 @@ Clockmaker of the Mechanism	Relojoeiro do Mecanismo
 Architect of the City	Arquiteto da Cidade
 Legend of the City	Lenda da Cidade
 Rank: %s · next rank at level %d	Patente: %s · próxima patente no nível %d
+✓ TRACE CREATED	✓ RASTO CRIADO
+Send this file to @splatch_afk on Discord.	Envia este ficheiro a @splatch_afk no Discord.
+R A N K S	P A T E N T E S
+A new rank every 10 levels. XP comes from tests, the bank and the exam.	Uma nova patente a cada 10 níveis. A XP vem dos testes, do banco e do exame.
+lvl 101 and up	nív. 101 e acima
+lvl %d to %d	nív. %d a %d
+YOUR RANK: %s · level %d	A TUA PATENTE: %s · nível %d
+%ld more XP to become %s (level %d).	Faltam %ld XP para seres %s (nível %d).
+Esc: back	Esc: voltar
+Ranks|Your rank, how close the next one is, and the ranks to come.	Patentes|A tua patente, quanto falta para a próxima e as que virão.
+You are in: %.240s	Estás em: %.240s
+WHERE IS YOUR PROJECT?	ONDE ESTÁ O TEU PROJETO?
+• The testeur des fous is next to your project? Start with ../ : for example ../libft	• O testeur des fous está ao lado do teu projeto? Começa por ../ : por exemplo ../libft
+• Your project is the folder you started the tester from? Type . (a dot).	• O teu projeto é a pasta onde lançaste o tester? Escreve . (um ponto).
+• ~/ starts from your home folder, / from the root. Tab completes, pressing Tab again cycles the choices.	• ~/ parte da tua pasta pessoal, / da raiz. Tab completa, carregar outra vez em Tab percorre as opções.
+• The folder must contain libft.h, ft_printf.h, or get_next_line.c and get_next_line.h.	• A pasta deve conter libft.h, ft_printf.h, ou get_next_line.c e get_next_line.h.
+being improved · BETA	em melhoria · BETA
+The f6 step is for Olympic athletes.	A etapa f6 é para atletas olímpicos.

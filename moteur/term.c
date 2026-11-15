@@ -758,7 +758,26 @@ void	term_pause(void)
 
 void	term_end(void)
 {
+	const char	*g;
+	char		b[48];
+	int			n;
+
+	g = getenv("TDF_GARDE_ECRAN");
 	rendu_fin();
+	if (g && g[0] == '1' && g_raw)
+	{
+		bgc(theme()->bg);
+		frame();
+		text_at((term_cols() - 5) / 2, term_rows() / 2, theme()->dim, "· · ·");
+		flush();
+		n = snprintf(b, sizeof(b), "\033[0m\033[?7h\033[%d;1H", term_rows());
+		(void)!write(1, b, n);
+		tcsetattr(0, TCSANOW, &g_old);
+		g_raw = 0;
+		g_len = 0;
+		g_on = 0;
+		return ;
+	}
 	term_pause();
 }
 

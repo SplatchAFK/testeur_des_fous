@@ -1639,3 +1639,21 @@ Clockmaker of the Mechanism	Mekanizmanın Saatçisi
 Architect of the City	Şehrin Mimarı
 Legend of the City	Şehrin Efsanesi
 Rank: %s · next rank at level %d	Rütbe: %s · sonraki rütbe %d. seviyede
+✓ TRACE CREATED	✓ İZ OLUŞTURULDU
+Send this file to @splatch_afk on Discord.	Bu dosyayı Discord'da @splatch_afk'e gönder.
+R A N K S	R Ü T B E L E R
+A new rank every 10 levels. XP comes from tests, the bank and the exam.	Her 10 seviyede yeni bir rütbe. XP testlerden, bankadan ve sınavdan gelir.
+lvl 101 and up	sv. 101 ve üstü
+lvl %d to %d	sv. %d–%d
+YOUR RANK: %s · level %d	RÜTBEN: %s · seviye %d
+%ld more XP to become %s (level %d).	%ld XP daha: %s (seviye %d).
+Esc: back	Esc: geri
+Ranks|Your rank, how close the next one is, and the ranks to come.	Rütbeler|Rütben, sonrakine ne kadar kaldığı ve gelecek rütbeler.
+You are in: %.240s	Bulunduğun yer: %.240s
+WHERE IS YOUR PROJECT?	PROJEN NEREDE?
+• The testeur des fous is next to your project? Start with ../ : for example ../libft	• testeur des fous projenin yanında mı? ../ ile başla: örneğin ../libft
+• Your project is the folder you started the tester from? Type . (a dot).	• Projen, testeri başlattığın klasör mü? . (nokta) yaz.
+• ~/ starts from your home folder, / from the root. Tab completes, pressing Tab again cycles the choices.	• ~/ ana klasöründen, / kökten başlar. Tab tamamlar, tekrar Tab seçenekler arasında gezer.
+• The folder must contain libft.h, ft_printf.h, or get_next_line.c and get_next_line.h.	• Klasörde libft.h, ft_printf.h ya da get_next_line.c ve get_next_line.h olmalı.
+being improved · BETA	geliştiriliyor · BETA
+The f6 step is for Olympic athletes.	f6 aşaması olimpiyat sporcuları içindir.
