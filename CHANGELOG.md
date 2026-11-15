@@ -16,9 +16,8 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Le savais-tu ?
 
-- à côté du titre, une phrase « Le savais-tu ? » penchée façon écran titre de Minecraft, qui pulse doucement : 50 conseils pour mieux utiliser le testeur et 15 phrases bienveillantes ;
-- elle change à chaque lancement et toutes les 10 minutes ;
-- de temps en temps, un easter egg apparaît dans un espace vide du menu, puis disparaît en fondu.
+- les conseils apparaissent tour à tour à gauche et à droite du menu, avec un effet pop (le texte jaillit, puis se resserre), restent quelques secondes puis disparaissent en fondu ;
+- 50 conseils pour mieux utiliser le testeur et 15 phrases bienveillantes ; de temps en temps, un easter egg.
 
 ### get_next_line
 

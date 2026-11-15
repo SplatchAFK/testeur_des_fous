@@ -415,65 +415,11 @@ typedef struct s_bulle
 	int		y;
 	int		w;
 	int		n;
-	char	l[4][200];
+	int		cote;
+	char	l[6][200];
 }	t_bulle;
 
-static t_bulle	g_bulle = {-1, -1, 0, 25000, 0, 0, 0, 0, {{0}}};
-
-static int	bulle_couper(const char *s, int w, char l[4][200]);
-
-typedef struct s_splash
-{
-	int		idx;
-	long	t0;
-	long	change;
-	int		n;
-	int		w;
-	char	l[6][200];
-}	t_splash;
-
-static t_splash	g_splash = {-1, 0, 0, 0, 0, {{0}}};
-
-static void	splash_titre(int bx, int by, int w, long anim)
-{
-	t_rgb		c;
-	long		dt;
-	double		k;
-	int			i;
-	int			y;
-	int			montre;
-
-	if (g_splash.idx < 0 || anim >= g_splash.change)
-	{
-		g_splash.idx = rand() % 65;
-		g_splash.t0 = anim;
-		g_splash.change = anim + 600000;
-		g_splash.w = 0;
-	}
-	if (g_splash.w != w)
-	{
-		g_splash.w = w;
-		snprintf(g_splash.l[0], 200, "%s", L("Le savais-tu ?", "Did you know?"));
-		g_splash.n = 1 + bulle_couper(astuce(g_splash.idx), w, g_splash.l + 1);
-	}
-	dt = anim - g_splash.t0;
-	k = 0.18 + 0.18 * sin(anim / 260.0);
-	for (i = 0; i < g_splash.n; i++)
-	{
-		c = i == 0 ? rgb(255, 190, 70) : rgb(255, 255, 85);
-		c = mix(c, rgb(255, 255, 255), dt < 300 ? 1.0 - dt / 300.0 : k);
-		montre = dt < 300 ? (int)(ulen(g_splash.l[i]) * dt / 300.0) + 1 : ulen(g_splash.l[i]);
-		y = by + i;
-		if (y < 1)
-			continue ;
-		bgc(theme()->bg);
-		at(bx + 2 * i - 1, y);
-		out(" ");
-		text_clip(bx + 2 * i, y, c, g_splash.l[i], montre);
-		fg(c);
-		outf("%*s", ulen(g_splash.l[i]) - montre + 1, "");
-	}
-}
+static t_bulle	g_bulle = {-1, -1, 0, 1200, 0, 0, 0, 0, -1, {{0}}};
 
 static const char	*octets_de(const char *s, int car)
 {
@@ -487,7 +433,7 @@ static const char	*octets_de(const char *s, int car)
 	return (s);
 }
 
-static int	bulle_couper(const char *s, int w, char l[4][200])
+static int	bulle_couper(const char *s, int w, char l[][200], int max)
 {
 	int	n;
 	int	len;
@@ -496,7 +442,7 @@ static int	bulle_couper(const char *s, int w, char l[4][200])
 	int	coupe;
 
 	n = 0;
-	while (*s && n < 4)
+	while (*s && n < max)
 	{
 		while (*s == ' ')
 			s++;
@@ -523,6 +469,8 @@ static int	bulle_couper(const char *s, int w, char l[4][200])
 static void	bulle_choisir(t_zone *z, int nz, long anim)
 {
 	t_zone	*q;
+	int		cand[4];
+	int		nc;
 	int		i;
 
 	if (nz <= 0)
@@ -530,34 +478,64 @@ static void	bulle_choisir(t_zone *z, int nz, long anim)
 		g_bulle.suite = anim + 3000;
 		return ;
 	}
+	for (nc = 0, i = 0; i < nz; i++)
+		if ((z[i].x < term_cols() / 2) != g_bulle.cote)
+			cand[nc++] = i;
+	q = nc ? &z[cand[rand() % nc]] : &z[rand() % nz];
 	do
-		i = 65 + rand() % 5;
+		i = rand() % 100 < 10 ? 65 + rand() % 5 : rand() % 65;
 	while (i == g_bulle.prec);
-	q = &z[rand() % nz];
-	g_bulle.w = q->w < 40 ? q->w : 40;
-	g_bulle.n = bulle_couper(astuce(i), g_bulle.w, g_bulle.l);
+	g_bulle.w = q->w < 34 ? q->w : 34;
+	g_bulle.n = 0;
+	if (i < 65)
+		snprintf(g_bulle.l[g_bulle.n++], 200, "%s", L("Le savais-tu ?", "Did you know?"));
+	g_bulle.n += bulle_couper(astuce(i), g_bulle.w, g_bulle.l + g_bulle.n, 6 - g_bulle.n);
 	if (q->y1 - q->y0 < g_bulle.n)
 	{
-		g_bulle.suite = anim + 20000;
+		g_bulle.suite = anim + 2000;
 		return ;
 	}
 	g_bulle.cur = i;
 	g_bulle.prec = i;
+	g_bulle.cote = q->x < term_cols() / 2;
 	g_bulle.t0 = anim;
 	g_bulle.x = q->x;
 	g_bulle.y = q->y0 + rand() % (q->y1 - q->y0 - g_bulle.n + 1);
 }
 
+static void	ligne_ecartee(int cx, int y, int wmax, t_rgb c, const char *s)
+{
+	char	b[420];
+	int		j;
+	int		k;
+	int		n;
+
+	for (j = 0, k = 0; s[j] && k < (int)sizeof(b) - 8; )
+	{
+		n = 1;
+		while (s[j + n] && ((unsigned char)s[j + n] & 0xC0) == 0x80)
+			n++;
+		if (k)
+			b[k++] = ' ';
+		memcpy(b + k, s + j, n);
+		k += n;
+		j += n;
+	}
+	b[k] = '\0';
+	n = ulen(b);
+	if (n > wmax)
+		n = wmax;
+	text_clip(cx - n / 2, y, c, octets_de(b, (ulen(b) - n) / 2), n);
+}
+
 static void	bulle(t_zone *z, int nz, long anim)
 {
-	t_rgb	jaune;
+	t_rgb	base;
 	t_rgb	c;
 	long	dt;
-	int		total;
-	int		montre;
+	double	k;
+	int		cx;
 	int		i;
-	int		l;
-	int		x;
 
 	if (g_bulle.cur < 0)
 	{
@@ -567,28 +545,29 @@ static void	bulle(t_zone *z, int nz, long anim)
 			return ;
 	}
 	dt = anim - g_bulle.t0;
-	if (dt > 5300)
+	if (dt > 7500)
 	{
 		g_bulle.cur = -1;
-		g_bulle.suite = anim + 60000 + rand() % 120000;
+		g_bulle.suite = anim + 1800;
 		return ;
 	}
-	jaune = rgb(255, 140, 220);
-	if (dt < 300)
-		c = mix(rgb(255, 255, 255), jaune, dt / 300.0);
-	else if (dt > 4300)
-		c = mix(jaune, theme()->bg, (dt - 4300) / 1000.0);
-	else
-		c = jaune;
-	for (total = 0, i = 0; i < g_bulle.n; i++)
-		total += ulen(g_bulle.l[i]);
-	montre = dt < 220 ? (int)(total * dt / 220.0) + 1 : total;
-	for (i = 0; i < g_bulle.n && montre > 0; i++)
+	cx = g_bulle.x + g_bulle.w / 2;
+	k = 0.10 + 0.10 * sin(anim / 300.0);
+	for (i = 0; i < g_bulle.n; i++)
 	{
-		l = ulen(g_bulle.l[i]);
-		x = montre < l ? (l - montre) / 2 : 0;
-		text_clip(g_bulle.x + (g_bulle.w - l) / 2 + x, g_bulle.y + i, c, octets_de(g_bulle.l[i], x), montre < l ? montre : l);
-		montre -= l;
+		base = g_bulle.cur >= 65 ? rgb(255, 140, 220) : (i == 0 ? rgb(255, 190, 70) : rgb(255, 255, 85));
+		if (dt < 130)
+			c = rgb(255, 255, 255);
+		else if (dt < 260)
+			c = mix(rgb(255, 255, 255), base, (dt - 130) / 130.0);
+		else if (dt > 6500)
+			c = mix(base, theme()->bg, (dt - 6500) / 1000.0);
+		else
+			c = mix(base, rgb(255, 255, 255), k);
+		if (dt < 130)
+			ligne_ecartee(cx, g_bulle.y + i, g_bulle.w + 8, c, g_bulle.l[i]);
+		else
+			text_clip(cx - ulen(g_bulle.l[i]) / 2, g_bulle.y + i, c, g_bulle.l[i], g_bulle.w);
 	}
 }
 
@@ -694,12 +673,11 @@ static int	mu_ecran(t_mu *m, int *sel)
 			zones[nz++] = (t_zone){ix + iw + 3, y + 1, y + 1 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1), cols - (ix + iw + 3) - 3};
 		if (bx - 4 >= 22)
 			zones[nz++] = (t_zone){2, y + 1, y + 21 < rows - 3 ? y + 21 : rows - 3, bx - 4};
+		if (haut == 16 && x - 6 >= 22)
+			zones[nz++] = (t_zone){3, 2, 14, x - 6};
+		if (haut == 16 && cols - (x + tw + 4 + g_fou_bloc_w) - 6 >= 22)
+			zones[nz++] = (t_zone){x + tw + 4 + g_fou_bloc_w + 3, 2, 14, cols - (x + tw + 4 + g_fou_bloc_w) - 6};
 		bulle(zones, nz, anim);
-		if (haut == 16 && cols - (x + tw + 4 + g_fou_bloc_w) - 4 >= 30)
-			splash_titre(x + tw + 4 + g_fou_bloc_w + 3, 3,
-				cols - (x + tw + 4 + g_fou_bloc_w) - 14 < 30 ? cols - (x + tw + 4 + g_fou_bloc_w) - 14 : 30, anim);
-		else if (haut == 16)
-			splash_titre(x + tw - 30, 10, 30, anim);
 		i = y + 2 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1);
 		if (strchr(m->items[*sel], '|') && i < rows - 2)
 		{
