@@ -33,6 +33,10 @@ Le numéro de version est dans `moteur/version.h`.
 - à chaque nouvelle version, un écran « Nouveautés de la version X » s'affiche une fois ;
 - les deux se revoient depuis Paramètres.
 
+### Le fou
+
+- plus précis : rendu en demi-blocs à partir du dessin peint (deux pixels de couleur par case), dans le menu et l'en-tête de l'examshell des fous.
+
 ### Flèches
 
 - une flèche maintenue ne fige plus l'écran : plus d'animations de couleur redessinées à chaque image, les appuis répétés sont regroupés ;
