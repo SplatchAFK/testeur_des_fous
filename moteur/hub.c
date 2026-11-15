@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <sys/utsname.h>
+#include <sys/stat.h>
 #include "fous.h"
 
 const t_badge	g_badges[NBADGE] = {
@@ -115,10 +116,10 @@ void	discord_card(int x, int y)
 	fill(x, y, DISCORD_W, 5, in);
 	bgc(in);
 	box(x, y, DISCORD_W, 5, b);
-	text_at(x + 2, y, rgb(190, 198, 255), L(" DISCORD · LE SERVEUR DES FOUS ", " DISCORD · THE FOUS SERVER "));
+	text_at(x + 2, y, rgb(190, 198, 255), L(" DISCORD · 42 NEXT GLOBAL - SERVEUR NON OFFICIEL ", " DISCORD · 42 NEXT GLOBAL - UNOFFICIAL SERVER "));
 	text_at(x + 3, y + 1, theme()->text, L("Entraide, bugs, idées : rejoins-nous", "Help, bugs, ideas: join us"));
 	text_at(x + 3, y + 2, rgb(255, 255, 255), "◆ " TDF_DISCORD);
-	text_at(x + 3, y + 3, rgb(190, 198, 255), L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
+	text_at(x + 3, y + 3, rgb(190, 198, 255), L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord"));
 	bgc(theme()->bg);
 }
 
@@ -126,7 +127,7 @@ void	discord_line(int y)
 {
 	int	x;
 
-	x = (term_cols() - 13 - ulen(TDF_DISCORD) - ulen(L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"))) / 2;
+	x = (term_cols() - 13 - ulen(TDF_DISCORD) - ulen(L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord"))) / 2;
 	at(x < 0 ? 0 : x, y);
 	bgc(rgb(88, 101, 242));
 	fg(rgb(255, 255, 255));
@@ -136,7 +137,7 @@ void	discord_line(int y)
 	out(" " TDF_DISCORD);
 	fg(theme()->dim);
 	out(" · ");
-	out(L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
+	out(L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord"));
 }
 
 static void	choisir_langue(void)
@@ -305,18 +306,76 @@ int	game_holy(const char *p, char *why, size_t n)
 		if (badge_has(1))
 			return (snprintf(why, n, "%s", L("Validé dans le testeur des fous printf.",
 						"Validated in the printf tester.")), 2);
-		snprintf(why, n, "%s", L("Ce qui te manque : installe le testeur des fous printf et bats ft_printf.",
-				"What you still need: install the printf tester and beat ft_printf."));
+		snprintf(why, n, "%s", L("Ce qui te manque : un passage sans aucun échec avec « Tester mon projet » sur ton ft_printf.",
+				"What you still need: a run with no failure with 'Test my project' on your ft_printf."));
 		return (0);
 	}
 	return (-1);
 }
 #endif
 
+int	tdf_stats_valide(const char *mod)
+{
+	char	path[700];
+	char	l[200];
+	char	m[16];
+	long	t;
+	int		ok;
+	int		tot;
+	FILE	*f;
+	int		v;
+
+	snprintf(path, sizeof(path), "%s/stats.txt", g_savedir);
+	f = fopen(path, "r");
+	v = 0;
+	while (f && fgets(l, sizeof(l), f))
+		if (sscanf(l, "R %ld %15s %d %d", &t, m, &ok, &tot) == 4 && tot > 0 && ok == tot && !strcmp(m, mod))
+			v = 1;
+	if (f)
+		fclose(f);
+	return (v);
+}
+
+void	tdf_veteran(void)
+{
+	static const char	*ids[3] = {"cape_veteran", "casque_veteran", "fam_moulinette"};
+	int					i;
+	int					neuf;
+
+	if (!tdf_stats_valide("libft") && !badge_has(0))
+		return ;
+	neuf = 0;
+	for (i = 0; i < 3; i++)
+		if (item_find(ids[i]) >= 0 && !item_owned(item_find(ids[i])))
+		{
+			item_own(item_find(ids[i]));
+			neuf = 1;
+		}
+	if (!neuf)
+		return ;
+	for (i = 0; i < g_ntheme; i++)
+		if (!strcmp(g_themes[i].id, "veteran"))
+			g_save.themes[i] = '1';
+	g_save.titles[NTITLE - 1] = '1';
+	toast(L("PRIVILÈGES DU VÉTÉRAN", "VETERAN PERKS"), L("ta Libft est validée : cape, casque, familier Moulinette, thème doré et titre",
+			"your Libft is validated: cape, helmet, Moulinette pet, golden theme and title"), rgb(255, 200, 80));
+	save_write();
+}
+
 static int	holy_state(const char *p, char *why, size_t n)
 {
 	int	k;
 
+	if ((!strcmp(p, "Libft") && tdf_stats_valide("libft")) || (!strcmp(p, "Printf") && tdf_stats_valide("printf"))
+		|| (!strcmp(p, "Get_next_line") && tdf_stats_valide("gnl")))
+		return (snprintf(why, n, "%s", L("Validé : un passage sans aucun échec est enregistré, c'est acquis pour toujours.",
+					"Validated: a run with no failure is recorded, it stays validated for good.")), 2);
+	if (!strcmp(p, "Get_next_line"))
+		return (snprintf(why, n, "%s", L("Ce qui te manque : un passage sans aucun échec avec « Tester mon projet » sur ton get_next_line.",
+					"What you still need: a run with no failure with 'Test my project' on your get_next_line.")), 0);
+	if (!strncmp(p, "Exam", 4) && !strcmp(p, "Exam · Programming Fundamentals"))
+		return (snprintf(why, n, "%s", L("Entraîne-toi dans l'examshell des fous : Exam en C, depuis le menu.",
+					"Train in the Examshell des fous: C exam, from the menu.")), 0);
 	k = game_holy(p, why, n);
 	if (k >= 0)
 		return (k);
@@ -387,7 +446,7 @@ void	screen_holy(void)
 		center(1, theme()->accent2, L("H O L Y G R A P H   ·   4 2   N E X T", "H O L Y G R A P H   ·   4 2   N E X T"));
 		for (done = 0, tot = 0, k = 0; k < 7; k++)
 			for (i = 0; i < holy_count(k); i++, tot++)
-				done += holy_state(g_holy[k].proj[i], why, sizeof(why)) == 2;
+				done += k == 0 && holy_state(g_holy[k].proj[i], why, sizeof(why)) == 2;
 		snprintf(tmp, sizeof(tmp), L("Common Core · 7 modules · %d/%d validés avec les testeurs des fous",
 				"Common Core · 7 modules · %d/%d validated with the testeurs des fous"), done, tot);
 		center(2, theme()->dim, tmp);
@@ -400,13 +459,13 @@ void	screen_holy(void)
 				fg(theme()->accent2);
 			}
 			else
-				fg(theme()->text);
+				fg(k ? theme()->dim : theme()->text);
 			outf(" %s %-30.30s ", k == m ? "▶" : " ", g_holy[k].name);
 			bgc(theme()->bg);
 		}
 		for (i = 0; i < holy_count(m); i++)
 		{
-			st = holy_state(g_holy[m].proj[i], why, sizeof(why));
+			st = m ? 0 : holy_state(g_holy[m].proj[i], why, sizeof(why));
 			snprintf(tmp, sizeof(tmp), "%s %s", st == 2 ? "◆" : "◇", g_holy[m].proj[i]);
 			at(x + 36, 4 + i);
 			if (i == p)
@@ -418,6 +477,12 @@ void	screen_holy(void)
 		if (p >= holy_count(m))
 			p = 0;
 		st = holy_state(g_holy[m].proj[p], why, sizeof(why));
+		if (m)
+		{
+			st = 0;
+			snprintf(why, sizeof(why), "%s", L("Ce module n'a pas encore de testeur. Un testeur par module sera créé, selon l'avancée des créateurs du testeur des fous.",
+					"This module has no tester yet. One tester per module will be made, as the testeur des fous creators move forward."));
+		}
 		text_clip(x, 19, holy_col(st), g_holy[m].proj[p], 78);
 		text_wrap(x, 20, term_rows() - 2, 78, theme()->text, why);
 		foot_line(x, L("▲ ▼ module   ◀ ▶ projet   b : badges   Échap : retour",
@@ -469,9 +534,12 @@ static int	trace_write(char *path, size_t n)
 	FILE			*f;
 	struct utsname	u;
 	time_t			t;
+	char			dir[600];
 
-	snprintf(path, n, "%s/testeur_des_fous_trace_%s.txt", getenv("HOME") ? getenv("HOME") : "/tmp",
-		TDF_GAME);
+
+	snprintf(dir, sizeof(dir), "%s/trace", getenv("TDF_RACINE") ? getenv("TDF_RACINE") : (g_tester_dir ? g_tester_dir : "."));
+	mkdir(dir, 0755);
+	snprintf(path, n, "%s/trace_%s.txt", dir, TDF_GAME);
 	f = fopen(path, "w");
 	if (!f)
 		return (-1);
@@ -514,14 +582,14 @@ void	screen_help_us(void)
 				"2. Send it as a direct message to @splatch_afk (42 Next server)."));
 		text_at(x, y++, theme()->text, L("   Ou dépose-la sur le Discord des fous : " TDF_DISCORD,
 				"   Or drop it on the fous Discord: " TDF_DISCORD));
-		text_at(x, y++, theme()->dim, L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
+		text_at(x, y++, theme()->dim, L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord"));
 		text_at(x, y++, theme()->text, L("3. Ajoute ce que tu veux : conseils, suggestions, idées, tout est pris.",
 				"3. Add anything: advice, suggestions, ideas, everything is welcome."));
 		y++;
-		y = text_wrap(x, y, y + 2, 76, theme()->dim, L("La trace ne contient ni ton code, ni ton login : seulement les "
-				"résultats des tests, la version du testeur et ton système. Tout reste hors ligne : rien n'est envoyé "
-				"sans toi.", "The trace holds neither your code nor your login: only test results, the tester "
-				"version and your system. Everything stays offline: nothing is sent without you."));
+		y = text_wrap(x, y, y + 4, 76, theme()->dim, L("La trace ne contient ni ton code, ni ton login : seulement les "
+				"résultats des tests, la version du testeur et ton système. Le testeur n'envoie rien sur internet : "
+				"c'est toi qui choisis de l'envoyer.", "The trace holds neither your code nor your login: only test results, "
+				"the tester version and your system. The tester sends nothing over the internet: you choose to send it."));
 		foot_line(x, L("t : créer ma trace   Échap : retour",
 				"t: create my trace   Esc: back"));
 		flush();

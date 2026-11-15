@@ -48,7 +48,7 @@ Il te faut seulement `bash`, `cc` et `make`. Aucun `sudo`. `norminette` et `valg
 | Chevalier | ton avatar, la boutique, ton profil et tes succès |
 | Lore | toutes les cinématiques (Libft, ft_printf, get_next_line, exam) et la carte de la Cité |
 | Stats | ta progression, tes badges et le holygraph 42 Next |
-| Paramètres | réglages, interface graphique ou texte, commande `tdf`, revoir le tuto et les nouveautés |
+| Paramètres | réglages, commande `tdf`, revoir le tuto et le changelog |
 
 Après un test, l'écran des résultats s'affiche directement ; en le quittant, tu reviens au menu.
 
@@ -115,7 +115,7 @@ Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests.
 
 ## Discord
 
-Entraide, bugs, idées : [discord.gg/SwAmfRcXCH](https://discord.gg/SwAmfRcXCH) · si le lien ne marche plus, contacte **splatch_afk** sur Discord.
+Serveur 42 Next Global (non officiel) · entraide, bugs, idées : [discord.gg/SwAmfRcXCH](https://discord.gg/SwAmfRcXCH) · si le lien ne marche plus, contacte **@splatch_afk** sur Discord.
 
 ## Crédits et licence
 

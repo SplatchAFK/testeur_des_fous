@@ -1458,3 +1458,18 @@ Review the last attempt|Every test of your last run, with why it passes or not	R
 • Graphical exercise bank: tabs, subject, grading in one click.	• Banco de exercícios gráfico: separadores, enunciado, correção num clique.
 • Lore: every cutscene, Libft, ft_printf, get_next_line and the exam.	• Lore: todas as cinemáticas, Libft, ft_printf, get_next_line e o exame.
 ▲ ▼ scroll   ◀ ▶ page   Esc or Enter: close	▲ ▼ deslizar   ◀ ▶ página   Esc ou Enter: fechar
+Dead link? Contact @splatch_afk on Discord	Link morto? Contacta @splatch_afk no Discord
+A tester, only here to test your code: it is not a video game.	Um tester, só para testar o teu código: não é um videojogo.
+Discord · 42 Next Global - Unofficial Server	Discord · 42 Next Global - Servidor não oficial
+ DISCORD · 42 NEXT GLOBAL - UNOFFICIAL SERVER 	 DISCORD · 42 NEXT GLOBAL - SERVIDOR NÃO OFICIAL 
+your Libft is validated: cape, helmet, Moulinette pet, golden theme and title	a tua Libft está validada: capa, elmo, companheira Moulinette, tema dourado e título
+Train in the Examshell des fous: C exam, from the menu.	Treina no Examshell des fous: Exame em C, no menu.
+This module has no tester yet. One tester per module will be made, as the testeur des fous creators move forward.	Este módulo ainda não tem tester. Será criado um tester por módulo, conforme o avanço dos criadores do testeur des fous.
+The trace holds neither your code nor your login: only test results, the tester version and your system. The tester sends nothing over the internet: you choose to send it.	O rasto não contém nem o teu código nem o teu login: só os resultados dos testes, a versão do tester e o teu sistema. O tester não envia nada pela internet: és tu que escolhes enviá-lo.
+CHANGELOG · VERSION %s	CHANGELOG · VERSÃO %s
+Want to know more? Join the Discord server (Ctrl + click on the link):	Queres saber mais? Vem ao servidor Discord (Ctrl + clique no link):
+Changelog|What changed in this version, and the Discord to learn more.	Changelog|O que mudou nesta versão, e o Discord para saber mais.
+%s · %d exercises · %d passed	%s · %d exercícios · %d passados
+Validated: a run with no failure is recorded, it stays validated for good.	Validado: uma passagem sem nenhuma falha está registada, fica validado para sempre.
+What you still need: a run with no failure with 'Test my project' on your get_next_line.	O que te falta: uma passagem sem falhas com « Testar o meu projeto » no teu get_next_line.
+What you still need: a run with no failure with 'Test my project' on your ft_printf.	O que te falta: uma passagem sem falhas com « Testar o meu projeto » no teu ft_printf.

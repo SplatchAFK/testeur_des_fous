@@ -243,7 +243,7 @@ void	screen_intro(void)
 	int			cx;
 	int			cy;
 	char		sub[64];
-	const char	*sub_full = "·  V E R S I O N   L I B F T  ·";
+	const char	*sub_full = "·  L E   T E S T E U R   D E S   F O U S  ·";
 	const char	*cred;
 
 	cred = L("Créé et vibe-codé par Splatch  (login : romasant)",
@@ -1550,14 +1550,14 @@ void	screen_credits(void)
 
 	n = 0;
 	l[n++] = "LE TESTEUR DES FOUS";
-	snprintf(ver, sizeof(ver), "%s · v%s", L("Version Libft", "Libft edition"), TDF_VERSION);
+	snprintf(ver, sizeof(ver), "v%s", TDF_VERSION);
 	l[n++] = ver;
 	l[n++] = "";
 	l[n++] = L("Créé et vibe-codé par Splatch", "Created and vibe-coded by Splatch");
 	l[n++] = L("login 42 : romasant", "42 login: romasant");
 	l[n++] = "";
 	l[n++] = L("Lore et idées : Splatch (romasant)", "Lore and ideas: Splatch (romasant)");
-	l[n++] = L("Pour rendre Libft plus marrant.", "To make Libft more fun.");
+	l[n++] = L("Un testeur, seulement là pour tester ton code : ce n'est pas un jeu vidéo.", "A tester, only here to test your code: it is not a video game.");
 	l[n++] = "";
 	l[n++] = L("Exercices d'entraînement", "Training exercises");
 	l[n++] = L("21 niveaux conçus pour le testeur des fous", "21 levels made for the crazy tester");
@@ -1572,9 +1572,9 @@ void	screen_credits(void)
 			"None of your libft functions were written by this tester.");
 	l[n++] = L("Il ne fait que les casser.", "It only breaks them.");
 	l[n++] = "";
-	l[n++] = L("Discord · le serveur des fous", "Discord · the fous server");
+	l[n++] = L("Discord · 42 Next Global - Serveur non Officiel", "Discord · 42 Next Global - Unofficial Server");
 	l[n++] = TDF_DISCORD;
-	l[n++] = L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord");
+	l[n++] = L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord");
 	l[n++] = "";
 	l[n++] = L("Merci d'avoir testé !", "Thanks for testing!");
 	t0 = now_ms();
@@ -1593,6 +1593,7 @@ void	screen_credits(void)
 		}
 		discord_card((term_cols() - DISCORD_W) / 2, term_rows() - 6);
 		flush();
+		tdf_lien((term_cols() - DISCORD_W) / 2 + 5, term_rows() - 4, TDF_DISCORD);
 		if (key_read(40) >= 0 || term_rows() - 5 - (int)s + n * 2 < 0)
 			break ;
 	}

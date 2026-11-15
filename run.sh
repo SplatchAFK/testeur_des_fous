@@ -123,6 +123,7 @@ court() {
 
 LANCEUR="$DOSSIER/lanceur.txt"
 INTERFACE="$(sed -n 's/^interface=//p' "$LANCEUR" 2>/dev/null | head -1)"
+[ "$INTERFACE" = texte ] && INTERFACE=graphique
 
 ecrire_interface() {
 	mkdir -p "$DOSSIER" 2>/dev/null
@@ -240,8 +241,8 @@ choisir_au_menu() {
 	code=$?
 	export TDF_NO_UPDATE=1
 	tdf_langue_lire
-	INTERFACE="$(sed -n 's/^interface=//p' "$LANCEUR" 2>/dev/null | head -1)"
-	export TDF_INTERFACE="${INTERFACE:-}"
+	INTERFACE=graphique
+	export TDF_INTERFACE=graphique
 	case "$code" in
 		46) ;;
 		0|130|143) debug_fermer "code 0"; exit 0 ;;

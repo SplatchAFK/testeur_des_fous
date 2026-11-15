@@ -1458,3 +1458,18 @@ Review the last attempt|Every test of your last run, with why it passes or not	S
 • Graphical exercise bank: tabs, subject, grading in one click.	• Grafik alıştırma bankası: sekmeler, konu, tek tıkla düzeltme.
 • Lore: every cutscene, Libft, ft_printf, get_next_line and the exam.	• Lore: tüm ara sahneler, Libft, ft_printf, get_next_line ve sınav.
 ▲ ▼ scroll   ◀ ▶ page   Esc or Enter: close	▲ ▼ kaydır   ◀ ▶ sayfa   Esc ya da Enter: kapat
+Dead link? Contact @splatch_afk on Discord	Bağlantı ölü mü? Discord'da @splatch_afk ile iletişime geç
+A tester, only here to test your code: it is not a video game.	Sadece kodunu test etmek için bir tester: video oyunu değildir.
+Discord · 42 Next Global - Unofficial Server	Discord · 42 Next Global - Resmi olmayan sunucu
+ DISCORD · 42 NEXT GLOBAL - UNOFFICIAL SERVER 	 DISCORD · 42 NEXT GLOBAL - RESMİ OLMAYAN SUNUCU 
+your Libft is validated: cape, helmet, Moulinette pet, golden theme and title	Libft'in geçti: pelerin, miğfer, Moulinette dostu, altın tema ve unvan
+Train in the Examshell des fous: C exam, from the menu.	Examshell des fous'ta çalış: menüden C sınavı.
+This module has no tester yet. One tester per module will be made, as the testeur des fous creators move forward.	Bu modülün henüz testeri yok. testeur des fous yapımcıları ilerledikçe her modül için bir tester yapılacak.
+The trace holds neither your code nor your login: only test results, the tester version and your system. The tester sends nothing over the internet: you choose to send it.	İz ne kodunu ne login'ini içerir: sadece test sonuçları, tester sürümü ve sistemin. Tester internete hiçbir şey göndermez: göndermeyi sen seçersin.
+CHANGELOG · VERSION %s	CHANGELOG · SÜRÜM %s
+Want to know more? Join the Discord server (Ctrl + click on the link):	Daha fazlası mı? Discord sunucusuna gel (bağlantıya Ctrl + tık):
+Changelog|What changed in this version, and the Discord to learn more.	Changelog|Bu sürümde değişenler ve daha fazlası için Discord.
+%s · %d exercises · %d passed	%s · %d alıştırma · %d geçildi
+Validated: a run with no failure is recorded, it stays validated for good.	Geçti: hatasız bir çalıştırma kayıtlı, sonsuza kadar geçerli.
+What you still need: a run with no failure with 'Test my project' on your get_next_line.	Eksik olan: get_next_line'ında « Projemi test et » ile hatasız bir çalıştırma.
+What you still need: a run with no failure with 'Test my project' on your ft_printf.	Eksik olan: ft_printf'inde « Projemi test et » ile hatasız bir çalıştırma.

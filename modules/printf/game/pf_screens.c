@@ -755,21 +755,21 @@ void	pf_credits(void)
 
 	n = 0;
 	l[n++] = "LE TESTEUR DES FOUS";
-	snprintf(ver, sizeof(ver), "%s · v%s", L("Version printf", "printf edition"), TDF_VERSION);
+	snprintf(ver, sizeof(ver), "v%s", TDF_VERSION);
 	l[n++] = ver;
 	l[n++] = "";
 	l[n++] = L("Créé et vibe-codé par Splatch", "Created and vibe-coded by Splatch");
 	l[n++] = L("login 42 : romasant", "42 login: romasant");
 	l[n++] = "";
-	l[n++] = L("Moteur de tests : Splatch (beta du testeur printf)", "Test engine: Splatch (printf tester beta)");
+	l[n++] = L("Un testeur, seulement là pour tester ton code : ce n'est pas un jeu vidéo.", "A tester, only here to test your code: it is not a video game.");
 	l[n++] = L("Lore et idées : Splatch (romasant)", "Lore and ideas: Splatch (romasant)");
 	l[n++] = "";
 	l[n++] = L("Pour les étudiants du cursus 42 Next", "For 42 Next students");
 	l[n++] = L("Paris et autres campus", "Paris and other campuses");
 	l[n++] = "";
-	l[n++] = L("Discord · le serveur des fous", "Discord · the fous server");
+	l[n++] = L("Discord · 42 Next Global - Serveur non Officiel", "Discord · 42 Next Global - Unofficial Server");
 	l[n++] = TDF_DISCORD;
-	l[n++] = L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord");
+	l[n++] = L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord");
 	l[n++] = "";
 	l[n++] = L("Merci à Moulinette, chatte grise et libre.", "Thanks to Moulinette, a free grey cat.");
 	l[n++] = L("Licence MIT · rien n'est envoyé, mise à jour sur ton accord",

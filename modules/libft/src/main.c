@@ -24,7 +24,7 @@ static void	summary(void)
 	printf("  %s\n", L("Créé et vibe-codé par Splatch (romasant)",
 			"Created and vibe-coded by Splatch (romasant)"));
 	printf("  \033[48;2;88;101;242m\033[38;2;255;255;255m DISCORD \033[0m \033[38;2;150;162;255m%s\033[0m \033[2m· %s\033[0m\n\n",
-		TDF_DISCORD, L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
+		TDF_DISCORD, L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord"));
 }
 
 static int	g_accueil;
@@ -64,6 +64,27 @@ static void	version_notice(void)
 	}
 }
 
+static void	scene_directe(const char *n)
+{
+	t_scene_out	g;
+	long		off;
+
+	if (!strcmp(n, "intro"))
+		story_libft_intro();
+	else if (!strncmp(n, "salle", 5))
+		story_room(atoi(n + 5));
+	else if (!strcmp(n, "finale"))
+		story_libft_finale();
+	else if (!strncmp(n, "combat", 6))
+	{
+		off = 0;
+		if (getenv("TDF_REVOIR"))
+			results_load(getenv("TDF_REVOIR"), &off);
+		results_tout_montrer();
+		scene_play(&g, atoi(n + 6), 1);
+	}
+}
+
 static int	ecran_direct(const char *e)
 {
 	if (!strcmp(e, "chevalier"))
@@ -83,6 +104,8 @@ static int	ecran_direct(const char *e)
 		results_tout_montrer();
 		screen_results(0);
 	}
+	else if (!strncmp(e, "scene:", 6))
+		scene_directe(e + 6);
 	else if (!strcmp(e, "rapport"))
 		tdf_rapport(getenv("TDF_RAPPORT"), getenv("TDF_RAPPORT_TITRE") ? getenv("TDF_RAPPORT_TITRE") : "");
 	else
@@ -227,6 +250,8 @@ int	main(int ac, char **av)
 				rewards_quiet();
 		}
 	}
+	if (unique)
+		tdf_veteran();
 	if (!results && unique && !(ecran && ecran[0]))
 	{
 		code = tdf_menu_principal(screen_profile, screen_boss_menu, screen_credits);

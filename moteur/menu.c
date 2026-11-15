@@ -308,6 +308,18 @@ int	tdf_touche_fleche(int k)
 	return (n);
 }
 
+static const char	*g_lien;
+
+void	tdf_lien(int x, int y, const char *url)
+{
+	char	b[700];
+	int		n;
+
+	n = snprintf(b, sizeof(b), "\0337\033[%d;%dH\033]8;;%s\033\\%s\033]8;;\033\\\0338", y + 1, x + 1, url, url);
+	if (n > 0 && n < (int)sizeof(b))
+		(void)!write(1, b, n);
+}
+
 static int	page(const char *titre, const char *texte, const char **items, int n, int *sel)
 {
 	char	lab[160];
@@ -316,7 +328,9 @@ static int	page(const char *titre, const char *texte, const char **items, int n,
 	int		x;
 	int		y;
 	int		w;
+	int		ly;
 
+	ly = 0;
 	cls();
 	while (1)
 	{
@@ -328,6 +342,7 @@ static int	page(const char *titre, const char *texte, const char **items, int n,
 		frame();
 		center(2, theme()->accent2, titre);
 		y = text_wrap(x, 5, term_rows() - 6 - n, w, theme()->text, texte) + 1;
+		ly = y - 2;
 		for (i = 0; i < n; i++)
 		{
 			at(x, y + i);
@@ -346,15 +361,17 @@ static int	page(const char *titre, const char *texte, const char **items, int n,
 		foot_line(x, L("▲ ▼ choisir   Entrée : valider   Échap : passer",
 				"▲ ▼ pick   Enter: confirm   Esc: skip"));
 		flush();
+		if (g_lien)
+			tdf_lien(x, ly, g_lien);
 		k = key_dir(key_read(40));
 		if (key_quit(k))
-			return (cls(), -1);
+			return (g_lien = NULL, cls(), -1);
 		if (k == 1000)
 			*sel = (*sel + n - 1) % n;
 		else if (k == 1001)
 			*sel = (*sel + 1) % n;
 		else if (k == '\r' || k == '\n' || k == ' ')
-			return (cls(), *sel);
+			return (g_lien = NULL, cls(), *sel);
 	}
 }
 
@@ -415,17 +432,19 @@ void	tdf_nouveautes(void)
 	const char	*items[2];
 	int			sel;
 
-	snprintf(titre, sizeof(titre), L("NOUVEAUTÉS DE LA VERSION %s", "WHAT'S NEW IN VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s\n%s",
+	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
+	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
 		L("• Un seul menu graphique : bash run.sh ou tdf l'ouvre directement, et tout s'y passe.", "• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there."),
 		L("• Tester mon projet : « . » pour le dossier où tu es, ou parcours ton PC avec Tab, comme dans zsh.", "• Test my project: '.' for the folder you are in, or browse your PC with Tab, like in zsh."),
 		L("• Après un test, tous les résultats s'affichent directement ; « Revoir la dernière tentative » les rouvre depuis le menu.", "• After a test, every result shows up directly; 'Review the last attempt' reopens them from the menu."),
 		L("• Banque d'exercices graphique : onglets, sujet, correction en un clic.", "• Graphical exercise bank: tabs, subject, grading in one click."),
 		L("• Sujets de l'exam et de la banque en 8 langues.", "• Exam and bank subjects in 8 languages."),
 		L("• Lore : toutes les cinématiques, Libft, ft_printf, get_next_line et l'exam.", "• Lore: every cutscene, Libft, ft_printf, get_next_line and the exam."),
-		L("• Examshell des fous plus clair : commande mal tapée ? Le testeur propose la bonne.", "• Clearer Examshell des fous: mistyped a command? The tester suggests the right one."));
+		L("• Examshell des fous plus clair : commande mal tapée ? Le testeur propose la bonne.", "• Clearer Examshell des fous: mistyped a command? The tester suggests the right one."),
+		L("Tu veux en savoir plus ? Viens sur le serveur Discord (Ctrl + clic sur le lien) :", "Want to know more? Join the Discord server (Ctrl + click on the link):"));
 	items[0] = L("Continuer|", "Continue|");
 	items[1] = L("Voir le tuto|", "See the tutorial|");
+	g_lien = TDF_DISCORD;
 	sel = 0;
 	if (page(titre, texte, items, 2, &sel) == 1)
 		tdf_tuto();
@@ -958,9 +977,6 @@ void	tdf_menu_params(void (*credits)(void))
 		items[n++] = L("Réglages|Langue, animations, histoire, niveau d'aide, outils de test.", "Options|Language, animations, story, help level, test tools.");
 		if (tdf_menu_unique())
 		{
-			act[n] = 4;
-			items[n++] = interface_texte() ? L("Interface : mode texte|Les tests seuls, sans histoire. Entrée pour repasser à l'interface graphique.", "Interface: text mode|Tests only, no story. Enter to switch back to the graphical interface.")
-				: L("Interface : graphique|Le lore, les cinématiques et les combats. Entrée pour passer au mode texte.", "Interface: graphical|The lore, the cutscenes and the fights. Enter to switch to text mode.");
 			if (!tdf_installee())
 			{
 				act[n] = 5;
@@ -969,7 +985,7 @@ void	tdf_menu_params(void (*credits)(void))
 			act[n] = 6;
 			items[n++] = L("Revoir le tuto|Les 6 écrans qui présentent le testeur.", "Replay the tutorial|The 6 screens that present the tester.");
 			act[n] = 7;
-			items[n++] = L("Nouveautés de cette version|Ce qui a changé depuis la dernière mise à jour.", "What's new in this version|What changed since the last update.");
+			items[n++] = L("Changelog|Ce qui a changé dans cette version, et le Discord pour en savoir plus.", "Changelog|What changed in this version, and the Discord to learn more.");
 		}
 		act[n] = 1;
 		items[n++] = L("Sauvegarde et connexion|Exporter ta progression ou la retrouver sur un autre poste.", "Save and login|Export your progress or get it back on another computer.");
@@ -1293,8 +1309,11 @@ void	tdf_banque(void)
 		bgc(theme()->bg);
 		frame();
 		center(1, theme()->accent2, L("BANQUE D'EXERCICES", "EXERCISE BANK"));
-		snprintf(tmp, sizeof(tmp), L("%d/%d réussis", "%d/%d passed"), ok, g_nbx);
-		center(2, theme()->dim, tmp);
+		for (ok = 0, i = 0; i < nv; i++)
+			ok += g_bx[vue[i]].fait;
+		snprintf(tmp, sizeof(tmp), L("%s · %d exercices · %d réussis", "%s · %d exercises · %d passed"),
+			onglet ? bsrc(src[onglet - 1]) : L("Tout", "All"), nv, ok);
+		center(2, ok == nv && nv ? rgb(140, 230, 170) : theme()->accent, tmp);
 		at(x, 4);
 		for (i = 0; i < 4; i++)
 		{

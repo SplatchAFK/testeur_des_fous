@@ -53,7 +53,7 @@ static void	summary(void)
 				g_pr.cat[i].title);
 	printf("  %s\n", L("Créé et vibe-codé par Splatch (romasant)", "Created and vibe-coded by Splatch (romasant)"));
 	printf("  \033[48;2;88;101;242m\033[38;2;255;255;255m DISCORD \033[0m \033[38;2;150;162;255m%s\033[0m \033[2m· %s\033[0m\n\n",
-		TDF_DISCORD, L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
+		TDF_DISCORD, L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord"));
 }
 
 static void	battles(int dlc, int first, const char *dlc0)
@@ -233,6 +233,24 @@ int	main(int ac, char **av)
 	{
 		if (!strcmp(getenv("TDF_ECRAN"), "lore"))
 			pf_boss_menu();
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:splash"))
+			story_splash();
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:precedemment"))
+			story_previously();
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:intro"))
+			story_printf_intro();
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:chaines"))
+			story_chains(0);
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:liberee"))
+			story_freed();
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:preboss"))
+			story_preboss();
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:victoire"))
+			story_victory(0);
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:secret"))
+			story_victory(1);
+		else if (!strcmp(getenv("TDF_ECRAN"), "scene:dlc"))
+			story_dlc();
 		else if (!strcmp(getenv("TDF_ECRAN"), "revoir") && getenv("TDF_REVOIR"))
 		{
 			long	o;

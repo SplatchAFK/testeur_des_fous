@@ -1458,3 +1458,18 @@ Review the last attempt|Every test of your last run, with why it passes or not	�
 • Graphical exercise bank: tabs, subject, grading in one click.	• Графический банк упражнений: вкладки, задание, проверка в один клик.
 • Lore: every cutscene, Libft, ft_printf, get_next_line and the exam.	• Лор: все ролики, Libft, ft_printf, get_next_line и экзамен.
 ▲ ▼ scroll   ◀ ▶ page   Esc or Enter: close	▲ ▼ прокрутка   ◀ ▶ страница   Esc или Enter: закрыть
+Dead link? Contact @splatch_afk on Discord	Ссылка не работает? Напиши @splatch_afk в Discord
+A tester, only here to test your code: it is not a video game.	Тестер, только чтобы проверять твой код: это не видеоигра.
+Discord · 42 Next Global - Unofficial Server	Discord · 42 Next Global - Неофициальный сервер
+ DISCORD · 42 NEXT GLOBAL - UNOFFICIAL SERVER 	 DISCORD · 42 NEXT GLOBAL - НЕОФИЦИАЛЬНЫЙ СЕРВЕР 
+your Libft is validated: cape, helmet, Moulinette pet, golden theme and title	твоя Libft сдана: плащ, шлем, питомец Мулинетт, золотая тема и титул
+Train in the Examshell des fous: C exam, from the menu.	Тренируйся в Examshell des fous: Экзамен по C в меню.
+This module has no tester yet. One tester per module will be made, as the testeur des fous creators move forward.	У этого модуля пока нет тестера. Тестер для каждого модуля появится по мере продвижения авторов testeur des fous.
+The trace holds neither your code nor your login: only test results, the tester version and your system. The tester sends nothing over the internet: you choose to send it.	След не содержит ни кода, ни логина: только результаты тестов, версию тестера и систему. Тестер ничего не отправляет в интернет: отправить решаешь ты.
+CHANGELOG · VERSION %s	CHANGELOG · ВЕРСИЯ %s
+Want to know more? Join the Discord server (Ctrl + click on the link):	Хочешь узнать больше? Заходи на сервер Discord (Ctrl + клик по ссылке):
+Changelog|What changed in this version, and the Discord to learn more.	Changelog|Что изменилось в этой версии, и Discord, чтобы узнать больше.
+%s · %d exercises · %d passed	%s · %d упражнений · %d пройдено
+Validated: a run with no failure is recorded, it stays validated for good.	Сдано: запуск без единой ошибки записан, это навсегда.
+What you still need: a run with no failure with 'Test my project' on your get_next_line.	Чего не хватает: запуск без ошибок через « Проверить мой проект » на твоём get_next_line.
+What you still need: a run with no failure with 'Test my project' on your ft_printf.	Чего не хватает: запуск без ошибок через « Проверить мой проект » на твоём ft_printf.

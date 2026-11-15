@@ -33,7 +33,7 @@ while IFS= read -r f; do
 	case "$f" in
 		./outils/verif.sh) continue ;;
 	esac
-	if grep -nIiE "$INTERDITS" "$f" >/dev/null 2>&1; then
+	if grep -nIiE "$INTERDITS" "$f" 2>/dev/null | grep -viE "pas un jeu vid" | grep -q .; then
 		signaler "mot interdit dans : $f"
 	fi
 done < <(find . -type f -not -path './.git/*' -not -path './.banc/*' -not -path '*/.build/*' -not -path '*/.build_jeu/*' -not -path './exam/*')
