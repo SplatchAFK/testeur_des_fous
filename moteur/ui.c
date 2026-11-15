@@ -125,6 +125,20 @@ extern const int			g_fou_petit_h;
 extern const char *const	g_fou_petit_txt[];
 extern const unsigned char	g_fou_petit_rgb[][30][3];
 
+static double	g_phase = -1000.0;
+
+static t_rgb	lumiere(int x, int y, int r, int g, int b)
+{
+	double	p;
+	double	k;
+
+	p = (x + y * 0.6) - g_phase;
+	k = 0.85 * exp(-(p * p) / 40.0) * 0.75;
+	if (k < 0.02)
+		return (rgb(r, g, b));
+	return (rgb((int)(r + (255 - r) * k), (int)(g + (255 - g) * k), (int)(b + (255 - b) * k)));
+}
+
 static void	fou_petit(int x, int y)
 {
 	const unsigned char	*h;
@@ -139,15 +153,15 @@ static void	fou_petit(int x, int y)
 		{
 			h = g_fou_bloc[r][c][0];
 			b = g_fou_bloc[r][c][1];
-			bgc(b[3] && h[3] ? rgb(b[0], b[1], b[2]) : theme()->bg);
+			bgc(b[3] && h[3] ? lumiere(x + c, y + r, b[0], b[1], b[2]) : theme()->bg);
 			if (h[3])
 			{
-				fg(rgb(h[0], h[1], h[2]));
+				fg(lumiere(x + c, y + r, h[0], h[1], h[2]));
 				out("▀");
 			}
 			else if (b[3])
 			{
-				fg(rgb(b[0], b[1], b[2]));
+				fg(lumiere(x + c, y + r, b[0], b[1], b[2]));
 				out("▄");
 			}
 			else
@@ -177,7 +191,7 @@ static void	titre_bloc(int x, int y, const char *mot, long t)
 			{
 				if (l[i] == '#')
 				{
-					fg(hue(dx / 60.0));
+					fg(lumiere(x + dx, y + r, 100 + 60 * dx / 44, 200, 238 - 40 * dx / 44));
 					out("█");
 				}
 				else
@@ -267,7 +281,13 @@ static int	mu_ecran(t_mu *m, int *sel)
 	int		i;
 	int		k;
 	int		av;
+	long	anim;
+	long	calme;
+	long	prec;
 
+	anim = 0;
+	calme = 0;
+	prec = now_ms();
 	cls();
 	while (1)
 	{
@@ -332,7 +352,15 @@ static int	mu_ecran(t_mu *m, int *sel)
 		}
 		foot_line(bx, L("▲ ▼ choisir   Entrée : ouvrir   Échap : quitter", "▲ ▼ pick   Enter: open   Esc: quit"));
 		flush();
-		k = key_dir(key_read(200));
+		k = key_dir(key_read(60));
+		if (k >= 0)
+			calme = now_ms();
+		else if (now_ms() - calme > 400)
+		{
+			anim += now_ms() - prec;
+			g_phase = fmod(anim / 22.0, cols + 90.0) - 40.0;
+		}
+		prec = now_ms();
 		if (k == 1000)
 			*sel = ((*sel - tdf_touche_fleche(k)) % m->n + m->n) % m->n;
 		else if (k == 1001)
