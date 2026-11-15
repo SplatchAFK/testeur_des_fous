@@ -70,6 +70,22 @@ tdf_ch_fin() {
 	TDF_CH_ACTIF=0
 }
 
+tdf_cache_menage() {
+	local c="$1" p pre garde
+	[ -n "$c" ] && [ -d "$c" ] || return 0
+	p="$(dirname "$c")"
+	find "$p" -mindepth 1 -maxdepth 1 ! -path "$c" -mmin +60 -exec rm -rf {} + 2>/dev/null
+	for pre in $(ls "$c" 2>/dev/null | sed -n 's/^\([a-z_]*\)\.[0-9][0-9]*.*/\1/p' | sort -u); do
+		garde="$(ls -td "$c/$pre".* 2>/dev/null | head -1)"
+		garde="${garde#"$c/$pre."}"
+		garde="${garde%%.*}"
+		[ -n "$garde" ] || continue
+		find "$c" -mindepth 1 -maxdepth 1 -name "$pre.*" ! -name "$pre.$garde" ! -name "$pre.$garde.*" -mmin +60 \
+			-exec rm -rf {} + 2>/dev/null
+	done
+	return 0
+}
+
 tdf_compiler() {
 	local sortie="$1" journal_err="$2" cle="$3"
 	shift 3

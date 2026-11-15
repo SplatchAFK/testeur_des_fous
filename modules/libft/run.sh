@@ -225,6 +225,7 @@ mkdir -p "$BUILD/obj" "$BUILD/bin" "$BUILD/log" "$BUILD/plain" "$BUILD/proto" "$
 
 CACHE="$HERE/.build/cache/l${TDF_LANGUE_N:-0}"
 { [ "${TDF_CACHE:-1}" = 1 ] && mkdir -p "$CACHE" 2>/dev/null; } || CACHE=""
+tdf_cache_menage "$CACHE"
 fingerprint() {
 	{ printf '%s|%s\n' "$OS" "$CC"; cat "$@" 2>/dev/null; } | cksum | cut -d' ' -f1
 }

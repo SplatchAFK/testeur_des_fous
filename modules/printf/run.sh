@@ -387,6 +387,7 @@ detail() {
 
 CACHE="$TDF_DIR/.build_jeu/cache/l${TDF_LANGUE_N:-0}"
 mkdir -p "$CACHE" 2>/dev/null
+tdf_cache_menage "$CACHE"
 fingerprint() {
 	{ printf '%s|%s|%s|%s\n' "${TDF_V:-}" "$OS" "$ONLY" "$BONUS_OPT"; cat "$@" 2>/dev/null; } | cksum | cut -d' ' -f1
 }
