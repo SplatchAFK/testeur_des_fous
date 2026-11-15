@@ -1576,6 +1576,8 @@ static void	completer(const char *invite, char *buf, size_t *len, size_t *cur, s
 	redessiner(invite, buf, *len, *cur);
 }
 
+static int	dispo(int us);
+
 static int	lire_ligne(const char *invite, char *buf, size_t n, const char *const *cmds)
 {
 	struct termios	old;
@@ -1628,7 +1630,8 @@ static int	lire_ligne(const char *invite, char *buf, size_t n, const char *const
 			cur = 0;
 			redessiner(invite, buf, len, cur);
 		}
-		else if (c[0] == 27 && read(0, c + 1, 2) == 2 && c[1] == '[')
+		else if (c[0] == 27 && dispo(60000) && read(0, c + 1, 1) == 1 && (c[1] == '[' || c[1] == 'O')
+			&& read(0, c + 2, 1) == 1)
 		{
 			if (c[2] == 'D' && cur > 0)
 				cur--;
@@ -1833,14 +1836,50 @@ static long	ms_now(void)
 
 static int	g_nrep = 1;
 
+static int	dispo(int us)
+{
+	fd_set			fs;
+	struct timeval	tv;
+
+	FD_ZERO(&fs);
+	FD_SET(0, &fs);
+	tv.tv_sec = 0;
+	tv.tv_usec = us;
+	return (select(1, &fs, NULL, NULL, &tv) > 0);
+}
+
+static int	lire_rafale(unsigned char *b, int max)
+{
+	int	n;
+	int	r;
+
+	n = (int)read(0, b, (size_t)max);
+	if (n <= 0)
+		return (n);
+	if (n == 1 && b[0] == 27 && dispo(60000))
+	{
+		r = (int)read(0, b + n, (size_t)(max - n));
+		n += r > 0 ? r : 0;
+	}
+	while (n < max && dispo(12000))
+	{
+		r = (int)read(0, b + n, (size_t)(max - n));
+		if (r <= 0)
+			break ;
+		n += r;
+	}
+	return (n);
+}
+
 static int	touche(int haut, long t0)
 {
 	struct termios	old;
 	struct termios	t;
-	unsigned char	c[3];
+	unsigned char	b[512];
+	int				n;
+	int				i;
 	int				k;
-	fd_set			fs;
-	struct timeval	tv;
+	int				net;
 
 	fflush(stdout);
 	tcgetattr(0, &old);
@@ -1851,20 +1890,15 @@ static int	touche(int haut, long t0)
 	tcsetattr(0, TCSANOW, &t);
 	k = -1;
 	(void)t0;
+	g_nrep = 1;
 	if (haut)
 		entete_examshell(1);
-	if (read(0, c, 1) == 1)
+	n = lire_rafale(b, (int)sizeof(b));
+	if (n > 0)
 	{
-		k = c[0];
-		if (k == 27)
-		{
-			FD_ZERO(&fs);
-			FD_SET(0, &fs);
-			tv.tv_sec = 0;
-			tv.tv_usec = 60000;
-			if (select(1, &fs, NULL, NULL, &tv) > 0 && read(0, c + 1, 2) == 2 && (c[1] == '[' || c[1] == 'O'))
-				k = c[2] == 'A' ? 1000 : c[2] == 'B' ? 1001 : c[2] == 'C' ? 1002 : c[2] == 'D' ? 1003 : 0;
-		}
+		k = b[0];
+		if (k == 27 && n >= 3 && (b[1] == '[' || b[1] == 'O'))
+			k = b[2] == 'A' ? 1000 : b[2] == 'B' ? 1001 : b[2] == 'C' ? 1002 : b[2] == 'D' ? 1003 : 0;
 		else if (k == 'z' || k == 'w' || k == 'k')
 			k = 1000;
 		else if (k == 's' || k == 'j')
@@ -1874,17 +1908,17 @@ static int	touche(int haut, long t0)
 		else if (k == 'a' || k == 'h')
 			k = 1003;
 	}
-	g_nrep = 1;
-	while (k == 1000 || k == 1001)
+	if (k == 1000 || k == 1001)
 	{
-		FD_ZERO(&fs);
-		FD_SET(0, &fs);
-		tv.tv_sec = 0;
-		tv.tv_usec = 0;
-		if (select(1, &fs, NULL, NULL, &tv) <= 0 || read(0, c, 3) != 3 || c[0] != 27
-			|| (c[2] == 'A' ? 1000 : c[2] == 'B' ? 1001 : 0) != k)
-			break ;
-		g_nrep++;
+		net = 0;
+		for (i = 0; i + 2 < n; i++)
+			if (b[i] == 27 && (b[i + 1] == '[' || b[i + 1] == 'O') && (b[i + 2] == 'A' || b[i + 2] == 'B'))
+			{
+				net += b[i + 2] == 'A' ? -1 : 1;
+				i += 2;
+			}
+		k = net < 0 ? 1000 : net > 0 ? 1001 : 0;
+		g_nrep = net < 0 ? -net : net > 0 ? net : 1;
 	}
 	tcsetattr(0, TCSANOW, &old);
 	return (k);
@@ -2015,9 +2049,9 @@ static int	reglages_fleches(void)
 		if (k < 0 || k == 'q' || k == 'Q' || (k == 27))
 			return (0);
 		if (k == 1000)
-			sel = (sel + n + 1) % (n + 2);
+			sel = ((sel - g_nrep) % (n + 2) + (n + 2)) % (n + 2);
 		else if (k == 1001)
-			sel = (sel + 1) % (n + 2);
+			sel = (sel + g_nrep) % (n + 2);
 		else if ((k == '\n' || k == '\r' || k == ' ') && sel == n)
 			break ;
 		else if ((k == '\n' || k == '\r' || k == ' ') && sel == n + 1)
@@ -2793,9 +2827,9 @@ static void	b_exercice(int k)
 		if (key < 0 || key == 'q' || key == 'Q' || key == 27)
 			return ;
 		if (key == 1000)
-			sel = (sel + 2) % 3;
+			sel = ((sel - g_nrep) % 3 + 3) % 3;
 		else if (key == 1001)
-			sel = (sel + 1) % 3;
+			sel = (sel + g_nrep) % 3;
 		else if ((key == 1002 || key == 1003) && sel == 1)
 			g_blang = (g_blang + (key == 1002 ? 1 : NLANG - 1)) % NLANG;
 		else if (key == '\n' || key == '\r' || key == ' ')

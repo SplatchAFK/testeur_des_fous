@@ -58,7 +58,8 @@ Le numéro de version est dans `moteur/version.h`.
 - Tester mon projet : un encadré explique où chercher ton projet (../ quand le testeur est à côté, . pour ici, ~/ et /, fichiers attendus) et rappelle le dossier où tu es ;
 - « Le savais-tu ? » ne reste plus bloqué en blanc quand tu reviens au menu ;
 - Nous aider : après « t », le chemin de la trace reste affiché sur la page ;
-- Stats › Courbes : mention « en cours d'amélioration · BETA ».
+- Stats › Courbes : mention « en cours d'amélioration · BETA » ;
+- examshell : les flèches maintenues ou tapées vite ne figent plus les menus (les appuis sont regroupés en un seul affichage) et ne laissent plus de « [A » dans la ligne de commande.
 
 ### Stats
 
