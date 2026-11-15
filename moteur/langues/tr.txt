@@ -1567,3 +1567,8 @@ Today's code will look clumsy to you in a month. That is proof you are moving fo
 No need to go fast. Just do not stop.	Hızlı gitmen gerekmez. Sadece durma.
 The moulinette judges the code, never the person. Breathe, and try again.	Moulinette kodu yargılar, asla kişiyi değil. Nefes al ve yeniden başla.
 Did you know?	Biliyor muydun?
+ACHIEVEMENTS · %d/%d unlocked	BAŞARILAR · %d/%d açıldı
+Unlocked	Açıldı
+Not unlocked yet	Henüz açılmadı
+How to unlock it:	Açmak için:
+▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ başarılara göz at   e: profilimi düzenle   Esc: geri

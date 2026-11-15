@@ -1567,3 +1567,8 @@ Today's code will look clumsy to you in a month. That is proof you are moving fo
 No need to go fast. Just do not stop.	Не нужно спешить. Главное — не останавливаться.
 The moulinette judges the code, never the person. Breathe, and try again.	Мулинетт судит код, а не человека. Выдохни и начни снова.
 Did you know?	А ты знал?
+ACHIEVEMENTS · %d/%d unlocked	ДОСТИЖЕНИЯ · %d/%d открыто
+Unlocked	Открыто
+Not unlocked yet	Ещё не открыто
+How to unlock it:	Как открыть:
+▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ листать достижения   e: изменить профиль   Esc: назад

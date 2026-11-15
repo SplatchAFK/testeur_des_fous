@@ -1481,61 +1481,98 @@ void	screen_profile(void)
 	int		m;
 	int		o;
 	char	tmp[200];
+	int		sel;
+	int		top;
+	int		h;
+	int		k;
+	int		ok;
 
+	sel = 0;
+	top = 0;
 	cls();
-	x = (term_cols() - 80) / 2;
-	if (x < 0)
-		x = 0;
-	lv = level_of(g_save.xp);
-	o = profile_header(x, 1);
-	center(1 + o, theme()->accent2, L("P R O F I L", "P R O F I L E"));
-	snprintf(tmp, sizeof(tmp), L("%s · niveau %d · %ld XP · %ld ◈", "%s · level %d · %ld XP · %ld ◈"),
-		g_save.login, lv, g_save.xp, g_save.octets);
-	center(3 + o, pseudo_color(), tmp);
-	if (g_save.bio[0])
-		center(2 + o, theme()->dim, g_save.bio);
-	for (m = 0, n = 0; n < 3; n++)
-		if (g_save.vitrine[n] >= 0)
-			m += snprintf(tmp + m, sizeof(tmp) - m, "%s★ %s", m ? "   " : "",
-				L(g_badges[g_save.vitrine[n]].fr, g_badges[g_save.vitrine[n]].en));
-	if (m)
-		center(5 + o, rgb(255, 215, 0), tmp);
-	bar(x + 16, 4 + o, 48, (g_save.xp - xp_for(lv)) / (double)(xp_for(lv + 1) - xp_for(lv)),
-		theme()->accent, theme()->accent2);
-	for (n = 0, i = 0; i < g_nitems; i++)
-		n += item_owned(i);
-	for (m = 0, i = 0; i < NTITLE; i++)
-		m += g_save.titles[i] == '1';
-	snprintf(tmp, sizeof(tmp), L("runs %d · boss %d/3 · entraînement %d/21 · objets %d/%d · titres %d/1000 · crashs %d",
-			"runs %d · bosses %d/3 · training %d/21 · items %d/%d · titles %d/1000 · crashes %d"),
-		g_save.runs, g_save.boss[0] + g_save.boss[1] + g_save.boss[2],
-		exo_done_count(),
-		n, g_nitems, m, g_save.crashes);
-	center(6 + o, theme()->dim, tmp);
-	for (i = 0; i < NFN; i++)
+	while (1)
 	{
-		at(x + 18 + (i % 22) * 2, 8 + o + i / 22);
-		fg(g_save.cleared[i] == '1' ? rgb(80, 230, 140) : theme()->dim);
-		out(g_save.cleared[i] == '1' ? "■" : "□");
+		bgc(theme()->bg);
+		frame();
+		x = (term_cols() - 80) / 2;
+		if (x < 0)
+			x = 0;
+		lv = level_of(g_save.xp);
+		o = profile_header(x, 1);
+		center(1 + o, theme()->accent2, L("P R O F I L", "P R O F I L E"));
+		snprintf(tmp, sizeof(tmp), L("%s · niveau %d · %ld XP · %ld ◈", "%s · level %d · %ld XP · %ld ◈"),
+			g_save.login, lv, g_save.xp, g_save.octets);
+		center(3 + o, pseudo_color(), tmp);
+		if (g_save.bio[0])
+			center(2 + o, theme()->dim, g_save.bio);
+		for (m = 0, n = 0; n < 3; n++)
+			if (g_save.vitrine[n] >= 0)
+				m += snprintf(tmp + m, sizeof(tmp) - m, "%s★ %s", m ? "   " : "",
+					L(g_badges[g_save.vitrine[n]].fr, g_badges[g_save.vitrine[n]].en));
+		if (m)
+			center(5 + o, rgb(255, 215, 0), tmp);
+		bar(x + 16, 4 + o, 48, (g_save.xp - xp_for(lv)) / (double)(xp_for(lv + 1) - xp_for(lv)),
+			theme()->accent, theme()->accent2);
+		for (n = 0, i = 0; i < g_nitems; i++)
+			n += item_owned(i);
+		for (m = 0, i = 0; i < NTITLE; i++)
+			m += g_save.titles[i] == '1';
+		snprintf(tmp, sizeof(tmp), L("runs %d · boss %d/3 · entraînement %d/21 · objets %d/%d · titres %d/1000 · crashs %d",
+				"runs %d · bosses %d/3 · training %d/21 · items %d/%d · titles %d/1000 · crashes %d"),
+			g_save.runs, g_save.boss[0] + g_save.boss[1] + g_save.boss[2],
+			exo_done_count(), n, g_nitems, m, g_save.crashes);
+		center(6 + o, theme()->dim, tmp);
+		for (i = 0; i < NFN; i++)
+		{
+			at(x + 18 + (i % 22) * 2, 8 + o + i / 22);
+			fg(g_save.cleared[i] == '1' ? rgb(80, 230, 140) : theme()->dim);
+			out(g_save.cleared[i] == '1' ? "■" : "□");
+		}
+		y = 11 + o;
+		for (ok = 0, i = 0; i < NACH; i++)
+			ok += ach_has(i);
+		snprintf(tmp, sizeof(tmp), L("SUCCÈS · %d/%d débloqués", "ACHIEVEMENTS · %d/%d unlocked"), ok, NACH);
+		text_at(x, y++, theme()->accent, tmp);
+		h = term_rows() - y - 3;
+		if (h < 3)
+			h = 3;
+		if (sel < top)
+			top = sel;
+		if (sel >= top + h)
+			top = sel - h + 1;
+		for (i = top; i < NACH && i < top + h; i++)
+		{
+			at(x, y + i - top);
+			if (i == sel)
+				bgc(mix(theme()->bg, theme()->accent, 0.22));
+			fg(ach_has(i) ? rgb(255, 215, 0) : (i == sel ? theme()->text : theme()->dim));
+			outf(" %s %s %-30.30s ", i == sel ? "▶" : " ", ach_has(i) ? "★" : "☆", L(g_ach_fr[i][0], g_ach_en[i][0]));
+			bgc(theme()->bg);
+		}
+		text_at(x + 40, y, ach_has(sel) ? rgb(255, 215, 0) : theme()->text, L(g_ach_fr[sel][0], g_ach_en[sel][0]));
+		text_at(x + 40, y + 1, ach_has(sel) ? rgb(80, 230, 140) : theme()->dim,
+			ach_has(sel) ? L("Débloqué", "Unlocked") : L("Pas encore débloqué", "Not unlocked yet"));
+		text_at(x + 40, y + 3, theme()->accent, L("Pour le débloquer :", "How to unlock it:"));
+		text_wrap(x + 40, y + 4, y + 9, term_cols() - x - 42 < 38 ? term_cols() - x - 42 : 38, theme()->text,
+			L(g_ach_fr[sel][1], g_ach_en[sel][1]));
+		foot_line(x, L("▲ ▼ parcourir les succès   e : modifier mon profil   Échap : retour",
+				"▲ ▼ browse achievements   e: edit my profile   Esc: back"));
+		flush();
+		k = key_dir(key_read(200));
+		if (k == 'e' || k == 'E')
+		{
+			cls();
+			screen_profile_edit();
+			cls();
+		}
+		else if (k == 1000)
+			sel = (sel + NACH - 1) % NACH;
+		else if (k == 1001)
+			sel = (sel + 1) % NACH;
+		else if (key_quit(k) || k == 127 || k == 8 || k == '\r' || k == '\n')
+			break ;
 	}
-	y = 11 + o;
-	text_at(x, y++, theme()->accent, L("SUCCÈS", "ACHIEVEMENTS"));
-	for (i = 0; i < NACH && y + i / 2 < term_rows() - 2; i++)
-	{
-		snprintf(tmp, sizeof(tmp), "%s %s", ach_has(i) ? "★" : "☆", ach_has(i)
-			? L(g_ach_fr[i][0], g_ach_en[i][0]) : L(g_ach_fr[i][1], g_ach_en[i][1]));
-		text_clip(x + (i % 2) * 41, y + i / 2, ach_has(i) ? rgb(255, 215, 0)
-			: theme()->dim, tmp, (term_cols() - x - (i % 2) * 41 - 1) < 39
-			? term_cols() - x - (i % 2) * 41 - 1 : 39);
-	}
-	center(term_rows() - 1, theme()->dim, L("[ e : modifier mon profil   ·   une autre touche : retour ]",
-			"[ e: edit my profile   ·   any other key: back ]"));
-	flush();
-	while ((n = key_read(100)) < 0)
-		;
 	cls();
-	if (n == 'e' || n == 'E')
-		screen_profile_edit();
 }
 
 void	screen_credits(void)

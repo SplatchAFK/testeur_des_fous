@@ -1567,3 +1567,8 @@ Today's code will look clumsy to you in a month. That is proof you are moving fo
 No need to go fast. Just do not stop.	Não é preciso ir depressa. Basta não parar.
 The moulinette judges the code, never the person. Breathe, and try again.	A moulinette julga o código, nunca a pessoa. Respira e recomeça.
 Did you know?	Sabias que...?
+ACHIEVEMENTS · %d/%d unlocked	CONQUISTAS · %d/%d desbloqueadas
+Unlocked	Desbloqueada
+Not unlocked yet	Ainda não desbloqueada
+How to unlock it:	Para a desbloquear:
+▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ percorrer as conquistas   e: editar o perfil   Esc: voltar

@@ -1567,3 +1567,8 @@ Today's code will look clumsy to you in a month. That is proof you are moving fo
 No need to go fast. Just do not stop.	Du musst nicht schnell sein. Hör nur nicht auf.
 The moulinette judges the code, never the person. Breathe, and try again.	Die Moulinette beurteilt den Code, nie die Person. Atme durch und fang neu an.
 Did you know?	Wusstest du?
+ACHIEVEMENTS · %d/%d unlocked	ERFOLGE · %d/%d freigeschaltet
+Unlocked	Freigeschaltet
+Not unlocked yet	Noch nicht freigeschaltet
+How to unlock it:	So schaltest du ihn frei:
+▲ ▼ browse achievements   e: edit my profile   Esc: back	▲ ▼ Erfolge durchgehen   e: Profil bearbeiten   Esc: zurück

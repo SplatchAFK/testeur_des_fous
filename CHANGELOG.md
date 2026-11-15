@@ -39,6 +39,7 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Progression
 
+- Profil : les succès se parcourent aux flèches, avec pour chacun s'il est débloqué et comment le débloquer ;
 - la cape et le casque du vétéran se débloquent dès qu'un passage Libft sans échec est enregistré ;
 - holygraph : un projet réussi une fois sans échec reste validé pour toujours ; les modules après Programming Fundamentals sont grisés en attendant leurs testeurs ;
 - banque : le nombre d'exercices et de réussites s'affiche pour chaque catégorie.
