@@ -808,6 +808,8 @@ void			stage_sparks(t_hd *d, const t_stage *s, double x, double y, double age, t
 int				stage_col(const t_stage *s, double x);
 int				stage_row(const t_stage *s, double y);
 int				cine_play(int (*scene)(t_hd *, double), double dur);
+int				tdf_histoire(const char *nom, const char *arg);
+extern int		tdf_cine_force;
 void			story_libft_intro(void);
 void			story_room(int p);
 void			story_libft_finale(void);

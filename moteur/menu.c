@@ -211,6 +211,36 @@ void	tdf_menu_chevalier(void (*profile)(void))
 	}
 }
 
+static void	lore_cite(const char *a)
+{
+	char	path[700];
+	char	l[64];
+	FILE	*f;
+
+	tdf_cine_force = 1;
+	cls();
+	if (!strcmp(a, "lore_gnl"))
+	{
+		l[0] = '\0';
+		snprintf(path, sizeof(path), "%s/puits.txt", g_savedir);
+		f = fopen(path, "r");
+		if (f && fgets(l, sizeof(l), f))
+			l[strcspn(l, "\r\n")] = '\0';
+		if (f)
+			fclose(f);
+		tdf_histoire("puits", l);
+	}
+	else if (!strcmp(a, "lore_exam"))
+	{
+		tdf_histoire("avant", NULL);
+		tdf_histoire("apres", "4");
+	}
+	else
+		tdf_histoire("fin", NULL);
+	tdf_cine_force = 0;
+	cls();
+}
+
 void	tdf_menu_lore(void (*boss)(void))
 {
 	static int	sel;
@@ -247,6 +277,8 @@ void	tdf_menu_lore(void (*boss)(void))
 			boss();
 		else if (!strcmp(act[i], "carte"))
 			tdf_carte();
+		else if (!strcmp(act[i], "lore_gnl") || !strcmp(act[i], "lore_exam") || !strcmp(act[i], "lore_fin"))
+			lore_cite(act[i]);
 		else
 		{
 			tdf_sortie(act[i], NULL);

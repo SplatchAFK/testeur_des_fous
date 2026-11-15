@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "fous.h"
 
 void	foot_line(int x, const char *s)
@@ -1553,67 +1554,63 @@ void	screen_save(void)
 void	screen_boss_menu(void)
 {
 	static int	sel;
-	t_canvas	cv;
-	t_scene_out	g;
-	int			k;
+	const char	*items[9];
+	int			act[9];
+	char		path[700];
+	long		off;
+	int			combats;
+	int			n;
 	int			i;
-	int			x;
-	long		t;
-	char		tmp[200];
+	t_scene_out	g;
 
-	cls();
+	snprintf(path, sizeof(path), "%s/derniere/libft.res", g_savedir);
+	combats = access(path, R_OK) == 0;
+	if (combats && !g_run.loaded)
+	{
+		off = 0;
+		results_load(path, &off);
+		results_tout_montrer();
+	}
+	combats = combats && g_run.loaded;
+	n = 0;
+	act[n] = 0;
+	items[n++] = L("Intro · la Tour de la Libft|Moulinette en cage, les trois gardiens, Marvin arrive.", "Intro · the Libft Tower|Moulinette caged, the three guardians, Marvin arrives.");
+	for (i = 0; i < 3; i++)
+	{
+		act[n] = 1 + i;
+		items[n++] = i == 0 ? L("Salle 1 · le Gardien de la Mémoire|L'entrée de la première salle.", "Room 1 · the Memory Warden|Entering the first room.")
+			: i == 1 ? L("Salle 2 · le Tisseur|L'entrée de la deuxième salle.", "Room 2 · the Weaver|Entering the second room.")
+			: L("Salle 3 · l'Hydre des Maillons|L'entrée de la troisième salle.", "Room 3 · the Link Hydra|Entering the third room.");
+	}
+	for (i = 0; combats && i < 3; i++)
+	{
+		act[n] = 4 + i;
+		items[n++] = i == 0 ? L("Combat · le Gardien de la Mémoire|Le combat, avec les résultats de ta dernière tentative.", "Fight · the Memory Warden|The fight, with the results of your last attempt.")
+			: i == 1 ? L("Combat · le Tisseur|Le combat, avec les résultats de ta dernière tentative.", "Fight · the Weaver|The fight, with the results of your last attempt.")
+			: L("Combat · l'Hydre des Maillons|Le combat, avec les résultats de ta dernière tentative.", "Fight · the Link Hydra|The fight, with the results of your last attempt.");
+	}
+	act[n] = 7;
+	items[n++] = L("Finale · Libft validée|Moulinette est libre.", "Finale · Libft validated|Moulinette is free.");
 	while (1)
 	{
-		t = now_ms();
-		x = (term_cols() - 78) / 2;
-		if (x < 0)
-			x = 0;
-		bgc(theme()->bg);
-		frame();
-		center(0, theme()->accent2, L("L E S   B O S S", "T H E   B O S S E S"));
-		cv_init(&cv, 40, 36);
-		if (!gardien_sprite(&cv, sel, 0, (int)((t / 450) % 2), g_boss_spr[sel].w, g_boss_spr[sel].h, 0))
-			cv_spr(&cv, &g_boss_spr[sel], 0, (int)((t / 450) % 2), g_bosses[sel].glow,
-			mix(g_bosses[sel].glow, rgb(255, 255, 255), 0.5 + 0.5 * sin(t / 160.0)),
-			g_save.boss[sel] ? 0 : 0);
-		cv_print(&cv, x + 38, 2, theme()->bg);
-		cv_free(&cv);
-		for (i = 0; i < 3; i++)
-		{
-			at(x, 3 + i * 3);
-			if (i == sel)
-				bgc(mix(theme()->bg, g_bosses[i].glow, 0.2));
-			fg(g_bosses[i].glow);
-			outf(" %s %-28s", i == sel ? "▶" : " ", L(g_bosses[i].name, g_bosses[i].en));
-			bgc(theme()->bg);
-			snprintf(tmp, sizeof(tmp), L("partie %d · %s", "part %d · %s"), i + 1,
-				g_save.boss[i] ? L("VAINCU", "BEATEN") : L("invaincu", "unbeaten"));
-			text_at(x + 3, 4 + i * 3, g_save.boss[i] ? rgb(80, 230, 140) : theme()->dim, tmp);
-		}
-		text_at(x, 13, theme()->dim, L("Un boss tombe quand toutes", "A boss falls when every"));
-		text_at(x, 14, theme()->dim, L("les fonctions de sa partie", "function of its part"));
-		text_at(x, 15, theme()->dim, L("passent le testeur.", "passes the tester."));
-		text_at(x, 17, theme()->dim, L("Le battre débloque 7 niveaux", "Beating it unlocks 7"));
-		text_at(x, 18, theme()->dim, L("d'entraînement.", "training levels."));
-		foot_line(x, g_run.loaded
-			? L("▲ ▼ choisir   Entrée : rejouer le combat   Échap : retour", "▲ ▼ pick   Enter: replay the fight   Esc: back")
-			: L("▲ ▼ choisir   (lance « Relancer les tests » (touche r) pour combattre)   Échap : retour",
-				"▲ ▼ pick   (run \"Run the tests again\" (key r) to fight)   Esc: back"));
-		flush();
-		k = key_dir(key_read(60));
-		if (key_quit(k) || k == 127 || k == 8)
+		if (sel >= n)
+			sel = 0;
+		i = tdf_list_menu(L("LIBFT · LA TOUR", "LIBFT · THE TOWER"), items, n, &sel,
+				combats ? NULL : L("Les combats apparaissent après un test de ta Libft.", "The fights show up after a test of your Libft."));
+		if (i < 0)
 			break ;
-		if (k == 1000)
-			sel = (sel + 2) % 3;
-		else if (k == 1001)
-			sel = (sel + 1) % 3;
-		else if ((k == '\r' || k == '\n' || k == ' ') && g_run.loaded)
-		{
-			scene_play(&g, sel, 1);
-			if ((g.crashed || g.frozen) && screen_crash_choice(&g) && g.fn >= 0)
-				g_quar[g.fn] = 1;
-			save_write();
-		}
+		tdf_cine_force = 1;
+		cls();
+		if (act[i] == 0)
+			story_libft_intro();
+		else if (act[i] <= 3)
+			story_room(act[i] - 1);
+		else if (act[i] <= 6)
+			scene_play(&g, act[i] - 4, 1);
+		else
+			story_libft_finale();
+		tdf_cine_force = 0;
+		cls();
 	}
 	cls();
 }

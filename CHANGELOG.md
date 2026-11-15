@@ -60,6 +60,13 @@ Le numéro de version est dans `moteur/version.h`.
 - cinématiques seulement quand une étape est franchie : une partie de la Libft terminée, une nouvelle chaîne de ft_printf brisée ;
 - toutes les cinématiques se revoient dans Lore : Libft, ft_printf (Fonderie, chaînes, big boss, fins), get_next_line (le Puits de ton dernier passage), l'Épreuve du Silence, la fin.
 
+### Cinématiques
+
+- le Puits (get_next_line), l'Épreuve du Silence (avant et après l'exam), le dernier mécanisme et la fin secrète sont redessinés en pixel art, dans le même style que la Tour de la Libft et la Fonderie de ft_printf, avec ton chevalier, Moulinette et les gardiens en peluche ;
+- le Puits : la lanterne descend le long des 22 anneaux, bleus quand le test passe, rouges quand il échoue ;
+- l'Épreuve : les portes s'ouvrent une à une selon ton résultat ;
+- Lore : la Libft se rejoue scène par scène (intro, trois salles, trois combats après un test, finale), même sans test chargé ; get_next_line, l'exam et la fin se rejouent sans quitter le menu, même si le lore est désactivé pendant les tests.
+
 ### Banque d'exercices graphique
 
 - la banque passe dans le menu graphique : onglets Tout, Exam, Libft, printf, sujet qui défile, boutons Corriger mon code, Langue du sujet, Retour ;

@@ -1596,3 +1596,32 @@ Nothing: everything passed.	Nada: passou tudo.
 No detail recorded for this attempt.	Sem detalhe registado para esta tentativa.
 Charts	Gráficos
 ▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back	▲ ▼ escolher uma tentativa   ◀ ▶ mudar de página   Esc: voltar
+T H E   W E L L	O   P O Ç O
+%d rings out of 22 · the lantern went down %d line(s)	%d anéis de 22 · a lanterna desceu %d linha(s)
+At the bottom, calm water. Moulinette's paw prints lead to an opening.	No fundo, água calma. As pegadas da Moulinette levam a uma abertura.
+The Well goes down one line at a time. The red rings do not hold yet.	O Poço só se desce uma linha de cada vez. Os anéis vermelhos ainda não aguentam.
+T H E   T R I A L   O F   S I L E N C E	A   P R O V A   D O   S I L Ê N C I O
+Here, nobody will help me.\nJust me and my code.	Aqui ninguém me vai ajudar.\nSó eu e o meu código.
+Marvin puts down his lantern and goes in alone. Here, nobody will help you.	Marvin pousa a lanterna e entra sozinho. Aqui ninguém te vai ajudar.
+%d door(s) out of 4 opened	%d porta(s) de 4 abriram-se
+All four doors are open. Outside, the lantern lit itself again.	As quatro portas estão abertas. Lá fora, a lanterna voltou a acender-se sozinha.
+The doors still closed are waiting for the next trial.	As portas ainda fechadas esperam pela próxima prova.
+T H E   L A S T   M E C H A N I S M	O   Ú L T I M O   M E C A N I S M O
+Meow! Down here, under the Well…\neverything turns again.	Miau! Cá em baixo, sob o Poço…\ntudo volta a girar.
+So that was it,\nthe heart of the City.	Então era isto,\no coração da Cidade.
+T H E   E N D	F I M
+The City turns again, thanks to your code.	A Cidade volta a girar, graças ao teu código.
+Purr… look, Marvin:\nthe whole City is lighting up.	Rrr… olha, Marvin:\na Cidade inteira está a acender-se.
+And the three guardians…\nas plushies!	E os três guardiões…\nde peluche!
+S E C R E T   E N D I N G	F I N A L   S E C R E T O
+Libft and ft_printf validated · the City lights up for you	Libft e ft_printf validados · a Cidade acende-se para ti
+Intro · the Libft Tower|Moulinette caged, the three guardians, Marvin arrives.	Intro · a Torre da Libft|Moulinette na jaula, os três guardiões, chega o Marvin.
+Room 1 · the Memory Warden|Entering the first room.	Sala 1 · o Guardião da Memória|A entrada da primeira sala.
+Room 2 · the Weaver|Entering the second room.	Sala 2 · o Tecelão|A entrada da segunda sala.
+Room 3 · the Link Hydra|Entering the third room.	Sala 3 · a Hidra dos Elos|A entrada da terceira sala.
+Fight · the Memory Warden|The fight, with the results of your last attempt.	Combate · o Guardião da Memória|O combate, com os resultados da tua última tentativa.
+Fight · the Weaver|The fight, with the results of your last attempt.	Combate · o Tecelão|O combate, com os resultados da tua última tentativa.
+Fight · the Link Hydra|The fight, with the results of your last attempt.	Combate · a Hidra dos Elos|O combate, com os resultados da tua última tentativa.
+Finale · Libft validated|Moulinette is free.	Final · Libft validada|A Moulinette está livre.
+LIBFT · THE TOWER	LIBFT · A TORRE
+The fights show up after a test of your Libft.	Os combates aparecem depois de um teste da tua Libft.

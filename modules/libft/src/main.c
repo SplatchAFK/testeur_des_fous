@@ -68,7 +68,13 @@ static void	scene_directe(const char *n)
 {
 	t_scene_out	g;
 	long		off;
+	char		nom[32];
+	const char	*arg;
 
+	arg = strchr(n, ':');
+	snprintf(nom, sizeof(nom), "%.*s", arg ? (int)(arg - n) : (int)strlen(n), n);
+	if (tdf_histoire(nom, arg ? arg + 1 : NULL))
+		return ;
 	if (!strcmp(n, "intro"))
 		story_libft_intro();
 	else if (!strncmp(n, "salle", 5))
@@ -185,6 +191,8 @@ int	main(int ac, char **av)
 		else if (!strcmp(av[i], "--fast") || !strcmp(av[i], "--no-anim"))
 			term_fast(1);
 	}
+	if (ecran && !strncmp(ecran, "scene:", 6))
+		relance = 1;
 	snprintf(dir, sizeof(dir), "%s/.testeur_des_fous",
 		getenv("HOME") ? getenv("HOME") : "/tmp");
 	g_savedir = dir;

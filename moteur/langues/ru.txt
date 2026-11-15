@@ -1596,3 +1596,32 @@ Nothing: everything passed.	Ничего: всё прошло.
 No detail recorded for this attempt.	Для этой попытки нет подробностей.
 Charts	Графики
 ▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back	▲ ▼ выбрать попытку   ◀ ▶ сменить страницу   Esc: назад
+T H E   W E L L	К О Л О Д Е Ц
+%d rings out of 22 · the lantern went down %d line(s)	колец: %d из 22 · фонарь спустился на %d строк(и)
+At the bottom, calm water. Moulinette's paw prints lead to an opening.	На дне спокойная вода. Следы лап Мулинетт ведут к проходу.
+The Well goes down one line at a time. The red rings do not hold yet.	В Колодец спускаются по одной строке. Красные кольца пока не держат.
+T H E   T R I A L   O F   S I L E N C E	И С П Ы Т А Н И Е   Т И Ш И Н Ы
+Here, nobody will help me.\nJust me and my code.	Здесь мне никто не поможет.\nТолько я и мой код.
+Marvin puts down his lantern and goes in alone. Here, nobody will help you.	Марвин ставит фонарь и входит один. Здесь тебе никто не поможет.
+%d door(s) out of 4 opened	открыто дверей: %d из 4
+All four doors are open. Outside, the lantern lit itself again.	Все четыре двери открыты. Снаружи фонарь сам зажёгся снова.
+The doors still closed are waiting for the next trial.	Закрытые двери ждут следующего испытания.
+T H E   L A S T   M E C H A N I S M	П О С Л Е Д Н И Й   М Е Х А Н И З М
+Meow! Down here, under the Well…\neverything turns again.	Мяу! Здесь, под Колодцем…\nвсё снова вращается.
+So that was it,\nthe heart of the City.	Так вот оно что,\nсердце Города.
+T H E   E N D	К О Н Е Ц
+The City turns again, thanks to your code.	Город снова вращается благодаря твоему коду.
+Purr… look, Marvin:\nthe whole City is lighting up.	Мрр… смотри, Марвин:\nвесь Город зажигается.
+And the three guardians…\nas plushies!	И три стража…\nплюшевые!
+S E C R E T   E N D I N G	Т А Й Н Ы Й   Ф И Н А Л
+Libft and ft_printf validated · the City lights up for you	Libft и ft_printf пройдены · Город светится для тебя
+Intro · the Libft Tower|Moulinette caged, the three guardians, Marvin arrives.	Вступление · Башня Libft|Мулинетт в клетке, три стража, приходит Марвин.
+Room 1 · the Memory Warden|Entering the first room.	Зал 1 · Страж Памяти|Вход в первый зал.
+Room 2 · the Weaver|Entering the second room.	Зал 2 · Ткач|Вход во второй зал.
+Room 3 · the Link Hydra|Entering the third room.	Зал 3 · Гидра Звеньев|Вход в третий зал.
+Fight · the Memory Warden|The fight, with the results of your last attempt.	Бой · Страж Памяти|Бой с результатами твоей последней попытки.
+Fight · the Weaver|The fight, with the results of your last attempt.	Бой · Ткач|Бой с результатами твоей последней попытки.
+Fight · the Link Hydra|The fight, with the results of your last attempt.	Бой · Гидра Звеньев|Бой с результатами твоей последней попытки.
+Finale · Libft validated|Moulinette is free.	Финал · Libft пройдена|Мулинетт свободна.
+LIBFT · THE TOWER	LIBFT · БАШНЯ
+The fights show up after a test of your Libft.	Бои появятся после проверки твоей Libft.
