@@ -1382,3 +1382,45 @@ Continue|	Continuar|
 See the tutorial|	Ver o tutorial|
 Replay the tutorial|The 6 screens that present the tester	Rever o tutorial|Os 6 ecrãs que apresentam o tester
 What's new in version %s|	Novidades da versão %s|
+grade	corrigir
+reread	reler
+where I am	onde estou
+finish	terminar
+help	ajuda
+grade the current exercise	corrigir o exercício atual
+where I am, time left	onde estou, tempo restante
+reread the subject (sujet en, sujet es... for another language)	reler o enunciado (sujet en, sujet es... para outro idioma)
+end the session now	terminar a sessão agora
+this help	esta ajuda
+▲ ▼ pick   Enter: confirm   Esc: skip	▲ ▼ escolher   Enter: confirmar   Esc: saltar
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. For a project stored elsewhere, 'Test another folder' lets you browse your PC with Tab, like in zsh.	O menu lista os projetos encontrados nesta pasta ou ao lado do tester. Escolhe um: testes das funções, fugas de memória, Norma, ficheiros a mais e auditoria da moulinette. Para um projeto noutro sítio, « Testar outra pasta » deixa-te percorrer o PC com Tab, como no zsh.
+TUTORIAL	TUTORIAL
+WHAT'S NEW IN VERSION %s	NOVIDADES DA VERSÃO %s
+• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there.	• Um só menu gráfico: bash run.sh ou tdf abre-o diretamente, e tudo se passa lá.
+• Test another folder: browse your PC with Tab, like in zsh.	• Testar outra pasta: percorre o PC com Tab, como no zsh.
+• Clearer Examshell des fous: mistyped a command? The tester suggests the right one.	• Examshell des fous mais clara: comando mal escrito? O tester propõe o certo.
+TEST ANOTHER FOLDER	TESTAR OUTRA PASTA
+Project path:	Caminho do projeto:
+no folder matches	nenhuma pasta corresponde
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back	Tab completar   ▲ ▼ escolher   ▶ abrir   ◀ subir   Enter confirmar   Esc voltar
+this folder does not exist	esta pasta não existe
+Interface: text mode|Tests only, no story. Enter to switch back to the graphical interface.	Interface: modo texto|Só os testes, sem história. Enter para voltar à interface gráfica.
+Interface: graphical|The lore, the cutscenes and the fights. Enter to switch to text mode.	Interface: gráfica|O lore, as cinemáticas e os combates. Enter para passar ao modo texto.
+Install the tdf command|Then you just type 'tdf' in any folder (no sudo).	Instalar o comando tdf|Depois só escreves « tdf » em qualquer pasta (sem sudo).
+Replay the tutorial|The 6 screens that present the tester.	Rever o tutorial|Os 6 ecrãs que apresentam o tester.
+What's new in this version|What changed since the last update.	Novidades desta versão|O que mudou desde a última atualização.
+Test my Libft	Testar a minha Libft
+Test my ft_printf	Testar o meu ft_printf
+Test my get_next_line	Testar o meu get_next_line
+Test another folder|Browse your PC with Tab, like in zsh, and pick the project folder	Testar outra pasta|Percorre o PC com Tab, como no zsh, e escolhe a pasta do projeto
+Quit|Close the tester. Your progress is already saved.	Sair|Fechar o tester. O teu progresso já está guardado.
+created and vibe-coded by Splatch	criado e vibe-codado por Splatch
+Libft: %d/43 · boss %d/3 · level %d · %ld Octets	Libft: %d/43 · chefes %d/3 · nível %d · %ld Octetos
+▲ ▼ pick   Enter: open   Esc: quit	▲ ▼ escolher   Enter: abrir   Esc: sair
+Options|Language, animations, story, help level, test tools.	Opções|Idioma, animações, história, nível de ajuda, ferramentas de teste.
+%ld ◈ Octets	%ld ◈ Octetos
+program	programa
+function	função
+   %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s nív. %-2d  %s%s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %snív. %-2d%s %s%.38s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %snív. %-2d%s %s%s%s\n

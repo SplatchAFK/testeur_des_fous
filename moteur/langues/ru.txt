@@ -1382,3 +1382,45 @@ Continue|	Продолжить|
 See the tutorial|	Посмотреть обучение|
 Replay the tutorial|The 6 screens that present the tester	Пройти обучение снова|6 экранов о тестере
 What's new in version %s|	Что нового в версии %s|
+grade	проверить
+reread	перечитать
+where I am	где я
+finish	завершить
+help	помощь
+grade the current exercise	проверить текущее упражнение
+where I am, time left	где я, оставшееся время
+reread the subject (sujet en, sujet es... for another language)	перечитать задание (sujet en, sujet es... для другого языка)
+end the session now	завершить сессию сейчас
+this help	эта справка
+▲ ▼ pick   Enter: confirm   Esc: skip	▲ ▼ выбор   Enter: подтвердить   Esc: пропустить
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. For a project stored elsewhere, 'Test another folder' lets you browse your PC with Tab, like in zsh.	Меню показывает проекты в этой папке или рядом с тестером. Выбери один: тесты функций, утечки памяти, Норма, лишние файлы и аудит мулинетт. Для проекта в другом месте « Проверить другую папку » позволяет ходить по ПК с Tab, как в zsh.
+TUTORIAL	ОБУЧЕНИЕ
+WHAT'S NEW IN VERSION %s	ЧТО НОВОГО В ВЕРСИИ %s
+• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there.	• Одно графическое меню: bash run.sh или tdf сразу его открывает, и всё происходит там.
+• Test another folder: browse your PC with Tab, like in zsh.	• Проверить другую папку: ходи по ПК с Tab, как в zsh.
+• Clearer Examshell des fous: mistyped a command? The tester suggests the right one.	• Examshell des fous понятнее: ошибся в команде? Тестер предложит правильную.
+TEST ANOTHER FOLDER	ПРОВЕРИТЬ ДРУГУЮ ПАПКУ
+Project path:	Путь к проекту:
+no folder matches	нет подходящих папок
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back	Tab дополнить   ▲ ▼ выбор   ▶ открыть   ◀ вверх   Enter подтвердить   Esc назад
+this folder does not exist	такой папки нет
+Interface: text mode|Tests only, no story. Enter to switch back to the graphical interface.	Интерфейс: текстовый|Только тесты, без истории. Enter, чтобы вернуться к графике.
+Interface: graphical|The lore, the cutscenes and the fights. Enter to switch to text mode.	Интерфейс: графический|Лор, ролики и бои. Enter, чтобы перейти в текстовый режим.
+Install the tdf command|Then you just type 'tdf' in any folder (no sudo).	Установить команду tdf|Потом просто пишешь « tdf » в любой папке (без sudo).
+Replay the tutorial|The 6 screens that present the tester.	Пройти обучение снова|6 экранов о тестере.
+What's new in this version|What changed since the last update.	Что нового в этой версии|Что изменилось с последнего обновления.
+Test my Libft	Проверить мою Libft
+Test my ft_printf	Проверить мой ft_printf
+Test my get_next_line	Проверить мой get_next_line
+Test another folder|Browse your PC with Tab, like in zsh, and pick the project folder	Проверить другую папку|Ходи по ПК с Tab, как в zsh, и выбери папку проекта
+Quit|Close the tester. Your progress is already saved.	Выход|Закрыть тестер. Прогресс уже сохранён.
+created and vibe-coded by Splatch	создано Splatch (вайб-кодинг)
+Libft: %d/43 · boss %d/3 · level %d · %ld Octets	Libft: %d/43 · боссы %d/3 · уровень %d · %ld Октетов
+▲ ▼ pick   Enter: open   Esc: quit	▲ ▼ выбор   Enter: открыть   Esc: выход
+Options|Language, animations, story, help level, test tools.	Параметры|Язык, анимации, история, уровень подсказок, инструменты тестов.
+%ld ◈ Octets	%ld ◈ Октетов
+program	программа
+function	функция
+   %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s ур. %-2d  %s%s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sур. %-2d%s %s%.38s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sур. %-2d%s %s%s%s\n

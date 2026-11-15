@@ -27,6 +27,8 @@ static void	summary(void)
 		TDF_DISCORD, L("Lien mort ? Contacte splatch_afk sur Discord", "Dead link? Contact splatch_afk on Discord"));
 }
 
+static int	g_accueil;
+
 static void	version_notice(void)
 {
 	char	path[600];
@@ -46,7 +48,9 @@ static void	version_notice(void)
 	old[strcspn(old, "\r\n")] = '\0';
 	if (!strcmp(old, TDF_VERSION))
 		return ;
-	if (old[0])
+	if (tdf_menu_unique())
+		g_accueil = old[0] ? 2 : 1;
+	else if (old[0])
 	{
 		snprintf(msg, sizeof(msg), L("v%s  →  v%s   (voir CHANGELOG.md)",
 				"v%s  →  v%s   (see CHANGELOG.md)"), old, TDF_VERSION);
@@ -174,18 +178,22 @@ int	main(int ac, char **av)
 	first = g_save.runs == 0;
 	if (!relance)
 		lore_setup();
-	if (!relance && first)
-		screen_intro();
 	if (!relance)
 		version_notice();
+	if (!relance && first && (!unique || g_accueil == 1))
+		screen_intro();
 	if (g_save.valid == -1)
 		toast(L("SAUVEGARDE MODIFIÉE À LA MAIN", "SAVE EDITED BY HAND"),
 			L("remise à zéro (ancienne copie : save.txt.triche)", "reset (old copy: save.txt.triche)"),
 			rgb(255, 90, 100));
 	if (reco)
 		save_connect_cli(reco);
-	if (g_save.runs == 0)
+	if (g_save.runs == 0 && (!unique || g_accueil == 1))
 		screen_login();
+	if (g_accueil == 1)
+		tdf_tuto();
+	else if (g_accueil == 2)
+		tdf_nouveautes();
 	if (results && !relance && first)
 		story_libft_intro();
 	code = 0;
@@ -205,6 +213,13 @@ int	main(int ac, char **av)
 			else
 				rewards_quiet();
 		}
+	}
+	if (!results && unique && !(ecran && ecran[0]))
+	{
+		code = tdf_menu_principal(screen_profile, screen_boss_menu, screen_credits);
+		save_write();
+		term_end();
+		return (code);
 	}
 	if (!results && ecran && ecran[0])
 	{

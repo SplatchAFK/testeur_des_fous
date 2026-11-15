@@ -4,18 +4,30 @@ Le numéro de version est dans `moteur/version.h`.
 
 ## 3.1.0 · 2026-11-20
 
-### Un seul menu
+### Un seul menu, graphique
 
-- `bash run.sh` ou `tdf` ouvre directement le menu, avec le titre et le fou en haut ;
-- Chevalier, Lore, Stats et Paramètres sont dans ce menu ; Paramètres regroupe les réglages, la langue, l'interface, la commande `tdf`, le tuto et les nouveautés ;
+- `bash run.sh` ou `tdf` ouvre directement le menu graphique d'origine (thème, avatar à droite), avec le petit fou et le titre en haut à gauche ;
+- il liste les projets trouvés, l'exam, la banque, Chevalier, Lore, Stats, Paramètres, « Tester un autre dossier » et Quitter ;
+- Paramètres regroupe les réglages, l'interface graphique ou texte, la commande `tdf`, le tuto et les nouveautés ;
 - après un test Libft, ft_printf ou get_next_line, Entrée ramène au menu ; en quittant l'exam ou la banque, on y revient directement ;
-- premier lancement : seulement la langue, puis le tuto (interface graphique par défaut, `tdf` à installer depuis Paramètres).
+- premier lancement : la langue, l'écran d'accueil, le login, puis le tuto ; ensuite plus rien avant le menu ;
+- si l'interface graphique ne compile pas, l'ancien menu texte prend le relais.
+
+### Tester un autre dossier
+
+- parcours du PC comme dans zsh : Tab complète, Tab répété fait défiler les dossiers, ▶ ouvre, ◀ remonte, Entrée valide ;
+- les dossiers qui contiennent une Libft, un ft_printf ou un get_next_line sont signalés ;
+- `~` est reconnu, les dossiers cachés n'apparaissent que si on tape un point.
 
 ### Tuto et nouveautés
 
-- tuto en 6 écrans au premier lancement : les touches, tester un projet, l'exam, la banque, Chevalier/Lore/Stats, Paramètres ;
+- tuto graphique en 6 écrans au premier lancement : les touches, tester un projet, l'exam, la banque, Chevalier/Lore/Stats, Paramètres ;
 - à chaque nouvelle version, un écran « Nouveautés de la version X » s'affiche une fois ;
 - les deux se revoient depuis Paramètres.
+
+### Flèches
+
+- une flèche maintenue ne fige plus l'écran : les appuis répétés sont regroupés et l'en-tête n'est plus redessiné à chaque image.
 
 ### Banque d'exercices
 
@@ -23,8 +35,11 @@ Le numéro de version est dans `moteur/version.h`.
 - sous le sujet : Corriger mon code, Langue du sujet (◀ ▶), Retour à la liste ;
 - plus besoin de taper `liste`, `ouvre` ou `grademe`.
 
-### Examshell
+### Examshell des fous
 
+- en-tête plus petit, en haut à gauche : le fou et « EXAMSHELL DES FOUS » quand la place le permet, le titre seul sinon ;
+- commandes en badges de couleurs claires (grademe, sujet, status, finish, help), comme le badge Discord ;
+- SUCCESS et FAILURE en badges vert et rose ;
 - une commande mal tapée propose la plus proche (« Tu voulais dire grademe ? »), Entrée pour accepter.
 
 ### Langues
@@ -32,11 +47,13 @@ Le numéro de version est dans `moteur/version.h`.
 - les 94 sujets de l'exam et de la banque existent en 8 langues ; `sujet <code>` (fr, en, es, de, it, pt, tr, ru), l'anglais sert de repli ;
 - la langue du sujet suit celle de l'interface par défaut ;
 - lanceur, aide, examshell, banque, répliques des boss, rapports Libft, ft_printf et get_next_line, fichiers parasites et valgrind traduits ;
-- les sujets anglais Libft et printf n'ont plus de lignes en français.
+- les sujets anglais Libft et printf n'ont plus de lignes en français ;
+- corrigé : « Réglages » et « Paramètres » donnaient le même mot en anglais, les Octets de l'avatar, « niv. », « programme », « fonction » et les notions Libft et printf de la banque restaient en français, les notions en cyrillique étaient coupées au milieu d'une lettre.
 
 ### README
 
-- réécrit : démarrage en 30 secondes, le menu et ses touches, l'exam et la banque pas à pas.
+- réécrit : démarrage en 30 secondes, le menu et ses touches, l'examshell des fous et la banque pas à pas ;
+- deux commandes seulement : `run.sh exam` et `--debug`.
 
 ## 3.0.0 · 2026-11-13
 

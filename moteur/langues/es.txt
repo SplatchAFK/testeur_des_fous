@@ -1382,3 +1382,45 @@ Continue|	Continuar|
 See the tutorial|	Ver el tutorial|
 Replay the tutorial|The 6 screens that present the tester	Volver a ver el tutorial|Las 6 pantallas que presentan el tester
 What's new in version %s|	Novedades de la versión %s|
+grade	corregir
+reread	releer
+where I am	dónde estoy
+finish	terminar
+help	ayuda
+grade the current exercise	corregir el ejercicio actual
+where I am, time left	dónde estoy, tiempo restante
+reread the subject (sujet en, sujet es... for another language)	releer el enunciado (sujet en, sujet es... para otro idioma)
+end the session now	terminar la sesión ahora
+this help	esta ayuda
+▲ ▼ pick   Enter: confirm   Esc: skip	▲ ▼ elegir   Intro: confirmar   Esc: saltar
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. For a project stored elsewhere, 'Test another folder' lets you browse your PC with Tab, like in zsh.	El menú lista los proyectos encontrados en esta carpeta o junto al tester. Elige uno: pruebas de funciones, fugas de memoria, Norma, archivos sobrantes y auditoría de la moulinette. Para un proyecto guardado en otro sitio, « Probar otra carpeta » te deja recorrer tu PC con Tab, como en zsh.
+TUTORIAL	TUTORIAL
+WHAT'S NEW IN VERSION %s	NOVEDADES DE LA VERSIÓN %s
+• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there.	• Un solo menú gráfico: bash run.sh o tdf lo abre directamente, y todo pasa ahí.
+• Test another folder: browse your PC with Tab, like in zsh.	• Probar otra carpeta: recorre tu PC con Tab, como en zsh.
+• Clearer Examshell des fous: mistyped a command? The tester suggests the right one.	• Examshell des fous más claro: ¿comando mal escrito? El tester propone el correcto.
+TEST ANOTHER FOLDER	PROBAR OTRA CARPETA
+Project path:	Ruta del proyecto:
+no folder matches	ninguna carpeta coincide
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back	Tab completar   ▲ ▼ elegir   ▶ abrir   ◀ subir   Intro confirmar   Esc volver
+this folder does not exist	esta carpeta no existe
+Interface: text mode|Tests only, no story. Enter to switch back to the graphical interface.	Interfaz: modo texto|Solo las pruebas, sin historia. Intro para volver a la interfaz gráfica.
+Interface: graphical|The lore, the cutscenes and the fights. Enter to switch to text mode.	Interfaz: gráfica|El lore, las cinemáticas y los combates. Intro para pasar al modo texto.
+Install the tdf command|Then you just type 'tdf' in any folder (no sudo).	Instalar el comando tdf|Luego solo escribes « tdf » en cualquier carpeta (sin sudo).
+Replay the tutorial|The 6 screens that present the tester.	Volver a ver el tutorial|Las 6 pantallas que presentan el tester.
+What's new in this version|What changed since the last update.	Novedades de esta versión|Lo que cambió desde la última actualización.
+Test my Libft	Probar mi Libft
+Test my ft_printf	Probar mi ft_printf
+Test my get_next_line	Probar mi get_next_line
+Test another folder|Browse your PC with Tab, like in zsh, and pick the project folder	Probar otra carpeta|Recorre tu PC con Tab, como en zsh, y elige la carpeta del proyecto
+Quit|Close the tester. Your progress is already saved.	Salir|Cerrar el tester. Tu progreso ya está guardado.
+created and vibe-coded by Splatch	creado y vibe-codeado por Splatch
+Libft: %d/43 · boss %d/3 · level %d · %ld Octets	Libft: %d/43 · jefes %d/3 · nivel %d · %ld Octetos
+▲ ▼ pick   Enter: open   Esc: quit	▲ ▼ elegir   Intro: abrir   Esc: salir
+Options|Language, animations, story, help level, test tools.	Opciones|Idioma, animaciones, historia, nivel de ayuda, herramientas de prueba.
+%ld ◈ Octets	%ld ◈ Octetos
+program	programa
+function	función
+   %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s niv. %-2d  %s%s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%.38s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%s%s\n

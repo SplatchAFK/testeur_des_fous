@@ -501,6 +501,41 @@ static void	install(void)
 
 static int	g_tty;
 
+static void	badge(int r, int g, int b, const char *mot, const char *texte)
+{
+	if (g_color)
+		printf("\033[48;2;%d;%d;%dm\033[38;2;24;26;38m\033[1m %s \033[0m %s%s%s", r, g, b, mot, C_D, texte, C_R);
+	else
+		printf("%s%s%s %s", C_B, mot, C_R, texte);
+}
+
+static void	verdict(int ok)
+{
+	if (g_color)
+		printf("\n  \033[48;2;%s\033[38;2;24;26;38m\033[1m   %s   \033[0m\n\n", ok ? "140;230;170m" : "255;150;160m", ok ? "✔ SUCCESS" : "✘ FAILURE");
+	else
+	{
+		printf("\n  %s╔══════════════════════════════╗%s\n", ok ? C_OK : C_KO, C_R);
+		printf("  %s║           %s            ║%s\n", ok ? C_OK : C_KO, ok ? "SUCCESS" : "FAILURE", C_R);
+		printf("  %s╚══════════════════════════════╝%s\n\n", ok ? C_OK : C_KO, C_R);
+	}
+}
+
+static void	logo_exam(void)
+{
+	int	h;
+
+	h = g_tty && g_color ? entete_examshell(0) : 0;
+	if (h)
+	{
+		fflush(stdout);
+		entete_examshell(1);
+		printf("%.*s", h + 1, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	}
+	else
+		printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
+}
+
 static void	ecran(void)
 {
 	if (g_tty)
@@ -591,7 +626,7 @@ static void	entete(void)
 	int		i;
 
 	x = &g_bank[g_st.exo];
-	printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
+	logo_exam();
 	if (g_st.mode == 0)
 	{
 		printf(L("   %sExamen%s  ", "   %sExam%s  "), C_B, C_R);
@@ -624,8 +659,17 @@ static void	entete(void)
 
 static void	commandes(void)
 {
-	printf(L("\n  %sgrademe%s corriger   %ssujet%s relire   %sstatus%s où j'en suis   %sfinish%s terminer   %shelp%s aide\n\n", "\n  %sgrademe%s grade   %ssujet%s reread   %sstatus%s where I am   %sfinish%s finish   %shelp%s help\n\n"),
-		C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R, C_B, C_R);
+	printf("\n  ");
+	badge(140, 230, 170, "grademe", L("corriger", "grade"));
+	printf("   ");
+	badge(150, 195, 255, "sujet", L("relire", "reread"));
+	printf("   ");
+	badge(250, 220, 130, "status", L("où j'en suis", "where I am"));
+	printf("   ");
+	badge(255, 165, 175, "finish", L("terminer", "finish"));
+	printf("   ");
+	badge(205, 180, 255, "help", L("aide", "help"));
+	printf("\n\n");
 }
 
 static void	show_status(void)
@@ -1300,9 +1344,7 @@ static int	do_grademe(void)
 		g_st.fails++;
 		g_st.tfails++;
 		g_st.lastfail = (long)time(NULL);
-		printf("\n  %s╔══════════════════════════════╗%s\n", C_KO, C_R);
-		printf("  %s║           FAILURE            ║%s\n", C_KO, C_R);
-		printf("  %s╚══════════════════════════════╝%s\n\n", C_KO, C_R);
+		verdict(0);
 		trace_show(x);
 		tdf_stats_begin("exam");
 		tdf_stats_fail(x->name, "ECHEC");
@@ -1315,9 +1357,7 @@ static int	do_grademe(void)
 			view_exo();
 		return (0);
 	}
-	printf("\n  %s╔══════════════════════════════╗%s\n", C_OK, C_R);
-	printf("  %s║           SUCCESS            ║%s\n", C_OK, C_R);
-	printf("  %s╚══════════════════════════════╝%s\n\n", C_OK, C_R);
+	verdict(1);
 	first = !done_has(x->name);
 	done_add(x->name);
 	g_st.solved++;
@@ -1419,11 +1459,17 @@ static void	show_help(void)
 {
 	ecran();
 	entete();
-	printf(L("  %sgrademe%s   corriger l'exercice en cours\n", "  %sgrademe%s   grade the current exercise\n"), C_B, C_R);
-	printf(L("  %sstatus%s    où j'en suis, temps restant\n", "  %sstatus%s    where I am, time left\n"), C_B, C_R);
-	printf(L("  %ssujet%s     relire le sujet (sujet en : en anglais, sujet fr : en français)\n", "  %ssujet%s     reread the subject (sujet en: in English, sujet fr: in French)\n"), C_B, C_R);
-	printf(L("  %sfinish%s    terminer la session maintenant\n", "  %sfinish%s    end the session now\n"), C_B, C_R);
-	printf(L("  %shelp%s      cette aide\n", "  %shelp%s      this help\n"), C_B, C_R);
+	printf("  ");
+	badge(140, 230, 170, "grademe", L("corriger l'exercice en cours", "grade the current exercise"));
+	printf("\n\n  ");
+	badge(250, 220, 130, "status ", L("où j'en suis, temps restant", "where I am, time left"));
+	printf("\n\n  ");
+	badge(150, 195, 255, "sujet  ", L("relire le sujet (sujet en, sujet es... pour une autre langue)", "reread the subject (sujet en, sujet es... for another language)"));
+	printf("\n\n  ");
+	badge(255, 165, 175, "finish ", L("terminer la session maintenant", "end the session now"));
+	printf("\n\n  ");
+	badge(205, 180, 255, "help   ", L("cette aide", "this help"));
+	printf("\n\n");
 	printf(L("  %sskip, reroll, trace : avec un code (commande : code TON_CODE)%s\n\n", "  %sskip, reroll, trace: with a code (command: code YOUR_CODE)%s\n\n"), C_D, C_R);
 	printf(L("  Écris ton code dans un autre terminal ou dans ton éditeur, dans le dossier rendu/.\n\n", "  Write your code in another terminal or in your editor, in the rendu/ folder.\n\n"));
 }
@@ -1785,6 +1831,8 @@ static long	ms_now(void)
 	return (tv.tv_sec * 1000L + tv.tv_usec / 1000);
 }
 
+static int	g_nrep = 1;
+
 static int	touche(int haut, long t0)
 {
 	struct termios	old;
@@ -1802,16 +1850,9 @@ static int	touche(int haut, long t0)
 	t.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSANOW, &t);
 	k = -1;
-	while (haut)
-	{
-		entete_dessiner("EXAMSHELL", "DES FOUS", ms_now() - t0, 2, 20);
-		FD_ZERO(&fs);
-		FD_SET(0, &fs);
-		tv.tv_sec = 0;
-		tv.tv_usec = 40000;
-		if (select(1, &fs, NULL, NULL, &tv) > 0)
-			break ;
-	}
+	(void)t0;
+	if (haut)
+		entete_examshell(1);
 	if (read(0, c, 1) == 1)
 	{
 		k = c[0];
@@ -1832,6 +1873,18 @@ static int	touche(int haut, long t0)
 			k = 1002;
 		else if (k == 'a' || k == 'h')
 			k = 1003;
+	}
+	g_nrep = 1;
+	while (k == 1000 || k == 1001)
+	{
+		FD_ZERO(&fs);
+		FD_SET(0, &fs);
+		tv.tv_sec = 0;
+		tv.tv_usec = 0;
+		if (select(1, &fs, NULL, NULL, &tv) <= 0 || read(0, c, 3) != 3 || c[0] != 27
+			|| (c[2] == 'A' ? 1000 : c[2] == 'B' ? 1001 : 0) != k)
+			break ;
+		g_nrep++;
 	}
 	tcsetattr(0, TCSANOW, &old);
 	return (k);
@@ -1888,7 +1941,7 @@ static int	reglages_fleches(void)
 			g_cfg.trace = 1;
 		}
 		ecran();
-		haut = g_color ? entete_hauteur("EXAMSHELL", "DES FOUS", 20) : 0;
+		haut = g_color ? entete_examshell(0) : 0;
 		if (haut)
 			printf("%.*s", haut + 2, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		else
@@ -2204,6 +2257,31 @@ static void	b_mark(const t_bexo *b)
 		snprintf(g_xs.bdone + n, sizeof(g_xs.bdone) - n, "%s%s:%s", n ? "," : "", b->src, b->name);
 }
 
+static void	b_notion_langue(const char *src, t_bexo *b)
+{
+	static const char	*pre[] = {"Notion : ", "Concept: ", "Concepto: ", "Konzept: ", "Concetto: ",
+		"Conceito: ", "Kavram: ", "Тема: ", NULL};
+	char				path[1300];
+	char				line[400];
+	FILE				*f;
+	int					i;
+
+	if (g_cfg.lang == 0)
+		return ;
+	snprintf(path, sizeof(path), "%s/banque/%s/%s", g_root, src, b->name);
+	sujet_chemin(path, sizeof(path), g_cfg.lang);
+	f = fopen(path, "r");
+	while (f && fgets(line, sizeof(line), f))
+	{
+		line[strcspn(line, "\n")] = '\0';
+		for (i = 0; pre[i]; i++)
+			if (!strncmp(line, pre[i], strlen(pre[i])))
+				snprintf(b->notion, sizeof(b->notion), "%s", line + strlen(pre[i]));
+	}
+	if (f)
+		fclose(f);
+}
+
 static void	b_load_ext(const char *src)
 {
 	DIR				*d;
@@ -2237,6 +2315,7 @@ static void	b_load_ext(const char *src)
 				snprintf(b->notion, sizeof(b->notion), "%s", line + 7);
 		}
 		fclose(f);
+		b_notion_langue(src, b);
 		g_nb++;
 	}
 	if (d)
@@ -2268,7 +2347,7 @@ static void	b_load(void)
 		snprintf(g_b[g_nb].name, sizeof(g_b[g_nb].name), "%s", g_bank[i].name);
 		g_b[g_nb].niv = g_bank[i].level;
 		g_b[g_nb].ex = i;
-		snprintf(g_b[g_nb].notion, sizeof(g_b[g_nb].notion), "%s", g_bank[i].prog ? "programme" : "fonction");
+		snprintf(g_b[g_nb].notion, sizeof(g_b[g_nb].notion), "%s", g_bank[i].prog ? L("programme", "program") : L("fonction", "function"));
 		g_nb++;
 	}
 	b_load_ext("libft");
@@ -2382,7 +2461,7 @@ static void	b_liste(const char *src, int niv, const char *mot)
 		t_bexo	*b;
 
 		b = &g_b[g_vue[i]];
-		printf("   %s%3d%s  %s%-22s%s %-7s niv. %-2d  %s%s%s\n", C_AC, i + 1, C_R, b_done(b) ? C_OK : "", b->name,
+		printf(L("   %s%3d%s  %s%-22s%s %-7s niv. %-2d  %s%s%s\n", "   %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n"), C_AC, i + 1, C_R, b_done(b) ? C_OK : "", b->name,
 			C_R, b_srcname(b->src), b->niv, C_D, b->notion, C_R);
 	}
 	if (!g_nvue)
@@ -2551,9 +2630,7 @@ static void	b_grademe(void)
 		ok = b_ext_grade(b);
 	if (ok)
 	{
-		printf("\n  %s╔══════════════════════════════╗%s\n", C_OK, C_R);
-		printf("  %s║           SUCCESS            ║%s\n", C_OK, C_R);
-		printf("  %s╚══════════════════════════════╝%s\n\n", C_OK, C_R);
+		verdict(1);
 		first = !b_done(b);
 		b_mark(b);
 		if (first)
@@ -2562,9 +2639,7 @@ static void	b_grademe(void)
 	}
 	else
 	{
-		printf("\n  %s╔══════════════════════════════╗%s\n", C_KO, C_R);
-		printf("  %s║           FAILURE            ║%s\n", C_KO, C_R);
-		printf("  %s╚══════════════════════════════╝%s\n", C_KO, C_R);
+		verdict(0);
 	}
 }
 
@@ -2582,6 +2657,22 @@ static void	b_aide(void)
 	printf(L("   Les exercices Libft et printf sont corrigés par leur propre testeur :\n", "   Libft and printf exercises are graded by their own tester:\n"));
 	printf(L("   Norme obligatoire, sanitizers, échecs de malloc.\n", "   Norm required, sanitizers, malloc failures.\n"));
 	b_commandes();
+}
+
+static const char	*coupe(const char *s, int n)
+{
+	static char	b[400];
+	int			i;
+	int			c;
+
+	for (i = 0, c = 0; s[i] && i < (int)sizeof(b) - 1; i++)
+	{
+		if (((unsigned char)s[i] & 0xC0) != 0x80 && c++ == n)
+			break ;
+		b[i] = s[i];
+	}
+	b[i] = '\0';
+	return (b);
 }
 
 static int	b_lignes(void)
@@ -2637,11 +2728,11 @@ static int	b_choisir(int *onglet, int *sel, int *top)
 		for (i = *top; i < g_nvue && i < *top + h; i++)
 		{
 			b = &g_b[g_vue[i]];
-			printf("  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%.38s%s\n",
+			printf(L("  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%s%s\n", "  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n"),
 				C_AC, i == *sel ? "❯" : " ", C_R,
 				b_done(b) ? C_OK : C_D, b_done(b) ? "✔" : "·", C_R,
 				i == *sel ? C_B : "", b->name, C_R, b_srcname(b->src),
-				level_color(b->niv < 1 ? 1 : b->niv > XLEVELS ? XLEVELS : b->niv), b->niv, C_R, C_D, b->notion, C_R);
+				level_color(b->niv < 1 ? 1 : b->niv > XLEVELS ? XLEVELS : b->niv), b->niv, C_R, C_D, coupe(b->notion, 38), C_R);
 		}
 		if (g_nvue > h)
 			printf(L("  %s%d-%d sur %d%s\n", "  %s%d-%d of %d%s\n"), C_D, *top + 1, i, g_nvue, C_R);
@@ -2651,9 +2742,9 @@ static int	b_choisir(int *onglet, int *sel, int *top)
 		if (k < 0 || k == 'q' || k == 'Q' || k == 27)
 			return (-1);
 		if (k == 1000 && g_nvue)
-			*sel = (*sel + g_nvue - 1) % g_nvue;
+			*sel = ((*sel - g_nrep) % g_nvue + g_nvue) % g_nvue;
 		else if (k == 1001 && g_nvue)
-			*sel = (*sel + 1) % g_nvue;
+			*sel = (*sel + g_nrep) % g_nvue;
 		else if (k == 1002 || k == 1003)
 		{
 			*onglet = (*onglet + (k == 1002 ? 1 : 3)) % 4;

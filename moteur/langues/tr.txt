@@ -1382,3 +1382,45 @@ Continue|	Devam|
 See the tutorial|	Eğitimi gör|
 Replay the tutorial|The 6 screens that present the tester	Eğitimi tekrar aç|Testeri tanıtan 6 ekran
 What's new in version %s|	%s sürümündeki yenilikler|
+grade	düzelt
+reread	tekrar oku
+where I am	neredeyim
+finish	bitir
+help	yardım
+grade the current exercise	mevcut alıştırmayı düzelt
+where I am, time left	neredeyim, kalan süre
+reread the subject (sujet en, sujet es... for another language)	konuyu tekrar oku (başka dil için sujet en, sujet es...)
+end the session now	oturumu şimdi bitir
+this help	bu yardım
+▲ ▼ pick   Enter: confirm   Esc: skip	▲ ▼ seç   Enter: onayla   Esc: atla
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. For a project stored elsewhere, 'Test another folder' lets you browse your PC with Tab, like in zsh.	Menü, bu klasörde ya da testerin yanında bulunan projeleri listeler. Birini seç: fonksiyon testleri, bellek sızıntıları, Norm, fazla dosyalar ve moulinette denetimi. Başka yerdeki bir proje için « Başka bir klasörü test et », zsh'teki gibi Tab ile bilgisayarında gezinmeni sağlar.
+TUTORIAL	EĞİTİM
+WHAT'S NEW IN VERSION %s	%s SÜRÜMÜNDEKİ YENİLİKLER
+• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there.	• Tek bir grafik menü: bash run.sh ya da tdf onu doğrudan açar, her şey orada olur.
+• Test another folder: browse your PC with Tab, like in zsh.	• Başka bir klasörü test et: zsh'teki gibi Tab ile bilgisayarında gezin.
+• Clearer Examshell des fous: mistyped a command? The tester suggests the right one.	• Daha net Examshell des fous: komutu yanlış mı yazdın? Tester doğrusunu önerir.
+TEST ANOTHER FOLDER	BAŞKA BİR KLASÖRÜ TEST ET
+Project path:	Proje yolu:
+no folder matches	eşleşen klasör yok
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back	Tab tamamla   ▲ ▼ seç   ▶ aç   ◀ yukarı   Enter onayla   Esc geri
+this folder does not exist	bu klasör yok
+Interface: text mode|Tests only, no story. Enter to switch back to the graphical interface.	Arayüz: metin modu|Sadece testler, hikâye yok. Grafik arayüze dönmek için Enter.
+Interface: graphical|The lore, the cutscenes and the fights. Enter to switch to text mode.	Arayüz: grafik|Lore, ara sahneler ve dövüşler. Metin moduna geçmek için Enter.
+Install the tdf command|Then you just type 'tdf' in any folder (no sudo).	tdf komutunu kur|Sonra her klasörde sadece « tdf » yazarsın (sudo yok).
+Replay the tutorial|The 6 screens that present the tester.	Eğitimi tekrar aç|Testeri tanıtan 6 ekran.
+What's new in this version|What changed since the last update.	Bu sürümdeki yenilikler|Son güncellemeden beri değişenler.
+Test my Libft	Libft'imi test et
+Test my ft_printf	ft_printf'imi test et
+Test my get_next_line	get_next_line'ımı test et
+Test another folder|Browse your PC with Tab, like in zsh, and pick the project folder	Başka bir klasörü test et|zsh'teki gibi Tab ile bilgisayarında gezin ve proje klasörünü seç
+Quit|Close the tester. Your progress is already saved.	Çık|Testeri kapat. İlerlemen zaten kaydedildi.
+created and vibe-coded by Splatch	Splatch tarafından yapıldı ve vibe-code'landı
+Libft: %d/43 · boss %d/3 · level %d · %ld Octets	Libft: %d/43 · boss %d/3 · seviye %d · %ld Octet
+▲ ▼ pick   Enter: open   Esc: quit	▲ ▼ seç   Enter: aç   Esc: çık
+Options|Language, animations, story, help level, test tools.	Seçenekler|Dil, animasyonlar, hikâye, yardım seviyesi, test araçları.
+%ld ◈ Octets	%ld ◈ Octet
+program	program
+function	fonksiyon
+   %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s svy %-2d  %s%s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %ssvy %-2d%s %s%.38s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %ssvy %-2d%s %s%s%s\n

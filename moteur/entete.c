@@ -154,6 +154,16 @@ typedef struct s_page
 	int	h;
 }	t_page;
 
+const char	*entete_police(char c, int r)
+{
+	return (lettre(c)->l[r < 0 || r > 4 ? 0 : r]);
+}
+
+int	entete_police_largeur(const char *mot)
+{
+	return (largeur_mot(mot));
+}
+
 static int	largeur_ligne(const char *l1, const char *l2)
 {
 	return (largeur_mot(l1) + 4 + largeur_mot(l2));
@@ -375,4 +385,77 @@ void	entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste)
 	g_eb.r = -1;
 	fflush(stdout);
 	(void)!write(1, g_eb.d, g_eb.n);
+}
+
+int	entete_examshell(int voir)
+{
+	const char	*l1;
+	const char	*l2;
+	int			cols;
+	int			rows;
+	int			w;
+	int			mode;
+	int			h;
+	int			tx;
+	int			ty;
+	int			r;
+	int			c;
+
+	l1 = "EXAMSHELL";
+	l2 = "DES FOUS";
+	entete_taille(&cols, &rows);
+	w = largeur_ligne(l1, l2);
+	c = largeur_mot(l1) > largeur_mot(l2) ? largeur_mot(l1) : largeur_mot(l2);
+	if (cols >= g_fou_petit_w + 4 + w + 2 && rows >= 36)
+		mode = 1;
+	else if (cols >= g_fou_petit_w + 4 + c + 2 && rows >= 36)
+		mode = 3;
+	else if (cols >= w + 4 && rows >= 22)
+		mode = 2;
+	else if (cols >= c + 4 && rows >= 28)
+		mode = 4;
+	else
+		return (0);
+	h = mode == 1 || mode == 3 ? g_fou_petit_h : (mode == 2 ? 5 : 11);
+	if (!voir)
+		return (h);
+	g_eb.n = 0;
+	g_eb.r = -1;
+	eb_put("\0337\033[?25l", 8);
+	tx = 1;
+	ty = 1;
+	if (mode == 1 || mode == 3)
+	{
+		for (r = 0; r < g_fou_petit_h; r++)
+		{
+			aller(1 + r, 2);
+			for (c = 0; c < g_fou_petit_w; c++)
+			{
+				if (g_fou_petit_txt[r][c] == ' ')
+				{
+					eb_put(" ", 1);
+					continue ;
+				}
+				eb_col(g_fou_petit_rgb[r][c][0], g_fou_petit_rgb[r][c][1], g_fou_petit_rgb[r][c][2]);
+				eb_put(&g_fou_petit_txt[r][c], 1);
+			}
+		}
+		tx = g_fou_petit_w + 4;
+		ty = 1 + (g_fou_petit_h - (mode == 1 ? 5 : 11)) / 2;
+	}
+	if (mode == 1 || mode == 2)
+	{
+		titre(l1, tx, ty, 1, w, -100000.0);
+		titre(l2, tx + largeur_mot(l1) + 4, ty, 1, w, -100000.0);
+	}
+	else
+	{
+		titre(l1, tx, ty, 1, c, -100000.0);
+		titre(l2, tx, ty + 6, 1, c, -100000.0);
+	}
+	eb_put("\033[0m\0338", 6);
+	g_eb.r = -1;
+	fflush(stdout);
+	(void)!write(1, g_eb.d, g_eb.n);
+	return (h);
 }

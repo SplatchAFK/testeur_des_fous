@@ -29,7 +29,7 @@ void	avatar_panel(int x, int y, const t_look *lk, int title, long t)
 	text_at(x, y + 18, theme()->text, tmp);
 	bar(x + 10, y + 18, 18, (g_save.xp - xp_for(lv)) / (double)(xp_for(lv + 1) - xp_for(lv)),
 		theme()->accent, theme()->accent2);
-	snprintf(tmp, sizeof(tmp), "%ld ◈ Octets", g_save.octets);
+	snprintf(tmp, sizeof(tmp), L("%ld ◈ Octets", "%ld ◈ Octets"), g_save.octets);
 	text_at(x, y + 19, rgb(255, 215, 0), tmp);
 }
 
@@ -117,6 +117,280 @@ int	screen_menu(void)
 		}
 		else if (key_quit(k))
 			sel = n - 1;
+	}
+}
+
+extern const int			g_fou_petit_w;
+extern const int			g_fou_petit_h;
+extern const char *const	g_fou_petit_txt[];
+extern const unsigned char	g_fou_petit_rgb[][30][3];
+
+static void	fou_petit(int x, int y)
+{
+	const unsigned char	*p;
+	int					r;
+	int					c;
+
+	for (r = 0; r < g_fou_petit_h; r++)
+	{
+		at(x, y + r);
+		for (c = 0; c < g_fou_petit_w; c++)
+		{
+			if (g_fou_petit_txt[r][c] == ' ')
+			{
+				out(" ");
+				continue ;
+			}
+			p = g_fou_petit_rgb[r][c];
+			fg(rgb(p[0], p[1], p[2]));
+			outf("%c", g_fou_petit_txt[r][c]);
+		}
+	}
+}
+
+static void	titre_bloc(int x, int y, const char *mot, long t)
+{
+	const char	*l;
+	const char	*s;
+	int			r;
+	int			i;
+	int			dx;
+
+	for (r = 0; r < 5; r++)
+	{
+		at(x, y + r);
+		dx = 0;
+		for (s = mot; *s; s++)
+		{
+			l = entete_police(*s, r);
+			for (i = 0; l[i]; i++, dx++)
+			{
+				if (l[i] == '#')
+				{
+					fg(hue(dx / 60.0 + t / 3000.0));
+					out("█");
+				}
+				else
+					out(" ");
+			}
+			out(" ");
+			dx++;
+		}
+	}
+}
+
+static void	label_of_item(const char *item, char *b, size_t n)
+{
+	size_t	l;
+
+	l = strcspn(item, "|");
+	if (l >= n)
+		l = n - 1;
+	memcpy(b, item, l);
+	b[l] = '\0';
+}
+
+typedef struct s_mu
+{
+	const char	*items[24];
+	char		lab[24][200];
+	const char	*act[24];
+	char		chemin[24][600];
+	int			n;
+}	t_mu;
+
+static void	court_chemin(const char *p, char *b, size_t n)
+{
+	const char	*h;
+
+	h = getenv("HOME");
+	if (h && *h && !strncmp(p, h, strlen(h)))
+		snprintf(b, n, "~%s", p + strlen(h));
+	else
+		snprintf(b, n, "%s", p);
+}
+
+static void	mu_ajouter(t_mu *m, const char *act, const char *lab, const char *chemin)
+{
+	if (m->n >= 24)
+		return ;
+	snprintf(m->lab[m->n], sizeof(m->lab[0]), "%s", lab);
+	m->items[m->n] = m->lab[m->n];
+	m->act[m->n] = act;
+	snprintf(m->chemin[m->n], sizeof(m->chemin[0]), "%s", chemin ? chemin : "");
+	m->n++;
+}
+
+static void	mu_charger(t_mu *m)
+{
+	const char	*e;
+	const char	*fin;
+	char		ligne[700];
+	char		court[600];
+	char		lab[200];
+	char		*tab;
+
+	m->n = 0;
+	e = getenv("TDF_PROJETS");
+	while (e && *e)
+	{
+		fin = strchr(e, '\n');
+		snprintf(ligne, sizeof(ligne), "%.*s", (int)(fin ? fin - e : (long)strlen(e)), e);
+		e = fin ? fin + 1 : e + strlen(e);
+		tab = strchr(ligne, '\t');
+		if (!tab)
+			continue ;
+		*tab = '\0';
+		court_chemin(tab + 1, court, sizeof(court));
+		if (!strcmp(ligne, "libft"))
+			snprintf(lab, sizeof(lab), "%s%*s %s|%s", L("Tester ma Libft", "Test my Libft"), 26 - ulen(L("Tester ma Libft", "Test my Libft")) > 0 ? 26 - ulen(L("Tester ma Libft", "Test my Libft")) : 0, "", court,
+				L("Les 43 fonctions, la mémoire, la Norme, les fichiers parasites, l'audit moulinette", "The 43 functions, memory, the Norm, garbage files, the moulinette audit"));
+		else if (!strcmp(ligne, "printf"))
+			snprintf(lab, sizeof(lab), "%s%*s %s|%s", L("Tester mon ft_printf", "Test my ft_printf"), 26 - ulen(L("Tester mon ft_printf", "Test my ft_printf")) > 0 ? 26 - ulen(L("Tester mon ft_printf", "Test my ft_printf")) : 0, "", court,
+				L("Chaque conversion comparée au vrai printf, puis la trace moulinette", "Every conversion compared to the real printf, then the moulinette trace"));
+		else if (!strcmp(ligne, "gnl"))
+			snprintf(lab, sizeof(lab), "%s%*s %s|%s", L("Tester mon get_next_line", "Test my get_next_line"), 26 - ulen(L("Tester mon get_next_line", "Test my get_next_line")) > 0 ? 26 - ulen(L("Tester mon get_next_line", "Test my get_next_line")) : 0, "", court,
+				L("Toutes les tailles de BUFFER_SIZE, les fuites, la Norme, les fichiers parasites", "Every BUFFER_SIZE, leaks, the Norm, garbage files"));
+		else
+			continue ;
+		mu_ajouter(m, !strcmp(ligne, "libft") ? "libft" : !strcmp(ligne, "printf") ? "printf" : "gnl", lab, tab + 1);
+	}
+	mu_ajouter(m, "exam", L("Exam en C|Examen blanc de 3 h, série d'exercices ou entraînement : tout se règle aux flèches", "C exam|3-hour mock exam, exercise series or training: all set with the arrows"), NULL);
+	mu_ajouter(m, "banque", L("Banque d'exercices|Les exercices du testeur au choix : exam, Libft, printf", "Exercise bank|The tester's exercises, your pick: exam, Libft, printf"), NULL);
+	mu_ajouter(m, "chevalier", L("Chevalier|Ton avatar, la boutique, ton profil et tes succès", "Knight|Your avatar, the shop, your profile and achievements"), NULL);
+	mu_ajouter(m, "lore", L("Lore|Les boss, les cinématiques et la carte de la Cité", "Lore|The bosses, the cutscenes and the map of the City"), NULL);
+	mu_ajouter(m, "stats", L("Stats|Ta progression, tes badges et le holygraph 42 Next", "Stats|Your progress, your badges and the 42 Next holygraph"), NULL);
+	mu_ajouter(m, "params", L("Paramètres|Réglages, langue, interface, commande tdf", "Settings|Settings, language, interface, tdf command"), NULL);
+	mu_ajouter(m, "autre", L("Tester un autre dossier|Parcours ton PC avec Tab, comme dans zsh, et choisis le dossier du projet", "Test another folder|Browse your PC with Tab, like in zsh, and pick the project folder"), NULL);
+	mu_ajouter(m, "quitter", L("Quitter|Fermer le testeur. Ta progression est déjà enregistrée.", "Quit|Close the tester. Your progress is already saved."), NULL);
+}
+
+static int	mu_ecran(t_mu *m, int *sel)
+{
+	char	lab[200];
+	char	tmp[200];
+	int		cols;
+	int		rows;
+	int		grand;
+	int		x;
+	int		y;
+	int		i;
+	int		k;
+	long	t;
+
+	cls();
+	while (1)
+	{
+		t = now_ms();
+		cols = term_cols();
+		rows = term_rows();
+		grand = cols >= 78 && rows >= m->n + 24;
+		bgc(theme()->bg);
+		frame();
+		x = 4;
+		if (grand)
+		{
+			fou_petit(2, 1);
+			titre_bloc(35, 3, "TESTEUR", t);
+			titre_bloc(35, 9, "DES FOUS", t);
+			text_at(35, 15, theme()->dim, "v" TDF_VERSION);
+			text_at(43, 15, theme()->dim, L("créé et vibe-codé par Splatch", "created and vibe-coded by Splatch"));
+			if (cols >= 112)
+				avatar_panel(cols - 30, 1, &g_save.look, g_save.title, t);
+			y = 17;
+		}
+		else
+		{
+			at(2, 1);
+			for (i = 0; "LE TESTEUR DES FOUS"[i]; i++)
+			{
+				fg(hue(i / 30.0 + t / 3000.0));
+				outf("%c", "LE TESTEUR DES FOUS"[i]);
+			}
+			text_at(23, 1, theme()->dim, "v" TDF_VERSION);
+			y = 3;
+		}
+		for (i = 0; i < m->n; i++)
+		{
+			label_of_item(m->items[i], lab, sizeof(lab));
+			at(x, y + i);
+			if (i == *sel)
+			{
+				bgc(mix(theme()->bg, theme()->accent, 0.18 + 0.08 * sin(t / 150.0)));
+				fg(theme()->accent2);
+			}
+			else
+				fg(i < m->n - 8 ? theme()->accent : theme()->text);
+			outf(" %s %s ", i == *sel ? "▶" : " ", lab);
+			bgc(theme()->bg);
+			outf("%*s", cols - x - ulen(lab) - 6 > 0 && cols - x - ulen(lab) - 6 < 40 ? cols - x - ulen(lab) - 6 : 1, "");
+		}
+		fill(x, y + m->n + 1, cols - x - 2, 3, theme()->bg);
+		if (strchr(m->items[*sel], '|'))
+			text_wrap(x + 3, y + m->n + 1, y + m->n + 4, cols - x - 8, theme()->accent, strchr(m->items[*sel], '|') + 1);
+		for (k = 0, i = 0; i < NFN; i++)
+			k += st_pass(g_run.fn[i].st);
+		snprintf(tmp, sizeof(tmp), L("Libft : %d/43 · boss %d/3 · niveau %d · %ld Octets",
+				"Libft: %d/43 · boss %d/3 · level %d · %ld Octets"), k,
+			g_save.boss[0] + g_save.boss[1] + g_save.boss[2], level_of(g_save.xp), g_save.octets);
+		if (y + m->n + 5 < rows - 1)
+			text_at(x + 3, y + m->n + 5, theme()->dim, tmp);
+		foot_line(x, L("▲ ▼ choisir   Entrée : ouvrir   Échap : quitter", "▲ ▼ pick   Enter: open   Esc: quit"));
+		flush();
+		k = key_dir(key_read(40));
+		if (k == 1000)
+			*sel = ((*sel - tdf_touche_fleche(k)) % m->n + m->n) % m->n;
+		else if (k == 1001)
+			*sel = (*sel + tdf_touche_fleche(k)) % m->n;
+		else if (k == '\r' || k == '\n' || k == ' ')
+			return (cls(), *sel);
+		else if (key_quit(k))
+			return (cls(), m->n - 1);
+	}
+}
+
+int	tdf_menu_principal(void (*profile)(void), void (*boss)(void), void (*credits)(void))
+{
+	static t_mu	m;
+	static int	sel;
+	char		dossier[1100];
+	const char	*a;
+	int			i;
+
+	mu_charger(&m);
+	g_choix[0] = '\0';
+	while (1)
+	{
+		i = mu_ecran(&m, &sel);
+		a = m.act[i];
+		if (!strcmp(a, "libft") || !strcmp(a, "printf") || !strcmp(a, "gnl")
+			|| !strcmp(a, "exam") || !strcmp(a, "banque"))
+		{
+			tdf_sortie(a, m.chemin[i]);
+			return (46);
+		}
+		if (!strcmp(a, "chevalier"))
+			tdf_menu_chevalier(profile);
+		else if (!strcmp(a, "lore"))
+			tdf_menu_lore(boss);
+		else if (!strcmp(a, "stats"))
+			tdf_menu_stats();
+		else if (!strcmp(a, "params"))
+		{
+			tdf_menu_params(credits);
+			if (g_choix[0])
+				return (46);
+		}
+		else if (!strcmp(a, "autre"))
+		{
+			if (tdf_choisir_dossier(dossier, sizeof(dossier)))
+			{
+				tdf_sortie("autre", dossier);
+				return (46);
+			}
+		}
+		else
+			return (0);
 	}
 }
 

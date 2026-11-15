@@ -1382,3 +1382,45 @@ Continue|	Weiter|
 See the tutorial|	Tutorial ansehen|
 Replay the tutorial|The 6 screens that present the tester	Tutorial erneut ansehen|Die 6 Seiten, die den Tester vorstellen
 What's new in version %s|	Neu in Version %s|
+grade	korrigieren
+reread	nochmal lesen
+where I am	wo ich stehe
+finish	beenden
+help	Hilfe
+grade the current exercise	die aktuelle Aufgabe korrigieren
+where I am, time left	wo ich stehe, verbleibende Zeit
+reread the subject (sujet en, sujet es... for another language)	die Aufgabe nochmal lesen (sujet en, sujet es... für eine andere Sprache)
+end the session now	die Sitzung jetzt beenden
+this help	diese Hilfe
+▲ ▼ pick   Enter: confirm   Esc: skip	▲ ▼ wählen   Enter: bestätigen   Esc: überspringen
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. For a project stored elsewhere, 'Test another folder' lets you browse your PC with Tab, like in zsh.	Das Menü listet die Projekte in diesem Ordner oder neben dem Tester. Wähle eines: Funktionstests, Speicherlecks, Norm, überflüssige Dateien und Moulinette-Audit. Für ein Projekt an einem anderen Ort lässt dich « Anderen Ordner testen » deinen PC mit Tab durchsuchen, wie in zsh.
+TUTORIAL	TUTORIAL
+WHAT'S NEW IN VERSION %s	NEU IN VERSION %s
+• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there.	• Ein einziges grafisches Menü: bash run.sh oder tdf öffnet es direkt, und alles passiert dort.
+• Test another folder: browse your PC with Tab, like in zsh.	• Anderen Ordner testen: durchsuche deinen PC mit Tab, wie in zsh.
+• Clearer Examshell des fous: mistyped a command? The tester suggests the right one.	• Klarere Examshell des fous: Befehl vertippt? Der Tester schlägt den richtigen vor.
+TEST ANOTHER FOLDER	ANDEREN ORDNER TESTEN
+Project path:	Projektpfad:
+no folder matches	kein Ordner passt
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back	Tab ergänzen   ▲ ▼ wählen   ▶ öffnen   ◀ hoch   Enter bestätigen   Esc zurück
+this folder does not exist	dieser Ordner existiert nicht
+Interface: text mode|Tests only, no story. Enter to switch back to the graphical interface.	Oberfläche: Textmodus|Nur die Tests, ohne Geschichte. Enter für die grafische Oberfläche.
+Interface: graphical|The lore, the cutscenes and the fights. Enter to switch to text mode.	Oberfläche: grafisch|Die Geschichte, Zwischensequenzen und Kämpfe. Enter für den Textmodus.
+Install the tdf command|Then you just type 'tdf' in any folder (no sudo).	Befehl tdf installieren|Danach tippst du nur noch « tdf » in jedem Ordner (ohne sudo).
+Replay the tutorial|The 6 screens that present the tester.	Tutorial erneut ansehen|Die 6 Seiten, die den Tester vorstellen.
+What's new in this version|What changed since the last update.	Neu in dieser Version|Was sich seit dem letzten Update geändert hat.
+Test my Libft	Meine Libft testen
+Test my ft_printf	Mein ft_printf testen
+Test my get_next_line	Mein get_next_line testen
+Test another folder|Browse your PC with Tab, like in zsh, and pick the project folder	Anderen Ordner testen|Durchsuche deinen PC mit Tab, wie in zsh, und wähle den Projektordner
+Quit|Close the tester. Your progress is already saved.	Beenden|Den Tester schließen. Dein Fortschritt ist schon gespeichert.
+created and vibe-coded by Splatch	erstellt und vibe-codiert von Splatch
+Libft: %d/43 · boss %d/3 · level %d · %ld Octets	Libft: %d/43 · Bosse %d/3 · Stufe %d · %ld Oktette
+▲ ▼ pick   Enter: open   Esc: quit	▲ ▼ wählen   Enter: öffnen   Esc: beenden
+Options|Language, animations, story, help level, test tools.	Optionen|Sprache, Animationen, Geschichte, Hilfestufe, Testwerkzeuge.
+%ld ◈ Octets	%ld ◈ Oktette
+program	Programm
+function	Funktion
+   %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s Stufe %-2d  %s%s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sStufe %-2d%s %s%.38s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sStufe %-2d%s %s%s%s\n

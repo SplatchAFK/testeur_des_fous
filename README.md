@@ -48,9 +48,9 @@ Il te faut seulement `bash`, `cc` et `make`. Aucun `sudo`. `norminette` et `valg
 | Lore | les boss, les cinématiques et la carte de la Cité |
 | Stats | ta progression, tes badges et le holygraph 42 Next |
 | Paramètres | réglages, langue, interface graphique ou texte, commande `tdf`, revoir le tuto et les nouveautés |
-| Tester un autre dossier | un projet rangé ailleurs |
+| Tester un autre dossier | un projet rangé ailleurs : parcours ton PC avec Tab, comme dans zsh |
 
-Astuce : dans **Paramètres**, installe la commande `tdf` (sans sudo). Ensuite tu tapes seulement `tdf`, dans n'importe quel dossier.
+Astuce : dans **Paramètres**, installe la commande `tdf` (sans sudo) pour ouvrir le menu depuis n'importe quel dossier.
 
 ## Ce qu'il teste
 
@@ -63,12 +63,12 @@ Astuce : dans **Paramètres**, installe la commande `tdf` (sans sudo). Ensuite t
 
 Pour ft_printf, la trace est enregistrée dans `~/.testeur_des_fous/traces/`. Le testeur compile ton projet comme la moulinette, `CFLAGS` imposés compris, et signale les fichiers qu'un `git add .` enverrait en trop.
 
-## L'exam
+## L'examshell des fous
 
 1. Règle ta session aux flèches : examen ou entraînement, niveau, chronomètre, langue du sujet, ou « conditions réelles ».
 2. Lis le sujet dans `testeur_des_fous/exam/sujet/<exercice>/`.
 3. Écris ton code dans `testeur_des_fous/exam/rendu/<exercice>/`, dans un autre terminal.
-4. Dans l'examshell, tape `grademe`.
+4. Dans l'examshell des fous, tape `grademe`.
 
 | Commande | Rôle |
 |---|---|
@@ -92,25 +92,14 @@ La correction compile avec `cc -Wall -Wextra -Werror`, refuse les fonctions non 
 
 Chaque sujet existe en 8 langues : français, anglais, espagnol, allemand, italien, portugais, turc, russe.
 
-## Pour aller plus vite
+## Commandes
 
-Tout est dans le menu, mais chaque entrée a aussi sa commande :
+Tout passe par le menu. Deux commandes seulement :
 
 ```bash
-bash testeur_des_fous/run.sh libft        # tester ta Libft
-bash testeur_des_fous/run.sh printf       # tester ton ft_printf
-bash testeur_des_fous/run.sh gnl          # tester ton get_next_line
-bash testeur_des_fous/run.sh exam         # l'examshell
-bash testeur_des_fous/run.sh banque       # la banque d'exercices
-bash testeur_des_fous/run.sh --projet CHEMIN   # un projet rangé ailleurs
-bash testeur_des_fous/run.sh --no-lore    # les tests seuls, sans histoire
-bash testeur_des_fous/run.sh -a           # sans animations pour ce lancement
-bash testeur_des_fous/run.sh --debug      # tous les rapports détaillés
-bash testeur_des_fous/run.sh --version    # le numéro de version
-tdf maj                                   # mettre le testeur à jour
+bash testeur_des_fous/run.sh exam      # l'examshell des fous, directement
+bash testeur_des_fous/run.sh --debug   # tous les rapports détaillés, pour comprendre un bug
 ```
-
-Chaque module a ses options : `bash testeur_des_fous/run.sh libft --help`.
 
 ## Ta progression
 
@@ -118,12 +107,7 @@ Elle est dans `~/.testeur_des_fous/save.txt`, hors du dossier du testeur : tu pe
 
 ## Un problème ?
 
-Chaque lancement est noté dans `~/.testeur_des_fous/debug/`.
-
-```bash
-bash testeur_des_fous/run.sh debug          # la dernière session, erreurs en rouge
-bash testeur_des_fous/run.sh debug paquet   # un fichier à envoyer (sans ton code ni ton login)
-```
+Lance le testeur avec `--debug` pour voir tous les rapports détaillés. Chaque lancement est aussi noté dans `~/.testeur_des_fous/debug/` : envoie ce dossier sur Discord si tu bloques.
 
 Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests.
 

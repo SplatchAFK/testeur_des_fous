@@ -185,21 +185,71 @@ nouveautes() {
 }
 
 premiers_pas() {
-	local i noms=() nouveau=0 vu
-	[ -f "$LANCEUR" ] || [ -f "$DOSSIER/save.txt" ] || nouveau=1
-	if [ -z "${TDF_LANGUE_N:-}" ]; then
-		for i in 0 1 2 3 4 5 6 7; do noms+=("${TDF_NOMS[$i]}|"); done
-		tdf_choisir "TESTEUR" "DES FOUS" "Langue · Language · Idioma · Sprache · Lingua · Dil · Язык" "${noms[@]}"
-		[ "$CHOIX_MENU" -ge 0 ] || exit 0
-		tdf_langue_ecrire "$CHOIX_MENU"
-	fi
 	[ -n "$INTERFACE" ] || ecrire_interface graphique
-	vu="$(head -1 "$DOSSIER/nouveautes.txt" 2>/dev/null)"
-	if [ "$vu" != "$TDF_VERSION" ]; then
-		if [ "$nouveau" = 1 ]; then tuto; else nouveautes; fi
-		mkdir -p "$DOSSIER" 2>/dev/null
-		printf '%s\n' "$TDF_VERSION" > "$DOSSIER/nouveautes.txt"
+}
+
+preparer_suite() {
+	if [ "${INTERFACE:-}" = texte ] && { [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; }; then
+		case " ${SUITE[*]:-} " in *" --no-lore "*) ;; *) SUITE+=(--no-lore) ;; esac
 	fi
+}
+
+choisir_au_menu() {
+	local code l a p projets=""
+	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do projets+="libft"$'\t'"$p"$'\n'; done
+	for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do projets+="printf"$'\t'"$p"$'\n'; done
+	for p in ${GNLS[@]+"${GNLS[@]}"}; do projets+="gnl"$'\t'"$p"$'\n'; done
+	rm -f "$DOSSIER/menu_choix"
+	a=""
+	[ "$SANS_ANIM" = 1 ] && a="--fast"
+	TDF_PROJETS="$projets" TDF_DEPART="$DEPART" TDF_PROJET="" bash "$TDF_RACINE/modules/libft/run.sh" --menu $a
+	code=$?
+	export TDF_NO_UPDATE=1
+	tdf_langue_lire
+	INTERFACE="$(sed -n 's/^interface=//p' "$LANCEUR" 2>/dev/null | head -1)"
+	export TDF_INTERFACE="${INTERFACE:-}"
+	case "$code" in
+		46) ;;
+		0|130|143) debug_fermer "code 0"; exit 0 ;;
+		*)
+			menu_depart
+			preparer_suite
+			return 0
+			;;
+	esac
+	l="$(head -1 "$DOSSIER/menu_choix" 2>/dev/null)"
+	a="${l%%|*}"
+	p="${l#*|}"
+	SUITE=()
+	[ "$SANS_ANIM" = 1 ] && SUITE+=(--fast)
+	unset TDF_ECRAN
+	case "$a" in
+		libft|printf|gnl) MODULE="$a"; PROJET="$p" ;;
+		exam) MODULE=exam; PROJET="" ;;
+		banque) MODULE=exam; PROJET=""; SUITE+=(--banque) ;;
+		autre)
+			PROJET="$p"
+			if est_printf "$PROJET"; then MODULE=printf
+			elif est_libft "$PROJET"; then MODULE=libft
+			elif est_gnl "$PROJET"; then MODULE=gnl
+			else
+				printf '\n  %s\n' "$(printf "$(tt "Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s" "I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s")" "$PROJET")"
+				printf '  %s ' "$(tt "Entrée pour revenir au menu" "Enter to go back to the menu")"
+				read -r p
+				return 1
+			fi
+			;;
+		installer)
+			printf '\n'
+			tdf_cli_installer
+			printf '\n  %s ' "$(tt "Entrée pour revenir au menu" "Enter to go back to the menu")"
+			read -r p
+			return 1
+			;;
+		*) return 1 ;;
+	esac
+	preparer_suite
+	return 0
 }
 
 menu_params() {
@@ -409,6 +459,8 @@ PROJET=""
 SUITE=()
 SANS_ANIM=0
 MENU_UNIQUE=0
+MENU_A_FAIRE=0
+DEPART="$PWD"
 MENU=0
 
 if [ "${1:-}" = debug ]; then
@@ -488,7 +540,9 @@ elif [ -z "$MODULE" ] && [ -t 0 ] && [ -t 1 ]; then
 	premiers_pas
 	MENU_UNIQUE=1
 	export TDF_MENU_UNIQUE=1
-	menu_depart
+	MODULE=libft
+	PROJET=""
+	MENU_A_FAIRE=1
 else
 	detecter
 	if [ -z "$MODULE" ]; then
@@ -621,6 +675,10 @@ trap 'tdf_journal "interrompu (Ctrl+C)"; debug_fermer "interrompu"; exit 130' IN
 trap 'debug_fermer "arrêté"; exit 143' TERM HUP
 
 while :; do
+	if [ "$MENU_A_FAIRE" = 1 ]; then
+		choisir_au_menu || continue
+		MENU_A_FAIRE=0
+	fi
 	rm -f "$DOSSIER/suivant"
 	export TDF_PROJET="$PROJET"
 	tdf_journal "lancement du module $MODULE ${SUITE[*]:-}"
@@ -646,7 +704,7 @@ while :; do
 			printf '\n  %s ' "$(tt "Entrée pour revenir au menu" "Enter to go back to the menu")"
 			read -r r || { debug_fermer "code $code"; exit "$code"; }
 		fi
-		menu_depart
+		MENU_A_FAIRE=1
 		export TDF_NO_UPDATE=1
 		continue
 	fi

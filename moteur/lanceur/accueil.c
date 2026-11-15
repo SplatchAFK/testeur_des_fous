@@ -37,12 +37,21 @@ static void	sur_signal(int s)
 	raise(s);
 }
 
+static int	g_reste = -1;
+
 static int	touche(int ms)
 {
 	fd_set			fs;
 	struct timeval	tv;
 	unsigned char	c[4];
 	int				n;
+
+	if (g_reste >= 0)
+	{
+		n = g_reste;
+		g_reste = -1;
+		return (n);
+	}
 
 	FD_ZERO(&fs);
 	FD_SET(0, &fs);
@@ -293,16 +302,26 @@ static int	boucle(t_acc *a)
 	int		rows;
 	int		pc;
 	int		pr;
+	int		fait;
+	int		r;
 
 	t0 = maintenant();
+	(void)t0;
 	haut = entete_hauteur(a->l1, a->l2, reste(a));
 	dessiner(a, haut);
 	entete_taille(&pc, &pr);
+	fait = 0;
+	r = -1;
 	while (1)
 	{
-		if (haut)
-			entete_dessiner(a->l1, a->l2, maintenant() - t0, haut_ecran(a, haut), reste(a));
-		k = touche(40);
+		if (haut && !fait)
+			entete_dessiner(a->l1, a->l2, -100000, haut_ecran(a, haut), reste(a));
+		fait = 1;
+		k = touche(200);
+		while ((k == 1000 || k == 1001) && (r = touche(0)) == k)
+			a->sel = (a->sel + (k == 1000 ? a->n - 1 : 1)) % a->n;
+		if ((k == 1000 || k == 1001) && r >= 0 && r != k)
+			g_reste = r;
 		entete_taille(&cols, &rows);
 		if (cols != pc || rows != pr)
 		{
@@ -310,6 +329,7 @@ static int	boucle(t_acc *a)
 			pr = rows;
 			haut = entete_hauteur(a->l1, a->l2, reste(a));
 			dessiner(a, haut);
+			fait = 0;
 		}
 		if (k == -1)
 			continue ;
@@ -326,6 +346,7 @@ static int	boucle(t_acc *a)
 		else
 			continue ;
 		dessiner(a, haut);
+		fait = 0;
 	}
 }
 

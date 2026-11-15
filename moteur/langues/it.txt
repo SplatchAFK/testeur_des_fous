@@ -1382,3 +1382,45 @@ Continue|	Continua|
 See the tutorial|	Vedi il tutorial|
 Replay the tutorial|The 6 screens that present the tester	Rivedi il tutorial|Le 6 schermate che presentano il tester
 What's new in version %s|	Novità della versione %s|
+grade	correggere
+reread	rileggere
+where I am	dove sono
+finish	terminare
+help	aiuto
+grade the current exercise	correggere l'esercizio in corso
+where I am, time left	dove sono, tempo rimasto
+reread the subject (sujet en, sujet es... for another language)	rileggere il testo (sujet en, sujet es... per un'altra lingua)
+end the session now	terminare la sessione ora
+this help	questo aiuto
+▲ ▼ pick   Enter: confirm   Esc: skip	▲ ▼ scegli   Invio: conferma   Esc: salta
+The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. For a project stored elsewhere, 'Test another folder' lets you browse your PC with Tab, like in zsh.	Il menu elenca i progetti trovati in questa cartella o accanto al tester. Scegline uno: test delle funzioni, memory leak, Norma, file superflui e audit della moulinette. Per un progetto altrove, « Testa un'altra cartella » ti fa esplorare il PC con Tab, come in zsh.
+TUTORIAL	TUTORIAL
+WHAT'S NEW IN VERSION %s	NOVITÀ DELLA VERSIONE %s
+• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there.	• Un unico menu grafico: bash run.sh o tdf lo apre direttamente, e tutto succede lì.
+• Test another folder: browse your PC with Tab, like in zsh.	• Testa un'altra cartella: esplora il PC con Tab, come in zsh.
+• Clearer Examshell des fous: mistyped a command? The tester suggests the right one.	• Examshell des fous più chiara: comando sbagliato? Il tester propone quello giusto.
+TEST ANOTHER FOLDER	TESTA UN'ALTRA CARTELLA
+Project path:	Percorso del progetto:
+no folder matches	nessuna cartella corrisponde
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back	Tab completa   ▲ ▼ scegli   ▶ apri   ◀ su   Invio conferma   Esc indietro
+this folder does not exist	questa cartella non esiste
+Interface: text mode|Tests only, no story. Enter to switch back to the graphical interface.	Interfaccia: modalità testo|Solo i test, senza storia. Invio per tornare all'interfaccia grafica.
+Interface: graphical|The lore, the cutscenes and the fights. Enter to switch to text mode.	Interfaccia: grafica|Il lore, le cinematiche e i combattimenti. Invio per passare alla modalità testo.
+Install the tdf command|Then you just type 'tdf' in any folder (no sudo).	Installa il comando tdf|Poi scrivi solo « tdf » in qualsiasi cartella (senza sudo).
+Replay the tutorial|The 6 screens that present the tester.	Rivedi il tutorial|Le 6 schermate che presentano il tester.
+What's new in this version|What changed since the last update.	Novità di questa versione|Cosa è cambiato dall'ultimo aggiornamento.
+Test my Libft	Testa la mia Libft
+Test my ft_printf	Testa il mio ft_printf
+Test my get_next_line	Testa il mio get_next_line
+Test another folder|Browse your PC with Tab, like in zsh, and pick the project folder	Testa un'altra cartella|Esplora il PC con Tab, come in zsh, e scegli la cartella del progetto
+Quit|Close the tester. Your progress is already saved.	Esci|Chiudi il tester. I tuoi progressi sono già salvati.
+created and vibe-coded by Splatch	creato e vibe-codato da Splatch
+Libft: %d/43 · boss %d/3 · level %d · %ld Octets	Libft: %d/43 · boss %d/3 · livello %d · %ld Ottetti
+▲ ▼ pick   Enter: open   Esc: quit	▲ ▼ scegli   Invio: apri   Esc: esci
+Options|Language, animations, story, help level, test tools.	Opzioni|Lingua, animazioni, storia, livello di aiuto, strumenti di test.
+%ld ◈ Octets	%ld ◈ Ottetti
+program	programma
+function	funzione
+   %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s liv. %-2d  %s%s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sliv. %-2d%s %s%.38s%s\n
+  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sliv. %-2d%s %s%s%s\n
