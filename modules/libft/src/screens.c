@@ -1362,6 +1362,11 @@ void	screen_rewards(void)
 		cls();
 		snprintf(tmp, sizeof(tmp), L("NIVEAU %d", "LEVEL %d"), level_of(g_save.xp));
 		big_text((term_cols() - big_width(tmp)) / 2, 6, tmp, 1, 3);
+		if ((level_of(g_save.xp) - 1) / 10 != (l0 - 1) / 10)
+		{
+			center(14, rgb(255, 215, 0), L("N O U V E A U   R A N G", "N E W   R A N K"));
+			center(16, theme()->accent2, tdf_rang(level_of(g_save.xp), tmp, sizeof(tmp)));
+		}
 		flush();
 		sleep_ms(anim_ms(1400));
 		cls();
@@ -1480,6 +1485,7 @@ void	screen_profile(void)
 	int		n;
 	int		m;
 	int		o;
+	char	rg[80];
 	char	tmp[200];
 	int		sel;
 	int		top;
@@ -1500,8 +1506,8 @@ void	screen_profile(void)
 		lv = level_of(g_save.xp);
 		o = profile_header(x, 1);
 		center(1 + o, theme()->accent2, L("P R O F I L", "P R O F I L E"));
-		snprintf(tmp, sizeof(tmp), L("%s · niveau %d · %ld XP · %ld ◈", "%s · level %d · %ld XP · %ld ◈"),
-			g_save.login, lv, g_save.xp, g_save.octets);
+		snprintf(tmp, sizeof(tmp), L("%s · niveau %d · %s · %ld XP · %ld ◈", "%s · level %d · %s · %ld XP · %ld ◈"),
+			g_save.login, lv, tdf_rang(lv, rg, sizeof(rg)), g_save.xp, g_save.octets);
 		center(3 + o, pseudo_color(), tmp);
 		if (g_save.bio[0])
 			center(2 + o, theme()->dim, g_save.bio);

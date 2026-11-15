@@ -882,6 +882,50 @@ int	level_of(long xp)
 	return (l);
 }
 
+static const char	*romain(int n, char *b, size_t t)
+{
+	static const int	v[13] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+	static const char	*r[13] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+	size_t				k;
+	int					i;
+
+	k = 0;
+	b[0] = '\0';
+	for (i = 0; i < 13 && n > 0; i++)
+		while (n >= v[i] && k + 3 < t)
+		{
+			k += snprintf(b + k, t - k, "%s", r[i]);
+			n -= v[i];
+		}
+	return (b);
+}
+
+const char	*tdf_rang(int lv, char *b, size_t n)
+{
+	const char	*noms[10];
+	char		r[24];
+	int			i;
+
+	noms[0] = L("Apprenti de la Tour", "Tower Apprentice");
+	noms[1] = L("Gardien des Fondations", "Keeper of the Foundations");
+	noms[2] = L("Forgeron des Formats", "Smith of Formats");
+	noms[3] = L("Porteur de Lanterne", "Lantern Bearer");
+	noms[4] = L("Plongeur du Puits", "Diver of the Well");
+	noms[5] = L("Trieur des Deux Piles", "Sorter of the Two Stacks");
+	noms[6] = L("Veilleur du Silence", "Watcher of Silence");
+	noms[7] = L("Ouvreur de Portes", "Opener of Doors");
+	noms[8] = L("Horloger du Mécanisme", "Clockmaker of the Mechanism");
+	noms[9] = L("Architecte de la Cité", "Architect of the City");
+	i = lv <= 1 ? 0 : (lv - 1) / 10;
+	if (i < 10)
+		snprintf(b, n, "%s", noms[i]);
+	else if (i == 10)
+		snprintf(b, n, "%s", L("Légende de la Cité", "Legend of the City"));
+	else
+		snprintf(b, n, "%s %s", L("Légende de la Cité", "Legend of the City"), romain(i - 9, r, sizeof(r)));
+	return (b);
+}
+
 int	ach_has(int i)
 {
 	return (g_save.ach[i] == '1');

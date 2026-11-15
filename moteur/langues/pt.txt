@@ -1625,3 +1625,17 @@ Fight · the Link Hydra|The fight, with the results of your last attempt.	Combat
 Finale · Libft validated|Moulinette is free.	Final · Libft validada|A Moulinette está livre.
 LIBFT · THE TOWER	LIBFT · A TORRE
 The fights show up after a test of your Libft.	Os combates aparecem depois de um teste da tua Libft.
+N E W   R A N K	N O V A   P A T E N T E
+%s · level %d · %s · %ld XP · %ld ◈	%s · nível %d · %s · %ld XP · %ld ◈
+Tower Apprentice	Aprendiz da Torre
+Keeper of the Foundations	Guardião das Fundações
+Smith of Formats	Ferreiro dos Formatos
+Lantern Bearer	Portador da Lanterna
+Diver of the Well	Mergulhador do Poço
+Sorter of the Two Stacks	Ordenador das Duas Pilhas
+Watcher of Silence	Vigia do Silêncio
+Opener of Doors	Abridor de Portas
+Clockmaker of the Mechanism	Relojoeiro do Mecanismo
+Architect of the City	Arquiteto da Cidade
+Legend of the City	Lenda da Cidade
+Rank: %s · next rank at level %d	Patente: %s · próxima patente no nível %d

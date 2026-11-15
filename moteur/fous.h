@@ -674,6 +674,7 @@ int				item_owned(int i);
 void			item_own(int i);
 int				level_of(long xp);
 long			xp_for(int level);
+const char		*tdf_rang(int lv, char *b, size_t n);
 int				ach_has(int i);
 int				ach_give(int i);
 void			cfg_export(void);

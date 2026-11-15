@@ -44,6 +44,12 @@ Le numéro de version est dans `moteur/version.h`.
 - holygraph : un projet réussi une fois sans échec reste validé pour toujours ; les modules après Programming Fundamentals sont grisés en attendant leurs testeurs ;
 - banque : le nombre d'exercices et de réussites s'affiche pour chaque catégorie.
 
+### Niveaux et rangs
+
+- le niveau monte sans limite avec l'XP (tests Libft et ft_printf, banque, exam) ;
+- un nouveau rang tous les 10 niveaux, avec des noms tirés de la Cité : Apprenti de la Tour, Gardien des Fondations, Forgeron des Formats, Porteur de Lanterne, Plongeur du Puits, Trieur des Deux Piles, Veilleur du Silence, Ouvreur de Portes, Horloger du Mécanisme, Architecte de la Cité, puis Légende de la Cité (II, III…) ;
+- le rang s'affiche sous ton chevalier dans le menu, sur le profil et dans les Stats (avec le niveau du prochain rang) ; un écran « Nouveau rang » apparaît quand tu en changes.
+
 ### Stats
 
 - les pages prennent toute la largeur du terminal ;

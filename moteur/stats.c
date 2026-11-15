@@ -513,6 +513,9 @@ static int	draw_progress(int x, int y)
 	snprintf(tmp, sizeof(tmp), L("Niveau %d · %ld XP · %ld Octets", "Level %d · %ld XP · %ld Octets"),
 		level_of(g_save.xp), g_save.xp, g_save.octets);
 	text_at(x, y++, theme()->text, tmp);
+	snprintf(tmp, sizeof(tmp), L("Rang : %s · prochain rang au niveau %d", "Rank: %s · next rank at level %d"),
+		tdf_rang(level_of(g_save.xp), v, sizeof(v)), (level_of(g_save.xp) - 1) / 10 * 10 + 11);
+	text_at(x, y++, theme()->accent2, tmp);
 	n = ones(g_save.cleared);
 	done += n;
 	line_bar(x, y++, L("Libft · fonctions", "Libft · functions"), n, NFN);

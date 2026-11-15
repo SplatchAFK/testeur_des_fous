@@ -1625,3 +1625,17 @@ Fight · the Link Hydra|The fight, with the results of your last attempt.	Бой
 Finale · Libft validated|Moulinette is free.	Финал · Libft пройдена|Мулинетт свободна.
 LIBFT · THE TOWER	LIBFT · БАШНЯ
 The fights show up after a test of your Libft.	Бои появятся после проверки твоей Libft.
+N E W   R A N K	Н О В Ы Й   Р А Н Г
+%s · level %d · %s · %ld XP · %ld ◈	%s · уровень %d · %s · %ld XP · %ld ◈
+Tower Apprentice	Ученик Башни
+Keeper of the Foundations	Хранитель Основ
+Smith of Formats	Кузнец Форматов
+Lantern Bearer	Носитель Фонаря
+Diver of the Well	Ныряльщик Колодца
+Sorter of the Two Stacks	Сортировщик Двух Стопок
+Watcher of Silence	Страж Тишины
+Opener of Doors	Открыватель Дверей
+Clockmaker of the Mechanism	Часовщик Механизма
+Architect of the City	Архитектор Города
+Legend of the City	Легенда Города
+Rank: %s · next rank at level %d	Ранг: %s · следующий ранг на уровне %d

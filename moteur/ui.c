@@ -30,8 +30,9 @@ void	avatar_panel(int x, int y, const t_look *lk, int title, long t)
 	text_at(x, y + 18, theme()->text, tmp);
 	bar(x + 10, y + 18, 18, (g_save.xp - xp_for(lv)) / (double)(xp_for(lv + 1) - xp_for(lv)),
 		theme()->accent, theme()->accent2);
-	snprintf(tmp, sizeof(tmp), L("%ld ◈ Octets", "%ld ◈ Octets"), g_save.octets);
-	text_at(x, y + 19, rgb(255, 215, 0), tmp);
+	snprintf(tmp, sizeof(tmp), "%ld ◈", g_save.octets);
+	text_at(x + 28 - ulen(tmp), y + 16, rgb(255, 215, 0), tmp);
+	text_clip(x, y + 19, theme()->accent2, tdf_rang(lv, tn, sizeof(tn)), 30);
 }
 
 #ifndef TDF_PRINTF

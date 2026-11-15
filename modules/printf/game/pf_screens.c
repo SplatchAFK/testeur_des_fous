@@ -684,6 +684,7 @@ void	pf_rewards(void)
 void	pf_profile(void)
 {
 	char	tmp[220];
+	char	rg[80];
 	int		x;
 	int		y;
 	int		i;
@@ -701,8 +702,8 @@ void	pf_profile(void)
 	center(1 + o, theme()->accent2, L("P R O F I L", "P R O F I L E"));
 	if (g_save.bio[0])
 		center(2 + o, theme()->dim, g_save.bio);
-	snprintf(tmp, sizeof(tmp), L("%s · niveau %d · %ld XP · %ld ◈", "%s · level %d · %ld XP · %ld ◈"),
-		g_save.login, lv, g_save.xp, g_save.octets);
+	snprintf(tmp, sizeof(tmp), L("%s · niveau %d · %s · %ld XP · %ld ◈", "%s · level %d · %s · %ld XP · %ld ◈"),
+		g_save.login, lv, tdf_rang(lv, rg, sizeof(rg)), g_save.xp, g_save.octets);
 	center(3 + o, pseudo_color(), tmp);
 	bar(x + 16, 4 + o, 48, (g_save.xp - xp_for(lv)) / (double)(xp_for(lv + 1) - xp_for(lv)),
 		theme()->accent, theme()->accent2);

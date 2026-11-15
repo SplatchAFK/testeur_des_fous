@@ -1625,3 +1625,17 @@ Fight · the Link Hydra|The fight, with the results of your last attempt.	Dövü
 Finale · Libft validated|Moulinette is free.	Final · Libft onaylandı|Moulinette özgür.
 LIBFT · THE TOWER	LIBFT · KULE
 The fights show up after a test of your Libft.	Dövüşler Libft'in test edildikten sonra görünür.
+N E W   R A N K	Y E N İ   R Ü T B E
+%s · level %d · %s · %ld XP · %ld ◈	%s · seviye %d · %s · %ld XP · %ld ◈
+Tower Apprentice	Kule Çırağı
+Keeper of the Foundations	Temellerin Bekçisi
+Smith of Formats	Biçimlerin Demircisi
+Lantern Bearer	Fener Taşıyıcı
+Diver of the Well	Kuyu Dalgıcı
+Sorter of the Two Stacks	İki Yığının Sıralayıcısı
+Watcher of Silence	Sessizliğin Nöbetçisi
+Opener of Doors	Kapıların Açıcısı
+Clockmaker of the Mechanism	Mekanizmanın Saatçisi
+Architect of the City	Şehrin Mimarı
+Legend of the City	Şehrin Efsanesi
+Rank: %s · next rank at level %d	Rütbe: %s · sonraki rütbe %d. seviyede
