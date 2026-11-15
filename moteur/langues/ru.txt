@@ -1424,3 +1424,37 @@ function	функция
    %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s ур. %-2d  %s%s%s\n
   %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sур. %-2d%s %s%.38s%s\n
   %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sур. %-2d%s %s%s%s\n
+Exercise bank · last grading	Банк упражнений · последняя проверка
+Last attempt	Последняя попытка
+Test my project	Проверить мой проект
+tdf command	Команда tdf
+Test report	Отчёт о тестах
+Libft · the Tower of Foundations|The three Libft wardens and their cutscenes.	Libft · Башня Основ|Три стража Libft и их ролики.
+ft_printf · the Foundry of Formats|The 9 chains, ft_printf the big boss, the victory and the secret ending.	ft_printf · Литейная Форматов|9 цепей, главный босс ft_printf, победа и тайный финал.
+get_next_line · the Well|The descent into the Well, one ring per test of your last run.	get_next_line · Колодец|Спуск в Колодец, одно кольцо на каждый тест последнего запуска.
+Exam · the Trial of Silence|The trial room and its doors.	Exam · Испытание Тишины|Зал испытания и его двери.
+The ending|The last mechanism of the City.	Финал|Последний механизм Города.
+folder you are in	папка, где ты сейчас
+TEST MY PROJECT	ПРОВЕРИТЬ МОЙ ПРОЕКТ
+Project folder (. = where you are, ~ or / to browse, Tab completes):	Папка проекта (. = где ты, ~ или / для обзора, Tab дополняет):
+Projects found:	Найденные проекты:
+Your terminal is %d × %d. Make it full screen (F11 or double-click the title bar) before you go on: the menu, the tests and the cutscenes display better, with no cut text. Best: at least 120 × 38.	Твой терминал %d × %d. Разверни его на весь экран (F11 или двойной щелчок по заголовку), прежде чем продолжить: меню, тесты и ролики отображаются лучше, без обрезанного текста. Идеально: не меньше 120 × 38.
+Done, continue|	Готово, продолжить|
+TIP	СОВЕТ
+report not found	отчёт не найден
+▲ ▼ scroll   ◀ ▶ page   Esc or Enter: back to the menu	▲ ▼ прокрутка   ◀ ▶ страница   Esc или Enter: в меню
+Your work: banque_travail/%s/%s/   (write your code in another terminal)	Твоя работа: banque_travail/%s/%s/   (пиши код в другом терминале)
+◀ ▶ pick a button   ▲ ▼ scroll the subject   Enter confirm   Esc back	◀ ▶ выбрать кнопку   ▲ ▼ прокрутить задание   Enter подтвердить   Esc назад
+Grading...	Проверка...
+Loading the bank...	Загрузка банка...
+EXERCISE BANK	БАНК УПРАЖНЕНИЙ
+%d/%d passed	%d/%d пройдено
+lvl	ур.
+▲ ▼ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   Esc back	▲ ▼ выбор   ◀ ▶ Все, Exam, Libft, printf   Enter открыть   Esc назад
+Test my project|Pick the folder of your Libft, ft_printf or get_next_line. '.': the folder you are in.	Проверить мой проект|Выбери папку своей Libft, ft_printf или get_next_line. « . »: папка, где ты сейчас.
+Review the last attempt|Every test of your last run, with why it passes or not	Пересмотреть последнюю попытку|Все тесты последнего запуска, с причиной успеха или провала
+• Test my project: '.' for the folder you are in, or browse your PC with Tab, like in zsh.	• Проверить мой проект: « . » для текущей папки или ходи по ПК с Tab, как в zsh.
+• After a test, every result shows up directly; 'Review the last attempt' reopens them from the menu.	• После теста все результаты показываются сразу; « Пересмотреть последнюю попытку » открывает их из меню.
+• Graphical exercise bank: tabs, subject, grading in one click.	• Графический банк упражнений: вкладки, задание, проверка в один клик.
+• Lore: every cutscene, Libft, ft_printf, get_next_line and the exam.	• Лор: все ролики, Libft, ft_printf, get_next_line и экзамен.
+▲ ▼ scroll   ◀ ▶ page   Esc or Enter: close	▲ ▼ прокрутка   ◀ ▶ страница   Esc или Enter: закрыть

@@ -1424,3 +1424,37 @@ function	función
    %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s niv. %-2d  %s%s%s\n
   %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%.38s%s\n
   %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%s%s\n
+Exercise bank · last grading	Banco de ejercicios · última corrección
+Last attempt	Último intento
+Test my project	Probar mi proyecto
+tdf command	Comando tdf
+Test report	Informe de las pruebas
+Libft · the Tower of Foundations|The three Libft wardens and their cutscenes.	Libft · la Torre de los Cimientos|Los tres guardianes de la Libft y sus cinemáticas.
+ft_printf · the Foundry of Formats|The 9 chains, ft_printf the big boss, the victory and the secret ending.	ft_printf · la Fundición de los Formatos|Las 9 cadenas, ft_printf el gran jefe, la victoria y el final secreto.
+get_next_line · the Well|The descent into the Well, one ring per test of your last run.	get_next_line · el Pozo|El descenso al Pozo, un anillo por prueba de tu último paso.
+Exam · the Trial of Silence|The trial room and its doors.	Exam · la Prueba del Silencio|La sala de la prueba y sus puertas.
+The ending|The last mechanism of the City.	El final|El último mecanismo de la Ciudad.
+folder you are in	carpeta donde estás
+TEST MY PROJECT	PROBAR MI PROYECTO
+Project folder (. = where you are, ~ or / to browse, Tab completes):	Carpeta del proyecto (. = donde estás, ~ o / para recorrer, Tab completa):
+Projects found:	Proyectos encontrados:
+Your terminal is %d × %d. Make it full screen (F11 or double-click the title bar) before you go on: the menu, the tests and the cutscenes display better, with no cut text. Best: at least 120 × 38.	Tu terminal mide %d × %d. Ponlo en pantalla completa (F11 o doble clic en la barra de título) antes de seguir: el menú, las pruebas y las cinemáticas se ven mejor, sin texto cortado. Ideal: al menos 120 × 38.
+Done, continue|	Hecho, continuar|
+TIP	CONSEJO
+report not found	informe no encontrado
+▲ ▼ scroll   ◀ ▶ page   Esc or Enter: back to the menu	▲ ▼ desplazar   ◀ ▶ página   Esc o Intro: volver al menú
+Your work: banque_travail/%s/%s/   (write your code in another terminal)	Tu entrega: banque_travail/%s/%s/   (escribe tu código en otra terminal)
+◀ ▶ pick a button   ▲ ▼ scroll the subject   Enter confirm   Esc back	◀ ▶ elegir un botón   ▲ ▼ desplazar el enunciado   Intro confirmar   Esc volver
+Grading...	Corrigiendo...
+Loading the bank...	Cargando el banco...
+EXERCISE BANK	BANCO DE EJERCICIOS
+%d/%d passed	%d/%d superados
+lvl	niv.
+▲ ▼ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   Esc back	▲ ▼ elegir   ◀ ▶ Todo, Exam, Libft, printf   Intro abrir   Esc volver
+Test my project|Pick the folder of your Libft, ft_printf or get_next_line. '.': the folder you are in.	Probar mi proyecto|Elige la carpeta de tu Libft, ft_printf o get_next_line. « . »: la carpeta donde estás.
+Review the last attempt|Every test of your last run, with why it passes or not	Revisar el último intento|Todas las pruebas de tu último paso, con por qué pasan o no
+• Test my project: '.' for the folder you are in, or browse your PC with Tab, like in zsh.	• Probar mi proyecto: « . » para la carpeta donde estás, o recorre tu PC con Tab, como en zsh.
+• After a test, every result shows up directly; 'Review the last attempt' reopens them from the menu.	• Tras una prueba, todos los resultados aparecen directamente; « Revisar el último intento » los reabre desde el menú.
+• Graphical exercise bank: tabs, subject, grading in one click.	• Banco de ejercicios gráfico: pestañas, enunciado, corrección en un clic.
+• Lore: every cutscene, Libft, ft_printf, get_next_line and the exam.	• Lore: todas las cinemáticas, Libft, ft_printf, get_next_line y el examen.
+▲ ▼ scroll   ◀ ▶ page   Esc or Enter: close	▲ ▼ desplazar   ◀ ▶ página   Esc o Intro: cerrar

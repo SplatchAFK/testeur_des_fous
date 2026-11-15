@@ -36,12 +36,10 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 	int		i;
 	int		x;
 	int		y;
-	long	t;
 
 	cls();
 	while (1)
 	{
-		t = now_ms();
 		x = (term_cols() - 60) / 2;
 		if (x < 0)
 			x = 0;
@@ -53,7 +51,7 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 			at(x, 5 + i * 2);
 			if (i == *sel)
 			{
-				bgc(mix(theme()->bg, theme()->accent, 0.18 + 0.08 * sin(t / 150.0)));
+				bgc(mix(theme()->bg, theme()->accent, 0.22));
 				fg(theme()->accent2);
 			}
 			else
@@ -212,21 +210,44 @@ void	tdf_menu_chevalier(void (*profile)(void))
 void	tdf_menu_lore(void (*boss)(void))
 {
 	static int	sel;
-	const char	*items[2];
+	const char	*items[7];
+	const char	*act[7];
+	int			n;
 	int			i;
 
-	items[0] = L("Boss et cinématiques|Revois les combats et les cinématiques déjà débloqués.", "Bosses and cutscenes|Replay the fights and cutscenes you unlocked.");
-	items[1] = L("Carte de la Cité|Tous les lieux du lore, allumés selon ta progression. Entrée pour t'approcher.",
+	n = 0;
+	act[n] = "libft";
+	items[n++] = L("Libft · la Tour des Fondations|Les trois gardiens de la Libft et leurs cinématiques.", "Libft · the Tower of Foundations|The three Libft wardens and their cutscenes.");
+	if (tdf_menu_unique())
+	{
+		act[n] = "lore_printf";
+		items[n++] = L("ft_printf · la Fonderie des Formats|Les 9 chaînes, ft_printf le big boss, la victoire et la fin secrète.", "ft_printf · the Foundry of Formats|The 9 chains, ft_printf the big boss, the victory and the secret ending.");
+		act[n] = "lore_gnl";
+		items[n++] = L("get_next_line · le Puits|La descente du Puits, un anneau par test de ton dernier passage.", "get_next_line · the Well|The descent into the Well, one ring per test of your last run.");
+		act[n] = "lore_exam";
+		items[n++] = L("Exam · l'Épreuve du Silence|La salle de l'épreuve et ses portes.", "Exam · the Trial of Silence|The trial room and its doors.");
+		act[n] = "lore_fin";
+		items[n++] = L("La fin|Le dernier mécanisme de la Cité.", "The ending|The last mechanism of the City.");
+	}
+	act[n] = "carte";
+	items[n++] = L("Carte de la Cité|Tous les lieux du lore, allumés selon ta progression. Entrée pour t'approcher.",
 			"Map of the City|Every place of the lore, lit by your progress. Enter to go closer.");
 	while (1)
 	{
-		i = tdf_list_menu(L("LORE", "LORE"), items, 2, &sel, NULL);
+		if (sel >= n)
+			sel = 0;
+		i = tdf_list_menu(L("LORE", "LORE"), items, n, &sel, NULL);
 		if (i < 0)
 			return ;
-		if (i == 0)
+		if (!strcmp(act[i], "libft"))
 			boss();
-		else
+		else if (!strcmp(act[i], "carte"))
 			tdf_carte();
+		else
+		{
+			tdf_sortie(act[i], NULL);
+			return ;
+		}
 	}
 }
 
@@ -295,12 +316,10 @@ static int	page(const char *titre, const char *texte, const char **items, int n,
 	int		x;
 	int		y;
 	int		w;
-	long	t;
 
 	cls();
 	while (1)
 	{
-		t = now_ms();
 		w = term_cols() - 8 < 72 ? term_cols() - 8 : 72;
 		x = (term_cols() - w) / 2;
 		if (x < 1)
@@ -314,7 +333,7 @@ static int	page(const char *titre, const char *texte, const char **items, int n,
 			at(x, y + i);
 			if (i == *sel)
 			{
-				bgc(mix(theme()->bg, theme()->accent, 0.18 + 0.08 * sin(t / 150.0)));
+				bgc(mix(theme()->bg, theme()->accent, 0.22));
 				fg(theme()->accent2);
 			}
 			else
@@ -397,13 +416,14 @@ void	tdf_nouveautes(void)
 	int			sel;
 
 	snprintf(titre, sizeof(titre), L("NOUVEAUTÉS DE LA VERSION %s", "WHAT'S NEW IN VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s",
+	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s\n%s",
 		L("• Un seul menu graphique : bash run.sh ou tdf l'ouvre directement, et tout s'y passe.", "• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there."),
-		L("• Tester un autre dossier : parcours ton PC avec Tab, comme dans zsh.", "• Test another folder: browse your PC with Tab, like in zsh."),
-		L("• Banque d'exercices aux flèches : onglets, sujet, correction en un clic.", "• Exercise bank with the arrows: tabs, subject, grading in one click."),
+		L("• Tester mon projet : « . » pour le dossier où tu es, ou parcours ton PC avec Tab, comme dans zsh.", "• Test my project: '.' for the folder you are in, or browse your PC with Tab, like in zsh."),
+		L("• Après un test, tous les résultats s'affichent directement ; « Revoir la dernière tentative » les rouvre depuis le menu.", "• After a test, every result shows up directly; 'Review the last attempt' reopens them from the menu."),
+		L("• Banque d'exercices graphique : onglets, sujet, correction en un clic.", "• Graphical exercise bank: tabs, subject, grading in one click."),
 		L("• Sujets de l'exam et de la banque en 8 langues.", "• Exam and bank subjects in 8 languages."),
-		L("• Examshell des fous plus clair : commande mal tapée ? Le testeur propose la bonne.", "• Clearer Examshell des fous: mistyped a command? The tester suggests the right one."),
-		L("• Un tuto, à revoir depuis Paramètres.", "• A tutorial, to replay from Settings."));
+		L("• Lore : toutes les cinématiques, Libft, ft_printf, get_next_line et l'exam.", "• Lore: every cutscene, Libft, ft_printf, get_next_line and the exam."),
+		L("• Examshell des fous plus clair : commande mal tapée ? Le testeur propose la bonne.", "• Clearer Examshell des fous: mistyped a command? The tester suggests the right one."));
 	items[0] = L("Continuer|", "Continue|");
 	items[1] = L("Voir le tuto|", "See the tutorial|");
 	sel = 0;
@@ -455,7 +475,8 @@ static int	tdf_installee(void)
 typedef struct s_cand
 {
 	char	nom[256];
-	char	tag[16];
+	char	tag[40];
+	char	chemin[700];
 }	t_cand;
 
 static int	cand_cmp(const void *a, const void *b)
@@ -465,10 +486,15 @@ static int	cand_cmp(const void *a, const void *b)
 
 static void	developper(const char *saisie, char *out, size_t n)
 {
+	const char	*d;
+
+	d = getenv("TDF_DEPART") ? getenv("TDF_DEPART") : ".";
 	if (saisie[0] == '~' && getenv("HOME"))
 		snprintf(out, n, "%s%s", getenv("HOME"), saisie + 1);
-	else
+	else if (saisie[0] == '/')
 		snprintf(out, n, "%s", saisie);
+	else
+		snprintf(out, n, "%s/%s", d, saisie);
 }
 
 static void	couper(const char *saisie, char *dir, size_t n, const char **pre)
@@ -489,7 +515,7 @@ static void	couper(const char *saisie, char *dir, size_t n, const char **pre)
 
 static void	etiquette(const char *dir, const char *nom, char *tag, size_t n)
 {
-	static const char	*f[][2] = {{"ft_printf.h", "ft_printf"}, {"get_next_line.h", "gnl"},
+	static const char	*f[][2] = {{"ft_printf.h", "ft_printf"}, {"get_next_line.h", "get_next_line"},
 		{"libft.h", "libft"}};
 	char				p[1400];
 	int					i;
@@ -506,6 +532,50 @@ static void	etiquette(const char *dir, const char *nom, char *tag, size_t n)
 	}
 }
 
+static void	court(const char *p, char *b, size_t n)
+{
+	const char	*h;
+
+	h = getenv("HOME");
+	if (h && *h && !strncmp(p, h, strlen(h)))
+		snprintf(b, n, "~%s", p + strlen(h));
+	else
+		snprintf(b, n, "%s", p);
+}
+
+static int	raccourcis(t_cand *c, int max)
+{
+	const char	*e;
+	const char	*fin;
+	char		ligne[700];
+	char		*tab;
+	int			n;
+
+	n = 0;
+	snprintf(c[n].chemin, sizeof(c[n].chemin), "%s", getenv("TDF_DEPART") ? getenv("TDF_DEPART") : ".");
+	court(c[n].chemin, ligne, sizeof(ligne));
+	snprintf(c[n].nom, sizeof(c[n].nom), ".  %s", ligne);
+	snprintf(c[n].tag, sizeof(c[n].tag), "%s", L("dossier où tu es", "folder you are in"));
+	n++;
+	e = getenv("TDF_PROJETS");
+	while (e && *e && n < max)
+	{
+		fin = strchr(e, '\n');
+		snprintf(ligne, sizeof(ligne), "%.*s", (int)(fin ? fin - e : (long)strlen(e)), e);
+		e = fin ? fin + 1 : e + strlen(e);
+		tab = strchr(ligne, '\t');
+		if (!tab)
+			continue ;
+		*tab = '\0';
+		snprintf(c[n].chemin, sizeof(c[n].chemin), "%s", tab + 1);
+		court(tab + 1, c[n].nom, sizeof(c[n].nom));
+		snprintf(c[n].tag, sizeof(c[n].tag), "%s", !strcmp(ligne, "printf") ? "ft_printf"
+			: !strcmp(ligne, "gnl") ? "get_next_line" : "libft");
+		n++;
+	}
+	return (n);
+}
+
 static int	lister(const char *saisie, t_cand *c, int max)
 {
 	DIR				*d;
@@ -516,6 +586,8 @@ static int	lister(const char *saisie, t_cand *c, int max)
 	const char		*pre;
 	int				n;
 
+	if (!saisie[0])
+		return (raccourcis(c, max));
 	couper(saisie, dir, sizeof(dir), &pre);
 	d = opendir(dir);
 	n = 0;
@@ -531,6 +603,7 @@ static int	lister(const char *saisie, t_cand *c, int max)
 		if (stat(p, &st) != 0 || !S_ISDIR(st.st_mode))
 			continue ;
 		snprintf(c[n].nom, sizeof(c[n].nom), "%s", e->d_name);
+		c[n].chemin[0] = '\0';
 		etiquette(dir, e->d_name, c[n].tag, sizeof(c[n].tag));
 		n++;
 	}
@@ -568,13 +641,24 @@ static void	prefixe_commun(char *saisie, size_t sz, t_cand *c, int n)
 	completer(saisie, sz, p, n == 1);
 }
 
+static int	valider(const char *chemin, char *out, size_t n)
+{
+	char		vrai[PATH_MAX];
+	struct stat	st;
+
+	if (stat(chemin, &st) == 0 && S_ISDIR(st.st_mode) && realpath(chemin, vrai))
+	{
+		snprintf(out, n, "%s", vrai);
+		return (1);
+	}
+	return (0);
+}
+
 int	tdf_choisir_dossier(char *out, size_t n)
 {
 	static t_cand	c[400];
 	char			saisie[1024];
-	char			vrai[PATH_MAX];
 	char			tmp[1100];
-	struct stat		st;
 	int				nc;
 	int				sel;
 	int				top;
@@ -584,13 +668,8 @@ int	tdf_choisir_dossier(char *out, size_t n)
 	int				h;
 	const char		*msg;
 
-	if (getenv("TDF_DEPART") && getenv("HOME") && !strncmp(getenv("TDF_DEPART"), getenv("HOME"), strlen(getenv("HOME"))))
-		snprintf(saisie, sizeof(saisie), "~%s/", getenv("TDF_DEPART") + strlen(getenv("HOME")));
-	else
-		snprintf(saisie, sizeof(saisie), "%s/", getenv("TDF_DEPART") ? getenv("TDF_DEPART") : "~");
-	if (!strcmp(saisie, "~//"))
-		snprintf(saisie, sizeof(saisie), "~/");
-	sel = -1;
+	saisie[0] = '\0';
+	sel = 0;
 	top = 0;
 	msg = NULL;
 	cls();
@@ -599,28 +678,33 @@ int	tdf_choisir_dossier(char *out, size_t n)
 		nc = lister(saisie, c, 400);
 		if (sel >= nc)
 			sel = nc - 1;
-		h = term_rows() - 12;
+		h = term_rows() - 13;
 		if (h < 3)
 			h = 3;
 		if (sel >= 0 && sel < top)
 			top = sel;
 		if (sel >= top + h)
 			top = sel - h + 1;
-		x = 4;
+		x = (term_cols() - 76) / 2;
+		if (x < 2)
+			x = 2;
 		bgc(theme()->bg);
 		frame();
-		center(2, theme()->accent2, L("TESTER UN AUTRE DOSSIER", "TEST ANOTHER FOLDER"));
-		text_at(x, 4, theme()->dim, L("Chemin du projet :", "Project path:"));
+		center(2, theme()->accent2, L("TESTER MON PROJET", "TEST MY PROJECT"));
+		text_at(x, 4, theme()->dim, L("Dossier du projet (. = là où tu es, ~ ou / pour parcourir, Tab complète) :",
+				"Project folder (. = where you are, ~ or / to browse, Tab completes):"));
 		at(x, 5);
 		bgc(mix(theme()->bg, theme()->accent, 0.15));
 		fg(theme()->text);
-		outf(" %s%s ", saisie, (now_ms() / 400) % 2 ? "▏" : " ");
+		outf(" %s▏ ", saisie);
 		bgc(theme()->bg);
 		outf("%*s", term_cols() - x - ulen(saisie) - 6 > 0 ? term_cols() - x - ulen(saisie) - 6 : 0, "");
-		fill(x, 7, term_cols() - x - 2, h + 1, theme()->bg);
+		fill(x, 7, term_cols() - x - 2, h + 2, theme()->bg);
+		if (!saisie[0])
+			text_at(x, 7, theme()->dim, L("Projets trouvés :", "Projects found:"));
 		for (i = top; i < nc && i < top + h; i++)
 		{
-			at(x, 7 + i - top);
+			at(x, 8 + i - top);
 			if (i == sel)
 			{
 				bgc(mix(theme()->bg, theme()->accent, 0.25));
@@ -628,26 +712,26 @@ int	tdf_choisir_dossier(char *out, size_t n)
 			}
 			else
 				fg(c[i].tag[0] ? theme()->accent : theme()->text);
-			outf(" %s %s/ ", i == sel ? "▶" : " ", c[i].nom);
+			outf(" %s %s%s ", i == sel ? "▶" : " ", c[i].nom, c[i].chemin[0] ? "" : "/");
 			bgc(theme()->bg);
 			if (c[i].tag[0])
-				text_at(x + ulen(c[i].nom) + 7, 7 + i - top, theme()->accent2, c[i].tag);
+				text_at(x + ulen(c[i].nom) + 7, 8 + i - top, theme()->accent2, c[i].tag);
 		}
 		if (!nc)
-			text_at(x, 7, theme()->dim, L("aucun dossier ne correspond", "no folder matches"));
+			text_at(x, 8, theme()->dim, L("aucun dossier ne correspond", "no folder matches"));
 		if (msg)
 			text_at(x, term_rows() - 3, rgb(255, 120, 120), msg);
 		foot_line(x, L("Tab compléter   ▲ ▼ choisir   ▶ ouvrir   ◀ remonter   Entrée valider   Échap retour",
 				"Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back"));
 		flush();
-		k = key_read(40);
+		k = key_read(200);
 		if (k < 0)
 			continue ;
 		if (k != 9 && k != 1000 && k != 1001)
 			msg = NULL;
 		if (k == 27 || k == 3)
 			return (cls(), 0);
-		if (k == 9 && nc && sel >= 0)
+		if (k == 9 && nc && (sel >= 0 || !saisie[0]))
 			sel = (sel + 1) % nc;
 		else if (k == 9 && nc)
 		{
@@ -660,45 +744,46 @@ int	tdf_choisir_dossier(char *out, size_t n)
 			sel = sel <= 0 ? nc - 1 : sel - 1;
 		else if (k == 1001 && nc)
 			sel = (sel + 1) % nc;
+		else if ((k == 1002 || k == '\r' || k == '\n') && sel >= 0 && c[sel].chemin[0])
+		{
+			if (valider(c[sel].chemin, out, n))
+				return (cls(), 1);
+			msg = L("ce dossier n'existe pas", "this folder does not exist");
+		}
 		else if (k == 1002 && sel >= 0)
 		{
 			completer(saisie, sizeof(saisie), c[sel].nom, 1);
 			sel = -1;
 			top = 0;
 		}
-		else if (k == 1003)
+		else if (k == 1003 && saisie[0])
 		{
 			i = (int)strlen(saisie);
 			if (i > 1 && saisie[i - 1] == '/')
 				saisie[--i] = '\0';
 			while (i > 0 && saisie[i - 1] != '/')
 				saisie[--i] = '\0';
-			if (!saisie[0])
-				snprintf(saisie, sizeof(saisie), "/");
-			sel = -1;
+			sel = saisie[0] ? -1 : 0;
 			top = 0;
 		}
 		else if (k == 127 || k == 8)
 		{
 			if (saisie[0])
 				saisie[strlen(saisie) - 1] = '\0';
-			sel = -1;
+			sel = saisie[0] ? -1 : 0;
 		}
 		else if (k == '\r' || k == '\n')
 		{
-			if (sel >= 0)
+			if (sel >= 0 && saisie[0])
 			{
 				completer(saisie, sizeof(saisie), c[sel].nom, 1);
 				sel = -1;
 				top = 0;
 				continue ;
 			}
-			developper(saisie, tmp, sizeof(tmp));
-			if (stat(tmp, &st) == 0 && S_ISDIR(st.st_mode) && realpath(tmp, vrai))
-			{
-				snprintf(out, n, "%s", vrai);
+			developper(saisie[0] ? saisie : ".", tmp, sizeof(tmp));
+			if (valider(tmp, out, n))
 				return (cls(), 1);
-			}
 			msg = L("ce dossier n'existe pas", "this folder does not exist");
 		}
 		else if (k >= 32 && k < 127 && strlen(saisie) + 2 < sizeof(saisie))
@@ -708,6 +793,153 @@ int	tdf_choisir_dossier(char *out, size_t n)
 			sel = -1;
 			top = 0;
 		}
+	}
+}
+
+int	tdf_derniere_existe(void)
+{
+	char	path[700];
+
+	snprintf(path, sizeof(path), "%s/derniere/module", g_savedir);
+	return (access(path, R_OK) == 0);
+}
+
+void	tdf_derniere_ecrire(const char *module, const char *fichier)
+{
+	char	path[800];
+	char	buf[4096];
+	FILE	*in;
+	FILE	*o;
+	size_t	r;
+
+	snprintf(path, sizeof(path), "%s/derniere", g_savedir);
+	mkdir(path, 0755);
+	if (fichier)
+	{
+		snprintf(path, sizeof(path), "%s/derniere/%s.res", g_savedir, module);
+		in = fopen(fichier, "r");
+		o = in ? fopen(path, "w") : NULL;
+		while (in && o && (r = fread(buf, 1, sizeof(buf), in)) > 0)
+			fwrite(buf, 1, r, o);
+		if (in)
+			fclose(in);
+		if (o)
+			fclose(o);
+	}
+	snprintf(path, sizeof(path), "%s/derniere/module", g_savedir);
+	o = fopen(path, "w");
+	if (o)
+	{
+		fprintf(o, "%s\n", module);
+		fclose(o);
+	}
+}
+
+void	tdf_conseil_plein_ecran(void)
+{
+	const char	*items[1];
+	char		texte[600];
+	int			sel;
+
+	if (term_cols() >= 120 && term_rows() >= 38)
+		return ;
+	snprintf(texte, sizeof(texte), L("Ton terminal fait %d × %d. Mets-le en plein écran (F11 ou double-clic sur la barre de titre) avant de continuer : le menu, les tests et les cinématiques s'affichent mieux, sans texte coupé. Idéal : au moins 120 × 38.",
+			"Your terminal is %d × %d. Make it full screen (F11 or double-click the title bar) before you go on: the menu, the tests and the cutscenes display better, with no cut text. Best: at least 120 × 38."), term_cols(), term_rows());
+	items[0] = L("C'est fait, continuer|", "Done, continue|");
+	sel = 0;
+	page(L("CONSEIL", "TIP"), texte, items, 1, &sel);
+}
+
+static int	rapport_lire(const char *path, char lignes[][400], int max)
+{
+	FILE	*f;
+	char	l[1200];
+	int		n;
+	int		i;
+	int		j;
+
+	f = fopen(path, "r");
+	n = 0;
+	while (f && n < max && fgets(l, sizeof(l), f))
+	{
+		for (i = 0, j = 0; l[i] && j < 399; i++)
+		{
+			if (l[i] == 27)
+			{
+				while (l[i] && !((l[i] >= 'a' && l[i] <= 'z') || (l[i] >= 'A' && l[i] <= 'Z')) )
+					i++;
+				if (!l[i])
+					break ;
+				continue ;
+			}
+			if (l[i] == '\r' || l[i] == '\n')
+				continue ;
+			lignes[n][j++] = l[i] == '\t' ? ' ' : l[i];
+		}
+		lignes[n][j] = '\0';
+		n++;
+	}
+	if (f)
+		fclose(f);
+	return (n);
+}
+
+static t_rgb	rapport_couleur(const char *l)
+{
+	if (strstr(l, " KO ") || strstr(l, "FAUX") || strstr(l, "ECHEC") || strstr(l, "FAIL") || strstr(l, "✘"))
+		return (rgb(255, 130, 140));
+	if (strstr(l, " OK ") || strstr(l, "✔") || strstr(l, "✓"))
+		return (rgb(140, 230, 170));
+	if (strstr(l, "WARN") || strstr(l, "!"))
+		return (rgb(250, 215, 120));
+	return (theme()->text);
+}
+
+void	tdf_rapport(const char *path, const char *titre)
+{
+	static char	lignes[4000][400];
+	int			n;
+	int			top;
+	int			h;
+	int			k;
+	int			i;
+	char		pos[80];
+
+	n = path ? rapport_lire(path, lignes, 4000) : 0;
+	top = 0;
+	cls();
+	while (1)
+	{
+		h = term_rows() - 6;
+		if (h < 3)
+			h = 3;
+		if (top > n - h)
+			top = n - h;
+		if (top < 0)
+			top = 0;
+		bgc(theme()->bg);
+		frame();
+		center(1, theme()->accent2, titre);
+		for (i = 0; i < h && top + i < n; i++)
+			text_clip(2, 3 + i, rapport_couleur(lignes[top + i]), lignes[top + i], term_cols() - 4);
+		if (!n)
+			text_at(2, 3, theme()->dim, L("rapport introuvable", "report not found"));
+		snprintf(pos, sizeof(pos), "%d-%d / %d", top + 1, top + h < n ? top + h : n, n);
+		text_at(term_cols() - ulen(pos) - 3, 1, theme()->dim, pos);
+		foot_line(2, L("▲ ▼ défiler   ◀ ▶ page   Échap ou Entrée : fermer",
+				"▲ ▼ scroll   ◀ ▶ page   Esc or Enter: close"));
+		flush();
+		k = key_dir(key_read(200));
+		if (k == 1000)
+			top -= tdf_touche_fleche(k);
+		else if (k == 1001)
+			top += tdf_touche_fleche(k);
+		else if (k == 1003)
+			top -= h;
+		else if (k == 1002 || k == ' ')
+			top += h;
+		else if (k == '\r' || k == '\n' || key_quit(k))
+			return ((void)cls());
 	}
 }
 
@@ -769,5 +1001,348 @@ void	tdf_menu_params(void (*credits)(void))
 			tdf_tuto();
 		else if (act[i] == 7)
 			tdf_nouveautes();
+	}
+}
+
+typedef struct s_bx
+{
+	char	src[8];
+	char	nom[48];
+	int		niv;
+	int		fait;
+	char	notion[160];
+}	t_bx;
+
+static t_bx	g_bx[300];
+static int	g_nbx;
+
+static void	shq(char *d, size_t n, const char *s)
+{
+	size_t	j;
+
+	j = 0;
+	if (j < n - 1)
+		d[j++] = '\'';
+	for (; *s && j + 5 < n; s++)
+	{
+		if (*s == '\'')
+		{
+			memcpy(d + j, "'\\''", 4);
+			j += 4;
+		}
+		else
+			d[j++] = *s;
+	}
+	d[j++] = '\'';
+	d[j] = '\0';
+}
+
+static void	exam_cmd(char *cmd, size_t n, const char *args)
+{
+	char	r[800];
+
+	shq(r, sizeof(r), getenv("TDF_RACINE") ? getenv("TDF_RACINE") : ".");
+	snprintf(cmd, n, "TDF_LANGUE_N=%d bash %s/modules/exam/run.sh %s 2>&1", g_save.cfg.lang, r, args);
+}
+
+static void	banque_charger(void)
+{
+	char	cmd[1400];
+	char	l[600];
+	char	*f[6];
+	char	*p;
+	FILE	*o;
+	int		i;
+
+	exam_cmd(cmd, sizeof(cmd), "--banque-liste");
+	o = popen(cmd, "r");
+	g_nbx = 0;
+	while (o && fgets(l, sizeof(l), o) && g_nbx < 300)
+	{
+		l[strcspn(l, "\n")] = '\0';
+		if (strncmp(l, "B\t", 2))
+			continue ;
+		p = l;
+		for (i = 0; i < 6 && p; i++)
+		{
+			f[i] = p;
+			p = strchr(p, '\t');
+			if (p)
+				*p++ = '\0';
+		}
+		if (i < 6)
+			continue ;
+		snprintf(g_bx[g_nbx].src, sizeof(g_bx[0].src), "%s", f[1]);
+		snprintf(g_bx[g_nbx].nom, sizeof(g_bx[0].nom), "%s", f[2]);
+		g_bx[g_nbx].niv = atoi(f[3]);
+		g_bx[g_nbx].fait = atoi(f[4]);
+		snprintf(g_bx[g_nbx].notion, sizeof(g_bx[0].notion), "%s", f[5]);
+		g_nbx++;
+	}
+	if (o)
+		pclose(o);
+}
+
+static const char	*bsrc(const char *s)
+{
+	if (!strcmp(s, "exam"))
+		return ("Exam");
+	if (!strcmp(s, "libft"))
+		return ("Libft");
+	return ("printf");
+}
+
+static void	coupe_car(char *d, size_t n, const char *s, int max)
+{
+	size_t	i;
+	int		c;
+
+	for (i = 0, c = 0; s[i] && i < n - 1; i++)
+	{
+		if (((unsigned char)s[i] & 0xC0) != 0x80 && c++ == max)
+			break ;
+		d[i] = s[i];
+	}
+	d[i] = '\0';
+}
+
+static int	sujet_lignes(const t_bx *b, int lang, char l[][200], int max)
+{
+	char	p[1200];
+	char	t[1200];
+	FILE	*f;
+	int		n;
+
+	snprintf(p, sizeof(p), "%s/banque/%s/%s/sujet.%s.txt", getenv("TDF_RACINE") ? getenv("TDF_RACINE") : ".", b->src, b->nom, langue_code(lang));
+	if (access(p, R_OK) != 0)
+		snprintf(p, sizeof(p), "%s/banque/%s/%s/sujet.%s.txt", getenv("TDF_RACINE") ? getenv("TDF_RACINE") : ".", b->src, b->nom, lang == 0 ? "fr" : "en");
+	f = fopen(p, "r");
+	n = 0;
+	while (f && n < max && fgets(t, sizeof(t), f))
+	{
+		t[strcspn(t, "\n")] = '\0';
+		coupe_car(l[n], 200, t, 150);
+		n++;
+	}
+	if (f)
+		fclose(f);
+	return (n);
+}
+
+static void	badge_at(int x, int y, t_rgb c, const char *s, int actif)
+{
+	at(x, y);
+	bgc(actif ? c : mix(theme()->bg, c, 0.35));
+	fg(actif ? rgb(24, 26, 38) : theme()->text);
+	outf(" %s ", s);
+	bgc(theme()->bg);
+}
+
+static void	banque_exo(t_bx *b)
+{
+	static char	l[400][200];
+	char		cmd[1500];
+	char		a[300];
+	char		sa[200];
+	char		sb[100];
+	char		res[700];
+	char		tmp[300];
+	FILE		*o;
+	FILE		*w;
+	int			lang;
+	int			n;
+	int			top;
+	int			bt;
+	int			k;
+	int			i;
+	int			h;
+	int			x;
+	int			y;
+
+	shq(sa, sizeof(sa), b->src);
+	shq(sb, sizeof(sb), b->nom);
+	snprintf(a, sizeof(a), "--banque-ouvrir %s %s", sa, sb);
+	exam_cmd(cmd, sizeof(cmd), a);
+	o = popen(cmd, "r");
+	while (o && fgets(tmp, sizeof(tmp), o))
+		;
+	if (o)
+		pclose(o);
+	lang = g_save.cfg.lang;
+	n = sujet_lignes(b, lang, l, 400);
+	top = 0;
+	bt = 0;
+	cls();
+	while (1)
+	{
+		h = term_rows() - 10;
+		if (h < 3)
+			h = 3;
+		if (top > n - h)
+			top = n - h;
+		if (top < 0)
+			top = 0;
+		x = (term_cols() - 80) / 2;
+		if (x < 2)
+			x = 2;
+		bgc(theme()->bg);
+		frame();
+		snprintf(tmp, sizeof(tmp), "%s · %s%s", b->nom, bsrc(b->src), b->fait ? "  ✓" : "");
+		center(1, b->fait ? rgb(140, 230, 170) : theme()->accent2, tmp);
+		snprintf(tmp, sizeof(tmp), L("Ton rendu : banque_travail/%s/%s/   (écris ton code dans un autre terminal)",
+				"Your work: banque_travail/%s/%s/   (write your code in another terminal)"), b->src, b->nom);
+		text_clip(x, 3, theme()->dim, tmp, term_cols() - x - 2);
+		for (i = 0; i < h && top + i < n; i++)
+			text_clip(x, 5 + i, l[top + i][0] == '$' ? theme()->accent : theme()->text, l[top + i], term_cols() - x - 2);
+		y = term_rows() - 4;
+		badge_at(x, y, rgb(140, 230, 170), L("Corriger mon code", "Grade my code"), bt == 0);
+		snprintf(tmp, sizeof(tmp), "%s ◀ %s ▶", L("Langue du sujet", "Subject language"), langue_nom(lang));
+		badge_at(x + 24, y, rgb(150, 195, 255), tmp, bt == 1);
+		badge_at(x + 26 + ulen(tmp) + 2, y, rgb(255, 165, 175), L("Retour", "Back"), bt == 2);
+		foot_line(x, L("◀ ▶ choisir un bouton   ▲ ▼ faire défiler le sujet   Entrée valider   Échap retour",
+				"◀ ▶ pick a button   ▲ ▼ scroll the subject   Enter confirm   Esc back"));
+		flush();
+		k = key_dir(key_read(200));
+		if (key_quit(k))
+			return ((void)cls());
+		if (k == 1000)
+			top -= tdf_touche_fleche(k);
+		else if (k == 1001)
+			top += tdf_touche_fleche(k);
+		else if (k == 1002)
+			bt = (bt + 1) % 3;
+		else if (k == 1003)
+			bt = (bt + 2) % 3;
+		else if ((k == '\r' || k == '\n' || k == ' ') && bt == 2)
+			return ((void)cls());
+		else if ((k == '\r' || k == '\n' || k == ' ') && bt == 1)
+		{
+			lang = (lang + 1) % NLANG;
+			n = sujet_lignes(b, lang, l, 400);
+			top = 0;
+		}
+		else if (k == '\r' || k == '\n' || k == ' ')
+		{
+			bgc(theme()->bg);
+			frame();
+			center(term_rows() / 2, theme()->accent2, L("Correction en cours...", "Grading..."));
+			flush();
+			snprintf(a, sizeof(a), "--banque-corriger %s %s", sa, sb);
+			exam_cmd(cmd, sizeof(cmd), a);
+			snprintf(res, sizeof(res), "%s/derniere", g_savedir);
+			mkdir(res, 0755);
+			snprintf(res, sizeof(res), "%s/derniere/banque.txt", g_savedir);
+			o = popen(cmd, "r");
+			w = fopen(res, "w");
+			while (o && fgets(tmp, sizeof(tmp), o))
+				if (w)
+					fputs(tmp, w);
+			b->fait = (o ? pclose(o) : 1) == 0;
+			if (w)
+				fclose(w);
+			tdf_derniere_ecrire("banque", NULL);
+			snprintf(tmp, sizeof(tmp), "%s · %s", b->nom, b->fait ? "SUCCESS" : "FAILURE");
+			tdf_rapport(res, tmp);
+		}
+	}
+}
+
+void	tdf_banque(void)
+{
+	static const char	*src[3] = {"exam", "libft", "printf"};
+	static int			onglet;
+	static int			sel;
+	int					vue[300];
+	int					nv;
+	int					top;
+	int					ok;
+	int					k;
+	int					i;
+	int					h;
+	int					x;
+	char				tmp[300];
+	char				nt[200];
+
+	bgc(theme()->bg);
+	frame();
+	center(term_rows() / 2, theme()->accent2, L("Chargement de la banque...", "Loading the bank..."));
+	flush();
+	banque_charger();
+	top = 0;
+	cls();
+	while (1)
+	{
+		for (nv = 0, ok = 0, i = 0; i < g_nbx; i++)
+		{
+			ok += g_bx[i].fait;
+			if (onglet == 0 || !strcmp(g_bx[i].src, src[onglet - 1]))
+				vue[nv++] = i;
+		}
+		if (sel >= nv)
+			sel = nv ? nv - 1 : 0;
+		h = term_rows() - 9;
+		if (h < 3)
+			h = 3;
+		if (sel < top)
+			top = sel;
+		if (sel >= top + h)
+			top = sel - h + 1;
+		x = (term_cols() - 96) / 2;
+		if (x < 2)
+			x = 2;
+		bgc(theme()->bg);
+		frame();
+		center(1, theme()->accent2, L("BANQUE D'EXERCICES", "EXERCISE BANK"));
+		snprintf(tmp, sizeof(tmp), L("%d/%d réussis", "%d/%d passed"), ok, g_nbx);
+		center(2, theme()->dim, tmp);
+		at(x, 4);
+		for (i = 0; i < 4; i++)
+		{
+			badge_at(x + i * 14, 4, rgb(150, 195, 255), i ? bsrc(src[i - 1]) : L("Tout", "All"), i == onglet);
+		}
+		for (i = top; i < nv && i < top + h; i++)
+		{
+			t_bx	*b;
+
+			b = &g_bx[vue[i]];
+			at(x, 6 + i - top);
+			if (i == sel)
+				bgc(mix(theme()->bg, theme()->accent, 0.22));
+			fg(i == sel ? theme()->accent2 : theme()->text);
+			outf(" %s ", i == sel ? "▶" : " ");
+			fg(b->fait ? rgb(140, 230, 170) : theme()->dim);
+			out(b->fait ? "✓" : "·");
+			fg(i == sel ? theme()->accent2 : theme()->text);
+			outf(" %-22s ", b->nom);
+			fg(theme()->dim);
+			outf("%-7s %s %-2d ", bsrc(b->src), L("niv.", "lvl"), b->niv);
+			coupe_car(nt, sizeof(nt), b->notion, 46);
+			outf("%s", nt);
+			bgc(theme()->bg);
+			outf("%*s", 46 - ulen(nt) > 0 ? 46 - ulen(nt) : 0, "");
+		}
+		if (nv > h)
+		{
+			snprintf(tmp, sizeof(tmp), "%d-%d / %d", top + 1, top + h < nv ? top + h : nv, nv);
+			text_at(x, 7 + h, theme()->dim, tmp);
+		}
+		foot_line(x, L("▲ ▼ choisir   ◀ ▶ Tout, Exam, Libft, printf   Entrée ouvrir   Échap retour",
+				"▲ ▼ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   Esc back"));
+		flush();
+		k = key_dir(key_read(200));
+		if (key_quit(k))
+			return ((void)cls());
+		if (k == 1000 && nv)
+			sel = ((sel - tdf_touche_fleche(k)) % nv + nv) % nv;
+		else if (k == 1001 && nv)
+			sel = (sel + tdf_touche_fleche(k)) % nv;
+		else if (k == 1002 || k == 1003)
+		{
+			onglet = (onglet + (k == 1002 ? 1 : 3)) % 4;
+			sel = 0;
+			top = 0;
+		}
+		else if ((k == '\r' || k == '\n' || k == ' ') && nv)
+			banque_exo(&g_bx[vue[sel]]);
 	}
 }

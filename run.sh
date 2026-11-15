@@ -194,6 +194,40 @@ preparer_suite() {
 	fi
 }
 
+voir_rapport() {
+	TDF_ECRAN=rapport TDF_RAPPORT="$1" TDF_RAPPORT_TITRE="$2" TDF_PROJET="" bash "$TDF_RACINE/modules/libft/run.sh" --menu
+}
+
+revoir_derniere() {
+	local m
+	m="$(head -1 "$DOSSIER/derniere/module" 2>/dev/null)"
+	case "$m" in
+		libft|printf)
+			TDF_ECRAN=revoir TDF_REVOIR="$DOSSIER/derniere/$m.res" TDF_PROJET="" bash "$TDF_RACINE/modules/$m/run.sh" --menu
+			;;
+		banque) voir_rapport "$DOSSIER/derniere/banque.txt" "$(tt "Banque d'exercices · dernière correction" "Exercise bank · last grading")" ;;
+		*) voir_rapport "$DOSSIER/derniere/rapport.txt" "$(tt "Dernière tentative" "Last attempt")" ;;
+	esac
+}
+
+lore_scene() {
+	tdf_scene_bin "$TDF_RACINE/moteur" >/dev/null 2>&1 || return 0
+	case "$1" in
+		lore_gnl) "$TDF_SCENE" "$TDF_RACINE/modules/gnl" puits "$(head -1 "$DOSSIER/puits.txt" 2>/dev/null)" ;;
+		lore_exam)
+			"$TDF_SCENE" "$TDF_RACINE/modules/exam" avant
+			"$TDF_SCENE" "$TDF_RACINE/modules/exam" apres
+			;;
+		lore_fin) "$TDF_SCENE" "$TDF_RACINE/modules/exam" fin ;;
+	esac
+}
+
+rapport_texte() {
+	[ "$MODULE" = gnl ] && return 0
+	{ [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; } && case " ${SUITE[*]:-} " in *" --no-lore "*) return 0 ;; esac
+	return 1
+}
+
 choisir_au_menu() {
 	local code l a p projets=""
 	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do projets+="libft"$'\t'"$p"$'\n'; done
@@ -225,6 +259,9 @@ choisir_au_menu() {
 	unset TDF_ECRAN
 	case "$a" in
 		libft|printf|gnl) MODULE="$a"; PROJET="$p" ;;
+		revoir) revoir_derniere; return 1 ;;
+		lore_printf) TDF_ECRAN=lore TDF_PROJET="" bash "$TDF_RACINE/modules/printf/run.sh" --menu; return 1 ;;
+		lore_gnl|lore_exam|lore_fin) lore_scene "$a"; return 1 ;;
 		exam) MODULE=exam; PROJET="" ;;
 		banque) MODULE=exam; PROJET=""; SUITE+=(--banque) ;;
 		autre)
@@ -233,17 +270,16 @@ choisir_au_menu() {
 			elif est_libft "$PROJET"; then MODULE=libft
 			elif est_gnl "$PROJET"; then MODULE=gnl
 			else
-				printf '\n  %s\n' "$(printf "$(tt "Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s" "I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s")" "$PROJET")"
-				printf '  %s ' "$(tt "Entrée pour revenir au menu" "Enter to go back to the menu")"
-				read -r p
+				mkdir -p "$DOSSIER/derniere"
+				printf "$(tt "Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s" "I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s")\n" "$PROJET" > "$DOSSIER/derniere/message.txt"
+				voir_rapport "$DOSSIER/derniere/message.txt" "$(tt "Tester mon projet" "Test my project")"
 				return 1
 			fi
 			;;
 		installer)
-			printf '\n'
-			tdf_cli_installer
-			printf '\n  %s ' "$(tt "Entrée pour revenir au menu" "Enter to go back to the menu")"
-			read -r p
+			mkdir -p "$DOSSIER/derniere"
+			tdf_cli_installer > "$DOSSIER/derniere/message.txt" 2>&1
+			voir_rapport "$DOSSIER/derniere/message.txt" "$(tt "Commande tdf" "tdf command")"
 			return 1
 			;;
 		*) return 1 ;;
@@ -683,8 +719,15 @@ while :; do
 	export TDF_PROJET="$PROJET"
 	tdf_journal "lancement du module $MODULE ${SUITE[*]:-}"
 	tdf_chrono_debut mod "module $MODULE"
-	bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"}
-	code=$?
+	if [ "$MENU_UNIQUE" = 1 ] && rapport_texte; then
+		mkdir -p "$DOSSIER/derniere"
+		bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"} 2>&1 | tee "$DOSSIER/derniere/rapport.txt"
+		code=${PIPESTATUS[0]}
+		printf 'rapport\n' > "$DOSSIER/derniere/module"
+	else
+		bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"}
+		code=$?
+	fi
 	tdf_chrono_fin mod "module $MODULE" "code $code"
 	if [ "$code" != 0 ] && [ "$code" != 1 ] && [ "$code" != 45 ] && [ "$code" != 130 ]; then
 		tdf_journal "ERREUR : le module $MODULE s'est arrêté avec le code $code"
@@ -700,9 +743,8 @@ while :; do
 		continue
 	fi
 	if [ "$code" != 45 ] && [ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && [ "$code" != 143 ]; then
-		if [ -z "${TDF_ECRAN:-}" ] && [ "$MODULE" != exam ]; then
-			printf '\n  %s ' "$(tt "Entrée pour revenir au menu" "Enter to go back to the menu")"
-			read -r r || { debug_fermer "code $code"; exit "$code"; }
+		if rapport_texte; then
+			voir_rapport "$DOSSIER/derniere/rapport.txt" "$(tt "Rapport des tests" "Test report")"
 		fi
 		MENU_A_FAIRE=1
 		export TDF_NO_UPDATE=1

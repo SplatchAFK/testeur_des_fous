@@ -6,18 +6,26 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Un seul menu, graphique
 
-- `bash run.sh` ou `tdf` ouvre directement le menu graphique d'origine (thème, avatar à droite), avec le petit fou et le titre en haut à gauche ;
-- il liste les projets trouvés, l'exam, la banque, Chevalier, Lore, Stats, Paramètres, « Tester un autre dossier » et Quitter ;
-- Paramètres regroupe les réglages, l'interface graphique ou texte, la commande `tdf`, le tuto et les nouveautés ;
-- après un test Libft, ft_printf ou get_next_line, Entrée ramène au menu ; en quittant l'exam ou la banque, on y revient directement ;
+- `bash run.sh` ou `tdf` ouvre directement le menu graphique d'origine : titre puis fou centrés en haut, chevalier à gauche, choix centrés ;
+- premier bouton « Tester mon projet » : « . » pour le dossier où tu es, les projets trouvés en raccourci, ou le parcours du PC comme dans zsh (Tab, Tab répété, ▶ ouvre, ◀ remonte) ;
+- puis Exam en C, Banque d'exercices, Revoir la dernière tentative, Chevalier, Lore, Stats, Paramètres, Quitter ;
+- au lancement, un conseil de passer le terminal en plein écran s'il fait moins de 120 × 38 ;
 - premier lancement : la langue, l'écran d'accueil, le login, puis le tuto ; ensuite plus rien avant le menu ;
 - si l'interface graphique ne compile pas, l'ancien menu texte prend le relais.
 
-### Tester un autre dossier
+### Après un test
 
-- parcours du PC comme dans zsh : Tab complète, Tab répété fait défiler les dossiers, ▶ ouvre, ◀ remonte, Entrée valide ;
-- les dossiers qui contiennent une Libft, un ft_printf ou un get_next_line sont signalés ;
-- `~` est reconnu, les dossiers cachés n'apparaissent que si on tape un point.
+- l'écran des résultats s'affiche directement avec tous les tests et leur détail ; en le quittant, retour au menu, sans « Entrée pour continuer » ;
+- « Revoir la dernière tentative » rouvre ces résultats depuis le menu (Libft, ft_printf, rapport get_next_line, dernière correction de la banque) ;
+- les rapports texte (get_next_line, mode texte) s'affichent dans une fenêtre graphique qu'on fait défiler ;
+- plus d'images en pixels à droite des tests ;
+- cinématiques seulement quand une étape est franchie : une partie de la Libft terminée, une nouvelle chaîne de ft_printf brisée ;
+- toutes les cinématiques se revoient dans Lore : Libft, ft_printf (Fonderie, chaînes, big boss, fins), get_next_line (le Puits de ton dernier passage), l'Épreuve du Silence, la fin.
+
+### Banque d'exercices graphique
+
+- la banque passe dans le menu graphique : onglets Tout, Exam, Libft, printf, sujet qui défile, boutons Corriger mon code, Langue du sujet, Retour ;
+- la correction reste celle de l'examshell (mêmes tests, Norme, sanitizers) et s'affiche dans une fenêtre graphique.
 
 ### Tuto et nouveautés
 
@@ -27,7 +35,8 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Flèches
 
-- une flèche maintenue ne fige plus l'écran : les appuis répétés sont regroupés et l'en-tête n'est plus redessiné à chaque image.
+- une flèche maintenue ne fige plus l'écran : plus d'animations de couleur redessinées à chaque image, les appuis répétés sont regroupés ;
+- ✓ à la place de ✔ dans la banque (il était coupé dans certains terminaux).
 
 ### Banque d'exercices
 

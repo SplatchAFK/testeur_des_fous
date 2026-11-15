@@ -1424,3 +1424,37 @@ function	fonksiyon
    %s%3d%s  %s%-22s%s %-7s lvl %-2d  %s%s%s\n	   %s%3d%s  %s%-22s%s %-7s svy %-2d  %s%s%s\n
   %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%.38s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %ssvy %-2d%s %s%.38s%s\n
   %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n	  %s%s%s %s%s%s %s%-22s%s %-7s %ssvy %-2d%s %s%s%s\n
+Exercise bank · last grading	Alıştırma bankası · son düzeltme
+Last attempt	Son deneme
+Test my project	Projemi test et
+tdf command	tdf komutu
+Test report	Test raporu
+Libft · the Tower of Foundations|The three Libft wardens and their cutscenes.	Libft · Temeller Kulesi|Libft'in üç bekçisi ve ara sahneleri.
+ft_printf · the Foundry of Formats|The 9 chains, ft_printf the big boss, the victory and the secret ending.	ft_printf · Biçimler Dökümhanesi|9 zincir, büyük boss ft_printf, zafer ve gizli son.
+get_next_line · the Well|The descent into the Well, one ring per test of your last run.	get_next_line · Kuyu|Kuyuya iniş, son çalıştırmandaki her test için bir halka.
+Exam · the Trial of Silence|The trial room and its doors.	Exam · Sessizlik Sınavı|Sınav salonu ve kapıları.
+The ending|The last mechanism of the City.	Son|Şehrin son mekanizması.
+folder you are in	bulunduğun klasör
+TEST MY PROJECT	PROJEMİ TEST ET
+Project folder (. = where you are, ~ or / to browse, Tab completes):	Proje klasörü (. = bulunduğun yer, gezinmek için ~ ya da /, Tab tamamlar):
+Projects found:	Bulunan projeler:
+Your terminal is %d × %d. Make it full screen (F11 or double-click the title bar) before you go on: the menu, the tests and the cutscenes display better, with no cut text. Best: at least 120 × 38.	Terminalin %d × %d boyutunda. Devam etmeden önce tam ekran yap (F11 ya da başlık çubuğuna çift tıkla): menü, testler ve ara sahneler kesilmeden daha iyi görünür. İdeal: en az 120 × 38.
+Done, continue|	Tamam, devam|
+TIP	İPUCU
+report not found	rapor bulunamadı
+▲ ▼ scroll   ◀ ▶ page   Esc or Enter: back to the menu	▲ ▼ kaydır   ◀ ▶ sayfa   Esc ya da Enter: menüye dön
+Your work: banque_travail/%s/%s/   (write your code in another terminal)	Teslimin: banque_travail/%s/%s/   (kodunu başka bir terminalde yaz)
+◀ ▶ pick a button   ▲ ▼ scroll the subject   Enter confirm   Esc back	◀ ▶ düğme seç   ▲ ▼ konuyu kaydır   Enter onayla   Esc geri
+Grading...	Düzeltiliyor...
+Loading the bank...	Banka yükleniyor...
+EXERCISE BANK	ALIŞTIRMA BANKASI
+%d/%d passed	%d/%d geçildi
+lvl	svy
+▲ ▼ pick   ◀ ▶ All, Exam, Libft, printf   Enter open   Esc back	▲ ▼ seç   ◀ ▶ Tümü, Exam, Libft, printf   Enter aç   Esc geri
+Test my project|Pick the folder of your Libft, ft_printf or get_next_line. '.': the folder you are in.	Projemi test et|Libft, ft_printf ya da get_next_line klasörünü seç. « . »: bulunduğun klasör.
+Review the last attempt|Every test of your last run, with why it passes or not	Son denemeyi gözden geçir|Son çalıştırmandaki tüm testler, neden geçtiği ya da geçmediğiyle
+• Test my project: '.' for the folder you are in, or browse your PC with Tab, like in zsh.	• Projemi test et: bulunduğun klasör için « . », ya da zsh'teki gibi Tab ile bilgisayarında gezin.
+• After a test, every result shows up directly; 'Review the last attempt' reopens them from the menu.	• Bir testten sonra tüm sonuçlar doğrudan görünür; « Son denemeyi gözden geçir » onları menüden yeniden açar.
+• Graphical exercise bank: tabs, subject, grading in one click.	• Grafik alıştırma bankası: sekmeler, konu, tek tıkla düzeltme.
+• Lore: every cutscene, Libft, ft_printf, get_next_line and the exam.	• Lore: tüm ara sahneler, Libft, ft_printf, get_next_line ve sınav.
+▲ ▼ scroll   ◀ ▶ page   Esc or Enter: close	▲ ▼ kaydır   ◀ ▶ sayfa   Esc ya da Enter: kapat

@@ -26,7 +26,7 @@ Un seul testeur pour **Libft**, **ft_printf** et **get_next_line**, plus un **ex
    bash testeur_des_fous/run.sh
    ```
 
-3. Choisis ta langue, suis le tuto (6 écrans, tu peux le passer), puis tout se fait dans le menu aux flèches.
+3. Mets ton terminal en plein écran, choisis ta langue, suis le tuto (6 écrans, tu peux le passer), puis tout se fait dans le menu aux flèches.
 
 Il te faut seulement `bash`, `cc` et `make`. Aucun `sudo`. `norminette` et `valgrind` sont utilisés s'ils sont installés.
 
@@ -41,14 +41,16 @@ Il te faut seulement `bash`, `cc` et `make`. Aucun `sudo`. `norminette` et `valg
 
 | Entrée du menu | Ce que ça fait |
 |---|---|
-| Tester ma Libft / mon ft_printf / mon get_next_line | les projets trouvés à côté du testeur ; à la fin du rapport, Entrée te ramène au menu |
-| Exam en C | examen blanc de 3 h, série d'exercices ou entraînement |
+| Tester mon projet | choisis le dossier de ta Libft, de ton ft_printf ou de ton get_next_line : « . » pour le dossier où tu es, Tab pour parcourir comme dans zsh, ou un des projets trouvés |
+| Exam en C | l'examshell des fous : examen blanc de 3 h, série d'exercices ou entraînement |
 | Banque d'exercices | 94 exercices au choix, aux flèches |
+| Revoir la dernière tentative | tous les tests de ton dernier passage, avec pourquoi ça passe ou non |
 | Chevalier | ton avatar, la boutique, ton profil et tes succès |
-| Lore | les boss, les cinématiques et la carte de la Cité |
+| Lore | toutes les cinématiques (Libft, ft_printf, get_next_line, exam) et la carte de la Cité |
 | Stats | ta progression, tes badges et le holygraph 42 Next |
-| Paramètres | réglages, langue, interface graphique ou texte, commande `tdf`, revoir le tuto et les nouveautés |
-| Tester un autre dossier | un projet rangé ailleurs : parcours ton PC avec Tab, comme dans zsh |
+| Paramètres | réglages, interface graphique ou texte, commande `tdf`, revoir le tuto et les nouveautés |
+
+Après un test, l'écran des résultats s'affiche directement ; en le quittant, tu reviens au menu.
 
 Astuce : dans **Paramètres**, installe la commande `tdf` (sans sudo) pour ouvrir le menu depuis n'importe quel dossier.
 

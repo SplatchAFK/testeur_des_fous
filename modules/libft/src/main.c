@@ -74,6 +74,17 @@ static int	ecran_direct(const char *e)
 		tdf_menu_stats();
 	else if (!strcmp(e, "params"))
 		tdf_menu_params(screen_credits);
+	else if (!strcmp(e, "revoir") && getenv("TDF_REVOIR"))
+	{
+		long	off;
+
+		off = 0;
+		results_load(getenv("TDF_REVOIR"), &off);
+		results_tout_montrer();
+		screen_results(0);
+	}
+	else if (!strcmp(e, "rapport"))
+		tdf_rapport(getenv("TDF_RAPPORT"), getenv("TDF_RAPPORT_TITRE") ? getenv("TDF_RAPPORT_TITRE") : "");
 	else
 		return (0);
 	return (1);
@@ -176,6 +187,8 @@ int	main(int ac, char **av)
 	}
 	term_init();
 	first = g_save.runs == 0;
+	if (unique && !results && !(ecran && ecran[0]))
+		tdf_conseil_plein_ecran();
 	if (!relance)
 		lore_setup();
 	if (!relance)
@@ -194,7 +207,7 @@ int	main(int ac, char **av)
 		tdf_tuto();
 	else if (g_accueil == 2)
 		tdf_nouveautes();
-	if (results && !relance && first)
+	if (results && !relance && first && !unique)
 		story_libft_intro();
 	code = 0;
 	if (results)
@@ -207,7 +220,7 @@ int	main(int ac, char **av)
 		}
 		else
 		{
-			boss_battles(first ? -1 : -2);
+			boss_battles(first && !unique ? -1 : -2);
 			if (first || rewards_news())
 				screen_rewards();
 			else
@@ -228,12 +241,16 @@ int	main(int ac, char **av)
 		term_end();
 		return (0);
 	}
+	if (unique && results)
+		tdf_derniere_ecrire("libft", results);
 	if (code != 42 && !(unique && results))
 		code = menu_loop();
 	save_write();
 	term_end();
 	if (code == 42 || code == 45)
 		return (code);
+	if (unique)
+		return (0);
 	summary();
 	bad = 0;
 	for (i = 0; i < NFN; i++)

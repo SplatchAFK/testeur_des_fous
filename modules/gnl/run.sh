@@ -343,6 +343,7 @@ fi
 tdf_journal "résultat : $N_OK OK, $N_KO en échec, $N_INFO pour info"
 [ -n "${TDF_JOURNAL:-}" ] && cp "$BUILD/res.tsv" "$(dirname "$TDF_JOURNAL")/gnl_resultats.tsv" 2>/dev/null
 
+[ -n "$ANNEAUX" ] && printf '%s\n' "$ANNEAUX" > "$HOME/.testeur_des_fous/puits.txt" 2>/dev/null
 VU_PUITS=0
 if [ -t 0 ] && [ -t 1 ] && [ "${TDF_INTERFACE:-graphique}" != texte ] && [ "${SANS_LORE:-0}" = 0 ] && [ -n "$ANNEAUX" ]; then
 	if tdf_scene_bin "$MOT"; then

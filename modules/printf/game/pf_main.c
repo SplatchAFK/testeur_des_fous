@@ -82,7 +82,7 @@ static void	battles(int dlc, int first, const char *dlc0)
 		ok += pf_chain_ok(i);
 		news += pf_chain_ok(i) && g_pf.chains[i] != '1';
 	}
-	if (first || news)
+	if (news || (first && !tdf_menu_unique()))
 		story_chains(0);
 	if (ok < NCHAIN)
 		return ;
@@ -229,7 +229,23 @@ int	main(int ac, char **av)
 	first = g_pf.runs == 0;
 	if (!relance)
 		lore_setup();
-	if (!relance && first)
+	if (!results && getenv("TDF_ECRAN") && tdf_menu_unique())
+	{
+		if (!strcmp(getenv("TDF_ECRAN"), "lore"))
+			pf_boss_menu();
+		else if (!strcmp(getenv("TDF_ECRAN"), "revoir") && getenv("TDF_REVOIR"))
+		{
+			long	o;
+
+			o = 0;
+			pf_load(getenv("TDF_REVOIR"), &o);
+			pf_results(0);
+		}
+		save_write();
+		term_end();
+		return (0);
+	}
+	if (!relance && first && !tdf_menu_unique())
 		story_splash();
 	if (!relance)
 		version_notice();
@@ -244,7 +260,7 @@ int	main(int ac, char **av)
 		pf_grant_veteran();
 	if (g_save.runs == 0 && g_pf.runs == 0)
 		screen_login();
-	if (results && !relance && !dlc && first)
+	if (results && !relance && !dlc && first && !tdf_menu_unique())
 	{
 		if (pf_libft_done())
 			story_previously();
@@ -262,14 +278,18 @@ int	main(int ac, char **av)
 	}
 	cosmetic_achs();
 	code = 0;
-	if (results && !dlc && !pf_all_ok() && pf_results(1) == 42)
+	if (results && !dlc && (!pf_all_ok() || tdf_menu_unique()) && pf_results(1) == 42)
 		code = 42;
+	if (results && tdf_menu_unique())
+		tdf_derniere_ecrire("printf", results);
 	if (code != 42 && !(results && getenv("TDF_MENU_UNIQUE")))
 		code = menu_loop();
 	save_write();
 	term_end();
 	if (code == 42 || code == 43 || code == 45)
 		return (code);
+	if (tdf_menu_unique())
+		return (0);
 	summary();
 	return (results && !pf_all_ok() ? 1 : 0);
 }

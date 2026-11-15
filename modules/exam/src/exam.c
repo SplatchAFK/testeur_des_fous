@@ -2730,7 +2730,7 @@ static int	b_choisir(int *onglet, int *sel, int *top)
 			b = &g_b[g_vue[i]];
 			printf(L("  %s%s%s %s%s%s %s%-22s%s %-7s %sniv. %-2d%s %s%s%s\n", "  %s%s%s %s%s%s %s%-22s%s %-7s %slvl %-2d%s %s%s%s\n"),
 				C_AC, i == *sel ? "❯" : " ", C_R,
-				b_done(b) ? C_OK : C_D, b_done(b) ? "✔" : "·", C_R,
+				b_done(b) ? C_OK : C_D, b_done(b) ? "✓" : "·", C_R,
 				i == *sel ? C_B : "", b->name, C_R, b_srcname(b->src),
 				level_color(b->niv < 1 ? 1 : b->niv > XLEVELS ? XLEVELS : b->niv), b->niv, C_R, C_D, coupe(b->notion, 38), C_R);
 		}
@@ -2908,6 +2908,41 @@ static int	banque(void)
 	return (0);
 }
 
+static int	banque_cli(const char *quoi, const char *src, const char *nom)
+{
+	char	p[1300];
+	int		k;
+	int		i;
+
+	b_load();
+	sh("mkdir -p %s/banque_travail %s/traces", q(g_root), q(g_work));
+	if (!strcmp(quoi, "liste"))
+	{
+		for (i = 0; i < g_nb; i++)
+			printf("B\t%s\t%s\t%d\t%d\t%s\n", g_b[i].src, g_b[i].name, g_b[i].niv, b_done(&g_b[i]), g_b[i].notion);
+		return (0);
+	}
+	for (k = -1, i = 0; i < g_nb && k < 0; i++)
+		if (!strcmp(g_b[i].src, src) && !strcmp(g_b[i].name, nom))
+			k = i;
+	if (k < 0)
+		return (2);
+	b_preparer(k);
+	if (!strcmp(quoi, "ouvrir"))
+	{
+		b_workdir(&g_b[k], p, sizeof(p));
+		printf("%s\n", p);
+		return (0);
+	}
+	if (!strcmp(quoi, "corriger"))
+	{
+		b_grademe();
+		save_write();
+		return (b_done(&g_b[k]) ? 0 : 1);
+	}
+	return (2);
+}
+
 int	main(int ac, char **av)
 {
 	static char	savedir[1000];
@@ -2960,6 +2995,8 @@ int	main(int ac, char **av)
 	cfg_load();
 	if (i < ac && !strcmp(av[i], "--banque"))
 		return (banque());
+	if (i < ac && !strncmp(av[i], "--banque-", 9))
+		return (banque_cli(av[i] + 9, i + 1 < ac ? av[i + 1] : "", i + 2 < ac ? av[i + 2] : ""));
 	direct = 0;
 	for (; i + 1 < ac; i += 2)
 	{

@@ -12,6 +12,14 @@ t_run		g_run;
 static long	g_reveal[NFN];
 static int	g_shown[NFN];
 
+void	results_tout_montrer(void)
+{
+	int	i;
+
+	for (i = 0; i < NFN; i++)
+		g_shown[i] = 1;
+}
+
 int	st_bad(int st)
 {
 	return (st != ST_OK && st != ST_WAIT && st != ST_WARN);
@@ -506,7 +514,8 @@ void	screen_scan(const char *path, int pid)
 		k = (term_cols() - 70) / 2;
 		text_at(k < 0 ? 0 : k, 2, theme()->dim, tmp);
 		draw_grid(now, -1);
-		draw_tour();
+		if (!tdf_menu_unique())
+			draw_tour();
 		counts(&ok, &bad, &done);
 		layout(&k, &i);
 		if (done > 0 && !tfirst)
@@ -1040,7 +1049,8 @@ int	screen_results(int after)
 		center(1, m ? rgb(80, 230, 140) : rgb(255, 90, 100), tmp);
 		center(2, theme()->dim, why);
 		draw_grid(now_ms(), sel);
-		draw_tour();
+		if (!tdf_menu_unique())
+			draw_tour();
 		detail_panel(sel, y + 17);
 		foot_line(x, L("flèches : choisir   f : fiche   m : audit   r : corrigé ? relancer   Entrée : continuer",
 				"arrows: pick   f: details   m: audit   r: fixed? run again   Enter: continue"));
