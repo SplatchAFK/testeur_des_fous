@@ -129,13 +129,13 @@ tdf_menu_fleches() {
 tdf_accueil_bin() {
 	local d="$TDF_RACINE/.build_accueil" cle
 	ACCUEIL="$d/accueil"
-	cle=$(cat "$TDF_RACINE/moteur/lanceur/accueil.c" "$TDF_RACINE/moteur/entete.c" "$TDF_RACINE/moteur/fou_ascii.c" \
+	cle=$(cat "$TDF_RACINE/moteur/lanceur/accueil.c" "$TDF_RACINE/moteur/entete.c" "$TDF_RACINE/moteur/fou_ascii.c" "$TDF_RACINE/moteur/fou_blocs.c" \
 		"$TDF_RACINE/moteur/fous.h" 2>/dev/null | cksum | cut -d' ' -f1)
 	[ -x "$ACCUEIL" ] && [ -f "$d/cle.$cle" ] && return 0
 	mkdir -p "$d" 2>/dev/null || { ACCUEIL=""; return 1; }
 	rm -f "$d"/cle.* 2>/dev/null
 	if "${CC:-cc}" -O2 -w -I "$TDF_RACINE/moteur" "$TDF_RACINE/moteur/lanceur/accueil.c" "$TDF_RACINE/moteur/entete.c" \
-		"$TDF_RACINE/moteur/fou_ascii.c" -lm -o "$ACCUEIL" 2>/dev/null; then
+		"$TDF_RACINE/moteur/fou_ascii.c" "$TDF_RACINE/moteur/fou_blocs.c" -lm -o "$ACCUEIL" 2>/dev/null; then
 		: > "$d/cle.$cle"
 		return 0
 	fi

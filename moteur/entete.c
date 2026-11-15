@@ -387,6 +387,21 @@ void	entete_dessiner(const char *l1, const char *l2, long ms, int y0, int reste)
 	(void)!write(1, g_eb.d, g_eb.n);
 }
 
+static void	demi_bloc(const unsigned char *h, const unsigned char *b)
+{
+	char	t[64];
+
+	if (h[3] && b[3])
+		eb_put(t, snprintf(t, sizeof(t), "\033[38;2;%d;%d;%dm\033[48;2;%d;%d;%dm\xe2\x96\x80", h[0], h[1], h[2], b[0], b[1], b[2]));
+	else if (h[3])
+		eb_put(t, snprintf(t, sizeof(t), "\033[49m\033[38;2;%d;%d;%dm\xe2\x96\x80", h[0], h[1], h[2]));
+	else if (b[3])
+		eb_put(t, snprintf(t, sizeof(t), "\033[49m\033[38;2;%d;%d;%dm\xe2\x96\x84", b[0], b[1], b[2]));
+	else
+		eb_put("\033[49m ", 6);
+	g_eb.r = -1;
+}
+
 int	entete_examshell(int voir)
 {
 	const char	*l1;
@@ -426,19 +441,12 @@ int	entete_examshell(int voir)
 	ty = 1;
 	if (mode == 1 || mode == 3)
 	{
-		for (r = 0; r < g_fou_petit_h; r++)
+		for (r = 0; r < g_fou_bloc_h; r++)
 		{
 			aller(1 + r, 2);
-			for (c = 0; c < g_fou_petit_w; c++)
-			{
-				if (g_fou_petit_txt[r][c] == ' ')
-				{
-					eb_put(" ", 1);
-					continue ;
-				}
-				eb_col(g_fou_petit_rgb[r][c][0], g_fou_petit_rgb[r][c][1], g_fou_petit_rgb[r][c][2]);
-				eb_put(&g_fou_petit_txt[r][c], 1);
-			}
+			for (c = 0; c < g_fou_bloc_w; c++)
+				demi_bloc(g_fou_bloc[r][c][0], g_fou_bloc[r][c][1]);
+			eb_put("\033[49m", 5);
 		}
 		tx = g_fou_petit_w + 4;
 		ty = 1 + (g_fou_petit_h - (mode == 1 ? 5 : 11)) / 2;

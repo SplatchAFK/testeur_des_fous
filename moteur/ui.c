@@ -127,24 +127,33 @@ extern const unsigned char	g_fou_petit_rgb[][30][3];
 
 static void	fou_petit(int x, int y)
 {
-	const unsigned char	*p;
+	const unsigned char	*h;
+	const unsigned char	*b;
 	int					r;
 	int					c;
 
-	for (r = 0; r < g_fou_petit_h; r++)
+	for (r = 0; r < g_fou_bloc_h; r++)
 	{
 		at(x, y + r);
-		for (c = 0; c < g_fou_petit_w; c++)
+		for (c = 0; c < g_fou_bloc_w; c++)
 		{
-			if (g_fou_petit_txt[r][c] == ' ')
+			h = g_fou_bloc[r][c][0];
+			b = g_fou_bloc[r][c][1];
+			bgc(b[3] && h[3] ? rgb(b[0], b[1], b[2]) : theme()->bg);
+			if (h[3])
 			{
-				out(" ");
-				continue ;
+				fg(rgb(h[0], h[1], h[2]));
+				out("▀");
 			}
-			p = g_fou_petit_rgb[r][c];
-			fg(rgb(p[0], p[1], p[2]));
-			outf("%c", g_fou_petit_txt[r][c]);
+			else if (b[3])
+			{
+				fg(rgb(b[0], b[1], b[2]));
+				out("▄");
+			}
+			else
+				out(" ");
 		}
+		bgc(theme()->bg);
 	}
 }
 
