@@ -1488,3 +1488,82 @@ this folder no longer exists	dieser Ordner existiert nicht mehr
 • Your terminal does not announce 24-bit colours: colours will be approximated. A recent terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) shows them all.\n	• Dein Terminal meldet keine 24-Bit-Farben: die Farben werden angenähert. Ein aktuelles Terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) zeigt alle.\n
 • Most handy: the tester on one side of the screen, and VS Code, vim or your editor large next to it. The tester adapts to the space it has.\n• If the display shifts or gets cut, enlarge the window and start the tester again.	• Am praktischsten: der Tester auf einer Seite des Bildschirms, VS Code, vim oder dein Editor groß daneben. Der Tester passt sich dem Platz an.\n• Wenn sich die Anzeige verschiebt oder abgeschnitten wird, vergrößere das Fenster und starte den Tester neu.
 DISPLAY TIPS	ANZEIGETIPPS
+↑ ↓ to pick, Enter to confirm, Esc to go back: the whole tester works like this.	↑ ↓ zum Wählen, Enter zum Bestätigen, Esc zum Zurückgehen: der ganze Tester funktioniert so.
+'Test this folder' tests the folder you started the tester from.	« Diesen Ordner testen » testet den Ordner, aus dem du den Tester gestartet hast.
+Your last 10 tests are in 'Test my project': Enter runs them again.	Deine 10 letzten Tests sind in « Mein Projekt testen »: Enter startet sie erneut.
+At the top of 'Test my project', ↑ to type a path: Tab completes like zsh.	Ganz oben in « Mein Projekt testen » ↑ für einen Pfad: Tab ergänzt wie zsh.
+Keep the tester next to your projects, not inside: a git add . would send it to the moulinette.	Leg den Tester neben deine Projekte, nicht hinein: ein git add . würde ihn an die Moulinette schicken.
+Install the tdf command in Settings: then 'tdf' is enough, in any folder.	Installiere den Befehl tdf in den Einstellungen: danach reicht « tdf », in jedem Ordner.
+Put the tester on one side of the screen and your editor large next to it.	Setz den Tester an eine Bildschirmseite und deinen Editor groß daneben.
+In the Libft results, f opens a function's card: every test and what is wrong.	In den Libft-Ergebnissen öffnet f die Karte einer Funktion: jeder Test und was nicht stimmt.
+In the Libft results, m opens the moulinette audit: Makefile, relink, extra files.	In den Libft-Ergebnissen öffnet m das Moulinette-Audit: Makefile, Relink, überflüssige Dateien.
+Fixed it? r in the results runs the tests again right away.	Korrigiert? r in den Ergebnissen startet die Tests sofort neu.
+'Review the last attempt' reopens your last results without running anything.	« Letzten Versuch ansehen » öffnet deine letzten Ergebnisse, ohne etwas neu zu starten.
+An extra .gitignore or README in your repo: the moulinette counts a garbage file.	Eine überflüssige .gitignore oder README in deiner Abgabe: die Moulinette zählt eine Müll-Datei.
+The Norm counts: install norminette (python3 -m pip install --user norminette).	Die Norm zählt: installiere norminette (python3 -m pip install --user norminette).
+The tester compiles with -Wall -Wextra -Werror, like the moulinette: zero warnings.	Der Tester kompiliert mit -Wall -Wextra -Werror, wie die Moulinette: null Warnungen.
+Your helper functions must be static: the tester tells you.	Deine Hilfsfunktionen müssen static sein: der Tester sagt es dir.
+A memory leak fails the function, even if the result is right.	Ein Speicherleck lässt die Funktion durchfallen, auch wenn das Ergebnis stimmt.
+The tester makes malloc fail on purpose: your function must return NULL cleanly.	Der Tester lässt malloc absichtlich scheitern: deine Funktion muss sauber NULL liefern.
+ft_printf: the moulinette-style trace is in ~/.testeur_des_fous/traces/.	ft_printf: die Spur im Moulinette-Format liegt in ~/.testeur_des_fous/traces/.
+ft_printf: every conversion is compared to the real printf, return value included.	ft_printf: jede Umwandlung wird mit dem echten printf verglichen, Rückgabewert inklusive.
+get_next_line: the tester tries 7 BUFFER_SIZE values, from 1 to 10,000,000.	get_next_line: der Tester probiert 7 BUFFER_SIZE, von 1 bis 10 000 000.
+get_next_line must compile with and without -D BUFFER_SIZE.	get_next_line muss mit und ohne -D BUFFER_SIZE kompilieren.
+Examshell des fous: write your code in another terminal, then type grademe.	Examshell des fous: schreib deinen Code in einem anderen Terminal, dann tippe grademe.
+Mistyped a command in the examshell? It suggests the right one: Enter to accept.	Befehl in der Examshell vertippt? Sie schlägt den richtigen vor: Enter zum Annehmen.
+'sujet es', 'sujet en'…: reread the subject in another language.	« sujet es », « sujet en »…: lies die Aufgabe in einer anderen Sprache.
+In the exam, the wait after a failure grows: reread your code before grademe.	In der Prüfung wächst die Wartezeit nach einem Fehler: lies deinen Code vor grademe nochmal.
+'Real conditions': 3 h, wait after failure, no cheats, like the real exam.	« Echte Bedingungen »: 3 h, Wartezeit nach Fehlern, keine Cheats, wie die echte Prüfung.
+The bank: 94 exercises, in any order you like.	Die Bank: 94 Aufgaben, in beliebiger Reihenfolge.
+In the bank, ◀ ▶ switches category: Exam, Libft, printf.	In der Bank wechselt ◀ ▶ die Kategorie: Exam, Libft, printf.
+Every bank exercise you pass earns Octets and XP.	Jede bestandene Bank-Aufgabe bringt Oktette und XP.
+Octets are spent in the Shop: items, themes, titles.	Oktette gibst du im Laden aus: Gegenstände, Themen, Titel.
+Knight: equip your items in the wardrobe and pick their colours.	Ritter: rüste deine Gegenstände in der Garderobe aus und wähle ihre Farben.
+Achievements unlock as you progress: see them in your Profile.	Erfolge schaltest du durch Fortschritt frei: sieh sie in deinem Profil.
+The holygraph shows your validated projects: once validated, it is for good.	Der Holygraph zeigt deine bestandenen Projekte: einmal bestanden, für immer.
+Lore: replay the cutscenes you unlocked.	Lore: sieh dir die freigeschalteten Zwischensequenzen nochmal an.
+The map of the City lights up as you progress.	Die Karte der Stadt leuchtet mit deinem Fortschritt auf.
+Stats: your history and what fails most often.	Statistiken: dein Verlauf und was am häufigsten scheitert.
+The tester holds no solution: it breaks your code and tells you where to look.	Der Tester enthält keine Lösung: er bricht deinen Code und sagt dir, wo du schauen musst.
+A bug? Settings, Help us: create a trace and send it on the Discord.	Ein Bug? Einstellungen, Hilf uns: erstelle eine Spur und schick sie auf den Discord.
+bash run.sh --debug shows every detailed report.	bash run.sh --debug zeigt alle ausführlichen Berichte.
+Your progress is in ~/.testeur_des_fous: you can clone the tester again without losing anything.	Dein Fortschritt liegt in ~/.testeur_des_fous: du kannst den Tester neu klonen, ohne etwas zu verlieren.
+git pull in the tester folder to update it.	git pull im Tester-Ordner, um ihn zu aktualisieren.
+The tester speaks 8 languages: change it in Settings, Options.	Der Tester spricht 8 Sprachen: ändere sie in Einstellungen, Optionen.
+During the tests, Esc stops the analysis.	Während der Tests stoppt Esc die Analyse.
+A stuck test is cut after 30 s: infinite loop?	Ein hängender Test wird nach 30 s abgebrochen: Endlosschleife?
+AddressSanitizer gives the exact line of a memory error: read it all.	AddressSanitizer nennt die genaue Zeile eines Speicherfehlers: lies sie ganz.
+Valgrind can rerun your tests: turn it on in Options.	Valgrind kann deine Tests nochmal prüfen: schalte es in den Optionen ein.
+The help level, in Options, sets how much detail you see.	Die Hilfestufe in den Optionen bestimmt, wie viele Details du siehst.
+The tester compares your functions to the real libc on hundreds of cases.	Der Tester vergleicht deine Funktionen mit der echten libc in Hunderten von Fällen.
+Predict the result before running the test: you learn twice as much.	Sag das Ergebnis vorher, bevor du den Test startest: du lernst doppelt so viel.
+The 42 Next Global Discord: help, bugs, ideas.	Der 42 Next Global Discord: Hilfe, Bugs, Ideen.
+Patrick is secretly a dinosaur.	Patrick ist heimlich ein Dinosaurier.
+Paul is secretly Pacman.	Paul ist heimlich Pacman.
+Roman is secretly FuzeIII.	Roman ist heimlich FuzeIII.
+Moulinette is the best cat in the world.	Moulinette ist die beste Katze der Welt.
+f6 is for Olympic athletes.	f6 ist für Olympia-Athleten.
+BUFFER_SIZE=0 and negative: return NULL	BUFFER_SIZE=0 und negativ: NULL zurückgeben
+BUFFER_SIZE=%s: returns NULL	BUFFER_SIZE=%s: gibt NULL zurück
+BUFFER_SIZE=%s: does not return NULL	BUFFER_SIZE=%s: gibt nicht NULL zurück
+according to students, the moulinette tests this case and expects NULL: check BUFFER_SIZE <= 0 at the start of get_next_line	laut Studierenden testet die Moulinette diesen Fall und erwartet NULL: prüfe BUFFER_SIZE <= 0 am Anfang von get_next_line
+BUFFER_SIZE=%s: crash or loop	BUFFER_SIZE=%s: Absturz oder Schleife
+according to students, the moulinette tests this case and expects NULL, with no crash	laut Studierenden testet die Moulinette diesen Fall und erwartet NULL, ohne Absturz
+BUFFER_SIZE=%s: does not compile	BUFFER_SIZE=%s: kompiliert nicht
+the code must compile and return NULL when BUFFER_SIZE is 0 or less	der Code muss kompilieren und NULL zurückgeben, wenn BUFFER_SIZE 0 oder weniger ist
+The name 'testeur des fous' comes from a printf(\"Test de fou\"); one of the creators put everywhere to debug.	Der Name « testeur des fous » kommt von einem printf(\"Test de fou\");, das einer der Macher überall zum Debuggen einbaute.
+If you are reading these words, you passed the piscine. You earned this place. Well done.	Wenn du diese Worte liest, hast du die Piscine bestanden. Du hast dir diesen Platz verdient. Bravo.
+Do not rush: fly too high too soon and you burn your wings.	Überstürze nichts: wer zu früh zu hoch fliegt, verbrennt sich die Flügel.
+A segfault is not a failure: it is your code showing you where to look.	Ein Segfault ist kein Scheitern: dein Code zeigt dir, wo du schauen musst.
+Every bug you fix is a lesson no one can take from you.	Jeder Bug, den du behebst, ist eine Lektion, die dir niemand nehmen kann.
+Towers are built stone by stone. So is your code.	Türme baut man Stein für Stein. Deinen Code auch.
+Everyone got stuck on ft_split one day. Everyone.	Jeder hing irgendwann an ft_split fest. Wirklich jeder.
+Understanding takes longer than copying, but it stays for a lifetime.	Verstehen dauert länger als Kopieren, aber es bleibt ein Leben lang.
+Explain your code to a rubber duck: it often finds the bug before you.	Erklär deinen Code einer Gummiente: oft findet sie den Bug vor dir.
+A break is not wasted time: your brain keeps searching without you.	Eine Pause ist keine verlorene Zeit: dein Gehirn sucht ohne dich weiter.
+Read the whole error before fixing it. It almost always tells the truth.	Lies den ganzen Fehler, bevor du ihn behebst. Er sagt fast immer die Wahrheit.
+Explaining to someone is understanding twice.	Jemandem etwas zu erklären heißt, es zweimal zu verstehen.
+Today's code will look clumsy to you in a month. That is proof you are moving forward.	Dein Code von heute wirkt in einem Monat ungeschickt. Das beweist, dass du vorankommst.
+No need to go fast. Just do not stop.	Du musst nicht schnell sein. Hör nur nicht auf.
+The moulinette judges the code, never the person. Breathe, and try again.	Die Moulinette beurteilt den Code, nie die Person. Atme durch und fang neu an.
+Did you know?	Wusstest du?

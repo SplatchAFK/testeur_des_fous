@@ -1488,3 +1488,82 @@ this folder no longer exists	bu klasör artık yok
 • Your terminal does not announce 24-bit colours: colours will be approximated. A recent terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) shows them all.\n	• Terminalin 24 bit renk bildirmiyor: renkler yaklaşık olacak. Yeni bir terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) hepsini gösterir.\n
 • Most handy: the tester on one side of the screen, and VS Code, vim or your editor large next to it. The tester adapts to the space it has.\n• If the display shifts or gets cut, enlarge the window and start the tester again.	• En pratiği: tester ekranın bir yanında, VS Code, vim ya da editörün yanında büyük. Tester eldeki alana uyum sağlar.\n• Görüntü kayar ya da kesilirse pencereyi büyüt ve testeri yeniden başlat.
 DISPLAY TIPS	GÖRÜNTÜ İPUÇLARI
+↑ ↓ to pick, Enter to confirm, Esc to go back: the whole tester works like this.	Seçmek için ↑ ↓, onaylamak için Enter, geri dönmek için Esc: testerin tamamı böyle çalışır.
+'Test this folder' tests the folder you started the tester from.	« Bu klasörü test et », testeri başlattığın klasörü test eder.
+Your last 10 tests are in 'Test my project': Enter runs them again.	Son 10 testin « Projemi test et » içinde: Enter onları yeniden başlatır.
+At the top of 'Test my project', ↑ to type a path: Tab completes like zsh.	« Projemi test et » en üstünde yol yazmak için ↑: Tab zsh gibi tamamlar.
+Keep the tester next to your projects, not inside: a git add . would send it to the moulinette.	Testeri projelerinin yanında tut, içinde değil: git add . onu moulinette'e gönderir.
+Install the tdf command in Settings: then 'tdf' is enough, in any folder.	Ayarlar'dan tdf komutunu kur: sonra her klasörde « tdf » yeter.
+Put the tester on one side of the screen and your editor large next to it.	Testeri ekranın bir yanına, editörünü büyük olarak yanına koy.
+In the Libft results, f opens a function's card: every test and what is wrong.	Libft sonuçlarında f bir fonksiyonun kartını açar: her test ve neyin yanlış olduğu.
+In the Libft results, m opens the moulinette audit: Makefile, relink, extra files.	Libft sonuçlarında m moulinette denetimini açar: Makefile, relink, fazla dosyalar.
+Fixed it? r in the results runs the tests again right away.	Düzelttin mi? Sonuçlarda r testleri hemen yeniden başlatır.
+'Review the last attempt' reopens your last results without running anything.	« Son denemeyi gözden geçir » hiçbir şeyi yeniden başlatmadan son sonuçlarını açar.
+An extra .gitignore or README in your repo: the moulinette counts a garbage file.	Teslimde fazladan bir .gitignore ya da README: moulinette bunu fazla dosya sayar.
+The Norm counts: install norminette (python3 -m pip install --user norminette).	Norm önemli: norminette'i kur (python3 -m pip install --user norminette).
+The tester compiles with -Wall -Wextra -Werror, like the moulinette: zero warnings.	Tester moulinette gibi -Wall -Wextra -Werror ile derler: sıfır uyarı.
+Your helper functions must be static: the tester tells you.	Yardımcı fonksiyonların static olmalı: tester bunu sana söyler.
+A memory leak fails the function, even if the result is right.	Bellek sızıntısı, sonuç doğru olsa bile fonksiyonu başarısız yapar.
+The tester makes malloc fail on purpose: your function must return NULL cleanly.	Tester malloc'u bilerek başarısız yapar: fonksiyonun düzgünce NULL döndürmeli.
+ft_printf: the moulinette-style trace is in ~/.testeur_des_fous/traces/.	ft_printf: moulinette biçimindeki iz ~/.testeur_des_fous/traces/ içinde.
+ft_printf: every conversion is compared to the real printf, return value included.	ft_printf: her dönüşüm gerçek printf ile karşılaştırılır, dönüş değeri dahil.
+get_next_line: the tester tries 7 BUFFER_SIZE values, from 1 to 10,000,000.	get_next_line: tester 1'den 10 000 000'a 7 BUFFER_SIZE dener.
+get_next_line must compile with and without -D BUFFER_SIZE.	get_next_line, -D BUFFER_SIZE ile de onsuz da derlenmeli.
+Examshell des fous: write your code in another terminal, then type grademe.	Examshell des fous: kodunu başka bir terminalde yaz, sonra grademe yaz.
+Mistyped a command in the examshell? It suggests the right one: Enter to accept.	examshell'de komutu yanlış mı yazdın? Doğrusunu önerir: kabul için Enter.
+'sujet es', 'sujet en'…: reread the subject in another language.	« sujet es », « sujet en »…: konuyu başka bir dilde yeniden oku.
+In the exam, the wait after a failure grows: reread your code before grademe.	Sınavda başarısızlıktan sonraki bekleme artar: grademe'den önce kodunu yeniden oku.
+'Real conditions': 3 h, wait after failure, no cheats, like the real exam.	« Gerçek koşullar »: 3 saat, hatadan sonra bekleme, hile yok, gerçek sınav gibi.
+The bank: 94 exercises, in any order you like.	Banka: 94 alıştırma, istediğin sırayla.
+In the bank, ◀ ▶ switches category: Exam, Libft, printf.	Bankada ◀ ▶ kategori değiştirir: Exam, Libft, printf.
+Every bank exercise you pass earns Octets and XP.	Bankadan geçilen her alıştırma Octet ve XP kazandırır.
+Octets are spent in the Shop: items, themes, titles.	Octet'ler Dükkân'da harcanır: eşyalar, temalar, unvanlar.
+Knight: equip your items in the wardrobe and pick their colours.	Şövalye: eşyalarını gardıropta kuşan ve renklerini seç.
+Achievements unlock as you progress: see them in your Profile.	Başarılar ilerledikçe açılır: Profil'inde gör.
+The holygraph shows your validated projects: once validated, it is for good.	Holygraph geçtiğin projeleri gösterir: bir kez geçti mi, sonsuza dek.
+Lore: replay the cutscenes you unlocked.	Lore: açtığın ara sahneleri yeniden izle.
+The map of the City lights up as you progress.	Şehir haritası ilerledikçe aydınlanır.
+Stats: your history and what fails most often.	İstatistikler: geçmişin ve en çok neyin başarısız olduğu.
+The tester holds no solution: it breaks your code and tells you where to look.	Testerde hiçbir çözüm yok: kodunu kırar ve nereye bakacağını söyler.
+A bug? Settings, Help us: create a trace and send it on the Discord.	Bir hata mı? Ayarlar, Bize yardım et: bir iz oluştur ve Discord'a gönder.
+bash run.sh --debug shows every detailed report.	bash run.sh --debug tüm ayrıntılı raporları gösterir.
+Your progress is in ~/.testeur_des_fous: you can clone the tester again without losing anything.	İlerlemen ~/.testeur_des_fous içinde: testeri hiçbir şey kaybetmeden yeniden klonlayabilirsin.
+git pull in the tester folder to update it.	Güncellemek için tester klasöründe git pull.
+The tester speaks 8 languages: change it in Settings, Options.	Tester 8 dil konuşur: Ayarlar, Seçenekler'den değiştir.
+During the tests, Esc stops the analysis.	Testler sırasında Esc analizi durdurur.
+A stuck test is cut after 30 s: infinite loop?	Takılan bir test 30 sn sonra kesilir: sonsuz döngü mü?
+AddressSanitizer gives the exact line of a memory error: read it all.	AddressSanitizer bellek hatasının tam satırını verir: tamamını oku.
+Valgrind can rerun your tests: turn it on in Options.	Valgrind testlerini yeniden geçebilir: Seçenekler'den aç.
+The help level, in Options, sets how much detail you see.	Seçenekler'deki yardım seviyesi ne kadar ayrıntı göreceğini belirler.
+The tester compares your functions to the real libc on hundreds of cases.	Tester fonksiyonlarını yüzlerce durumda gerçek libc ile karşılaştırır.
+Predict the result before running the test: you learn twice as much.	Testi başlatmadan önce sonucu tahmin et: iki kat öğrenirsin.
+The 42 Next Global Discord: help, bugs, ideas.	42 Next Global Discord'u: yardım, hatalar, fikirler.
+Patrick is secretly a dinosaur.	Patrick gizlice bir dinozor.
+Paul is secretly Pacman.	Paul gizlice Pacman.
+Roman is secretly FuzeIII.	Roman gizlice FuzeIII.
+Moulinette is the best cat in the world.	Moulinette dünyanın en iyi kedisi.
+f6 is for Olympic athletes.	f6 olimpiyat sporcuları içindir.
+BUFFER_SIZE=0 and negative: return NULL	BUFFER_SIZE=0 ve negatif: NULL döndür
+BUFFER_SIZE=%s: returns NULL	BUFFER_SIZE=%s: NULL döndürüyor
+BUFFER_SIZE=%s: does not return NULL	BUFFER_SIZE=%s: NULL döndürmüyor
+according to students, the moulinette tests this case and expects NULL: check BUFFER_SIZE <= 0 at the start of get_next_line	öğrencilere göre moulinette bu durumu test eder ve NULL bekler: get_next_line başında BUFFER_SIZE <= 0 kontrol et
+BUFFER_SIZE=%s: crash or loop	BUFFER_SIZE=%s: çökme ya da döngü
+according to students, the moulinette tests this case and expects NULL, with no crash	öğrencilere göre moulinette bu durumu test eder ve çökmeden NULL bekler
+BUFFER_SIZE=%s: does not compile	BUFFER_SIZE=%s: derlenmiyor
+the code must compile and return NULL when BUFFER_SIZE is 0 or less	BUFFER_SIZE 0 ya da daha azken kod derlenmeli ve NULL döndürmeli
+The name 'testeur des fous' comes from a printf(\"Test de fou\"); one of the creators put everywhere to debug.	« testeur des fous » adı, yapımcılardan birinin hata ayıklamak için her yere koyduğu printf(\"Test de fou\"); satırından gelir.
+If you are reading these words, you passed the piscine. You earned this place. Well done.	Bu sözleri okuyorsan piscine'i geçtin. Bu yeri hak ettin. Bravo.
+Do not rush: fly too high too soon and you burn your wings.	Acele etme: çok erken çok yükseğe uçan kanatlarını yakar.
+A segfault is not a failure: it is your code showing you where to look.	Segfault bir başarısızlık değil: kodun sana nereye bakacağını gösteriyor.
+Every bug you fix is a lesson no one can take from you.	Düzelttiğin her hata kimsenin senden alamayacağı bir derstir.
+Towers are built stone by stone. So is your code.	Kuleler taş taş yapılır. Kodun da öyle.
+Everyone got stuck on ft_split one day. Everyone.	Herkes bir gün ft_split'te takıldı. Herkes.
+Understanding takes longer than copying, but it stays for a lifetime.	Anlamak kopyalamaktan uzun sürer ama ömür boyu kalır.
+Explain your code to a rubber duck: it often finds the bug before you.	Kodunu bir lastik ördeğe anlat: çoğu zaman hatayı senden önce bulur.
+A break is not wasted time: your brain keeps searching without you.	Mola kayıp zaman değil: beynin sensiz aramaya devam eder.
+Read the whole error before fixing it. It almost always tells the truth.	Düzeltmeden önce hatanın tamamını oku. Neredeyse her zaman doğruyu söyler.
+Explaining to someone is understanding twice.	Birine anlatmak iki kez anlamaktır.
+Today's code will look clumsy to you in a month. That is proof you are moving forward.	Bugünkü kodun bir ay sonra sana beceriksiz görünecek. İlerlediğinin kanıtı bu.
+No need to go fast. Just do not stop.	Hızlı gitmen gerekmez. Sadece durma.
+The moulinette judges the code, never the person. Breathe, and try again.	Moulinette kodu yargılar, asla kişiyi değil. Nefes al ve yeniden başla.
+Did you know?	Biliyor muydun?

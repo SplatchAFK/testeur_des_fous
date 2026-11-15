@@ -1488,3 +1488,82 @@ this folder no longer exists	этой папки больше нет
 • Your terminal does not announce 24-bit colours: colours will be approximated. A recent terminal (GNOME Terminal, Ptyxis, Windows Terminal, kitty) shows them all.\n	• Терминал не сообщает о 24-битных цветах: цвета будут приблизительными. Современный терминал (GNOME Terminal, Ptyxis, Windows Terminal, kitty) покажет все.\n
 • Most handy: the tester on one side of the screen, and VS Code, vim or your editor large next to it. The tester adapts to the space it has.\n• If the display shifts or gets cut, enlarge the window and start the tester again.	• Удобнее всего: тестер с одной стороны экрана, VS Code, vim или твой редактор крупно рядом. Тестер подстраивается под место.\n• Если изображение съезжает или обрезается, увеличь окно и перезапусти тестер.
 DISPLAY TIPS	СОВЕТЫ ПО ОТОБРАЖЕНИЮ
+↑ ↓ to pick, Enter to confirm, Esc to go back: the whole tester works like this.	↑ ↓ — выбор, Enter — подтвердить, Esc — назад: так работает весь тестер.
+'Test this folder' tests the folder you started the tester from.	« Проверить эту папку » проверяет папку, из которой ты запустил тестер.
+Your last 10 tests are in 'Test my project': Enter runs them again.	Последние 10 тестов — в « Проверить мой проект »: Enter запускает их снова.
+At the top of 'Test my project', ↑ to type a path: Tab completes like zsh.	Вверху « Проверить мой проект » ↑ — ввести путь: Tab дополняет как zsh.
+Keep the tester next to your projects, not inside: a git add . would send it to the moulinette.	Держи тестер рядом с проектами, а не внутри: git add . отправит его мулинетт.
+Install the tdf command in Settings: then 'tdf' is enough, in any folder.	Установи команду tdf в Настройках: потом хватит « tdf » в любой папке.
+Put the tester on one side of the screen and your editor large next to it.	Поставь тестер сбоку экрана, а редактор — крупно рядом.
+In the Libft results, f opens a function's card: every test and what is wrong.	В результатах Libft f открывает карточку функции: каждый тест и что не так.
+In the Libft results, m opens the moulinette audit: Makefile, relink, extra files.	В результатах Libft m открывает аудит мулинетт: Makefile, relink, лишние файлы.
+Fixed it? r in the results runs the tests again right away.	Исправил? r в результатах сразу перезапускает тесты.
+'Review the last attempt' reopens your last results without running anything.	« Пересмотреть последнюю попытку » открывает последние результаты без перезапуска.
+An extra .gitignore or README in your repo: the moulinette counts a garbage file.	Лишний .gitignore или README в сдаче: мулинетт считает это лишним файлом.
+The Norm counts: install norminette (python3 -m pip install --user norminette).	Норма важна: установи norminette (python3 -m pip install --user norminette).
+The tester compiles with -Wall -Wextra -Werror, like the moulinette: zero warnings.	Тестер компилирует с -Wall -Wextra -Werror, как мулинетт: ноль предупреждений.
+Your helper functions must be static: the tester tells you.	Вспомогательные функции должны быть static: тестер подскажет.
+A memory leak fails the function, even if the result is right.	Утечка памяти проваливает функцию, даже если результат верный.
+The tester makes malloc fail on purpose: your function must return NULL cleanly.	Тестер нарочно ломает malloc: функция должна аккуратно вернуть NULL.
+ft_printf: the moulinette-style trace is in ~/.testeur_des_fous/traces/.	ft_printf: след в формате мулинетт лежит в ~/.testeur_des_fous/traces/.
+ft_printf: every conversion is compared to the real printf, return value included.	ft_printf: каждое преобразование сравнивается с настоящим printf, включая возвращаемое значение.
+get_next_line: the tester tries 7 BUFFER_SIZE values, from 1 to 10,000,000.	get_next_line: тестер пробует 7 BUFFER_SIZE, от 1 до 10 000 000.
+get_next_line must compile with and without -D BUFFER_SIZE.	get_next_line должен компилироваться с -D BUFFER_SIZE и без.
+Examshell des fous: write your code in another terminal, then type grademe.	Examshell des fous: пиши код в другом терминале, потом вводи grademe.
+Mistyped a command in the examshell? It suggests the right one: Enter to accept.	Ошибся в команде в examshell? Он предложит правильную: Enter — принять.
+'sujet es', 'sujet en'…: reread the subject in another language.	« sujet es », « sujet en »…: перечитай задание на другом языке.
+In the exam, the wait after a failure grows: reread your code before grademe.	На экзамене ожидание после ошибки растёт: перечитай код перед grademe.
+'Real conditions': 3 h, wait after failure, no cheats, like the real exam.	« Реальные условия »: 3 ч, ожидание после ошибки, без читов, как настоящий экзамен.
+The bank: 94 exercises, in any order you like.	Банк: 94 упражнения, в любом порядке.
+In the bank, ◀ ▶ switches category: Exam, Libft, printf.	В банке ◀ ▶ меняет категорию: Exam, Libft, printf.
+Every bank exercise you pass earns Octets and XP.	Каждое пройденное упражнение банка даёт Октеты и XP.
+Octets are spent in the Shop: items, themes, titles.	Октеты тратятся в Магазине: предметы, темы, титулы.
+Knight: equip your items in the wardrobe and pick their colours.	Рыцарь: надевай предметы в гардеробе и выбирай цвета.
+Achievements unlock as you progress: see them in your Profile.	Достижения открываются по мере продвижения: смотри их в Профиле.
+The holygraph shows your validated projects: once validated, it is for good.	Holygraph показывает сданные проекты: сдан однажды — навсегда.
+Lore: replay the cutscenes you unlocked.	Лор: пересматривай открытые ролики.
+The map of the City lights up as you progress.	Карта Города загорается по мере продвижения.
+Stats: your history and what fails most often.	Статистика: твоя история и что чаще всего падает.
+The tester holds no solution: it breaks your code and tells you where to look.	В тестере нет решений: он ломает твой код и говорит, куда смотреть.
+A bug? Settings, Help us: create a trace and send it on the Discord.	Баг? Настройки, Помоги нам: создай след и отправь в Discord.
+bash run.sh --debug shows every detailed report.	bash run.sh --debug показывает все подробные отчёты.
+Your progress is in ~/.testeur_des_fous: you can clone the tester again without losing anything.	Прогресс хранится в ~/.testeur_des_fous: можно заново клонировать тестер без потерь.
+git pull in the tester folder to update it.	git pull в папке тестера, чтобы обновить его.
+The tester speaks 8 languages: change it in Settings, Options.	Тестер говорит на 8 языках: смени язык в Настройках, Параметры.
+During the tests, Esc stops the analysis.	Во время тестов Esc останавливает анализ.
+A stuck test is cut after 30 s: infinite loop?	Зависший тест обрывается через 30 с: бесконечный цикл?
+AddressSanitizer gives the exact line of a memory error: read it all.	AddressSanitizer указывает точную строку ошибки памяти: прочитай целиком.
+Valgrind can rerun your tests: turn it on in Options.	Valgrind может перепроверить тесты: включи его в Параметрах.
+The help level, in Options, sets how much detail you see.	Уровень подсказок в Параметрах задаёт, сколько деталей ты видишь.
+The tester compares your functions to the real libc on hundreds of cases.	Тестер сравнивает твои функции с настоящей libc на сотнях случаев.
+Predict the result before running the test: you learn twice as much.	Предскажи результат до запуска теста: научишься вдвое больше.
+The 42 Next Global Discord: help, bugs, ideas.	Discord 42 Next Global: помощь, баги, идеи.
+Patrick is secretly a dinosaur.	Патрик втайне динозавр.
+Paul is secretly Pacman.	Пол втайне Pacman.
+Roman is secretly FuzeIII.	Роман втайне FuzeIII.
+Moulinette is the best cat in the world.	Мулинетт — лучшая кошка в мире.
+f6 is for Olympic athletes.	f6 — для олимпийских спортсменов.
+BUFFER_SIZE=0 and negative: return NULL	BUFFER_SIZE=0 и отрицательный: вернуть NULL
+BUFFER_SIZE=%s: returns NULL	BUFFER_SIZE=%s: возвращает NULL
+BUFFER_SIZE=%s: does not return NULL	BUFFER_SIZE=%s: не возвращает NULL
+according to students, the moulinette tests this case and expects NULL: check BUFFER_SIZE <= 0 at the start of get_next_line	по словам студентов, мулинетт проверяет этот случай и ждёт NULL: проверяй BUFFER_SIZE <= 0 в начале get_next_line
+BUFFER_SIZE=%s: crash or loop	BUFFER_SIZE=%s: падение или цикл
+according to students, the moulinette tests this case and expects NULL, with no crash	по словам студентов, мулинетт проверяет этот случай и ждёт NULL без падения
+BUFFER_SIZE=%s: does not compile	BUFFER_SIZE=%s: не компилируется
+the code must compile and return NULL when BUFFER_SIZE is 0 or less	код должен компилироваться и возвращать NULL, когда BUFFER_SIZE равен 0 или меньше
+The name 'testeur des fous' comes from a printf(\"Test de fou\"); one of the creators put everywhere to debug.	Название « testeur des fous » пошло от printf(\"Test de fou\");, который один из авторов ставил везде для отладки.
+If you are reading these words, you passed the piscine. You earned this place. Well done.	Если ты читаешь эти слова, ты прошёл piscine. Ты заслужил это место. Браво.
+Do not rush: fly too high too soon and you burn your wings.	Не спеши: кто слишком рано взлетает высоко, обжигает крылья.
+A segfault is not a failure: it is your code showing you where to look.	Segfault — не провал: это код показывает, куда смотреть.
+Every bug you fix is a lesson no one can take from you.	Каждый исправленный баг — урок, который никто у тебя не отнимет.
+Towers are built stone by stone. So is your code.	Башни строятся камень за камнем. Твой код тоже.
+Everyone got stuck on ft_split one day. Everyone.	Каждый когда-то застревал на ft_split. Каждый.
+Understanding takes longer than copying, but it stays for a lifetime.	Понять дольше, чем скопировать, но это остаётся на всю жизнь.
+Explain your code to a rubber duck: it often finds the bug before you.	Объясни код резиновой уточке: часто она находит баг раньше тебя.
+A break is not wasted time: your brain keeps searching without you.	Перерыв — не потерянное время: мозг продолжает искать без тебя.
+Read the whole error before fixing it. It almost always tells the truth.	Прочитай ошибку целиком, прежде чем исправлять. Она почти всегда говорит правду.
+Explaining to someone is understanding twice.	Объяснить кому-то — значит понять дважды.
+Today's code will look clumsy to you in a month. That is proof you are moving forward.	Сегодняшний код через месяц покажется неуклюжим. Это доказательство, что ты растёшь.
+No need to go fast. Just do not stop.	Не нужно спешить. Главное — не останавливаться.
+The moulinette judges the code, never the person. Breathe, and try again.	Мулинетт судит код, а не человека. Выдохни и начни снова.
+Did you know?	А ты знал?

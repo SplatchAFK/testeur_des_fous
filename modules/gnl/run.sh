@@ -304,17 +304,22 @@ for cat in base taille fin fd lecture malloc info; do
 	done <<< "$noms"
 done
 
-section "$(tt "BUFFER_SIZE=0 et négatif (le sujet ne dit rien : pour info)" "BUFFER_SIZE=0 and negative (the subject says nothing: for info)")"
-for t in 0 -5; do
-	if "$CC" -w -g $SAN -D BUFFER_SIZE="$t" $WRAP -I "$PROJET" "$ICI/src/tdf_gnl.c" "${SRC[@]}" $WFLAGS -o "$BUILD/z" 2>/dev/null; then
-		out="$("$BUILD/z" "$BUILD/fichiers" "fd" 2>/dev/null | cut -f4 | grep -cE 'CRASH|BOUCLE')"
-		if [ "$out" = 0 ]; then
-			ligne OK "BUFFER_SIZE=$t : ni plantage ni boucle"
+section "$(tt "BUFFER_SIZE=0 et négatif : renvoyer NULL" "BUFFER_SIZE=0 and negative: return NULL")"
+printf '%s\n' '#include <fcntl.h>' '#include <stdio.h>' '#include <stdlib.h>' 'char *get_next_line(int fd);' \
+	'int main(int c, char **v) { int fd = open(v[1], O_RDONLY); char *l = get_next_line(fd); (void)c; puts(l ? "PASNULL" : "NULL"); free(l); return (0); }' > "$BUILD/nul.c"
+printf 'une ligne\nune autre\n' > "$BUILD/nul.txt"
+for t in 0 -1; do
+	if "$CC" -w -g $SAN -D BUFFER_SIZE="$t" -I "$PROJET" "$BUILD/nul.c" "${SRC[@]}" -o "$BUILD/z" 2>/dev/null; then
+		out="$(timeout 5 "$BUILD/z" "$BUILD/nul.txt" 2>/dev/null)"
+		if [ "$out" = NULL ]; then
+			ligne OK "$(printf "$(tt "BUFFER_SIZE=%s : renvoie NULL" "BUFFER_SIZE=%s: returns NULL")" "$t")"
+		elif [ "$out" = PASNULL ]; then
+			ligne KO "$(printf "$(tt "BUFFER_SIZE=%s : ne renvoie pas NULL" "BUFFER_SIZE=%s: does not return NULL")" "$t")" "$(tt "selon des étudiants, la moulinette teste ce cas et attend NULL : teste BUFFER_SIZE <= 0 au début de get_next_line" "according to students, the moulinette tests this case and expects NULL: check BUFFER_SIZE <= 0 at the start of get_next_line")"
 		else
-			ligne INFO "BUFFER_SIZE=$t : plantage ou boucle" "un correcteur peut le tester : renvoyer NULL est le plus sûr"
+			ligne KO "$(printf "$(tt "BUFFER_SIZE=%s : plantage ou boucle" "BUFFER_SIZE=%s: crash or loop")" "$t")" "$(tt "selon des étudiants, la moulinette teste ce cas et attend NULL, sans plantage" "according to students, the moulinette tests this case and expects NULL, with no crash")"
 		fi
 	else
-		ligne INFO "BUFFER_SIZE=$t : ne compile pas" "un correcteur peut le tester"
+		ligne KO "$(printf "$(tt "BUFFER_SIZE=%s : ne compile pas" "BUFFER_SIZE=%s: does not compile")" "$t")" "$(tt "le code doit compiler et renvoyer NULL quand BUFFER_SIZE vaut 0 ou moins" "the code must compile and return NULL when BUFFER_SIZE is 0 or less")"
 	fi
 done
 [ -n "$SAN" ] || printf "$(tt "\n  %s! AddressSanitizer indisponible ici : fuites et erreurs mémoire non vérifiées (valgrind conseillé).%s\n" "\n  %s! AddressSanitizer unavailable here: leaks and memory errors not checked (valgrind recommended).%s\n")" "$F_WN" "$R"

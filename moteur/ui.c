@@ -249,6 +249,349 @@ static void	mu_charger(t_mu *m)
 	mu_ajouter(m, "quitter", L("Quitter|Fermer le testeur. Ta progression est déjà enregistrée.", "Quit|Close the tester. Your progress is already saved."), NULL);
 }
 
+static const char	*astuce(int i)
+{
+	switch (i)
+	{
+		case 0:
+			return (L("↑ ↓ pour choisir, Entrée pour valider, Échap pour revenir : tout le testeur marche comme ça.", "↑ ↓ to pick, Enter to confirm, Esc to go back: the whole tester works like this."));
+		case 1:
+			return (L("« Tester ce dossier » teste le dossier d'où tu as lancé le testeur.", "'Test this folder' tests the folder you started the tester from."));
+		case 2:
+			return (L("Tes 10 derniers tests sont dans « Tester mon projet » : Entrée les relance.", "Your last 10 tests are in 'Test my project': Enter runs them again."));
+		case 3:
+			return (L("Tout en haut de « Tester mon projet », ↑ pour écrire un chemin : Tab complète comme zsh.", "At the top of 'Test my project', ↑ to type a path: Tab completes like zsh."));
+		case 4:
+			return (L("Range le testeur à côté de tes projets, pas dedans : un git add . l'enverrait à la moulinette.", "Keep the tester next to your projects, not inside: a git add . would send it to the moulinette."));
+		case 5:
+			return (L("Installe la commande tdf dans Paramètres : ensuite « tdf » suffit, dans n'importe quel dossier.", "Install the tdf command in Settings: then 'tdf' is enough, in any folder."));
+		case 6:
+			return (L("Mets le testeur sur un côté de l'écran et ton éditeur en grand à côté.", "Put the tester on one side of the screen and your editor large next to it."));
+		case 7:
+			return (L("Dans les résultats Libft, f ouvre la fiche d'une fonction : chaque test et ce qui cloche.", "In the Libft results, f opens a function's card: every test and what is wrong."));
+		case 8:
+			return (L("Dans les résultats Libft, m ouvre l'audit moulinette : Makefile, relink, fichiers en trop.", "In the Libft results, m opens the moulinette audit: Makefile, relink, extra files."));
+		case 9:
+			return (L("Tu as corrigé ? r dans les résultats relance les tests tout de suite.", "Fixed it? r in the results runs the tests again right away."));
+		case 10:
+			return (L("« Revoir la dernière tentative » rouvre tes derniers résultats sans rien relancer.", "'Review the last attempt' reopens your last results without running anything."));
+		case 11:
+			return (L("Un .gitignore ou un README en trop dans ton rendu : la moulinette compte un fichier parasite.", "An extra .gitignore or README in your repo: the moulinette counts a garbage file."));
+		case 12:
+			return (L("La Norme compte : installe norminette (python3 -m pip install --user norminette).", "The Norm counts: install norminette (python3 -m pip install --user norminette)."));
+		case 13:
+			return (L("Le testeur compile avec -Wall -Wextra -Werror, comme la moulinette : zéro warning.", "The tester compiles with -Wall -Wextra -Werror, like the moulinette: zero warnings."));
+		case 14:
+			return (L("Tes fonctions d'aide doivent être static : le testeur te le signale.", "Your helper functions must be static: the tester tells you."));
+		case 15:
+			return (L("Une fuite mémoire fait échouer la fonction, même si le résultat est juste.", "A memory leak fails the function, even if the result is right."));
+		case 16:
+			return (L("Le testeur fait échouer malloc exprès : ta fonction doit renvoyer NULL proprement.", "The tester makes malloc fail on purpose: your function must return NULL cleanly."));
+		case 17:
+			return (L("ft_printf : la trace au format moulinette est dans ~/.testeur_des_fous/traces/.", "ft_printf: the moulinette-style trace is in ~/.testeur_des_fous/traces/."));
+		case 18:
+			return (L("ft_printf : chaque conversion est comparée au vrai printf, valeur de retour comprise.", "ft_printf: every conversion is compared to the real printf, return value included."));
+		case 19:
+			return (L("get_next_line : le testeur essaie 7 BUFFER_SIZE, de 1 à 10 000 000.", "get_next_line: the tester tries 7 BUFFER_SIZE values, from 1 to 10,000,000."));
+		case 20:
+			return (L("get_next_line doit compiler avec et sans -D BUFFER_SIZE.", "get_next_line must compile with and without -D BUFFER_SIZE."));
+		case 21:
+			return (L("Examshell des fous : écris ton code dans un autre terminal, puis tape grademe.", "Examshell des fous: write your code in another terminal, then type grademe."));
+		case 22:
+			return (L("Une commande mal tapée dans l'examshell ? Il te propose la bonne : Entrée pour accepter.", "Mistyped a command in the examshell? It suggests the right one: Enter to accept."));
+		case 23:
+			return (L("« sujet es », « sujet en »… : relis le sujet dans une autre langue.", "'sujet es', 'sujet en'…: reread the subject in another language."));
+		case 24:
+			return (L("En examen, l'attente après un échec grandit : relis ton code avant grademe.", "In the exam, the wait after a failure grows: reread your code before grademe."));
+		case 25:
+			return (L("« Conditions réelles » : 3 h, attente après échec, aucun cheat, comme le vrai exam.", "'Real conditions': 3 h, wait after failure, no cheats, like the real exam."));
+		case 26:
+			return (L("La banque : 94 exercices, à faire dans l'ordre que tu veux.", "The bank: 94 exercises, in any order you like."));
+		case 27:
+			return (L("Dans la banque, ◀ ▶ change de catégorie : Exam, Libft, printf.", "In the bank, ◀ ▶ switches category: Exam, Libft, printf."));
+		case 28:
+			return (L("Chaque exercice réussi de la banque rapporte des Octets et de l'XP.", "Every bank exercise you pass earns Octets and XP."));
+		case 29:
+			return (L("Les Octets se dépensent dans la Boutique : objets, thèmes, titres.", "Octets are spent in the Shop: items, themes, titles."));
+		case 30:
+			return (L("Chevalier : équipe tes objets dans la garde-robe et choisis leurs couleurs.", "Knight: equip your items in the wardrobe and pick their colours."));
+		case 31:
+			return (L("Les succès se débloquent en avançant : regarde-les dans ton Profil.", "Achievements unlock as you progress: see them in your Profile."));
+		case 32:
+			return (L("Le holygraph montre tes projets validés : une fois validé, c'est pour toujours.", "The holygraph shows your validated projects: once validated, it is for good."));
+		case 33:
+			return (L("Lore : revois les cinématiques que tu as débloquées.", "Lore: replay the cutscenes you unlocked."));
+		case 34:
+			return (L("La carte de la Cité s'allume au fil de ta progression.", "The map of the City lights up as you progress."));
+		case 35:
+			return (L("Stats : ton historique et ce qui échoue le plus souvent.", "Stats: your history and what fails most often."));
+		case 36:
+			return (L("Le testeur ne contient aucune solution : il casse ton code et te dit où regarder.", "The tester holds no solution: it breaks your code and tells you where to look."));
+		case 37:
+			return (L("Un bug ? Paramètres, Nous aider : crée une trace et envoie-la sur le Discord.", "A bug? Settings, Help us: create a trace and send it on the Discord."));
+		case 38:
+			return (L("bash run.sh --debug affiche tous les rapports détaillés.", "bash run.sh --debug shows every detailed report."));
+		case 39:
+			return (L("Ta progression est dans ~/.testeur_des_fous : tu peux recloner le testeur sans rien perdre.", "Your progress is in ~/.testeur_des_fous: you can clone the tester again without losing anything."));
+		case 40:
+			return (L("git pull dans le dossier du testeur pour le mettre à jour.", "git pull in the tester folder to update it."));
+		case 41:
+			return (L("Le testeur parle 8 langues : change-la dans Paramètres, Réglages.", "The tester speaks 8 languages: change it in Settings, Options."));
+		case 42:
+			return (L("Pendant les tests, Échap arrête l'analyse.", "During the tests, Esc stops the analysis."));
+		case 43:
+			return (L("Un test bloqué est coupé au bout de 30 s : boucle infinie ?", "A stuck test is cut after 30 s: infinite loop?"));
+		case 44:
+			return (L("AddressSanitizer donne la ligne exacte d'une erreur mémoire : lis-la en entier.", "AddressSanitizer gives the exact line of a memory error: read it all."));
+		case 45:
+			return (L("Valgrind peut repasser sur tes tests : active-le dans Réglages.", "Valgrind can rerun your tests: turn it on in Options."));
+		case 46:
+			return (L("Le niveau d'aide, dans Réglages, choisit combien de détails tu vois.", "The help level, in Options, sets how much detail you see."));
+		case 47:
+			return (L("Le testeur compare tes fonctions à la vraie libc sur des centaines de cas.", "The tester compares your functions to the real libc on hundreds of cases."));
+		case 48:
+			return (L("Prédis le résultat avant de lancer le test : tu apprends deux fois plus.", "Predict the result before running the test: you learn twice as much."));
+		case 49:
+			return (L("Le Discord 42 Next Global : entraide, bugs, idées.", "The 42 Next Global Discord: help, bugs, ideas."));
+		case 50:
+			return (L("Le nom « testeur des fous » vient d'un printf(\"Test de fou\"); qu'un des créateurs glissait partout pour déboguer.", "The name 'testeur des fous' comes from a printf(\"Test de fou\"); one of the creators put everywhere to debug."));
+		case 51:
+			return (L("Si tu lis ces mots, tu as réussi la piscine. Cette place, tu l'as méritée. Bravo.", "If you are reading these words, you passed the piscine. You earned this place. Well done."));
+		case 52:
+			return (L("Ne pars pas trop vite : à vouloir voler trop haut, on se brûle les ailes.", "Do not rush: fly too high too soon and you burn your wings."));
+		case 53:
+			return (L("Un segfault n'est pas un échec : c'est ton code qui te montre où regarder.", "A segfault is not a failure: it is your code showing you where to look."));
+		case 54:
+			return (L("Chaque bug corrigé est une leçon que personne ne pourra te reprendre.", "Every bug you fix is a lesson no one can take from you."));
+		case 55:
+			return (L("Les tours se construisent pierre par pierre. Ton code aussi.", "Towers are built stone by stone. So is your code."));
+		case 56:
+			return (L("Tout le monde a bloqué sur ft_split un jour. Tout le monde.", "Everyone got stuck on ft_split one day. Everyone."));
+		case 57:
+			return (L("Comprendre prend plus de temps que copier, mais ça reste toute une vie.", "Understanding takes longer than copying, but it stays for a lifetime."));
+		case 58:
+			return (L("Explique ton code à un canard en plastique : souvent, il trouve le bug avant toi.", "Explain your code to a rubber duck: it often finds the bug before you."));
+		case 59:
+			return (L("Une pause n'est pas du temps perdu : ton cerveau continue de chercher sans toi.", "A break is not wasted time: your brain keeps searching without you."));
+		case 60:
+			return (L("Lis l'erreur en entier avant de la corriger. Elle dit presque toujours la vérité.", "Read the whole error before fixing it. It almost always tells the truth."));
+		case 61:
+			return (L("Expliquer à quelqu'un, c'est comprendre deux fois.", "Explaining to someone is understanding twice."));
+		case 62:
+			return (L("Ton code d'aujourd'hui te semblera maladroit dans un mois. C'est la preuve que tu avances.", "Today's code will look clumsy to you in a month. That is proof you are moving forward."));
+		case 63:
+			return (L("Pas besoin d'aller vite. Il suffit de ne pas s'arrêter.", "No need to go fast. Just do not stop."));
+		case 64:
+			return (L("La moulinette juge le code, jamais la personne. Respire, et recommence.", "The moulinette judges the code, never the person. Breathe, and try again."));
+		case 65:
+			return (L("Patrick est en secret un dinosaure.", "Patrick is secretly a dinosaur."));
+		case 66:
+			return (L("Paul est en secret Pacman.", "Paul is secretly Pacman."));
+		case 67:
+			return (L("Roman est en secret FuzeIII.", "Roman is secretly FuzeIII."));
+		case 68:
+			return (L("Moulinette est la meilleure chatte du monde.", "Moulinette is the best cat in the world."));
+		case 69:
+			return (L("f6, c'est pour les sportifs olympiques.", "f6 is for Olympic athletes."));
+	}
+	return ("");
+}
+
+typedef struct s_zone
+{
+	int	x;
+	int	y0;
+	int	y1;
+	int	w;
+}	t_zone;
+
+typedef struct s_bulle
+{
+	int		cur;
+	int		prec;
+	long	t0;
+	long	suite;
+	int		x;
+	int		y;
+	int		w;
+	int		n;
+	char	l[4][200];
+}	t_bulle;
+
+static t_bulle	g_bulle = {-1, -1, 0, 25000, 0, 0, 0, 0, {{0}}};
+
+static int	bulle_couper(const char *s, int w, char l[4][200]);
+
+typedef struct s_splash
+{
+	int		idx;
+	long	t0;
+	long	change;
+	int		n;
+	int		w;
+	char	l[6][200];
+}	t_splash;
+
+static t_splash	g_splash = {-1, 0, 0, 0, 0, {{0}}};
+
+static void	splash_titre(int bx, int by, int w, long anim)
+{
+	t_rgb		c;
+	long		dt;
+	double		k;
+	int			i;
+	int			y;
+	int			montre;
+
+	if (g_splash.idx < 0 || anim >= g_splash.change)
+	{
+		g_splash.idx = rand() % 65;
+		g_splash.t0 = anim;
+		g_splash.change = anim + 600000;
+		g_splash.w = 0;
+	}
+	if (g_splash.w != w)
+	{
+		g_splash.w = w;
+		snprintf(g_splash.l[0], 200, "%s", L("Le savais-tu ?", "Did you know?"));
+		g_splash.n = 1 + bulle_couper(astuce(g_splash.idx), w, g_splash.l + 1);
+	}
+	dt = anim - g_splash.t0;
+	k = 0.18 + 0.18 * sin(anim / 260.0);
+	for (i = 0; i < g_splash.n; i++)
+	{
+		c = i == 0 ? rgb(255, 190, 70) : rgb(255, 255, 85);
+		c = mix(c, rgb(255, 255, 255), dt < 300 ? 1.0 - dt / 300.0 : k);
+		montre = dt < 300 ? (int)(ulen(g_splash.l[i]) * dt / 300.0) + 1 : ulen(g_splash.l[i]);
+		y = by + i;
+		if (y < 1)
+			continue ;
+		bgc(theme()->bg);
+		at(bx + 2 * i - 1, y);
+		out(" ");
+		text_clip(bx + 2 * i, y, c, g_splash.l[i], montre);
+		fg(c);
+		outf("%*s", ulen(g_splash.l[i]) - montre + 1, "");
+	}
+}
+
+static const char	*octets_de(const char *s, int car)
+{
+	while (*s && car > 0)
+	{
+		s++;
+		while (*s && ((unsigned char)*s & 0xC0) == 0x80)
+			s++;
+		car--;
+	}
+	return (s);
+}
+
+static int	bulle_couper(const char *s, int w, char l[4][200])
+{
+	int	n;
+	int	len;
+	int	i;
+	int	c;
+	int	coupe;
+
+	n = 0;
+	while (*s && n < 4)
+	{
+		while (*s == ' ')
+			s++;
+		len = 0;
+		coupe = -1;
+		for (i = 0, c = 0; s[i] && c < w; i++)
+		{
+			if (s[i] == ' ')
+				coupe = i;
+			if (((unsigned char)s[i] & 0xC0) != 0x80)
+				c++;
+			len = i + 1;
+		}
+		while (s[len] && ((unsigned char)s[len] & 0xC0) == 0x80)
+			len++;
+		if (s[len] && coupe > 0)
+			len = coupe;
+		snprintf(l[n++], 200, "%.*s", len, s);
+		s += len;
+	}
+	return (n);
+}
+
+static void	bulle_choisir(t_zone *z, int nz, long anim)
+{
+	t_zone	*q;
+	int		i;
+
+	if (nz <= 0)
+	{
+		g_bulle.suite = anim + 3000;
+		return ;
+	}
+	do
+		i = 65 + rand() % 5;
+	while (i == g_bulle.prec);
+	q = &z[rand() % nz];
+	g_bulle.w = q->w < 40 ? q->w : 40;
+	g_bulle.n = bulle_couper(astuce(i), g_bulle.w, g_bulle.l);
+	if (q->y1 - q->y0 < g_bulle.n)
+	{
+		g_bulle.suite = anim + 20000;
+		return ;
+	}
+	g_bulle.cur = i;
+	g_bulle.prec = i;
+	g_bulle.t0 = anim;
+	g_bulle.x = q->x;
+	g_bulle.y = q->y0 + rand() % (q->y1 - q->y0 - g_bulle.n + 1);
+}
+
+static void	bulle(t_zone *z, int nz, long anim)
+{
+	t_rgb	jaune;
+	t_rgb	c;
+	long	dt;
+	int		total;
+	int		montre;
+	int		i;
+	int		l;
+	int		x;
+
+	if (g_bulle.cur < 0)
+	{
+		if (anim >= g_bulle.suite)
+			bulle_choisir(z, nz, anim);
+		if (g_bulle.cur < 0)
+			return ;
+	}
+	dt = anim - g_bulle.t0;
+	if (dt > 5300)
+	{
+		g_bulle.cur = -1;
+		g_bulle.suite = anim + 60000 + rand() % 120000;
+		return ;
+	}
+	jaune = rgb(255, 140, 220);
+	if (dt < 300)
+		c = mix(rgb(255, 255, 255), jaune, dt / 300.0);
+	else if (dt > 4300)
+		c = mix(jaune, theme()->bg, (dt - 4300) / 1000.0);
+	else
+		c = jaune;
+	for (total = 0, i = 0; i < g_bulle.n; i++)
+		total += ulen(g_bulle.l[i]);
+	montre = dt < 220 ? (int)(total * dt / 220.0) + 1 : total;
+	for (i = 0; i < g_bulle.n && montre > 0; i++)
+	{
+		l = ulen(g_bulle.l[i]);
+		x = montre < l ? (l - montre) / 2 : 0;
+		text_clip(g_bulle.x + (g_bulle.w - l) / 2 + x, g_bulle.y + i, c, octets_de(g_bulle.l[i], x), montre < l ? montre : l);
+		montre -= l;
+	}
+}
+
 static int	mu_largeur(t_mu *m)
 {
 	char	lab[200];
@@ -284,6 +627,8 @@ static int	mu_ecran(t_mu *m, int *sel)
 	long	anim;
 	long	calme;
 	long	prec;
+	t_zone	zones[4];
+	int		nz;
 
 	anim = 0;
 	calme = 0;
@@ -344,6 +689,17 @@ static int	mu_ecran(t_mu *m, int *sel)
 			outf(" %s %-*s", i == *sel ? "▶" : " ", iw - 4, lab);
 			bgc(theme()->bg);
 		}
+		nz = 0;
+		if (cols - (ix + iw + 3) - 3 >= 22)
+			zones[nz++] = (t_zone){ix + iw + 3, y + 1, y + 1 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1), cols - (ix + iw + 3) - 3};
+		if (bx - 4 >= 22)
+			zones[nz++] = (t_zone){2, y + 1, y + 21 < rows - 3 ? y + 21 : rows - 3, bx - 4};
+		bulle(zones, nz, anim);
+		if (haut == 16 && cols - (x + tw + 4 + g_fou_bloc_w) - 4 >= 30)
+			splash_titre(x + tw + 4 + g_fou_bloc_w + 3, 3,
+				cols - (x + tw + 4 + g_fou_bloc_w) - 14 < 30 ? cols - (x + tw + 4 + g_fou_bloc_w) - 14 : 30, anim);
+		else if (haut == 16)
+			splash_titre(x + tw - 30, 10, 30, anim);
 		i = y + 2 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1);
 		if (strchr(m->items[*sel], '|') && i < rows - 2)
 		{

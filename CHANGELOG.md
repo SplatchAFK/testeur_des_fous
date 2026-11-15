@@ -14,6 +14,16 @@ Le numéro de version est dans `moteur/version.h`.
 - premier lancement : la langue, l'écran d'accueil, le login, puis le tuto ; ensuite plus rien avant le menu ;
 - si l'interface graphique ne compile pas, l'ancien menu texte prend le relais.
 
+### Le savais-tu ?
+
+- à côté du titre, une phrase « Le savais-tu ? » penchée façon écran titre de Minecraft, qui pulse doucement : 50 conseils pour mieux utiliser le testeur et 15 phrases bienveillantes ;
+- elle change à chaque lancement et toutes les 10 minutes ;
+- de temps en temps, un easter egg apparaît dans un espace vide du menu, puis disparaît en fondu.
+
+### get_next_line
+
+- BUFFER_SIZE=0 et BUFFER_SIZE=-1 : get_next_line doit renvoyer NULL, sans planter (des étudiants rapportent que la moulinette teste ce cas).
+
 ### Tester mon projet
 
 - aux flèches : « Tester ce dossier » en haut, puis tes derniers tests (chemin, score, date) qu'Entrée relance, puis les projets trouvés à côté du testeur ;
