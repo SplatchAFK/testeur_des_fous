@@ -53,13 +53,14 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Confort
 
-- le testeur reste à l'écran entre deux choix : plus de retour furtif au terminal, sauf pour l'examshell ;
+- le testeur reste à l'écran entre deux choix : plus de retour furtif au terminal ;
 - les conseils d'affichage ne reviennent plus à chaque retour au menu : une fois par problème détecté (et toujours au premier lancement et après une mise à jour) ;
 - Tester mon projet : un encadré explique où chercher ton projet (../ quand le testeur est à côté, . pour ici, ~/ et /, fichiers attendus) et rappelle le dossier où tu es ;
 - « Le savais-tu ? » ne reste plus bloqué en blanc quand tu reviens au menu ;
 - Nous aider : après « t », le chemin de la trace reste affiché sur la page ;
 - Stats › Courbes : mention « en cours d'amélioration · BETA » ;
-- examshell : les flèches maintenues ou tapées vite ne figent plus les menus (les appuis sont regroupés en un seul affichage) et ne laissent plus de « [A » dans la ligne de commande.
+- examshell : les flèches maintenues ou tapées vite ne figent plus les menus : seules les lignes qui changent sont réécrites (environ 200 octets par flèche au lieu de 13 Ko) et plus aucun appui n'est perdu ; plus de « [A » dans la ligne de commande ;
+- examshell lancé depuis le menu : il reste dans l'écran du testeur, plus rien ne traîne dans le terminal après l'avoir quitté.
 
 ### Stats
 

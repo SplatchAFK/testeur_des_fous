@@ -536,10 +536,138 @@ static void	logo_exam(void)
 		printf("\n  %s════════════════════════ EXAMSHELL ════════════════════════%s\n", C_AC, C_R);
 }
 
+static FILE	*g_cadre_f;
+static FILE	*g_cadre_vrai;
+static char	*g_cadre_buf;
+static size_t	g_cadre_len;
+static char	*g_cadre_prec;
+static int	g_cadre_sale = 1;
+static int	g_cadre_cols;
+static int	g_cadre_rows;
+static int	g_entete_a_jour;
+
+static int	cadre_largeur(const char *s, const char *fin)
+{
+	int	n;
+
+	n = 0;
+	while (s < fin)
+	{
+		if (*s == '\033')
+		{
+			s++;
+			if (s < fin && *s == '[')
+				s++;
+			while (s < fin && !((*s >= 'a' && *s <= 'z') || (*s >= 'A' && *s <= 'Z')))
+				s++;
+			if (s < fin)
+				s++;
+			continue ;
+		}
+		if ((*s & 0xC0) != 0x80)
+			n++;
+		s++;
+	}
+	return (n);
+}
+
+static void	cadre_debut(void)
+{
+#ifdef __GLIBC__
+	if (!g_tty || g_cadre_f)
+		return ;
+	fflush(stdout);
+	g_cadre_f = open_memstream(&g_cadre_buf, &g_cadre_len);
+	if (!g_cadre_f)
+		return ;
+	g_cadre_vrai = stdout;
+	stdout = g_cadre_f;
+#endif
+}
+
+static int	cadre_lignes(const char *s, const char **deb, const char **fin, int max)
+{
+	int	n;
+
+	n = 0;
+	while (n < max)
+	{
+		deb[n] = s;
+		while (*s && *s != '\n')
+			s++;
+		fin[n++] = s;
+		if (!*s)
+			break ;
+		s++;
+	}
+	return (n);
+}
+
+static void	cadre_fin(void)
+{
+	static const char	*ad[400];
+	static const char	*af[400];
+	static const char	*nd[400];
+	static const char	*nf[400];
+	struct winsize		ws;
+	int					na;
+	int					nn;
+	int					plein;
+	int					i;
+
+	if (!g_cadre_f)
+		return ;
+	fclose(g_cadre_f);
+	g_cadre_f = NULL;
+	stdout = g_cadre_vrai;
+	if (!g_cadre_buf)
+		return ;
+	ws.ws_col = 0;
+	ws.ws_row = 0;
+	ioctl(1, TIOCGWINSZ, &ws);
+	nn = cadre_lignes(g_cadre_buf, nd, nf, 400);
+	plein = g_cadre_sale || !g_cadre_prec || ws.ws_col != g_cadre_cols || ws.ws_row != g_cadre_rows
+		|| nn >= ws.ws_row || nn >= 400;
+	for (i = 0; !plein && i < nn; i++)
+		if (cadre_largeur(nd[i], nf[i]) >= ws.ws_col)
+			plein = 1;
+	if (plein)
+	{
+		printf("\033[H\033[2J\033[3J");
+		fwrite(g_cadre_buf, 1, g_cadre_len, stdout);
+		g_entete_a_jour = 0;
+	}
+	else
+	{
+		na = cadre_lignes(g_cadre_prec, ad, af, 400);
+		for (i = 0; i < nn; i++)
+			if (i >= na || af[i] - ad[i] != nf[i] - nd[i] || memcmp(ad[i], nd[i], (size_t)(nf[i] - nd[i])))
+			{
+				printf("\033[%d;1H", i + 1);
+				fwrite(nd[i], 1, (size_t)(nf[i] - nd[i]), stdout);
+				printf("\033[0m\033[K");
+			}
+		if (na > nn)
+			printf("\033[%d;1H\033[J", nn + 1);
+		printf("\033[%d;%dH", nn, cadre_largeur(nd[nn - 1], nf[nn - 1]) + 1);
+	}
+	free(g_cadre_prec);
+	g_cadre_prec = g_cadre_buf;
+	g_cadre_buf = NULL;
+	g_cadre_cols = ws.ws_col;
+	g_cadre_rows = ws.ws_row;
+	g_cadre_sale = 0;
+	fflush(stdout);
+}
+
 static void	ecran(void)
 {
-	if (g_tty)
+	if (g_tty && !g_cadre_f)
+	{
 		printf("\033[H\033[2J\033[3J");
+		g_cadre_sale = 1;
+		g_entete_a_jour = 0;
+	}
 }
 
 static void	pause_x(void)
@@ -1891,8 +2019,13 @@ static int	touche(int haut, long t0)
 	k = -1;
 	(void)t0;
 	g_nrep = 1;
-	if (haut)
+	cadre_fin();
+	if (haut && !g_entete_a_jour)
+	{
 		entete_examshell(1);
+		g_entete_a_jour = 1;
+	}
+	fflush(stdout);
 	n = lire_rafale(b, (int)sizeof(b));
 	if (n > 0)
 	{
@@ -1920,6 +2053,8 @@ static int	touche(int haut, long t0)
 		k = net < 0 ? 1000 : net > 0 ? 1001 : 0;
 		g_nrep = net < 0 ? -net : net > 0 ? net : 1;
 	}
+	if (k < 1000 || k > 1003)
+		g_cadre_sale = 1;
 	tcsetattr(0, TCSANOW, &old);
 	return (k);
 }
@@ -1974,6 +2109,7 @@ static int	reglages_fleches(void)
 			g_cfg.wait = 1;
 			g_cfg.trace = 1;
 		}
+		cadre_debut();
 		ecran();
 		haut = g_color ? entete_examshell(0) : 0;
 		if (haut)
@@ -2749,6 +2885,7 @@ static int	b_choisir(int *onglet, int *sel, int *top)
 			*top = *sel;
 		if (*sel >= *top + h)
 			*top = *sel - h + 1;
+		cadre_debut();
 		b_entete(L("Choisis un exercice", "Pick an exercise"));
 		printf("  ");
 		for (i = 0; i < 4; i++)
@@ -2810,6 +2947,7 @@ static void	b_exercice(int k)
 	sel = 0;
 	while (1)
 	{
+		cadre_debut();
 		b_sujet();
 		it[0] = L("Corriger mon code", "Grade my code");
 		it[1] = L("Langue du sujet", "Subject language");
