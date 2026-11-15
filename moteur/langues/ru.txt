@@ -1473,3 +1473,13 @@ Changelog|What changed in this version, and the Discord to learn more.	Changelog
 Validated: a run with no failure is recorded, it stays validated for good.	Сдано: запуск без единой ошибки записан, это навсегда.
 What you still need: a run with no failure with 'Test my project' on your get_next_line.	Чего не хватает: запуск без ошибок через « Проверить мой проект » на твоём get_next_line.
 What you still need: a run with no failure with 'Test my project' on your ft_printf.	Чего не хватает: запуск без ошибок через « Проверить мой проект » на твоём ft_printf.
+Test this folder:	Проверить эту папку:
+no project recognised here	здесь проект не найден
+This folder	Эта папка
+Last tests (Enter to run again)	Последние тесты (Enter, чтобы запустить снова)
+Projects found next to the tester	Проекты рядом с тестером
+↑ to type a path (Tab completes like zsh, any case)	↑ — ввести путь (Tab дополняет как zsh, регистр не важен)
+Type a path: ~/ for your home, / for the root, . for here.	Введи путь: ~/ — домашняя папка, / — корень, . — здесь.
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list	Tab дополнить   ▲ ▼ выбор   ▶ открыть   ◀ вверх   Enter подтвердить   Esc: список
+▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back	▲ ▼ выбор   ↑ в самом верху: ввести путь   Enter проверить   Esc назад
+this folder no longer exists	этой папки больше нет

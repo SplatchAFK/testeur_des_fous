@@ -1473,3 +1473,13 @@ Changelog|What changed in this version, and the Discord to learn more.	Changelog
 Validated: a run with no failure is recorded, it stays validated for good.	Validado: uma passagem sem nenhuma falha está registada, fica validado para sempre.
 What you still need: a run with no failure with 'Test my project' on your get_next_line.	O que te falta: uma passagem sem falhas com « Testar o meu projeto » no teu get_next_line.
 What you still need: a run with no failure with 'Test my project' on your ft_printf.	O que te falta: uma passagem sem falhas com « Testar o meu projeto » no teu ft_printf.
+Test this folder:	Testar esta pasta:
+no project recognised here	nenhum projeto reconhecido aqui
+This folder	Esta pasta
+Last tests (Enter to run again)	Últimos testes (Enter para relançar)
+Projects found next to the tester	Projetos encontrados ao lado do tester
+↑ to type a path (Tab completes like zsh, any case)	↑ para escrever um caminho (Tab completa como no zsh, maiúsculas ou não)
+Type a path: ~/ for your home, / for the root, . for here.	Escreve um caminho: ~/ para a tua pasta pessoal, / para a raiz, . para aqui.
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list	Tab completar   ▲ ▼ escolher   ▶ abrir   ◀ subir   Enter confirmar   Esc: lista
+▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back	▲ ▼ escolher   ↑ no topo: escrever um caminho   Enter testar   Esc voltar
+this folder no longer exists	esta pasta já não existe

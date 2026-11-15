@@ -1473,3 +1473,13 @@ Changelog|What changed in this version, and the Discord to learn more.	Changelog
 Validated: a run with no failure is recorded, it stays validated for good.	Geçti: hatasız bir çalıştırma kayıtlı, sonsuza kadar geçerli.
 What you still need: a run with no failure with 'Test my project' on your get_next_line.	Eksik olan: get_next_line'ında « Projemi test et » ile hatasız bir çalıştırma.
 What you still need: a run with no failure with 'Test my project' on your ft_printf.	Eksik olan: ft_printf'inde « Projemi test et » ile hatasız bir çalıştırma.
+Test this folder:	Bu klasörü test et:
+no project recognised here	burada tanınan proje yok
+This folder	Bu klasör
+Last tests (Enter to run again)	Son testler (yeniden başlatmak için Enter)
+Projects found next to the tester	Testerin yanında bulunan projeler
+↑ to type a path (Tab completes like zsh, any case)	Yol yazmak için ↑ (Tab zsh gibi tamamlar, büyük küçük harf fark etmez)
+Type a path: ~/ for your home, / for the root, . for here.	Bir yol yaz: ana klasörün için ~/, kök için /, burası için .
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list	Tab tamamla   ▲ ▼ seç   ▶ aç   ◀ yukarı   Enter onayla   Esc: liste
+▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back	▲ ▼ seç   en üstte ↑: yol yaz   Enter test et   Esc geri
+this folder no longer exists	bu klasör artık yok

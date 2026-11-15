@@ -1473,3 +1473,13 @@ Changelog|What changed in this version, and the Discord to learn more.	Changelog
 Validated: a run with no failure is recorded, it stays validated for good.	Bestanden: ein Lauf ohne Fehler ist gespeichert, das bleibt für immer.
 What you still need: a run with no failure with 'Test my project' on your get_next_line.	Was dir fehlt: ein Lauf ohne Fehler über « Mein Projekt testen » auf deinem get_next_line.
 What you still need: a run with no failure with 'Test my project' on your ft_printf.	Was dir fehlt: ein Lauf ohne Fehler über « Mein Projekt testen » auf deinem ft_printf.
+Test this folder:	Diesen Ordner testen:
+no project recognised here	hier kein Projekt erkannt
+This folder	Dieser Ordner
+Last tests (Enter to run again)	Letzte Tests (Enter zum Wiederholen)
+Projects found next to the tester	Projekte neben dem Tester
+↑ to type a path (Tab completes like zsh, any case)	↑ um einen Pfad zu tippen (Tab ergänzt wie zsh, Groß- oder Kleinschreibung egal)
+Type a path: ~/ for your home, / for the root, . for here.	Tippe einen Pfad: ~/ für dein Home, / für die Wurzel, . für hier.
+Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list	Tab ergänzen   ▲ ▼ wählen   ▶ öffnen   ◀ hoch   Enter bestätigen   Esc: Liste
+▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back	▲ ▼ wählen   ↑ ganz oben: Pfad tippen   Enter testen   Esc zurück
+this folder no longer exists	dieser Ordner existiert nicht mehr

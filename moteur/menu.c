@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
+#include <ctype.h>
+#include <time.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include "fous.h"
@@ -562,39 +565,6 @@ static void	court(const char *p, char *b, size_t n)
 		snprintf(b, n, "%s", p);
 }
 
-static int	raccourcis(t_cand *c, int max)
-{
-	const char	*e;
-	const char	*fin;
-	char		ligne[700];
-	char		*tab;
-	int			n;
-
-	n = 0;
-	snprintf(c[n].chemin, sizeof(c[n].chemin), "%s", getenv("TDF_DEPART") ? getenv("TDF_DEPART") : ".");
-	court(c[n].chemin, ligne, sizeof(ligne));
-	snprintf(c[n].nom, sizeof(c[n].nom), ".  %s", ligne);
-	snprintf(c[n].tag, sizeof(c[n].tag), "%s", L("dossier où tu es", "folder you are in"));
-	n++;
-	e = getenv("TDF_PROJETS");
-	while (e && *e && n < max)
-	{
-		fin = strchr(e, '\n');
-		snprintf(ligne, sizeof(ligne), "%.*s", (int)(fin ? fin - e : (long)strlen(e)), e);
-		e = fin ? fin + 1 : e + strlen(e);
-		tab = strchr(ligne, '\t');
-		if (!tab)
-			continue ;
-		*tab = '\0';
-		snprintf(c[n].chemin, sizeof(c[n].chemin), "%s", tab + 1);
-		court(tab + 1, c[n].nom, sizeof(c[n].nom));
-		snprintf(c[n].tag, sizeof(c[n].tag), "%s", !strcmp(ligne, "printf") ? "ft_printf"
-			: !strcmp(ligne, "gnl") ? "get_next_line" : "libft");
-		n++;
-	}
-	return (n);
-}
-
 static int	lister(const char *saisie, t_cand *c, int max)
 {
 	DIR				*d;
@@ -605,8 +575,6 @@ static int	lister(const char *saisie, t_cand *c, int max)
 	const char		*pre;
 	int				n;
 
-	if (!saisie[0])
-		return (raccourcis(c, max));
 	couper(saisie, dir, sizeof(dir), &pre);
 	d = opendir(dir);
 	n = 0;
@@ -616,7 +584,7 @@ static int	lister(const char *saisie, t_cand *c, int max)
 			continue ;
 		if (e->d_name[0] == '.' && pre[0] != '.')
 			continue ;
-		if (strncmp(e->d_name, pre, strlen(pre)))
+		if (strncasecmp(e->d_name, pre, strlen(pre)))
 			continue ;
 		snprintf(p, sizeof(p), "%s/%s", dir, e->d_name);
 		if (stat(p, &st) != 0 || !S_ISDIR(st.st_mode))
@@ -653,10 +621,12 @@ static void	prefixe_commun(char *saisie, size_t sz, t_cand *c, int n)
 	snprintf(p, sizeof(p), "%s", c[0].nom);
 	for (i = 1; i < n; i++)
 	{
-		for (l = 0; p[l] && p[l] == c[i].nom[l]; l++)
+		for (l = 0; p[l] && tolower((unsigned char)p[l]) == tolower((unsigned char)c[i].nom[l]); l++)
 			;
 		p[l] = '\0';
 	}
+	if (strlen(p) < strlen(strrchr(saisie, '/') ? strrchr(saisie, '/') + 1 : saisie))
+		return ;
 	completer(saisie, sz, p, n == 1);
 }
 
@@ -673,107 +643,295 @@ static int	valider(const char *chemin, char *out, size_t n)
 	return (0);
 }
 
+typedef struct s_ent
+{
+	char	lab[300];
+	char	info[200];
+	char	chemin[700];
+	char	tag[40];
+	int		section;
+}	t_ent;
+
+static void	type_projet(const char *p, char *tag, size_t n)
+{
+	char	f[800];
+
+	tag[0] = '\0';
+	snprintf(f, sizeof(f), "%s/ft_printf.h", p);
+	if (access(f, R_OK) == 0)
+		snprintf(tag, n, "ft_printf");
+	snprintf(f, sizeof(f), "%s/get_next_line.h", p);
+	if (!tag[0] && access(f, R_OK) == 0)
+		snprintf(tag, n, "get_next_line");
+	snprintf(f, sizeof(f), "%s/libft.h", p);
+	if (!tag[0] && access(f, R_OK) == 0)
+		snprintf(tag, n, "libft");
+}
+
+static int	deja(t_ent *e, int n, const char *p)
+{
+	int	i;
+
+	for (i = 0; i < n; i++)
+		if (!strcmp(e[i].chemin, p))
+			return (1);
+	return (0);
+}
+
+static int	entrees(t_ent *e, int max)
+{
+	char		l[1200];
+	char		*f[5];
+	char		*q;
+	const char	*s;
+	const char	*fin;
+	FILE		*h;
+	int			n;
+	int			i;
+	int			nh;
+	t_ent		hist[10];
+	time_t		t;
+	struct tm	*tm;
+
+	n = 0;
+	snprintf(e[n].chemin, sizeof(e[n].chemin), "%s", getenv("TDF_DEPART") ? getenv("TDF_DEPART") : ".");
+	court(e[n].chemin, l, sizeof(l));
+	snprintf(e[n].lab, sizeof(e[n].lab), "%s  %s", L("Tester ce dossier :", "Test this folder:"), l);
+	type_projet(e[n].chemin, e[n].tag, sizeof(e[n].tag));
+	snprintf(e[n].info, sizeof(e[n].info), "%s", e[n].tag[0] ? "" : L("aucun projet reconnu ici", "no project recognised here"));
+	e[n++].section = 0;
+	snprintf(l, sizeof(l), "%s/historique_projets.txt", g_savedir);
+	h = fopen(l, "r");
+	nh = 0;
+	while (h && nh < 10 && fgets(l, sizeof(l), h))
+	{
+		l[strcspn(l, "\n")] = '\0';
+		q = l;
+		for (i = 0; i < 5 && q; i++)
+		{
+			f[i] = q;
+			q = strchr(q, '\t');
+			if (q)
+				*q++ = '\0';
+		}
+		if (i < 5)
+			continue ;
+		snprintf(hist[nh].chemin, sizeof(hist[0].chemin), "%s", f[2]);
+		court(f[2], hist[nh].lab, sizeof(hist[0].lab));
+		snprintf(hist[nh].tag, sizeof(hist[0].tag), "%s", !strcmp(f[1], "printf") ? "ft_printf" : !strcmp(f[1], "gnl") ? "get_next_line" : "libft");
+		t = (time_t)atol(f[0]);
+		tm = localtime(&t);
+		snprintf(hist[nh].info, sizeof(hist[0].info), "%s/%s · %02d/%02d %02dh%02d", f[3], f[4],
+			tm ? tm->tm_mday : 0, tm ? tm->tm_mon + 1 : 0, tm ? tm->tm_hour : 0, tm ? tm->tm_min : 0);
+		hist[nh++].section = 1;
+	}
+	if (h)
+		fclose(h);
+	for (i = nh - 1; i >= 0 && n < max; i--)
+		if (!deja(e, n, hist[i].chemin))
+			e[n++] = hist[i];
+	s = getenv("TDF_PROJETS");
+	while (s && *s && n < max)
+	{
+		fin = strchr(s, '\n');
+		snprintf(l, sizeof(l), "%.*s", (int)(fin ? fin - s : (long)strlen(s)), s);
+		s = fin ? fin + 1 : s + strlen(s);
+		q = strchr(l, '\t');
+		if (!q || deja(e, n, q + 1))
+			continue ;
+		*q++ = '\0';
+		snprintf(e[n].chemin, sizeof(e[n].chemin), "%s", q);
+		court(q, e[n].lab, sizeof(e[n].lab));
+		snprintf(e[n].tag, sizeof(e[n].tag), "%s", !strcmp(l, "printf") ? "ft_printf" : !strcmp(l, "gnl") ? "get_next_line" : "libft");
+		e[n].info[0] = '\0';
+		e[n++].section = 2;
+	}
+	return (n);
+}
+
+static void	dessiner_entrees(t_ent *e, int n, int sel, int x, int y, int h)
+{
+	static const char	*titres[3];
+	int					i;
+	int					sec;
+	int					top;
+
+	titres[0] = L("Ce dossier", "This folder");
+	titres[1] = L("Derniers tests (Entrée pour relancer)", "Last tests (Enter to run again)");
+	titres[2] = L("Projets trouvés à côté du testeur", "Projects found next to the tester");
+	top = sel > h - 6 ? sel - (h - 6) : 0;
+	sec = -1;
+	for (i = top; i < n && y < 7 + h; i++)
+	{
+		if (e[i].section != sec)
+		{
+			sec = e[i].section;
+			y++;
+			text_at(x, y++, theme()->dim, titres[sec]);
+		}
+		at(x, y);
+		if (i == sel)
+		{
+			bgc(mix(theme()->bg, theme()->accent, 0.25));
+			fg(theme()->accent2);
+		}
+		else
+			fg(e[i].tag[0] ? theme()->text : theme()->dim);
+		outf(" %s %s ", i == sel ? "▶" : " ", e[i].lab);
+		bgc(theme()->bg);
+		if (e[i].tag[0])
+			text_at(x + ulen(e[i].lab) + 5, y, theme()->accent2, e[i].tag);
+		if (e[i].info[0])
+			text_at(x + ulen(e[i].lab) + 7 + ulen(e[i].tag), y,
+				strchr(e[i].info, '/') && atoi(e[i].info) == atoi(strchr(e[i].info, '/') + 1) && atoi(e[i].info) > 0
+				? rgb(140, 230, 170) : theme()->dim, e[i].info);
+		y++;
+	}
+}
+
 int	tdf_choisir_dossier(char *out, size_t n)
 {
 	static t_cand	c[400];
+	static t_ent	e[30];
 	char			saisie[1024];
 	char			tmp[1100];
+	int				ne;
 	int				nc;
+	int				mode;
 	int				sel;
-	int				top;
+	int				csel;
+	int				ctop;
 	int				k;
 	int				i;
 	int				x;
 	int				h;
 	const char		*msg;
 
+	ne = entrees(e, 30);
 	saisie[0] = '\0';
+	mode = 0;
 	sel = 0;
-	top = 0;
+	csel = -1;
+	ctop = 0;
+	nc = 0;
 	msg = NULL;
 	cls();
 	while (1)
 	{
-		nc = lister(saisie, c, 400);
-		if (sel >= nc)
-			sel = nc - 1;
-		h = term_rows() - 13;
-		if (h < 3)
-			h = 3;
-		if (sel >= 0 && sel < top)
-			top = sel;
-		if (sel >= top + h)
-			top = sel - h + 1;
-		x = (term_cols() - 76) / 2;
+		h = term_rows() - 12;
+		if (h < 4)
+			h = 4;
+		x = (term_cols() - 80) / 2;
 		if (x < 2)
 			x = 2;
+		if (mode)
+			nc = saisie[0] ? lister(saisie, c, 400) : 0;
+		if (csel >= nc)
+			csel = nc - 1;
 		bgc(theme()->bg);
 		frame();
-		center(2, theme()->accent2, L("TESTER MON PROJET", "TEST MY PROJECT"));
-		text_at(x, 4, theme()->dim, L("Dossier du projet (. = là où tu es, ~ ou / pour parcourir, Tab complète) :",
-				"Project folder (. = where you are, ~ or / to browse, Tab completes):"));
-		at(x, 5);
-		bgc(mix(theme()->bg, theme()->accent, 0.15));
-		fg(theme()->text);
-		outf(" %s▏ ", saisie);
-		bgc(theme()->bg);
-		outf("%*s", term_cols() - x - ulen(saisie) - 6 > 0 ? term_cols() - x - ulen(saisie) - 6 : 0, "");
-		fill(x, 7, term_cols() - x - 2, h + 2, theme()->bg);
-		if (!saisie[0])
-			text_at(x, 7, theme()->dim, L("Projets trouvés :", "Projects found:"));
-		for (i = top; i < nc && i < top + h; i++)
+		center(1, theme()->accent2, L("TESTER MON PROJET", "TEST MY PROJECT"));
+		at(x, 4);
+		bgc(mode ? mix(theme()->bg, theme()->accent, 0.18) : theme()->bg);
+		if (mode)
 		{
-			at(x, 8 + i - top);
-			if (i == sel)
-			{
-				bgc(mix(theme()->bg, theme()->accent, 0.25));
-				fg(theme()->accent2);
-			}
-			else
-				fg(c[i].tag[0] ? theme()->accent : theme()->text);
-			outf(" %s %s%s ", i == sel ? "▶" : " ", c[i].nom, c[i].chemin[0] ? "" : "/");
-			bgc(theme()->bg);
-			if (c[i].tag[0])
-				text_at(x + ulen(c[i].nom) + 7, 8 + i - top, theme()->accent2, c[i].tag);
+			fg(theme()->text);
+			outf(" %s▏", saisie);
 		}
-		if (!nc)
-			text_at(x, 8, theme()->dim, L("aucun dossier ne correspond", "no folder matches"));
+		else
+		{
+			fg(theme()->dim);
+			outf(" %s", L("↑ pour écrire un chemin (Tab complète comme zsh, majuscules ou non)",
+					"↑ to type a path (Tab completes like zsh, any case)"));
+		}
+		outf("%*s", 2, "");
+		bgc(theme()->bg);
+		fill(x, 6, term_cols() - x - 2, h + 2, theme()->bg);
+		if (!mode)
+			dessiner_entrees(e, ne, sel, x, 5, h);
+		else
+		{
+			if (csel >= 0 && csel < ctop)
+				ctop = csel;
+			if (csel >= ctop + h)
+				ctop = csel - h + 1;
+			for (i = ctop; i < nc && i < ctop + h; i++)
+			{
+				at(x, 6 + i - ctop);
+				if (i == csel)
+				{
+					bgc(mix(theme()->bg, theme()->accent, 0.25));
+					fg(theme()->accent2);
+				}
+				else
+					fg(c[i].tag[0] ? theme()->accent : theme()->text);
+				outf(" %s %s/ ", i == csel ? "▶" : " ", c[i].nom);
+				bgc(theme()->bg);
+				if (c[i].tag[0])
+					text_at(x + ulen(c[i].nom) + 7, 6 + i - ctop, theme()->accent2, c[i].tag);
+			}
+			if (saisie[0] && !nc)
+				text_at(x, 6, theme()->dim, L("aucun dossier ne correspond", "no folder matches"));
+			if (!saisie[0])
+				text_at(x, 6, theme()->dim, L("Tape un chemin : ~/ pour ton dossier perso, / pour la racine, . pour ici.",
+						"Type a path: ~/ for your home, / for the root, . for here."));
+		}
 		if (msg)
 			text_at(x, term_rows() - 3, rgb(255, 120, 120), msg);
-		foot_line(x, L("Tab compléter   ▲ ▼ choisir   ▶ ouvrir   ◀ remonter   Entrée valider   Échap retour",
-				"Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc back"));
+		foot_line(x, mode ? L("Tab compléter   ▲ ▼ choisir   ▶ ouvrir   ◀ remonter   Entrée valider   Échap : liste",
+				"Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list")
+			: L("▲ ▼ choisir   ↑ tout en haut : écrire un chemin   Entrée tester   Échap retour",
+				"▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back"));
 		flush();
 		k = key_read(200);
 		if (k < 0)
 			continue ;
-		if (k != 9 && k != 1000 && k != 1001)
-			msg = NULL;
+		msg = NULL;
+		if (!mode)
+		{
+			k = key_dir(k);
+			if (key_quit(k) || k == 127 || k == 8)
+				return (cls(), 0);
+			if (k == 1000 && sel == 0)
+			{
+				mode = 1;
+				csel = -1;
+			}
+			else if (k == 1000)
+				sel--;
+			else if (k == 1001 && sel < ne - 1)
+				sel++;
+			else if (k == '\r' || k == '\n' || k == ' ' || k == 1002)
+			{
+				if (valider(e[sel].chemin, out, n))
+					return (cls(), 1);
+				msg = L("ce dossier n'existe plus", "this folder no longer exists");
+			}
+			continue ;
+		}
 		if (k == 27 || k == 3)
-			return (cls(), 0);
-		if (k == 9 && nc && (sel >= 0 || !saisie[0]))
-			sel = (sel + 1) % nc;
+		{
+			mode = 0;
+			continue ;
+		}
+		if (k == 9 && nc && csel >= 0)
+			csel = (csel + 1) % nc;
 		else if (k == 9 && nc)
 		{
 			snprintf(tmp, sizeof(tmp), "%s", saisie);
 			prefixe_commun(saisie, sizeof(saisie), c, nc);
 			if (nc > 1 && !strcmp(tmp, saisie))
-				sel = 0;
+				csel = 0;
 		}
 		else if (k == 1000 && nc)
-			sel = sel <= 0 ? nc - 1 : sel - 1;
+			csel = csel <= 0 ? nc - 1 : csel - 1;
 		else if (k == 1001 && nc)
-			sel = (sel + 1) % nc;
-		else if ((k == 1002 || k == '\r' || k == '\n') && sel >= 0 && c[sel].chemin[0])
+			csel = (csel + 1) % nc;
+		else if (k == 1002 && csel >= 0)
 		{
-			if (valider(c[sel].chemin, out, n))
-				return (cls(), 1);
-			msg = L("ce dossier n'existe pas", "this folder does not exist");
-		}
-		else if (k == 1002 && sel >= 0)
-		{
-			completer(saisie, sizeof(saisie), c[sel].nom, 1);
-			sel = -1;
-			top = 0;
+			completer(saisie, sizeof(saisie), c[csel].nom, 1);
+			csel = -1;
+			ctop = 0;
 		}
 		else if (k == 1003 && saisie[0])
 		{
@@ -782,22 +940,22 @@ int	tdf_choisir_dossier(char *out, size_t n)
 				saisie[--i] = '\0';
 			while (i > 0 && saisie[i - 1] != '/')
 				saisie[--i] = '\0';
-			sel = saisie[0] ? -1 : 0;
-			top = 0;
+			csel = -1;
+			ctop = 0;
 		}
 		else if (k == 127 || k == 8)
 		{
 			if (saisie[0])
 				saisie[strlen(saisie) - 1] = '\0';
-			sel = saisie[0] ? -1 : 0;
+			csel = -1;
 		}
 		else if (k == '\r' || k == '\n')
 		{
-			if (sel >= 0 && saisie[0])
+			if (csel >= 0)
 			{
-				completer(saisie, sizeof(saisie), c[sel].nom, 1);
-				sel = -1;
-				top = 0;
+				completer(saisie, sizeof(saisie), c[csel].nom, 1);
+				csel = -1;
+				ctop = 0;
 				continue ;
 			}
 			developper(saisie[0] ? saisie : ".", tmp, sizeof(tmp));
@@ -809,8 +967,8 @@ int	tdf_choisir_dossier(char *out, size_t n)
 		{
 			saisie[strlen(saisie) + 1] = '\0';
 			saisie[strlen(saisie)] = (char)k;
-			sel = -1;
-			top = 0;
+			csel = -1;
+			ctop = 0;
 		}
 	}
 }

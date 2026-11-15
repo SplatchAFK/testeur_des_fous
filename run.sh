@@ -229,6 +229,17 @@ rapport_texte() {
 	return 1
 }
 
+noter_historique() {
+	local m="$1" p="$2" l ok=0 tot=0 h="$DOSSIER/historique_projets.txt"
+	[ -n "$p" ] || return 0
+	case "$m" in libft|printf|gnl) ;; *) return 0 ;; esac
+	l="$(grep "^R [0-9]* $m " "$DOSSIER/stats.txt" 2>/dev/null | tail -1)"
+	[ -n "$l" ] && ok="$(echo "$l" | cut -d' ' -f4)" && tot="$(echo "$l" | cut -d' ' -f5)"
+	mkdir -p "$DOSSIER"
+	printf '%s\t%s\t%s\t%s\t%s\n' "$(date +%s)" "$m" "$p" "$ok" "$tot" >> "$h"
+	awk -F'\t' '{ d[$3] = $0; o[$3] = NR } END { for (k in d) print o[k] "\t" d[k] }' "$h" | sort -n | cut -f2- | tail -10 > "$h.tmp" && mv "$h.tmp" "$h"
+}
+
 choisir_au_menu() {
 	local code l a p projets=""
 	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do projets+="libft"$'\t'"$p"$'\n'; done
@@ -730,6 +741,7 @@ while :; do
 		code=$?
 	fi
 	tdf_chrono_fin mod "module $MODULE" "code $code"
+	[ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && noter_historique "$MODULE" "$PROJET"
 	if [ "$code" != 0 ] && [ "$code" != 1 ] && [ "$code" != 45 ] && [ "$code" != 130 ]; then
 		tdf_journal "ERREUR : le module $MODULE s'est arrêté avec le code $code"
 	fi
