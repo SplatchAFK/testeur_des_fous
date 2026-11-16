@@ -1657,3 +1657,8 @@ WHERE IS YOUR PROJECT?	¿DÓNDE ESTÁ TU PROYECTO?
 • The folder must contain libft.h, ft_printf.h, or get_next_line.c and get_next_line.h.	• La carpeta debe contener libft.h, ft_printf.h, o get_next_line.c y get_next_line.h.
 being improved · BETA	en mejora · BETA
 The f6 step is for Olympic athletes.	La etapa f6 es para atletas olímpicos.
+NEW IN 3.1.1	NOVEDADES DE LA 3.1.1
+• The examshell no longer freezes when you chain arrow keys, and it stays inside the tester screen.	• El examshell ya no se congela cuando encadenas las flechas, y se queda en la pantalla del tester.
+• Results no longer close by themselves after a few seconds (iTerm2, kitty, WezTerm, Ghostty…).	• Los resultados ya no se cierran solos tras unos segundos (iTerm2, kitty, WezTerm, Ghostty…).
+• The tester cleans up its build files: it takes less space.	• El tester limpia sus archivos de compilación: ocupa menos espacio.
+3.1 IN SHORT	LA 3.1 EN RESUMEN

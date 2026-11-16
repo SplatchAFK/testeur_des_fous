@@ -1657,3 +1657,8 @@ WHERE IS YOUR PROJECT?	PROJEN NEREDE?
 • The folder must contain libft.h, ft_printf.h, or get_next_line.c and get_next_line.h.	• Klasörde libft.h, ft_printf.h ya da get_next_line.c ve get_next_line.h olmalı.
 being improved · BETA	geliştiriliyor · BETA
 The f6 step is for Olympic athletes.	f6 aşaması olimpiyat sporcuları içindir.
+NEW IN 3.1.1	3.1.1'DEKİ YENİLİKLER
+• The examshell no longer freezes when you chain arrow keys, and it stays inside the tester screen.	• Examshell artık okları art arda bastığında donmuyor ve testerin ekranında kalıyor.
+• Results no longer close by themselves after a few seconds (iTerm2, kitty, WezTerm, Ghostty…).	• Sonuçlar artık birkaç saniye sonra kendiliğinden kapanmıyor (iTerm2, kitty, WezTerm, Ghostty…).
+• The tester cleans up its build files: it takes less space.	• Tester derleme dosyalarını temizliyor: daha az yer kaplıyor.
+3.1 IN SHORT	KISACA 3.1

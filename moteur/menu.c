@@ -536,12 +536,17 @@ void	tdf_tuto(void)
 void	tdf_nouveautes(void)
 {
 	char		titre[120];
-	char		texte[1200];
+	char		texte[2400];
 	const char	*items[2];
 	int			sel;
 
 	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
+	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
+		L("NOUVEAU DANS LA 3.1.1", "NEW IN 3.1.1"),
+		L("• L'examshell ne se fige plus quand tu enchaînes les flèches, et il reste dans l'écran du testeur.", "• The examshell no longer freezes when you chain arrow keys, and it stays inside the tester screen."),
+		L("• Les résultats ne se ferment plus tout seuls après quelques secondes (iTerm2, kitty, WezTerm, Ghostty…).", "• Results no longer close by themselves after a few seconds (iTerm2, kitty, WezTerm, Ghostty…)."),
+		L("• Le testeur fait le ménage de ses fichiers de compilation : il prend moins de place.", "• The tester cleans up its build files: it takes less space."),
+		L("LA 3.1 EN BREF", "3.1 IN SHORT"),
 		L("• Un seul menu graphique : bash run.sh ou tdf l'ouvre directement, et tout s'y passe.", "• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there."),
 		L("• Tester mon projet : « . » pour le dossier où tu es, ou parcours ton PC avec Tab, comme dans zsh.", "• Test my project: '.' for the folder you are in, or browse your PC with Tab, like in zsh."),
 		L("• Après un test, tous les résultats s'affichent directement ; « Revoir la dernière tentative » les rouvre depuis le menu.", "• After a test, every result shows up directly; 'Review the last attempt' reopens them from the menu."),

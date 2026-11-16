@@ -2,7 +2,14 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
-## 3.1.0 · 2026-11-20
+## 3.1.1 · 2026-11-16
+
+- examshell : les flèches maintenues ou tapées vite ne figent plus les menus : seules les lignes qui changent sont réécrites (environ 200 octets par flèche au lieu de 13 Ko) et plus aucun appui n'est perdu ; plus de « [A » dans la ligne de commande ;
+- examshell lancé depuis le menu : il reste dans l'écran du testeur, plus rien ne traîne dans le terminal après l'avoir quitté ;
+- résultats Libft et ft_printf : l'écran ne se ferme plus tout seul après quelques secondes (la réponse de certains terminaux, kitty, WezTerm, Ghostty, iTerm2…, était lue comme la touche Échap) ; les touches tapées pendant les tests sont ignorées ;
+- les dossiers de compilation font le ménage tout seuls : seule la version à jour de chaque cache est gardée, les anciennes versions et les caches des autres langues (inutilisés depuis plus d'une heure) sont supprimés.
+
+## 3.1.0 · 2026-11-15
 
 ### Un seul menu, graphique
 
@@ -58,11 +65,7 @@ Le numéro de version est dans `moteur/version.h`.
 - Tester mon projet : un encadré explique où chercher ton projet (../ quand le testeur est à côté, . pour ici, ~/ et /, fichiers attendus) et rappelle le dossier où tu es ;
 - « Le savais-tu ? » ne reste plus bloqué en blanc quand tu reviens au menu ;
 - Nous aider : après « t », le chemin de la trace reste affiché sur la page ;
-- Stats › Courbes : mention « en cours d'amélioration · BETA » ;
-- examshell : les flèches maintenues ou tapées vite ne figent plus les menus : seules les lignes qui changent sont réécrites (environ 200 octets par flèche au lieu de 13 Ko) et plus aucun appui n'est perdu ; plus de « [A » dans la ligne de commande ;
-- examshell lancé depuis le menu : il reste dans l'écran du testeur, plus rien ne traîne dans le terminal après l'avoir quitté ;
-- résultats Libft et ft_printf : l'écran ne se ferme plus tout seul après quelques secondes (la réponse de certains terminaux, kitty, WezTerm, Ghostty, iTerm2…, était lue comme la touche Échap) ; les touches tapées pendant les tests sont ignorées ;
-- les dossiers de compilation font le ménage tout seuls : seule la version à jour de chaque cache est gardée, les anciennes versions et les caches des autres langues (inutilisés depuis plus d'une heure) sont supprimés.
+- Stats › Courbes : mention « en cours d'amélioration · BETA ».
 
 ### Stats
 
