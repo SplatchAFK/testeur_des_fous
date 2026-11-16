@@ -848,6 +848,13 @@ int	key_read(int timeout_ms)
 	if (c != 27)
 		return (c);
 	d = read_byte(15);
+	if (d == '_' || d == 'P' || d == ']' || d == '^' || d == 'X')
+	{
+		while ((d = read_byte(30)) >= 0 && d != 7)
+			if (d == 27 && ((d = read_byte(30)) == '\\' || d < 0))
+				break ;
+		return (-1);
+	}
 	if (d != '[' && d != 'O')
 		return (27);
 	d = read_byte(15);
@@ -862,6 +869,15 @@ int	key_read(int timeout_ms)
 	while (d >= 0 && !(d >= 64 && d <= 126))
 		d = read_byte(5);
 	return (-1);
+}
+
+void	tdf_key_vider(void)
+{
+	if (!g_raw)
+		return ;
+	tcflush(0, TCIFLUSH);
+	while (read_byte(0) >= 0)
+		;
 }
 
 static void	drain(void)

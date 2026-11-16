@@ -1017,6 +1017,7 @@ static int	screen_fiche(int fn)
 
 int	screen_results(int after)
 {
+	long	ouvert;
 	int		sel;
 	int		k;
 	int		ok;
@@ -1036,6 +1037,8 @@ int	screen_results(int after)
 			break ;
 		}
 	cls();
+	tdf_key_vider();
+	ouvert = now_ms();
 	while (1)
 	{
 		counts(&ok, &bad, &done);
@@ -1056,6 +1059,8 @@ int	screen_results(int after)
 				"arrows: pick   f: details   m: audit   r: fixed? run again   Enter: continue"));
 		flush();
 		k = key_read(60);
+		if (k >= 0 && now_ms() - ouvert < 500)
+			continue ;
 		if (k == '\r' || k == '\n' || k == ' ' || key_quit(k))
 			break ;
 		if (k == 'r' || k == 'R')

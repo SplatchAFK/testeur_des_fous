@@ -414,6 +414,7 @@ static void	detail_view(int sel)
 int	pf_results(int after)
 {
 	static int	sel;
+	long		ouvert;
 	char		tmp[220];
 	int			n;
 	int			i;
@@ -435,6 +436,8 @@ int	pf_results(int after)
 				}
 	}
 	cls();
+	tdf_key_vider();
+	ouvert = now_ms();
 	while (1)
 	{
 		n = g_pr.nst + g_pr.ncat;
@@ -479,6 +482,8 @@ int	pf_results(int after)
 				"Enter: details   r: fixed? run the tests again   Esc: menu"));
 		flush();
 		k = key_read(80);
+		if (k >= 0 && now_ms() - ouvert < 500)
+			continue ;
 		if (k == 'r' || k == 'R')
 		{
 			cls();

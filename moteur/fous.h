@@ -557,6 +557,7 @@ int				term_rows(void);
 long			now_ms(void);
 void			sleep_ms(int ms);
 int				key_read(int timeout_ms);
+void			tdf_key_vider(void);
 int				key_dir(int k);
 int				key_quit(int k);
 int				key_stop(int k);
