@@ -394,7 +394,7 @@ static const char	*astuce(int i)
 		case 68:
 			return (L("Moulinette est la meilleure chatte du monde.", "Moulinette is the best cat in the world."));
 		case 69:
-			return (L("L'étape f6, c'est pour les sportifs olympiques.", "The f6 step is for Olympic athletes."));
+			return (L("L'étage f6, c'est pour les sportifs olympiques LOLL.", "The f6 step is for Olympic athletes LOLL."));
 	}
 	return ("");
 }
