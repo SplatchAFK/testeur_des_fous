@@ -352,7 +352,7 @@ build_game() {
 	local objs=() o f pids=() n=0 nft=0
 	local GSRC=("$SRC"/main.c "$SRC"/screens.c "$MOT"/ui.c "$SRC"/train.c "$SRC"/scene.c
 		"$MOT"/save.c "$MOT"/data.c "$MOT"/avatar.c "$MOT"/art.c "$MOT"/term.c
-		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$MOT"/rendu.c "$MOT"/tour.c "$MOT"/gardien.c "$MOT"/carte.c "$MOT"/langue.c "$MOT"/textes.c "$MOT"/entete.c "$MOT"/fou_ascii.c "$MOT"/fou_blocs.c "$MOT"/histoires.c "$SRC"/story.c)
+		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$MOT"/rendu.c "$MOT"/tour.c "$MOT"/gardien.c "$MOT"/carte.c "$MOT"/langue.c "$MOT"/textes.c "$MOT"/entete.c "$MOT"/fou_ascii.c "$MOT"/fou_blocs.c "$MOT"/histoires.c "$MOT"/norme.c "$MOT"/gnl_ecran.c "$SRC"/story.c)
 	local GX="" GOBJ="" key g ok=1
 	for f in "$ROOT"/ft_*.c; do [ -f "$f" ] && nft=$((nft + 1)); done
 	tdf_ch_debut "$(tt "préparation" "preparation")" $((nft + ${#GSRC[@]} + 1))
@@ -602,8 +602,8 @@ def_syms() {
 LIBC_OK='^(malloc|free|write|_GLOBAL_OFFSET_TABLE_|__stack_chk_fail|__stack_chk_guard|dyld_stub_binder)$'
 
 NORM_CMD=""
-if command -v norminette >/dev/null 2>&1; then NORM_CMD="norminette"
-elif python3 -m norminette --version >/dev/null 2>&1; then NORM_CMD="python3 -m norminette"
+if command -v norminette >/dev/null 2>&1 && tdf_norminette_ok; then NORM_CMD="norminette"
+elif python3 -m norminette --version 2>/dev/null | grep -Eqi 'norminette[[:space:]]+[0-9]'; then NORM_CMD="python3 -m norminette"
 fi
 
 ver_lt() {
@@ -613,9 +613,12 @@ ver_lt() {
 		exit 1 }'
 }
 
+NORME_DERNIERE="$HOME/.testeur_des_fous/derniere/norme_libft.txt"
 start_norm() {
+	rm -f "$NORME_DERNIERE" 2>/dev/null
 	[ "$CFG_NORM" = 1 ] && [ -n "$NORM_CMD" ] || return
-	( cd "$ROOT" && $NORM_CMD ft_*.c libft.h 2>&1 | sed $'s/\x1b\\[[0-9;]*m//g' > "$BUILD/norm.out"; echo done > "$BUILD/norm.done" ) &
+	( cd "$ROOT" && $NORM_CMD ft_*.c libft.h 2>&1 | sed $'s/\x1b\\[[0-9;]*m//g' > "$BUILD/norm.out"; echo done > "$BUILD/norm.done"
+		mkdir -p "$(dirname "$NORME_DERNIERE")" 2>/dev/null && cp "$BUILD/norm.out" "$NORME_DERNIERE" 2>/dev/null ) &
 	NPID=$!
 }
 

@@ -1666,3 +1666,29 @@ The f6 floor is for Olympic athletes LOLL.	Il piano f6 è per atleti olimpici LO
 Already passed: the %d ◈ are in your pocket.	Già superato: i %d ◈ sono in tasca.
 First success: +%d ◈	Primo successo: +%d ◈
 earned	ottenuto
+Files are missing: the tests cannot compile.	Mancano dei file: i test non possono compilare.
+The project does not compile: fix that first.	Il progetto non compila: sistema prima questo.
+NORMINETTE: %d error(s) in %d file(s) · n to see them	NORMINETTE: %d errore/i in %d file · n per vederli
+arrows: pick   f: details   n: norminette   m: audit   r: fixed? run again   Enter: continue	frecce: scegli   f: scheda   n: norminette   m: audit   r: corretto? rilancia   Invio: continua
+Enter: details   n: norminette   r: fixed? run the tests again   Esc: menu	Invio: dettaglio   n: norminette   r: corretto? rilancia i test   Esc: menu
+Everything is fine for this check.	Tutto a posto per questa verifica.
+For info: this point does not count in the result.	Per info: questo punto non conta nel risultato.
+Crash (segfault, abort...): run again with --debug to see the full trace.	Crash (segfault, abort...): rilancia con --debug per vedere la traccia completa.
+Memory leak: a malloc is never freed.	Perdita di memoria: un malloc non viene mai liberato.
+Infinite loop or far too slow: the time limit is exceeded.	Ciclo infinito o troppo lento: il tempo limite è superato.
+Wrong result: to fix.	Risultato sbagliato: da correggere.
+The Well:	Il Pozzo:
+GET_NEXT_LINE RESULTS · test interrupted	RISULTATI GET_NEXT_LINE · test interrotto
+GET_NEXT_LINE RESULTS  ·  %d OK  ·  %d failing  ·  %d for info	RISULTATI GET_NEXT_LINE  ·  %d OK  ·  %d falliti  ·  %d per info
+BUFFER_SIZE tested: %s, and without -D	BUFFER_SIZE testati: %s, e senza -D
+norminette: no error	norminette: nessun errore
+norminette: not run	norminette: non eseguita
+No result: run the test of your get_next_line again.	Nessun risultato: rilancia il test del tuo get_next_line.
+▲ ▼ pick   n: norminette   Esc or Enter: back to the menu	▲ ▼ scegli   n: norminette   Esc o Invio: torna al menu
+Norm · line %d, col %d · %s · %s	Norma · riga %d, col %d · %s · %s
+N O R M I N E T T E   ·   %s	N O R M I N E T T E   ·   %s
+The norminette did not run for this project (not found or turned off).	La norminette non è stata eseguita per questo progetto (non trovata o disattivata).
+No error: the Norm is respected.	Nessun errore: la Norma è rispettata.
+%d error(s) in %d file(s) · the moulinette checks the Norm before the tests (Prerequisites)	%d errore/i in %d file · la moulinette controlla la Norma prima dei test (Prerequisites)
+  line %-4d col %-3d	  riga %-4d col %-3d
+▲ ▼ scroll   Esc or Enter: back	▲ ▼ scorri   Esc o Invio: indietro

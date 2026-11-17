@@ -112,6 +112,13 @@ static int	ecran_direct(const char *e)
 	}
 	else if (!strncmp(e, "scene:", 6))
 		scene_directe(e + 6);
+	else if (!strcmp(e, "gnl"))
+	{
+		char	p[700];
+
+		snprintf(p, sizeof(p), "%s/derniere/gnl.res", g_savedir);
+		tdf_ecran_gnl(p);
+	}
 	else if (!strcmp(e, "rapport"))
 		tdf_rapport(getenv("TDF_RAPPORT"), getenv("TDF_RAPPORT_TITRE") ? getenv("TDF_RAPPORT_TITRE") : "");
 	else

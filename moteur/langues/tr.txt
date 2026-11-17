@@ -1666,3 +1666,29 @@ The f6 floor is for Olympic athletes LOLL.	f6 katı olimpiyat sporcuları için 
 Already passed: the %d ◈ are in your pocket.	Zaten geçildi: %d ◈ cebinde.
 First success: +%d ◈	İlk başarı: +%d ◈
 earned	alındı
+Files are missing: the tests cannot compile.	Dosyalar eksik: testler derlenemiyor.
+The project does not compile: fix that first.	Proje derlenmiyor: önce bunu düzelt.
+NORMINETTE: %d error(s) in %d file(s) · n to see them	NORMINETTE: %d hata, %d dosyada · görmek için n
+arrows: pick   f: details   n: norminette   m: audit   r: fixed? run again   Enter: continue	oklar: seç   f: ayrıntı   n: norminette   m: denetim   r: düzelttin mi? yeniden çalıştır   Enter: devam
+Enter: details   n: norminette   r: fixed? run the tests again   Esc: menu	Enter: ayrıntı   n: norminette   r: düzelttin mi? testleri yeniden çalıştır   Esc: menü
+Everything is fine for this check.	Bu kontrolde her şey yolunda.
+For info: this point does not count in the result.	Bilgi için: bu madde sonuca sayılmaz.
+Crash (segfault, abort...): run again with --debug to see the full trace.	Çökme (segfault, abort...): tam izi görmek için --debug ile yeniden çalıştır.
+Memory leak: a malloc is never freed.	Bellek sızıntısı: bir malloc hiç serbest bırakılmıyor.
+Infinite loop or far too slow: the time limit is exceeded.	Sonsuz döngü ya da çok yavaş: süre sınırı aşıldı.
+Wrong result: to fix.	Yanlış sonuç: düzeltilmeli.
+The Well:	Kuyu:
+GET_NEXT_LINE RESULTS · test interrupted	GET_NEXT_LINE SONUÇLARI · test yarıda kesildi
+GET_NEXT_LINE RESULTS  ·  %d OK  ·  %d failing  ·  %d for info	GET_NEXT_LINE SONUÇLARI  ·  %d OK  ·  %d başarısız  ·  %d bilgi
+BUFFER_SIZE tested: %s, and without -D	Test edilen BUFFER_SIZE: %s ve -D olmadan
+norminette: no error	norminette: hata yok
+norminette: not run	norminette: çalıştırılmadı
+No result: run the test of your get_next_line again.	Sonuç yok: get_next_line testini yeniden çalıştır.
+▲ ▼ pick   n: norminette   Esc or Enter: back to the menu	▲ ▼ seç   n: norminette   Esc ya da Enter: menüye dön
+Norm · line %d, col %d · %s · %s	Norm · satır %d, sütun %d · %s · %s
+N O R M I N E T T E   ·   %s	N O R M I N E T T E   ·   %s
+The norminette did not run for this project (not found or turned off).	norminette bu proje için çalışmadı (bulunamadı ya da kapalı).
+No error: the Norm is respected.	Hata yok: Norm'a uyuluyor.
+%d error(s) in %d file(s) · the moulinette checks the Norm before the tests (Prerequisites)	%d hata, %d dosyada · moulinette testlerden önce Norm'u kontrol eder (Prerequisites)
+  line %-4d col %-3d	  satır %-4d süt %-3d
+▲ ▼ scroll   Esc or Enter: back	▲ ▼ kaydır   Esc ya da Enter: geri

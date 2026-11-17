@@ -121,7 +121,7 @@ if [ -n "${EXO:-}" ]; then
 		printf 'X\tabsent\t0\nD\tfichier introuvable : %s/entrainement/niveau_%s/%s.c\n' "$TDF_AFF" "$EXO" "$fn" >> "$out"
 		exit 1
 	fi
-	if command -v norminette >/dev/null 2>&1; then
+	if command -v norminette >/dev/null 2>&1 && tdf_norminette_ok; then
 		if ! norminette "$file" 2>&1 | grep -q ': OK!'; then
 			printf 'X\tnorme\t0\n' >> "$out"
 			norminette "$file" 2>&1 | grep -E 'Error' | head -4 | sed 's/\x1b\[[0-9;]*m//g' | sed 's/^/D\t/' >> "$out"
@@ -671,8 +671,10 @@ if [ "$BONUS_OPT" = "--bonus" ] && (cd "$COPY" && make -n bonus >/dev/null 2>&1)
 fi
 cp "$COPY/libftprintf.a" "$BUILD/student.a"
 
+NORME_DERNIERE="$HOME/.testeur_des_fous/derniere/norme_printf.txt"
+rm -f "$NORME_DERNIERE" 2>/dev/null
 if want norme && [ $DO_NORM -eq 1 ]; then
-	if command -v norminette >/dev/null 2>&1; then
+	if command -v norminette >/dev/null 2>&1 && tdf_norminette_ok; then
 		NORM_LATEST="3.3.60"
 		NV=$(norminette --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
 		if [ -n "$NV" ] && [ "$(printf '%s\n%s\n' "$NV" "$NORM_LATEST" | sort -V | head -1)" != "$NORM_LATEST" ]; then
@@ -681,6 +683,7 @@ if want norme && [ $DO_NORM -eq 1 ]; then
 		NFILES=$( { echo "$SRCS_M"; [ $HAS_BONUS -eq 1 ] && echo "$SRCS_B"; student_find -name '*.h'; } | grep -v '^MISSING:' | sort -u)
 		norm_run() {
 			NOUT=$(cd "$COPY" && norminette $NFILES 2>&1)
+			mkdir -p "$(dirname "$NORME_DERNIERE")" 2>/dev/null && printf '%s\n' "$NOUT" | sed $'s/\x1b\\[[0-9;]*m//g' | sed "s#$COPY/##" > "$NORME_DERNIERE"
 			NERR=$(echo "$NOUT" | grep -c ': Error!')
 			NTOT=$(echo "$NFILES" | grep -c .)
 			if [ "$NERR" -eq 0 ]; then
@@ -690,7 +693,7 @@ if want norme && [ $DO_NORM -eq 1 ]; then
 				echo "$NOUT" | grep -E 'Error!|Error:' | head -n "$( [ -n "$VERBOSE" ] && echo 100000 || echo 12 )" | sed "s#$COPY/##" | sed 's/^/      /'
 			fi
 		}
-		cache_run norme "$(fingerprint <(echo "$NV $VERBOSE"; echo "$NFILES" | sed "s#^$COPY/##") $NFILES)" norm_run
+		norm_run
 	else
 		line ".." "$(tt "norminette non installée : vérification de la norme ignorée" "norminette not installed: Norm check skipped")"
 	fi

@@ -70,6 +70,10 @@ tdf_ch_fin() {
 	TDF_CH_ACTIF=0
 }
 
+tdf_norminette_ok() {
+	norminette --version 2>/dev/null | grep -Eqi 'norminette[[:space:]]+[0-9]'
+}
+
 tdf_cache_menage() {
 	local c="$1" p pre garde
 	[ -n "$c" ] && [ -d "$c" ] || return 0

@@ -72,12 +72,26 @@ pill() {
 	esac
 }
 
+GNL_RES="$HOME/.testeur_des_fous/derniere/gnl.res"
+GNL_NORME="$HOME/.testeur_des_fous/derniere/norme_gnl.txt"
+mkdir -p "$(dirname "$GNL_RES")" 2>/dev/null
+rm -f "$GNL_NORME" 2>/dev/null
+: > "$GNL_RES" 2>/dev/null || GNL_RES=/dev/null
+gnl_res() {
+	printf '%s\n' "$*" | tr -d '\r' | sed $'s/\x1b\\[[0-9;]*m//g' >> "$GNL_RES" 2>/dev/null
+}
+gnl_fin() {
+	gnl_res "F	$N_OK	$N_KO	$N_INFO	$TAILLES	$PROJET"
+}
+trap 'gnl_fin; [ "$GARDER" = 1 ] || rm -rf "$BUILD"' EXIT
+
 ligne() {
 	local st="$1" titre="$2" detail="${3:-}"
 	printf '  '
 	pill "$st"
 	printf '  %s\n' "$titre"
 	[ -n "$detail" ] && printf '            %s%s%s\n' "$D" "$detail" "$R"
+	gnl_res "L	$st	$(printf '%s' "$titre" | tr '\t\n' '  ')	$(printf '%s' "$detail" | tr '\t\n' '  ')"
 	case "$st" in
 		OK) N_OK=$((N_OK + 1)) ;;
 		INFO|NOTE) N_INFO=$((N_INFO + 1)) ;;
@@ -86,6 +100,7 @@ ligne() {
 }
 
 section() {
+	gnl_res "S	$1"
 	printf '\n  %s%s%s %s' "$AC" "$B" "$1" "$D"
 	printf '%.0s─' $(seq 1 $((56 - ${#1})))
 	printf '%s\n' "$R"
@@ -109,6 +124,7 @@ for f in get_next_line.c get_next_line_utils.c get_next_line.h; do
 done
 if [ "$MANQUE" = 1 ]; then
 	printf "$(tt "\n  %s%sIl manque des fichiers : les tests ne peuvent pas compiler.%s\n\n" "\n  %s%sFiles are missing: the tests cannot compile.%s\n\n")" "$F_KO" "$B" "$R"
+	gnl_res "X	$(tt "Il manque des fichiers : les tests ne peuvent pas compiler." "Files are missing: the tests cannot compile.")"
 	tdf_journal "fichiers manquants"
 	exit 1
 fi
@@ -125,6 +141,7 @@ if "$CC" -Wall -Wextra -Werror -I "$PROJET" -c "${SRC[0]}" -o "$BUILD/a.o" 2> "$
 else
 	ligne KO "$(tt "compile sans -D BUFFER_SIZE (cc -Wall -Wextra -Werror)" "compiles without -D BUFFER_SIZE (cc -Wall -Wextra -Werror)")" "$(grep -m1 -E 'error' "$BUILD/sans_d.err" | sed "s#$PROJET/##")"
 	printf "$(tt "\n  %s%sLe projet ne compile pas : corrige d'abord ça.%s\n\n" "\n  %s%sThe project does not compile: fix that first.%s\n\n")" "$F_KO" "$B" "$R"
+	gnl_res "X	$(tt "Le projet ne compile pas : corrige d'abord ça." "The project does not compile: fix that first.")"
 	exit 1
 fi
 
@@ -164,6 +181,7 @@ if [ -z "$NORM" ]; then
 	ligne NOTE "$(tt "norminette introuvable : la Norme n'est pas vérifiée" "norminette not found: the Norm is not checked")" "python3 -m pip install --user norminette"
 else
 	nout="$(cd "$PROJET" && $NORM get_next_line.c get_next_line_utils.c get_next_line.h 2>&1 | sed $'s/\x1b\\[[0-9;]*m//g')"
+	printf '%s\n' "$nout" > "$GNL_NORME" 2>/dev/null
 	if echo "$nout" | grep -q 'Error'; then
 		ligne KO "norminette" "$(echo "$nout" | grep -m2 -E 'Error' | tr '\t' ' ' | tr '\n' ' ' | cut -c1-120)"
 	else

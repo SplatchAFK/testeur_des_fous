@@ -415,6 +415,9 @@ int	pf_results(int after)
 {
 	static int	sel;
 	long		ouvert;
+	char		np[700];
+	int			nb;
+	int			nf;
 	char		tmp[220];
 	int			n;
 	int			i;
@@ -478,12 +481,27 @@ int	pf_results(int after)
 		}
 		if (!n)
 			center(5, theme()->dim, L("Aucun résultat : lance « Relancer les tests » (touche r).", "No results: run \"Run the tests again\" (key r)."));
-		foot_line(x, L("Entrée : détail   r : corrigé ? relancer les tests   Échap : menu",
-				"Enter: details   r: fixed? run the tests again   Esc: menu"));
+		foot_line(x, L("Entrée : détail   n : norminette   r : corrigé ? relancer les tests   Échap : menu",
+				"Enter: details   n: norminette   r: fixed? run the tests again   Esc: menu"));
 		flush();
+		snprintf(np, sizeof(np), "%s/derniere/norme_printf.txt", g_savedir);
+		nb = tdf_norme_compte(np, &nf);
+		if (nb > 0)
+		{
+			snprintf(tmp, sizeof(tmp), L("NORMINETTE : %d erreur(s) dans %d fichier(s) · n pour les voir",
+					"NORMINETTE: %d error(s) in %d file(s) · n to see them"), nb, nf);
+			center(term_rows() - 2, rgb(255, 110, 110), tmp);
+			flush();
+		}
 		k = key_read(80);
 		if (k >= 0 && now_ms() - ouvert < 500)
 			continue ;
+		if (k == 'n' || k == 'N')
+		{
+			tdf_norme_voir(np, "ft_printf");
+			cls();
+			continue ;
+		}
 		if (k == 'r' || k == 'R')
 		{
 			cls();

@@ -607,12 +607,22 @@ static int	moulinette_ok(char *why, size_t n)
 	return (1);
 }
 
+static const char	*norme_libft(void)
+{
+	static char	p[700];
+
+	snprintf(p, sizeof(p), "%s/derniere/norme_libft.txt", g_savedir);
+	return (p);
+}
+
 static void	detail_panel(int sel, int y)
 {
 	t_res	*r;
 	int		x;
 	int		i;
+	int		n;
 	char	tmp[200];
+	char	nl[3][200];
 
 	layout(&x, &i);
 	r = &g_run.fn[sel];
@@ -629,6 +639,11 @@ static void	detail_panel(int sel, int y)
 		snprintf(tmp, sizeof(tmp), "  %.*s", term_cols() - x - 3 > 0 ? term_cols() - x - 3 : 10, r->detail[i]);
 		text_at(x, y + 1 + i, theme()->text, tmp);
 	}
+	y += 1 + i;
+	snprintf(tmp, sizeof(tmp), "ft_%s.c", g_fn_name[sel]);
+	n = tdf_norme_de(norme_libft(), tmp, nl, 3);
+	for (i = 0; i < n && y + i < term_rows() - 3; i++)
+		text_clip(x + 2, y + i, rgb(255, 120, 120), nl[i], term_cols() - x - 4);
 }
 
 static int	audit_lines(char lines[][200], int *kind, int max)
@@ -1055,8 +1070,15 @@ int	screen_results(int after)
 		if (!tdf_menu_unique())
 			draw_tour();
 		detail_panel(sel, y + 17);
-		foot_line(x, L("flèches : choisir   f : fiche   m : audit   r : corrigé ? relancer   Entrée : continuer",
-				"arrows: pick   f: details   m: audit   r: fixed? run again   Enter: continue"));
+		bad = tdf_norme_compte(norme_libft(), &k);
+		if (bad > 0)
+		{
+			snprintf(tmp, sizeof(tmp), L("NORMINETTE : %d erreur(s) dans %d fichier(s) · n pour les voir",
+					"NORMINETTE: %d error(s) in %d file(s) · n to see them"), bad, k);
+			center(term_rows() - 2, rgb(255, 110, 110), tmp);
+		}
+		foot_line(x, L("flèches : choisir   f : fiche   n : norminette   m : audit   r : corrigé ? relancer   Entrée : continuer",
+				"arrows: pick   f: details   n: norminette   m: audit   r: fixed? run again   Enter: continue"));
 		flush();
 		k = key_read(60);
 		if (k >= 0 && now_ms() - ouvert < 500)
@@ -1071,6 +1093,11 @@ int	screen_results(int after)
 		if (k == 'f')
 		{
 			sel = screen_fiche(sel);
+			continue ;
+		}
+		if (k == 'n' || k == 'N')
+		{
+			tdf_norme_voir(norme_libft(), "Libft");
 			continue ;
 		}
 		if (k == 'm' || (k == 'a' && g_save.cfg.keys != 1))

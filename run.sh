@@ -199,10 +199,15 @@ voir_rapport() {
 	TDF_ECRAN=rapport TDF_RAPPORT="$1" TDF_RAPPORT_TITRE="$2" TDF_PROJET="" bash "$TDF_RACINE/modules/libft/run.sh" --menu
 }
 
+voir_gnl() {
+	TDF_ECRAN=gnl TDF_PROJET="" bash "$TDF_RACINE/modules/libft/run.sh" --menu
+}
+
 revoir_derniere() {
 	local m
 	m="$(head -1 "$DOSSIER/derniere/module" 2>/dev/null)"
 	case "$m" in
+		gnl) voir_gnl ;;
 		libft|printf)
 			TDF_ECRAN=revoir TDF_REVOIR="$DOSSIER/derniere/$m.res" TDF_PROJET="" bash "$TDF_RACINE/modules/$m/run.sh" --menu
 			;;
@@ -797,7 +802,10 @@ while :; do
 	fi
 	if [ "$code" != 45 ] && [ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && [ "$code" != 143 ]; then
 		[ "$MODULE" = gnl ] && [ "$DOSSIER/puits.txt" -nt "$DOSSIER/.module_lance" ] && lore_scene lore_gnl
-		if rapport_texte; then
+		if [ "$MODULE" = gnl ] && [ -s "$DOSSIER/derniere/gnl.res" ] && [ "$DOSSIER/derniere/gnl.res" -nt "$DOSSIER/.module_lance" ]; then
+			printf 'gnl\n' > "$DOSSIER/derniere/module"
+			voir_gnl
+		elif rapport_texte; then
 			voir_rapport "$DOSSIER/derniere/rapport.txt" "$(tt "Rapport des tests" "Test report")"
 		fi
 		MENU_A_FAIRE=1

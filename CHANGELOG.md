@@ -8,6 +8,17 @@ Le numéro de version est dans `moteur/version.h`.
 
 - ft_lstclear : nouveau test repris d'une trace de la moulinette, un maillon au content NULL au milieu de la liste ; del doit être appelée sur chaque maillon, même quand son content vaut NULL.
 
+### Norminette
+
+- les erreurs de la norminette se voient clairement dans les trois projets : bannière rouge sur les résultats, touche n pour la liste complète (fichier, ligne, colonne, règle, explication) ;
+- Libft : la fiche de chaque fonction (touche f) montre les erreurs de Norme de son fichier ;
+- une norminette installée mais cassée (le module Python manque) n'est plus prise pour une norminette sans erreur : le testeur dit qu'elle est introuvable.
+
+### get_next_line
+
+- nouvel écran de résultats dans le style du testeur : bilan, BUFFER_SIZE testés, anneaux du Puits, norminette, vérifications par partie et détail de chacune avec ce qu'il faut corriger ;
+- « Revoir la dernière tentative » rouvre cet écran.
+
 ### Confort
 
 - `bash run.sh projet <chemin>` (ou `bash run.sh <chemin>`) teste le projet puis ouvre le vrai menu, avec le titre et le fou ; `--debug` en plus donne tous les rapports détaillés ;
