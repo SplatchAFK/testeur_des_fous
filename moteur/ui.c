@@ -633,6 +633,12 @@ static int	mu_ecran(t_mu *m, int *sel)
 				fg(i == 0 ? theme()->accent : theme()->text);
 			outf(" %s %-*s", i == *sel ? "▶" : " ", iw - 4, lab);
 			bgc(theme()->bg);
+			if (tdf_nouveau("3.2") && (!strcmp(m->act[i], "projet") || !strcmp(m->act[i], "chevalier")
+					|| !strcmp(m->act[i], "stats")))
+			{
+				at(ix + 3 + ulen(lab) + 1, y + 1 + i * (rows >= y + 2 * m->n + 6 ? 2 : 1));
+				tdf_badge_new();
+			}
 		}
 		nz = 0;
 		if (cols - (ix + iw + 3) - 3 >= 22)

@@ -23,7 +23,7 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Chevalier
 
-- Tenues (garde-robe, touche t) : jusqu'à 5 tenues avec un nom ; e enregistre ta tenue actuelle, Entrée la porte, n la renomme, x (deux fois) la supprime ; elles sont gardées dans `tenues.txt`, à côté de la sauvegarde ;
+- Tenues (Chevalier › Tenues, ou touche t dans la garde-robe) : jusqu'à 5 tenues avec un nom ; e enregistre ta tenue actuelle, Entrée la porte, n la renomme, x (deux fois) la supprime ; elles sont gardées dans `tenues.txt`, à côté de la sauvegarde ;
 - grand aperçu (touche v, dans la garde-robe, la boutique et les tenues) : ton chevalier en grand, avec l'objet survolé ;
 - pseudo : vraie saisie, avec curseur (◀ ▶), Ctrl+U pour tout effacer, compteur de caractères, aperçu dans la couleur du pseudo, Échap pour annuler ; lettres, chiffres et - _ . seulement ; la même saisie sert pour la bio, les tenues et les chemins.
 
@@ -33,12 +33,15 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Stats et credits
 
+- Stats : ↓ sur les pages Libft, ft_printf, get_next_line et Exam ouvre les détails (chaque fonction ou test, validé ou non, nombre d'échecs, dernier échec, types d'échec) ;
 - Stats : nouvel onglet get_next_line (passages, dernier et meilleur score, validé ou non, anneaux du dernier Puits, tes passages, ce qui échoue le plus) ;
 - « Ce qui échoue le plus » : noms des tests get_next_line lisibles et colonnes alignées ;
 - credits refaits pour tout le testeur : Libft, ft_printf, get_next_line, Examshell des fous et banque, moteur de tests, lore et langues.
 
 ### Confort
 
+- Tester mon projet : options du test aux flèches, gardées d'un lancement à l'autre : mode debug (tous les rapports détaillés), audit complet, valgrind en plus, sans cinématiques, sans animations ;
+- un badge NEW rose signale les nouveautés de la version (il disparaît à la version suivante) ;
 - `bash run.sh projet <chemin>` (ou `bash run.sh <chemin>`) teste le projet puis ouvre le vrai menu, avec le titre et le fou ; `--debug` en plus donne tous les rapports détaillés ;
 - Tester mon projet : après ↑ (écrire un chemin), ↓ ramène à la liste ;
 - « Le savais-tu ? » apparaît directement dans son style, en fondu, sans passer par du texte blanc ;

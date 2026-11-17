@@ -745,6 +745,8 @@ void			screen_images(void);
 t_rgb			pseudo_color(void);
 int				ask_text(const char *q, const char *hint, char *buf, int size);
 void			tdf_tenues(void);
+int				tdf_nouveau(const char *depuis);
+void			tdf_badge_new(void);
 void			tdf_grand_apercu(const t_look *lk, int title);
 int				tdf_saisir(const char *titre, const char *aide, char *buf, int size, int maxcar, int login, int annulable);
 int				confirm(const char *q);

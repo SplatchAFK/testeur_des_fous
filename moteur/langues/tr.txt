@@ -1754,3 +1754,34 @@ NEW IN 3.2.0	3.2.0'DAKİ YENİLİKLER
 • bash run.sh projet <path> tests then opens the real menu; add --debug for every detail.	• bash run.sh projet <yol> test eder sonra gerçek menüyü açar; tüm ayrıntı için --debug ekle.
 • ft_lstclear: new test taken from the moulinette (a node with a NULL content).	• ft_lstclear: moulinette'ten alınan yeni test (content'i NULL olan bir düğüm).
 • Bank: the Octets of each exercise are shown. Credits redone for the whole tester.	• Banka: her alıştırmanın Octets'i gösterilir. Krediler tüm tester için yeniden yazıldı.
+!Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.	!Kıyafetler|Adlı en fazla 5 kıyafet sakla ve tek tuşla değiştir. v: şövalyen büyük.
+Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.	Kıyafetler|Adlı en fazla 5 kıyafet sakla ve tek tuşla değiştir. v: şövalyen büyük.
+Debug mode	Hata ayıklama modu
+every detailed report (leaks, memory, undefined behaviour), as text	tüm ayrıntılı raporlar (sızıntılar, bellek, tanımsız davranışlar), metin olarak
+Full audit	Tam denetim
+the moulinette audit even if some functions fail (Libft)	bazı fonksiyonlar başarısız olsa bile moulinette denetimi (Libft)
+Valgrind too	Ayrıca Valgrind
+runs the tests again under valgrind, slower (Libft, ft_printf)	testleri valgrind altında yeniden çalıştırır, daha yavaş (Libft, ft_printf)
+No cutscenes	Ara sahne yok
+only the tests, no story	yalnızca testler, hikâye yok
+No animations	Animasyon yok
+direct display, no effects	doğrudan gösterim, efekt yok
+TEST OPTIONS	TEST SEÇENEKLERİ
+DETAILS · %s · %d item(s)	AYRINTILAR · %s · %d öğe
+Nothing to detail yet: run some tests.	Henüz gösterilecek bir şey yok: test çalıştır.
+%d failure(s)	%d başarısızlık
+✓ cleared at least once	✓ en az bir kez geçildi
+✗ not cleared yet	✗ henüz geçilmedi
+✓ passes in the last test	✓ son testte geçiyor
+✗ fails in the last test	✗ son testte başarısız
+✓ passed at least once	✓ en az bir kez geçildi
+No failure recorded in your last 50 attempts.	Son 50 denemende kayıtlı başarısızlık yok.
+Failures: %d in your last 50 attempts	Başarısızlık: son 50 denemende %d
+Last failure:	Son başarısızlık:
+By kind of failure:	Başarısızlık türüne göre:
+First clear: +20 ◈ and +40 XP	İlk geçiş: +20 ◈ ve +40 XP
+▲ ▼ pick   ◀ ▶ change page   Esc: back to the summary	▲ ▼ seç   ◀ ▶ sayfa değiştir   Esc: özete dön
+▼ see the details   ◀ ▶ change page   Esc: back	▼ ayrıntıları gör   ◀ ▶ sayfa değiştir   Esc: geri
+• New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Yeni get_next_line sonuç ekranı. İstatistikler: get_next_line sekmesi ve her projenin ayrıntıları için ↓.
+• Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Şövalye › Kıyafetler (en fazla 5), büyük önizleme (v tuşu) ve yazması daha kolay bir takma ad.
+• Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Projemi test et: oklarla seçenekler (hata ayıklama modu, tam denetim, valgrind, ara sahne yok, animasyon yok).

@@ -12,12 +12,28 @@
 #include <sys/stat.h>
 #include "fous.h"
 
+int	tdf_nouveau(const char *depuis)
+{
+	size_t	l;
+
+	l = strlen(depuis);
+	return (!strncmp(TDF_VERSION, depuis, l) && (TDF_VERSION[l] == '.' || TDF_VERSION[l] == '\0'));
+}
+
+void	tdf_badge_new(void)
+{
+	bgc(rgb(255, 55, 110));
+	fg(rgb(255, 255, 255));
+	out(" NEW ");
+	bgc(theme()->bg);
+}
+
 static void	label_of(const char *item, char *b, size_t n)
 {
 	const char	*s;
 	size_t		l;
 
-	s = item[0] == '~' ? item + 1 : item;
+	s = item[0] == '~' || item[0] == '!' ? item + 1 : item;
 	l = strcspn(s, "|");
 	if (l >= n)
 		l = n - 1;
@@ -64,6 +80,11 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 			outf(" %s %s", i == *sel ? "▶" : " ", lab);
 			outf("%*s", 55 - ulen(lab) > 0 ? 55 - ulen(lab) : 1, "");
 			bgc(theme()->bg);
+			if (items[i][0] == '!')
+			{
+				at(x + ulen(lab) + 5, 5 + i * 2);
+				tdf_badge_new();
+			}
 		}
 		y = 6 + n * 2;
 		if (desc_of(items[*sel]))
@@ -260,16 +281,20 @@ static void	ecran_rangs(void)
 void	tdf_menu_chevalier(void (*profile)(void))
 {
 	static int	sel;
-	const char	*items[4];
+	const char	*items[5];
 	int			i;
 
 	items[0] = L("Avatar (garde-robe)|Équipe les objets que tu possèdes et choisis leurs couleurs.", "Avatar (wardrobe)|Equip the items you own and pick their colours.");
 	items[1] = L("Boutique|Dépense tes Octets : objets, thèmes, titres. Les Octets se gagnent en validant.", "Shop|Spend your Octets: items, themes, titles. You earn Octets by passing tests.");
 	items[2] = L("Profil et succès|Bannière, photo, bio et tous tes succès.", "Profile and achievements|Banner, picture, bio and all your achievements.");
 	items[3] = L("Rangs|Ton rang, où tu en es avant le prochain, et les rangs à venir.", "Ranks|Your rank, how close the next one is, and the ranks to come.");
+	items[4] = tdf_nouveau("3.2") ? L("!Tenues|Garde jusqu'à 5 tenues avec un nom et change-les en un appui. v : ton chevalier en grand.",
+			"!Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.")
+		: L("Tenues|Garde jusqu'à 5 tenues avec un nom et change-les en un appui. v : ton chevalier en grand.",
+			"Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.");
 	while (1)
 	{
-		i = tdf_list_menu(L("CHEVALIER", "KNIGHT"), items, 4, &sel, NULL);
+		i = tdf_list_menu(L("CHEVALIER", "KNIGHT"), items, 5, &sel, NULL);
 		if (i < 0)
 			return ;
 		if (i == 0)
@@ -278,8 +303,10 @@ void	tdf_menu_chevalier(void (*profile)(void))
 			screen_shop(0);
 		else if (i == 2)
 			profile();
-		else
+		else if (i == 3)
 			ecran_rangs();
+		else
+			tdf_tenues();
 	}
 }
 
@@ -544,10 +571,10 @@ void	tdf_nouveautes(void)
 	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
 		L("NOUVEAU DANS LA 3.2.0", "NEW IN 3.2.0"),
 		L("• Erreurs norminette visibles dans Libft, ft_printf et get_next_line : bannière rouge et touche n pour le détail.", "• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details."),
-		L("• Nouvel écran de résultats get_next_line, et un onglet get_next_line dans les Stats.", "• New get_next_line results screen, and a get_next_line tab in the Stats."),
-		L("• Chevalier : tenues (garde-robe, touche t), grand aperçu (touche v), et un pseudo plus simple à taper.", "• Knight: outfits (wardrobe, key t), big preview (key v), and a nickname that is easier to type."),
+		L("• Nouvel écran de résultats get_next_line. Stats : onglet get_next_line, et ↓ pour les détails de chaque projet.", "• New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project."),
+		L("• Chevalier › Tenues (jusqu'à 5), grand aperçu (touche v) et un pseudo plus simple à taper.", "• Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type."),
 		L("• Examshell : grademe refuse les fichiers en trop dans rendu/, seuls les fichiers demandés passent.", "• Examshell: grademe refuses extra files in rendu/, only the requested files pass."),
-		L("• bash run.sh projet <chemin> teste puis ouvre le vrai menu ; ajoute --debug pour tout le détail.", "• bash run.sh projet <path> tests then opens the real menu; add --debug for every detail."),
+		L("• Tester mon projet : options aux flèches (mode debug, audit complet, valgrind, sans cinématiques, sans animations).", "• Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations)."),
 		L("• ft_lstclear : nouveau test repris de la moulinette (un maillon au content NULL).", "• ft_lstclear: new test taken from the moulinette (a node with a NULL content)."),
 		L("• Banque : les Octets de chaque exercice sont affichés. Credits refaits pour tout le testeur.", "• Bank: the Octets of each exercise are shown. Credits redone for the whole tester."),
 		L("Tu veux en savoir plus ? Viens sur le serveur Discord (Ctrl + clic sur le lien) :", "Want to know more? Join the Discord server (Ctrl + click on the link):"));
@@ -895,6 +922,95 @@ static void	dessiner_entrees(t_ent *e, int n, int sel, int x, int y, int h)
 	}
 }
 
+#define NOPT 5
+
+static int	g_opt[NOPT];
+
+static const char	*opt_cle(int i)
+{
+	static const char	*c[NOPT] = {"debug", "audit", "valgrind", "sans_histoire", "sans_anim"};
+
+	return (c[i]);
+}
+
+static void	opt_lire(void)
+{
+	FILE	*f;
+	char	p[700];
+	char	l[80];
+	int		i;
+
+	memset(g_opt, 0, sizeof(g_opt));
+	snprintf(p, sizeof(p), "%s/options_test.txt", g_savedir);
+	f = fopen(p, "r");
+	while (f && fgets(l, sizeof(l), f))
+		for (i = 0; i < NOPT; i++)
+			if (!strncmp(l, opt_cle(i), strlen(opt_cle(i))) && l[strlen(opt_cle(i))] == '=')
+				g_opt[i] = atoi(l + strlen(opt_cle(i)) + 1) != 0;
+	if (f)
+		fclose(f);
+}
+
+static void	opt_ecrire(void)
+{
+	FILE	*f;
+	char	p[700];
+	int		i;
+
+	snprintf(p, sizeof(p), "%s/options_test.txt", g_savedir);
+	f = fopen(p, "w");
+	if (!f)
+		return ;
+	for (i = 0; i < NOPT; i++)
+		fprintf(f, "%s=%d\n", opt_cle(i), g_opt[i]);
+	fclose(f);
+}
+
+static int	dessiner_options(int x, int y, int sel)
+{
+	const char	*nom[NOPT];
+	const char	*desc[NOPT];
+	int			i;
+
+	nom[0] = L("Mode debug", "Debug mode");
+	desc[0] = L("tous les rapports détaillés (fuites, mémoire, comportements indéfinis), en texte",
+			"every detailed report (leaks, memory, undefined behaviour), as text");
+	nom[1] = L("Audit complet", "Full audit");
+	desc[1] = L("l'audit de la moulinette même si des fonctions échouent (Libft)",
+			"the moulinette audit even if some functions fail (Libft)");
+	nom[2] = L("Valgrind en plus", "Valgrind too");
+	desc[2] = L("repasse les tests sous valgrind, plus lent (Libft, ft_printf)",
+			"runs the tests again under valgrind, slower (Libft, ft_printf)");
+	nom[3] = L("Sans cinématiques", "No cutscenes");
+	desc[3] = L("seulement les tests, sans histoire", "only the tests, no story");
+	nom[4] = L("Sans animations", "No animations");
+	desc[4] = L("affichage direct, sans effets", "direct display, no effects");
+	text_at(x, y, theme()->accent2, L("OPTIONS DU TEST", "TEST OPTIONS"));
+	if (tdf_nouveau("3.2"))
+	{
+		at(x + ulen(L("OPTIONS DU TEST", "TEST OPTIONS")) + 1, y);
+		tdf_badge_new();
+	}
+	y++;
+	for (i = 0; i < NOPT; i++, y++)
+	{
+		at(x, y);
+		if (i == sel)
+		{
+			bgc(mix(theme()->bg, theme()->accent, 0.25));
+			fg(theme()->accent2);
+		}
+		else
+			fg(theme()->text);
+		outf(" %s %-20s", i == sel ? "▶" : " ", nom[i]);
+		fg(g_opt[i] ? rgb(80, 230, 140) : theme()->dim);
+		outf(" ◀ %-3s ▶ ", g_opt[i] ? L("oui", "yes") : L("non", "no"));
+		bgc(theme()->bg);
+		text_clip(x + 36, y, theme()->dim, desc[i], term_cols() - x - 38);
+	}
+	return (y);
+}
+
 static void	aide_chemin(int y0, int y1)
 {
 	const char	*l[6];
@@ -947,6 +1063,7 @@ int	tdf_choisir_dossier(char *out, size_t n)
 	const char		*msg;
 
 	ne = entrees(e, 30);
+	opt_lire();
 	saisie[0] = '\0';
 	mode = 0;
 	sel = 0;
@@ -991,7 +1108,7 @@ int	tdf_choisir_dossier(char *out, size_t n)
 		bgc(theme()->bg);
 		fill(x, 6, term_cols() - x - 2, h + 2, theme()->bg);
 		if (!mode)
-			dessiner_entrees(e, ne, sel, x, 5, h);
+			dessiner_entrees(e, ne, sel < ne ? sel : -1, x, 5, h);
 		else
 		{
 			if (csel >= 0 && csel < ctop)
@@ -1019,7 +1136,8 @@ int	tdf_choisir_dossier(char *out, size_t n)
 				text_at(x, 6, theme()->dim, L("Tape un chemin : ~/ pour ton dossier perso, / pour la racine, . pour ici.",
 						"Type a path: ~/ for your home, / for the root, . for here."));
 		}
-		aide_chemin(8 + h, term_rows() - 4);
+		k = mode ? 8 + h : dessiner_options(x, 8 + h, sel - ne) + 1;
+		aide_chemin(k, term_rows() - 4);
 		if (msg)
 			text_at(x, term_rows() - 3, rgb(255, 120, 120), msg);
 		foot_line(x, mode ? L("Tab compléter   ▲ ▼ choisir   ▶ ouvrir   ◀ remonter   Entrée valider   Échap : liste",
@@ -1043,8 +1161,13 @@ int	tdf_choisir_dossier(char *out, size_t n)
 			}
 			else if (k == 1000)
 				sel--;
-			else if (k == 1001 && sel < ne - 1)
+			else if (k == 1001 && sel < ne + NOPT - 1)
 				sel++;
+			else if (sel >= ne && (k == '\r' || k == '\n' || k == ' ' || k == 1002 || k == 1003))
+			{
+				g_opt[sel - ne] = !g_opt[sel - ne];
+				opt_ecrire();
+			}
 			else if (k == '\r' || k == '\n' || k == ' ' || k == 1002)
 			{
 				if (valider(e[sel].chemin, out, n))

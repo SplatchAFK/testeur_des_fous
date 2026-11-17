@@ -1754,3 +1754,34 @@ NEW IN 3.2.0	NOVEDADES DE LA 3.2.0
 • bash run.sh projet <path> tests then opens the real menu; add --debug for every detail.	• bash run.sh projet <ruta> prueba y luego abre el menú real; añade --debug para todo el detalle.
 • ft_lstclear: new test taken from the moulinette (a node with a NULL content).	• ft_lstclear: nueva prueba tomada de la moulinette (un eslabón con content NULL).
 • Bank: the Octets of each exercise are shown. Credits redone for the whole tester.	• Banco: se muestran los Octets de cada ejercicio. Créditos rehechos para todo el tester.
+!Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.	!Trajes|Guarda hasta 5 trajes con nombre y cámbialos con una tecla. v: tu caballero en grande.
+Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.	Trajes|Guarda hasta 5 trajes con nombre y cámbialos con una tecla. v: tu caballero en grande.
+Debug mode	Modo debug
+every detailed report (leaks, memory, undefined behaviour), as text	todos los informes detallados (fugas, memoria, comportamientos indefinidos), en texto
+Full audit	Auditoría completa
+the moulinette audit even if some functions fail (Libft)	la auditoría de la moulinette aunque fallen funciones (Libft)
+Valgrind too	Valgrind además
+runs the tests again under valgrind, slower (Libft, ft_printf)	repasa las pruebas con valgrind, más lento (Libft, ft_printf)
+No cutscenes	Sin cinemáticas
+only the tests, no story	solo las pruebas, sin historia
+No animations	Sin animaciones
+direct display, no effects	visualización directa, sin efectos
+TEST OPTIONS	OPCIONES DE LA PRUEBA
+DETAILS · %s · %d item(s)	DETALLES · %s · %d elemento(s)
+Nothing to detail yet: run some tests.	Nada que detallar todavía: lanza pruebas.
+%d failure(s)	%d fallo(s)
+✓ cleared at least once	✓ validada al menos una vez
+✗ not cleared yet	✗ aún no validada
+✓ passes in the last test	✓ pasa en la última prueba
+✗ fails in the last test	✗ falla en la última prueba
+✓ passed at least once	✓ superado al menos una vez
+No failure recorded in your last 50 attempts.	Ningún fallo registrado en tus 50 últimos intentos.
+Failures: %d in your last 50 attempts	Fallos: %d en tus 50 últimos intentos
+Last failure:	Último fallo:
+By kind of failure:	Por tipo de fallo:
+First clear: +20 ◈ and +40 XP	Primera validación: +20 ◈ y +40 XP
+▲ ▼ pick   ◀ ▶ change page   Esc: back to the summary	▲ ▼ elegir   ◀ ▶ cambiar de página   Esc: volver al resumen
+▼ see the details   ◀ ▶ change page   Esc: back	▼ ver los detalles   ◀ ▶ cambiar de página   Esc: volver
+• New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Nueva pantalla de resultados de get_next_line. Estadísticas: pestaña get_next_line y ↓ para los detalles de cada proyecto.
+• Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Caballero › Trajes (hasta 5), vista grande (tecla v) y un apodo más fácil de escribir.
+• Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Probar mi proyecto: opciones con las flechas (modo debug, auditoría completa, valgrind, sin cinemáticas, sin animaciones).

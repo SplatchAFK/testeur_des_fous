@@ -1754,3 +1754,34 @@ NEW IN 3.2.0	НОВОЕ В 3.2.0
 • bash run.sh projet <path> tests then opens the real menu; add --debug for every detail.	• bash run.sh projet <путь> тестирует и затем открывает настоящее меню; добавь --debug для всех подробностей.
 • ft_lstclear: new test taken from the moulinette (a node with a NULL content).	• ft_lstclear: новый тест из moulinette (звено с content NULL).
 • Bank: the Octets of each exercise are shown. Credits redone for the whole tester.	• Банк: показаны Octets каждого упражнения. Титры переделаны для всего тестера.
+!Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.	!Наряды|Храни до 5 именных нарядов и меняй их одной клавишей. v: твой рыцарь крупно.
+Outfits|Keep up to 5 named outfits and switch in one press. v: your knight, large.	Наряды|Храни до 5 именных нарядов и меняй их одной клавишей. v: твой рыцарь крупно.
+Debug mode	Режим отладки
+every detailed report (leaks, memory, undefined behaviour), as text	все подробные отчёты (утечки, память, неопределённое поведение) в виде текста
+Full audit	Полный аудит
+the moulinette audit even if some functions fail (Libft)	аудит moulinette, даже если функции не проходят (Libft)
+Valgrind too	Ещё и Valgrind
+runs the tests again under valgrind, slower (Libft, ft_printf)	повторяет тесты под valgrind, медленнее (Libft, ft_printf)
+No cutscenes	Без заставок
+only the tests, no story	только тесты, без истории
+No animations	Без анимаций
+direct display, no effects	прямой вывод, без эффектов
+TEST OPTIONS	ПАРАМЕТРЫ ТЕСТА
+DETAILS · %s · %d item(s)	ПОДРОБНОСТИ · %s · элементов: %d
+Nothing to detail yet: run some tests.	Пока нечего показать: запусти тесты.
+%d failure(s)	%d неудач(и)
+✓ cleared at least once	✓ пройдена хотя бы раз
+✗ not cleared yet	✗ ещё не пройдена
+✓ passes in the last test	✓ проходит в последнем тесте
+✗ fails in the last test	✗ не проходит в последнем тесте
+✓ passed at least once	✓ решено хотя бы раз
+No failure recorded in your last 50 attempts.	В последних 50 попытках неудач нет.
+Failures: %d in your last 50 attempts	Неудач: %d в последних 50 попытках
+Last failure:	Последняя неудача:
+By kind of failure:	По типу неудачи:
+First clear: +20 ◈ and +40 XP	Первое прохождение: +20 ◈ и +40 XP
+▲ ▼ pick   ◀ ▶ change page   Esc: back to the summary	▲ ▼ выбрать   ◀ ▶ сменить страницу   Esc: к сводке
+▼ see the details   ◀ ▶ change page   Esc: back	▼ подробности   ◀ ▶ сменить страницу   Esc: назад
+• New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Новый экран результатов get_next_line. Статистика: вкладка get_next_line и ↓ для подробностей каждого проекта.
+• Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Рыцарь › Наряды (до 5), большой просмотр (клавиша v) и псевдоним, который проще ввести.
+• Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Проверить мой проект: параметры стрелками (режим отладки, полный аудит, valgrind, без заставок, без анимаций).

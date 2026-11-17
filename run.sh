@@ -228,7 +228,21 @@ lore_scene() {
 	esac
 }
 
+options_test() {
+	local f="$DOSSIER/options_test.txt"
+	unset TDF_SANS_HISTOIRE
+	case "$MODULE" in libft|printf|gnl) ;; *) return 0 ;; esac
+	[ -f "$f" ] || return 0
+	grep -q '^debug=1' "$f" && SUITE+=(--debug)
+	grep -q '^audit=1' "$f" && [ "$MODULE" = libft ] && SUITE+=(--audit)
+	grep -q '^valgrind=1' "$f" && { [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; } && SUITE+=(--valgrind)
+	grep -q '^sans_anim=1' "$f" && SUITE+=(--fast)
+	grep -q '^sans_histoire=1' "$f" && export TDF_SANS_HISTOIRE=1
+	return 0
+}
+
 rapport_texte() {
+	case " ${SUITE[*]:-} " in *" --debug "*) return 0 ;; esac
 	[ "$MODULE" = gnl ] && return 0
 	{ [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; } && case " ${SUITE[*]:-} " in *" --no-lore "*) return 0 ;; esac
 	return 1
@@ -302,6 +316,7 @@ choisir_au_menu() {
 		*) return 1 ;;
 	esac
 	preparer_suite
+	options_test
 	return 0
 }
 
@@ -801,8 +816,10 @@ while :; do
 		continue
 	fi
 	if [ "$code" != 45 ] && [ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && [ "$code" != 143 ]; then
-		[ "$MODULE" = gnl ] && [ "$DOSSIER/puits.txt" -nt "$DOSSIER/.module_lance" ] && lore_scene lore_gnl
-		if [ "$MODULE" = gnl ] && [ -s "$DOSSIER/derniere/gnl.res" ] && [ "$DOSSIER/derniere/gnl.res" -nt "$DOSSIER/.module_lance" ]; then
+		[ "$MODULE" = gnl ] && [ -z "${TDF_SANS_HISTOIRE:-}" ] && [ "$DOSSIER/puits.txt" -nt "$DOSSIER/.module_lance" ] && lore_scene lore_gnl
+		debug_suite=0
+		case " ${SUITE[*]:-} " in *" --debug "*) debug_suite=1 ;; esac
+		if [ "$MODULE" = gnl ] && [ "$debug_suite" = 0 ] && [ -s "$DOSSIER/derniere/gnl.res" ] && [ "$DOSSIER/derniere/gnl.res" -nt "$DOSSIER/.module_lance" ]; then
 			printf 'gnl\n' > "$DOSSIER/derniere/module"
 			voir_gnl
 		elif rapport_texte; then

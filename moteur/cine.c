@@ -383,7 +383,7 @@ int	cine_play(int (*scene)(t_hd *, double), double dur)
 	double	speed;
 	int		k;
 
-	if (!tdf_cine_force && (anim_off() || g_save.cfg.lore == 2))
+	if (!tdf_cine_force && (anim_off() || g_save.cfg.lore == 2 || getenv("TDF_SANS_HISTOIRE")))
 		return (1);
 	speed = g_save.cfg.anim == 1 ? 2.0 : 1.0;
 	hd_begin(&d);

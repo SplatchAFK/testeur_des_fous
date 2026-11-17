@@ -1259,6 +1259,198 @@ static void	page_gnl(int x, int y, int maxy)
 	weak(x, y, maxy, 3, 8);
 }
 
+typedef struct s_det
+{
+	char	nom[64];
+	char	cle[40];
+	int		etat;
+	t_sitem	*it;
+}	t_det;
+
+static t_det	g_det[200];
+static int		g_ndet;
+static int		g_dfocus;
+static int		g_dsel;
+static int		g_dtop;
+
+static t_sitem	*det_item(const char *mod, const char *cle)
+{
+	int	i;
+
+	for (i = 0; i < g_sd.nit; i++)
+		if (!strcmp(g_sd.it[i].mod, mod) && !strcmp(g_sd.it[i].name, cle))
+			return (&g_sd.it[i]);
+	return (NULL);
+}
+
+static void	det_ajout(const char *mod, const char *nom, const char *cle, int etat)
+{
+	int	i;
+
+	for (i = 0; i < g_ndet; i++)
+		if (!strcmp(g_det[i].cle, cle))
+			return ;
+	if (g_ndet >= 200)
+		return ;
+	snprintf(g_det[g_ndet].nom, sizeof(g_det[0].nom), "%s", nom);
+	snprintf(g_det[g_ndet].cle, sizeof(g_det[0].cle), "%s", cle);
+	g_det[g_ndet].etat = etat;
+	g_det[g_ndet].it = det_item(mod, cle);
+	g_ndet++;
+}
+
+static void	det_cle(const char *nom, char *cle, size_t n)
+{
+	size_t	i;
+
+	for (i = 0; nom[i] && i + 1 < n; i++)
+		cle[i] = (nom[i] == ' ' || nom[i] == '\t') ? '_' : nom[i];
+	cle[i] = '\0';
+}
+
+static void	det_charger(int mod)
+{
+	static const char	*mods[4] = {"libft", "printf", "exam", "gnl"};
+	char				v[2600];
+	char				l[1200];
+	char				cle[40];
+	char				nom[64];
+	char				p[700];
+	char				*c;
+	char				*tok;
+	FILE				*f;
+	int					i;
+
+	g_ndet = 0;
+	if (mod == 0)
+		for (i = 0; i < NFN; i++)
+		{
+			snprintf(nom, sizeof(nom), "ft_%s", g_lf[i]);
+			det_ajout("libft", nom, g_lf[i], g_save.cleared[i] == '1');
+		}
+	if (mod == 3)
+	{
+		snprintf(p, sizeof(p), "%s/derniere/gnl.res", g_savedir);
+		f = fopen(p, "r");
+		while (f && fgets(l, sizeof(l), f))
+		{
+			l[strcspn(l, "\r\n")] = '\0';
+			if (strncmp(l, "L\t", 2) || !(c = strchr(l + 2, '\t')))
+				continue ;
+			*c++ = '\0';
+			tok = strchr(c, '\t');
+			if (tok)
+				*tok = '\0';
+			det_cle(c, cle, sizeof(cle));
+			det_ajout("gnl", c, cle, !strcmp(l + 2, "OK") || !strcmp(l + 2, "NOTE") || !strcmp(l + 2, "INFO"));
+		}
+		if (f)
+			fclose(f);
+	}
+	if (mod == 2)
+	{
+		save_key("exam.done", v, sizeof(v));
+		for (tok = strtok(v, ","); tok; tok = strtok(NULL, ","))
+			det_ajout("exam", tok, tok, 1);
+	}
+	for (i = 0; i < g_sd.nit; i++)
+		if (!strcmp(g_sd.it[i].mod, mods[mod]) && strcmp(g_sd.it[i].name, "niveau"))
+		{
+			snprintf(nom, sizeof(nom), "%s", g_sd.it[i].name);
+			for (c = nom; mod == 3 && *c; c++)
+				if (*c == '_')
+					*c = ' ';
+			det_ajout(mods[mod], nom, g_sd.it[i].name, -1);
+		}
+}
+
+static void	page_details(int x, int y, int maxy, int mod)
+{
+	static const char	*titres[4] = {"LIBFT", "FT_PRINTF", "EXAM", "GET_NEXT_LINE"};
+	char				tmp[200];
+	char				d[40];
+	t_det				*e;
+	time_t				tt;
+	int					h;
+	int					i;
+	int					k;
+	int					xd;
+	int					yd;
+
+	det_charger(mod);
+	snprintf(tmp, sizeof(tmp), L("DÉTAILS · %s · %d élément(s)", "DETAILS · %s · %d item(s)"), titres[mod], g_ndet);
+	title(x, y++, tmp);
+	y++;
+	if (!g_ndet)
+	{
+		text_at(x, y, theme()->dim, L("Rien à détailler pour l'instant : lance des tests.", "Nothing to detail yet: run some tests."));
+		return ;
+	}
+	if (g_dsel >= g_ndet)
+		g_dsel = g_ndet - 1;
+	h = maxy - y;
+	if (h < 3)
+		h = 3;
+	if (g_dsel < g_dtop)
+		g_dtop = g_dsel;
+	if (g_dsel >= g_dtop + h)
+		g_dtop = g_dsel - h + 1;
+	for (i = g_dtop; i < g_ndet && i < g_dtop + h; i++)
+	{
+		e = &g_det[i];
+		at(x, y + i - g_dtop);
+		if (i == g_dsel)
+			bgc(mix(theme()->bg, theme()->accent, 0.22));
+		fg(e->etat == 1 ? vert() : e->etat == 0 ? orange() : theme()->dim);
+		outf(" %s %s ", i == g_dsel ? "▶" : " ", e->etat == 1 ? "✓" : e->etat == 0 ? "✗" : "·");
+		bgc(theme()->bg);
+		text_clip(x + 6, y + i - g_dtop, i == g_dsel ? theme()->accent2 : theme()->text, e->nom, 30);
+		if (e->it)
+		{
+			snprintf(tmp, sizeof(tmp), L("%d échec(s)", "%d failure(s)"), e->it->fails);
+			text_at(x + 38, y + i - g_dtop, e->it->fails > 2 ? orange() : theme()->dim, tmp);
+		}
+	}
+	e = &g_det[g_dsel];
+	xd = x + g_w / 2 + 4;
+	yd = y;
+	text_clip(xd, yd++, theme()->accent2, e->nom, g_w / 2 - 6);
+	yd++;
+	if (mod == 0)
+		text_at(xd, yd++, e->etat == 1 ? vert() : orange(), e->etat == 1
+			? L("✓ validée au moins une fois", "✓ cleared at least once")
+			: L("✗ pas encore validée", "✗ not cleared yet"));
+	else if (mod == 3 && e->etat >= 0)
+		text_at(xd, yd++, e->etat == 1 ? vert() : orange(), e->etat == 1
+			? L("✓ passe au dernier test", "✓ passes in the last test")
+			: L("✗ échoue au dernier test", "✗ fails in the last test"));
+	else if (mod == 2 && e->etat == 1)
+		text_at(xd, yd++, vert(), L("✓ réussi au moins une fois", "✓ passed at least once"));
+	if (!e->it)
+	{
+		text_at(xd, yd++, theme()->dim, L("Aucun échec enregistré dans tes 50 dernières tentatives.",
+				"No failure recorded in your last 50 attempts."));
+		return ;
+	}
+	snprintf(tmp, sizeof(tmp), L("Échecs : %d dans tes 50 dernières tentatives", "Failures: %d in your last 50 attempts"), e->it->fails);
+	text_at(xd, yd++, orange(), tmp);
+	tt = (time_t)e->it->last;
+	strftime(d, sizeof(d), "%d/%m/%Y %H:%M", localtime(&tt));
+	ago(e->it->last, tmp, sizeof(tmp));
+	snprintf(tmp + strlen(tmp), sizeof(tmp) - strlen(tmp), " · %s", d);
+	text_at(xd, yd++, theme()->text, L("Dernier échec :", "Last failure:"));
+	text_at(xd + 2, yd++, theme()->dim, tmp);
+	yd++;
+	text_at(xd, yd++, theme()->text, L("Par type d'échec :", "By kind of failure:"));
+	for (k = 0; k < e->it->nk; k++)
+	{
+		snprintf(tmp, sizeof(tmp), "  %-10s %d", e->it->kind[k], e->it->kn[k]);
+		text_at(xd, yd++, theme()->dim, tmp);
+	}
+	if (mod == 0 && e->etat != 1)
+		text_at(xd, yd + 1, rgb(255, 215, 0), L("Première validation : +20 ◈ et +40 XP", "First clear: +20 ◈ and +40 XP"));
+}
+
 void	tdf_screen_stats(void)
 {
 	static int	page;
@@ -1278,6 +1470,7 @@ void	tdf_screen_stats(void)
 	stats_load();
 	g_hsel = 0;
 	g_htop = 0;
+	g_dfocus = 0;
 	cls();
 	while (1)
 	{
@@ -1303,9 +1496,13 @@ void	tdf_screen_stats(void)
 				fg(theme()->dim);
 			outf(" %s ", noms[i]);
 			bgc(theme()->bg);
+			if (i == 4 && tdf_nouveau("3.2"))
+				tdf_badge_new();
 			outf("  ");
 		}
-		if (page == 0)
+		if (g_dfocus && page >= 2 && page <= 5)
+			page_details(x, 4, term_rows() - 3, page == 2 ? 0 : page == 3 ? 1 : page == 4 ? 3 : 2);
+		else if (page == 0)
 			page_resume(x, 4, term_rows() - 3);
 		else if (page == 1)
 			page_courbes(x, 4, term_rows() - 3);
@@ -1321,10 +1518,42 @@ void	tdf_screen_stats(void)
 			page_histo(x, 4, term_rows() - 3);
 		if (page == 6)
 			foot_line(x, L("▲ ▼ choisir une tentative   ◀ ▶ changer de page   Échap : retour", "▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back"));
+		else if (page >= 2 && page <= 5 && g_dfocus)
+			foot_line(x, L("▲ ▼ choisir   ◀ ▶ changer de page   Échap : retour au résumé", "▲ ▼ pick   ◀ ▶ change page   Esc: back to the summary"));
+		else if (page >= 2 && page <= 5)
+		{
+			foot_line(x, L("▼ voir les détails   ◀ ▶ changer de page   Échap : retour", "▼ see the details   ◀ ▶ change page   Esc: back"));
+			if (tdf_nouveau("3.2"))
+			{
+				at(x + ulen(L("▼ voir les détails   ◀ ▶ changer de page   Échap : retour", "▼ see the details   ◀ ▶ change page   Esc: back")) + 2, term_rows() - 1);
+				tdf_badge_new();
+			}
+		}
 		else
 			foot_line(x, L("◀ ▶ changer de page   Échap : retour", "◀ ▶ change page   Esc: back"));
 		flush();
 		k = key_dir(key_read(200));
+		if (page >= 2 && page <= 5 && g_dfocus && (k == 1000 || k == 1001 || k == 27))
+		{
+			if (k == 27 || (k == 1000 && g_dsel == 0))
+				g_dfocus = 0;
+			else if (k == 1000)
+				g_dsel--;
+			else
+				g_dsel++;
+			cls();
+			continue ;
+		}
+		if (page >= 2 && page <= 5 && !g_dfocus && k == 1001)
+		{
+			g_dfocus = 1;
+			g_dsel = 0;
+			g_dtop = 0;
+			cls();
+			continue ;
+		}
+		if (k == 1002 || k == 1003)
+			g_dfocus = 0;
 		if (k == 1003)
 			page = (page + 6) % 7;
 		else if (k == 1002)
