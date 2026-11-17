@@ -1199,6 +1199,37 @@ static int	memory_bonus(const t_xexo *x, const char *srcdir, char **argv[XMAXTES
 	return (bad);
 }
 
+static int	g_poubelle;
+
+static int	en_trop(const t_xexo *x, const char *srcdir, char *liste, size_t n)
+{
+	DIR				*d;
+	struct dirent	*e;
+	size_t			k;
+	int				i;
+	int				nb;
+
+	liste[0] = '\0';
+	k = 0;
+	nb = 0;
+	d = opendir(srcdir);
+	while (d && (e = readdir(d)))
+	{
+		if (!strcmp(e->d_name, ".") || !strcmp(e->d_name, ".."))
+			continue ;
+		for (i = 0; i < x->nfiles && strcmp(e->d_name, x->files[i]); i++)
+			;
+		if (i < x->nfiles)
+			continue ;
+		if (k + strlen(e->d_name) + 4 < n)
+			k += snprintf(liste + k, n - k, "%s%s", nb ? ", " : "", e->d_name);
+		nb++;
+	}
+	if (d)
+		closedir(d);
+	return (nb);
+}
+
 static int	grade(const t_xexo *x, const char *srcdir, int generate)
 {
 	static char	out[XOUT];
@@ -1231,6 +1262,14 @@ static int	grade(const t_xexo *x, const char *srcdir, int generate)
 			printf("  %s%s%s\n", C_KO, why, C_R);
 			return (1);
 		}
+	}
+	if (g_poubelle && en_trop(x, srcdir, path, sizeof(path)) > 0)
+	{
+		snprintf(why, sizeof(why), L("fichiers en trop dans %s : %s · seuls les fichiers demandés sont acceptés (garbage files)",
+				"extra files in %s: %s · only the requested files are accepted (garbage files)"), rel(srcdir), path);
+		trace_write(x, L("fichiers en trop", "extra files"), NULL, NULL, 0, NULL, 0, why);
+		printf("  %s%s%s\n", C_KO, why, C_R);
+		return (1);
 	}
 	r = build(x, srcdir, g_bankdir, 0, why, sizeof(why));
 	if (r != 0)
@@ -1442,6 +1481,7 @@ static int	do_grademe(void)
 	char	src[1300];
 	long	wait;
 	int		first;
+	int		r;
 
 	x = &g_bank[g_st.exo];
 	if (g_st.wait && g_st.fails)
@@ -1467,7 +1507,10 @@ static int	do_grademe(void)
 	entete();
 	printf(L("   Correction de %s%s%s en cours...\n", "   Grading %s%s%s...\n"), C_AC, x->name, C_R);
 	fflush(stdout);
-	if (grade(x, src, 0) != 0)
+	g_poubelle = 1;
+	r = grade(x, src, 0);
+	g_poubelle = 0;
+	if (r != 0)
 	{
 		g_st.fails++;
 		g_st.tfails++;

@@ -1694,3 +1694,34 @@ No error: the Norm is respected.	Kein Fehler: die Norm wird eingehalten.
 ▲ ▼ scroll   Esc or Enter: back	▲ ▼ blättern   Esc oder Enter: zurück
 fails only with BUFFER_SIZE=10000000 (stack overflow?) · we do not know whether the moulinette tests such a big size · to be safe, allocate the buffer with malloc rather than on the stack	scheitert nur mit BUFFER_SIZE=10000000 (Stapelüberlauf?) · wir wissen nicht, ob die moulinette eine so große Größe testet · sicherer: den Puffer mit malloc statt auf dem Stapel anlegen
 outside subject v1.3: does not count in the result	außerhalb der Aufgabe v1.3: zählt nicht zum Ergebnis
+extra files in %s: %s · only the requested files are accepted (garbage files)	zusätzliche Dateien in %s: %s · nur die verlangten Dateien werden akzeptiert (garbage files)
+extra files	zusätzliche Dateien
+42 login: romasant · lore and ideas: Splatch	42-Login: romasant · Lore und Ideen: Splatch
+Libft · the Tower of Foundations	Libft · der Turm der Fundamente
+43 functions, prototypes, moulinette audit, norminette	43 Funktionen, Prototypen, moulinette-Audit, norminette
+3 guardians to beat · 21 training levels	3 Wächter zu besiegen · 21 Trainingslevel
+ft_printf · the Foundry of Formats	ft_printf · die Gießerei der Formate
+the 9 conversions, the bonus flags, leaks and malloc failures	die 9 Umwandlungen, die Bonus-Flags, Lecks und malloc-Fehlschläge
+9 chains to break · 16 training levels	9 Ketten zu sprengen · 16 Trainingslevel
+get_next_line · the Well	get_next_line · der Brunnen
+7 BUFFER_SIZE values and without -D, stdin, pipes, failing read and malloc	7 BUFFER_SIZE-Werte und ohne -D, stdin, Pipes, fehlschlagende read und malloc
+22 rings to light up	22 Ringe zum Leuchten bringen
+Examshell des fous · the Trial of Silence	Examshell des fous · die Prüfung der Stille
+a C exam over 4 levels, grademe and traces	eine C-Prüfung über 4 Level, grademe und Spuren
+an exercise bank for the exam, Libft and printf, subjects in 8 languages	eine Übungsbank für Prüfung, Libft und printf, Aufgaben in 8 Sprachen
+ASan · UBSan · LeakSanitizer · malloc failures · norminette	ASan · UBSan · LeakSanitizer · malloc-Fehlschläge · norminette
+The City that compiles	Die Stadt, die kompiliert
+8 languages: French, English, Spanish, German, Italian, Portuguese, Turkish, Russian	8 Sprachen: Französisch, Englisch, Spanisch, Deutsch, Italienisch, Portugiesisch, Türkisch, Russisch
+None of your projects' functions were written by this tester.	Keine Funktion deiner Projekte wurde von diesem Tester geschrieben.
+%3d failure(s) · %s	%3d Fehler · %s
+%3d failure(s) · mostly %-7s · %s	%3d Fehler · meist %-7s · %s
+GET_NEXT_LINE · THE WELL	GET_NEXT_LINE · DER BRUNNEN
+Runs kept: %d	Gespeicherte Durchläufe: %d
+Last run: %d/%d · %s	Letzter Durchlauf: %d/%d · %s
+Best run: %d/%d	Bester Durchlauf: %d/%d
+No run yet: test your get_next_line from Test my project.	Noch kein Durchlauf: teste dein get_next_line über Mein Projekt testen.
+✓ passed at least once without failure	✓ mindestens einmal ohne Fehler bestanden
+· not passed without failure yet	· noch nicht ohne Fehler bestanden
+THE LAST WELL · %d rings out of 22	DER LETZTE BRUNNEN · %d Ringe von 22
+blue: the test passes · red: it fails	blau: der Test besteht · rot: er scheitert
+YOUR GET_NEXT_LINE RUNS	DEINE GET_NEXT_LINE-DURCHLÄUFE

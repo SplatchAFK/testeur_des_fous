@@ -21,6 +21,16 @@ Le numéro de version est dans `moteur/version.h`.
 - un test qui échoue seulement avec BUFFER_SIZE=10000000 passe en avertissement (on ne sait pas si la moulinette teste une taille aussi grande), avec le conseil d'allouer le tampon avec malloc ;
 - un échec dans la partie « Pour info (hors sujet) » ne compte plus comme un échec.
 
+### Examshell des fous
+
+- grademe refuse un rendu avec des fichiers en trop (garbage files) : seuls les fichiers demandés sont acceptés dans `rendu/<exercice>/`, la liste des fichiers en trop s'affiche ; la banque n'est pas concernée.
+
+### Stats et credits
+
+- Stats : nouvel onglet get_next_line (passages, dernier et meilleur score, validé ou non, anneaux du dernier Puits, tes passages, ce qui échoue le plus) ;
+- « Ce qui échoue le plus » : noms des tests get_next_line lisibles et colonnes alignées ;
+- credits refaits pour tout le testeur : Libft, ft_printf, get_next_line, Examshell des fous et banque, moteur de tests, lore et langues.
+
 ### Confort
 
 - `bash run.sh projet <chemin>` (ou `bash run.sh <chemin>`) teste le projet puis ouvre le vrai menu, avec le titre et le fou ; `--debug` en plus donne tous les rapports détaillés ;

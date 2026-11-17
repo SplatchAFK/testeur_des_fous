@@ -1694,3 +1694,34 @@ No error: the Norm is respected.	Ningún error: se respeta la Norma.
 ▲ ▼ scroll   Esc or Enter: back	▲ ▼ desplazar   Esc o Intro: volver
 fails only with BUFFER_SIZE=10000000 (stack overflow?) · we do not know whether the moulinette tests such a big size · to be safe, allocate the buffer with malloc rather than on the stack	falla solo con BUFFER_SIZE=10000000 (¿pila desbordada?) · no sabemos si la moulinette prueba un tamaño tan grande · para ir sobre seguro, reserva el búfer con malloc en lugar de en la pila
 outside subject v1.3: does not count in the result	fuera del enunciado v1.3: no cuenta en el resultado
+extra files in %s: %s · only the requested files are accepted (garbage files)	archivos de más en %s: %s · solo se aceptan los archivos pedidos (garbage files)
+extra files	archivos de más
+42 login: romasant · lore and ideas: Splatch	login 42: romasant · lore e ideas: Splatch
+Libft · the Tower of Foundations	Libft · la Torre de los Cimientos
+43 functions, prototypes, moulinette audit, norminette	43 funciones, prototipos, auditoría de la moulinette, norminette
+3 guardians to beat · 21 training levels	3 guardianes que vencer · 21 niveles de entrenamiento
+ft_printf · the Foundry of Formats	ft_printf · la Fundición de los Formatos
+the 9 conversions, the bonus flags, leaks and malloc failures	las 9 conversiones, los flags del bonus, fugas y fallos de malloc
+9 chains to break · 16 training levels	9 cadenas que romper · 16 niveles de entrenamiento
+get_next_line · the Well	get_next_line · el Pozo
+7 BUFFER_SIZE values and without -D, stdin, pipes, failing read and malloc	7 valores de BUFFER_SIZE y sin -D, stdin, tuberías, read y malloc que fallan
+22 rings to light up	22 anillos que encender
+Examshell des fous · the Trial of Silence	Examshell des fous · la Prueba del Silencio
+a C exam over 4 levels, grademe and traces	un examen en C en 4 niveles, grademe y trazas
+an exercise bank for the exam, Libft and printf, subjects in 8 languages	un banco de ejercicios de examen, Libft y printf, enunciados en 8 idiomas
+ASan · UBSan · LeakSanitizer · malloc failures · norminette	ASan · UBSan · LeakSanitizer · fallos de malloc · norminette
+The City that compiles	La Ciudad que compila
+8 languages: French, English, Spanish, German, Italian, Portuguese, Turkish, Russian	8 idiomas: francés, inglés, español, alemán, italiano, portugués, turco, ruso
+None of your projects' functions were written by this tester.	Ninguna función de tus proyectos ha sido escrita por este tester.
+%3d failure(s) · %s	%3d fallo(s) · %s
+%3d failure(s) · mostly %-7s · %s	%3d fallo(s) · sobre todo %-7s · %s
+GET_NEXT_LINE · THE WELL	GET_NEXT_LINE · EL POZO
+Runs kept: %d	Pasadas guardadas: %d
+Last run: %d/%d · %s	Última pasada: %d/%d · %s
+Best run: %d/%d	Mejor pasada: %d/%d
+No run yet: test your get_next_line from Test my project.	Aún no hay pasadas: prueba tu get_next_line desde Probar mi proyecto.
+✓ passed at least once without failure	✓ superado al menos una vez sin fallos
+· not passed without failure yet	· aún no superado sin fallos
+THE LAST WELL · %d rings out of 22	EL ÚLTIMO POZO · %d anillos de 22
+blue: the test passes · red: it fails	azul: la prueba pasa · rojo: falla
+YOUR GET_NEXT_LINE RUNS	TUS PASADAS GET_NEXT_LINE

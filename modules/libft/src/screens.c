@@ -1615,7 +1615,8 @@ void	screen_profile(void)
 
 void	screen_credits(void)
 {
-	const char	*l[28];
+	const char	*l[48];
+	int			h[48];
 	char		ver[64];
 	int			n;
 	int			i;
@@ -1624,33 +1625,58 @@ void	screen_credits(void)
 	double		s;
 
 	n = 0;
+	memset(h, 0, sizeof(h));
+	h[n] = 2;
 	l[n++] = "LE TESTEUR DES FOUS";
 	snprintf(ver, sizeof(ver), "v%s", TDF_VERSION);
 	l[n++] = ver;
 	l[n++] = "";
+	h[n] = 1;
 	l[n++] = L("Créé et vibe-codé par Splatch", "Created and vibe-coded by Splatch");
-	l[n++] = L("login 42 : romasant", "42 login: romasant");
-	l[n++] = "";
-	l[n++] = L("Lore et idées : Splatch (romasant)", "Lore and ideas: Splatch (romasant)");
+	l[n++] = L("login 42 : romasant · lore et idées : Splatch", "42 login: romasant · lore and ideas: Splatch");
 	l[n++] = L("Un testeur, seulement là pour tester ton code : ce n'est pas un jeu vidéo.", "A tester, only here to test your code: it is not a video game.");
 	l[n++] = "";
-	l[n++] = L("Exercices d'entraînement", "Training exercises");
-	l[n++] = L("21 niveaux conçus pour le testeur des fous", "21 levels made for the crazy tester");
+	h[n] = 1;
+	l[n++] = L("Libft · la Tour des Fondations", "Libft · the Tower of Foundations");
+	l[n++] = L("43 fonctions, prototypes, audit de la moulinette, norminette", "43 functions, prototypes, moulinette audit, norminette");
+	l[n++] = L("3 gardiens à battre · 21 niveaux d'entraînement", "3 guardians to beat · 21 training levels");
 	l[n++] = "";
+	h[n] = 1;
+	l[n++] = L("ft_printf · la Fonderie des Formats", "ft_printf · the Foundry of Formats");
+	l[n++] = L("les 9 conversions, les flags du bonus, fuites et échecs de malloc", "the 9 conversions, the bonus flags, leaks and malloc failures");
+	l[n++] = L("9 chaînes à briser · 16 niveaux d'entraînement", "9 chains to break · 16 training levels");
+	l[n++] = "";
+	h[n] = 1;
+	l[n++] = L("get_next_line · le Puits", "get_next_line · the Well");
+	l[n++] = L("7 tailles de BUFFER_SIZE et sans -D, stdin, tubes, read et malloc qui échouent", "7 BUFFER_SIZE values and without -D, stdin, pipes, failing read and malloc");
+	l[n++] = L("22 anneaux à allumer", "22 rings to light up");
+	l[n++] = "";
+	h[n] = 1;
+	l[n++] = L("Examshell des fous · l'Épreuve du Silence", "Examshell des fous · the Trial of Silence");
+	l[n++] = L("un exam en C sur 4 niveaux, grademe et traces", "a C exam over 4 levels, grademe and traces");
+	l[n++] = L("une banque d'exercices exam, Libft et printf, sujets en 8 langues", "an exercise bank for the exam, Libft and printf, subjects in 8 languages");
+	l[n++] = "";
+	h[n] = 1;
 	l[n++] = L("Moteur de tests", "Test engine");
-	l[n++] = L("ASan · UBSan · LeakSanitizer · échecs de malloc", "ASan · UBSan · LeakSanitizer · malloc failures");
+	l[n++] = L("ASan · UBSan · LeakSanitizer · échecs de malloc · norminette", "ASan · UBSan · LeakSanitizer · malloc failures · norminette");
 	l[n++] = "";
+	h[n] = 1;
+	l[n++] = L("La Cité qui compile", "The City that compiles");
 	l[n++] = L("Pixel art dessiné avec Python et Pillow", "Pixel art drawn with Python and Pillow");
+	l[n++] = L("8 langues : français, anglais, espagnol, allemand, italien, portugais, turc, russe",
+			"8 languages: French, English, Spanish, German, Italian, Portuguese, Turkish, Russian");
 	l[n++] = L("Code écrit en vibe-coding, avec une IA", "Code written by vibe-coding, with an AI");
 	l[n++] = "";
-	l[n++] = L("Aucune fonction de ta libft n'a été écrite par ce testeur.",
-			"None of your libft functions were written by this tester.");
+	l[n++] = L("Aucune fonction de tes projets n'a été écrite par ce testeur.",
+			"None of your projects' functions were written by this tester.");
 	l[n++] = L("Il ne fait que les casser.", "It only breaks them.");
 	l[n++] = "";
+	h[n] = 1;
 	l[n++] = L("Discord · 42 Next Global - Serveur non Officiel", "Discord · 42 Next Global - Unofficial Server");
 	l[n++] = TDF_DISCORD;
 	l[n++] = L("Lien mort ? Contacte @splatch_afk sur Discord", "Dead link? Contact @splatch_afk on Discord");
 	l[n++] = "";
+	h[n] = 1;
 	l[n++] = L("Merci d'avoir testé !", "Thanks for testing!");
 	t0 = now_ms();
 	while (1)
@@ -1663,8 +1689,7 @@ void	screen_credits(void)
 			y = term_rows() - 5 - (int)s + i * 2;
 			if (y < 0 || y >= term_rows() - 5)
 				continue ;
-			center(y, i == 0 ? hue(now_ms() / 2000.0) : ((i == 3 || i == 6 || i == 9 || i == 12
-						|| i == 15 || i == 21) ? theme()->accent2 : theme()->text), l[i]);
+			center(y, h[i] == 2 ? hue(now_ms() / 2000.0) : (h[i] ? theme()->accent2 : theme()->text), l[i]);
 		}
 		discord_card((term_cols() - DISCORD_W) / 2, term_rows() - 6);
 		flush();

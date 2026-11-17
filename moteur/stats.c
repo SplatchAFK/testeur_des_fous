@@ -391,7 +391,7 @@ static void	stats_load(void)
 	{
 		if (sscanf(line, "R %ld %11s %d %d", &t, mod, &ok, &tot) == 4 && tot > 0)
 		{
-			g_sd.runs[!strcmp(mod, "printf") ? 1 : !strcmp(mod, "exam") ? 2 : 0]++;
+			g_sd.runs[!strcmp(mod, "printf") ? 1 : !strcmp(mod, "exam") ? 2 : !strcmp(mod, "gnl") ? 3 : 0]++;
 			if (!g_sd.first || t < g_sd.first)
 				g_sd.first = t;
 			if (t > g_sd.last)
@@ -649,7 +649,9 @@ static int	weak(int x, int y, int maxy, int mod, int max)
 	static const char	*mods[4] = {"libft", "printf", "exam", "gnl"};
 	char				tmp[220];
 	char				when[40];
+	char				nom[48];
 	t_sitem				*it;
+	t_rgb				c;
 	int					i;
 	int					k;
 	int					best;
@@ -669,12 +671,25 @@ static int	weak(int x, int y, int maxy, int mod, int max)
 			if (it->kn[k] > it->kn[best])
 				best = k;
 		ago(it->last, when, sizeof(when));
-		snprintf(tmp, sizeof(tmp), L("%-18s %3d échec(s) · surtout %-7s · %s", "%-18s %3d failure(s) · mostly %-7s · %s"),
-			it->name, it->fails, it->kind[best], when);
+		snprintf(nom, sizeof(nom), "%s", it->name);
+		for (k = 0; !strcmp(it->mod, "gnl") && nom[k]; k++)
+			if (nom[k] == '_')
+				nom[k] = ' ';
+		c = shown < 3 ? orange() : theme()->text;
 		if (mod < 0)
-			snprintf(tmp, sizeof(tmp), L("%-7s %-18s %3d échec(s) · %s", "%-7s %-18s %3d failure(s) · %s"),
-				it->mod, it->name, it->fails, when);
-		text_at(x, y++, shown < 3 ? orange() : theme()->text, tmp);
+		{
+			text_clip(x, y, c, it->mod, 7);
+			text_clip(x + 8, y, c, nom, 30);
+			snprintf(tmp, sizeof(tmp), L("%3d échec(s) · %s", "%3d failure(s) · %s"), it->fails, when);
+			text_at(x + 40, y++, c, tmp);
+		}
+		else
+		{
+			text_clip(x, y, c, nom, 34);
+			snprintf(tmp, sizeof(tmp), L("%3d échec(s) · surtout %-7s · %s", "%3d failure(s) · mostly %-7s · %s"),
+				it->fails, it->kind[best], when);
+			text_at(x + 36, y++, c, tmp);
+		}
 		shown++;
 	}
 	if (!shown)
@@ -1176,10 +1191,78 @@ static void	page_histo(int x, int y, int maxy)
 		text_at(xd, y + 9, theme()->dim, L("Détail pas enregistré pour cette tentative.", "No detail recorded for this attempt."));
 }
 
+static void	page_gnl(int x, int y, int maxy)
+{
+	char	tmp[200];
+	char	d[40];
+	char	b[64];
+	char	p[700];
+	FILE	*f;
+	time_t	tt;
+	int		i;
+	int		n;
+	int		der;
+	int		best;
+	int		nok;
+
+	title(x, y++, L("GET_NEXT_LINE · LE PUITS", "GET_NEXT_LINE · THE WELL"));
+	for (n = 0, der = -1, best = -1, i = 0; i < g_sd.nratio; i++)
+	{
+		if (g_sd.rmod[i] != 3)
+			continue ;
+		n++;
+		der = i;
+		if (best < 0 || g_sd.ratio[i] > g_sd.ratio[best])
+			best = i;
+	}
+	snprintf(tmp, sizeof(tmp), L("Passages gardés : %d", "Runs kept: %d"), n);
+	text_at(x, y++, theme()->text, tmp);
+	if (der >= 0)
+	{
+		tt = (time_t)g_sd.rt[der];
+		strftime(d, sizeof(d), "%d/%m/%Y %H:%M", localtime(&tt));
+		snprintf(tmp, sizeof(tmp), L("Dernier passage : %d/%d · %s", "Last run: %d/%d · %s"), g_sd.rok[der], g_sd.rtot[der], d);
+		text_at(x, y++, g_sd.ratio[der] >= 0.999f ? vert() : orange(), tmp);
+		snprintf(tmp, sizeof(tmp), L("Meilleur passage : %d/%d", "Best run: %d/%d"), g_sd.rok[best], g_sd.rtot[best]);
+		text_at(x, y++, theme()->text, tmp);
+	}
+	else
+		text_at(x, y++, theme()->dim, L("Pas encore de passage : teste ton get_next_line depuis « Tester mon projet ».",
+				"No run yet: test your get_next_line from Test my project."));
+	text_at(x, y++, tdf_stats_valide("gnl") ? vert() : theme()->dim, tdf_stats_valide("gnl")
+		? L("✓ validé au moins une fois sans échec", "✓ passed at least once without failure")
+		: L("· pas encore validé sans échec", "· not passed without failure yet"));
+	y++;
+	snprintf(p, sizeof(p), "%s/puits.txt", g_savedir);
+	b[0] = '\0';
+	f = fopen(p, "r");
+	if (f && fgets(b, sizeof(b), f))
+		b[strcspn(b, "\r\n")] = '\0';
+	if (f)
+		fclose(f);
+	if (b[0])
+	{
+		for (nok = 0, i = 0; b[i]; i++)
+			nok += b[i] == 'O';
+		snprintf(tmp, sizeof(tmp), L("LE DERNIER PUITS · %d anneaux sur 22", "THE LAST WELL · %d rings out of 22"), nok);
+		title(x, y++, tmp);
+		at(x, y++);
+		for (i = 0; b[i] && i < 22; i++)
+		{
+			fg(b[i] == 'O' ? rgb(118, 222, 238) : rgb(220, 70, 60));
+			out("● ");
+		}
+		text_at(x, y++, theme()->dim, L("bleu : le test passe · rouge : il échoue", "blue: the test passes · red: it fails"));
+		y++;
+	}
+	spark(x + g_w / 2, 4, g_w / 2 - 4, 3, L("TES PASSAGES GET_NEXT_LINE", "YOUR GET_NEXT_LINE RUNS"));
+	weak(x, y, maxy, 3, 8);
+}
+
 void	tdf_screen_stats(void)
 {
 	static int	page;
-	const char	*noms[6];
+	const char	*noms[7];
 	int			x;
 	int			i;
 	int			k;
@@ -1188,8 +1271,9 @@ void	tdf_screen_stats(void)
 	noms[1] = L("Courbes", "Charts");
 	noms[2] = "Libft";
 	noms[3] = "ft_printf";
-	noms[4] = "Exam";
-	noms[5] = L("Historique", "History");
+	noms[4] = "get_next_line";
+	noms[5] = "Exam";
+	noms[6] = L("Historique", "History");
 	save_write();
 	stats_load();
 	g_hsel = 0;
@@ -1208,7 +1292,7 @@ void	tdf_screen_stats(void)
 		bgc(theme()->bg);
 		frame();
 		at(x, 1);
-		for (i = 0; i < 6; i++)
+		for (i = 0; i < 7; i++)
 		{
 			if (i == page)
 			{
@@ -1230,24 +1314,26 @@ void	tdf_screen_stats(void)
 		else if (page == 3)
 			page_printf(x, 4, term_rows() - 3);
 		else if (page == 4)
+			page_gnl(x, 4, term_rows() - 3);
+		else if (page == 5)
 			page_exam(x, 4, term_rows() - 3);
 		else
 			page_histo(x, 4, term_rows() - 3);
-		if (page == 5)
+		if (page == 6)
 			foot_line(x, L("▲ ▼ choisir une tentative   ◀ ▶ changer de page   Échap : retour", "▲ ▼ pick an attempt   ◀ ▶ change page   Esc: back"));
 		else
 			foot_line(x, L("◀ ▶ changer de page   Échap : retour", "◀ ▶ change page   Esc: back"));
 		flush();
 		k = key_dir(key_read(200));
 		if (k == 1003)
-			page = (page + 5) % 6;
+			page = (page + 6) % 7;
 		else if (k == 1002)
-			page = (page + 1) % 6;
-		else if (k == 1000 && page == 5)
+			page = (page + 1) % 7;
+		else if (k == 1000 && page == 6)
 			g_hsel--;
-		else if (k == 1001 && page == 5)
+		else if (k == 1001 && page == 6)
 			g_hsel++;
-		else if (k >= '1' && k <= '6')
+		else if (k >= '1' && k <= '7')
 			page = k - '1';
 		else if (key_quit(k) || k == 127 || k == 8 || k == '\r' || k == '\n')
 			break ;

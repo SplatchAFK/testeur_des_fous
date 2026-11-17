@@ -1694,3 +1694,34 @@ No error: the Norm is respected.	Hata yok: Norm'a uyuluyor.
 ▲ ▼ scroll   Esc or Enter: back	▲ ▼ kaydır   Esc ya da Enter: geri
 fails only with BUFFER_SIZE=10000000 (stack overflow?) · we do not know whether the moulinette tests such a big size · to be safe, allocate the buffer with malloc rather than on the stack	yalnızca BUFFER_SIZE=10000000 ile başarısız (yığın taştı mı?) · moulinette'in bu kadar büyük bir boyutu test edip etmediğini bilmiyoruz · garanti olsun diye tamponu yığın yerine malloc ile ayır
 outside subject v1.3: does not count in the result	konu dışı v1.3: sonuca sayılmaz
+extra files in %s: %s · only the requested files are accepted (garbage files)	%s içinde fazla dosyalar: %s · yalnızca istenen dosyalar kabul edilir (garbage files)
+extra files	fazla dosyalar
+42 login: romasant · lore and ideas: Splatch	42 login: romasant · hikâye ve fikirler: Splatch
+Libft · the Tower of Foundations	Libft · Temeller Kulesi
+43 functions, prototypes, moulinette audit, norminette	43 fonksiyon, prototipler, moulinette denetimi, norminette
+3 guardians to beat · 21 training levels	yenilecek 3 muhafız · 21 antrenman seviyesi
+ft_printf · the Foundry of Formats	ft_printf · Biçimler Dökümhanesi
+the 9 conversions, the bonus flags, leaks and malloc failures	9 dönüşüm, bonus bayrakları, sızıntılar ve malloc başarısızlıkları
+9 chains to break · 16 training levels	kırılacak 9 zincir · 16 antrenman seviyesi
+get_next_line · the Well	get_next_line · Kuyu
+7 BUFFER_SIZE values and without -D, stdin, pipes, failing read and malloc	7 BUFFER_SIZE değeri ve -D olmadan, stdin, borular, başarısız read ve malloc
+22 rings to light up	yakılacak 22 halka
+Examshell des fous · the Trial of Silence	Examshell des fous · Sessizlik Sınavı
+a C exam over 4 levels, grademe and traces	4 seviyeli bir C sınavı, grademe ve izler
+an exercise bank for the exam, Libft and printf, subjects in 8 languages	sınav, Libft ve printf alıştırma bankası, 8 dilde konular
+ASan · UBSan · LeakSanitizer · malloc failures · norminette	ASan · UBSan · LeakSanitizer · malloc başarısızlıkları · norminette
+The City that compiles	Derleyen Şehir
+8 languages: French, English, Spanish, German, Italian, Portuguese, Turkish, Russian	8 dil: Fransızca, İngilizce, İspanyolca, Almanca, İtalyanca, Portekizce, Türkçe, Rusça
+None of your projects' functions were written by this tester.	Projelerindeki hiçbir fonksiyon bu tester tarafından yazılmadı.
+%3d failure(s) · %s	%3d başarısızlık · %s
+%3d failure(s) · mostly %-7s · %s	%3d başarısızlık · çoğunlukla %-7s · %s
+GET_NEXT_LINE · THE WELL	GET_NEXT_LINE · KUYU
+Runs kept: %d	Saklanan geçişler: %d
+Last run: %d/%d · %s	Son geçiş: %d/%d · %s
+Best run: %d/%d	En iyi geçiş: %d/%d
+No run yet: test your get_next_line from Test my project.	Henüz geçiş yok: get_next_line'ını Projemi test et üzerinden test et.
+✓ passed at least once without failure	✓ en az bir kez hatasız geçildi
+· not passed without failure yet	· henüz hatasız geçilmedi
+THE LAST WELL · %d rings out of 22	SON KUYU · 22 halkadan %d
+blue: the test passes · red: it fails	mavi: test geçiyor · kırmızı: başarısız
+YOUR GET_NEXT_LINE RUNS	GET_NEXT_LINE GEÇİŞLERİN
