@@ -1662,3 +1662,7 @@ NEW IN 3.1.1	NOVITÀ DELLA 3.1.1
 • Results no longer close by themselves after a few seconds (iTerm2, kitty, WezTerm, Ghostty…).	• I risultati non si chiudono più da soli dopo qualche secondo (iTerm2, kitty, WezTerm, Ghostty…).
 • The tester cleans up its build files: it takes less space.	• Il tester fa pulizia dei suoi file di compilazione: occupa meno spazio.
 3.1 IN SHORT	LA 3.1 IN BREVE
+The f6 floor is for Olympic athletes LOLL.	Il piano f6 è per atleti olimpici LOLL.
+Already passed: the %d ◈ are in your pocket.	Già superato: i %d ◈ sono in tasca.
+First success: +%d ◈	Primo successo: +%d ◈
+earned	ottenuto

@@ -2,6 +2,21 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
+## 3.2.0 · 2026-11-18
+
+### Libft
+
+- ft_lstclear : nouveau test repris d'une trace de la moulinette, un maillon au content NULL au milieu de la liste ; del doit être appelée sur chaque maillon, même quand son content vaut NULL.
+
+### Confort
+
+- `bash run.sh projet <chemin>` (ou `bash run.sh <chemin>`) teste le projet puis ouvre le vrai menu, avec le titre et le fou ; `--debug` en plus donne tous les rapports détaillés ;
+- Tester mon projet : après ↑ (écrire un chemin), ↓ ramène à la liste ;
+- « Le savais-tu ? » apparaît directement dans son style, en fondu, sans passer par du texte blanc ;
+- get_next_line : la cinématique du Puits se joue de nouveau après le test, avant le rapport ;
+- Banque d'exercices : chaque exercice affiche les Octets qu'il rapporte à la première réussite (+15 à +30 ◈) ;
+- le changelog affiché dans le testeur montre de nouveau le lien du Discord en entier.
+
 ## 3.1.1 · 2026-11-16
 
 - examshell : les flèches maintenues ou tapées vite ne figent plus les menus : seules les lignes qui changent sont réécrites (environ 200 octets par flèche au lieu de 13 Ko) et plus aucun appui n'est perdu ; plus de « [A » dans la ligne de commande ;

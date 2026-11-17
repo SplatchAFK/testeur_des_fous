@@ -541,7 +541,7 @@ while [ $# -gt 0 ]; do
 			if [ -z "$MODULE" ]; then usage; exit 0; fi
 			SUITE+=("$a")
 			;;
-		--projet|--dir)
+		--projet|--dir|projet)
 			[ $# -gt 0 ] || { tl "%s : il manque le chemin du projet" "%s: the project path is missing" "$a"; exit 2; }
 			[ -d "$1" ] || { tl "%s : dossier introuvable : %s" "%s: folder not found: %s" "$a" "$1"; exit 2; }
 			PROJET="$(cd "$1" && pwd -P)"
@@ -553,7 +553,13 @@ while [ $# -gt 0 ]; do
 			;;
 		-a|--fast|--no-anim) SUITE+=(--fast); SANS_ANIM=1 ;;
 		--no-lord) SUITE+=(--no-lore) ;;
-		*) SUITE+=("$a") ;;
+		*)
+			if [ -z "$PROJET" ] && [ -d "$a" ] && case "$a" in */*|.|..) true ;; *) false ;; esac; then
+				PROJET="$(cd "$a" && pwd -P)"
+			else
+				SUITE+=("$a")
+			fi
+			;;
 	esac
 done
 
@@ -703,6 +709,23 @@ if [ "${INTERFACE:-}" = texte ] && { [ "$MODULE" = libft ] || [ "$MODULE" = prin
 	case " ${SUITE[*]:-} " in *" --menu "*|*" --no-lore "*) ;; *) SUITE+=(--no-lore) ;; esac
 fi
 
+if [ "$MENU_UNIQUE" = 0 ] && [ "$MENU" = 0 ] && [ -n "$PROJET" ] && [ -t 0 ] && [ -t 1 ]; then
+	case "$MODULE" in
+		libft|printf|gnl)
+			case " ${SUITE[*]:-} " in
+				*" --no-lore "*|*" --debug "*|*" -v "*) ;;
+				*)
+					MENU_UNIQUE=1
+					export TDF_MENU_UNIQUE=1
+					MENU_A_FAIRE=0
+					INTERFACE=graphique
+					export TDF_INTERFACE=graphique
+					;;
+			esac
+			;;
+	esac
+fi
+
 [ ${#LIBFTS[@]} -eq 0 ] && [ ${#PRINTFS[@]} -eq 0 ] && [ ${#GNLS[@]} -eq 0 ] && detecter
 TDF_DISPO="$MODULE exam"
 RETOUR_MODULE=""
@@ -739,6 +762,7 @@ while :; do
 		MENU_A_FAIRE=0
 	fi
 	rm -f "$DOSSIER/suivant"
+	mkdir -p "$DOSSIER" && : > "$DOSSIER/.module_lance"
 	export TDF_PROJET="$PROJET"
 	tdf_journal "lancement du module $MODULE ${SUITE[*]:-}"
 	tdf_chrono_debut mod "module $MODULE"
@@ -772,6 +796,7 @@ while :; do
 		continue
 	fi
 	if [ "$code" != 45 ] && [ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && [ "$code" != 143 ]; then
+		[ "$MODULE" = gnl ] && [ "$DOSSIER/puits.txt" -nt "$DOSSIER/.module_lance" ] && lore_scene lore_gnl
 		if rapport_texte; then
 			voir_rapport "$DOSSIER/derniere/rapport.txt" "$(tt "Rapport des tests" "Test report")"
 		fi

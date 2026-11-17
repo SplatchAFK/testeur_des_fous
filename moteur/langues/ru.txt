@@ -1662,3 +1662,7 @@ NEW IN 3.1.1	НОВОЕ В 3.1.1
 • Results no longer close by themselves after a few seconds (iTerm2, kitty, WezTerm, Ghostty…).	• Результаты больше не закрываются сами через несколько секунд (iTerm2, kitty, WezTerm, Ghostty…).
 • The tester cleans up its build files: it takes less space.	• Тестер сам чистит файлы сборки: занимает меньше места.
 3.1 IN SHORT	3.1 КОРОТКО
+The f6 floor is for Olympic athletes LOLL.	Этаж f6 — для олимпийских спортсменов LOLL.
+Already passed: the %d ◈ are in your pocket.	Уже решено: %d ◈ у тебя в кармане.
+First success: +%d ◈	Первый успех: +%d ◈
+earned	получено

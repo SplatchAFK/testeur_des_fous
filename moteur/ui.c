@@ -394,7 +394,7 @@ static const char	*astuce(int i)
 		case 68:
 			return (L("Moulinette est la meilleure chatte du monde.", "Moulinette is the best cat in the world."));
 		case 69:
-			return (L("L'étage f6, c'est pour les sportifs olympiques LOLL.", "The f6 step is for Olympic athletes LOLL."));
+			return (L("L'étage f6, c'est pour les sportifs olympiques LOLL.", "The f6 floor is for Olympic athletes LOLL."));
 	}
 	return ("");
 }
@@ -422,18 +422,6 @@ typedef struct s_bulle
 }	t_bulle;
 
 static t_bulle	g_bulle = {-1, -1, 0, 1200, 0, 0, 0, 0, -1, {{0}}};
-
-static const char	*octets_de(const char *s, int car)
-{
-	while (*s && car > 0)
-	{
-		s++;
-		while (*s && ((unsigned char)*s & 0xC0) == 0x80)
-			s++;
-		car--;
-	}
-	return (s);
-}
 
 static int	bulle_couper(const char *s, int w, char l[][200], int max)
 {
@@ -505,31 +493,6 @@ static void	bulle_choisir(t_zone *z, int nz, long anim)
 	g_bulle.y = q->y0 + rand() % (q->y1 - q->y0 - g_bulle.n + 1);
 }
 
-static void	ligne_ecartee(int cx, int y, int wmax, t_rgb c, const char *s)
-{
-	char	b[420];
-	int		j;
-	int		k;
-	int		n;
-
-	for (j = 0, k = 0; s[j] && k < (int)sizeof(b) - 8; )
-	{
-		n = 1;
-		while (s[j + n] && ((unsigned char)s[j + n] & 0xC0) == 0x80)
-			n++;
-		if (k)
-			b[k++] = ' ';
-		memcpy(b + k, s + j, n);
-		k += n;
-		j += n;
-	}
-	b[k] = '\0';
-	n = ulen(b);
-	if (n > wmax)
-		n = wmax;
-	text_clip(cx - n / 2, y, c, octets_de(b, (ulen(b) - n) / 2), n);
-}
-
 static void	bulle(t_zone *z, int nz, long anim)
 {
 	t_rgb	base;
@@ -563,18 +526,13 @@ static void	bulle(t_zone *z, int nz, long anim)
 	for (i = 0; i < g_bulle.n; i++)
 	{
 		base = g_bulle.cur >= 65 ? rgb(255, 140, 220) : (i == 0 ? rgb(255, 190, 70) : rgb(255, 255, 85));
-		if (dt < 130)
-			c = rgb(255, 255, 255);
-		else if (dt < 260)
-			c = mix(rgb(255, 255, 255), base, (dt - 130) / 130.0);
+		if (dt < 350)
+			c = mix(theme()->bg, base, dt / 350.0);
 		else if (dt > 6500)
 			c = mix(base, theme()->bg, (dt - 6500) / 1000.0);
 		else
 			c = mix(base, rgb(255, 255, 255), k);
-		if (dt < 130)
-			ligne_ecartee(cx, g_bulle.y + i, g_bulle.w + 8, c, g_bulle.l[i]);
-		else
-			text_clip(cx - ulen(g_bulle.l[i]) / 2, g_bulle.y + i, c, g_bulle.l[i], g_bulle.w);
+		text_clip(cx - ulen(g_bulle.l[i]) / 2, g_bulle.y + i, c, g_bulle.l[i], g_bulle.w);
 	}
 }
 

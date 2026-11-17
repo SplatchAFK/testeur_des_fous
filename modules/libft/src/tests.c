@@ -2250,6 +2250,29 @@ static void	run_test(void)
 	g_del_count = 0;
 	ft_lstclear(&l, del_int);
 	check(l == NULL && g_del_count == 0, "lstclear sur une liste vide");
+	setcase("lstclear avec un maillon au content NULL au milieu (cas de la moulinette)");
+	{
+		static int	v[5] = {1, 2, 3, 4, 5};
+		t_list		*m[6];
+
+		m[0] = mknode(&v[0]);
+		m[1] = mknode(&v[1]);
+		m[2] = mknode(NULL);
+		m[3] = mknode(&v[2]);
+		m[4] = mknode(&v[3]);
+		m[5] = mknode(&v[4]);
+		for (i = 0; i < 5; i++)
+			m[i]->next = m[i + 1];
+		l = m[0];
+		g_del_count = 0;
+		ft_lstclear(&l, del_noop);
+		for (i = 0; i < 6; i++)
+			if (tst_alive(m[i]))
+				free(m[i]);
+		check(g_del_count == 6, "lstclear : del appelée %d fois sur 6 maillons, dont un au content NULL ;"
+			" la moulinette attend del sur chaque maillon, même si son content vaut NULL", g_del_count);
+		check(l == NULL, "lstclear : *lst doit valoir NULL après");
+	}
 	setcase("lstclear d'une liste de 10000 maillons");
 	l = mklist(10000);
 	g_del_count = 0;

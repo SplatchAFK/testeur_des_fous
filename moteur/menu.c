@@ -541,7 +541,7 @@ void	tdf_nouveautes(void)
 	int			sel;
 
 	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
+	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
 		L("NOUVEAU DANS LA 3.1.1", "NEW IN 3.1.1"),
 		L("• L'examshell ne se fige plus quand tu enchaînes les flèches, et il reste dans l'écran du testeur.", "• The examshell no longer freezes when you chain arrow keys, and it stays inside the tester screen."),
 		L("• Les résultats ne se ferment plus tout seuls après quelques secondes (iTerm2, kitty, WezTerm, Ghostty…).", "• Results no longer close by themselves after a few seconds (iTerm2, kitty, WezTerm, Ghostty…)."),
@@ -1073,6 +1073,8 @@ int	tdf_choisir_dossier(char *out, size_t n)
 		}
 		else if (k == 1000 && nc)
 			csel = csel <= 0 ? nc - 1 : csel - 1;
+		else if (k == 1001 && csel < 0 && (!saisie[0] || !nc))
+			mode = 0;
 		else if (k == 1001 && nc)
 			csel = (csel + 1) % nc;
 		else if (k == 1002 && csel >= 0)
@@ -1565,6 +1567,9 @@ static void	banque_exo(t_bx *b)
 		frame();
 		snprintf(tmp, sizeof(tmp), "%s · %s%s", b->nom, bsrc(b->src), b->fait ? "  ✓" : "");
 		center(1, b->fait ? rgb(140, 230, 170) : theme()->accent2, tmp);
+		snprintf(tmp, sizeof(tmp), b->fait ? L("Déjà réussi : les %d ◈ sont dans ta poche.", "Already passed: the %d ◈ are in your pocket.")
+			: L("Première réussite : +%d ◈", "First success: +%d ◈"), 10 + 5 * b->niv);
+		center(2, b->fait ? theme()->dim : rgb(255, 215, 0), tmp);
 		snprintf(tmp, sizeof(tmp), L("Ton rendu : banque_travail/%s/%s/   (écris ton code dans un autre terminal)",
 				"Your work: banque_travail/%s/%s/   (write your code in another terminal)"), b->src, b->nom);
 		text_clip(x, 3, theme()->dim, tmp, term_cols() - x - 2);
@@ -1695,10 +1700,16 @@ void	tdf_banque(void)
 			outf(" %-22s ", b->nom);
 			fg(theme()->dim);
 			outf("%-7s %s %-2d ", bsrc(b->src), L("niv.", "lvl"), b->niv);
-			coupe_car(nt, sizeof(nt), b->notion, 46);
+			fg(b->fait ? theme()->dim : rgb(255, 215, 0));
+			if (b->fait)
+				outf("%-8s ", L("obtenu", "earned"));
+			else
+				outf("+%-3d ◈   ", 10 + 5 * b->niv);
+			fg(theme()->dim);
+			coupe_car(nt, sizeof(nt), b->notion, 38);
 			outf("%s", nt);
 			bgc(theme()->bg);
-			outf("%*s", 46 - ulen(nt) > 0 ? 46 - ulen(nt) : 0, "");
+			outf("%*s", 38 - ulen(nt) > 0 ? 38 - ulen(nt) : 0, "");
 		}
 		if (nv > h)
 		{
