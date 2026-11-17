@@ -352,7 +352,7 @@ build_game() {
 	local objs=() o f pids=() n=0 nft=0
 	local GSRC=("$SRC"/main.c "$SRC"/screens.c "$MOT"/ui.c "$SRC"/train.c "$SRC"/scene.c
 		"$MOT"/save.c "$MOT"/data.c "$MOT"/avatar.c "$MOT"/art.c "$MOT"/term.c
-		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$MOT"/rendu.c "$MOT"/tour.c "$MOT"/gardien.c "$MOT"/carte.c "$MOT"/langue.c "$MOT"/textes.c "$MOT"/entete.c "$MOT"/fou_ascii.c "$MOT"/fou_blocs.c "$MOT"/histoires.c "$MOT"/norme.c "$MOT"/gnl_ecran.c "$SRC"/story.c)
+		"$MOT"/font.c "$MOT"/menu.c "$MOT"/stats.c "$SRC"/lib.c "$MOT"/hub.c "$MOT"/images.c "$MOT"/cine.c "$MOT"/rendu.c "$MOT"/tour.c "$MOT"/gardien.c "$MOT"/carte.c "$MOT"/langue.c "$MOT"/textes.c "$MOT"/entete.c "$MOT"/fou_ascii.c "$MOT"/fou_blocs.c "$MOT"/histoires.c "$MOT"/norme.c "$MOT"/gnl_ecran.c "$MOT"/tenues.c "$SRC"/story.c)
 	local GX="" GOBJ="" key g ok=1
 	for f in "$ROOT"/ft_*.c; do [ -f "$f" ] && nft=$((nft + 1)); done
 	tdf_ch_debut "$(tt "préparation" "preparation")" $((nft + ${#GSRC[@]} + 1))

@@ -47,35 +47,16 @@ void	toast(const char *title, const char *msg, t_rgb c)
 void	screen_login(void)
 {
 	char	buf[32];
-	int		n;
-	int		k;
-	long	t;
+	int		premier;
 
 	snprintf(buf, sizeof(buf), "%s", g_save.login);
-	n = strlen(buf);
-	cls();
-	while (1)
-	{
-		t = now_ms();
-		center(6, theme()->accent2, L("Bienvenue, nouveau fou.", "Welcome, new lunatic."));
-		center(8, theme()->text, L("Ton login 42 (Entrée pour valider) :", "Your 42 login (Enter to confirm):"));
-		at((term_cols() - 24) / 2, 10);
-		bgc(mix(theme()->bg, theme()->accent, 0.15));
-		fg(theme()->text);
-		outf(" %-20s%s ", buf, (t / 400) % 2 ? "▏" : " ");
-		bgc(theme()->bg);
-		flush();
-		k = key_read(60);
-		if ((k == '\r' || k == '\n') && n > 0)
-			break ;
-		if ((k == 127 || k == 8) && n > 0)
-			buf[--n] = '\0';
-		else if (k > 32 && k < 127 && n < 20)
-		{
-			buf[n++] = k;
-			buf[n] = '\0';
-		}
-	}
+	premier = !g_save.login[0] || g_save.runs == 0;
+	if (!tdf_saisir(premier ? L("Bienvenue, nouveau fou. Ton login 42 :", "Welcome, new lunatic. Your 42 login:")
+			: L("Ton pseudo", "Your nickname"),
+			premier ? L("Il s'affiche sous ton chevalier et sur ton profil.", "It shows under your knight and on your profile.")
+			: L("Il s'affiche sous ton chevalier et sur ton profil.", "It shows under your knight and on your profile."),
+			buf, sizeof(buf), 20, 1, g_save.login[0] != '\0'))
+		return ;
 	snprintf(g_save.login, sizeof(g_save.login), "%s", buf);
 	save_write();
 	cls();

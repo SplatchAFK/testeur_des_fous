@@ -1725,3 +1725,24 @@ No run yet: test your get_next_line from Test my project.	Aún no hay pasadas: p
 THE LAST WELL · %d rings out of 22	EL ÚLTIMO POZO · %d anillos de 22
 blue: the test passes · red: it fails	azul: la prueba pasa · rojo: falla
 YOUR GET_NEXT_LINE RUNS	TUS PASADAS GET_NEXT_LINE
+Welcome, new lunatic. Your 42 login:	Bienvenido, nuevo loco. Tu login 42:
+Your nickname	Tu apodo
+It shows under your knight and on your profile.	Se muestra bajo tu caballero y en tu perfil.
+Esc or Enter: back	Esc o Intro: volver
+◈  O U T F I T S  ◈	◈  T R A J E S  ◈
+Keep up to 5 outfits and switch in one press.	Guarda hasta 5 trajes y cámbialos con una tecla.
+Preview of this outfit	Vista previa de este traje
+Press x again to delete this outfit.	Pulsa x otra vez para borrar este traje.
+Enter: wear   e: save my outfit here   n: rename   x: delete	Intro: poner   e: guardar mi traje aquí   n: renombrar   x: borrar
+▲ ▼ pick   v: big preview   Esc: back	▲ ▼ elegir   v: vista grande   Esc: volver
+You are wearing %s.	Llevas %s.
+OUTFIT EQUIPPED	TRAJE EQUIPADO
+Outfit %d	Traje %d
+Outfit name	Nombre del traje
+Your current outfit will be kept under this name.	Tu traje actual se guardará con este nombre.
+New outfit name	Nuevo nombre del traje
+◀ ▶ section  ▲ ▼ item  Enter: equip  t: outfits  v: big preview  Esc: back	◀ ▶ sección  ▲ ▼ artículo  Intro: equipar  t: trajes  v: vista grande  Esc: volver
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  v: big preview  Esc: back	◀ ▶ sección  ▲ ▼ artículo  Intro: comprar/equipar  v: vista grande  Esc: volver
+Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Intro: validar   Esc: cancelar   ◀ ▶: moverse   Ctrl+U: borrar todo
+Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Intro: validar   ◀ ▶: moverse   Ctrl+U: borrar todo
+Letters, digits and - _ .: no space nor accent.	Letras, cifras y - _ .: sin espacios ni acentos.

@@ -1725,3 +1725,24 @@ No run yet: test your get_next_line from Test my project.	Ancora nessun passaggi
 THE LAST WELL · %d rings out of 22	L'ULTIMO POZZO · %d anelli su 22
 blue: the test passes · red: it fails	blu: il test passa · rosso: fallisce
 YOUR GET_NEXT_LINE RUNS	I TUOI PASSAGGI GET_NEXT_LINE
+Welcome, new lunatic. Your 42 login:	Benvenuto, nuovo matto. Il tuo login 42:
+Your nickname	Il tuo nickname
+It shows under your knight and on your profile.	Appare sotto il tuo cavaliere e sul tuo profilo.
+Esc or Enter: back	Esc o Invio: indietro
+◈  O U T F I T S  ◈	◈  T E N U T E  ◈
+Keep up to 5 outfits and switch in one press.	Tieni fino a 5 tenute e cambiale con un tasto.
+Preview of this outfit	Anteprima di questa tenuta
+Press x again to delete this outfit.	Premi di nuovo x per eliminare questa tenuta.
+Enter: wear   e: save my outfit here   n: rename   x: delete	Invio: indossa   e: salva qui la mia tenuta   n: rinomina   x: elimina
+▲ ▼ pick   v: big preview   Esc: back	▲ ▼ scegli   v: anteprima grande   Esc: indietro
+You are wearing %s.	Indossi %s.
+OUTFIT EQUIPPED	TENUTA INDOSSATA
+Outfit %d	Tenuta %d
+Outfit name	Nome della tenuta
+Your current outfit will be kept under this name.	La tua tenuta attuale sarà salvata con questo nome.
+New outfit name	Nuovo nome della tenuta
+◀ ▶ section  ▲ ▼ item  Enter: equip  t: outfits  v: big preview  Esc: back	◀ ▶ reparto  ▲ ▼ articolo  Invio: indossa  t: tenute  v: anteprima grande  Esc: indietro
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  v: big preview  Esc: back	◀ ▶ reparto  ▲ ▼ articolo  Invio: compra/indossa  v: anteprima grande  Esc: indietro
+Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Invio: conferma   Esc: annulla   ◀ ▶: spostati   Ctrl+U: cancella tutto
+Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Invio: conferma   ◀ ▶: spostati   Ctrl+U: cancella tutto
+Letters, digits and - _ .: no space nor accent.	Lettere, cifre e - _ .: niente spazi né accenti.

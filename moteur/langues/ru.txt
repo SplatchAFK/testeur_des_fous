@@ -1725,3 +1725,24 @@ No run yet: test your get_next_line from Test my project.	Прогонов ещ�
 THE LAST WELL · %d rings out of 22	ПОСЛЕДНИЙ КОЛОДЕЦ · колец: %d из 22
 blue: the test passes · red: it fails	синий: тест проходит · красный: не проходит
 YOUR GET_NEXT_LINE RUNS	ТВОИ ПРОГОНЫ GET_NEXT_LINE
+Welcome, new lunatic. Your 42 login:	Добро пожаловать, новый безумец. Твой логин 42:
+Your nickname	Твой псевдоним
+It shows under your knight and on your profile.	Он виден под твоим рыцарем и в профиле.
+Esc or Enter: back	Esc или Enter: назад
+◈  O U T F I T S  ◈	◈  Н А Р Я Д Ы  ◈
+Keep up to 5 outfits and switch in one press.	Храни до 5 нарядов и меняй их одной клавишей.
+Preview of this outfit	Предпросмотр этого наряда
+Press x again to delete this outfit.	Нажми x ещё раз, чтобы удалить этот наряд.
+Enter: wear   e: save my outfit here   n: rename   x: delete	Enter: надеть   e: сохранить мой наряд сюда   n: переименовать   x: удалить
+▲ ▼ pick   v: big preview   Esc: back	▲ ▼ выбрать   v: большой просмотр   Esc: назад
+You are wearing %s.	На тебе %s.
+OUTFIT EQUIPPED	НАРЯД НАДЕТ
+Outfit %d	Наряд %d
+Outfit name	Название наряда
+Your current outfit will be kept under this name.	Твой текущий наряд сохранится под этим названием.
+New outfit name	Новое название наряда
+◀ ▶ section  ▲ ▼ item  Enter: equip  t: outfits  v: big preview  Esc: back	◀ ▶ раздел  ▲ ▼ предмет  Enter: надеть  t: наряды  v: большой просмотр  Esc: назад
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  v: big preview  Esc: back	◀ ▶ раздел  ▲ ▼ предмет  Enter: купить/надеть  v: большой просмотр  Esc: назад
+Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Enter: подтвердить   Esc: отмена   ◀ ▶: курсор   Ctrl+U: стереть всё
+Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Enter: подтвердить   ◀ ▶: курсор   Ctrl+U: стереть всё
+Letters, digits and - _ .: no space nor accent.	Буквы, цифры и - _ .: без пробелов и диакритики.

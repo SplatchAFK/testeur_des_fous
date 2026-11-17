@@ -1725,3 +1725,24 @@ No run yet: test your get_next_line from Test my project.	Noch kein Durchlauf: t
 THE LAST WELL · %d rings out of 22	DER LETZTE BRUNNEN · %d Ringe von 22
 blue: the test passes · red: it fails	blau: der Test besteht · rot: er scheitert
 YOUR GET_NEXT_LINE RUNS	DEINE GET_NEXT_LINE-DURCHLÄUFE
+Welcome, new lunatic. Your 42 login:	Willkommen, neuer Narr. Dein 42-Login:
+Your nickname	Dein Spitzname
+It shows under your knight and on your profile.	Er erscheint unter deinem Ritter und in deinem Profil.
+Esc or Enter: back	Esc oder Enter: zurück
+◈  O U T F I T S  ◈	◈  O U T F I T S  ◈
+Keep up to 5 outfits and switch in one press.	Speichere bis zu 5 Outfits und wechsle mit einem Tastendruck.
+Preview of this outfit	Vorschau dieses Outfits
+Press x again to delete this outfit.	Drücke noch einmal x, um dieses Outfit zu löschen.
+Enter: wear   e: save my outfit here   n: rename   x: delete	Enter: anziehen   e: mein Outfit hier speichern   n: umbenennen   x: löschen
+▲ ▼ pick   v: big preview   Esc: back	▲ ▼ wählen   v: große Vorschau   Esc: zurück
+You are wearing %s.	Du trägst %s.
+OUTFIT EQUIPPED	OUTFIT ANGELEGT
+Outfit %d	Outfit %d
+Outfit name	Name des Outfits
+Your current outfit will be kept under this name.	Dein aktuelles Outfit wird unter diesem Namen gespeichert.
+New outfit name	Neuer Name des Outfits
+◀ ▶ section  ▲ ▼ item  Enter: equip  t: outfits  v: big preview  Esc: back	◀ ▶ Bereich  ▲ ▼ Artikel  Enter: anlegen  t: Outfits  v: große Vorschau  Esc: zurück
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  v: big preview  Esc: back	◀ ▶ Bereich  ▲ ▼ Artikel  Enter: kaufen/anlegen  v: große Vorschau  Esc: zurück
+Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Enter: bestätigen   Esc: abbrechen   ◀ ▶: bewegen   Ctrl+U: alles löschen
+Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Enter: bestätigen   ◀ ▶: bewegen   Ctrl+U: alles löschen
+Letters, digits and - _ .: no space nor accent.	Buchstaben, Ziffern und - _ .: keine Leerzeichen, keine Akzente.

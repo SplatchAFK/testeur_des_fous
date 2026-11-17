@@ -21,6 +21,12 @@ Le numéro de version est dans `moteur/version.h`.
 - un test qui échoue seulement avec BUFFER_SIZE=10000000 passe en avertissement (on ne sait pas si la moulinette teste une taille aussi grande), avec le conseil d'allouer le tampon avec malloc ;
 - un échec dans la partie « Pour info (hors sujet) » ne compte plus comme un échec.
 
+### Chevalier
+
+- Tenues (garde-robe, touche t) : jusqu'à 5 tenues avec un nom ; e enregistre ta tenue actuelle, Entrée la porte, n la renomme, x (deux fois) la supprime ; elles sont gardées dans `tenues.txt`, à côté de la sauvegarde ;
+- grand aperçu (touche v, dans la garde-robe, la boutique et les tenues) : ton chevalier en grand, avec l'objet survolé ;
+- pseudo : vraie saisie, avec curseur (◀ ▶), Ctrl+U pour tout effacer, compteur de caractères, aperçu dans la couleur du pseudo, Échap pour annuler ; lettres, chiffres et - _ . seulement ; la même saisie sert pour la bio, les tenues et les chemins.
+
 ### Examshell des fous
 
 - grademe refuse un rendu avec des fichiers en trop (garbage files) : seuls les fichiers demandés sont acceptés dans `rendu/<exercice>/`, la liste des fichiers en trop s'affiche ; la banque n'est pas concernée.

@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -972,9 +973,11 @@ void	screen_shop(int wardrobe)
 					((t_rgb[]){g_themes[id].accent, g_themes[id].accent2, g_themes[id].wall,
 						g_themes[id].floor, g_themes[id].text, g_themes[id].bg})[i]);
 		}
-		text_at(x, term_rows() - 2, theme()->dim,
-			L("◀ ▶ rayon  ▲ ▼ article  Entrée : acheter/équiper  Échap : retour",
-				"◀ ▶ section  ▲ ▼ item  Enter: buy/equip  Esc: back"));
+		text_at(x, term_rows() - 2, theme()->dim, wardrobe
+			? L("◀ ▶ rayon  ▲ ▼ article  Entrée : équiper  t : tenues  v : grand aperçu  Échap : retour",
+				"◀ ▶ section  ▲ ▼ item  Enter: equip  t: outfits  v: big preview  Esc: back")
+			: L("◀ ▶ rayon  ▲ ▼ article  Entrée : acheter/équiper  v : grand aperçu  Échap : retour",
+				"◀ ▶ section  ▲ ▼ item  Enter: buy/equip  v: big preview  Esc: back"));
 		if (s.tab == NSLOT + 1)
 			foot_line(x, L("+ / - : sauter de 20   r : titre au hasard", "+ / -: jump 20   r: random title"));
 		flush();
@@ -1003,6 +1006,17 @@ void	screen_shop(int wardrobe)
 			s.sel = s.sel + 20 < n ? s.sel + 20 : n - 1;
 		else if (k == '-')
 			s.sel = s.sel - 20 > 0 ? s.sel - 20 : 0;
+		else if ((k == 't' || k == 'T') && wardrobe)
+		{
+			tdf_tenues();
+			s.jump = 1;
+			cls();
+		}
+		else if (k == 'v' || k == 'V')
+		{
+			tdf_grand_apercu(&lk, title);
+			cls();
+		}
 		else if (k == 'r' && n)
 			s.sel = rand() % n;
 		else if ((k == '\r' || k == '\n' || k == ' ') && id >= 0)
@@ -1280,45 +1294,162 @@ void	screen_settings(void)
 	cls();
 }
 
-int	ask_text(const char *q, const char *hint, char *buf, int size)
+static int	sa_octet(const char *s, int car)
 {
-	const char	*shown;
-	int			n;
-	int			k;
-	int			w;
-	long		t;
+	int	i;
 
-	n = strlen(buf);
-	w = term_cols() - 8;
-	if (w > 76)
-		w = 76;
+	for (i = 0; s[i] && car > 0; car--)
+	{
+		i++;
+		while (s[i] && ((unsigned char)s[i] & 0xC0) == 0x80)
+			i++;
+	}
+	return (i);
+}
+
+static void	sa_dessiner(const char *buf, int cur, int x, int y, int w, int login)
+{
+	int		n;
+	int		debut;
+	int		i;
+	int		o;
+	int		k;
+	t_rgb	fond;
+
+	n = ulen(buf);
+	debut = cur > w - 2 ? cur - (w - 2) : 0;
+	fond = mix(theme()->bg, theme()->accent, 0.15);
+	fill(x, y, w + 2, 1, fond);
+	at(x + 1, y);
+	bgc(fond);
+	for (i = debut; i <= n && i - debut < w; i++)
+	{
+		if (i == cur)
+		{
+			bgc(theme()->accent2);
+			fg(theme()->bg);
+		}
+		else
+			fg(login ? pseudo_color() : theme()->text);
+		o = sa_octet(buf, i);
+		k = sa_octet(buf, i + 1) - o;
+		if (i < n)
+			outf("%.*s", k, buf + o);
+		else
+			out(" ");
+		bgc(fond);
+	}
+	bgc(theme()->bg);
+}
+
+int	tdf_saisir(const char *titre, const char *aide, char *buf, int size, int maxcar, int login, int annulable)
+{
+	char	avant[1100];
+	char	tmp[200];
+	char	u[8];
+	int		cur;
+	int		k;
+	int		w;
+	int		x;
+	int		n;
+	int		o;
+	int		lu;
+	int		i;
+
+	snprintf(avant, sizeof(avant), "%s", buf);
+	cur = ulen(buf);
 	cls();
 	while (1)
 	{
-		t = now_ms();
-		center(5, theme()->accent2, q);
-		center(6, theme()->dim, hint);
-		at((term_cols() - w) / 2, 8);
-		bgc(mix(theme()->bg, theme()->accent, 0.15));
-		fg(theme()->text);
-		shown = n > w - 3 ? buf + n - (w - 3) : buf;
-		outf(" %-*s%s ", w - 3, shown, (t / 400) % 2 ? "▏" : " ");
+		w = term_cols() - 8 < 70 ? term_cols() - 8 : 70;
+		if (login && w > 34)
+			w = 34;
+		x = (term_cols() - w - 2) / 2;
 		bgc(theme()->bg);
-		center(11, theme()->dim, L("Entrée : valider   Échap : annuler", "Enter: confirm   Esc: cancel"));
+		frame();
+		center(5, theme()->accent2, titre);
+		if (aide && aide[0])
+			center(6, theme()->dim, aide);
+		sa_dessiner(buf, cur, x, 8, w, login);
+		n = ulen(buf);
+		snprintf(tmp, sizeof(tmp), "%d/%d", n, maxcar);
+		text_at(x + w + 4, 8, n >= maxcar ? rgb(255, 190, 70) : theme()->dim, tmp);
+		center(11, theme()->dim, annulable
+			? L("Entrée : valider   Échap : annuler   ◀ ▶ : se déplacer   Ctrl+U : tout effacer", "Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all")
+			: L("Entrée : valider   ◀ ▶ : se déplacer   Ctrl+U : tout effacer", "Enter: confirm   ◀ ▶: move   Ctrl+U: clear all"));
+		if (login)
+			center(12, theme()->dim, L("Lettres, chiffres et - _ . : pas d'espace ni d'accent.", "Letters, digits and - _ .: no space nor accent."));
 		flush();
-		k = key_read(60);
-		if (k == 27)
-			return (0);
-		if ((k == '\r' || k == '\n') && n > 0)
-			return (1);
-		if ((k == 127 || k == 8) && n > 0)
-			buf[--n] = '\0';
-		else if (k >= 32 && k < 127 && n < size - 1)
+		k = key_read(200);
+		if (k < 0)
+			continue ;
+		if (k == 27 && annulable)
 		{
-			buf[n++] = k;
-			buf[n] = '\0';
+			snprintf(buf, size, "%s", avant);
+			cls();
+			return (0);
+		}
+		if ((k == '\r' || k == '\n') && n > 0)
+		{
+			cls();
+			return (1);
+		}
+		k = key_dir(k);
+		o = sa_octet(buf, cur);
+		if (k == 1003 && cur > 0)
+			cur--;
+		else if (k == 1002 && cur < n)
+			cur++;
+		else if (k == 1)
+			cur = 0;
+		else if (k == 5)
+			cur = n;
+		else if (k == 21)
+		{
+			buf[0] = '\0';
+			cur = 0;
+		}
+		else if (k == 11)
+			buf[o] = '\0';
+		else if ((k == 127 || k == 8) && cur > 0)
+		{
+			i = sa_octet(buf, cur - 1);
+			memmove(buf + i, buf + o, strlen(buf + o) + 1);
+			cur--;
+		}
+		else if (k == 4 && cur < n)
+		{
+			i = sa_octet(buf, cur + 1);
+			memmove(buf + o, buf + i, strlen(buf + i) + 1);
+		}
+		else if (k >= 32 && k < 256 && k != 127 && n < maxcar)
+		{
+			u[0] = (char)k;
+			lu = 1;
+			if (k >= 0xC0)
+			{
+				i = k >= 0xF0 ? 4 : k >= 0xE0 ? 3 : 2;
+				while (lu < i && (k = key_read(30)) >= 0x80 && k < 0xC0)
+					u[lu++] = (char)k;
+				if (lu < i)
+					continue ;
+			}
+			else if (k >= 0x80)
+				continue ;
+			if (login && (lu > 1 || !(isalnum(u[0]) || u[0] == '-' || u[0] == '_' || u[0] == '.')))
+				continue ;
+			if ((int)strlen(buf) + lu >= size)
+				continue ;
+			memmove(buf + o + lu, buf + o, strlen(buf + o) + 1);
+			memcpy(buf + o, u, lu);
+			cur++;
 		}
 	}
+}
+
+int	ask_text(const char *q, const char *hint, char *buf, int size)
+{
+	return (tdf_saisir(q, hint, buf, size, size - 1, 0, 1));
 }
 
 static void	path_expand(const char *in, char *out, size_t sz)

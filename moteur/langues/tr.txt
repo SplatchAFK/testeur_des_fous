@@ -1725,3 +1725,24 @@ No run yet: test your get_next_line from Test my project.	Henüz geçiş yok: ge
 THE LAST WELL · %d rings out of 22	SON KUYU · 22 halkadan %d
 blue: the test passes · red: it fails	mavi: test geçiyor · kırmızı: başarısız
 YOUR GET_NEXT_LINE RUNS	GET_NEXT_LINE GEÇİŞLERİN
+Welcome, new lunatic. Your 42 login:	Hoş geldin, yeni deli. 42 girişin:
+Your nickname	Takma adın
+It shows under your knight and on your profile.	Şövalyenin altında ve profilinde görünür.
+Esc or Enter: back	Esc ya da Enter: geri
+◈  O U T F I T S  ◈	◈  K I Y A F E T L E R  ◈
+Keep up to 5 outfits and switch in one press.	En fazla 5 kıyafet sakla ve tek tuşla değiştir.
+Preview of this outfit	Bu kıyafetin önizlemesi
+Press x again to delete this outfit.	Bu kıyafeti silmek için tekrar x'e bas.
+Enter: wear   e: save my outfit here   n: rename   x: delete	Enter: giy   e: kıyafetimi buraya kaydet   n: yeniden adlandır   x: sil
+▲ ▼ pick   v: big preview   Esc: back	▲ ▼ seç   v: büyük önizleme   Esc: geri
+You are wearing %s.	%s giyiyorsun.
+OUTFIT EQUIPPED	KIYAFET GİYİLDİ
+Outfit %d	Kıyafet %d
+Outfit name	Kıyafetin adı
+Your current outfit will be kept under this name.	Şu anki kıyafetin bu adla saklanacak.
+New outfit name	Kıyafetin yeni adı
+◀ ▶ section  ▲ ▼ item  Enter: equip  t: outfits  v: big preview  Esc: back	◀ ▶ bölüm  ▲ ▼ ürün  Enter: giy  t: kıyafetler  v: büyük önizleme  Esc: geri
+◀ ▶ section  ▲ ▼ item  Enter: buy/equip  v: big preview  Esc: back	◀ ▶ bölüm  ▲ ▼ ürün  Enter: satın al/giy  v: büyük önizleme  Esc: geri
+Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Enter: onayla   Esc: iptal   ◀ ▶: hareket   Ctrl+U: hepsini sil
+Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Enter: onayla   ◀ ▶: hareket   Ctrl+U: hepsini sil
+Letters, digits and - _ .: no space nor accent.	Harfler, rakamlar ve - _ .: boşluk ve aksan yok.
