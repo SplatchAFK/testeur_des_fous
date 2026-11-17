@@ -1746,3 +1746,11 @@ New outfit name	Kıyafetin yeni adı
 Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Enter: onayla   Esc: iptal   ◀ ▶: hareket   Ctrl+U: hepsini sil
 Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Enter: onayla   ◀ ▶: hareket   Ctrl+U: hepsini sil
 Letters, digits and - _ .: no space nor accent.	Harfler, rakamlar ve - _ .: boşluk ve aksan yok.
+NEW IN 3.2.0	3.2.0'DAKİ YENİLİKLER
+• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details.	• norminette hataları Libft, ft_printf ve get_next_line'da görünür: kırmızı şerit ve ayrıntı için n tuşu.
+• New get_next_line results screen, and a get_next_line tab in the Stats.	• Yeni get_next_line sonuç ekranı ve İstatistikler'de bir get_next_line sekmesi.
+• Knight: outfits (wardrobe, key t), big preview (key v), and a nickname that is easier to type.	• Şövalye: kıyafetler (gardırop, t tuşu), büyük önizleme (v tuşu) ve yazması daha kolay bir takma ad.
+• Examshell: grademe refuses extra files in rendu/, only the requested files pass.	• Examshell: grademe rendu/ içindeki fazla dosyaları reddeder, yalnızca istenen dosyalar geçer.
+• bash run.sh projet <path> tests then opens the real menu; add --debug for every detail.	• bash run.sh projet <yol> test eder sonra gerçek menüyü açar; tüm ayrıntı için --debug ekle.
+• ft_lstclear: new test taken from the moulinette (a node with a NULL content).	• ft_lstclear: moulinette'ten alınan yeni test (content'i NULL olan bir düğüm).
+• Bank: the Octets of each exercise are shown. Credits redone for the whole tester.	• Banka: her alıştırmanın Octets'i gösterilir. Krediler tüm tester için yeniden yazıldı.

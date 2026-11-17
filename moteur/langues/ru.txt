@@ -1746,3 +1746,11 @@ New outfit name	Новое название наряда
 Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Enter: подтвердить   Esc: отмена   ◀ ▶: курсор   Ctrl+U: стереть всё
 Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Enter: подтвердить   ◀ ▶: курсор   Ctrl+U: стереть всё
 Letters, digits and - _ .: no space nor accent.	Буквы, цифры и - _ .: без пробелов и диакритики.
+NEW IN 3.2.0	НОВОЕ В 3.2.0
+• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details.	• Ошибки norminette видны в Libft, ft_printf и get_next_line: красная полоса и клавиша n для подробностей.
+• New get_next_line results screen, and a get_next_line tab in the Stats.	• Новый экран результатов get_next_line и вкладка get_next_line в Статистике.
+• Knight: outfits (wardrobe, key t), big preview (key v), and a nickname that is easier to type.	• Рыцарь: наряды (гардероб, клавиша t), большой просмотр (клавиша v) и псевдоним, который проще ввести.
+• Examshell: grademe refuses extra files in rendu/, only the requested files pass.	• Examshell: grademe отклоняет лишние файлы в rendu/, проходят только требуемые файлы.
+• bash run.sh projet <path> tests then opens the real menu; add --debug for every detail.	• bash run.sh projet <путь> тестирует и затем открывает настоящее меню; добавь --debug для всех подробностей.
+• ft_lstclear: new test taken from the moulinette (a node with a NULL content).	• ft_lstclear: новый тест из moulinette (звено с content NULL).
+• Bank: the Octets of each exercise are shown. Credits redone for the whole tester.	• Банк: показаны Octets каждого упражнения. Титры переделаны для всего тестера.

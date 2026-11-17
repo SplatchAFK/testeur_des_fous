@@ -1,8 +1,8 @@
 #ifndef TDF_VERSION_H
 # define TDF_VERSION_H
 
-# define TDF_VERSION "3.1.1"
-# define TDF_DATE "2026-11-16"
+# define TDF_VERSION "3.2.0"
+# define TDF_DATE "2026-11-18"
 
 # if defined(TDF_PRINTF)
 #  define TDF_GAME "printf"

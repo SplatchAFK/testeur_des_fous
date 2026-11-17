@@ -541,19 +541,15 @@ void	tdf_nouveautes(void)
 	int			sel;
 
 	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
-		L("NOUVEAU DANS LA 3.1.1", "NEW IN 3.1.1"),
-		L("• L'examshell ne se fige plus quand tu enchaînes les flèches, et il reste dans l'écran du testeur.", "• The examshell no longer freezes when you chain arrow keys, and it stays inside the tester screen."),
-		L("• Les résultats ne se ferment plus tout seuls après quelques secondes (iTerm2, kitty, WezTerm, Ghostty…).", "• Results no longer close by themselves after a few seconds (iTerm2, kitty, WezTerm, Ghostty…)."),
-		L("• Le testeur fait le ménage de ses fichiers de compilation : il prend moins de place.", "• The tester cleans up its build files: it takes less space."),
-		L("LA 3.1 EN BREF", "3.1 IN SHORT"),
-		L("• Un seul menu graphique : bash run.sh ou tdf l'ouvre directement, et tout s'y passe.", "• One single graphical menu: bash run.sh or tdf opens it directly, and everything happens there."),
-		L("• Tester mon projet : « . » pour le dossier où tu es, ou parcours ton PC avec Tab, comme dans zsh.", "• Test my project: '.' for the folder you are in, or browse your PC with Tab, like in zsh."),
-		L("• Après un test, tous les résultats s'affichent directement ; « Revoir la dernière tentative » les rouvre depuis le menu.", "• After a test, every result shows up directly; 'Review the last attempt' reopens them from the menu."),
-		L("• Banque d'exercices graphique : onglets, sujet, correction en un clic.", "• Graphical exercise bank: tabs, subject, grading in one click."),
-		L("• Sujets de l'exam et de la banque en 8 langues.", "• Exam and bank subjects in 8 languages."),
-		L("• Lore : toutes les cinématiques, Libft, ft_printf, get_next_line et l'exam.", "• Lore: every cutscene, Libft, ft_printf, get_next_line and the exam."),
-		L("• Examshell des fous plus clair : commande mal tapée ? Le testeur propose la bonne.", "• Clearer Examshell des fous: mistyped a command? The tester suggests the right one."),
+	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
+		L("NOUVEAU DANS LA 3.2.0", "NEW IN 3.2.0"),
+		L("• Erreurs norminette visibles dans Libft, ft_printf et get_next_line : bannière rouge et touche n pour le détail.", "• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details."),
+		L("• Nouvel écran de résultats get_next_line, et un onglet get_next_line dans les Stats.", "• New get_next_line results screen, and a get_next_line tab in the Stats."),
+		L("• Chevalier : tenues (garde-robe, touche t), grand aperçu (touche v), et un pseudo plus simple à taper.", "• Knight: outfits (wardrobe, key t), big preview (key v), and a nickname that is easier to type."),
+		L("• Examshell : grademe refuse les fichiers en trop dans rendu/, seuls les fichiers demandés passent.", "• Examshell: grademe refuses extra files in rendu/, only the requested files pass."),
+		L("• bash run.sh projet <chemin> teste puis ouvre le vrai menu ; ajoute --debug pour tout le détail.", "• bash run.sh projet <path> tests then opens the real menu; add --debug for every detail."),
+		L("• ft_lstclear : nouveau test repris de la moulinette (un maillon au content NULL).", "• ft_lstclear: new test taken from the moulinette (a node with a NULL content)."),
+		L("• Banque : les Octets de chaque exercice sont affichés. Credits refaits pour tout le testeur.", "• Bank: the Octets of each exercise are shown. Credits redone for the whole tester."),
 		L("Tu veux en savoir plus ? Viens sur le serveur Discord (Ctrl + clic sur le lien) :", "Want to know more? Join the Discord server (Ctrl + click on the link):"));
 	items[0] = L("Continuer|", "Continue|");
 	items[1] = L("Voir le tuto|", "See the tutorial|");

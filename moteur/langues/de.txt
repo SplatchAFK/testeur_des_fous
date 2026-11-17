@@ -1746,3 +1746,11 @@ New outfit name	Neuer Name des Outfits
 Enter: confirm   Esc: cancel   ◀ ▶: move   Ctrl+U: clear all	Enter: bestätigen   Esc: abbrechen   ◀ ▶: bewegen   Ctrl+U: alles löschen
 Enter: confirm   ◀ ▶: move   Ctrl+U: clear all	Enter: bestätigen   ◀ ▶: bewegen   Ctrl+U: alles löschen
 Letters, digits and - _ .: no space nor accent.	Buchstaben, Ziffern und - _ .: keine Leerzeichen, keine Akzente.
+NEW IN 3.2.0	NEU IN 3.2.0
+• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details.	• norminette-Fehler sichtbar in Libft, ft_printf und get_next_line: rotes Banner und Taste n für die Details.
+• New get_next_line results screen, and a get_next_line tab in the Stats.	• Neuer Ergebnisbildschirm für get_next_line und ein get_next_line-Reiter in den Statistiken.
+• Knight: outfits (wardrobe, key t), big preview (key v), and a nickname that is easier to type.	• Ritter: Outfits (Kleiderschrank, Taste t), große Vorschau (Taste v) und ein leichter einzugebender Spitzname.
+• Examshell: grademe refuses extra files in rendu/, only the requested files pass.	• Examshell: grademe lehnt zusätzliche Dateien in rendu/ ab, nur die verlangten Dateien gehen durch.
+• bash run.sh projet <path> tests then opens the real menu; add --debug for every detail.	• bash run.sh projet <Pfad> testet und öffnet dann das echte Menü; füge --debug für alle Details hinzu.
+• ft_lstclear: new test taken from the moulinette (a node with a NULL content).	• ft_lstclear: neuer Test aus der moulinette übernommen (ein Glied mit content NULL).
+• Bank: the Octets of each exercise are shown. Credits redone for the whole tester.	• Bank: die Octets jeder Übung werden angezeigt. Credits für den ganzen Tester neu gemacht.
