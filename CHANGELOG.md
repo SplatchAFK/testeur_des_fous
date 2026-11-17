@@ -47,6 +47,7 @@ Le numéro de version est dans `moteur/version.h`.
 - `bash run.sh projet <chemin>` (ou `bash run.sh <chemin>`) teste le projet puis ouvre le vrai menu, avec le titre et le fou ;
 - Tester mon projet : après ↑ (écrire un chemin), ↓ ramène à la liste ;
 - « Le savais-tu ? » apparaît directement dans son style, en fondu, sans passer par du texte blanc ;
+- « Le savais-tu ? » n'est plus coupé : la bulle de gauche ne descend plus sur la description du menu, et une astuce trop longue pour la place disponible est remplacée par une autre au lieu d'être tronquée ;
 - get_next_line : la cinématique du Puits se joue de nouveau après le test, avant le rapport ;
 - Banque d'exercices : chaque exercice affiche les Octets qu'il rapporte à la première réussite (+15 à +30 ◈) ;
 - le changelog affiché dans le testeur montre de nouveau le lien du Discord en entier.

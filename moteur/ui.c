@@ -419,7 +419,7 @@ typedef struct s_bulle
 	int		w;
 	int		n;
 	int		cote;
-	char	l[6][200];
+	char	l[9][200];
 }	t_bulle;
 
 static t_bulle	g_bulle = {-1, -1, 0, 1200, 0, 0, 0, 0, -1, {{0}}};
@@ -454,7 +454,9 @@ static int	bulle_couper(const char *s, int w, char l[][200], int max)
 		snprintf(l[n++], 200, "%.*s", len, s);
 		s += len;
 	}
-	return (n);
+	while (*s == ' ')
+		s++;
+	return (*s ? -1 : n);
 }
 
 static void	bulle_choisir(t_zone *z, int nz, long anim)
@@ -463,6 +465,7 @@ static void	bulle_choisir(t_zone *z, int nz, long anim)
 	int		cand[4];
 	int		nc;
 	int		i;
+	int		k;
 
 	if (nz <= 0)
 	{
@@ -480,7 +483,13 @@ static void	bulle_choisir(t_zone *z, int nz, long anim)
 	g_bulle.n = 0;
 	if (i < 65)
 		snprintf(g_bulle.l[g_bulle.n++], 200, "%s", L("Le savais-tu ?", "Did you know?"));
-	g_bulle.n += bulle_couper(astuce(i), g_bulle.w, g_bulle.l + g_bulle.n, 6 - g_bulle.n);
+	k = bulle_couper(astuce(i), g_bulle.w, g_bulle.l + g_bulle.n, 9 - g_bulle.n);
+	if (k < 0 || q->y1 - q->y0 < g_bulle.n + k)
+	{
+		g_bulle.suite = anim + 500;
+		return ;
+	}
+	g_bulle.n += k;
 	if (q->y1 - q->y0 < g_bulle.n)
 	{
 		g_bulle.suite = anim + 2000;
@@ -638,7 +647,8 @@ static int	mu_ecran(t_mu *m, int *sel)
 		if (cols - (ix + iw + 3) - 3 >= 22)
 			zones[nz++] = (t_zone){ix + iw + 3, y + 1, y + 1 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1), cols - (ix + iw + 3) - 3};
 		if (bx - 4 >= 22)
-			zones[nz++] = (t_zone){2, y + 1, y + 21 < rows - 3 ? y + 21 : rows - 3, bx - 4};
+			zones[nz++] = (t_zone){2, y + 1, y + 21 < rows - 3 ? (y + 21 < y + 2 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1)
+					? y + 21 : y + 2 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1)) : rows - 3, bx - 4};
 		if (haut == 16 && x - 6 >= 22)
 			zones[nz++] = (t_zone){3, 2, 14, x - 6};
 		if (haut == 16 && cols - (x + tw + 4 + g_fou_bloc_w) - 6 >= 22)
@@ -647,7 +657,7 @@ static int	mu_ecran(t_mu *m, int *sel)
 		i = y + 2 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1);
 		if (strchr(m->items[*sel], '|') && i < rows - 2)
 		{
-			fill(1, i, cols - 2, 2, theme()->bg);
+			fill(ix, i, cols - ix - 1, 2, theme()->bg);
 			text_wrap(ix + 1, i, i + 2, cols - ix - 3 > 60 ? 60 : cols - ix - 3, theme()->accent, strchr(m->items[*sel], '|') + 1);
 		}
 		foot_line(bx, L("▲ ▼ choisir   Entrée : ouvrir   Échap : quitter", "▲ ▼ pick   Enter: open   Esc: quit"));
