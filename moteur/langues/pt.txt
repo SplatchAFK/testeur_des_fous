@@ -1785,3 +1785,29 @@ First clear: +20 ◈ and +40 XP	Primeira validação: +20 ◈ e +40 XP
 • New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Novo ecrã de resultados do get_next_line. Estatísticas: separador get_next_line e ↓ para os detalhes de cada projeto.
 • Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Cavaleiro › Trajes (até 5), pré-visualização grande (tecla v) e uma alcunha mais fácil de escrever.
 • Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Testar o meu projeto: opções com as setas (modo debug, auditoria completa, valgrind, sem cinemáticas, sem animações).
+Debug mode is now set in the menu: Test my project › Test options › Debug mode.	O modo debug configura-se agora no menu: Testar o meu projeto › Opções do teste › Modo debug.
+Crash (segfault, abort...): turn on debug mode (Test my project › Test options) to see the full trace.	Falha (segfault, abort...): ativa o modo debug (Testar o meu projeto › Opções do teste) para ver o rasto completo.
+What you wear now will be kept under this name.	O que vestes agora será guardado com este nome.
+OUTFIT SAVED	TRAJE GUARDADO
+＋ Save what I am wearing	＋ Guardar o que estou a vestir
+%d. (free slot)	%d. (espaço livre)
+All 5 are taken: which one to replace?	Os 5 estão ocupados: qual substituir?
+Wear this outfit	Vestir este traje
+Replace it with what I wear	Substituí-lo pelo que estou a vestir
+Rename	Renomear
+Delete	Apagar
+OUTFIT UPDATED	TRAJE ATUALIZADO
+Delete this outfit?	Apagar este traje?
+No, keep it	Não, guardá-lo
+Yes, delete	Sim, apagar
+Test my project › Test options › Debug mode: every detailed report.	Testar o meu projeto › Opções do teste › Modo debug: todos os relatórios detalhados.
+Outfits	Trajes
+Enter	Enter
+choose	escolher
+equip	equipar
+buy / equip	comprar / equipar
+see it large	ver em grande
+other sections, Outfits included	outras secções, Trajes incluídos
+other sections	outras secções
+▲ ▼ pick   Esc: back	▲ ▼ escolher   Esc: voltar
+• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Guarda-roupa: uma secção Trajes (até 5), pré-visualização grande (tecla v) e uma alcunha mais fácil de escrever.

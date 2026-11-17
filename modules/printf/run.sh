@@ -60,8 +60,6 @@ usage : ./run.sh [options]
                     2 : + un conseil général (défaut : réglage du menu, sinon 2)
   --no-lore         les tests seuls, sans boss, sans animation, sans lore
                     (synonyme : --lore-off)
-  --debug           debug avancé : tout le détail (fuites, mémoire, UB), puis un
-                    second passage sous valgrind s'il est installé
   --fast            sans animation ni cinématique (synonyme : --no-anim)
   --no-update       ne pas chercher de mise à jour à ce lancement
   --update off|on   couper ou remettre la recherche de mise à jour

@@ -100,7 +100,6 @@ Tout passe par le menu. Deux commandes seulement :
 
 ```bash
 bash testeur_des_fous/run.sh exam      # l'examshell des fous, directement
-bash testeur_des_fous/run.sh --debug   # tous les rapports détaillés, pour comprendre un bug
 ```
 
 ## Ta progression
@@ -109,7 +108,7 @@ Elle est dans `~/.testeur_des_fous/save.txt`, hors du dossier du testeur : tu pe
 
 ## Un problème ?
 
-Lance le testeur avec `--debug` pour voir tous les rapports détaillés. Chaque lancement est aussi noté dans `~/.testeur_des_fous/debug/` : envoie ce dossier sur Discord si tu bloques.
+Active le mode debug dans le menu (Tester mon projet › Options du test › Mode debug) pour voir tous les rapports détaillés. Chaque lancement est aussi noté dans `~/.testeur_des_fous/debug/` : envoie ce dossier sur Discord si tu bloques.
 
 Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests.
 

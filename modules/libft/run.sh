@@ -72,8 +72,6 @@ Créé et vibe-codé par Splatch (romasant)
   bash $TDF_DIR/run.sh libft --reco FICHIER  se connecter avec une sauvegarde copiée (save.txt)
   bash $TDF_DIR/run.sh libft --no-lore       les tests seuls : ni boss, ni animation, ni lore
                                        (synonyme --lore-off ; la progression est enregistrée)
-  bash $TDF_DIR/run.sh libft --debug         debug avancé : tous les rapports (fuites, mémoire, UB),
-                                       valgrind et audit complet
   bash $TDF_DIR/run.sh libft --aide 0|1|2    0 : le cas seul, 1 : + la ligne, 2 : + un conseil
   bash $TDF_DIR/run.sh libft --fast          sans animation ni cinématique (synonyme --no-anim)
   bash $TDF_DIR/run.sh libft --timeout S     temps max par fonction, en secondes (défaut 30)

@@ -333,7 +333,7 @@ static const char	*astuce(int i)
 		case 37:
 			return (L("Un bug ? Paramètres, Nous aider : crée une trace et envoie-la sur le Discord.", "A bug? Settings, Help us: create a trace and send it on the Discord."));
 		case 38:
-			return (L("bash run.sh --debug affiche tous les rapports détaillés.", "bash run.sh --debug shows every detailed report."));
+			return (L("Tester mon projet › Options du test › Mode debug : tous les rapports détaillés.", "Test my project › Test options › Debug mode: every detailed report."));
 		case 39:
 			return (L("Ta progression est dans ~/.testeur_des_fous : tu peux recloner le testeur sans rien perdre.", "Your progress is in ~/.testeur_des_fous: you can clone the tester again without losing anything."));
 		case 40:
@@ -633,12 +633,6 @@ static int	mu_ecran(t_mu *m, int *sel)
 				fg(i == 0 ? theme()->accent : theme()->text);
 			outf(" %s %-*s", i == *sel ? "▶" : " ", iw - 4, lab);
 			bgc(theme()->bg);
-			if (tdf_nouveau("3.2") && (!strcmp(m->act[i], "projet") || !strcmp(m->act[i], "chevalier")
-					|| !strcmp(m->act[i], "stats")))
-			{
-				at(ix + 3 + ulen(lab) + 1, y + 1 + i * (rows >= y + 2 * m->n + 6 ? 2 : 1));
-				tdf_badge_new();
-			}
 		}
 		nz = 0;
 		if (cols - (ix + iw + 3) - 3 >= 22)
@@ -787,6 +781,27 @@ static const char	*tab_name(int tab)
 	return (L("Titres (1000)", "Titles (1000)"));
 }
 
+static void	puce(int *x, int y, const char *touche, const char *quoi)
+{
+	at(*x, y);
+	bgc(mix(theme()->bg, theme()->accent, 0.45));
+	fg(rgb(255, 255, 255));
+	outf(" %s ", touche);
+	bgc(theme()->bg);
+	fg(theme()->text);
+	outf(" %s", quoi);
+	*x += ulen(touche) + ulen(quoi) + 6;
+}
+
+static int	onglet_suivant(const t_shopst *s, int sens)
+{
+	if (!s->wardrobe)
+		return ((s->tab + (sens > 0 ? 1 : NTAB - 1)) % NTAB);
+	if (sens > 0)
+		return (s->tab == NTAB ? 0 : (s->tab == NTAB - 1 ? NTAB : s->tab + 1));
+	return (s->tab == NTAB ? NTAB - 1 : (s->tab == 0 ? NTAB : s->tab - 1));
+}
+
 static void	coins(int x, int y, int amount)
 {
 	long	t0;
@@ -885,17 +900,23 @@ void	screen_shop(int wardrobe)
 	int			title;
 	char		tmp[200];
 	char		tn[80];
+	int			apercu;
 
 	memset(&s, 0, sizeof(s));
-	s.wardrobe = wardrobe;
+	s.wardrobe = wardrobe != 0;
 	s.jump = 1;
+	if (wardrobe == 2)
+	{
+		s.tab = NTAB;
+		s.jump = 0;
+	}
 	shake = 0;
 	cls();
 	while (1)
 	{
 		t = now_ms();
-		n = list_items(&s, ids, NTITLE);
-		if (s.jump)
+		n = s.tab == NTAB ? 6 : list_items(&s, ids, NTITLE);
+		if (s.jump && s.tab != NTAB)
 		{
 			s.jump = 0;
 			for (i = 0; i < n; i++)
@@ -911,9 +932,10 @@ void	screen_shop(int wardrobe)
 			s.top = s.sel;
 		if (s.sel >= s.top + rows)
 			s.top = s.sel - rows + 1;
-		id = n ? ids[s.sel] : -1;
+		id = n && s.tab != NTAB ? ids[s.sel] : -1;
 		lk = g_save.look;
 		title = g_save.title;
+		apercu = s.tab == NTAB && tdf_tenues_apercu(s.sel, &lk);
 		if (id >= 0 && tab_slot(s.tab) >= 0)
 			lk.eq[tab_slot(s.tab)] = id;
 		else if (id >= 0 && s.tab == NSLOT + 1)
@@ -929,9 +951,17 @@ void	screen_shop(int wardrobe)
 		snprintf(tmp, sizeof(tmp), "%ld ◈", g_save.octets);
 		text_at(x + 78 - ulen(tmp) + (shake > t ? rand() % 3 - 1 : 0), 0,
 			shake > t ? rgb(255, 80, 90) : rgb(255, 215, 0), tmp);
-		snprintf(tmp, sizeof(tmp), "◀  %s  ▶   (%d/%d)", tab_name(s.tab), s.tab + 1, NTAB);
+		snprintf(tmp, sizeof(tmp), "◀  %s  ▶   (%d/%d)", s.tab == NTAB ? L("Tenues", "Outfits") : tab_name(s.tab),
+			s.tab == NTAB ? 1 : s.tab + (wardrobe ? 2 : 1), wardrobe ? NTAB + 1 : NTAB);
 		text_at(x, 2, theme()->accent, tmp);
-		for (i = s.top; i < n && i < s.top + rows; i++)
+		if (s.tab == NTAB && tdf_nouveau("3.2"))
+		{
+			at(x + ulen(tmp) + 2, 2);
+			tdf_badge_new();
+		}
+		if (s.tab == NTAB)
+			tdf_tenues_lister(x, 4, s.sel);
+		for (i = s.top; s.tab != NTAB && i < n && i < s.top + rows; i++)
 		{
 			at(x, 4 + i - s.top);
 			if (i == s.sel)
@@ -966,7 +996,10 @@ void	screen_shop(int wardrobe)
 			text_at(x, 4, theme()->dim, L("Rien ici pour l'instant. Passe à la boutique !",
 					"Nothing here yet. Visit the shop!"));
 		avatar_panel(x + 50, 3, &lk, title, t);
-		if (id >= 0 && tab_slot(s.tab) >= 0 && !equipped(&s, id))
+		if (s.tab == NTAB)
+			text_at(x + 50, 24 > term_rows() - 3 ? term_rows() - 3 : 24, apercu ? rgb(255, 200, 80) : rgb(80, 230, 140),
+				apercu ? L("Aperçu de cette tenue", "Preview of this outfit") : L("Ton chevalier, tel qu'il est équipé", "Your knight, as equipped"));
+		else if (id >= 0 && tab_slot(s.tab) >= 0 && !equipped(&s, id))
 			text_at(x + 50, 24 > term_rows() - 3 ? term_rows() - 3 : 24, rgb(255, 200, 80),
 				L("Aperçu : pas encore équipé (Entrée)", "Preview: not equipped yet (Enter)"));
 		else if (id >= 0 && tab_slot(s.tab) >= 0)
@@ -979,30 +1012,33 @@ void	screen_shop(int wardrobe)
 					((t_rgb[]){g_themes[id].accent, g_themes[id].accent2, g_themes[id].wall,
 						g_themes[id].floor, g_themes[id].text, g_themes[id].bg})[i]);
 		}
-		text_at(x, term_rows() - 2, theme()->dim, wardrobe
-			? L("◀ ▶ rayon  ▲ ▼ article  Entrée : équiper  t : tenues  v : grand aperçu  Échap : retour",
-				"◀ ▶ section  ▲ ▼ item  Enter: equip  t: outfits  v: big preview  Esc: back")
-			: L("◀ ▶ rayon  ▲ ▼ article  Entrée : acheter/équiper  v : grand aperçu  Échap : retour",
-				"◀ ▶ section  ▲ ▼ item  Enter: buy/equip  v: big preview  Esc: back"));
+		i = s.tab == NTAB ? 12 : 5 + (n < rows ? n : rows);
+		k = x;
+		puce(&k, i, L("Entrée", "Enter"), s.tab == NTAB ? L("choisir", "choose")
+			: wardrobe ? L("équiper", "equip") : L("acheter / équiper", "buy / equip"));
+		puce(&k, i, "V", L("voir en grand", "see it large"));
+		k = x;
+		puce(&k, i + 2, "◀ ▶", wardrobe ? L("autres rayons, dont Tenues", "other sections, Outfits included")
+			: L("autres rayons", "other sections"));
+		foot_line(x, L("▲ ▼ choisir   Échap : retour", "▲ ▼ pick   Esc: back"));
 		if (s.tab == NSLOT + 1)
 			foot_line(x, L("+ / - : sauter de 20   r : titre au hasard", "+ / -: jump 20   r: random title"));
 		flush();
 		k = key_dir(key_read(40));
 		if (key_quit(k) || k == 127 || k == 8)
 			break ;
-		if (k == 1002)
+		if (k == 1002 || k == 1003)
 		{
-			s.tab = (s.tab + 1) % NTAB;
+			s.tab = onglet_suivant(&s, k == 1002 ? 1 : -1);
 			s.sel = 0;
 			s.top = 0;
 			s.jump = 1;
+			cls();
 		}
-		else if (k == 1003)
+		else if (s.tab == NTAB && (k == '\r' || k == '\n' || k == ' '))
 		{
-			s.tab = (s.tab + NTAB - 1) % NTAB;
-			s.sel = 0;
-			s.top = 0;
-			s.jump = 1;
+			tdf_tenues_entree(s.sel, x + 30, 5 + s.sel);
+			cls();
 		}
 		else if (k == 1000 && s.sel > 0)
 			s.sel--;
@@ -1012,18 +1048,12 @@ void	screen_shop(int wardrobe)
 			s.sel = s.sel + 20 < n ? s.sel + 20 : n - 1;
 		else if (k == '-')
 			s.sel = s.sel - 20 > 0 ? s.sel - 20 : 0;
-		else if ((k == 't' || k == 'T') && wardrobe)
-		{
-			tdf_tenues();
-			s.jump = 1;
-			cls();
-		}
 		else if (k == 'v' || k == 'V')
 		{
 			tdf_grand_apercu(&lk, title);
 			cls();
 		}
-		else if (k == 'r' && n)
+		else if (k == 'r' && n && s.tab == NSLOT + 1)
 			s.sel = rand() % n;
 		else if ((k == '\r' || k == '\n' || k == ' ') && id >= 0)
 		{
@@ -1313,6 +1343,8 @@ static int	sa_octet(const char *s, int car)
 	return (i);
 }
 
+int	tdf_saisie_selection;
+
 static void	sa_dessiner(const char *buf, int cur, int x, int y, int w, int login)
 {
 	int		n;
@@ -1334,6 +1366,11 @@ static void	sa_dessiner(const char *buf, int cur, int x, int y, int w, int login
 		{
 			bgc(theme()->accent2);
 			fg(theme()->bg);
+		}
+		else if (tdf_saisie_selection && i < n)
+		{
+			bgc(mix(theme()->bg, theme()->accent, 0.55));
+			fg(rgb(255, 255, 255));
 		}
 		else
 			fg(login ? pseudo_color() : theme()->text);
@@ -1392,15 +1429,27 @@ int	tdf_saisir(const char *titre, const char *aide, char *buf, int size, int max
 		if (k == 27 && annulable)
 		{
 			snprintf(buf, size, "%s", avant);
+			tdf_saisie_selection = 0;
 			cls();
 			return (0);
 		}
+		if (tdf_saisie_selection && ((k >= 32 && k < 256) || k == 8 || k == 21))
+		{
+			buf[0] = '\0';
+			cur = 0;
+			n = 0;
+			tdf_saisie_selection = 0;
+			if (k == 127 || k == 8 || k == 21)
+				continue ;
+		}
+		else if (k == 1002 || k == 1003)
+			tdf_saisie_selection = 0;
 		if ((k == '\r' || k == '\n') && n > 0)
 		{
+			tdf_saisie_selection = 0;
 			cls();
 			return (1);
 		}
-		k = key_dir(k);
 		o = sa_octet(buf, cur);
 		if (k == 1003 && cur > 0)
 			cur--;

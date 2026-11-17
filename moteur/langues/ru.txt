@@ -1785,3 +1785,29 @@ First clear: +20 ◈ and +40 XP	Первое прохождение: +20 ◈ и 
 • New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Новый экран результатов get_next_line. Статистика: вкладка get_next_line и ↓ для подробностей каждого проекта.
 • Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Рыцарь › Наряды (до 5), большой просмотр (клавиша v) и псевдоним, который проще ввести.
 • Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Проверить мой проект: параметры стрелками (режим отладки, полный аудит, valgrind, без заставок, без анимаций).
+Debug mode is now set in the menu: Test my project › Test options › Debug mode.	Режим отладки теперь включается в меню: Проверить мой проект › Параметры теста › Режим отладки.
+Crash (segfault, abort...): turn on debug mode (Test my project › Test options) to see the full trace.	Падение (segfault, abort...): включи режим отладки (Проверить мой проект › Параметры теста), чтобы увидеть полную трассу.
+What you wear now will be kept under this name.	То, что на тебе сейчас, сохранится под этим названием.
+OUTFIT SAVED	НАРЯД СОХРАНЁН
+＋ Save what I am wearing	＋ Сохранить то, что на мне
+%d. (free slot)	%d. (свободное место)
+All 5 are taken: which one to replace?	Все 5 заняты: какой заменить?
+Wear this outfit	Надеть этот наряд
+Replace it with what I wear	Заменить тем, что на мне
+Rename	Переименовать
+Delete	Удалить
+OUTFIT UPDATED	НАРЯД ОБНОВЛЁН
+Delete this outfit?	Удалить этот наряд?
+No, keep it	Нет, оставить
+Yes, delete	Да, удалить
+Test my project › Test options › Debug mode: every detailed report.	Проверить мой проект › Параметры теста › Режим отладки: все подробные отчёты.
+Outfits	Наряды
+Enter	Enter
+choose	выбрать
+equip	надеть
+buy / equip	купить / надеть
+see it large	крупно
+other sections, Outfits included	другие разделы, включая Наряды
+other sections	другие разделы
+▲ ▼ pick   Esc: back	▲ ▼ выбрать   Esc: назад
+• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Гардероб: раздел Наряды (до 5), большой просмотр (клавиша v) и псевдоним, который проще ввести.

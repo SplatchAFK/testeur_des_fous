@@ -306,7 +306,7 @@ void	tdf_menu_chevalier(void (*profile)(void))
 		else if (i == 3)
 			ecran_rangs();
 		else
-			tdf_tenues();
+			screen_shop(2);
 	}
 }
 
@@ -572,7 +572,7 @@ void	tdf_nouveautes(void)
 		L("NOUVEAU DANS LA 3.2.0", "NEW IN 3.2.0"),
 		L("• Erreurs norminette visibles dans Libft, ft_printf et get_next_line : bannière rouge et touche n pour le détail.", "• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details."),
 		L("• Nouvel écran de résultats get_next_line. Stats : onglet get_next_line, et ↓ pour les détails de chaque projet.", "• New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project."),
-		L("• Chevalier › Tenues (jusqu'à 5), grand aperçu (touche v) et un pseudo plus simple à taper.", "• Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type."),
+		L("• Garde-robe : un rayon Tenues (jusqu'à 5), grand aperçu (touche v) et un pseudo plus simple à taper.", "• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type."),
 		L("• Examshell : grademe refuse les fichiers en trop dans rendu/, seuls les fichiers demandés passent.", "• Examshell: grademe refuses extra files in rendu/, only the requested files pass."),
 		L("• Tester mon projet : options aux flèches (mode debug, audit complet, valgrind, sans cinématiques, sans animations).", "• Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations)."),
 		L("• ft_lstclear : nouveau test repris de la moulinette (un maillon au content NULL).", "• ft_lstclear: new test taken from the moulinette (a node with a NULL content)."),

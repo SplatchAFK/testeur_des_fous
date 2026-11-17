@@ -1785,3 +1785,29 @@ First clear: +20 ◈ and +40 XP	Erstes Bestehen: +20 ◈ und +40 XP
 • New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Neuer Ergebnisbildschirm für get_next_line. Statistiken: get_next_line-Reiter und ↓ für die Details jedes Projekts.
 • Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Ritter › Outfits (bis zu 5), große Vorschau (Taste v) und ein leichter einzugebender Spitzname.
 • Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Mein Projekt testen: Optionen mit den Pfeilen (Debug-Modus, vollständiges Audit, valgrind, ohne Zwischensequenzen, ohne Animationen).
+Debug mode is now set in the menu: Test my project › Test options › Debug mode.	Der Debug-Modus wird jetzt im Menü eingestellt: Mein Projekt testen › Testoptionen › Debug-Modus.
+Crash (segfault, abort...): turn on debug mode (Test my project › Test options) to see the full trace.	Absturz (Segfault, Abort...): schalte den Debug-Modus ein (Mein Projekt testen › Testoptionen), um die ganze Spur zu sehen.
+What you wear now will be kept under this name.	Was du jetzt trägst, wird unter diesem Namen gespeichert.
+OUTFIT SAVED	OUTFIT GESPEICHERT
+＋ Save what I am wearing	＋ Speichern, was ich trage
+%d. (free slot)	%d. (freier Platz)
+All 5 are taken: which one to replace?	Alle 5 sind belegt: welches ersetzen?
+Wear this outfit	Dieses Outfit anziehen
+Replace it with what I wear	Durch das ersetzen, was ich trage
+Rename	Umbenennen
+Delete	Löschen
+OUTFIT UPDATED	OUTFIT AKTUALISIERT
+Delete this outfit?	Dieses Outfit löschen?
+No, keep it	Nein, behalten
+Yes, delete	Ja, löschen
+Test my project › Test options › Debug mode: every detailed report.	Mein Projekt testen › Testoptionen › Debug-Modus: alle ausführlichen Berichte.
+Outfits	Outfits
+Enter	Enter
+choose	auswählen
+equip	anlegen
+buy / equip	kaufen / anlegen
+see it large	groß ansehen
+other sections, Outfits included	andere Bereiche, inklusive Outfits
+other sections	andere Bereiche
+▲ ▼ pick   Esc: back	▲ ▼ wählen   Esc: zurück
+• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Kleiderschrank: ein Bereich Outfits (bis zu 5), große Vorschau (Taste v) und ein leichter einzugebender Spitzname.

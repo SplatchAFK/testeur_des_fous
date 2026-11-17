@@ -88,8 +88,8 @@ static const char	*gnl_sens(const char *st)
 	if (!strcmp(st, "INFO") || !strcmp(st, "NOTE"))
 		return (L("Pour info : ce point ne compte pas dans le résultat.", "For info: this point does not count in the result."));
 	if (!strcmp(st, "CRASH"))
-		return (L("Plantage (segfault, abort...) : relance avec --debug pour voir la trace complète.",
-				"Crash (segfault, abort...): run again with --debug to see the full trace."));
+		return (L("Plantage (segfault, abort...) : active le mode debug (Tester mon projet › Options du test) pour voir la trace complète.",
+				"Crash (segfault, abort...): turn on debug mode (Test my project › Test options) to see the full trace."));
 	if (!strcmp(st, "FUITE"))
 		return (L("Fuite mémoire : un malloc n'est jamais libéré.", "Memory leak: a malloc is never freed."));
 	if (!strcmp(st, "BOUCLE"))

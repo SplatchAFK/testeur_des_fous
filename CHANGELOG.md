@@ -23,9 +23,10 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Chevalier
 
-- Tenues (Chevalier › Tenues, ou touche t dans la garde-robe) : jusqu'à 5 tenues avec un nom ; e enregistre ta tenue actuelle, Entrée la porte, n la renomme, x (deux fois) la supprime ; elles sont gardées dans `tenues.txt`, à côté de la sauvegarde ;
+- Tenues : un rayon « Tenues » directement dans la garde-robe (◀ ▶, ou Chevalier › Tenues) : « ＋ Enregistrer ce que je porte », puis jusqu'à 5 tenues ; survoler une tenue la montre sur ton chevalier, Entrée ouvre un petit menu (porter, remplacer par ce que je porte, renommer, supprimer) ; tout se fait aux flèches et à Entrée ; elles sont gardées dans `tenues.txt`, à côté de la sauvegarde ;
+- garde-robe et boutique : les actions possibles s'affichent juste sous la liste, au lieu d'une ligne en bas de l'écran ;
 - grand aperçu (touche v, dans la garde-robe, la boutique et les tenues) : ton chevalier en grand, avec l'objet survolé ;
-- pseudo : vraie saisie, avec curseur (◀ ▶), Ctrl+U pour tout effacer, compteur de caractères, aperçu dans la couleur du pseudo, Échap pour annuler ; lettres, chiffres et - _ . seulement ; la même saisie sert pour la bio, les tenues et les chemins.
+- pseudo : vraie saisie (les lettres z, q, s, d ne sont plus prises pour des flèches), avec curseur (◀ ▶), Ctrl+U pour tout effacer, compteur de caractères, aperçu dans la couleur du pseudo, Échap pour annuler ; lettres, chiffres et - _ . seulement ; la même saisie sert pour la bio, les tenues et les chemins.
 
 ### Examshell des fous
 
@@ -41,8 +42,9 @@ Le numéro de version est dans `moteur/version.h`.
 ### Confort
 
 - Tester mon projet : options du test aux flèches, gardées d'un lancement à l'autre : mode debug (tous les rapports détaillés), audit complet, valgrind en plus, sans cinématiques, sans animations ;
-- un badge NEW rose signale les nouveautés de la version (il disparaît à la version suivante) ;
-- `bash run.sh projet <chemin>` (ou `bash run.sh <chemin>`) teste le projet puis ouvre le vrai menu, avec le titre et le fou ; `--debug` en plus donne tous les rapports détaillés ;
+- un badge NEW rose signale les nouveautés de la version, là où elles se trouvent (il disparaît à la version suivante) ;
+- l'option `--debug` de la ligne de commande est retirée : le mode debug se règle dans Tester mon projet › Options du test ;
+- `bash run.sh projet <chemin>` (ou `bash run.sh <chemin>`) teste le projet puis ouvre le vrai menu, avec le titre et le fou ;
 - Tester mon projet : après ↑ (écrire un chemin), ↓ ramène à la liste ;
 - « Le savais-tu ? » apparaît directement dans son style, en fondu, sans passer par du texte blanc ;
 - get_next_line : la cinématique du Puits se joue de nouveau après le test, avant le rapport ;

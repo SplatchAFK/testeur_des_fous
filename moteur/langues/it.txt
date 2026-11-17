@@ -1785,3 +1785,29 @@ First clear: +20 ◈ and +40 XP	Prima validazione: +20 ◈ e +40 XP
 • New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Nuova schermata dei risultati di get_next_line. Statistiche: scheda get_next_line e ↓ per i dettagli di ogni progetto.
 • Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Cavaliere › Tenute (fino a 5), anteprima grande (tasto v) e un nickname più facile da scrivere.
 • Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Testa il mio progetto: opzioni con le frecce (modalità debug, audit completo, valgrind, senza filmati, senza animazioni).
+Debug mode is now set in the menu: Test my project › Test options › Debug mode.	La modalità debug ora si imposta nel menu: Testa il mio progetto › Opzioni del test › Modalità debug.
+Crash (segfault, abort...): turn on debug mode (Test my project › Test options) to see the full trace.	Crash (segfault, abort...): attiva la modalità debug (Testa il mio progetto › Opzioni del test) per vedere la traccia completa.
+What you wear now will be kept under this name.	Quello che indossi ora sarà salvato con questo nome.
+OUTFIT SAVED	TENUTA SALVATA
+＋ Save what I am wearing	＋ Salva quello che indosso
+%d. (free slot)	%d. (posto libero)
+All 5 are taken: which one to replace?	Sono tutte e 5 occupate: quale sostituire?
+Wear this outfit	Indossa questa tenuta
+Replace it with what I wear	Sostituirla con quello che indosso
+Rename	Rinomina
+Delete	Elimina
+OUTFIT UPDATED	TENUTA AGGIORNATA
+Delete this outfit?	Eliminare questa tenuta?
+No, keep it	No, tienila
+Yes, delete	Sì, elimina
+Test my project › Test options › Debug mode: every detailed report.	Testa il mio progetto › Opzioni del test › Modalità debug: tutti i rapporti dettagliati.
+Outfits	Tenute
+Enter	Invio
+choose	scegli
+equip	indossa
+buy / equip	compra / indossa
+see it large	vederlo in grande
+other sections, Outfits included	altri reparti, Tenute comprese
+other sections	altri reparti
+▲ ▼ pick   Esc: back	▲ ▼ scegli   Esc: indietro
+• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Guardaroba: un reparto Tenute (fino a 5), anteprima grande (tasto v) e un nickname più facile da scrivere.

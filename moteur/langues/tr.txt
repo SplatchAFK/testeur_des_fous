@@ -1785,3 +1785,29 @@ First clear: +20 ◈ and +40 XP	İlk geçiş: +20 ◈ ve +40 XP
 • New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project.	• Yeni get_next_line sonuç ekranı. İstatistikler: get_next_line sekmesi ve her projenin ayrıntıları için ↓.
 • Knight › Outfits (up to 5), big preview (key v) and a nickname that is easier to type.	• Şövalye › Kıyafetler (en fazla 5), büyük önizleme (v tuşu) ve yazması daha kolay bir takma ad.
 • Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations).	• Projemi test et: oklarla seçenekler (hata ayıklama modu, tam denetim, valgrind, ara sahne yok, animasyon yok).
+Debug mode is now set in the menu: Test my project › Test options › Debug mode.	Hata ayıklama modu artık menüden ayarlanıyor: Projemi test et › Test seçenekleri › Hata ayıklama modu.
+Crash (segfault, abort...): turn on debug mode (Test my project › Test options) to see the full trace.	Çökme (segfault, abort...): tam izi görmek için hata ayıklama modunu aç (Projemi test et › Test seçenekleri).
+What you wear now will be kept under this name.	Şu an giydiklerin bu adla saklanacak.
+OUTFIT SAVED	KIYAFET KAYDEDİLDİ
+＋ Save what I am wearing	＋ Giydiklerimi kaydet
+%d. (free slot)	%d. (boş yer)
+All 5 are taken: which one to replace?	5'i de dolu: hangisini değiştirelim?
+Wear this outfit	Bu kıyafeti giy
+Replace it with what I wear	Giydiklerimle değiştir
+Rename	Yeniden adlandır
+Delete	Sil
+OUTFIT UPDATED	KIYAFET GÜNCELLENDİ
+Delete this outfit?	Bu kıyafet silinsin mi?
+No, keep it	Hayır, kalsın
+Yes, delete	Evet, sil
+Test my project › Test options › Debug mode: every detailed report.	Projemi test et › Test seçenekleri › Hata ayıklama modu: tüm ayrıntılı raporlar.
+Outfits	Kıyafetler
+Enter	Enter
+choose	seç
+equip	giy
+buy / equip	satın al / giy
+see it large	büyük gör
+other sections, Outfits included	diğer bölümler, Kıyafetler dahil
+other sections	diğer bölümler
+▲ ▼ pick   Esc: back	▲ ▼ seç   Esc: geri
+• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Gardırop: bir Kıyafetler bölümü (en fazla 5), büyük önizleme (v tuşu) ve yazması daha kolay bir takma ad.

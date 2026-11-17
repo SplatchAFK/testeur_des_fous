@@ -53,7 +53,6 @@ usage() {
 	u "--no-lore" "$(tt "les tests seuls, sans histoire" "tests only, no story")"
 	u "-a" "$(tt "sans animations pour ce lancement" "no animations for this run")"
 	u "--anim off" "$(tt "couper les animations pour de bon (on pour les remettre)" "turn animations off for good (on to bring them back)")"
-	u "--debug" "$(tt "tous les rapports détaillés" "every detailed report")"
 	u "--version" "$(tt "le numéro de version" "the version number")"
 	printf '\n'
 	tl "La commande « %s », utilisable depuis n'importe quel dossier, sans sudo :" "The \"%s\" command, usable from any folder, no sudo:" "$TDF_CMD_NOM"
@@ -573,6 +572,10 @@ while [ $# -gt 0 ]; do
 			;;
 		-a|--fast|--no-anim) SUITE+=(--fast); SANS_ANIM=1 ;;
 		--no-lord) SUITE+=(--no-lore) ;;
+		--debug)
+			tl "Le mode debug se règle maintenant dans le menu : Tester mon projet › Options du test › Mode debug." "Debug mode is now set in the menu: Test my project › Test options › Debug mode."
+			exit 2
+			;;
 		*)
 			if [ -z "$PROJET" ] && [ -d "$a" ] && case "$a" in */*|.|..) true ;; *) false ;; esac; then
 				PROJET="$(cd "$a" && pwd -P)"
@@ -733,7 +736,7 @@ if [ "$MENU_UNIQUE" = 0 ] && [ "$MENU" = 0 ] && [ -n "$PROJET" ] && [ -t 0 ] && 
 	case "$MODULE" in
 		libft|printf|gnl)
 			case " ${SUITE[*]:-} " in
-				*" --no-lore "*|*" --debug "*|*" -v "*) ;;
+				*" --no-lore "*|*" -v "*) ;;
 				*)
 					MENU_UNIQUE=1
 					export TDF_MENU_UNIQUE=1
