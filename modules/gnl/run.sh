@@ -313,6 +313,11 @@ for cat in base taille fin fd lecture malloc info; do
 		if [ "$pire" = OK ]; then
 			ligne OK "$nom"
 			[ "$cat" = info ] || ANNEAUX="${ANNEAUX}O"
+		elif [ "$tailles_ko" = 10000000 ] && [ "$pire" != INFO ]; then
+			ligne NOTE "$nom" "$(tt "échoue seulement avec BUFFER_SIZE=10000000 (pile dépassée ?) · on ne sait pas si la moulinette teste une taille aussi grande · pour être tranquille, alloue le tampon avec malloc plutôt que sur la pile" "fails only with BUFFER_SIZE=10000000 (stack overflow?) · we do not know whether the moulinette tests such a big size · to be safe, allocate the buffer with malloc rather than on the stack") · $msg"
+			[ "$cat" = info ] || ANNEAUX="${ANNEAUX}O"
+		elif [ "$cat" = info ]; then
+			ligne NOTE "$nom" "$(tt "hors sujet v1.3 : ne compte pas dans le résultat" "outside subject v1.3: does not count in the result") · BUFFER_SIZE en échec : $tailles_ko · $msg"
 		elif [ "$pire" = INFO ]; then
 			ligne INFO "$nom" "$msg"
 		else

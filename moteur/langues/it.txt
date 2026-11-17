@@ -1692,3 +1692,5 @@ No error: the Norm is respected.	Nessun errore: la Norma è rispettata.
 %d error(s) in %d file(s) · the moulinette checks the Norm before the tests (Prerequisites)	%d errore/i in %d file · la moulinette controlla la Norma prima dei test (Prerequisites)
   line %-4d col %-3d	  riga %-4d col %-3d
 ▲ ▼ scroll   Esc or Enter: back	▲ ▼ scorri   Esc o Invio: indietro
+fails only with BUFFER_SIZE=10000000 (stack overflow?) · we do not know whether the moulinette tests such a big size · to be safe, allocate the buffer with malloc rather than on the stack	fallisce solo con BUFFER_SIZE=10000000 (stack superato?) · non sappiamo se la moulinette testa una dimensione così grande · per stare tranquillo, alloca il buffer con malloc invece che sullo stack
+outside subject v1.3: does not count in the result	fuori dal soggetto v1.3: non conta nel risultato

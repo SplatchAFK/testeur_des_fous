@@ -17,7 +17,9 @@ Le numéro de version est dans `moteur/version.h`.
 ### get_next_line
 
 - nouvel écran de résultats dans le style du testeur : bilan, BUFFER_SIZE testés, anneaux du Puits, norminette, vérifications par partie et détail de chacune avec ce qu'il faut corriger ;
-- « Revoir la dernière tentative » rouvre cet écran.
+- « Revoir la dernière tentative » rouvre cet écran ;
+- un test qui échoue seulement avec BUFFER_SIZE=10000000 passe en avertissement (on ne sait pas si la moulinette teste une taille aussi grande), avec le conseil d'allouer le tampon avec malloc ;
+- un échec dans la partie « Pour info (hors sujet) » ne compte plus comme un échec.
 
 ### Confort
 

@@ -1692,3 +1692,5 @@ No error: the Norm is respected.	Ошибок нет: Норма соблюде�
 %d error(s) in %d file(s) · the moulinette checks the Norm before the tests (Prerequisites)	ошибок %d в файлах: %d · moulinette проверяет Норму до тестов (Prerequisites)
   line %-4d col %-3d	  строка %-4d стб %-3d
 ▲ ▼ scroll   Esc or Enter: back	▲ ▼ прокрутка   Esc или Enter: назад
+fails only with BUFFER_SIZE=10000000 (stack overflow?) · we do not know whether the moulinette tests such a big size · to be safe, allocate the buffer with malloc rather than on the stack	падает только при BUFFER_SIZE=10000000 (переполнение стека?) · неизвестно, проверяет ли moulinette такой большой размер · для надёжности выделяй буфер через malloc, а не на стеке
+outside subject v1.3: does not count in the result	вне задания v1.3: не влияет на результат

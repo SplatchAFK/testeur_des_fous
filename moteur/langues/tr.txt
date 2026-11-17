@@ -1692,3 +1692,5 @@ No error: the Norm is respected.	Hata yok: Norm'a uyuluyor.
 %d error(s) in %d file(s) · the moulinette checks the Norm before the tests (Prerequisites)	%d hata, %d dosyada · moulinette testlerden önce Norm'u kontrol eder (Prerequisites)
   line %-4d col %-3d	  satır %-4d süt %-3d
 ▲ ▼ scroll   Esc or Enter: back	▲ ▼ kaydır   Esc ya da Enter: geri
+fails only with BUFFER_SIZE=10000000 (stack overflow?) · we do not know whether the moulinette tests such a big size · to be safe, allocate the buffer with malloc rather than on the stack	yalnızca BUFFER_SIZE=10000000 ile başarısız (yığın taştı mı?) · moulinette'in bu kadar büyük bir boyutu test edip etmediğini bilmiyoruz · garanti olsun diye tamponu yığın yerine malloc ile ayır
+outside subject v1.3: does not count in the result	konu dışı v1.3: sonuca sayılmaz
