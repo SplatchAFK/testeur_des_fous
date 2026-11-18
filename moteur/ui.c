@@ -717,13 +717,11 @@ static int	mu_ecran(t_mu *m, int *sel)
 	int		k;
 	int		av;
 	long	anim;
-	long	calme;
 	long	prec;
 	t_zone	zones[4];
 	int		nz;
 
 	anim = 0;
-	calme = 0;
 	prec = now_ms();
 	cls();
 	while (1)
@@ -817,13 +815,8 @@ static int	mu_ecran(t_mu *m, int *sel)
 		foot_line(bx, L("▲ ▼ choisir   Entrée : ouvrir   Échap : quitter", "▲ ▼ pick   Enter: open   Esc: quit"));
 		flush();
 		k = key_dir(key_read(60));
-		if (k >= 0)
-			calme = now_ms();
-		else if (now_ms() - calme > 400)
-		{
-			anim += now_ms() - prec;
-			g_phase = fmod(anim / 22.0, cols + 90.0) - 40.0;
-		}
+		anim += now_ms() - prec;
+		g_phase = fmod(anim / 22.0, cols + 90.0) - 40.0;
 		prec = now_ms();
 		if (k == 1000)
 			*sel = ((*sel - tdf_touche_fleche(k)) % m->n + m->n) % m->n;
