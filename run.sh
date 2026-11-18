@@ -323,6 +323,10 @@ correction_preparer() {
 		return 1
 	fi
 	export TDF_SANS_HISTOIRE=1 TDF_SANS_STATS=1
+	if [ ! -d "$DOSSIER/derniere_hors_correction" ]; then
+		mkdir -p "$DOSSIER/derniere"
+		cp -a "$DOSSIER/derniere" "$DOSSIER/derniere_hors_correction"
+	fi
 	case " ${SUITE[*]:-} " in *" --fast "*) ;; *) SUITE+=(--fast) ;; esac
 	case "$a" in
 		corr_tout) return 0 ;;
@@ -380,6 +384,10 @@ noter_historique() {
 choisir_au_menu() {
 	local code l a p projets=""
 	unset TDF_SANS_STATS TDF_CAS
+	if [ ! -f "$DOSSIER/correction.txt" ] && [ -d "$DOSSIER/derniere_hors_correction" ]; then
+		rm -rf "$DOSSIER/derniere"
+		mv "$DOSSIER/derniere_hors_correction" "$DOSSIER/derniere"
+	fi
 	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do projets+="libft"$'\t'"$p"$'\n'; done
 	for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do projets+="printf"$'\t'"$p"$'\n'; done
 	for p in ${GNLS[@]+"${GNLS[@]}"}; do projets+="gnl"$'\t'"$p"$'\n'; done
@@ -388,6 +396,7 @@ choisir_au_menu() {
 	[ "$SANS_ANIM" = 1 ] && a="--fast"
 	TDF_PROJETS="$projets" TDF_DEPART="$DEPART" TDF_PROJET="" bash "$TDF_RACINE/modules/libft/run.sh" --menu $a
 	code=$?
+	unset TDF_CORR_ACCUEIL
 	export TDF_NO_UPDATE=1
 	tdf_langue_lire
 	INTERFACE=graphique
@@ -687,6 +696,7 @@ while [ $# -gt 0 ]; do
 			SUITE+=("$a")
 			;;
 		correction)
+			CORR_ARG=1
 			c=""
 			if [ $# -gt 0 ] && [ "${1#-}" = "$1" ]; then
 				[ -d "$1" ] || { tl "%s : dossier introuvable : %s" "%s: folder not found: %s" "$a" "$1"; exit 2; }
@@ -754,6 +764,7 @@ elif [ -z "$MODULE" ] && [ -t 0 ] && [ -t 1 ]; then
 	premiers_pas
 	MENU_UNIQUE=1
 	export TDF_MENU_UNIQUE=1
+	[ "${CORR_ARG:-0}" = 1 ] || export TDF_CORR_ACCUEIL=1
 	MODULE=libft
 	PROJET=""
 	MENU_A_FAIRE=1

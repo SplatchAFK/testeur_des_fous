@@ -718,6 +718,7 @@ int				tdf_choisir_dossier(char *out, size_t n);
 int				tdf_correction(char *chemin, size_t n);
 void			tdf_correction_ecrire(const char *chemin);
 int				tdf_correction_dossier(char *out, size_t n);
+int				tdf_correction_accueil(void);
 int				tdf_choisir_test(const char *dossier, char *out, size_t n);
 int				tdf_derniere_existe(void);
 void			tdf_derniere_ecrire(const char *module, const char *fichier);

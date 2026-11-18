@@ -956,10 +956,10 @@ else
 fi
 [ $STATIC_WARN -gt 0 ] && printf "$(tt "  %s(%d avertissement(s))%s" "  %s(%d warning(s))%s")" "$Y" "$STATIC_WARN" "$N"
 printf "\n"
-if want stress; then
+if want stress && [ -z "${TDF_MENU_UNIQUE:-}" ]; then
 	printf "$(tt "  %sPour rejouer le stress : bash %s/run.sh printf --only stress --seed %s%s\n" "  %sTo replay the stress: bash %s/run.sh printf --only stress --seed %s%s\n")" "$D" "$TDF_AFF" "$SEED" "$N"
 fi
-printf "$(tt "  %stestable aussi avec : --valgrind | --asan-only | --no-sanitize%s\n\n" "  %salso testable with: --valgrind | --asan-only | --no-sanitize%s\n\n")" "$D" "$N"
+[ -n "${TDF_MENU_UNIQUE:-}" ] || printf "$(tt "  %stestable aussi avec : --valgrind | --asan-only | --no-sanitize%s\n\n" "  %salso testable with: --valgrind | --asan-only | --no-sanitize%s\n\n")" "$D" "$N"
 [ $STATIC_KO -gt 0 ] && RC=1
 if [ "${NOLORE_RECORD:-0}" = 1 ] && [ -z "${TDF_SANS_STATS:-}" ]; then
 	printf 'E\n' >> "$MACHINE"

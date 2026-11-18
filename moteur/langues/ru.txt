@@ -1898,3 +1898,9 @@ Listen more than you speak: we rarely learn while talking.	Слушай боль
 Perseverance turns impossible into “not yet”.	Упорство превращает «невозможно» в «пока нет».
 No step is useless when you walk in the right direction.	Ни один шаг не бесполезен, если идёшь в верном направлении.
 You are not late. You are exactly where you need to learn.	Ты не опоздал. Ты именно там, где тебе нужно учиться.
+\n  %s%sFix the red ones first.%s\n\n	\n  %s%sСначала исправь красные.%s\n\n
+Pick this folder:	Выбрать эту папку:
+This folder is neither a Libft, nor a ft_printf, nor a get_next_line: pick the folder of the graded project.	Эта папка не Libft, не ft_printf и не get_next_line: выбери папку проверяемого проекта.
+Grading mode is still on%s%s.\n\nDo you go on grading, or go back to the normal tester?	Режим проверки всё ещё включён%s%s.\n\nПродолжаешь проверку или возвращаешься к обычному тестеру?
+Go on grading|	Продолжить проверку|
+Back to the normal tester|	Вернуться к обычному тестеру|

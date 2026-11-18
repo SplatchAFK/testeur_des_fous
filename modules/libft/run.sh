@@ -889,10 +889,13 @@ run_all() {
 
 	for part in 1 2 3; do
 		case $part in
-			1) section "$(tt "Partie 1 · libc" "Part 1 · libc")"; list="$PART1" ;;
-			2) section "$(tt "Partie 2 · additionnelles" "Part 2 · additional")"; list="$PART2" ;;
-			3) section "$(tt "Partie 3 · liste chaînée" "Part 3 · linked list")"; list="$PART3" ;;
+			1) titre="$(tt "Partie 1 · libc" "Part 1 · libc")"; list="$PART1" ;;
+			2) titre="$(tt "Partie 2 · additionnelles" "Part 2 · additional")"; list="$PART2" ;;
+			3) titre="$(tt "Partie 3 · liste chaînée" "Part 3 · linked list")"; list="$PART3" ;;
 		esac
+		for n in $list; do
+			if wanted "$n"; then section "$titre"; break; fi
+		done
 		for n in $list; do
 			if wanted "$n"; then
 				emit "S	test de ft_$n"
@@ -903,10 +906,14 @@ run_all() {
 		done
 	done
 
-	emit "S	norminette"
-	finish_norm
+	if [ -z "${TDF_CAS:-}" ]; then
+		emit "S	norminette"
+		finish_norm
+	fi
 
-	if [ "$CFG_AUDIT" = 2 ]; then
+	if [ -n "${TDF_CAS:-}" ]; then
+		:
+	elif [ "$CFG_AUDIT" = 2 ]; then
 		section "$(tt "Audit · ce que la moulinette regarde" "Audit · what the moulinette looks at")"
 		say '  %sdésactivé dans les paramètres%s\n' "$D" "$R"
 	elif [ "$FORCEAUDIT" = 1 ]; then
@@ -929,8 +936,12 @@ run_all() {
 		[ "$p" -gt 0 ] && printf "$(tt "   %s%d prototype(s) différent(s) du sujet%s" "   %s%d prototype(s) different from the subject%s")" "$F_KO$B" "$p" "$R"
 		[ "$n_audit_ko" -gt 0 ] && printf "$(tt "   %s%d contrôles d'audit en échec%s" "   %s%d audit checks failing%s")" "$F_KO$B" "$n_audit_ko" "$R"
 		printf '\n'
-		grep '^G	' "$RES" | cut -f2 | while IFS= read -r l; do printf '  %s! %s%s\n' "$F_LK" "$l" "$R"; done
-		if [ $((n_bad + n_audit_ko + p)) -eq 0 ]; then
+		[ -n "${TDF_CAS:-}" ] || grep '^G	' "$RES" | cut -f2 | while IFS= read -r l; do printf '  %s! %s%s\n' "$F_LK" "$l" "$R"; done
+		if [ -n "${TDF_MENU_UNIQUE:-}" ] && [ $((n_bad + n_audit_ko + p)) -eq 0 ]; then
+			printf "$(tt "\n  %s%sTout est propre.%s\n\n" "\n  %s%sEverything is clean.%s\n\n")" "$F_OK" "$B" "$R"
+		elif [ -n "${TDF_MENU_UNIQUE:-}" ]; then
+			printf "$(tt "\n  %s%sCorrige les rouges d'abord.%s\n\n" "\n  %s%sFix the red ones first.%s\n\n")" "$F_KO" "$B" "$R"
+		elif [ $((n_bad + n_audit_ko + p)) -eq 0 ]; then
 			printf "$(tt "\n  %s%sTout est propre. Lance sans --ci pour ouvrir le menu et dépenser tes Octets.%s\n\n" "\n  %s%sEverything is clean. Run without --ci to open the menu and spend your Octets.%s\n\n")" "$F_OK" "$B" "$R"
 		else
 			printf "$(tt "\n  %s%sCorrige les rouges d'abord.%s %s-v montre le rapport complet.%s\n\n" "\n  %s%sFix the red ones first.%s %s-v shows the full report.%s\n\n")" "$F_KO" "$B" "$R" "$D" "$R"

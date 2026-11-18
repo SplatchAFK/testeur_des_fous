@@ -12,6 +12,11 @@ Le numéro de version est dans `moteur/version.h`.
 - Lancer un test précis : une grille aux flèches pour choisir une fonction Libft, une catégorie ft_printf (%c, %d, malloc, stress…) ou un BUFFER_SIZE get_next_line ; il se relance seul avec tout le détail ; pour la Libft, la liste des cas testés s'affiche (par exemple chaque split(…) essayé) ;
 - les tests du corrigé ne comptent pas dans ta progression : ni stats, ni Octets, ni niveau, ni historique de « Tester mon projet » ;
 - « Quitter le mode correction » ramène au testeur normal ;
+- choix du dossier du corrigé : « Choisir ce dossier », tes propres projets récents ne sont plus mélangés, et un dossier qui n'est pas un projet est refusé tout de suite ;
+- si tu avais quitté le testeur en mode correction, il te demande au lancement si tu continues la correction ou si tu reviens au testeur normal ;
+- Échap dans le menu de correction ramène au testeur normal ;
+- « Revoir la dernière tentative » montre de nouveau TA dernière tentative après une correction, pas celle du corrigé ;
+- test précis Libft : plus de sections vides ni d'avertissements sans rapport avec le test choisi ;
 - « Mode correction » est un bouton bleu à part, juste sous « Tester mon projet », avec le badge NEW ;
 - commande directe : tdf correction [chemin] (ou bash run.sh correction [chemin]) ouvre le testeur en mode correction ;
 - une page du tuto et une astuce « Le savais-tu ? » présentent le mode correction ;
@@ -24,6 +29,7 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Mode debug
 
+- les rapports affichés dans le menu n'ont plus de conseils de ligne de commande (--ci, -v, --valgrind…) ;
 - le mode debug ne laisse plus un écran vide pendant toute l'analyse : une barre d'avancement affiche l'étape en cours, le temps écoulé et le temps restant estimé d'après ton dernier passage ; Ctrl+C arrête.
 
 ## 3.2.0 · 2026-11-18

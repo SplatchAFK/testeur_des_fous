@@ -1898,3 +1898,9 @@ Listen more than you speak: we rarely learn while talking.	Konuştuğundan çok 
 Perseverance turns impossible into “not yet”.	Azim, imkânsızı «henüz değil»e dönüştürür.
 No step is useless when you walk in the right direction.	Doğru yönde yürürken hiçbir adım boşuna değildir.
 You are not late. You are exactly where you need to learn.	Geç kalmadın. Tam da öğrenmen gereken yerdesin.
+\n  %s%sFix the red ones first.%s\n\n	\n  %s%sÖnce kırmızıları düzelt.%s\n\n
+Pick this folder:	Bu klasörü seç:
+This folder is neither a Libft, nor a ft_printf, nor a get_next_line: pick the folder of the graded project.	Bu klasör ne bir Libft, ne bir ft_printf, ne de bir get_next_line: değerlendirilen projenin klasörünü seç.
+Grading mode is still on%s%s.\n\nDo you go on grading, or go back to the normal tester?	Değerlendirme modu hâlâ açık%s%s.\n\nDeğerlendirmeye devam mı, yoksa normal test aracına mı dönüyorsun?
+Go on grading|	Değerlendirmeye devam et|
+Back to the normal tester|	Normal test aracına dön|

@@ -12,6 +12,9 @@
 #include <sys/stat.h>
 #include "fous.h"
 
+static int			g_corr_choix;
+static const char	*g_corr_msg;
+
 int	tdf_nouveau(const char *depuis)
 {
 	char	cle[24];
@@ -835,12 +838,13 @@ static int	entrees(t_ent *e, int max)
 	n = 0;
 	snprintf(e[n].chemin, sizeof(e[n].chemin), "%s", getenv("TDF_DEPART") ? getenv("TDF_DEPART") : ".");
 	court(e[n].chemin, l, sizeof(l));
-	snprintf(e[n].lab, sizeof(e[n].lab), "%s  %s", L("Tester ce dossier :", "Test this folder:"), l);
+	snprintf(e[n].lab, sizeof(e[n].lab), "%s  %s", g_corr_choix ? L("Choisir ce dossier :", "Pick this folder:")
+		: L("Tester ce dossier :", "Test this folder:"), l);
 	type_projet(e[n].chemin, e[n].tag, sizeof(e[n].tag));
 	snprintf(e[n].info, sizeof(e[n].info), "%s", e[n].tag[0] ? "" : L("aucun projet reconnu ici", "no project recognised here"));
 	e[n++].section = 0;
 	snprintf(l, sizeof(l), "%s/historique_projets.txt", g_savedir);
-	h = fopen(l, "r");
+	h = g_corr_choix ? NULL : fopen(l, "r");
 	nh = 0;
 	while (h && nh < 10 && fgets(l, sizeof(l), h))
 	{
@@ -1050,8 +1054,6 @@ static void	aide_chemin(int y0, int y1)
 	bgc(theme()->bg);
 }
 
-static int	g_corr_choix;
-
 int	tdf_choisir_dossier(char *out, size_t n)
 {
 	static t_cand	c[400];
@@ -1078,7 +1080,7 @@ int	tdf_choisir_dossier(char *out, size_t n)
 	csel = -1;
 	ctop = 0;
 	nc = 0;
-	msg = NULL;
+	msg = g_corr_choix ? g_corr_msg : NULL;
 	cls();
 	while (1)
 	{
@@ -1290,16 +1292,46 @@ void	tdf_correction_ecrire(const char *chemin)
 	fclose(f);
 }
 
+static int	corr_type(const char *d);
+
 int	tdf_correction_dossier(char *out, size_t n)
 {
 	int	r;
 
 	g_corr_choix = 1;
+	g_corr_msg = NULL;
 	r = tdf_choisir_dossier(out, n);
+	while (r && !corr_type(out))
+	{
+		g_corr_msg = L("Ce dossier n'est ni une Libft, ni un ft_printf, ni un get_next_line : choisis le dossier du projet du corrigé.",
+				"This folder is neither a Libft, nor a ft_printf, nor a get_next_line: pick the folder of the graded project.");
+		r = tdf_choisir_dossier(out, n);
+	}
 	g_corr_choix = 0;
+	g_corr_msg = NULL;
 	if (r)
 		tdf_correction_ecrire(out);
 	return (r);
+}
+
+int	tdf_correction_accueil(void)
+{
+	char		ch[600];
+	char		texte[1000];
+	const char	*items[2];
+	int			sel;
+
+	if (!tdf_correction(ch, sizeof(ch)))
+		return (0);
+	snprintf(texte, sizeof(texte), L("Le mode correction est toujours actif%s%s.\n\nTu continues la correction, ou tu reviens au testeur normal ?",
+			"Grading mode is still on%s%s.\n\nDo you go on grading, or go back to the normal tester?"), ch[0] ? " : " : "", ch);
+	items[0] = L("Continuer la correction|", "Go on grading|");
+	items[1] = L("Revenir au testeur normal|", "Back to the normal tester|");
+	sel = 0;
+	if (page(L("testeur des fous | mode : correction", "testeur des fous | mode: grading"), texte, items, 2, &sel) != 1)
+		return (1);
+	tdf_correction_ecrire(NULL);
+	return (2);
 }
 
 static int	corr_existe(const char *d, const char *f)

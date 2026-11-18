@@ -1898,3 +1898,9 @@ Listen more than you speak: we rarely learn while talking.	Hör mehr zu, als du 
 Perseverance turns impossible into “not yet”.	Ausdauer macht aus „unmöglich“ ein „noch nicht“.
 No step is useless when you walk in the right direction.	Kein Schritt ist nutzlos, wenn du in die richtige Richtung gehst.
 You are not late. You are exactly where you need to learn.	Du bist nicht zu spät. Du bist genau da, wo du lernen sollst.
+\n  %s%sFix the red ones first.%s\n\n	\n  %s%sBehebe zuerst die roten.%s\n\n
+Pick this folder:	Diesen Ordner wählen:
+This folder is neither a Libft, nor a ft_printf, nor a get_next_line: pick the folder of the graded project.	Dieser Ordner ist weder eine Libft noch ein ft_printf noch ein get_next_line: wähle den Ordner des bewerteten Projekts.
+Grading mode is still on%s%s.\n\nDo you go on grading, or go back to the normal tester?	Der Bewertungsmodus ist noch aktiv%s%s.\n\nBewertest du weiter oder gehst du zurück zum normalen Tester?
+Go on grading|	Weiter bewerten|
+Back to the normal tester|	Zurück zum normalen Tester|

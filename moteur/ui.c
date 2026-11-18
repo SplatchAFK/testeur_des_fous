@@ -687,6 +687,16 @@ static int	mu_largeur(t_mu *m)
 	return (w + 6);
 }
 
+static int	mu_echap(t_mu *m)
+{
+	int	i;
+
+	for (i = 0; i < m->n; i++)
+		if (!strcmp(m->act[i], "corr_fin"))
+			return (i);
+	return (m->n - 1);
+}
+
 static int	mu_ecran(t_mu *m, int *sel)
 {
 	char	lab[200];
@@ -816,7 +826,7 @@ static int	mu_ecran(t_mu *m, int *sel)
 		else if (k == '\r' || k == '\n' || k == ' ')
 			return (cls(), *sel);
 		else if (key_quit(k))
-			return (cls(), m->n - 1);
+			return (cls(), mu_echap(m));
 	}
 }
 
@@ -830,6 +840,11 @@ int	tdf_menu_principal(void (*profile)(void), void (*boss)(void), void (*credits
 	int			i;
 
 	g_choix[0] = '\0';
+	if (getenv("TDF_CORR_ACCUEIL") && tdf_correction_accueil() == 2)
+	{
+		tdf_sortie("relancer", NULL);
+		return (46);
+	}
 	while (1)
 	{
 		mu_charger(&m);
@@ -872,6 +887,8 @@ int	tdf_menu_principal(void (*profile)(void), void (*boss)(void), void (*credits
 		{
 			tdf_correction_ecrire(NULL);
 			sel = 0;
+			tdf_sortie("relancer", NULL);
+			return (46);
 		}
 		else if (!strncmp(a, "corr_", 5))
 		{
