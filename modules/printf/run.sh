@@ -961,7 +961,7 @@ if want stress; then
 fi
 printf "$(tt "  %stestable aussi avec : --valgrind | --asan-only | --no-sanitize%s\n\n" "  %salso testable with: --valgrind | --asan-only | --no-sanitize%s\n\n")" "$D" "$N"
 [ $STATIC_KO -gt 0 ] && RC=1
-if [ "${NOLORE_RECORD:-0}" = 1 ]; then
+if [ "${NOLORE_RECORD:-0}" = 1 ] && [ -z "${TDF_SANS_STATS:-}" ]; then
 	printf 'E\n' >> "$MACHINE"
 	if build_jeu; then
 		"$JEU/fous" --results "$MACHINE" --record --dir "$TDF_DIR" || true

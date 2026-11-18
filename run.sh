@@ -321,7 +321,7 @@ correction_preparer() {
 		voir_rapport "$DOSSIER/derniere/message.txt" "$(tt "testeur des fous | mode : correction" "testeur des fous | mode: grading")"
 		return 1
 	fi
-	export TDF_SANS_HISTOIRE=1
+	export TDF_SANS_HISTOIRE=1 TDF_SANS_STATS=1
 	case " ${SUITE[*]:-} " in *" --fast "*) ;; *) SUITE+=(--fast) ;; esac
 	case "$a" in
 		corr_tout) return 0 ;;
@@ -367,6 +367,7 @@ rapport_texte() {
 noter_historique() {
 	local m="$1" p="$2" l ok=0 tot=0 h="$DOSSIER/historique_projets.txt"
 	[ -n "$p" ] || return 0
+	[ -z "${TDF_SANS_STATS:-}" ] || return 0
 	case "$m" in libft|printf|gnl) ;; *) return 0 ;; esac
 	l="$(grep "^R [0-9]* $m " "$DOSSIER/stats.txt" 2>/dev/null | tail -1)"
 	[ -n "$l" ] && ok="$(echo "$l" | cut -d' ' -f4)" && tot="$(echo "$l" | cut -d' ' -f5)"
@@ -377,6 +378,7 @@ noter_historique() {
 
 choisir_au_menu() {
 	local code l a p projets=""
+	unset TDF_SANS_STATS TDF_CAS
 	for p in ${LIBFTS[@]+"${LIBFTS[@]}"}; do projets+="libft"$'\t'"$p"$'\n'; done
 	for p in ${PRINTFS[@]+"${PRINTFS[@]}"}; do projets+="printf"$'\t'"$p"$'\n'; done
 	for p in ${GNLS[@]+"${GNLS[@]}"}; do projets+="gnl"$'\t'"$p"$'\n'; done

@@ -1190,7 +1190,7 @@ if [ "$CI" = 1 ]; then
 	set_colors
 	run_all
 	code=$?
-	if [ "$NOLORE" = 1 ]; then
+	if [ "$NOLORE" = 1 ] && [ -z "${TDF_SANS_STATS:-}" ]; then
 		if build_game; then
 			"$BUILD/fous" --results "$RES" --record --dir "$HERE" || true
 		else

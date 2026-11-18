@@ -10,7 +10,9 @@ Le numéro de version est dans `moteur/version.h`.
 - Tester tout le projet : tous les tests du corrigé, sans cinématiques ni animations ;
 - Vérifs de rendu : fichiers en trop, norminette, Makefile (règles, flags, relink), fonctions interdites, en un seul écran, sans lancer les tests ; marche pour Libft, ft_printf et get_next_line ;
 - Lancer un test précis : une grille aux flèches pour choisir une fonction Libft, une catégorie ft_printf (%c, %d, malloc, stress…) ou un BUFFER_SIZE get_next_line ; il se relance seul avec tout le détail ; pour la Libft, la liste des cas testés s'affiche (par exemple chaque split(…) essayé) ;
-- « Quitter le mode correction » ramène au testeur normal.
+- les tests du corrigé ne comptent pas dans ta progression : ni stats, ni Octets, ni niveau, ni historique de « Tester mon projet » ;
+- « Quitter le mode correction » ramène au testeur normal ;
+- badge NEW sur « Mode correction » dans le menu ; les badges NEW restent maintenant le temps de 3 mises à jour (ceux de la 3.2 reviennent).
 
 ### Mode debug
 

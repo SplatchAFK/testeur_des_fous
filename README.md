@@ -110,7 +110,7 @@ Pour corriger un autre étudiant : menu › Mode correction, puis choisis le dos
 - Vérifs de rendu : fichiers en trop, norminette, Makefile, fonctions interdites, en un seul écran ;
 - Lancer un test précis : une fonction Libft, une conversion ft_printf ou un BUFFER_SIZE get_next_line, relancé seul avec tout le détail (pour la Libft, la liste des cas testés).
 
-« Quitter le mode correction » ramène au testeur normal.
+Les tests du corrigé ne comptent pas dans ta progression (stats, Octets, niveau). « Quitter le mode correction » ramène au testeur normal.
 
 ## Ta progression
 

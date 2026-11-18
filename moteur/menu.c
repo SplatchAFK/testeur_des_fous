@@ -14,10 +14,10 @@
 
 int	tdf_nouveau(const char *depuis)
 {
-	size_t	l;
+	char	cle[24];
 
-	l = strlen(depuis);
-	return (!strncmp(TDF_VERSION, depuis, l) && (TDF_VERSION[l] == '.' || TDF_VERSION[l] == '\0'));
+	snprintf(cle, sizeof(cle), " %s ", depuis);
+	return (strstr(TDF_NEW_ACTIFS, cle) != NULL);
 }
 
 void	tdf_badge_new(void)

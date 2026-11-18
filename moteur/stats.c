@@ -162,7 +162,7 @@ void	tdf_stats_xp(long xp)
 	long		t;
 	long		v;
 
-	if (!g_savedir || xp <= 0)
+	if (!g_savedir || xp <= 0 || getenv("TDF_SANS_STATS"))
 		return ;
 	stats_path(path, sizeof(path));
 	if (!lu)
@@ -204,6 +204,8 @@ void	tdf_stats_begin(const char *module)
 {
 	char	path[620];
 
+	if (getenv("TDF_SANS_STATS"))
+		return ;
 	stats_path(path, sizeof(path));
 	stats_trim(path);
 	g_sf = fopen(path, "a");

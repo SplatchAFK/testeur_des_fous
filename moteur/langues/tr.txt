@@ -1843,3 +1843,4 @@ NEW IN 3.3.0	3.3.0 SÜRÜMÜNDE YENİ
 • Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail.	• Değerlendirme modu (menü): yalnızca değerlendirilen klasör, tek ekranda teslim kontrolleri ve tüm ayrıntılarıyla tekli testler.
 • Debug mode: a progress bar with the time left instead of an empty screen.	• Debug modu: boş ekran yerine kalan süreyi gösteren bir ilerleme çubuğu.
 ALREADY IN 3.2.0	3.2.0 SÜRÜMÜNDE ZATEN VAR
+!Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	!Değerlendirme modu|Başka bir öğrenciyi değerlendirmek için: test aracı yalnızca onun klasörüne bakar, teslim kontrolleri ve tekli testlerle. Ara sahne ve animasyon yok.

@@ -1843,3 +1843,4 @@ NEW IN 3.3.0	NEU IN 3.3.0
 • Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail.	• Bewertungsmodus (Menü): nur der bewertete Ordner, Abgabeprüfungen auf einem Bildschirm und Einzeltests mit allen Details.
 • Debug mode: a progress bar with the time left instead of an empty screen.	• Debug-Modus: ein Fortschrittsbalken mit der Restzeit statt eines leeren Bildschirms.
 ALREADY IN 3.2.0	SCHON IN 3.2.0
+!Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	!Bewertungsmodus|Um eine andere Person zu bewerten: der Tester schaut nur auf ihren Ordner, mit Abgabeprüfungen und Einzeltests. Ohne Zwischensequenzen und Animationen.

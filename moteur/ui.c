@@ -210,6 +210,8 @@ static void	label_of_item(const char *item, char *b, size_t n)
 {
 	size_t	l;
 
+	if (item[0] == '!')
+		item++;
 	l = strcspn(item, "|");
 	if (l >= n)
 		l = n - 1;
@@ -265,7 +267,7 @@ static void	mu_charger(t_mu *m)
 	mu_ajouter(m, "chevalier", L("Chevalier|Ton avatar, la boutique, ton profil et tes succès", "Knight|Your avatar, the shop, your profile and achievements"), NULL);
 	mu_ajouter(m, "lore", L("Lore|Les boss, les cinématiques et la carte de la Cité", "Lore|The bosses, the cutscenes and the map of the City"), NULL);
 	mu_ajouter(m, "stats", L("Stats|Ta progression, tes badges et le holygraph 42 Next", "Stats|Your progress, your badges and the 42 Next holygraph"), NULL);
-	mu_ajouter(m, "correction", L("Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations."), NULL);
+	mu_ajouter(m, "correction", tdf_nouveau("3.3") ? L("!Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "!Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.") : L("Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations."), NULL);
 	mu_ajouter(m, "params", L("Paramètres|Réglages, langue, interface, commande tdf", "Settings|Settings, language, interface, tdf command"), NULL);
 	mu_ajouter(m, "quitter", L("Quitter|Fermer le testeur. Ta progression est déjà enregistrée.", "Quit|Close the tester. Your progress is already saved."), NULL);
 }
@@ -574,8 +576,8 @@ static int	mu_largeur(t_mu *m)
 	for (i = 0; i < m->n; i++)
 	{
 		label_of_item(m->items[i], lab, sizeof(lab));
-		if (ulen(lab) > w)
-			w = ulen(lab);
+		if (ulen(lab) + (m->items[i][0] == '!' ? 6 : 0) > w)
+			w = ulen(lab) + (m->items[i][0] == '!' ? 6 : 0);
 	}
 	return (w + 6);
 }
@@ -662,6 +664,11 @@ static int	mu_ecran(t_mu *m, int *sel)
 				fg(i == 0 ? theme()->accent : theme()->text);
 			outf(" %s %-*s", i == *sel ? "▶" : " ", iw - 4, lab);
 			bgc(theme()->bg);
+			if (m->items[i][0] == '!')
+			{
+				at(ix + 4 + ulen(lab), y + 1 + i * (rows >= y + 2 * m->n + 6 ? 2 : 1));
+				tdf_badge_new();
+			}
 		}
 		nz = 0;
 		if (cols - (ix + iw + 3) - 3 >= 22)

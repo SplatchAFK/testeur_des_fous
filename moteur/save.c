@@ -751,6 +751,8 @@ void	save_write(void)
 	char	p[700];
 	FILE	*f;
 
+	if (getenv("TDF_SANS_STATS"))
+		return ;
 	write_file(1);
 	tdf_stats_xp(g_save.xp);
 	snprintf(p, sizeof(p), "%s/langue.txt", g_savedir ? g_savedir : ".");
