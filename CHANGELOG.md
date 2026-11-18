@@ -2,6 +2,20 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
+## 3.3.0 · 2026-11-19
+
+### Mode correction
+
+- nouveau « Mode correction » dans le menu, pour corriger un autre étudiant : tu choisis le dossier du corrigé, le haut de l'écran affiche « testeur des fous | mode : correction » et le menu ne garde que ce qui sert pendant une correction ;
+- Tester tout le projet : tous les tests du corrigé, sans cinématiques ni animations ;
+- Vérifs de rendu : fichiers en trop, norminette, Makefile (règles, flags, relink), fonctions interdites, en un seul écran, sans lancer les tests ; marche pour Libft, ft_printf et get_next_line ;
+- Lancer un test précis : une grille aux flèches pour choisir une fonction Libft, une catégorie ft_printf (%c, %d, malloc, stress…) ou un BUFFER_SIZE get_next_line ; il se relance seul avec tout le détail ; pour la Libft, la liste des cas testés s'affiche (par exemple chaque split(…) essayé) ;
+- « Quitter le mode correction » ramène au testeur normal.
+
+### Mode debug
+
+- le mode debug ne laisse plus un écran vide pendant toute l'analyse : une barre d'avancement affiche l'étape en cours, le temps écoulé et le temps restant estimé d'après ton dernier passage ; Ctrl+C arrête.
+
 ## 3.2.0 · 2026-11-18
 
 ### Libft

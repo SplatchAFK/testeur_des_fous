@@ -1811,3 +1811,35 @@ other sections, Outfits included	otras secciones, Trajes incluidos
 other sections	otras secciones
 ▲ ▼ pick   Esc: back	▲ ▼ elegir   Esc: volver
 • Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Guardarropa: una sección Trajes (hasta 5), vista grande (tecla v) y un apodo más fácil de escribir.
+%d s elapsed · about %d s left	%d s transcurridos · quedan unos %d s
+%d s elapsed · almost done	%d s transcurridos · casi listo
+%d s elapsed · first time: no estimate yet	%d s transcurridos · primera vez: aún sin estimación
+Ctrl+C to stop	Ctrl+C para parar
+Debug mode · %s: every detailed report	Modo debug · %s: todos los informes detallados
+Testing %s	Probando %s
+testeur des fous | mode: grading	testeur des fous | modo: corrección
+Submission checks	Comprobaciones de entrega
+  %sClean submission%s\n\n	  %sEntrega limpia%s\n\n
+  %s%d submission check(s) failing%s\n\n	  %s%d comprobación(es) de entrega fallida(s)%s\n\n
+\n  %sTested cases (the first %s, each compared with the real function or the expected result):%s\n	\n  %sCasos probados (los %s primeros, cada uno comparado con la función real o el resultado esperado):%s\n
+  %s%d submission check(s) failing%s\n	  %s%d comprobación(es) de entrega fallida(s)%s\n
+  %sClean submission%s\n	  %sEntrega limpia%s\n
+FOLDER OF THE STUDENT YOU GRADE	CARPETA DEL ESTUDIANTE QUE CORRIGES
+▲ ▼ pick   ↑ at the top: type a path   Enter confirm   Esc back	▲ ▼ elegir   ↑ arriba del todo: escribir una ruta   Intro confirmar   Esc volver
+Libft: which function to run again?	Libft: ¿qué función volver a lanzar?
+ft_printf: which category to run again?	ft_printf: ¿qué categoría volver a lanzar?
+get_next_line: which BUFFER_SIZE to run again?	get_next_line: ¿qué BUFFER_SIZE volver a lanzar?
+◀ ▲ ▼ ▶ pick   Enter: run this test alone, with every detail   Esc: back	◀ ▲ ▼ ▶ elegir   Intro: lanzar solo esta prueba, con todo el detalle   Esc: volver
+Graded folder: %s|The folder of the project you grade: %s	Carpeta corregida: %s|La carpeta del proyecto que corriges: %s
+to pick	por elegir
+not picked yet	aún no elegida
+Test the whole project|Every test of the graded project, with no cutscenes or animations.	Probar todo el proyecto|Todas las pruebas del proyecto corregido, sin cinemáticas ni animaciones.
+Submission checks|Extra files, norminette, Makefile, forbidden functions: all on one screen.	Comprobaciones de entrega|Archivos de más, norminette, Makefile, funciones prohibidas: todo en una pantalla.
+Run one test|Pick a function, a conversion or a BUFFER_SIZE: it runs alone, with every detail.	Lanzar una prueba concreta|Elige una función, una conversión o un BUFFER_SIZE: se lanza sola, con todo el detalle.
+Leave grading mode|Go back to the normal tester.	Salir del modo corrección|Volver al testeur normal.
+Quit|Close the tester.	Salir|Cerrar el testeur.
+Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	Modo corrección|Para corregir a otro estudiante: el testeur solo mira su carpeta, con comprobaciones de entrega y pruebas concretas. Sin cinemáticas ni animaciones.
+NEW IN 3.3.0	NOVEDADES DE LA 3.3.0
+• Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail.	• Modo corrección (menú): solo la carpeta del corregido, comprobaciones de entrega en una pantalla y pruebas concretas con todo el detalle.
+• Debug mode: a progress bar with the time left instead of an empty screen.	• Modo debug: una barra de progreso con el tiempo restante en vez de una pantalla vacía.
+ALREADY IN 3.2.0	YA EN LA 3.2.0

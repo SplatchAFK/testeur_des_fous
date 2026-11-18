@@ -21,6 +21,7 @@ static int	g_fails;
 static int	g_warns;
 static char	g_case[200] = "début du test";
 static long	g_case_seq;
+static int	g_cas = -1;
 
 static void	check(int ok, const char *fmt, ...)
 	__attribute__((format(printf, 2, 3)));
@@ -68,6 +69,10 @@ static void	setcase(const char *fmt, ...)
 	vsnprintf(g_case, sizeof(g_case), fmt, ap);
 	va_end(ap);
 	g_case_seq++;
+	if (g_cas < 0)
+		g_cas = getenv("TDF_CAS") != NULL;
+	if (g_cas && g_case_seq <= 400)
+		printf("  cs| %s\n", g_case);
 }
 
 #define TSZ (1 << 18)

@@ -239,7 +239,24 @@ static void	mu_ajouter(t_mu *m, const char *act, const char *lab, const char *ch
 
 static void	mu_charger(t_mu *m)
 {
+	char	ch[600];
+	char	lab[800];
+	char	*b;
+
 	m->n = 0;
+	if (tdf_correction(ch, sizeof(ch)))
+	{
+		b = strrchr(ch, '/');
+		snprintf(lab, sizeof(lab), L("Dossier du corrigé : %s|Le dossier du projet que tu corriges : %s", "Graded folder: %s|The folder of the project you grade: %s"),
+			ch[0] ? (b && b[1] ? b + 1 : ch) : L("à choisir", "to pick"), ch[0] ? ch : L("pas encore choisi", "not picked yet"));
+		mu_ajouter(m, "corr_dossier", lab, NULL);
+		mu_ajouter(m, "corr_tout", L("Tester tout le projet|Tous les tests du projet du corrigé, sans cinématiques ni animations.", "Test the whole project|Every test of the graded project, with no cutscenes or animations."), NULL);
+		mu_ajouter(m, "corr_rendu", L("Vérifs de rendu|Fichiers en trop, norminette, Makefile, fonctions interdites : tout en un écran.", "Submission checks|Extra files, norminette, Makefile, forbidden functions: all on one screen."), NULL);
+		mu_ajouter(m, "corr_test", L("Lancer un test précis|Choisis une fonction, une conversion ou un BUFFER_SIZE : il se relance seul, avec tout le détail.", "Run one test|Pick a function, a conversion or a BUFFER_SIZE: it runs alone, with every detail."), NULL);
+		mu_ajouter(m, "corr_fin", L("Quitter le mode correction|Revenir au testeur normal.", "Leave grading mode|Go back to the normal tester."), NULL);
+		mu_ajouter(m, "quitter", L("Quitter|Fermer le testeur.", "Quit|Close the tester."), NULL);
+		return ;
+	}
 	mu_ajouter(m, "projet", L("Tester mon projet|Choisis le dossier de ta Libft, de ton ft_printf ou de ton get_next_line. « . » : le dossier où tu es.", "Test my project|Pick the folder of your Libft, ft_printf or get_next_line. '.': the folder you are in."), NULL);
 	mu_ajouter(m, "exam", L("Exam en C|Examen blanc de 3 h, série d'exercices ou entraînement : tout se règle aux flèches", "C exam|3-hour mock exam, exercise series or training: all set with the arrows"), NULL);
 	mu_ajouter(m, "banque", L("Banque d'exercices|Les exercices du testeur au choix : exam, Libft, printf", "Exercise bank|The tester's exercises, your pick: exam, Libft, printf"), NULL);
@@ -248,6 +265,7 @@ static void	mu_charger(t_mu *m)
 	mu_ajouter(m, "chevalier", L("Chevalier|Ton avatar, la boutique, ton profil et tes succès", "Knight|Your avatar, the shop, your profile and achievements"), NULL);
 	mu_ajouter(m, "lore", L("Lore|Les boss, les cinématiques et la carte de la Cité", "Lore|The bosses, the cutscenes and the map of the City"), NULL);
 	mu_ajouter(m, "stats", L("Stats|Ta progression, tes badges et le holygraph 42 Next", "Stats|Your progress, your badges and the 42 Next holygraph"), NULL);
+	mu_ajouter(m, "correction", L("Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations."), NULL);
 	mu_ajouter(m, "params", L("Paramètres|Réglages, langue, interface, commande tdf", "Settings|Settings, language, interface, tdf command"), NULL);
 	mu_ajouter(m, "quitter", L("Quitter|Fermer le testeur. Ta progression est déjà enregistrée.", "Quit|Close the tester. Your progress is already saved."), NULL);
 }
@@ -618,7 +636,9 @@ static int	mu_ecran(t_mu *m, int *sel)
 			haut = 2;
 		}
 		snprintf(tmp, sizeof(tmp), "v%s · %s", TDF_VERSION, L("créé et vibe-codé par Splatch", "created and vibe-coded by Splatch"));
-		if (haut)
+		if (haut && tdf_correction(NULL, 0))
+			center(haut, theme()->accent2, L("testeur des fous | mode : correction", "testeur des fous | mode: grading"));
+		else if (haut)
 			center(haut, theme()->dim, tmp);
 		y = haut + 2;
 		iw = mu_largeur(m);
@@ -653,7 +673,8 @@ static int	mu_ecran(t_mu *m, int *sel)
 			zones[nz++] = (t_zone){3, 2, 14, x - 6};
 		if (haut == 16 && cols - (x + tw + 4 + g_fou_bloc_w) - 6 >= 22)
 			zones[nz++] = (t_zone){x + tw + 4 + g_fou_bloc_w + 3, 2, 14, cols - (x + tw + 4 + g_fou_bloc_w) - 6};
-		bulle(zones, nz, anim);
+		if (!tdf_correction(NULL, 0))
+			bulle(zones, nz, anim);
 		i = y + 2 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1);
 		if (strchr(m->items[*sel], '|') && i < rows - 2)
 		{
@@ -687,6 +708,7 @@ int	tdf_menu_principal(void (*profile)(void), void (*boss)(void), void (*credits
 	static t_mu	m;
 	static int	sel;
 	char		dossier[1100];
+	char		test[64];
 	const char	*a;
 	int			i;
 
@@ -720,6 +742,34 @@ int	tdf_menu_principal(void (*profile)(void), void (*boss)(void), void (*credits
 			tdf_menu_params(credits);
 			if (g_choix[0])
 				return (46);
+		}
+		else if (!strcmp(a, "correction"))
+		{
+			tdf_correction_ecrire("");
+			sel = 0;
+			tdf_correction_dossier(dossier, sizeof(dossier));
+		}
+		else if (!strcmp(a, "corr_dossier"))
+			tdf_correction_dossier(dossier, sizeof(dossier));
+		else if (!strcmp(a, "corr_fin"))
+		{
+			tdf_correction_ecrire(NULL);
+			sel = 0;
+		}
+		else if (!strncmp(a, "corr_", 5))
+		{
+			tdf_correction(dossier, sizeof(dossier));
+			if (!dossier[0] && !tdf_correction_dossier(dossier, sizeof(dossier)))
+				continue ;
+			if (!strcmp(a, "corr_test"))
+			{
+				if (!tdf_choisir_test(dossier, test, sizeof(test)))
+					continue ;
+				i = (int)strlen(dossier);
+				snprintf(dossier + i, sizeof(dossier) - i, "\t%s", test);
+			}
+			tdf_sortie(a, dossier);
+			return (46);
 		}
 		else if (!strcmp(a, "projet"))
 		{

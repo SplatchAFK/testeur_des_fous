@@ -1,6 +1,6 @@
 # Le testeur des fous
 
-> **Version 3.2.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next.
+> **Version 3.3.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next.
 
 Un seul testeur pour **Libft**, **ft_printf** et **get_next_line**, plus un **examshell en C** et une **banque d'exercices**. Il teste comme la moulinette, il ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te dit où regarder.
 
@@ -102,13 +102,23 @@ Tout passe par le menu. Deux commandes seulement :
 bash testeur_des_fous/run.sh exam      # l'examshell des fous, directement
 ```
 
+## Mode correction
+
+Pour corriger un autre étudiant : menu › Mode correction, puis choisis le dossier de son projet. Le haut de l'écran affiche « testeur des fous | mode : correction » et le menu ne propose plus que ce qui sert pendant une correction :
+
+- Tester tout le projet : tous les tests, sans cinématiques ni animations ;
+- Vérifs de rendu : fichiers en trop, norminette, Makefile, fonctions interdites, en un seul écran ;
+- Lancer un test précis : une fonction Libft, une conversion ft_printf ou un BUFFER_SIZE get_next_line, relancé seul avec tout le détail (pour la Libft, la liste des cas testés).
+
+« Quitter le mode correction » ramène au testeur normal.
+
 ## Ta progression
 
 Elle est dans `~/.testeur_des_fous/save.txt`, hors du dossier du testeur : tu peux supprimer ou recloner le testeur sans rien perdre. Une sauvegarde des anciens testeurs Libft et printf est reprise telle quelle.
 
 ## Un problème ?
 
-Active le mode debug dans le menu (Tester mon projet › Options du test › Mode debug) pour voir tous les rapports détaillés. Chaque lancement est aussi noté dans `~/.testeur_des_fous/debug/` : envoie ce dossier sur Discord si tu bloques.
+Active le mode debug dans le menu (Tester mon projet › Options du test › Mode debug) pour voir tous les rapports détaillés. Il est plus long (ASan, valgrind, audit) : une barre d'avancement montre l'étape en cours et le temps restant estimé. Chaque lancement est aussi noté dans `~/.testeur_des_fous/debug/` : envoie ce dossier sur Discord si tu bloques.
 
 Pendant l'analyse, Échap (ou Ctrl+C) arrête les tests.
 

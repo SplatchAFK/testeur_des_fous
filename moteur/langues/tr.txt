@@ -1811,3 +1811,35 @@ other sections, Outfits included	diğer bölümler, Kıyafetler dahil
 other sections	diğer bölümler
 ▲ ▼ pick   Esc: back	▲ ▼ seç   Esc: geri
 • Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Gardırop: bir Kıyafetler bölümü (en fazla 5), büyük önizleme (v tuşu) ve yazması daha kolay bir takma ad.
+%d s elapsed · about %d s left	%d sn geçti · yaklaşık %d sn kaldı
+%d s elapsed · almost done	%d sn geçti · neredeyse bitti
+%d s elapsed · first time: no estimate yet	%d sn geçti · ilk kez: henüz tahmin yok
+Ctrl+C to stop	Durdurmak için Ctrl+C
+Debug mode · %s: every detailed report	Debug modu · %s: tüm ayrıntılı raporlar
+Testing %s	%s test ediliyor
+testeur des fous | mode: grading	testeur des fous | mod: değerlendirme
+Submission checks	Teslim kontrolleri
+  %sClean submission%s\n\n	  %sTemiz teslim%s\n\n
+  %s%d submission check(s) failing%s\n\n	  %s%d teslim kontrolü başarısız%s\n\n
+\n  %sTested cases (the first %s, each compared with the real function or the expected result):%s\n	\n  %sTest edilen durumlar (ilk %s, her biri gerçek fonksiyonla veya beklenen sonuçla karşılaştırıldı):%s\n
+  %s%d submission check(s) failing%s\n	  %s%d teslim kontrolü başarısız%s\n
+  %sClean submission%s\n	  %sTemiz teslim%s\n
+FOLDER OF THE STUDENT YOU GRADE	DEĞERLENDİRDİĞİN ÖĞRENCİNİN KLASÖRÜ
+▲ ▼ pick   ↑ at the top: type a path   Enter confirm   Esc back	▲ ▼ seç   ↑ en üstte: yol yaz   Enter onayla   Esc geri
+Libft: which function to run again?	Libft: hangi fonksiyon yeniden çalıştırılsın?
+ft_printf: which category to run again?	ft_printf: hangi kategori yeniden çalıştırılsın?
+get_next_line: which BUFFER_SIZE to run again?	get_next_line: hangi BUFFER_SIZE yeniden çalıştırılsın?
+◀ ▲ ▼ ▶ pick   Enter: run this test alone, with every detail   Esc: back	◀ ▲ ▼ ▶ seç   Enter: yalnızca bu testi tüm ayrıntılarıyla çalıştır   Esc: geri
+Graded folder: %s|The folder of the project you grade: %s	Değerlendirilen klasör: %s|Değerlendirdiğin projenin klasörü: %s
+to pick	seçilecek
+not picked yet	henüz seçilmedi
+Test the whole project|Every test of the graded project, with no cutscenes or animations.	Tüm projeyi test et|Değerlendirilen projenin tüm testleri, ara sahne ve animasyon olmadan.
+Submission checks|Extra files, norminette, Makefile, forbidden functions: all on one screen.	Teslim kontrolleri|Fazla dosyalar, norminette, Makefile, yasak fonksiyonlar: hepsi tek ekranda.
+Run one test|Pick a function, a conversion or a BUFFER_SIZE: it runs alone, with every detail.	Tek bir test çalıştır|Bir fonksiyon, bir dönüşüm ya da bir BUFFER_SIZE seç: tek başına, tüm ayrıntılarıyla çalışır.
+Leave grading mode|Go back to the normal tester.	Değerlendirme modundan çık|Normal test aracına dön.
+Quit|Close the tester.	Çıkış|Test aracını kapat.
+Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	Değerlendirme modu|Başka bir öğrenciyi değerlendirmek için: test aracı yalnızca onun klasörüne bakar, teslim kontrolleri ve tekli testlerle. Ara sahne ve animasyon yok.
+NEW IN 3.3.0	3.3.0 SÜRÜMÜNDE YENİ
+• Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail.	• Değerlendirme modu (menü): yalnızca değerlendirilen klasör, tek ekranda teslim kontrolleri ve tüm ayrıntılarıyla tekli testler.
+• Debug mode: a progress bar with the time left instead of an empty screen.	• Debug modu: boş ekran yerine kalan süreyi gösteren bir ilerleme çubuğu.
+ALREADY IN 3.2.0	3.2.0 SÜRÜMÜNDE ZATEN VAR

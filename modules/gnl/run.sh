@@ -33,6 +33,7 @@ while [ $# -gt 0 ]; do
 	case "$1" in
 		-h|--help) usage; exit 0 ;;
 		-v|--debug) VERBEUX=1 ;;
+		--rendu) RENDU=1 ;;
 		-k) GARDER=1 ;;
 		--tailles) shift; TAILLES="${1:-$TAILLES}" ;;
 		--projet|--dir) shift; PROJET="$(cd "${1:-.}" && pwd)" ;;
@@ -218,6 +219,17 @@ while IFS=$'\t' read -r f m; do
 	[ -n "$f" ] || continue
 	ligne NOTE "hors git : $f" "$m"
 done <<< "$(tdf_non_suivis "$PROJET")"
+
+if [ "${RENDU:-0}" = 1 ]; then
+	printf '\n'
+	if [ "$N_KO" = 0 ]; then
+		printf "$(tt "  %sRendu propre%s\n\n" "  %sClean submission%s\n\n")" "$F_OK$B" "$R"
+	else
+		printf "$(tt "  %s%d contrôle(s) de rendu en échec%s\n\n" "  %s%d submission check(s) failing%s\n\n")" "$F_KO$B" "$N_KO" "$R"
+	fi
+	[ "$N_KO" = 0 ]
+	exit
+fi
 
 SAN=""
 probe='int main(void){return 0;}'

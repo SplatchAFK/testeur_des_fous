@@ -563,13 +563,16 @@ void	tdf_tuto(void)
 void	tdf_nouveautes(void)
 {
 	char		titre[120];
-	char		texte[2400];
+	char		texte[4000];
 	const char	*items[2];
 	int			sel;
 
 	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
-		L("NOUVEAU DANS LA 3.2.0", "NEW IN 3.2.0"),
+	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
+		L("NOUVEAU DANS LA 3.3.0", "NEW IN 3.3.0"),
+		L("• Mode correction (menu) : le dossier du corrigé seulement, vérifs de rendu en un écran et test précis avec le détail.", "• Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail."),
+		L("• Mode debug : une barre d'avancement avec le temps restant au lieu d'un écran vide.", "• Debug mode: a progress bar with the time left instead of an empty screen."),
+		L("DÉJÀ DANS LA 3.2.0", "ALREADY IN 3.2.0"),
 		L("• Erreurs norminette visibles dans Libft, ft_printf et get_next_line : bannière rouge et touche n pour le détail.", "• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details."),
 		L("• Nouvel écran de résultats get_next_line. Stats : onglet get_next_line, et ↓ pour les détails de chaque projet.", "• New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project."),
 		L("• Garde-robe : un rayon Tenues (jusqu'à 5), grand aperçu (touche v) et un pseudo plus simple à taper.", "• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type."),
@@ -1044,6 +1047,8 @@ static void	aide_chemin(int y0, int y1)
 	bgc(theme()->bg);
 }
 
+static int	g_corr_choix;
+
 int	tdf_choisir_dossier(char *out, size_t n)
 {
 	static t_cand	c[400];
@@ -1090,7 +1095,8 @@ int	tdf_choisir_dossier(char *out, size_t n)
 			csel = nc - 1;
 		bgc(theme()->bg);
 		frame();
-		center(1, theme()->accent2, L("TESTER MON PROJET", "TEST MY PROJECT"));
+		center(1, theme()->accent2, g_corr_choix ? L("DOSSIER DU CORRIGÉ", "FOLDER OF THE STUDENT YOU GRADE")
+			: L("TESTER MON PROJET", "TEST MY PROJECT"));
 		at(x, 4);
 		bgc(mode ? mix(theme()->bg, theme()->accent, 0.18) : theme()->bg);
 		if (mode)
@@ -1136,12 +1142,14 @@ int	tdf_choisir_dossier(char *out, size_t n)
 				text_at(x, 6, theme()->dim, L("Tape un chemin : ~/ pour ton dossier perso, / pour la racine, . pour ici.",
 						"Type a path: ~/ for your home, / for the root, . for here."));
 		}
-		k = mode ? 8 + h : dessiner_options(x, 8 + h, sel - ne) + 1;
+		k = mode || g_corr_choix ? 8 + h : dessiner_options(x, 8 + h, sel - ne) + 1;
 		aide_chemin(k, term_rows() - 4);
 		if (msg)
 			text_at(x, term_rows() - 3, rgb(255, 120, 120), msg);
 		foot_line(x, mode ? L("Tab compléter   ▲ ▼ choisir   ▶ ouvrir   ◀ remonter   Entrée valider   Échap : liste",
 				"Tab complete   ▲ ▼ pick   ▶ open   ◀ up   Enter confirm   Esc: list")
+			: g_corr_choix ? L("▲ ▼ choisir   ↑ tout en haut : écrire un chemin   Entrée valider   Échap retour",
+				"▲ ▼ pick   ↑ at the top: type a path   Enter confirm   Esc back")
 			: L("▲ ▼ choisir   ↑ tout en haut : écrire un chemin   Entrée tester   Échap retour",
 				"▲ ▼ pick   ↑ at the top: type a path   Enter test   Esc back"));
 		flush();
@@ -1161,7 +1169,7 @@ int	tdf_choisir_dossier(char *out, size_t n)
 			}
 			else if (k == 1000)
 				sel--;
-			else if (k == 1001 && sel < ne + NOPT - 1)
+			else if (k == 1001 && sel < ne + (g_corr_choix ? 0 : NOPT) - 1)
 				sel++;
 			else if (sel >= ne && (k == '\r' || k == '\n' || k == ' ' || k == 1002 || k == 1003))
 			{
@@ -1238,6 +1246,188 @@ int	tdf_choisir_dossier(char *out, size_t n)
 			saisie[strlen(saisie)] = (char)k;
 			csel = -1;
 			ctop = 0;
+		}
+	}
+}
+
+int	tdf_correction(char *chemin, size_t n)
+{
+	FILE	*f;
+	char	path[700];
+	char	l[1100];
+
+	snprintf(path, sizeof(path), "%s/correction.txt", g_savedir);
+	f = fopen(path, "r");
+	if (!f)
+		return (0);
+	if (!fgets(l, sizeof(l), f))
+		l[0] = '\0';
+	fclose(f);
+	l[strcspn(l, "\r\n")] = '\0';
+	if (chemin && n)
+		snprintf(chemin, n, "%s", l);
+	return (1);
+}
+
+void	tdf_correction_ecrire(const char *chemin)
+{
+	FILE	*f;
+	char	path[700];
+
+	snprintf(path, sizeof(path), "%s/correction.txt", g_savedir);
+	if (!chemin)
+	{
+		remove(path);
+		return ;
+	}
+	f = fopen(path, "w");
+	if (!f)
+		return ;
+	fprintf(f, "%s\n", chemin);
+	fclose(f);
+}
+
+int	tdf_correction_dossier(char *out, size_t n)
+{
+	int	r;
+
+	g_corr_choix = 1;
+	r = tdf_choisir_dossier(out, n);
+	g_corr_choix = 0;
+	if (r)
+		tdf_correction_ecrire(out);
+	return (r);
+}
+
+static int	corr_existe(const char *d, const char *f)
+{
+	char	p[1300];
+
+	snprintf(p, sizeof(p), "%s/%s", d, f);
+	return (access(p, R_OK) == 0);
+}
+
+static int	corr_type(const char *d)
+{
+	if (corr_existe(d, "ft_printf.h") || corr_existe(d, "include/ft_printf.h")
+		|| corr_existe(d, "includes/ft_printf.h") || corr_existe(d, "inc/ft_printf.h"))
+		return (2);
+	if (corr_existe(d, "get_next_line.h") || corr_existe(d, "get_next_line.c"))
+		return (3);
+	if (corr_existe(d, "libft.h"))
+		return (1);
+	return (0);
+}
+
+int	tdf_choisir_test(const char *dossier, char *out, size_t n)
+{
+	static const char	*lf[] = {"isalpha", "isdigit", "isalnum", "isascii", "isprint",
+		"strlen", "memset", "bzero", "memcpy", "memmove", "strlcpy", "strlcat", "toupper",
+		"tolower", "strchr", "strrchr", "strncmp", "memchr", "memcmp", "strnstr", "atoi",
+		"calloc", "strdup", "substr", "strjoin", "strtrim", "split", "itoa", "strmapi",
+		"striteri", "putchar_fd", "putstr_fd", "putendl_fd", "putnbr_fd", "lstnew",
+		"lstadd_front", "lstsize", "lstlast", "lstadd_back", "lstdelone", "lstclear",
+		"lstiter", "lstmap"};
+	static const char	*pf[] = {"c", "s", "p", "d", "i", "u", "x", "X", "%", "mix",
+		"ret", "limites", "write", "malloc", "stress"};
+	static const char	*gn[] = {"1", "2", "7", "42", "1024", "9999", "10000000"};
+	static int			sel;
+	const char			**noms;
+	const char			*titre;
+	char				lab[40];
+	int					nb;
+	int					t;
+	int					cw;
+	int					nc;
+	int					x;
+	int					y;
+	int					i;
+	int					k;
+
+	t = corr_type(dossier);
+	if (t == 1)
+	{
+		noms = lf;
+		nb = 43;
+		titre = L("Libft : quelle fonction relancer ?", "Libft: which function to run again?");
+	}
+	else if (t == 2)
+	{
+		noms = pf;
+		nb = 15;
+		titre = L("ft_printf : quelle catégorie relancer ?", "ft_printf: which category to run again?");
+	}
+	else if (t == 3)
+	{
+		noms = gn;
+		nb = 7;
+		titre = L("get_next_line : quel BUFFER_SIZE relancer ?", "get_next_line: which BUFFER_SIZE to run again?");
+	}
+	else
+	{
+		out[0] = '\0';
+		return (1);
+	}
+	if (sel >= nb)
+		sel = 0;
+	cls();
+	while (1)
+	{
+		cw = 20;
+		nc = (term_cols() - 8) / cw;
+		if (nc > 5)
+			nc = 5;
+		if (nc < 1)
+			nc = 1;
+		x = (term_cols() - nc * cw) / 2;
+		if (x < 1)
+			x = 1;
+		bgc(theme()->bg);
+		frame();
+		center(2, theme()->accent2, L("testeur des fous | mode : correction", "testeur des fous | mode: grading"));
+		center(4, theme()->text, titre);
+		for (i = 0; i < nb; i++)
+		{
+			at(x + (i % nc) * cw, 6 + i / nc);
+			if (i == sel)
+			{
+				bgc(mix(theme()->bg, theme()->accent, 0.22));
+				fg(theme()->accent2);
+			}
+			else
+				fg(theme()->text);
+			if (t == 1)
+				snprintf(lab, sizeof(lab), "ft_%s", noms[i]);
+			else if (t == 2 && !strcmp(noms[i], "%"))
+				snprintf(lab, sizeof(lab), "%%%%");
+			else if (t == 2 && strlen(noms[i]) == 1)
+				snprintf(lab, sizeof(lab), "%%%s", noms[i]);
+			else
+				snprintf(lab, sizeof(lab), "%s", noms[i]);
+			outf(" %s %-*s", i == sel ? "▶" : " ", cw - 3, lab);
+			bgc(theme()->bg);
+		}
+		y = 7 + (nb - 1) / nc + 1;
+		text_at(x, y, theme()->dim, L("◀ ▲ ▼ ▶ choisir   Entrée : lancer ce test seul, avec tout le détail   Échap : retour",
+				"◀ ▲ ▼ ▶ pick   Enter: run this test alone, with every detail   Esc: back"));
+		flush();
+		k = key_read(200);
+		if (k < 0)
+			continue ;
+		if (k == 27 || k == 127 || k == 8)
+			return (cls(), 0);
+		if (k == 1000 && sel - nc >= 0)
+			sel -= nc;
+		else if (k == 1001 && sel + nc < nb)
+			sel += nc;
+		else if (k == 1002 && sel + 1 < nb)
+			sel++;
+		else if (k == 1003 && sel > 0)
+			sel--;
+		else if (k == '\r' || k == '\n' || k == ' ')
+		{
+			snprintf(out, n, "%s", noms[sel]);
+			return (cls(), 1);
 		}
 	}
 }

@@ -194,6 +194,87 @@ preparer_suite() {
 	fi
 }
 
+attente_ligne() {
+	printf '\033[%d;1H\033[2K%*s%s' "$1" "$2" '' "$3"
+}
+
+attente_module() {
+	local pid="$1" f="$2" cle="$3" titre="$4" t0 e est h w y x pct plein i barre vide etape info code tour=0 lb=30
+	mkdir -p "$DOSSIER/durees"
+	est="$(cat "$DOSSIER/durees/$cle" 2>/dev/null)"
+	case "$est" in ''|*[!0-9]*) est=0 ;; esac
+	t0=$(tdf_ms)
+	printf '\033[2J'
+	while kill -0 "$pid" 2>/dev/null; do
+		h=24; w=80
+		read -r h w < <(stty size 2>/dev/null </dev/tty) || true
+		case "$h$w" in *[!0-9]*|'') h=24; w=80 ;; esac
+		e=$(( ($(tdf_ms) - t0) / 1000 ))
+		[ "$w" -lt 48 ] && lb=$(( w - 18 ))
+		[ "$lb" -lt 8 ] && lb=8
+		barre=""; vide=""
+		if [ "$est" -gt 0 ]; then
+			pct=$(( e * 100 / est ))
+			[ "$pct" -gt 99 ] && pct=99
+			plein=$(( pct * lb / 100 ))
+			for ((i = 0; i < plein; i++)); do barre+="█"; done
+			for ((i = plein; i < lb; i++)); do vide+="░"; done
+			if [ "$e" -lt "$est" ]; then
+				info="$(printf "$(tt "%d s écoulées · environ %d s restantes" "%d s elapsed · about %d s left")" "$e" "$((est - e))")"
+			else
+				info="$(printf "$(tt "%d s écoulées · presque fini" "%d s elapsed · almost done")" "$e")"
+			fi
+			pct="$(printf '%3d %%' "$pct")"
+		else
+			for ((i = 0; i < lb; i++)); do
+				if [ $(( (i - tour + lb) % lb )) -lt 6 ]; then barre+="█"; else barre+="░"; fi
+			done
+			tour=$(( (tour + 1) % lb ))
+			pct="     "
+			info="$(printf "$(tt "%d s écoulées · première fois : pas encore d'estimation" "%d s elapsed · first time: no estimate yet")" "$e")"
+		fi
+		etape="$(tail -c 4000 "$f" 2>/dev/null | sed -e $'s/\x1b\\[[0-9;?]*[A-Za-z]//g' -e 's/\r/\n/g' | grep -v '^[[:space:]]*$' | tail -1 | sed -e 's/^[[:space:]]*//')"
+		etape="${etape:0:$(( w - 8 ))}"
+		y=$(( h / 2 - 3 )); [ "$y" -lt 1 ] && y=1
+		x=$(( (w - lb - 8) / 2 )); [ "$x" -lt 2 ] && x=2
+		attente_ligne "$y" "$x" "$(printf '\033[1;38;5;213m%s\033[0m' "$titre")"
+		attente_ligne $((y + 2)) "$x" "$(printf '\033[38;5;117m%s\033[38;5;239m%s\033[0m %s' "$barre" "$vide" "$pct")"
+		attente_ligne $((y + 3)) "$x" "$(printf '\033[2m%s\033[0m' "$info")"
+		attente_ligne $((y + 5)) "$x" "$(printf '\033[38;5;250m%s\033[0m' "$etape")"
+		attente_ligne $((y + 7)) "$x" "$(printf '\033[2m%s\033[0m' "$(tt "Ctrl+C pour arrêter" "Ctrl+C to stop")")"
+		sleep 0.5
+	done
+	wait "$pid"
+	code=$?
+	e=$(( ($(tdf_ms) - t0) / 1000 ))
+	{ [ "$code" = 0 ] || [ "$code" = 1 ]; } && [ "$e" -gt 0 ] && printf '%s\n' "$e" > "$DOSSIER/durees/$cle"
+	printf '\033[2J'
+	return "$code"
+}
+
+cle_duree() {
+	local c="$MODULE ${SUITE[*]:-}"
+	c="${c// /_}"
+	printf '%s' "${c//[^A-Za-z0-9_]/}"
+}
+
+nom_module() {
+	case "$1" in
+		libft) printf 'Libft' ;;
+		printf) printf 'ft_printf' ;;
+		gnl) printf 'get_next_line' ;;
+		*) printf '%s' "$1" ;;
+	esac
+}
+
+titre_attente() {
+	[ -n "${CORR_TITRE:-}" ] && { printf '%s' "$CORR_TITRE"; return; }
+	case " ${SUITE[*]:-} " in
+		*" --debug "*) printf "$(tt "Mode debug · %s : tous les rapports détaillés" "Debug mode · %s: every detailed report")" "$1" ;;
+		*) printf "$(tt "Tests de %s en cours" "Testing %s")" "$1" ;;
+	esac
+}
+
 voir_rapport() {
 	TDF_ECRAN=rapport TDF_RAPPORT="$1" TDF_RAPPORT_TITRE="$2" TDF_PROJET="" bash "$TDF_RACINE/modules/libft/run.sh" --menu
 }
@@ -227,8 +308,43 @@ lore_scene() {
 	esac
 }
 
+correction_preparer() {
+	local a="$1" p="$2" t="" quoi
+	case "$a" in corr_test) t="${p#*$'\t'}"; p="${p%%$'\t'*}" ;; esac
+	PROJET="$p"
+	if est_printf "$PROJET"; then MODULE=printf
+	elif est_libft "$PROJET"; then MODULE=libft
+	elif est_gnl "$PROJET"; then MODULE=gnl
+	else
+		mkdir -p "$DOSSIER/derniere"
+		printf "$(tt "Je ne reconnais ni une Libft, ni un ft_printf, ni un get_next_line dans %s" "I recognise neither a Libft, nor a ft_printf, nor a get_next_line in %s")\n" "$PROJET" > "$DOSSIER/derniere/message.txt"
+		voir_rapport "$DOSSIER/derniere/message.txt" "$(tt "testeur des fous | mode : correction" "testeur des fous | mode: grading")"
+		return 1
+	fi
+	export TDF_SANS_HISTOIRE=1
+	case " ${SUITE[*]:-} " in *" --fast "*) ;; *) SUITE+=(--fast) ;; esac
+	case "$a" in
+		corr_tout) return 0 ;;
+		corr_rendu)
+			SUITE+=(--rendu)
+			quoi="$(tt "Vérifs de rendu" "Submission checks")"
+			;;
+		corr_test)
+			case "$MODULE" in
+				libft) SUITE+=(-v "$t"); quoi="ft_$t"; export TDF_CAS=1 ;;
+				printf) SUITE+=(-v --no-lore --only "$t"); quoi="ft_printf %$t" ;;
+				gnl) SUITE+=(-v --tailles "$t"); quoi="get_next_line BUFFER_SIZE=$t" ;;
+			esac
+			;;
+	esac
+	CORR_TITRE="$(tt "testeur des fous | mode : correction" "testeur des fous | mode: grading") · $quoi · $(nom_module "$MODULE")"
+	return 0
+}
+
 options_test() {
 	local f="$DOSSIER/options_test.txt"
+	[ -n "${CORR_TITRE:-}" ] && return 0
+	[ -f "$DOSSIER/correction.txt" ] && return 0
 	unset TDF_SANS_HISTOIRE
 	case "$MODULE" in libft|printf|gnl) ;; *) return 0 ;; esac
 	[ -f "$f" ] || return 0
@@ -241,6 +357,7 @@ options_test() {
 }
 
 rapport_texte() {
+	[ -n "${CORR_TITRE:-}" ] && return 0
 	case " ${SUITE[*]:-} " in *" --debug "*) return 0 ;; esac
 	[ "$MODULE" = gnl ] && return 0
 	{ [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; } && case " ${SUITE[*]:-} " in *" --no-lore "*) return 0 ;; esac
@@ -287,7 +404,13 @@ choisir_au_menu() {
 	SUITE=()
 	[ "$SANS_ANIM" = 1 ] && SUITE+=(--fast)
 	unset TDF_ECRAN
+	CORR_TITRE=""
+	unset TDF_CAS
 	case "$a" in
+		corr_tout|corr_rendu|corr_test)
+			correction_preparer "$a" "$p" || return 1
+			return 0
+			;;
 		libft|printf|gnl) MODULE="$a"; PROJET="$p" ;;
 		revoir) revoir_derniere; return 1 ;;
 		lore_printf) TDF_ECRAN=lore TDF_PROJET="" bash "$TDF_RACINE/modules/printf/run.sh" --menu; return 1 ;;
@@ -792,7 +915,9 @@ while :; do
 	if [ "$MENU_UNIQUE" = 1 ] && rapport_texte; then
 		mkdir -p "$DOSSIER/derniere"
 		if [ "${TDF_GARDE_ECRAN:-0}" = 1 ]; then
-			bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"} > "$DOSSIER/derniere/rapport.txt" 2>&1
+			: > "$DOSSIER/derniere/rapport.txt"
+			bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"} > "$DOSSIER/derniere/rapport.txt" 2>&1 < /dev/null &
+			attente_module $! "$DOSSIER/derniere/rapport.txt" "$(cle_duree)" "$(titre_attente "$(nom_module "$MODULE")")"
 			code=$?
 		else
 			bash "$TDF_RACINE/modules/$MODULE/run.sh" ${SUITE[@]+"${SUITE[@]}"} 2>&1 | tee "$DOSSIER/derniere/rapport.txt"
@@ -822,11 +947,11 @@ while :; do
 		[ "$MODULE" = gnl ] && [ -z "${TDF_SANS_HISTOIRE:-}" ] && [ "$DOSSIER/puits.txt" -nt "$DOSSIER/.module_lance" ] && lore_scene lore_gnl
 		debug_suite=0
 		case " ${SUITE[*]:-} " in *" --debug "*) debug_suite=1 ;; esac
-		if [ "$MODULE" = gnl ] && [ "$debug_suite" = 0 ] && [ -s "$DOSSIER/derniere/gnl.res" ] && [ "$DOSSIER/derniere/gnl.res" -nt "$DOSSIER/.module_lance" ]; then
+		if [ "$MODULE" = gnl ] && [ "$debug_suite" = 0 ] && [ -z "${CORR_TITRE:-}" ] && [ -s "$DOSSIER/derniere/gnl.res" ] && [ "$DOSSIER/derniere/gnl.res" -nt "$DOSSIER/.module_lance" ]; then
 			printf 'gnl\n' > "$DOSSIER/derniere/module"
 			voir_gnl
 		elif rapport_texte; then
-			voir_rapport "$DOSSIER/derniere/rapport.txt" "$(tt "Rapport des tests" "Test report")"
+			voir_rapport "$DOSSIER/derniere/rapport.txt" "${CORR_TITRE:-$(tt "Rapport des tests" "Test report")}"
 		fi
 		MENU_A_FAIRE=1
 		export TDF_NO_UPDATE=1

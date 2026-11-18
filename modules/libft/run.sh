@@ -43,6 +43,7 @@ CFG_AUDIT=0
 CFG_AIDE=2
 NOLORE=0
 DEBUG=0
+RENDU=0
 if [ -f "$HOME/.testeur_des_fous/reglages.txt" ]; then
 	while IFS='=' read -r k v; do
 		case "$v" in ''|*[!0-9]*) continue ;; esac
@@ -100,6 +101,7 @@ while [ $# -gt 0 ]; do
 		--reco) RECO="$1"; shift ;;
 		--no-lore|--lore-off) NOLORE=1; CI=1 ;;
 		--debug) DEBUG=1; CI=1; VERBOSE=1; VALG=1; FORCEAUDIT=1 ;;
+		--rendu) RENDU=1; CI=1; FORCEAUDIT=1 ;;
 		--menu) MENU_SEUL=1 ;;
 		--aide) CFG_AIDE="$1"; shift ;;
 		-h|--help) usage; exit 0 ;;
@@ -563,6 +565,11 @@ run_one() {
 		while IFS= read -r l; do det "$l"; done < <(head -3 "$BUILD/err_$n")
 		report crash "$n" "$checks" "$ms"; n_bad=$((n_bad + 1))
 	fi
+	if [ -n "${TDF_CAS:-}" ] && [ "$CI" = 1 ] && grep -q '^  cs| ' "$out"; then
+		l="$(grep '^  cs| ' "$out" | cut -c7- | awk '!v[$0]++' | wc -l | tr -d ' ')"
+		printf "$(tt "\n  %sCas testés (les %s premiers, chacun comparé à la vraie fonction ou au résultat attendu) :%s\n" "\n  %sTested cases (the first %s, each compared with the real function or the expected result):%s\n")" "$TXT" "$l" "$R"
+		grep '^  cs| ' "$out" | cut -c7- | awk '!v[$0]++' | sed 's/^/    /'
+	fi
 }
 
 n_audit_ko=0
@@ -814,6 +821,25 @@ run_all() {
 				|| emit "G	fichier en trop à la racine : $f (interdit dans le rendu)" ;;
 		esac
 	done < <(cd "$ROOT" && ls -A)
+
+	if [ "$RENDU" = 1 ]; then
+		header
+		emit "S	norminette"
+		finish_norm
+		run_audit
+		emit "S	terminé"
+		emit "END"
+		printf '\n  %s' "$D"; rule 58; printf '%s\n\n' "$R"
+		if [ "$n_audit_ko" -gt 0 ]; then
+			printf "$(tt "  %s%d contrôle(s) de rendu en échec%s\n" "  %s%d submission check(s) failing%s\n")" "$F_KO$B" "$n_audit_ko" "$R"
+		else
+			printf "$(tt "  %sRendu propre%s\n" "  %sClean submission%s\n")" "$F_OK$B" "$R"
+		fi
+		grep '^G	' "$RES" | cut -f2 | while IFS= read -r l; do printf '  %s! %s%s\n' "$F_LK" "$l" "$R"; done
+		printf '\n'
+		[ "$n_audit_ko" -eq 0 ]
+		return
+	fi
 
 	emit "S	vérification des 43 prototypes"
 	header

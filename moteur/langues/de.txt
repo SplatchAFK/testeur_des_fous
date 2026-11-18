@@ -1811,3 +1811,35 @@ other sections, Outfits included	andere Bereiche, inklusive Outfits
 other sections	andere Bereiche
 ▲ ▼ pick   Esc: back	▲ ▼ wählen   Esc: zurück
 • Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Kleiderschrank: ein Bereich Outfits (bis zu 5), große Vorschau (Taste v) und ein leichter einzugebender Spitzname.
+%d s elapsed · about %d s left	%d s vergangen · noch etwa %d s
+%d s elapsed · almost done	%d s vergangen · fast fertig
+%d s elapsed · first time: no estimate yet	%d s vergangen · erstes Mal: noch keine Schätzung
+Ctrl+C to stop	Strg+C zum Abbrechen
+Debug mode · %s: every detailed report	Debug-Modus · %s: alle ausführlichen Berichte
+Testing %s	%s wird getestet
+testeur des fous | mode: grading	testeur des fous | Modus: Bewertung
+Submission checks	Abgabeprüfungen
+  %sClean submission%s\n\n	  %sSaubere Abgabe%s\n\n
+  %s%d submission check(s) failing%s\n\n	  %s%d fehlgeschlagene Abgabeprüfung(en)%s\n\n
+\n  %sTested cases (the first %s, each compared with the real function or the expected result):%s\n	\n  %sGetestete Fälle (die ersten %s, jeweils mit der echten Funktion oder dem erwarteten Ergebnis verglichen):%s\n
+  %s%d submission check(s) failing%s\n	  %s%d fehlgeschlagene Abgabeprüfung(en)%s\n
+  %sClean submission%s\n	  %sSaubere Abgabe%s\n
+FOLDER OF THE STUDENT YOU GRADE	ORDNER DER PERSON, DIE DU BEWERTEST
+▲ ▼ pick   ↑ at the top: type a path   Enter confirm   Esc back	▲ ▼ wählen   ↑ ganz oben: Pfad eingeben   Enter bestätigen   Esc zurück
+Libft: which function to run again?	Libft: welche Funktion erneut ausführen?
+ft_printf: which category to run again?	ft_printf: welche Kategorie erneut ausführen?
+get_next_line: which BUFFER_SIZE to run again?	get_next_line: welche BUFFER_SIZE erneut ausführen?
+◀ ▲ ▼ ▶ pick   Enter: run this test alone, with every detail   Esc: back	◀ ▲ ▼ ▶ wählen   Enter: nur diesen Test ausführen, mit allen Details   Esc: zurück
+Graded folder: %s|The folder of the project you grade: %s	Bewerteter Ordner: %s|Der Ordner des Projekts, das du bewertest: %s
+to pick	noch zu wählen
+not picked yet	noch nicht gewählt
+Test the whole project|Every test of the graded project, with no cutscenes or animations.	Ganzes Projekt testen|Alle Tests des bewerteten Projekts, ohne Zwischensequenzen und Animationen.
+Submission checks|Extra files, norminette, Makefile, forbidden functions: all on one screen.	Abgabeprüfungen|Überflüssige Dateien, norminette, Makefile, verbotene Funktionen: alles auf einem Bildschirm.
+Run one test|Pick a function, a conversion or a BUFFER_SIZE: it runs alone, with every detail.	Einen einzelnen Test starten|Wähle eine Funktion, eine Konvertierung oder eine BUFFER_SIZE: sie läuft allein, mit allen Details.
+Leave grading mode|Go back to the normal tester.	Bewertungsmodus verlassen|Zurück zum normalen Tester.
+Quit|Close the tester.	Beenden|Den Tester schließen.
+Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	Bewertungsmodus|Um eine andere Person zu bewerten: der Tester schaut nur auf ihren Ordner, mit Abgabeprüfungen und Einzeltests. Ohne Zwischensequenzen und Animationen.
+NEW IN 3.3.0	NEU IN 3.3.0
+• Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail.	• Bewertungsmodus (Menü): nur der bewertete Ordner, Abgabeprüfungen auf einem Bildschirm und Einzeltests mit allen Details.
+• Debug mode: a progress bar with the time left instead of an empty screen.	• Debug-Modus: ein Fortschrittsbalken mit der Restzeit statt eines leeren Bildschirms.
+ALREADY IN 3.2.0	SCHON IN 3.2.0

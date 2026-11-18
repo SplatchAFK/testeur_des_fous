@@ -1811,3 +1811,35 @@ other sections, Outfits included	другие разделы, включая Н�
 other sections	другие разделы
 ▲ ▼ pick   Esc: back	▲ ▼ выбрать   Esc: назад
 • Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type.	• Гардероб: раздел Наряды (до 5), большой просмотр (клавиша v) и псевдоним, который проще ввести.
+%d s elapsed · about %d s left	прошло %d с · осталось около %d с
+%d s elapsed · almost done	прошло %d с · почти готово
+%d s elapsed · first time: no estimate yet	прошло %d с · первый раз: оценки пока нет
+Ctrl+C to stop	Ctrl+C, чтобы остановить
+Debug mode · %s: every detailed report	Режим отладки · %s: все подробные отчёты
+Testing %s	Проверка %s
+testeur des fous | mode: grading	testeur des fous | режим: проверка
+Submission checks	Проверки сдачи
+  %sClean submission%s\n\n	  %sСдача в порядке%s\n\n
+  %s%d submission check(s) failing%s\n\n	  %s%d проверок сдачи не пройдено%s\n\n
+\n  %sTested cases (the first %s, each compared with the real function or the expected result):%s\n	\n  %sПроверенные случаи (первые %s, каждый сравнён с настоящей функцией или ожидаемым результатом):%s\n
+  %s%d submission check(s) failing%s\n	  %s%d проверок сдачи не пройдено%s\n
+  %sClean submission%s\n	  %sСдача в порядке%s\n
+FOLDER OF THE STUDENT YOU GRADE	ПАПКА СТУДЕНТА, КОТОРОГО ТЫ ПРОВЕРЯЕШЬ
+▲ ▼ pick   ↑ at the top: type a path   Enter confirm   Esc back	▲ ▼ выбрать   ↑ в самом верху: ввести путь   Enter подтвердить   Esc назад
+Libft: which function to run again?	Libft: какую функцию запустить снова?
+ft_printf: which category to run again?	ft_printf: какую категорию запустить снова?
+get_next_line: which BUFFER_SIZE to run again?	get_next_line: какой BUFFER_SIZE запустить снова?
+◀ ▲ ▼ ▶ pick   Enter: run this test alone, with every detail   Esc: back	◀ ▲ ▼ ▶ выбрать   Enter: запустить только этот тест, со всеми деталями   Esc: назад
+Graded folder: %s|The folder of the project you grade: %s	Проверяемая папка: %s|Папка проекта, который ты проверяешь: %s
+to pick	не выбрана
+not picked yet	ещё не выбрана
+Test the whole project|Every test of the graded project, with no cutscenes or animations.	Проверить весь проект|Все тесты проверяемого проекта, без роликов и анимаций.
+Submission checks|Extra files, norminette, Makefile, forbidden functions: all on one screen.	Проверки сдачи|Лишние файлы, norminette, Makefile, запрещённые функции: всё на одном экране.
+Run one test|Pick a function, a conversion or a BUFFER_SIZE: it runs alone, with every detail.	Запустить один тест|Выбери функцию, конверсию или BUFFER_SIZE: он запустится отдельно, со всеми деталями.
+Leave grading mode|Go back to the normal tester.	Выйти из режима проверки|Вернуться к обычному тестеру.
+Quit|Close the tester.	Выход|Закрыть тестер.
+Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	Режим проверки|Чтобы проверить другого студента: тестер смотрит только его папку, с проверками сдачи и отдельными тестами. Без роликов и анимаций.
+NEW IN 3.3.0	НОВОЕ В 3.3.0
+• Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail.	• Режим проверки (меню): только папка проверяемого, проверки сдачи на одном экране и отдельные тесты со всеми деталями.
+• Debug mode: a progress bar with the time left instead of an empty screen.	• Режим отладки: полоса прогресса с оставшимся временем вместо пустого экрана.
+ALREADY IN 3.2.0	УЖЕ В 3.2.0

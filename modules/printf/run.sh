@@ -93,6 +93,7 @@ while [ $# -gt 0 ]; do
 		--no-update) NO_UPDATE=1 ;;
 		--update) shift; UPDATE_SET="${1:-}" ;;
 		--debug) DEBUG=1 ;;
+		--rendu) ONLY="makefile,nm,norme"; NOLORE=1 ;;
 		--menu) MENU_SEUL=1 ;;
 		--exo) shift; EXO="${1:-}" ;;
 		--out) shift; EXO_OUT="${1:-}" ;;
