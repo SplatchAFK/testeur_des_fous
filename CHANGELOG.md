@@ -19,7 +19,8 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Le savais-tu ?
 
-- chaque bulle reste deux fois plus longtemps à l'écran (15 s au lieu de 7,5 s).
+- chaque bulle reste deux fois plus longtemps à l'écran (15 s au lieu de 7,5 s) ;
+- 50 nouvelles phrases, sans contexte, pour garder le moral ou faire réfléchir, dans les 8 langues ; elles apparaissent plus souvent.
 
 ### Mode debug
 

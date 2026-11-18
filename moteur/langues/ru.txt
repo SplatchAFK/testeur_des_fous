@@ -1848,3 +1848,53 @@ grading mode, on the graded folder	режим проверки, в папке п
 Grading mode	Режим проверки
 Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	Проверяешь кого-то? Синяя кнопка «Режим проверки» в меню (или «tdf correction» в терминале) оставляет только папку проверяемого: все его тесты без роликов, проверки сдачи на одном экране и отдельный тест со всеми деталями. Его результаты не идут в твой прогресс.
 Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	Проверяешь кого-то? Меню › Режим проверки или «tdf correction»: только его папка, проверки сдачи и отдельные тесты.
+Doubt is not an enemy. It is the sign that you are looking closer.	Сомнение не враг. Это знак, что ты смотришь внимательнее.
+Nobody starts out knowing. Everybody starts out trying.	Никто не начинает со знанием. Все начинают с попытки.
+A mountain is climbed one step at a time, even when you cannot see the top.	На гору поднимаются шаг за шагом, даже когда вершины не видно.
+What feels hard today will be your foundation tomorrow.	То, что сегодня кажется трудным, завтра станет твоей основой.
+Silence is an answer too. Sometimes it is the most honest one.	Молчание тоже ответ. Иногда самый честный.
+You do not need to be ready. You need to start.	Не нужно быть готовым. Нужно начать.
+Failure is information, not a verdict.	Неудача это информация, а не приговор.
+Roots grow in the dark before the tree can be seen.	Корни растут в темноте, прежде чем станет видно дерево.
+Being slow does not stop you from arriving. Stopping does.	Медлительность не мешает дойти. Мешает остановка.
+A good question is sometimes worth more than ten answers.	Хороший вопрос порой стоит больше десяти ответов.
+Time spent understanding is never wasted.	Время, потраченное на понимание, никогда не потеряно.
+The only fair comparison is with who you were yesterday.	Единственное честное сравнение с тем, кем ты был вчера.
+Patience is courage that lasts.	Терпение это смелость, которая длится.
+What you repeat becomes who you are.	То, что ты повторяешь, становится тем, кто ты есть.
+A mistake you understand is worth more than a lucky success.	Понятая ошибка ценнее случайного успеха.
+The shortest path is not always the one that teaches you the most.	Самый короткий путь не всегда учит больше всего.
+Tired does not mean finished. Rest, then start again.	Устал не значит закончил. Отдохни и продолжай.
+Every expert was first someone who did not know.	Каждый эксперт сначала был тем, кто не знал.
+Curiosity opens more doors than fear closes.	Любопытство открывает больше дверей, чем закрывает страх.
+You are stronger than the problem in front of you.	Ты сильнее проблемы, которая перед тобой.
+The wind only pushes the sails that have been raised.	Ветер толкает только поднятые паруса.
+Simplifying is often harder than complicating.	Упростить часто труднее, чем усложнить.
+Nothing grows faster because you pull on it.	Ничто не растёт быстрее оттого, что его тянут.
+It takes courage to say “I don’t know”.	Нужна смелость, чтобы сказать «я не знаю».
+It is not the speed that matters, it is the direction.	Важна не скорость, а направление.
+A well-stated problem is already half solved.	Хорошо поставленная задача уже наполовину решена.
+Water ends up carving stone without ever hitting it hard.	Вода в итоге точит камень, ни разу не ударив сильно.
+Learning means accepting to be a beginner once again.	Учиться значит снова согласиться быть новичком.
+Days without visible progress often prepare the big leaps.	Дни без видимого прогресса часто готовят большие скачки.
+Your worth is not measured by your last grade.	Твоя ценность не измеряется последней оценкой.
+What is clear to you today was blurry yesterday. Remember that.	То, что сегодня ясно, вчера было размыто. Помни об этом.
+We grow less in comfort than in effort.	Растёшь не в комфорте, а в усилии.
+A small victory is still a victory. Celebrate it.	Маленькая победа всё равно победа. Отпразднуй её.
+A star’s light takes years to arrive. So does your work.	Свет звезды идёт годами. Твоя работа тоже.
+The hardest part is not falling, it is staying down.	Самое трудное не упасть, а остаться лежать.
+Between two thoughts there is always a little space. Breathe in it.	Между двумя мыслями всегда есть немного места. Дыши в нём.
+What you build slowly lasts longer.	То, что строишь медленно, держится дольше.
+Asking for help is moving forward together.	Попросить помощи значит идти вперёд вместе.
+An idea is worth nothing until you try it.	Идея ничего не стоит, пока ты её не попробуешь.
+Calm is a strength we too often forget.	Спокойствие это сила, о которой мы слишком часто забываем.
+Every morning is a blank page. You hold the pencil.	Каждое утро чистая страница. Карандаш у тебя.
+A flame does not go out when you share it.	Пламя не гаснет, когда им делишься.
+What blocks you today teaches you something for tomorrow.	То, что мешает сегодня, учит тебя чему-то на завтра.
+The best time to start was yesterday. The second best is now.	Лучшее время начать было вчера. Второе лучшее сейчас.
+Discipline is remembering what you really want.	Дисциплина это помнить, чего ты действительно хочешь.
+Everything great started small.	Всё великое начиналось с малого.
+Listen more than you speak: we rarely learn while talking.	Слушай больше, чем говоришь: говоря, редко учишься.
+Perseverance turns impossible into “not yet”.	Упорство превращает «невозможно» в «пока нет».
+No step is useless when you walk in the right direction.	Ни один шаг не бесполезен, если идёшь в верном направлении.
+You are not late. You are exactly where you need to learn.	Ты не опоздал. Ты именно там, где тебе нужно учиться.

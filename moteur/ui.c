@@ -273,7 +273,7 @@ static void	mu_charger(t_mu *m)
 }
 
 #define NB_ASTUCES 66
-#define NB_ROSES 5
+#define NB_ROSES 55
 
 static const char	*astuce(int i)
 {
@@ -421,6 +421,106 @@ static const char	*astuce(int i)
 			return (L("Moulinette est la meilleure chatte du monde.", "Moulinette is the best cat in the world."));
 		case 70:
 			return (L("L'étage f6, c'est pour les sportifs olympiques LOLL.", "The f6 floor is for Olympic athletes LOLL."));
+		case 71:
+			return (L("Le doute n'est pas un ennemi. C'est le signe que tu regardes de plus près.", "Doubt is not an enemy. It is the sign that you are looking closer."));
+		case 72:
+			return (L("Personne ne commence en sachant. Tout le monde commence en essayant.", "Nobody starts out knowing. Everybody starts out trying."));
+		case 73:
+			return (L("Une montagne se gravit un pas à la fois, même quand on ne voit pas le sommet.", "A mountain is climbed one step at a time, even when you cannot see the top."));
+		case 74:
+			return (L("Ce qui te semble difficile aujourd'hui sera ta base de demain.", "What feels hard today will be your foundation tomorrow."));
+		case 75:
+			return (L("Le silence aussi est une réponse. Parfois, c'est la plus honnête.", "Silence is an answer too. Sometimes it is the most honest one."));
+		case 76:
+			return (L("Tu n'as pas besoin d'être prêt. Tu as besoin de commencer.", "You do not need to be ready. You need to start."));
+		case 77:
+			return (L("L'échec est une information, pas un verdict.", "Failure is information, not a verdict."));
+		case 78:
+			return (L("Les racines poussent dans le noir avant que l'arbre ne se voie.", "Roots grow in the dark before the tree can be seen."));
+		case 79:
+			return (L("Être lent n'empêche pas d'arriver. S'arrêter, si.", "Being slow does not stop you from arriving. Stopping does."));
+		case 80:
+			return (L("Une bonne question vaut parfois mieux que dix réponses.", "A good question is sometimes worth more than ten answers."));
+		case 81:
+			return (L("Le temps que tu passes à comprendre n'est jamais perdu.", "Time spent understanding is never wasted."));
+		case 82:
+			return (L("On ne se compare bien qu'à la personne qu'on était hier.", "The only fair comparison is with who you were yesterday."));
+		case 83:
+			return (L("La patience, c'est du courage qui dure.", "Patience is courage that lasts."));
+		case 84:
+			return (L("Ce que tu répètes devient ce que tu es.", "What you repeat becomes who you are."));
+		case 85:
+			return (L("Une erreur que tu comprends vaut plus qu'une réussite par hasard.", "A mistake you understand is worth more than a lucky success."));
+		case 86:
+			return (L("Le chemin le plus court n'est pas toujours celui qui t'apprend le plus.", "The shortest path is not always the one that teaches you the most."));
+		case 87:
+			return (L("Fatigué ne veut pas dire fini. Repose-toi, puis reprends.", "Tired does not mean finished. Rest, then start again."));
+		case 88:
+			return (L("Chaque expert a d'abord été quelqu'un qui ne savait pas.", "Every expert was first someone who did not know."));
+		case 89:
+			return (L("La curiosité ouvre plus de portes que la peur n'en ferme.", "Curiosity opens more doors than fear closes."));
+		case 90:
+			return (L("Tu es plus solide que le problème qui te fait face.", "You are stronger than the problem in front of you."));
+		case 91:
+			return (L("Le vent ne pousse que les voiles qu'on a hissées.", "The wind only pushes the sails that have been raised."));
+		case 92:
+			return (L("Simplifier est souvent plus difficile que compliquer.", "Simplifying is often harder than complicating."));
+		case 93:
+			return (L("Rien ne pousse plus vite parce qu'on tire dessus.", "Nothing grows faster because you pull on it."));
+		case 94:
+			return (L("Il y a du courage à dire « je ne sais pas ».", "It takes courage to say “I don’t know”."));
+		case 95:
+			return (L("Ce n'est pas la vitesse qui compte, c'est la direction.", "It is not the speed that matters, it is the direction."));
+		case 96:
+			return (L("Un problème bien posé est déjà à moitié résolu.", "A well-stated problem is already half solved."));
+		case 97:
+			return (L("L'eau finit par creuser la pierre, sans jamais la frapper fort.", "Water ends up carving stone without ever hitting it hard."));
+		case 98:
+			return (L("Apprendre, c'est accepter d'être débutant encore une fois.", "Learning means accepting to be a beginner once again."));
+		case 99:
+			return (L("Les jours sans progrès visible préparent souvent les grands sauts.", "Days without visible progress often prepare the big leaps."));
+		case 100:
+			return (L("Ta valeur ne se mesure pas à ta dernière note.", "Your worth is not measured by your last grade."));
+		case 101:
+			return (L("Ce qui est clair pour toi aujourd'hui était flou hier. Souviens-t'en.", "What is clear to you today was blurry yesterday. Remember that."));
+		case 102:
+			return (L("On grandit moins dans le confort que dans l'effort.", "We grow less in comfort than in effort."));
+		case 103:
+			return (L("Une petite victoire reste une victoire. Célèbre-la.", "A small victory is still a victory. Celebrate it."));
+		case 104:
+			return (L("La lumière d'une étoile met des années à arriver. Ton travail aussi.", "A star’s light takes years to arrive. So does your work."));
+		case 105:
+			return (L("Le plus dur n'est pas de tomber, c'est de rester assis.", "The hardest part is not falling, it is staying down."));
+		case 106:
+			return (L("Entre deux pensées, il y a toujours un peu d'espace. Respire dedans.", "Between two thoughts there is always a little space. Breathe in it."));
+		case 107:
+			return (L("Ce que tu construis lentement tient plus longtemps.", "What you build slowly lasts longer."));
+		case 108:
+			return (L("Demander de l'aide, c'est avancer à deux.", "Asking for help is moving forward together."));
+		case 109:
+			return (L("Une idée ne vaut rien tant qu'on ne l'essaie pas.", "An idea is worth nothing until you try it."));
+		case 110:
+			return (L("Le calme est une force qu'on oublie trop souvent.", "Calm is a strength we too often forget."));
+		case 111:
+			return (L("Chaque matin est une page blanche. Tu tiens le crayon.", "Every morning is a blank page. You hold the pencil."));
+		case 112:
+			return (L("On n'éteint pas une flamme en la partageant.", "A flame does not go out when you share it."));
+		case 113:
+			return (L("Ce qui te bloque aujourd'hui t'apprend quelque chose pour demain.", "What blocks you today teaches you something for tomorrow."));
+		case 114:
+			return (L("Le meilleur moment pour commencer était hier. Le deuxième, c'est maintenant.", "The best time to start was yesterday. The second best is now."));
+		case 115:
+			return (L("La discipline, c'est se souvenir de ce qu'on veut vraiment.", "Discipline is remembering what you really want."));
+		case 116:
+			return (L("Tout ce qui est grand a commencé petit.", "Everything great started small."));
+		case 117:
+			return (L("Écoute plus que tu ne parles : on apprend rarement en parlant.", "Listen more than you speak: we rarely learn while talking."));
+		case 118:
+			return (L("La persévérance transforme l'impossible en « pas encore ».", "Perseverance turns impossible into “not yet”."));
+		case 119:
+			return (L("Il n'y a pas de pas inutile quand on marche dans la bonne direction.", "No step is useless when you walk in the right direction."));
+		case 120:
+			return (L("Tu n'es pas en retard. Tu es exactement là où tu dois apprendre.", "You are not late. You are exactly where you need to learn."));
 	}
 	return ("");
 }
@@ -502,7 +602,7 @@ static void	bulle_choisir(t_zone *z, int nz, long anim)
 			cand[nc++] = i;
 	q = nc ? &z[cand[rand() % nc]] : &z[rand() % nz];
 	do
-		i = rand() % 100 < 10 ? NB_ASTUCES + rand() % NB_ROSES : rand() % NB_ASTUCES;
+		i = rand() % 100 < 35 ? NB_ASTUCES + rand() % NB_ROSES : rand() % NB_ASTUCES;
 	while (i == g_bulle.prec);
 	g_bulle.w = q->w < 34 ? q->w : 34;
 	g_bulle.n = 0;

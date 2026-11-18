@@ -1848,3 +1848,53 @@ grading mode, on the graded folder	değerlendirme modu, değerlendirilen klasör
 Grading mode	Değerlendirme modu
 Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	Birini mi değerlendiriyorsun? Menüdeki mavi «Değerlendirme modu» düğmesi (ya da terminalde «tdf correction») yalnızca değerlendirilen klasörü tutar: ara sahnesiz tüm testler, tek ekranda teslim kontrolleri ve tüm ayrıntılarıyla tek bir test. Sonuçları senin ilerlemene sayılmaz.
 Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	Birini mi değerlendiriyorsun? Menü › Değerlendirme modu ya da «tdf correction»: yalnızca onun klasörü, teslim kontrolleri ve tekli testler.
+Doubt is not an enemy. It is the sign that you are looking closer.	Şüphe bir düşman değildir. Daha yakından baktığının işaretidir.
+Nobody starts out knowing. Everybody starts out trying.	Kimse bilerek başlamaz. Herkes deneyerek başlar.
+A mountain is climbed one step at a time, even when you cannot see the top.	Bir dağa, zirveyi görmesen bile adım adım tırmanılır.
+What feels hard today will be your foundation tomorrow.	Bugün zor gelen şey yarın temelin olacak.
+Silence is an answer too. Sometimes it is the most honest one.	Sessizlik de bir cevaptır. Bazen en dürüst olanıdır.
+You do not need to be ready. You need to start.	Hazır olman gerekmiyor. Başlaman gerekiyor.
+Failure is information, not a verdict.	Başarısızlık bir bilgidir, hüküm değil.
+Roots grow in the dark before the tree can be seen.	Ağaç görünmeden önce kökler karanlıkta büyür.
+Being slow does not stop you from arriving. Stopping does.	Yavaş olmak varmanı engellemez. Durmak engeller.
+A good question is sometimes worth more than ten answers.	İyi bir soru bazen on cevaptan daha değerlidir.
+Time spent understanding is never wasted.	Anlamaya harcanan zaman asla boşa gitmez.
+The only fair comparison is with who you were yesterday.	Tek adil karşılaştırma dünkü halinle olanıdır.
+Patience is courage that lasts.	Sabır, süren cesarettir.
+What you repeat becomes who you are.	Tekrar ettiğin şey, olduğun kişiye dönüşür.
+A mistake you understand is worth more than a lucky success.	Anladığın bir hata, şans eseri bir başarıdan daha değerlidir.
+The shortest path is not always the one that teaches you the most.	En kısa yol her zaman sana en çok şey öğreten yol değildir.
+Tired does not mean finished. Rest, then start again.	Yorgun olmak bitmiş olmak demek değildir. Dinlen, sonra yeniden başla.
+Every expert was first someone who did not know.	Her uzman önce bilmeyen biriydi.
+Curiosity opens more doors than fear closes.	Merak, korkunun kapattığından daha çok kapı açar.
+You are stronger than the problem in front of you.	Karşındaki sorundan daha güçlüsün.
+The wind only pushes the sails that have been raised.	Rüzgar yalnızca açılmış yelkenleri iter.
+Simplifying is often harder than complicating.	Sadeleştirmek çoğu zaman karmaşıklaştırmaktan daha zordur.
+Nothing grows faster because you pull on it.	Hiçbir şey çektiğin için daha hızlı büyümez.
+It takes courage to say “I don’t know”.	«Bilmiyorum» demek cesaret ister.
+It is not the speed that matters, it is the direction.	Önemli olan hız değil, yöndür.
+A well-stated problem is already half solved.	İyi ortaya konmuş bir sorun yarı yarıya çözülmüştür.
+Water ends up carving stone without ever hitting it hard.	Su, taşa hiç sert vurmadan onu sonunda oyar.
+Learning means accepting to be a beginner once again.	Öğrenmek, bir kez daha acemi olmayı kabul etmektir.
+Days without visible progress often prepare the big leaps.	Görünür ilerleme olmayan günler çoğu zaman büyük sıçramaları hazırlar.
+Your worth is not measured by your last grade.	Değerin son notunla ölçülmez.
+What is clear to you today was blurry yesterday. Remember that.	Bugün sana açık gelen şey dün bulanıktı. Bunu unutma.
+We grow less in comfort than in effort.	İnsan konforda değil, çabada büyür.
+A small victory is still a victory. Celebrate it.	Küçük bir zafer de zaferdir. Kutla onu.
+A star’s light takes years to arrive. So does your work.	Bir yıldızın ışığı yıllar sonra ulaşır. Emeğin de öyle.
+The hardest part is not falling, it is staying down.	En zoru düşmek değil, yerde kalmaktır.
+Between two thoughts there is always a little space. Breathe in it.	İki düşünce arasında hep biraz boşluk vardır. Orada nefes al.
+What you build slowly lasts longer.	Yavaş inşa ettiğin şey daha uzun sürer.
+Asking for help is moving forward together.	Yardım istemek birlikte ilerlemektir.
+An idea is worth nothing until you try it.	Bir fikir, denemediğin sürece hiçbir şey değildir.
+Calm is a strength we too often forget.	Sakinlik, çok sık unuttuğumuz bir güçtür.
+Every morning is a blank page. You hold the pencil.	Her sabah boş bir sayfadır. Kalem senin elinde.
+A flame does not go out when you share it.	Bir alev paylaşıldığında sönmez.
+What blocks you today teaches you something for tomorrow.	Bugün seni tıkayan şey sana yarın için bir şey öğretir.
+The best time to start was yesterday. The second best is now.	Başlamak için en iyi zaman dündü. İkinci en iyi zaman şimdi.
+Discipline is remembering what you really want.	Disiplin, gerçekten ne istediğini hatırlamaktır.
+Everything great started small.	Büyük olan her şey küçük başladı.
+Listen more than you speak: we rarely learn while talking.	Konuştuğundan çok dinle: insan konuşurken nadiren öğrenir.
+Perseverance turns impossible into “not yet”.	Azim, imkânsızı «henüz değil»e dönüştürür.
+No step is useless when you walk in the right direction.	Doğru yönde yürürken hiçbir adım boşuna değildir.
+You are not late. You are exactly where you need to learn.	Geç kalmadın. Tam da öğrenmen gereken yerdesin.

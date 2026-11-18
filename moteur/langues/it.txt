@@ -1848,3 +1848,53 @@ grading mode, on the graded folder	la modalità correzione, sulla cartella del c
 Grading mode	Modalità correzione
 Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	Correggi qualcuno? Il pulsante blu «Modalità correzione» del menu (o «tdf correction» nel terminale) tiene solo la cartella del corretto: tutti i suoi test senza cinematiche, i controlli di consegna in una schermata e un test preciso con tutti i dettagli. I suoi risultati non contano nei tuoi progressi.
 Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	Correggi qualcuno? Menu › Modalità correzione, o «tdf correction»: solo la sua cartella, controlli di consegna e test precisi.
+Doubt is not an enemy. It is the sign that you are looking closer.	Il dubbio non è un nemico. È il segno che stai guardando più da vicino.
+Nobody starts out knowing. Everybody starts out trying.	Nessuno comincia sapendo. Tutti cominciano provando.
+A mountain is climbed one step at a time, even when you cannot see the top.	Una montagna si scala un passo alla volta, anche quando non si vede la cima.
+What feels hard today will be your foundation tomorrow.	Ciò che oggi ti sembra difficile sarà la tua base domani.
+Silence is an answer too. Sometimes it is the most honest one.	Anche il silenzio è una risposta. A volte la più onesta.
+You do not need to be ready. You need to start.	Non devi essere pronto. Devi cominciare.
+Failure is information, not a verdict.	Il fallimento è un'informazione, non un verdetto.
+Roots grow in the dark before the tree can be seen.	Le radici crescono al buio prima che l'albero si veda.
+Being slow does not stop you from arriving. Stopping does.	Essere lenti non impedisce di arrivare. Fermarsi sì.
+A good question is sometimes worth more than ten answers.	Una buona domanda a volte vale più di dieci risposte.
+Time spent understanding is never wasted.	Il tempo passato a capire non è mai perso.
+The only fair comparison is with who you were yesterday.	L'unico confronto giusto è con chi eri ieri.
+Patience is courage that lasts.	La pazienza è coraggio che dura.
+What you repeat becomes who you are.	Ciò che ripeti diventa ciò che sei.
+A mistake you understand is worth more than a lucky success.	Un errore che capisci vale più di un successo per caso.
+The shortest path is not always the one that teaches you the most.	La strada più corta non è sempre quella che ti insegna di più.
+Tired does not mean finished. Rest, then start again.	Stanco non vuol dire finito. Riposati, poi riprendi.
+Every expert was first someone who did not know.	Ogni esperto è stato prima qualcuno che non sapeva.
+Curiosity opens more doors than fear closes.	La curiosità apre più porte di quante la paura ne chiuda.
+You are stronger than the problem in front of you.	Sei più forte del problema che hai davanti.
+The wind only pushes the sails that have been raised.	Il vento spinge solo le vele che sono state issate.
+Simplifying is often harder than complicating.	Semplificare è spesso più difficile che complicare.
+Nothing grows faster because you pull on it.	Niente cresce più in fretta perché ci tiri sopra.
+It takes courage to say “I don’t know”.	Ci vuole coraggio a dire «non lo so».
+It is not the speed that matters, it is the direction.	Non conta la velocità, conta la direzione.
+A well-stated problem is already half solved.	Un problema ben posto è già risolto a metà.
+Water ends up carving stone without ever hitting it hard.	L'acqua finisce per scavare la pietra senza mai colpirla forte.
+Learning means accepting to be a beginner once again.	Imparare è accettare di essere ancora una volta principiante.
+Days without visible progress often prepare the big leaps.	I giorni senza progressi visibili spesso preparano i grandi salti.
+Your worth is not measured by your last grade.	Il tuo valore non si misura con il tuo ultimo voto.
+What is clear to you today was blurry yesterday. Remember that.	Ciò che oggi ti è chiaro ieri era sfocato. Ricordalo.
+We grow less in comfort than in effort.	Si cresce meno nella comodità che nella fatica.
+A small victory is still a victory. Celebrate it.	Una piccola vittoria resta una vittoria. Festeggiala.
+A star’s light takes years to arrive. So does your work.	La luce di una stella impiega anni ad arrivare. Anche il tuo lavoro.
+The hardest part is not falling, it is staying down.	La cosa più dura non è cadere, è restare a terra.
+Between two thoughts there is always a little space. Breathe in it.	Tra due pensieri c'è sempre un po' di spazio. Respira lì dentro.
+What you build slowly lasts longer.	Ciò che costruisci lentamente dura di più.
+Asking for help is moving forward together.	Chiedere aiuto è andare avanti insieme.
+An idea is worth nothing until you try it.	Un'idea non vale nulla finché non la provi.
+Calm is a strength we too often forget.	La calma è una forza che dimentichiamo troppo spesso.
+Every morning is a blank page. You hold the pencil.	Ogni mattina è una pagina bianca. La matita ce l'hai tu.
+A flame does not go out when you share it.	Una fiamma non si spegne quando la condividi.
+What blocks you today teaches you something for tomorrow.	Ciò che oggi ti blocca ti insegna qualcosa per domani.
+The best time to start was yesterday. The second best is now.	Il momento migliore per cominciare era ieri. Il secondo migliore è adesso.
+Discipline is remembering what you really want.	La disciplina è ricordarsi ciò che si vuole davvero.
+Everything great started small.	Tutto ciò che è grande è iniziato piccolo.
+Listen more than you speak: we rarely learn while talking.	Ascolta più di quanto parli: parlando si impara di rado.
+Perseverance turns impossible into “not yet”.	La perseveranza trasforma l'impossibile in «non ancora».
+No step is useless when you walk in the right direction.	Nessun passo è inutile quando cammini nella giusta direzione.
+You are not late. You are exactly where you need to learn.	Non sei in ritardo. Sei esattamente dove devi imparare.

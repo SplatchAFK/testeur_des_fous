@@ -1848,3 +1848,53 @@ grading mode, on the graded folder	el modo corrección, en la carpeta del correg
 Grading mode	Modo corrección
 Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	¿Corriges a alguien? El botón azul «Modo corrección» del menú (o «tdf correction» en la terminal) solo deja la carpeta del corregido: todas sus pruebas sin cinemáticas, las comprobaciones de entrega en una pantalla y una prueba concreta con todo el detalle. Sus resultados no cuentan en tu progreso.
 Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	¿Corriges a alguien? Menú › Modo corrección, o «tdf correction»: solo su carpeta, comprobaciones de entrega y pruebas concretas.
+Doubt is not an enemy. It is the sign that you are looking closer.	La duda no es un enemigo. Es la señal de que miras más de cerca.
+Nobody starts out knowing. Everybody starts out trying.	Nadie empieza sabiendo. Todos empiezan intentando.
+A mountain is climbed one step at a time, even when you cannot see the top.	Una montaña se sube paso a paso, incluso cuando no se ve la cima.
+What feels hard today will be your foundation tomorrow.	Lo que hoy te parece difícil será tu base mañana.
+Silence is an answer too. Sometimes it is the most honest one.	El silencio también es una respuesta. A veces, la más honesta.
+You do not need to be ready. You need to start.	No necesitas estar listo. Necesitas empezar.
+Failure is information, not a verdict.	El fracaso es una información, no un veredicto.
+Roots grow in the dark before the tree can be seen.	Las raíces crecen en la oscuridad antes de que se vea el árbol.
+Being slow does not stop you from arriving. Stopping does.	Ser lento no impide llegar. Pararse, sí.
+A good question is sometimes worth more than ten answers.	Una buena pregunta a veces vale más que diez respuestas.
+Time spent understanding is never wasted.	El tiempo que pasas entendiendo nunca se pierde.
+The only fair comparison is with who you were yesterday.	La única comparación justa es con quien eras ayer.
+Patience is courage that lasts.	La paciencia es valor que dura.
+What you repeat becomes who you are.	Lo que repites se convierte en lo que eres.
+A mistake you understand is worth more than a lucky success.	Un error que entiendes vale más que un éxito por suerte.
+The shortest path is not always the one that teaches you the most.	El camino más corto no siempre es el que más te enseña.
+Tired does not mean finished. Rest, then start again.	Cansado no quiere decir acabado. Descansa y vuelve a empezar.
+Every expert was first someone who did not know.	Todo experto fue primero alguien que no sabía.
+Curiosity opens more doors than fear closes.	La curiosidad abre más puertas de las que el miedo cierra.
+You are stronger than the problem in front of you.	Eres más fuerte que el problema que tienes delante.
+The wind only pushes the sails that have been raised.	El viento solo empuja las velas que se han izado.
+Simplifying is often harder than complicating.	Simplificar suele ser más difícil que complicar.
+Nothing grows faster because you pull on it.	Nada crece más rápido porque tires de ello.
+It takes courage to say “I don’t know”.	Hace falta valor para decir «no lo sé».
+It is not the speed that matters, it is the direction.	No importa la velocidad, importa la dirección.
+A well-stated problem is already half solved.	Un problema bien planteado ya está medio resuelto.
+Water ends up carving stone without ever hitting it hard.	El agua acaba horadando la piedra sin golpearla nunca fuerte.
+Learning means accepting to be a beginner once again.	Aprender es aceptar ser principiante una vez más.
+Days without visible progress often prepare the big leaps.	Los días sin progreso visible suelen preparar los grandes saltos.
+Your worth is not measured by your last grade.	Tu valor no se mide por tu última nota.
+What is clear to you today was blurry yesterday. Remember that.	Lo que hoy tienes claro ayer era borroso. Recuérdalo.
+We grow less in comfort than in effort.	Se crece menos en la comodidad que en el esfuerzo.
+A small victory is still a victory. Celebrate it.	Una pequeña victoria sigue siendo una victoria. Celébrala.
+A star’s light takes years to arrive. So does your work.	La luz de una estrella tarda años en llegar. Tu trabajo también.
+The hardest part is not falling, it is staying down.	Lo más duro no es caer, es quedarse sentado.
+Between two thoughts there is always a little space. Breathe in it.	Entre dos pensamientos siempre hay un poco de espacio. Respira en él.
+What you build slowly lasts longer.	Lo que construyes despacio dura más.
+Asking for help is moving forward together.	Pedir ayuda es avanzar juntos.
+An idea is worth nothing until you try it.	Una idea no vale nada hasta que la pruebas.
+Calm is a strength we too often forget.	La calma es una fuerza que olvidamos demasiado a menudo.
+Every morning is a blank page. You hold the pencil.	Cada mañana es una página en blanco. Tú tienes el lápiz.
+A flame does not go out when you share it.	Una llama no se apaga cuando la compartes.
+What blocks you today teaches you something for tomorrow.	Lo que hoy te bloquea te enseña algo para mañana.
+The best time to start was yesterday. The second best is now.	El mejor momento para empezar era ayer. El segundo mejor es ahora.
+Discipline is remembering what you really want.	La disciplina es recordar lo que de verdad quieres.
+Everything great started small.	Todo lo grande empezó pequeño.
+Listen more than you speak: we rarely learn while talking.	Escucha más de lo que hablas: casi nunca se aprende hablando.
+Perseverance turns impossible into “not yet”.	La perseverancia convierte lo imposible en «todavía no».
+No step is useless when you walk in the right direction.	Ningún paso es inútil cuando caminas en la buena dirección.
+You are not late. You are exactly where you need to learn.	No llegas tarde. Estás justo donde tienes que aprender.
