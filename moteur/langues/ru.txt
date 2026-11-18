@@ -1844,3 +1844,7 @@ NEW IN 3.3.0	НОВОЕ В 3.3.0
 • Debug mode: a progress bar with the time left instead of an empty screen.	• Режим отладки: полоса прогресса с оставшимся временем вместо пустого экрана.
 ALREADY IN 3.2.0	УЖЕ В 3.2.0
 !Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	!Режим проверки|Чтобы проверить другого студента: тестер смотрит только его папку, с проверками сдачи и отдельными тестами. Без роликов и анимаций.
+grading mode, on the graded folder	режим проверки, в папке проверяемого
+Grading mode	Режим проверки
+Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	Проверяешь кого-то? Синяя кнопка «Режим проверки» в меню (или «tdf correction» в терминале) оставляет только папку проверяемого: все его тесты без роликов, проверки сдачи на одном экране и отдельный тест со всеми деталями. Его результаты не идут в твой прогресс.
+Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	Проверяешь кого-то? Меню › Режим проверки или «tdf correction»: только его папка, проверки сдачи и отдельные тесты.

@@ -260,6 +260,7 @@ static void	mu_charger(t_mu *m)
 		return ;
 	}
 	mu_ajouter(m, "projet", L("Tester mon projet|Choisis le dossier de ta Libft, de ton ft_printf ou de ton get_next_line. « . » : le dossier où tu es.", "Test my project|Pick the folder of your Libft, ft_printf or get_next_line. '.': the folder you are in."), NULL);
+	mu_ajouter(m, "correction", tdf_nouveau("3.3") ? L("!Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "!Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.") : L("Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations."), NULL);
 	mu_ajouter(m, "exam", L("Exam en C|Examen blanc de 3 h, série d'exercices ou entraînement : tout se règle aux flèches", "C exam|3-hour mock exam, exercise series or training: all set with the arrows"), NULL);
 	mu_ajouter(m, "banque", L("Banque d'exercices|Les exercices du testeur au choix : exam, Libft, printf", "Exercise bank|The tester's exercises, your pick: exam, Libft, printf"), NULL);
 	if (tdf_derniere_existe())
@@ -267,10 +268,12 @@ static void	mu_charger(t_mu *m)
 	mu_ajouter(m, "chevalier", L("Chevalier|Ton avatar, la boutique, ton profil et tes succès", "Knight|Your avatar, the shop, your profile and achievements"), NULL);
 	mu_ajouter(m, "lore", L("Lore|Les boss, les cinématiques et la carte de la Cité", "Lore|The bosses, the cutscenes and the map of the City"), NULL);
 	mu_ajouter(m, "stats", L("Stats|Ta progression, tes badges et le holygraph 42 Next", "Stats|Your progress, your badges and the 42 Next holygraph"), NULL);
-	mu_ajouter(m, "correction", tdf_nouveau("3.3") ? L("!Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "!Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.") : L("Mode correction|Pour corriger un autre étudiant : le testeur ne regarde que son dossier, avec des vérifs de rendu et des tests précis. Sans cinématiques ni animations.", "Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations."), NULL);
 	mu_ajouter(m, "params", L("Paramètres|Réglages, langue, interface, commande tdf", "Settings|Settings, language, interface, tdf command"), NULL);
 	mu_ajouter(m, "quitter", L("Quitter|Fermer le testeur. Ta progression est déjà enregistrée.", "Quit|Close the tester. Your progress is already saved."), NULL);
 }
+
+#define NB_ASTUCES 66
+#define NB_ROSES 5
 
 static const char	*astuce(int i)
 {
@@ -407,14 +410,16 @@ static const char	*astuce(int i)
 		case 64:
 			return (L("La moulinette juge le code, jamais la personne. Respire, et recommence.", "The moulinette judges the code, never the person. Breathe, and try again."));
 		case 65:
-			return (L("Patrick est en secret un dinosaure.", "Patrick is secretly a dinosaur."));
+			return (L("Tu corriges quelqu'un ? Menu › Mode correction, ou « tdf correction » : son dossier seulement, vérifs de rendu et tests précis.", "Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests."));
 		case 66:
-			return (L("Paul est en secret Pacman.", "Paul is secretly Pacman."));
+			return (L("Patrick est en secret un dinosaure.", "Patrick is secretly a dinosaur."));
 		case 67:
-			return (L("Roman est en secret FuzeIII.", "Roman is secretly FuzeIII."));
+			return (L("Paul est en secret Pacman.", "Paul is secretly Pacman."));
 		case 68:
-			return (L("Moulinette est la meilleure chatte du monde.", "Moulinette is the best cat in the world."));
+			return (L("Roman est en secret FuzeIII.", "Roman is secretly FuzeIII."));
 		case 69:
+			return (L("Moulinette est la meilleure chatte du monde.", "Moulinette is the best cat in the world."));
+		case 70:
 			return (L("L'étage f6, c'est pour les sportifs olympiques LOLL.", "The f6 floor is for Olympic athletes LOLL."));
 	}
 	return ("");
@@ -497,11 +502,11 @@ static void	bulle_choisir(t_zone *z, int nz, long anim)
 			cand[nc++] = i;
 	q = nc ? &z[cand[rand() % nc]] : &z[rand() % nz];
 	do
-		i = rand() % 100 < 10 ? 65 + rand() % 5 : rand() % 65;
+		i = rand() % 100 < 10 ? NB_ASTUCES + rand() % NB_ROSES : rand() % NB_ASTUCES;
 	while (i == g_bulle.prec);
 	g_bulle.w = q->w < 34 ? q->w : 34;
 	g_bulle.n = 0;
-	if (i < 65)
+	if (i < NB_ASTUCES)
 		snprintf(g_bulle.l[g_bulle.n++], 200, "%s", L("Le savais-tu ?", "Did you know?"));
 	k = bulle_couper(astuce(i), g_bulle.w, g_bulle.l + g_bulle.n, 9 - g_bulle.n);
 	if (k < 0 || q->y1 - q->y0 < g_bulle.n + k)
@@ -545,7 +550,7 @@ static void	bulle(t_zone *z, int nz, long anim)
 			return ;
 	}
 	dt = anim - g_bulle.t0;
-	if (dt > 7500)
+	if (dt > 15000)
 	{
 		g_bulle.cur = -1;
 		g_bulle.suite = anim + 1800;
@@ -555,11 +560,11 @@ static void	bulle(t_zone *z, int nz, long anim)
 	k = 0.10 + 0.10 * sin(anim / 300.0);
 	for (i = 0; i < g_bulle.n; i++)
 	{
-		base = g_bulle.cur >= 65 ? rgb(255, 140, 220) : (i == 0 ? rgb(255, 190, 70) : rgb(255, 255, 85));
+		base = g_bulle.cur >= NB_ASTUCES ? rgb(255, 140, 220) : (i == 0 ? rgb(255, 190, 70) : rgb(255, 255, 85));
 		if (dt < 350)
 			c = mix(theme()->bg, base, dt / 350.0);
-		else if (dt > 6500)
-			c = mix(base, theme()->bg, (dt - 6500) / 1000.0);
+		else if (dt > 14000)
+			c = mix(base, theme()->bg, (dt - 14000) / 1000.0);
 		else
 			c = mix(base, rgb(255, 255, 255), k);
 		text_clip(cx - ulen(g_bulle.l[i]) / 2, g_bulle.y + i, c, g_bulle.l[i], g_bulle.w);
@@ -655,14 +660,19 @@ static int	mu_ecran(t_mu *m, int *sel)
 		{
 			label_of_item(m->items[i], lab, sizeof(lab));
 			at(ix, y + 1 + i * (rows >= y + 2 * m->n + 6 ? 2 : 1));
-			if (i == *sel)
+			if (!strcmp(m->act[i], "correction"))
+			{
+				bgc(mix(theme()->bg, rgb(70, 200, 255), i == *sel ? 0.45 : 0.20));
+				fg(i == *sel ? rgb(255, 255, 255) : rgb(150, 225, 255));
+			}
+			else if (i == *sel)
 			{
 				bgc(mix(theme()->bg, theme()->accent, 0.22));
 				fg(theme()->accent2);
 			}
 			else
 				fg(i == 0 ? theme()->accent : theme()->text);
-			outf(" %s %-*s", i == *sel ? "▶" : " ", iw - 4, lab);
+			outf(" %s %-*s", i == *sel ? "▶" : !strcmp(m->act[i], "correction") ? "◆" : " ", iw - 4, lab);
 			bgc(theme()->bg);
 			if (m->items[i][0] == '!')
 			{

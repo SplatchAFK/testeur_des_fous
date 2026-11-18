@@ -100,11 +100,18 @@ Tout passe par le menu. Deux commandes seulement :
 
 ```bash
 bash testeur_des_fous/run.sh exam      # l'examshell des fous, directement
+bash testeur_des_fous/run.sh correction ../son_projet   # le mode correction, directement
 ```
 
 ## Mode correction
 
-Pour corriger un autre étudiant : menu › Mode correction, puis choisis le dossier de son projet. Le haut de l'écran affiche « testeur des fous | mode : correction » et le menu ne propose plus que ce qui sert pendant une correction :
+Pour corriger un autre étudiant : le bouton bleu « Mode correction » du menu, ou directement dans le terminal :
+
+```bash
+tdf correction ../son_projet     # ou : bash testeur_des_fous/run.sh correction ../son_projet
+```
+
+Sans chemin, le testeur te demande le dossier du corrigé. Le haut de l'écran affiche « testeur des fous | mode : correction » et le menu ne propose plus que ce qui sert pendant une correction :
 
 - Tester tout le projet : tous les tests, sans cinématiques ni animations ;
 - Vérifs de rendu : fichiers en trop, norminette, Makefile, fonctions interdites, en un seul écran ;

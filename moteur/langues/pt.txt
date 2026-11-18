@@ -1844,3 +1844,7 @@ NEW IN 3.3.0	NOVIDADES DA 3.3.0
 • Debug mode: a progress bar with the time left instead of an empty screen.	• Modo debug: uma barra de progresso com o tempo restante em vez de um ecrã vazio.
 ALREADY IN 3.2.0	JÁ NA 3.2.0
 !Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	!Modo correção|Para corrigir outro estudante: o testeur só olha para a pasta dele, com verificações de entrega e testes concretos. Sem cinemáticas nem animações.
+grading mode, on the graded folder	o modo correção, na pasta do corrigido
+Grading mode	Modo correção
+Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	Vais corrigir alguém? O botão azul «Modo correção» do menu (ou «tdf correction» no terminal) só mantém a pasta do corrigido: todos os testes sem cinemáticas, as verificações de entrega num ecrã e um teste concreto com todo o detalhe. Os resultados dele não contam no teu progresso.
+Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	Vais corrigir alguém? Menu › Modo correção, ou «tdf correction»: só a pasta dele, verificações de entrega e testes concretos.

@@ -1844,3 +1844,7 @@ NEW IN 3.3.0	3.3.0 SÜRÜMÜNDE YENİ
 • Debug mode: a progress bar with the time left instead of an empty screen.	• Debug modu: boş ekran yerine kalan süreyi gösteren bir ilerleme çubuğu.
 ALREADY IN 3.2.0	3.2.0 SÜRÜMÜNDE ZATEN VAR
 !Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	!Değerlendirme modu|Başka bir öğrenciyi değerlendirmek için: test aracı yalnızca onun klasörüne bakar, teslim kontrolleri ve tekli testlerle. Ara sahne ve animasyon yok.
+grading mode, on the graded folder	değerlendirme modu, değerlendirilen klasörde
+Grading mode	Değerlendirme modu
+Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	Birini mi değerlendiriyorsun? Menüdeki mavi «Değerlendirme modu» düğmesi (ya da terminalde «tdf correction») yalnızca değerlendirilen klasörü tutar: ara sahnesiz tüm testler, tek ekranda teslim kontrolleri ve tüm ayrıntılarıyla tek bir test. Sonuçları senin ilerlemene sayılmaz.
+Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	Birini mi değerlendiriyorsun? Menü › Değerlendirme modu ya da «tdf correction»: yalnızca onun klasörü, teslim kontrolleri ve tekli testler.

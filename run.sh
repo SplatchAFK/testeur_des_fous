@@ -47,6 +47,7 @@ usage() {
 	u "exam" "$(tt "passer un exam en C (4 niveaux, grademe)" "take a C exam (4 levels, grademe)")"
 	u "exam --serie 3 --difficulte croissante" "$(tt "une série de 1 à 5 exos (croissante ou 1 à 4)" "a series of 1 to 5 exercises (croissante or 1 to 4)")"
 	u "banque" "$(tt "la banque d'exercices (exam, Libft, printf)" "the exercise bank (exam, Libft, printf)")"
+	u "correction [CHEMIN]" "$(tt "le mode correction, sur le dossier du corrigé" "grading mode, on the graded folder")"
 	u "--menu" "$(tt "ouvrir le menu sans lancer de tests (stats, chevalier...)" "open the menu without running tests (stats, knight...)")"
 	u "debug" "$(tt "le journal de la dernière session (debug aide : tout)" "the log of the last session (debug aide: everything)")"
 	u "--projet CHEMIN" "$(tt "tester le projet de ce dossier" "test the project in this folder")"
@@ -684,6 +685,17 @@ while [ $# -gt 0 ]; do
 		--help|-h)
 			if [ -z "$MODULE" ]; then usage; exit 0; fi
 			SUITE+=("$a")
+			;;
+		correction)
+			c=""
+			if [ $# -gt 0 ] && [ "${1#-}" = "$1" ]; then
+				[ -d "$1" ] || { tl "%s : dossier introuvable : %s" "%s: folder not found: %s" "$a" "$1"; exit 2; }
+				c="$(cd "$1" && pwd -P)"
+				shift
+			elif [ -f "$DOSSIER/correction.txt" ]; then
+				c="$(head -1 "$DOSSIER/correction.txt")"
+			fi
+			mkdir -p "$DOSSIER" && printf '%s\n' "$c" > "$DOSSIER/correction.txt"
 			;;
 		--projet|--dir|projet)
 			[ $# -gt 0 ] || { tl "%s : il manque le chemin du projet" "%s: the project path is missing" "$a"; exit 2; }

@@ -1844,3 +1844,7 @@ NEW IN 3.3.0	NEU IN 3.3.0
 • Debug mode: a progress bar with the time left instead of an empty screen.	• Debug-Modus: ein Fortschrittsbalken mit der Restzeit statt eines leeren Bildschirms.
 ALREADY IN 3.2.0	SCHON IN 3.2.0
 !Grading mode|To grade another student: the tester only looks at their folder, with submission checks and single tests. No cutscenes or animations.	!Bewertungsmodus|Um eine andere Person zu bewerten: der Tester schaut nur auf ihren Ordner, mit Abgabeprüfungen und Einzeltests. Ohne Zwischensequenzen und Animationen.
+grading mode, on the graded folder	der Bewertungsmodus, im Ordner der bewerteten Person
+Grading mode	Bewertungsmodus
+Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.	Du bewertest jemanden? Der blaue Knopf „Bewertungsmodus“ im Menü (oder „tdf correction“ im Terminal) behält nur den Ordner der bewerteten Person: alle Tests ohne Zwischensequenzen, die Abgabeprüfungen auf einem Bildschirm und ein Einzeltest mit allen Details. Die Ergebnisse zählen nicht für deinen Fortschritt.
+Grading someone? Menu › Grading mode, or 'tdf correction': only their folder, submission checks and single tests.	Du bewertest jemanden? Menü › Bewertungsmodus, oder „tdf correction“: nur ihr Ordner, Abgabeprüfungen und Einzeltests.

@@ -512,8 +512,8 @@ static int	page(const char *titre, const char *texte, const char **items, int n,
 
 void	tdf_tuto(void)
 {
-	const char	*titres[6];
-	const char	*textes[6];
+	const char	*titres[7];
+	const char	*textes[7];
 	const char	*items[3];
 	char		tt[200];
 	int			i;
@@ -526,7 +526,8 @@ void	tdf_tuto(void)
 	titres[2] = L("Exam en C", "C exam");
 	titres[3] = L("Banque d'exercices", "Exercise bank");
 	titres[4] = L("Chevalier, Lore et Stats", "Knight, Lore and Stats");
-	titres[5] = L("Paramètres", "Settings");
+	titres[5] = L("Mode correction", "Grading mode");
+	titres[6] = L("Paramètres", "Settings");
 	textes[0] = L("Le testeur des fous teste ta Libft, ton ft_printf et ton get_next_line comme la moulinette, et t'entraîne à l'exam. Tout se fait aux flèches : ↑ ↓ pour choisir, Entrée pour valider, Échap ou q pour revenir.",
 			"The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc or q to go back.");
 	textes[1] = L("Le menu liste les projets trouvés dans ce dossier ou à côté du testeur. Choisis-en un : tests des fonctions, fuites mémoire, Norme, fichiers parasites et audit de la moulinette. Pour un projet rangé ailleurs, « Tester un autre dossier » te laisse parcourir ton PC avec Tab, comme dans zsh.",
@@ -537,21 +538,23 @@ void	tdf_tuto(void)
 			"Every exercise of the tester, in any order. ◀ ▶ switches tabs (Exam, Libft, printf), Enter opens the subject, then 'Grade my code'. Every subject exists in 8 languages.");
 	textes[4] = L("Chaque fonction validée rapporte de l'expérience et des Octets. Habille ton chevalier, débloque l'histoire de la Cité qui compile et suis ta progression dans Stats.",
 			"Every function you pass earns experience and Octets. Dress your knight, unlock the story of the City that compiles and follow your progress in Stats.");
-	textes[5] = L("Langue, interface graphique ou texte, et la commande tdf pour lancer le testeur depuis n'importe quel dossier. Ce tuto et les nouveautés se relancent depuis Paramètres.",
+	textes[5] = L("Tu corriges quelqu'un ? Le bouton bleu « Mode correction » du menu (ou « tdf correction » dans le terminal) ne garde que le dossier du corrigé : tous ses tests sans cinématiques, les vérifs de rendu en un écran et un test précis avec le détail. Ses résultats ne comptent pas dans ta progression.",
+			"Grading someone? The blue 'Grading mode' button of the menu (or 'tdf correction' in the terminal) keeps only the graded folder: all its tests without cutscenes, submission checks on one screen and a single test with every detail. Their results do not count in your progress.");
+	textes[6] = L("Langue, interface graphique ou texte, et la commande tdf pour lancer le testeur depuis n'importe quel dossier. Ce tuto et les nouveautés se relancent depuis Paramètres.",
 			"Language, graphical or text interface, and the tdf command to start the tester from any folder. This tutorial and the news can be replayed from Settings.");
 	i = 0;
-	while (i < 6)
+	while (i < 7)
 	{
 		n = 0;
-		items[n++] = i < 5 ? L("Suivant|", "Next|") : L("C'est parti|", "Let's go|");
+		items[n++] = i < 6 ? L("Suivant|", "Next|") : L("C'est parti|", "Let's go|");
 		if (i > 0)
 			items[n++] = L("Précédent|", "Previous|");
-		if (i < 5)
+		if (i < 6)
 			items[n++] = L("Passer le tuto|", "Skip the tutorial|");
-		snprintf(tt, sizeof(tt), "%s · %d/6 · %s", L("TUTO", "TUTORIAL"), i + 1, titres[i]);
+		snprintf(tt, sizeof(tt), "%s · %d/7 · %s", L("TUTO", "TUTORIAL"), i + 1, titres[i]);
 		sel = 0;
 		r = page(tt, textes[i], items, n, &sel);
-		if (r < 0 || (i < 5 && r == n - 1))
+		if (r < 0 || (i < 6 && r == n - 1))
 			return ;
 		if (i > 0 && r == 1)
 			i--;

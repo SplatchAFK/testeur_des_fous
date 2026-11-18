@@ -12,7 +12,14 @@ Le numéro de version est dans `moteur/version.h`.
 - Lancer un test précis : une grille aux flèches pour choisir une fonction Libft, une catégorie ft_printf (%c, %d, malloc, stress…) ou un BUFFER_SIZE get_next_line ; il se relance seul avec tout le détail ; pour la Libft, la liste des cas testés s'affiche (par exemple chaque split(…) essayé) ;
 - les tests du corrigé ne comptent pas dans ta progression : ni stats, ni Octets, ni niveau, ni historique de « Tester mon projet » ;
 - « Quitter le mode correction » ramène au testeur normal ;
-- badge NEW sur « Mode correction » dans le menu ; les badges NEW restent maintenant le temps de 3 mises à jour (ceux de la 3.2 reviennent).
+- « Mode correction » est un bouton bleu à part, juste sous « Tester mon projet », avec le badge NEW ;
+- commande directe : tdf correction [chemin] (ou bash run.sh correction [chemin]) ouvre le testeur en mode correction ;
+- une page du tuto et une astuce « Le savais-tu ? » présentent le mode correction ;
+- les badges NEW restent maintenant le temps de 3 mises à jour (ceux de la 3.2 reviennent).
+
+### Le savais-tu ?
+
+- chaque bulle reste deux fois plus longtemps à l'écran (15 s au lieu de 7,5 s).
 
 ### Mode debug
 
