@@ -15,6 +15,10 @@ Le numéro de version est dans `moteur/version.h`.
 - choix du dossier du corrigé : « Choisir ce dossier », tes propres projets récents ne sont plus mélangés, et un dossier qui n'est pas un projet est refusé tout de suite ;
 - si tu avais quitté le testeur en mode correction, il te demande au lancement si tu continues la correction ou si tu reviens au testeur normal ;
 - Échap dans le menu de correction ramène au testeur normal ;
+- le login du corrigé (lu dans la 1re ligne de son README, sinon le nom du dossier) s'affiche dans le titre ;
+- un bandeau « testeur des fous | mode : correction · login » reste en haut de tous ses écrans de résultats, pour ne jamais les confondre avec les tiens ;
+- test précis : une ligne explique la catégorie ft_printf ou le BUFFER_SIZE sélectionné ;
+- les anneaux du Puits ne s'affichent plus dans les résultats get_next_line du corrigé ;
 - « Revoir la dernière tentative » montre de nouveau TA dernière tentative après une correction, pas celle du corrigé ;
 - test précis Libft : plus de sections vides ni d'avertissements sans rapport avec le test choisi ;
 - « Mode correction » est un bouton bleu à part, juste sous « Tester mon projet », avec le badge NEW ;
@@ -26,11 +30,14 @@ Le numéro de version est dans `moteur/version.h`.
 
 - chaque bulle reste deux fois plus longtemps à l'écran (15 s au lieu de 7,5 s) ;
 - 50 nouvelles phrases, sans contexte, pour garder le moral ou faire réfléchir, dans les 8 langues ; elles apparaissent plus souvent.
+- les phrases-clins d'œil entre amis sont devenues rares ;
+- nouveau réglage dans Paramètres : « Bulles « Le savais-tu ? » : oui / non ».
 
 ### Mode debug
 
 - les rapports affichés dans le menu n'ont plus de conseils de ligne de commande (--ci, -v, --valgrind…) ;
-- le mode debug ne laisse plus un écran vide pendant toute l'analyse : une barre d'avancement affiche l'étape en cours, le temps écoulé et le temps restant estimé d'après ton dernier passage ; Ctrl+C arrête.
+- le mode debug ne laisse plus un écran vide pendant toute l'analyse : une barre d'avancement affiche l'étape en cours, le temps écoulé et le temps restant estimé d'après ton dernier passage ; Ctrl+C arrête ;
+- dès le premier passage, une estimation approximative du temps restant s'affiche.
 
 ## 3.2.0 · 2026-11-18
 

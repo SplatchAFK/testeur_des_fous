@@ -1904,3 +1904,23 @@ This folder is neither a Libft, nor a ft_printf, nor a get_next_line: pick the f
 Grading mode is still on%s%s.\n\nDo you go on grading, or go back to the normal tester?	Режим проверки всё ещё включён%s%s.\n\nПродолжаешь проверку или возвращаешься к обычному тестеру?
 Go on grading|	Продолжить проверку|
 Back to the normal tester|	Вернуться к обычному тестеру|
+%c: characters, including 0 and non printable characters.	%c: символы, включая 0 и непечатаемые.
+%s: strings, NULL included.	%s: строки, включая NULL.
+%p: pointers, NULL included (glibc '(nil)', macOS '0x0').	%p: указатели, включая NULL (glibc «(nil)», macOS «0x0»).
+%d: signed integers, INT_MIN and INT_MAX included.	%d: знаковые целые, включая INT_MIN и INT_MAX.
+%i: signed integers, INT_MIN and INT_MAX included.	%i: знаковые целые, включая INT_MIN и INT_MAX.
+%u: unsigned integers, up to UINT_MAX.	%u: беззнаковые целые, до UINT_MAX.
+%x: lowercase hexadecimal.	%x: шестнадцатеричное, строчными.
+%X: UPPERCASE hexadecimal.	%X: шестнадцатеричное, ЗАГЛАВНЫМИ.
+%%: the percent sign.	%%: знак процента.
+mix: several conversions in the same format, empty or very long format.	mix: несколько конверсий в одном формате, пустой или очень длинный формат.
+ret: the return value (with \\0 in strings, big volumes).	ret: возвращаемое значение (с \\0 в строках, большие объёмы).
+limites: edge cases (NULL, % at the end, unknown conversion).	limites: edge cases (NULL, % at the end, unknown conversion).
+write: write that fails (closed fd, /dev/full): ft_printf must return -1.	write: write с ошибкой (закрытый fd, /dev/full): ft_printf должна вернуть -1.
+malloc: each malloc fails in turn, with no crash and no leak.	malloc: каждый malloc по очереди падает, без краша и утечек.
+stress: 10,000 random calls compared with the real printf.	stress: 10 000 случайных вызовов, сравнённых с настоящим printf.
+Every read with this BUFFER_SIZE, plus BUFFER_SIZE=0 and -1.	Все чтения с этим BUFFER_SIZE, плюс BUFFER_SIZE=0 и -1.
+Every tested case is shown, with its comparison.	Каждый проверенный случай показан вместе со сравнением.
+'Did you know?' bubbles	Пузыри «А ты знал?»
+Enter to show or hide them in the menu.	Enter, чтобы показать или скрыть их в меню.
+limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: граничные случаи (NULL, одинокий знак процента в конце, неизвестная конверсия).

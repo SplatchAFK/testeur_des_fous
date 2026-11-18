@@ -111,7 +111,7 @@ static void	gnl_anneaux(int x, int y)
 		b[strcspn(b, "\r\n")] = '\0';
 	if (f)
 		fclose(f);
-	if (!b[0])
+	if (!b[0] || getenv("TDF_SANS_STATS"))
 		return ;
 	text_at(x, y, theme()->dim, L("Le Puits :", "The Well:"));
 	at(x + 12, y);

@@ -246,6 +246,7 @@ static void	mu_charger(t_mu *m)
 	char	*b;
 
 	m->n = 0;
+	tdf_bulles_lire();
 	if (tdf_correction(ch, sizeof(ch)))
 	{
 		b = strrchr(ch, '/');
@@ -274,6 +275,7 @@ static void	mu_charger(t_mu *m)
 
 #define NB_ASTUCES 66
 #define NB_ROSES 55
+#define NB_BLAGUES 5
 
 static const char	*astuce(int i)
 {
@@ -602,7 +604,8 @@ static void	bulle_choisir(t_zone *z, int nz, long anim)
 			cand[nc++] = i;
 	q = nc ? &z[cand[rand() % nc]] : &z[rand() % nz];
 	do
-		i = rand() % 100 < 35 ? NB_ASTUCES + rand() % NB_ROSES : rand() % NB_ASTUCES;
+		i = rand() % 100 < 35 ? NB_ASTUCES + (rand() % 12 == 0 ? rand() % NB_BLAGUES
+				: NB_BLAGUES + rand() % (NB_ROSES - NB_BLAGUES)) : rand() % NB_ASTUCES;
 	while (i == g_bulle.prec);
 	g_bulle.w = q->w < 34 ? q->w : 34;
 	g_bulle.n = 0;
@@ -754,7 +757,10 @@ static int	mu_ecran(t_mu *m, int *sel)
 		}
 		snprintf(tmp, sizeof(tmp), "v%s · %s", TDF_VERSION, L("créé et vibe-codé par Splatch", "created and vibe-coded by Splatch"));
 		if (haut && tdf_correction(NULL, 0))
-			center(haut, theme()->accent2, L("testeur des fous | mode : correction", "testeur des fous | mode: grading"));
+		{
+			tdf_correction_titre(tmp, sizeof(tmp));
+			center(haut, theme()->accent2, tmp);
+		}
 		else if (haut)
 			center(haut, theme()->dim, tmp);
 		y = haut + 2;
@@ -800,7 +806,7 @@ static int	mu_ecran(t_mu *m, int *sel)
 			zones[nz++] = (t_zone){3, 2, 14, x - 6};
 		if (haut == 16 && cols - (x + tw + 4 + g_fou_bloc_w) - 6 >= 22)
 			zones[nz++] = (t_zone){x + tw + 4 + g_fou_bloc_w + 3, 2, 14, cols - (x + tw + 4 + g_fou_bloc_w) - 6};
-		if (!tdf_correction(NULL, 0))
+		if (!tdf_correction(NULL, 0) && tdf_bulles())
 			bulle(zones, nz, anim);
 		i = y + 2 + m->n * (rows >= y + 2 * m->n + 6 ? 2 : 1);
 		if (strchr(m->items[*sel], '|') && i < rows - 2)

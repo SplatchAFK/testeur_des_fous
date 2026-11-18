@@ -204,6 +204,13 @@ attente_module() {
 	mkdir -p "$DOSSIER/durees"
 	est="$(cat "$DOSSIER/durees/$cle" 2>/dev/null)"
 	case "$est" in ''|*[!0-9]*) est=0 ;; esac
+	if [ "$est" = 0 ]; then
+		case "$cle" in
+			libft*debug*) est=45 ;;
+			printf*debug*) est=35 ;;
+			gnl*debug*) est=15 ;;
+		esac
+	fi
 	t0=$(tdf_ms)
 	printf '\033[2J'
 	while kill -0 "$pid" 2>/dev/null; do
@@ -309,6 +316,13 @@ lore_scene() {
 	esac
 }
 
+login_corrige() {
+	local l
+	l="$(head -1 "$1/README.md" 2>/dev/null | sed -n 's/.* by \([^*_]*\).*/\1/p' | sed 's/[[:space:].]*$//')"
+	[ -n "$l" ] || l="$(basename "$1")"
+	printf '%s' "${l:0:40}"
+}
+
 correction_preparer() {
 	local a="$1" p="$2" t="" quoi
 	case "$a" in corr_test) t="${p#*$'\t'}"; p="${p%%$'\t'*}" ;; esac
@@ -323,6 +337,8 @@ correction_preparer() {
 		return 1
 	fi
 	export TDF_SANS_HISTOIRE=1 TDF_SANS_STATS=1
+	TDF_BANDEAU="$(tt "testeur des fous | mode : correction" "testeur des fous | mode: grading") · $(login_corrige "$PROJET")"
+	export TDF_BANDEAU
 	if [ ! -d "$DOSSIER/derniere_hors_correction" ]; then
 		mkdir -p "$DOSSIER/derniere"
 		cp -a "$DOSSIER/derniere" "$DOSSIER/derniere_hors_correction"
@@ -342,7 +358,7 @@ correction_preparer() {
 			esac
 			;;
 	esac
-	CORR_TITRE="$(tt "testeur des fous | mode : correction" "testeur des fous | mode: grading") · $quoi · $(nom_module "$MODULE")"
+	CORR_TITRE="$TDF_BANDEAU · $quoi · $(nom_module "$MODULE")"
 	return 0
 }
 
@@ -383,7 +399,7 @@ noter_historique() {
 
 choisir_au_menu() {
 	local code l a p projets=""
-	unset TDF_SANS_STATS TDF_CAS
+	unset TDF_SANS_STATS TDF_CAS TDF_BANDEAU
 	if [ ! -f "$DOSSIER/correction.txt" ] && [ -d "$DOSSIER/derniere_hors_correction" ]; then
 		rm -rf "$DOSSIER/derniere"
 		mv "$DOSSIER/derniere_hors_correction" "$DOSSIER/derniere"

@@ -934,6 +934,20 @@ void	outf(const char *fmt, ...)
 		outn(tmp, (size_t)n < sizeof(tmp) ? (size_t)n : sizeof(tmp) - 1);
 }
 
+static void	bandeau(const char *s)
+{
+	int	x;
+
+	at(0, 0);
+	bgc(rgb(23, 50, 70));
+	outf("%*s", term_cols(), "");
+	x = (term_cols() - ulen(s) - 2) / 2;
+	at(x > 0 ? x : 0, 0);
+	fg(rgb(150, 225, 255));
+	outf(" %s ", s);
+	bgc(theme()->bg);
+}
+
 void	flush(void)
 {
 	if (g_raw && !g_forked)
@@ -942,6 +956,9 @@ void	flush(void)
 		size_guard();
 		vs_fit();
 	}
+	if (g_raw && !g_forked && g_bk && getenv("TDF_BANDEAU")
+		&& !(getenv("TDF_ECRAN") && !strcmp(getenv("TDF_ECRAN"), "rapport")))
+		bandeau(getenv("TDF_BANDEAU"));
 	drain();
 	if (!g_raw || g_forked || !g_bk)
 		return ;

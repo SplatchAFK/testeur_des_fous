@@ -14,6 +14,7 @@
 
 static int			g_corr_choix;
 static const char	*g_corr_msg;
+static int			g_bulles = 1;
 
 int	tdf_nouveau(const char *depuis)
 {
@@ -1314,6 +1315,75 @@ int	tdf_correction_dossier(char *out, size_t n)
 	return (r);
 }
 
+void	tdf_correction_titre(char *out, size_t n)
+{
+	char	ch[600];
+	char	p[700];
+	char	l[400];
+	char	lg[60];
+	FILE	*f;
+	char	*b;
+	char	*e;
+
+	lg[0] = '\0';
+	l[0] = '\0';
+	if (tdf_correction(ch, sizeof(ch)) && ch[0])
+	{
+		snprintf(p, sizeof(p), "%s/README.md", ch);
+		f = fopen(p, "r");
+		if (f && !fgets(l, sizeof(l), f))
+			l[0] = '\0';
+		if (f)
+			fclose(f);
+		b = strstr(l, " by ");
+		if (b)
+		{
+			b += 4;
+			e = b + strcspn(b, "*_\r\n");
+			while (e > b && (e[-1] == ' ' || e[-1] == '.'))
+				e--;
+			snprintf(lg, sizeof(lg), "%.*s", (int)(e - b) > 40 ? 40 : (int)(e - b), b);
+		}
+		b = strrchr(ch, '/');
+		if (!lg[0])
+			snprintf(lg, sizeof(lg), "%.40s", b && b[1] ? b + 1 : ch);
+	}
+	snprintf(out, n, "%s%s%s", L("testeur des fous | mode : correction", "testeur des fous | mode: grading"), lg[0] ? " · " : "", lg);
+}
+
+void	tdf_bulles_lire(void)
+{
+	char	p[700];
+	FILE	*f;
+	int		c;
+
+	snprintf(p, sizeof(p), "%s/bulles.txt", g_savedir);
+	f = fopen(p, "r");
+	c = f ? fgetc(f) : '1';
+	if (f)
+		fclose(f);
+	g_bulles = c != '0';
+}
+
+int	tdf_bulles(void)
+{
+	return (g_bulles);
+}
+
+static void	bulles_basculer(void)
+{
+	char	p[700];
+	FILE	*f;
+
+	g_bulles = !g_bulles;
+	snprintf(p, sizeof(p), "%s/bulles.txt", g_savedir);
+	f = fopen(p, "w");
+	if (!f)
+		return ;
+	fprintf(f, "%d\n", g_bulles);
+	fclose(f);
+}
+
 int	tdf_correction_accueil(void)
 {
 	char		ch[600];
@@ -1366,6 +1436,8 @@ int	tdf_choisir_test(const char *dossier, char *out, size_t n)
 	static const char	*pf[] = {"c", "s", "p", "d", "i", "u", "x", "X", "%", "mix",
 		"ret", "limites", "write", "malloc", "stress"};
 	static const char	*gn[] = {"1", "2", "7", "42", "1024", "9999", "10000000"};
+	const char			*pd[15];
+	char				titre_c[200];
 	static int			sel;
 	const char			**noms;
 	const char			*titre;
@@ -1403,6 +1475,22 @@ int	tdf_choisir_test(const char *dossier, char *out, size_t n)
 		out[0] = '\0';
 		return (1);
 	}
+	pd[0] = L("%c : caractères, y compris 0 et les caractères non imprimables.", "%c: characters, including 0 and non printable characters.");
+	pd[1] = L("%s : chaînes, NULL compris.", "%s: strings, NULL included.");
+	pd[2] = L("%p : pointeurs, NULL compris (glibc « (nil) », macOS « 0x0 »).", "%p: pointers, NULL included (glibc '(nil)', macOS '0x0').");
+	pd[3] = L("%d : entiers signés, INT_MIN et INT_MAX compris.", "%d: signed integers, INT_MIN and INT_MAX included.");
+	pd[4] = L("%i : entiers signés, INT_MIN et INT_MAX compris.", "%i: signed integers, INT_MIN and INT_MAX included.");
+	pd[5] = L("%u : entiers non signés, jusqu'à UINT_MAX.", "%u: unsigned integers, up to UINT_MAX.");
+	pd[6] = L("%x : hexadécimal en minuscules.", "%x: lowercase hexadecimal.");
+	pd[7] = L("%X : hexadécimal en MAJUSCULES.", "%X: UPPERCASE hexadecimal.");
+	pd[8] = L("%% : le signe pourcent.", "%%: the percent sign.");
+	pd[9] = L("mix : plusieurs conversions dans le même format, format vide ou très long.", "mix: several conversions in the same format, empty or very long format.");
+	pd[10] = L("ret : la valeur de retour (avec \\0 dans les chaînes, gros volumes).", "ret: the return value (with \\0 in strings, big volumes).");
+	pd[11] = L("limites : cas limites (NULL, pourcent seul à la fin, conversion inconnue).", "limites: edge cases (NULL, lone percent sign at the end, unknown conversion).");
+	pd[12] = L("write : write qui échoue (fd fermé, /dev/full) : ft_printf doit renvoyer -1.", "write: write that fails (closed fd, /dev/full): ft_printf must return -1.");
+	pd[13] = L("malloc : chaque malloc échoue à son tour, sans crash ni fuite.", "malloc: each malloc fails in turn, with no crash and no leak.");
+	pd[14] = L("stress : 10 000 appels au hasard comparés au vrai printf.", "stress: 10,000 random calls compared with the real printf.");
+	tdf_correction_titre(titre_c, sizeof(titre_c));
 	if (sel >= nb)
 		sel = 0;
 	cls();
@@ -1419,7 +1507,7 @@ int	tdf_choisir_test(const char *dossier, char *out, size_t n)
 			x = 1;
 		bgc(theme()->bg);
 		frame();
-		center(2, theme()->accent2, L("testeur des fous | mode : correction", "testeur des fous | mode: grading"));
+		center(2, theme()->accent2, titre_c);
 		center(4, theme()->text, titre);
 		for (i = 0; i < nb; i++)
 		{
@@ -1443,7 +1531,14 @@ int	tdf_choisir_test(const char *dossier, char *out, size_t n)
 			bgc(theme()->bg);
 		}
 		y = 7 + (nb - 1) / nc + 1;
-		text_at(x, y, theme()->dim, L("◀ ▲ ▼ ▶ choisir   Entrée : lancer ce test seul, avec tout le détail   Échap : retour",
+		fill(x, y, term_cols() - x - 1, 1, theme()->bg);
+		if (t == 2)
+			text_at(x + 1, y++, theme()->accent, pd[sel]);
+		else if (t == 3)
+			text_at(x + 1, y++, theme()->accent, L("Toutes les lectures avec ce BUFFER_SIZE, plus BUFFER_SIZE=0 et -1.", "Every read with this BUFFER_SIZE, plus BUFFER_SIZE=0 and -1."));
+		else
+			text_at(x + 1, y++, theme()->accent, L("Chaque cas testé s'affiche, avec sa comparaison.", "Every tested case is shown, with its comparison."));
+		text_at(x, y + 1, theme()->dim, L("◀ ▲ ▼ ▶ choisir   Entrée : lancer ce test seul, avec tout le détail   Échap : retour",
 				"◀ ▲ ▼ ▶ pick   Enter: run this test alone, with every detail   Esc: back"));
 		flush();
 		k = key_read(200);
@@ -1671,11 +1766,13 @@ void	tdf_rapport(const char *path, const char *titre)
 void	tdf_menu_params(void (*credits)(void))
 {
 	static int	sel;
-	const char	*items[9];
-	int			act[9];
+	const char	*items[10];
+	int			act[10];
+	char		bl[200];
 	int			n;
 	int			i;
 
+	tdf_bulles_lire();
 	while (1)
 	{
 		n = 0;
@@ -1693,6 +1790,10 @@ void	tdf_menu_params(void (*credits)(void))
 			act[n] = 7;
 			items[n++] = L("Changelog|Ce qui a changé dans cette version, et le Discord pour en savoir plus.", "Changelog|What changed in this version, and the Discord to learn more.");
 		}
+		snprintf(bl, sizeof(bl), "%s%s : %s|%s", tdf_nouveau("3.3") ? "!" : "", L("Bulles « Le savais-tu ? »", "'Did you know?' bubbles"),
+			g_bulles ? L("oui", "yes") : L("non", "no"), L("Entrée pour les montrer ou les cacher dans le menu.", "Enter to show or hide them in the menu."));
+		act[n] = 8;
+		items[n++] = bl;
 		act[n] = 1;
 		items[n++] = L("Sauvegarde et connexion|Exporter ta progression ou la retrouver sur un autre poste.", "Save and login|Export your progress or get it back on another computer.");
 		act[n] = 2;
@@ -1723,6 +1824,8 @@ void	tdf_menu_params(void (*credits)(void))
 			tdf_tuto();
 		else if (act[i] == 7)
 			tdf_nouveautes();
+		else if (act[i] == 8)
+			bulles_basculer();
 	}
 }
 

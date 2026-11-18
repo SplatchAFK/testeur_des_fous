@@ -1904,3 +1904,23 @@ This folder is neither a Libft, nor a ft_printf, nor a get_next_line: pick the f
 Grading mode is still on%s%s.\n\nDo you go on grading, or go back to the normal tester?	El modo corrección sigue activo%s%s.\n\n¿Sigues con la corrección o vuelves al testeur normal?
 Go on grading|	Seguir con la corrección|
 Back to the normal tester|	Volver al testeur normal|
+%c: characters, including 0 and non printable characters.	%c: caracteres, incluidos 0 y los no imprimibles.
+%s: strings, NULL included.	%s: cadenas, NULL incluido.
+%p: pointers, NULL included (glibc '(nil)', macOS '0x0').	%p: punteros, NULL incluido (glibc «(nil)», macOS «0x0»).
+%d: signed integers, INT_MIN and INT_MAX included.	%d: enteros con signo, INT_MIN e INT_MAX incluidos.
+%i: signed integers, INT_MIN and INT_MAX included.	%i: enteros con signo, INT_MIN e INT_MAX incluidos.
+%u: unsigned integers, up to UINT_MAX.	%u: enteros sin signo, hasta UINT_MAX.
+%x: lowercase hexadecimal.	%x: hexadecimal en minúsculas.
+%X: UPPERCASE hexadecimal.	%X: hexadecimal en MAYÚSCULAS.
+%%: the percent sign.	%%: el signo de porcentaje.
+mix: several conversions in the same format, empty or very long format.	mix: varias conversiones en el mismo formato, formato vacío o muy largo.
+ret: the return value (with \\0 in strings, big volumes).	ret: el valor de retorno (con \\0 en las cadenas, grandes volúmenes).
+limites: edge cases (NULL, % at the end, unknown conversion).	limites: edge cases (NULL, % at the end, unknown conversion).
+write: write that fails (closed fd, /dev/full): ft_printf must return -1.	write: write que falla (fd cerrado, /dev/full): ft_printf debe devolver -1.
+malloc: each malloc fails in turn, with no crash and no leak.	malloc: cada malloc falla por turnos, sin crash ni fuga.
+stress: 10,000 random calls compared with the real printf.	stress: 10 000 llamadas al azar comparadas con el printf real.
+Every read with this BUFFER_SIZE, plus BUFFER_SIZE=0 and -1.	Todas las lecturas con este BUFFER_SIZE, más BUFFER_SIZE=0 y -1.
+Every tested case is shown, with its comparison.	Cada caso probado se muestra, con su comparación.
+'Did you know?' bubbles	Burbujas «¿Sabías que…?»
+Enter to show or hide them in the menu.	Intro para mostrarlas u ocultarlas en el menú.
+limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: casos límite (NULL, porcentaje solo al final, conversión desconocida).

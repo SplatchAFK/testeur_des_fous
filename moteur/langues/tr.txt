@@ -1904,3 +1904,23 @@ This folder is neither a Libft, nor a ft_printf, nor a get_next_line: pick the f
 Grading mode is still on%s%s.\n\nDo you go on grading, or go back to the normal tester?	Değerlendirme modu hâlâ açık%s%s.\n\nDeğerlendirmeye devam mı, yoksa normal test aracına mı dönüyorsun?
 Go on grading|	Değerlendirmeye devam et|
 Back to the normal tester|	Normal test aracına dön|
+%c: characters, including 0 and non printable characters.	%c: karakterler, 0 ve yazdırılamayanlar dahil.
+%s: strings, NULL included.	%s: dizeler, NULL dahil.
+%p: pointers, NULL included (glibc '(nil)', macOS '0x0').	%p: işaretçiler, NULL dahil (glibc «(nil)», macOS «0x0»).
+%d: signed integers, INT_MIN and INT_MAX included.	%d: işaretli tam sayılar, INT_MIN ve INT_MAX dahil.
+%i: signed integers, INT_MIN and INT_MAX included.	%i: işaretli tam sayılar, INT_MIN ve INT_MAX dahil.
+%u: unsigned integers, up to UINT_MAX.	%u: işaretsiz tam sayılar, UINT_MAX'a kadar.
+%x: lowercase hexadecimal.	%x: küçük harfli onaltılık.
+%X: UPPERCASE hexadecimal.	%X: BÜYÜK harfli onaltılık.
+%%: the percent sign.	%%: yüzde işareti.
+mix: several conversions in the same format, empty or very long format.	mix: aynı biçimde birkaç dönüşüm, boş ya da çok uzun biçim.
+ret: the return value (with \\0 in strings, big volumes).	ret: dönüş değeri (dizelerde \\0 ile, büyük hacimler).
+limites: edge cases (NULL, % at the end, unknown conversion).	limites: edge cases (NULL, % at the end, unknown conversion).
+write: write that fails (closed fd, /dev/full): ft_printf must return -1.	write: başarısız write (kapalı fd, /dev/full): ft_printf -1 döndürmeli.
+malloc: each malloc fails in turn, with no crash and no leak.	malloc: her malloc sırayla başarısız olur, çökme ve sızıntı olmadan.
+stress: 10,000 random calls compared with the real printf.	stress: gerçek printf ile karşılaştırılan 10.000 rastgele çağrı.
+Every read with this BUFFER_SIZE, plus BUFFER_SIZE=0 and -1.	Bu BUFFER_SIZE ile tüm okumalar, artı BUFFER_SIZE=0 ve -1.
+Every tested case is shown, with its comparison.	Test edilen her durum karşılaştırmasıyla gösterilir.
+'Did you know?' bubbles	«Biliyor muydun?» baloncukları
+Enter to show or hide them in the menu.	Menüde göstermek ya da gizlemek için Enter.
+limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: sınır durumları (NULL, sonda tek başına yüzde işareti, bilinmeyen dönüşüm).
