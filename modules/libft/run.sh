@@ -190,6 +190,10 @@ set_colors() {
 		P_LK=$'\e[30;48;5;221m'; P_UB=$'\e[30;48;5;215m'; P_TM=$'\e[30;48;5;141m'
 		P_BD=$'\e[30;48;5;117m'; P_SK=$'\e[38;5;245;48;5;236m'; P_WN=$'\e[30;48;5;221m'
 		F_OK=$'\e[38;5;78m'; F_KO=$'\e[38;5;203m'; F_LK=$'\e[38;5;221m'
+		if [ -n "${TDF_DALTONIEN:-}" ]; then
+			P_OK=$'\e[30;48;5;75m'; P_KO=$'\e[30;48;5;208m'; P_BD=$'\e[30;48;5;250m'
+			F_OK=$'\e[38;5;75m'; F_KO=$'\e[38;5;208m'
+		fi
 	else
 		R=; B=; D=; ACC=; TXT=; P_OK=; P_KO=; P_CR=; P_LK=; P_UB=; P_TM=; P_BD=
 		P_WN=; P_SK=; F_OK=; F_KO=; F_LK=

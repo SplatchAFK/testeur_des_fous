@@ -721,6 +721,8 @@ int				tdf_correction_dossier(char *out, size_t n);
 int				tdf_correction_accueil(void);
 void			tdf_correction_titre(char *out, size_t n);
 int				tdf_bulles(void);
+int				tdf_daltonien(void);
+void			tdf_daltonien_regler(int v);
 typedef struct s_ech
 {
 	char	date[12];

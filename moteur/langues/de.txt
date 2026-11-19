@@ -2015,3 +2015,5 @@ The install did not work. On a 42 computer, the network or pip may be blocked: a
 Install the norminette|Not found on this computer: the tester installs it for you, without sudo.	Norminette installieren|Auf diesem Rechner nicht gefunden: der Tester installiert sie für dich, ohne sudo.
 !Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	!Zusammenfassung zum Teilen|Dein letzter Versuch in wenigen Zeilen, ohne Code und Pfade, zum Einfügen auf Discord, um Hilfe zu bekommen.
 Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	Zusammenfassung zum Teilen|Dein letzter Versuch in wenigen Zeilen, ohne Code und Pfade, zum Einfügen auf Discord, um Hilfe zu bekommen.
+Adapted colours	Angepasste Farben
+Blue for OK and orange for WRONG instead of green and red (colour blindness). Enter to change.	Blau für OK und Orange für FALSCH statt Grün und Rot (Farbenblindheit). Enter zum Ändern.

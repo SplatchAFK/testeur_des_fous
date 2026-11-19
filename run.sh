@@ -485,6 +485,7 @@ noter_historique() {
 choisir_au_menu() {
 	local code l a p projets=""
 	norminette_etat
+	if [ "$(head -c1 "$DOSSIER/couleurs.txt" 2>/dev/null)" = 1 ]; then export TDF_DALTONIEN=1; else unset TDF_DALTONIEN; fi
 	unset TDF_SANS_STATS TDF_CAS TDF_BANDEAU
 	PROJET_VRAI=""
 	if [ ! -f "$DOSSIER/correction.txt" ] && [ -d "$DOSSIER/derniere_hors_correction" ]; then

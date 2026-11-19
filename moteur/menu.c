@@ -1460,6 +1460,20 @@ static void	ecran_echeances(void)
 	}
 }
 
+static void	couleurs_basculer(void)
+{
+	char	p[700];
+	FILE	*f;
+
+	tdf_daltonien_regler(!tdf_daltonien());
+	snprintf(p, sizeof(p), "%s/couleurs.txt", g_savedir);
+	f = fopen(p, "w");
+	if (!f)
+		return ;
+	fprintf(f, "%d\n", tdf_daltonien());
+	fclose(f);
+}
+
 static void	bulles_basculer(void)
 {
 	char	p[700];
@@ -1858,9 +1872,10 @@ void	tdf_rapport(const char *path, const char *titre)
 void	tdf_menu_params(void (*credits)(void))
 {
 	static int	sel;
-	const char	*items[13];
-	int			act[13];
+	const char	*items[14];
+	int			act[14];
 	char		bl[200];
+	char		cl[300];
 	int			n;
 	int			i;
 
@@ -1892,6 +1907,12 @@ void	tdf_menu_params(void (*credits)(void))
 			g_bulles ? L("oui", "yes") : L("non", "no"), L("Entrée pour les montrer ou les cacher dans le menu.", "Enter to show or hide them in the menu."));
 		act[n] = 8;
 		items[n++] = bl;
+		snprintf(cl, sizeof(cl), "%s%s : %s|%s", tdf_nouveau("3.4") ? "!" : "", L("Couleurs adaptées", "Adapted colours"),
+			tdf_daltonien() ? L("oui", "yes") : L("non", "no"),
+			L("Bleu pour OK et orange pour FAUX au lieu de vert et rouge (daltonisme). Entrée pour changer.",
+				"Blue for OK and orange for WRONG instead of green and red (colour blindness). Enter to change."));
+		act[n] = 12;
+		items[n++] = cl;
 		if (tdf_derniere_existe())
 		{
 			act[n] = 11;
@@ -1947,6 +1968,8 @@ void	tdf_menu_params(void (*credits)(void))
 			tdf_sortie("resume", NULL);
 			return ;
 		}
+		else if (act[i] == 12)
+			couleurs_basculer();
 	}
 }
 
