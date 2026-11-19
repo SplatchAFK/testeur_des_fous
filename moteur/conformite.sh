@@ -351,3 +351,21 @@ tdf_noms_params() {
 		gsub(/[^A-Za-z0-9_]+/, " ", t); n = split(t, w, " "); return w[n]
 	}'
 }
+
+tdf_inc_grouper() {
+	awk -F'\t' -v mot="$(tt "fichiers" "files")" '
+	{
+		k = $1 "\t" $3
+		if (!(k in n)) o[++m] = k
+		n[k]++
+		if (n[k] <= 6) f[k] = (f[k] == "" ? $2 : f[k] ", " $2)
+		else if (n[k] == 7) f[k] = f[k] ", …"
+	}
+	END {
+		for (i = 1; i <= m; i++) {
+			k = o[i]; split(k, p, "\t")
+			if (n[k] == 1) printf "%s\t%s\t%s\n", p[1], f[k], p[2]
+			else printf "%s\t%d %s\t%s (%s)\n", p[1], n[k], mot, p[2], f[k]
+		}
+	}'
+}

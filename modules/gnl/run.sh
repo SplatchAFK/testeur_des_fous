@@ -143,7 +143,7 @@ n_inc=0
 while IFS=$'\t' read -r st f msg; do
 	n_inc=$((n_inc + 1))
 	if [ "$st" = ko ]; then ligne KO "$f : $msg"; else ligne NOTE "$f : $msg"; fi
-done < <(tdf_inclusions "$PROJET" "$PROJET/get_next_line.c" "$PROJET/get_next_line_utils.c" "$PROJET/get_next_line.h")
+done < <(tdf_inclusions "$PROJET" "$PROJET/get_next_line.c" "$PROJET/get_next_line_utils.c" "$PROJET/get_next_line.h" | tdf_inc_grouper)
 [ "$n_inc" = 0 ] && ligne OK "$(tt "includes : get_next_line.c, get_next_line_utils.c et get_next_line.h trouvent leurs .h" "includes: get_next_line.c, get_next_line_utils.c and get_next_line.h find their .h")"
 
 SRC=("$PROJET/get_next_line.c" "$PROJET/get_next_line_utils.c")
@@ -223,12 +223,12 @@ if [ -z "$PARAS" ]; then
 	ligne OK "$(tt "aucun fichier parasite dans le rendu" "no garbage file in the submission")"
 else
 	while IFS=$'\t' read -r f m; do
-		ligne KO "fichier parasite : $f (erreur moulinette)" "$m · à retirer : git rm $f"
+		ligne KO "$(printf "$(tt "fichier parasite : %s (erreur moulinette)" "garbage file: %s (moulinette error)")" "$f")" "$(printf "$(tt "%s · à retirer : git rm %s" "%s · to remove: git rm %s")" "$m" "$f")"
 	done <<< "$PARAS"
 fi
 while IFS=$'\t' read -r f m; do
 	[ -n "$f" ] || continue
-	ligne NOTE "hors git : $f" "$m"
+	ligne NOTE "$(printf "$(tt "hors git : %s" "outside git: %s")" "$f")" "$m"
 done <<< "$(tdf_non_suivis "$PROJET")"
 
 if [ "${RENDU:-0}" = 1 ]; then

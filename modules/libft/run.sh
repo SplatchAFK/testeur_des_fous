@@ -278,7 +278,7 @@ san_ok() { echo 'int main(void){return 0;}' | $CC -x c - -fsanitize="$1" -o "$BU
 if [ -n "$SANS" ] && ! san_ok "$SANS"; then
 	SANS_OLD="$SANS"
 	if [ "$SANS" != address ] && san_ok address; then SANS=address; else SANS=""; fi
-	emit "G	sanitizers indisponibles ($SANS_OLD) : repli sur ${SANS:-aucun} (le traqueur mémoire du testeur reste actif)"
+	emit "G	$(printf "$(tt "sanitizers indisponibles (%s) : repli sur %s (le traqueur mémoire du testeur reste actif)" "sanitizers unavailable (%s): falling back to %s (the tester's memory tracker stays on)")" "$SANS_OLD" "${SANS:-$(tt "aucun" "none")}")"
 fi
 SAN=""
 [ -n "$SANS" ] && SAN="-fsanitize=$SANS -fno-sanitize-recover=all -fno-omit-frame-pointer"
@@ -504,7 +504,7 @@ valgrind_one() {
 		--log-file="$BUILD/vg/$n.log" "$BUILD/vg/$n" > /dev/null 2>&1
 	[ $? = 42 ] || return 0
 	out="$(grep -m1 -E 'definitely|indirectly|Invalid|uninitialised' "$BUILD/vg/$n.log" | sed 's/^==[0-9]*== //')"
-	det "valgrind : ${out:-erreur mémoire}"
+	det "valgrind : ${out:-$(tt "erreur mémoire" "memory error")}"
 	return 1
 }
 
@@ -543,7 +543,7 @@ run_one() {
 	leakl="$(grep -m1 '^@@L ' "$out")"
 
 	if [ "$code" = 124 ] || [ -n "$caset" ]; then
-		det "aucune réponse après $TMO s : boucle infinie ?"
+		det "$(printf "$(tt "aucune réponse après %s s : boucle infinie ?" "no answer after %s s: infinite loop?")" "$TMO")"
 		[ -n "$caset" ] && det "pendant : $caset"
 		report time "$n" "" "$((TMO * 1000))"; n_bad=$((n_bad + 1))
 	elif grep -q 'runtime error' "$san"; then
@@ -557,7 +557,7 @@ run_one() {
 		while IFS= read -r l; do det "$l"; done < <(grep -m1 -E 'is located .* (after|before|inside)' "$san" | sed -E 's/^ *//')
 		report crash "$n" "$checks" "$ms"; n_bad=$((n_bad + 1)); fullreport "$san"
 	elif [ -n "$casec" ]; then
-		det "plantage (code $code) pendant : $casec"
+		det "$(printf "$(tt "plantage (code %s) pendant : %s" "crash (code %s) during: %s")" "$code" "$casec")"
 		report crash "$n" "$checks" "$ms"; n_bad=$((n_bad + 1))
 	elif [ -n "$fails" ] && [ "$fails" -gt 0 ]; then
 		while IFS= read -r l; do det "$l"; done < <(grep '^  ko| ' "$out" | sed 's/^  ko| //' | head -5)
@@ -579,7 +579,7 @@ run_one() {
 			report ok "$n" "$checks" "$ms"; n_ok=$((n_ok + 1))
 		fi
 	else
-		det "sortie avec le code $code avant la fin du test"
+		det "$(printf "$(tt "sortie avec le code %s avant la fin du test" "exit with code %s before the end of the test")" "$code")"
 		while IFS= read -r l; do det "$l"; done < <(head -3 "$BUILD/err_$n")
 		report crash "$n" "$checks" "$ms"; n_bad=$((n_bad + 1))
 	fi
@@ -655,7 +655,7 @@ finish_norm() {
 	fi
 	if [ -z "$NORM_CMD" ]; then
 		audit_line warn "$(tt "norminette introuvable : la Norme n'est PAS vérifiée" "norminette not found: the Norm is NOT checked")" "$(tt "installe-la : python3 -m pip install --user norminette" "install it: python3 -m pip install --user norminette")"
-		emit "G	norminette introuvable : la Norme n'est pas vérifiée (python3 -m pip install --user norminette)"
+		emit "G	$(tt "norminette introuvable : la Norme n'est pas vérifiée (python3 -m pip install --user norminette)" "norminette not found: the Norm is not checked (python3 -m pip install --user norminette)")"
 		return
 	fi
 	[ -n "$NPID" ] && wait "$NPID" 2>/dev/null
@@ -663,7 +663,7 @@ finish_norm() {
 	v="$($NORM_CMD --version 2>/dev/null | grep -oE 'norminette [0-9]+\.[0-9]+\.[0-9]+' | head -1 | grep -oE '[0-9.]+$')"
 	if [ -n "$v" ] && ver_lt "$v" "$NORM_LATEST"; then
 		audit_line warn "norminette $v : version plus ancienne que $NORM_LATEST" "mets-la à jour : python3 -m pip install --user -U norminette"
-		emit "G	norminette $v installée, la dernière connue est $NORM_LATEST : mets-la à jour"
+		emit "G	$(printf "$(tt "norminette %s installée, la dernière connue est %s : mets-la à jour" "norminette %s installed, the latest known is %s: update it")" "$v" "$NORM_LATEST")"
 	fi
 	[ -f "$BUILD/norm.out" ] || { audit_line warn "norminette n'a rien renvoyé"; return; }
 	nerr="$(grep -c '^Error' "$BUILD/norm.out")"
@@ -830,13 +830,13 @@ run_all() {
 		emit "G	$TDF_DIR/ est suivi par git : retire-le avant de rendre (git rm -r --cached $TDF_DIR)"
 	fi
 	if [ "$DEDANS" = 1 ] && [ -d "$ROOT/.git" ] && ! grep -qs "$TDF_DIR" "$ROOT/.gitignore"; then
-		emit "G	ajoute $TDF_DIR/ dans ton .gitignore pour ne jamais le pousser"
+		emit "G	$(printf "$(tt "ajoute %s/ dans ton .gitignore pour ne jamais le pousser" "add %s/ to your .gitignore so it is never pushed")" "$TDF_DIR")"
 	fi
 	while IFS= read -r f; do
 		case "$f" in
 			ft_*.c|libft.h|Makefile|README.md|.gitignore|.git|"$TDF_DIR"|*.o|libft.a) ;;
 			*) (cd "$ROOT" && git check-ignore -q "$f" 2>/dev/null) \
-				|| emit "G	fichier en trop à la racine : $f (interdit dans le rendu)" ;;
+				|| emit "G	$(printf "$(tt "fichier en trop à la racine : %s (interdit dans le rendu)" "extra file at the root: %s (forbidden in the submission)")" "$f")" ;;
 		esac
 	done < <(cd "$ROOT" && ls -A)
 
@@ -871,22 +871,25 @@ run_all() {
 	wait
 	section "$(tt "Prototypes · sujet" "Prototypes · subject")"
 	p=0
+	: > "$BUILD/notes.txt"
 	for n in $PART1 $PART2 $PART3; do
 		IFS=$'\t' read -r st msg < "$BUILD/proto/$n"
 		emit "P	$n	$st	$msg"
 		if [ "$st" = warn ]; then
-			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_WN" NOTE)" "$TXT" "ft_$n" "$R" "$D" "$msg" "$R"
+			printf 'warn\tft_%s\t%s\n' "$n" "${msg#"ft_$n.c : "}" >> "$BUILD/notes.txt"
 		elif [ "$st" != ok ]; then
 			p=$((p + 1))
 			case "$msg" in "ft_$n.c : "*) lab=INCL ;; *) lab=PROTO ;; esac
 			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_KO" "$lab")" "$TXT" "ft_$n" "$R" "$D" "$msg" "$R"
 		fi
 	done
+	while IFS=$'\t' read -r st f msg; do
+		say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_WN" NOTE)" "$TXT" "$f" "$R" "$D" "$msg" "$R"
+	done < <(tdf_inc_grouper < "$BUILD/notes.txt")
 	[ "$p" = 0 ] && say '  %s  %s43 prototypes conformes au sujet%s\n' "$(pill "$P_OK" OK)" "$TXT" "$R"
 	section "$(tt "Includes · chaque fichier trouve ses .h" "Includes · every file finds its .h")"
 	ni=0
 	while IFS=$'\t' read -r st f msg; do
-		case "$f" in ft_*.c) case "$ALL" in *" $(basename "$f" .c | sed 's/^ft_//') "*) continue ;; esac ;; esac
 		ni=$((ni + 1))
 		emit "G	$f : $msg"
 		if [ "$st" = ko ]; then
@@ -895,13 +898,16 @@ run_all() {
 		else
 			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_WN" NOTE)" "$TXT" "$f" "$R" "$D" "$msg" "$R"
 		fi
-	done < "$BUILD/inc.txt"
+	done < <(while IFS=$'\t' read -r st f msg; do
+			case "$f" in ft_*.c) case "$ALL" in *" $(basename "$f" .c | sed 's/^ft_//') "*) continue ;; esac ;; esac
+			printf '%s\t%s\t%s\n' "$st" "$f" "$msg"
+		done < "$BUILD/inc.txt" | tdf_inc_grouper)
 	nf="$(grep -c "^ko	ft_" "$BUILD/inc.txt" 2>/dev/null)"
 	if [ "$ni" = 0 ] && [ "${nf:-0}" = 0 ]; then
 		say '  %s  %s%s%s\n' "$(pill "$P_OK" OK)" "$TXT" "$(printf "$(tt "%d fichiers : chaque include existe, aucune fonction sans déclaration" "%d files: every include exists, no undeclared function")" "${#inc_fs[@]}")" "$R"
 	fi
 	if [ -f "$ROOT/libft.h" ] && ! $CC -fsyntax-only -DF_t_list -I "$ROOT" "$SRC/protos.c" >/dev/null 2>&1; then
-		emit "G	t_list ne correspond pas au sujet : typedef struct s_list { void *content; struct s_list *next; } t_list;"
+		emit "G	$(tt "t_list ne correspond pas au sujet" "t_list does not match the subject") : typedef struct s_list { void *content; struct s_list *next; } t_list;"
 		say '  %s  %st_list différent du sujet%s\n' "$(pill "$P_KO" PROTO)" "$TXT" "$R"
 	fi
 	emit "PD"

@@ -17,6 +17,14 @@ Le numéro de version est dans `moteur/version.h`.
 - nouvelle section dans les trois projets : chaque #include doit exister, aucun .c inclus, aucune fonction utilisée sans déclaration (avec l'en-tête à ajouter, par exemple <stdlib.h> pour malloc) ;
 - chaque .h doit compiler seul, même inclus deux fois, et avoir une garde d'inclusion ;
 - remarques : un en-tête système inclus pour rien, un .c qui n'inclut aucun .h du projet.
+- les remarques identiques sont regroupées : « 7 fichiers : n'inclut aucun .h du projet (ft_isdigit, ft_isalnum, …) » au lieu de 7 lignes.
+
+### Corrections
+
+- fiche d'une fonction Libft : la commande de terminal héritée de l'ancien testeur (« bash libft/run.sh --ci -v … », qui ne marchait plus) est remplacée par l'action « r : relancer les tests sans quitter le testeur » ;
+- écran d'accueil de ft_printf : plus de commande de terminal, il indique le chemin dans le menu ;
+- 21 messages des tests (fichiers en trop, hors git, norminette, nm, sanitizers, plantages, boucle infinie…) étaient seulement en français : ils sont traduits dans les 8 langues ;
+- note estimée Libft : quand la norminette est introuvable ou désactivée, c'est maintenant reconnu dans toutes les langues (avant, seulement en français).
 
 ## 3.3.0 · 2026-11-19
 

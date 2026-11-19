@@ -594,8 +594,8 @@ static int	moulinette_ok(char *why, size_t n)
 			return (0);
 		}
 	for (i = 0; i < g_run.naudit; i++)
-		if (!strncmp(g_run.audit[i].label, "norminette introuvable", 22)
-			|| !strncmp(g_run.audit[i].label, "norminette désactivée", 22))
+		if (!strcmp(g_run.audit[i].label, L("norminette introuvable : la Norme n'est PAS vérifiée", "norminette not found: the Norm is NOT checked"))
+			|| !strcmp(g_run.audit[i].label, L("norminette désactivée dans les paramètres", "norminette turned off in the settings")))
 		{
 			snprintf(why, n, "%s", L("norminette pas vérifiée", "norminette not checked"));
 			return (0);
@@ -942,9 +942,8 @@ static int	fiche_build(int fn, char lines[][220], int *kind, int w)
 		fiche_add(lines, kind, &n, w, 5, L("PISTE", "HINT"));
 		fiche_add(lines, kind, &n, w, 4, h);
 	}
-	fiche_add(lines, kind, &n, w, 5, L("POUR LE REJOUER SEUL", "TO REPLAY IT ALONE"));
-	snprintf(tmp, sizeof(tmp), "bash %s/run.sh --ci -v %s", tester_name(), g_fn_name[fn]);
-	fiche_add(lines, kind, &n, w, 6, tmp);
+	fiche_add(lines, kind, &n, w, 5, L("TU AS CORRIGÉ ?", "FIXED IT?"));
+	fiche_add(lines, kind, &n, w, 6, L("r : relancer les tests sans quitter le testeur", "r: run the tests again without leaving the tester"));
 	return (n);
 }
 
@@ -1025,6 +1024,8 @@ static int	screen_fiche(int fn)
 				top = 0;
 			}
 		}
+		else if (k == 'r' || k == 'R')
+			return (cls(), -1);
 		else if (k != 1001 && k != 1000)
 			break ;
 	}
@@ -1094,7 +1095,10 @@ int	screen_results(int after)
 		}
 		if (k == 'f')
 		{
-			sel = screen_fiche(sel);
+			k = screen_fiche(sel);
+			if (k < 0)
+				return (cls(), 42);
+			sel = k;
 			continue ;
 		}
 		if (k == 'n' || k == 'N')

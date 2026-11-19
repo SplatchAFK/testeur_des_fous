@@ -146,7 +146,7 @@ void	pf_connect_screen(void)
 		text_at(x, y++, theme()->text, L("  ★ le DLC débloqué tout de suite et 300 Octets offerts",
 				"  ★ the DLC unlocked right away and 300 free Octets"));
 		y++;
-		text_at(x, y++, theme()->dim, "bash testeur_des_fous/run.sh libft");
+		text_at(x, y++, theme()->dim, L("Menu › Tester mon projet, puis le dossier de ta Libft.", "Menu › Test my project, then the folder of your Libft."));
 		y++;
 		text_at(x, y++, theme()->text, L("Tu as gardé ton save.txt ? Charge-le pour te connecter.",
 				"Kept your save.txt? Load it to log in."));

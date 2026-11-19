@@ -1949,3 +1949,26 @@ NEW IN 3.4.0	3.4.0 SÜRÜMÜNDE YENİ
 • Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Include'lar kontrol ediliyor: eksik include, eklenmiş .c, bildirilmemiş fonksiyon, tek başına derlenmeyen .h, include koruması, gereksiz include.
 • Libft, ft_printf and get_next_line.	• Libft, ft_printf ve get_next_line.
 ALREADY IN 3.3.0	3.3.0 SÜRÜMÜNDE ZATEN VAR
+garbage file: %s (moulinette error)	fazla dosya: %s (moulinette hatası)
+%s · to remove: git rm %s	%s · kaldırmak için: git rm %s
+outside git: %s	git dışında: %s
+sanitizers unavailable (%s): falling back to %s (the tester's memory tracker stays on)	sanitizer'lar kullanılamıyor (%s): %s kullanılıyor (test aracının bellek izleyicisi açık kalıyor)
+memory error	bellek hatası
+no answer after %s s: infinite loop?	%s sn sonra yanıt yok: sonsuz döngü mü?
+crash (code %s) during: %s	çökme (kod %s) şu sırada: %s
+exit with code %s before the end of the test	testin sonundan önce %s koduyla çıkış
+norminette not found: the Norm is not checked (python3 -m pip install --user norminette)	norminette bulunamadı: Norm kontrol edilmiyor (python3 -m pip install --user norminette)
+norminette %s installed, the latest known is %s: update it	norminette %s kurulu, bilinen en son sürüm %s: güncelle
+add %s/ to your .gitignore so it is never pushed	hiç gönderilmemesi için %s/ dizinini .gitignore dosyana ekle
+extra file at the root: %s (forbidden in the submission)	kökte fazla dosya: %s (teslimde yasak)
+t_list does not match the subject	t_list konuyla uyuşmuyor
+FIXED IT?	DÜZELTTİN Mİ?
+r: run the tests again without leaving the tester	r: test aracından çıkmadan testleri yeniden çalıştır
+libft/: quick check of your libft (%s/%s functions)	libft/: libft'inin hızlı kontrolü (%s/%s fonksiyon)
+forbidden external functions (nm)	yasak dış fonksiyonlar (nm)
+external functions (nm)	dış fonksiyonlar (nm)
+norminette %s: the latest known is %s	norminette %s: bilinen en son sürüm %s
+norminette (%s files)	norminette (%s dosya)
+norminette: %s file(s) out of %s with errors	norminette: %s/%s dosyada hata var
+Menu › Test my project, then the folder of your Libft.	Menü › Projemi test et, sonra Libft klasörün.
+files	dosya

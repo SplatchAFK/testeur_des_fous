@@ -1949,3 +1949,26 @@ NEW IN 3.4.0	НОВОЕ В 3.4.0
 • Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Проверка include: отсутствующий include, подключённый .c, необъявленная функция, .h, который не компилируется сам, защита от повторного включения, лишний include.
 • Libft, ft_printf and get_next_line.	• Libft, ft_printf и get_next_line.
 ALREADY IN 3.3.0	УЖЕ В 3.3.0
+garbage file: %s (moulinette error)	лишний файл: %s (ошибка moulinette)
+%s · to remove: git rm %s	%s · удалить: git rm %s
+outside git: %s	вне git: %s
+sanitizers unavailable (%s): falling back to %s (the tester's memory tracker stays on)	санитайзеры недоступны (%s): используется %s (трекер памяти тестера остаётся включённым)
+memory error	ошибка памяти
+no answer after %s s: infinite loop?	нет ответа через %s с: бесконечный цикл?
+crash (code %s) during: %s	падение (код %s) во время: %s
+exit with code %s before the end of the test	выход с кодом %s до конца теста
+norminette not found: the Norm is not checked (python3 -m pip install --user norminette)	norminette не найдена: Норма не проверяется (python3 -m pip install --user norminette)
+norminette %s installed, the latest known is %s: update it	установлена norminette %s, последняя известная %s: обнови её
+add %s/ to your .gitignore so it is never pushed	добавь %s/ в .gitignore, чтобы никогда его не отправлять
+extra file at the root: %s (forbidden in the submission)	лишний файл в корне: %s (запрещён в сдаче)
+t_list does not match the subject	t_list не соответствует заданию
+FIXED IT?	ИСПРАВИЛ?
+r: run the tests again without leaving the tester	r: перезапустить тесты, не выходя из тестера
+libft/: quick check of your libft (%s/%s functions)	libft/: быстрая проверка твоей libft (%s/%s функций)
+forbidden external functions (nm)	запрещённые внешние функции (nm)
+external functions (nm)	внешние функции (nm)
+norminette %s: the latest known is %s	norminette %s: последняя известная %s
+norminette (%s files)	norminette (%s файлов)
+norminette: %s file(s) out of %s with errors	norminette: %s из %s файлов с ошибками
+Menu › Test my project, then the folder of your Libft.	Меню › Проверить мой проект, затем папка твоей Libft.
+files	файлов

@@ -1949,3 +1949,26 @@ NEW IN 3.4.0	NOVITÀ DELLA 3.4.0
 • Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Include controllati: include mancante, .c incluso, funzione non dichiarata, .h che non compila da solo, guardia di inclusione, include inutile.
 • Libft, ft_printf and get_next_line.	• Libft, ft_printf e get_next_line.
 ALREADY IN 3.3.0	GIÀ NELLA 3.3.0
+garbage file: %s (moulinette error)	file parassita: %s (errore moulinette)
+%s · to remove: git rm %s	%s · da togliere: git rm %s
+outside git: %s	fuori da git: %s
+sanitizers unavailable (%s): falling back to %s (the tester's memory tracker stays on)	sanitizer non disponibili (%s): ripiego su %s (il tracciatore di memoria del tester resta attivo)
+memory error	errore di memoria
+no answer after %s s: infinite loop?	nessuna risposta dopo %s s: ciclo infinito?
+crash (code %s) during: %s	crash (codice %s) durante: %s
+exit with code %s before the end of the test	uscita con codice %s prima della fine del test
+norminette not found: the Norm is not checked (python3 -m pip install --user norminette)	norminette non trovata: la Norma non è controllata (python3 -m pip install --user norminette)
+norminette %s installed, the latest known is %s: update it	norminette %s installata, l'ultima nota è %s: aggiornala
+add %s/ to your .gitignore so it is never pushed	aggiungi %s/ al tuo .gitignore per non pubblicarlo mai
+extra file at the root: %s (forbidden in the submission)	file in più nella radice: %s (vietato nella consegna)
+t_list does not match the subject	t_list non corrisponde al soggetto
+FIXED IT?	HAI CORRETTO?
+r: run the tests again without leaving the tester	r: rilancia i test senza uscire dal tester
+libft/: quick check of your libft (%s/%s functions)	libft/: controllo rapido della tua libft (%s/%s funzioni)
+forbidden external functions (nm)	funzioni esterne vietate (nm)
+external functions (nm)	funzioni esterne (nm)
+norminette %s: the latest known is %s	norminette %s: l'ultima nota è %s
+norminette (%s files)	norminette (%s file)
+norminette: %s file(s) out of %s with errors	norminette: %s file su %s con errori
+Menu › Test my project, then the folder of your Libft.	Menu › Testa il mio progetto, poi la cartella della tua Libft.
+files	file

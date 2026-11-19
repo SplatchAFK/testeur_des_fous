@@ -1949,3 +1949,26 @@ NEW IN 3.4.0	NOVIDADES DA 3.4.0
 • Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Includes verificados: include em falta, .c incluído, função sem declaração, .h que não compila sozinho, guarda de inclusão, include inútil.
 • Libft, ft_printf and get_next_line.	• Libft, ft_printf e get_next_line.
 ALREADY IN 3.3.0	JÁ NA 3.3.0
+garbage file: %s (moulinette error)	ficheiro parasita: %s (erro da moulinette)
+%s · to remove: git rm %s	%s · para retirar: git rm %s
+outside git: %s	fora do git: %s
+sanitizers unavailable (%s): falling back to %s (the tester's memory tracker stays on)	sanitizers indisponíveis (%s): recurso a %s (o rastreador de memória do testeur continua ativo)
+memory error	erro de memória
+no answer after %s s: infinite loop?	sem resposta após %s s: ciclo infinito?
+crash (code %s) during: %s	crash (código %s) durante: %s
+exit with code %s before the end of the test	saída com o código %s antes do fim do teste
+norminette not found: the Norm is not checked (python3 -m pip install --user norminette)	norminette não encontrada: a Norma não é verificada (python3 -m pip install --user norminette)
+norminette %s installed, the latest known is %s: update it	norminette %s instalada, a última conhecida é %s: atualiza-a
+add %s/ to your .gitignore so it is never pushed	adiciona %s/ ao teu .gitignore para nunca o enviar
+extra file at the root: %s (forbidden in the submission)	ficheiro a mais na raiz: %s (proibido na entrega)
+t_list does not match the subject	t_list não corresponde ao enunciado
+FIXED IT?	JÁ CORRIGISTE?
+r: run the tests again without leaving the tester	r: voltar a correr os testes sem sair do testeur
+libft/: quick check of your libft (%s/%s functions)	libft/: verificação rápida da tua libft (%s/%s funções)
+forbidden external functions (nm)	funções externas proibidas (nm)
+external functions (nm)	funções externas (nm)
+norminette %s: the latest known is %s	norminette %s: a última conhecida é %s
+norminette (%s files)	norminette (%s ficheiros)
+norminette: %s file(s) out of %s with errors	norminette: %s ficheiro(s) de %s com erros
+Menu › Test my project, then the folder of your Libft.	Menu › Testar o meu projeto, depois a pasta da tua Libft.
+files	ficheiros
