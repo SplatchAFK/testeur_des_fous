@@ -921,6 +921,140 @@ static const char	*fiche_hint(int st, const char *all, int which)
 	return (L(fr[id], en[id]));
 }
 
+static const char	*fiche_questions(const char *f)
+{
+	if (!strcmp(f, "isalpha"))
+		return (L("Pourquoi la fonction prend un int et pas un char ?§Que renvoie-t-elle pour une lettre : 1 ou une autre valeur non nulle, et est-ce grave ?§Que se passe-t-il avec un caractère accentué comme é ?",
+				"Why does it take an int and not a char?§What does it return for a letter: 1 or another non-zero value, and does it matter?§What happens with an accented character like é?"));
+	if (!strcmp(f, "isdigit"))
+		return (L("Quelle différence entre le caractère '5' et le nombre 5 ?§Comment tester qu'un caractère est un chiffre sans écrire 48 et 57 ?§Que renvoie ta fonction pour -1 ?",
+				"What is the difference between the character '5' and the number 5?§How do you check that a character is a digit without writing 48 and 57?§What does your function return for -1?"));
+	if (!strcmp(f, "isalnum"))
+		return (L("Comment réutiliser tes autres fonctions pour l'écrire ?§Le caractère '_' est-il alphanumérique ?§Pourquoi éviter de recopier le code de ft_isalpha dedans ?",
+				"How do you reuse your other functions to write it?§Is the '_' character alphanumeric?§Why avoid copying the code of ft_isalpha into it?"));
+	if (!strcmp(f, "isascii"))
+		return (L("Quelle est la plage de la table ASCII et pourquoi 127 en fait partie ?§Que renvoie ta fonction pour 128 et pour -1 ?§Quelle différence avec ft_isprint ?",
+				"What is the range of the ASCII table and why is 127 part of it?§What does your function return for 128 and for -1?§What is the difference with ft_isprint?"));
+	if (!strcmp(f, "isprint"))
+		return (L("Pourquoi l'espace est-il imprimable mais pas la tabulation ?§Quelles sont les bornes exactes et d'où viennent-elles ?§Le caractère 127 est-il imprimable ?",
+				"Why is the space printable but not the tab?§What are the exact bounds and where do they come from?§Is character 127 printable?"));
+	if (!strcmp(f, "strlen"))
+		return (L("Pourquoi le type de retour est size_t et pas int ?§Que se passe-t-il si on lui passe NULL, et pourquoi la vraie strlen ne s'en protège pas ?§Combien de tours fait ta boucle pour une chaîne de 5 caractères ?",
+				"Why is the return type size_t and not int?§What happens if you pass it NULL, and why does the real strlen not protect against it?§How many times does your loop run for a 5-character string?"));
+	if (!strcmp(f, "memset"))
+		return (L("Pourquoi le paramètre c est un int alors qu'on écrit des octets ?§Que renvoie la fonction et à quoi ça sert ?§Peut-on l'utiliser pour remplir un tableau d'int avec la valeur 1 ? Pourquoi ?",
+				"Why is the parameter c an int when bytes are written?§What does the function return and what is it for?§Can you use it to fill an int array with the value 1? Why?"));
+	if (!strcmp(f, "bzero"))
+		return (L("Quelle différence avec ft_memset ?§Pourquoi la fonction ne renvoie rien ?§Que se passe-t-il quand n vaut 0 ?",
+				"What is the difference with ft_memset?§Why does the function return nothing?§What happens when n is 0?"));
+	if (!strcmp(f, "memcpy"))
+		return (L("Pourquoi convertir les pointeurs en unsigned char * ?§Que se passe-t-il si les deux zones se chevauchent ?§Pourquoi les paramètres sont des void * ?",
+				"Why convert the pointers to unsigned char *?§What happens if the two areas overlap?§Why are the parameters void *?"));
+	if (!strcmp(f, "memmove"))
+		return (L("Dans quel cas faut-il copier de la fin vers le début ?§Comment ta fonction sait-elle dans quel sens copier ?§Pourquoi ne pas simplement passer par un tableau temporaire ?",
+				"In which case must you copy from the end to the start?§How does your function know which direction to copy in?§Why not simply go through a temporary array?"));
+	if (!strcmp(f, "strlcpy"))
+		return (L("Que renvoie la fonction et pourquoi cette valeur est utile ?§Combien de caractères sont copiés au maximum quand size vaut 10 ?§Que se passe-t-il quand size vaut 0 ?",
+				"What does the function return and why is that value useful?§How many characters are copied at most when size is 10?§What happens when size is 0?"));
+	if (!strcmp(f, "strlcat"))
+		return (L("Que renvoie la fonction quand size est plus petit que la longueur de dst ?§Comment savoir qu'il y a eu une troncature ?§Pourquoi le résultat est-il toujours terminé par '\\0' quand il reste de la place ?",
+				"What does the function return when size is smaller than the length of dst?§How do you know that the result was truncated?§Why is the result always ended by '\\0' when there is room left?"));
+	if (!strcmp(f, "toupper"))
+		return (L("Que renvoie ta fonction pour un caractère qui n'est pas une minuscule ?§Comment passer de 'a' à 'A' sans écrire 32 ?§Pourquoi le paramètre et le retour sont des int ?",
+				"What does your function return for a character that is not lowercase?§How do you go from 'a' to 'A' without writing 32?§Why are the parameter and the return value ints?"));
+	if (!strcmp(f, "tolower"))
+		return (L("Que se passe-t-il avec '@' et '[' qui entourent les majuscules dans la table ASCII ?§Comment vérifies-tu les bornes ?§Quel lien avec ft_toupper ?",
+				"What happens with '@' and '[' which surround the capitals in the ASCII table?§How do you check the bounds?§What is the link with ft_toupper?"));
+	if (!strcmp(f, "strchr"))
+		return (L("Que renvoie la fonction si on cherche '\\0' ?§Pourquoi le retour est char * alors que le paramètre est const char * ?§Que se passe-t-il si c vaut 'a' + 256 ?",
+				"What does the function return when you look for '\\0'?§Why is the return char * when the parameter is const char *?§What happens if c is 'a' + 256?"));
+	if (!strcmp(f, "strrchr"))
+		return (L("Comment trouves-tu la dernière occurrence : en partant de la fin ou du début ?§Que renvoie la fonction quand le caractère est absent ?§Et quand on cherche '\\0' ?",
+				"How do you find the last occurrence: starting from the end or from the start?§What does the function return when the character is missing?§And when you look for '\\0'?"));
+	if (!strcmp(f, "strncmp"))
+		return (L("Pourquoi comparer en unsigned char ?§Que renvoie la fonction quand n vaut 0 ?§Pourquoi s'arrêter au premier '\\0' ?",
+				"Why compare as unsigned char?§What does the function return when n is 0?§Why stop at the first '\\0'?"));
+	if (!strcmp(f, "memchr"))
+		return (L("Quelle différence avec ft_strchr ?§Ta fonction s'arrête-t-elle sur un '\\0' ? Pourquoi ?§Pourquoi convertir c en unsigned char ?",
+				"What is the difference with ft_strchr?§Does your function stop at a '\\0'? Why?§Why convert c to unsigned char?"));
+	if (!strcmp(f, "memcmp"))
+		return (L("Quelle différence avec ft_strncmp face à un '\\0' au milieu ?§Que signifie le signe du résultat ?§Pourquoi comparer en unsigned char ?",
+				"What is the difference with ft_strncmp when there is a '\\0' in the middle?§What does the sign of the result mean?§Why compare as unsigned char?"));
+	if (!strcmp(f, "strnstr"))
+		return (L("Que renvoie la fonction quand la petite chaîne est vide ?§Comment len limite-t-il la recherche ?§Combien de comparaisons fait ta recherche au pire ?",
+				"What does the function return when the small string is empty?§How does len limit the search?§How many comparisons does your search make in the worst case?"));
+	if (!strcmp(f, "atoi"))
+		return (L("Quels caractères sont ignorés au début ?§Que se passe-t-il avec \"--5\" ou \"+-5\" ?§Comment gères-tu INT_MIN sans dépasser la capacité d'un int ?",
+				"Which characters are skipped at the start?§What happens with \"--5\" or \"+-5\"?§How do you handle INT_MIN without overflowing an int?"));
+	if (!strcmp(f, "calloc"))
+		return (L("Pourquoi vérifier que nmemb * size ne déborde pas ?§Que renvoie ta fonction quand nmemb ou size vaut 0 ?§Quelle différence avec malloc ?",
+				"Why check that nmemb * size does not overflow?§What does your function return when nmemb or size is 0?§What is the difference with malloc?"));
+	if (!strcmp(f, "strdup"))
+		return (L("Pourquoi faut-il libérer le résultat ?§Combien d'octets réserves-tu et pourquoi + 1 ?§Que renvoie la fonction si malloc échoue ?",
+				"Why must the result be freed?§How many bytes do you allocate and why + 1?§What does the function return if malloc fails?"));
+	if (!strcmp(f, "substr"))
+		return (L("Que renvoie ta fonction si start dépasse la longueur de s ?§Combien d'octets réserves-tu quand len est plus grand que ce qui reste ?§Pourquoi renvoyer une chaîne vide plutôt que NULL ?",
+				"What does your function return if start is past the length of s?§How many bytes do you allocate when len is bigger than what is left?§Why return an empty string rather than NULL?"));
+	if (!strcmp(f, "strjoin"))
+		return (L("Comment calcules-tu la taille à réserver ?§Que se passe-t-il si malloc échoue ?§Pourquoi ne pas libérer s1 ni s2 ?",
+				"How do you compute the size to allocate?§What happens if malloc fails?§Why not free s1 or s2?"));
+	if (!strcmp(f, "strtrim"))
+		return (L("Comment trouves-tu le début et la fin de la partie à garder ?§Que renvoie la fonction si toute la chaîne est à retirer ?§Pourquoi set est une chaîne et pas un seul caractère ?",
+				"How do you find the start and the end of the part to keep?§What does the function return if the whole string must be removed?§Why is set a string and not a single character?"));
+	if (!strcmp(f, "split"))
+		return (L("Comment comptes-tu les mots avant de réserver le tableau ?§Que fais-tu si un malloc échoue au milieu ?§Que se passe-t-il avec plusieurs séparateurs collés ou au début de la chaîne ?",
+				"How do you count the words before allocating the array?§What do you do if a malloc fails halfway?§What happens with several separators in a row or at the start of the string?"));
+	if (!strcmp(f, "itoa"))
+		return (L("Comment calcules-tu le nombre de caractères à réserver ?§Comment gères-tu INT_MIN ?§Pourquoi remplir la chaîne en partant de la fin ?",
+				"How do you compute the number of characters to allocate?§How do you handle INT_MIN?§Why fill the string starting from the end?"));
+	if (!strcmp(f, "strmapi"))
+		return (L("À quoi sert l'index passé à f ?§Pourquoi la fonction crée une nouvelle chaîne au lieu de modifier s ?§Que se passe-t-il si malloc échoue ?",
+				"What is the index passed to f for?§Why does the function create a new string instead of changing s?§What happens if malloc fails?"));
+	if (!strcmp(f, "striteri"))
+		return (L("Quelle différence avec ft_strmapi ?§Pourquoi f reçoit un char * et pas un char ?§Que renvoie la fonction ?",
+				"What is the difference with ft_strmapi?§Why does f receive a char * and not a char?§What does the function return?"));
+	if (!strcmp(f, "putchar_fd"))
+		return (L("Qu'est-ce qu'un descripteur de fichier ?§À quoi correspondent 0, 1 et 2 ?§Pourquoi utiliser write et pas printf ?",
+				"What is a file descriptor?§What do 0, 1 and 2 stand for?§Why use write and not printf?"));
+	if (!strcmp(f, "putstr_fd"))
+		return (L("Pourquoi un seul write est-il plus efficace qu'un write par caractère ?§Que fais-tu si s vaut NULL ?§Comment vérifier que le texte part bien sur la sortie d'erreur ?",
+				"Why is a single write more efficient than one write per character?§What do you do if s is NULL?§How do you check that the text really goes to the error output?"));
+	if (!strcmp(f, "putendl_fd"))
+		return (L("Quelle différence avec ft_putstr_fd ?§Comment réutilises-tu tes autres fonctions ?§Que se passe-t-il si s est vide ?",
+				"What is the difference with ft_putstr_fd?§How do you reuse your other functions?§What happens if s is empty?"));
+	if (!strcmp(f, "putnbr_fd"))
+		return (L("Comment affiches-tu un nombre chiffre par chiffre ?§Comment gères-tu INT_MIN ?§Pourquoi la récursivité est-elle pratique ici ?",
+				"How do you print a number digit by digit?§How do you handle INT_MIN?§Why is recursion handy here?"));
+	if (!strcmp(f, "lstnew"))
+		return (L("Que vaut next dans le nouveau maillon ?§Pourquoi le contenu est un void * ?§Que renvoie la fonction si malloc échoue ?",
+				"What is next in the new node?§Why is the content a void *?§What does the function return if malloc fails?"));
+	if (!strcmp(f, "lstadd_front"))
+		return (L("Pourquoi lst est un t_list ** et pas un t_list * ?§Que se passe-t-il si la liste est vide ?§Dans quel ordre faut-il changer les pointeurs ?",
+				"Why is lst a t_list ** and not a t_list *?§What happens if the list is empty?§In which order must the pointers be changed?"));
+	if (!strcmp(f, "lstsize"))
+		return (L("Que renvoie la fonction pour une liste vide ?§Comment parcours-tu la liste ?§Quelle condition arrête ta boucle ?",
+				"What does the function return for an empty list?§How do you walk through the list?§Which condition stops your loop?"));
+	if (!strcmp(f, "lstlast"))
+		return (L("Que renvoie la fonction pour une liste vide ?§Pourquoi tester next et pas le maillon lui-même ?§Comment l'utilises-tu dans ft_lstadd_back ?",
+				"What does the function return for an empty list?§Why test next and not the node itself?§How do you use it in ft_lstadd_back?"));
+	if (!strcmp(f, "lstadd_back"))
+		return (L("Que se passe-t-il quand la liste est vide ?§Pourquoi lst est un t_list ** ?§Comment trouves-tu le dernier maillon ?",
+				"What happens when the list is empty?§Why is lst a t_list **?§How do you find the last node?"));
+	if (!strcmp(f, "lstdelone"))
+		return (L("Pourquoi ne pas libérer next ?§À quoi sert la fonction del ?§Que se passe-t-il si on utilise le maillon après l'appel ?",
+				"Why not free next?§What is the del function for?§What happens if the node is used after the call?"));
+	if (!strcmp(f, "lstclear"))
+		return (L("Pourquoi garder next avant de libérer le maillon ?§Que vaut *lst à la fin et pourquoi ?§Comment réutilises-tu ft_lstdelone ?",
+				"Why keep next before freeing the node?§What is *lst at the end and why?§How do you reuse ft_lstdelone?"));
+	if (!strcmp(f, "lstiter"))
+		return (L("Quelle différence avec ft_lstmap ?§La fonction f peut-elle changer le contenu ?§Que se passe-t-il pour une liste vide ?",
+				"What is the difference with ft_lstmap?§Can the function f change the content?§What happens for an empty list?"));
+	if (!strcmp(f, "lstmap"))
+		return (L("Que fais-tu si un malloc échoue au milieu de la nouvelle liste ?§Pourquoi a-t-on besoin de del ?§Que devient le contenu créé par f si le nouveau maillon ne peut pas être créé ?",
+				"What do you do if a malloc fails in the middle of the new list?§Why is del needed?§What happens to the content made by f if the new node cannot be created?"));
+	return (NULL);
+}
+
 static int	fiche_build(int fn, char lines[][220], int *kind, int w)
 {
 	t_res		*r;
@@ -930,6 +1064,9 @@ static int	fiche_build(int fn, char lines[][220], int *kind, int w)
 	char		*cas;
 	char		*att;
 	const char	*h;
+	const char	*q;
+	const char	*e;
+	char		qb[420];
 	int			n;
 	int			i;
 
@@ -987,6 +1124,20 @@ static int	fiche_build(int fn, char lines[][220], int *kind, int w)
 	{
 		fiche_add(lines, kind, &n, w, 5, L("PISTE", "HINT"));
 		fiche_add(lines, kind, &n, w, 4, h);
+	}
+	q = fiche_questions(g_fn_name[fn]);
+	if (q)
+	{
+		snprintf(qb, sizeof(qb), "%s%s", L("QUESTIONS POUR TE PRÉPARER À LA SOUTENANCE", "QUESTIONS TO PREPARE FOR THE DEFENCE"),
+			tdf_nouveau("3.4") ? "   NEW" : "");
+		fiche_add(lines, kind, &n, w, 5, qb);
+		while (*q)
+		{
+			e = strstr(q, "§");
+			snprintf(qb, sizeof(qb), "• %.*s", e ? (int)(e - q) : (int)strlen(q), q);
+			fiche_add(lines, kind, &n, w, 0, qb);
+			q = e ? e + strlen("§") : q + strlen(q);
+		}
 	}
 	fiche_add(lines, kind, &n, w, 5, L("TU AS CORRIGÉ ?", "FIXED IT?"));
 	fiche_add(lines, kind, &n, w, 6, L("r : relancer les tests sans quitter le testeur", "r: run the tests again without leaving the tester"));

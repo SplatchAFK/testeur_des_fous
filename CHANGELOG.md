@@ -41,6 +41,10 @@ Le numéro de version est dans `moteur/version.h`.
 
 - Paramètres : « Couleurs adaptées » remplace le vert et le rouge par du bleu (OK) et de l'orange (FAUX) dans tous les écrans et les résultats en texte, pour les daltoniens.
 
+### Questions pour la soutenance
+
+- Libft : chaque fiche propose 3 questions pour te préparer à la soutenance (cas limites, choix de types, mémoire), sans les réponses. Ce sont nos questions, pas celles d'une grille de correction.
+
 ### Includes
 
 - nouvelle section dans les trois projets : chaque #include doit exister, aucun .c inclus, aucune fonction utilisée sans déclaration (avec l'en-tête à ajouter, par exemple <stdlib.h> pour malloc) ;
