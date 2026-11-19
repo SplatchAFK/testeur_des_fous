@@ -1924,3 +1924,28 @@ Every tested case is shown, with its comparison.	Cada caso testado é mostrado, 
 'Did you know?' bubbles	Bolhas «Sabias que…?»
 Enter to show or hide them in the menu.	Enter para as mostrar ou esconder no menu.
 limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: casos limite (NULL, percentagem sozinha no fim, conversão desconhecida).
+found: %s · expected: char *get_next_line(int fd);	encontrado: %s · esperado: char *get_next_line(int fd);
+get_next_line.c: defined differently than in get_next_line.h	get_next_line.c: definida de outra forma que em get_next_line.h
+includes: get_next_line.c, get_next_line_utils.c and get_next_line.h find their .h	includes: get_next_line.c, get_next_line_utils.c e get_next_line.h encontram os seus .h
+restrict is forbidden by the subject	restrict é proibido pelo enunciado
+defined differently in	definida de outra forma em
+parameter names differ from the subject: (%s) instead of (%s)	nomes dos parâmetros diferentes do enunciado: (%s) em vez de (%s)
+Includes · every file finds its .h	Includes · cada ficheiro encontra os seus .h
+%d files: every include exists, no undeclared function	%d ficheiros: cada include existe, nenhuma função sem declaração
+note:	nota:
+%s: ft_printf is defined there differently than in ft_printf.h	%s: ft_printf está definida aí de outra forma que em ft_printf.h
+includes: every file finds its .h (%d files)	includes: cada ficheiro encontra os seus .h (%d ficheiros)
+includes a .c file (%s): only .h files are included	inclui um ficheiro .c (%s): só se incluem .h
+#include "%s" cannot be found from this file	#include "%s" não é encontrado a partir deste ficheiro
+uses %s without declaring it: %s is missing	usa %s sem a declarar: falta %s
+uses %s without declaring it: the include of the .h that declares it is missing	usa %s sem a declarar: falta o include do .h que a declara
+includes no .h of the project: if its prototype changes, nothing compares it with the .h	não inclui nenhum .h do projeto: se o protótipo mudar, nada o compara com o .h
+does not compile on its own or included twice: %s	não compila sozinho ou incluído duas vezes: %s
+no include guard (#ifndef ... #define ... at the top of the file)	sem guarda de inclusão (#ifndef ... #define ... no início do ficheiro)
+<%s> included for nothing: none of its functions or types is used	<%s> incluído para nada: nenhuma das suas funções ou tipos é usada
+uses the restrict keyword: the subject forbids it in your prototypes	usa a palavra-chave restrict: o enunciado proíbe-a nos teus protótipos
+NEW IN 3.4.0	NOVIDADES DA 3.4.0
+• Prototypes compared with the real subject, in the .h and in every .c (restrict forbidden, ft_lstsize as int, parameter names).	• Protótipos comparados com o enunciado real, no .h e em cada .c (restrict proibido, ft_lstsize em int, nomes dos parâmetros).
+• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Includes verificados: include em falta, .c incluído, função sem declaração, .h que não compila sozinho, guarda de inclusão, include inútil.
+• Libft, ft_printf and get_next_line.	• Libft, ft_printf e get_next_line.
+ALREADY IN 3.3.0	JÁ NA 3.3.0

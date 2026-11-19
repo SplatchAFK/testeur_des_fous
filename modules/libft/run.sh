@@ -172,7 +172,7 @@ proto_of() {
 		putnbr_fd) echo "void ft_putnbr_fd(int n, int fd);" ;;
 		lstnew) echo "t_list *ft_lstnew(void *content);" ;;
 		lstadd_front) echo "void ft_lstadd_front(t_list **lst, t_list *new);" ;;
-		lstsize) echo "int ft_lstsize(t_list *lst); (ou unsigned int)" ;;
+		lstsize) echo "int ft_lstsize(t_list *lst);" ;;
 		lstlast) echo "t_list *ft_lstlast(t_list *lst);" ;;
 		lstadd_back) echo "void ft_lstadd_back(t_list **lst, t_list *new);" ;;
 		lstdelone) echo "void ft_lstdelone(t_list *lst, void (*del)(void *));" ;;
@@ -410,14 +410,32 @@ check_proto() {
 	fi
 	want="$(proto_of "$n")"
 	out="$($CC -fsyntax-only -DF_"$n" -I "$ROOT" "$SRC/protos.c" 2>&1)"
-	if [ -z "$out" ]; then
-		echo "ok" > "$BUILD/proto/$n"
-	elif echo "$out" | grep -qE "undeclared|implicit"; then
-		echo "missing	absent de libft.h, attendu : $want" > "$BUILD/proto/$n"
-	else
-		decl="$(grep -m1 -E "ft_$n[[:space:]]*\(" "$ROOT/libft.h" | tr -s '\t ' ' ' | sed 's/^ //')"
-		echo "ko	trouvé : $decl   attendu : $want" > "$BUILD/proto/$n"
+	decl="$(grep -m1 -E "ft_$n[[:space:]]*\(" "$ROOT/libft.h" | tr -s '\t ' ' ' | sed 's/^ //')"
+	if echo "$out" | grep -qE "undeclared|implicit"; then
+		echo "missing	absent de libft.h, attendu : $want" > "$BUILD/proto/$n"; return
+	elif [ -n "$out" ]; then
+		echo "ko	trouvé : $decl   attendu : $want" > "$BUILD/proto/$n"; return
+	elif printf '%s' "$decl" | grep -qw restrict; then
+		echo "ko	$(tt "restrict est interdit par le sujet" "restrict is forbidden by the subject") : $decl   attendu : $want" > "$BUILD/proto/$n"; return
 	fi
+	if [ -f "$ROOT/ft_$n.c" ] && tdf_inc_garde "$ROOT/libft.h" && printf '#include "libft.h"\n#include "%s"\n' "$ROOT/ft_$n.c" \
+		| LC_ALL=C $CC -fsyntax-only -w -I "$ROOT" -x c - 2>&1 | grep -qE "conflicting types for '?ft_$n'?"; then
+		decl="$(grep -m1 -E "^[A-Za-z].*[^A-Za-z0-9_]ft_$n[[:space:]]*\(" "$ROOT/ft_$n.c" | tr -s '\t ' ' ' | sed 's/^ //')"
+		echo "ko	$(tt "défini autrement dans" "defined differently in") ft_$n.c : $decl   attendu : $want" > "$BUILD/proto/$n"; return
+	fi
+	l="$(awk -F'\t' -v f="ft_$n.c" '$1 == "ko" && $2 == f { print $3; exit }' "$BUILD/inc.txt" 2>/dev/null)"
+	[ -n "$l" ] && { echo "ko	ft_$n.c : $l" > "$BUILD/proto/$n"; return; }
+	l="$(awk -F'\t' -v f="ft_$n.c" '$1 == "warn" && $2 == f { print $3; exit }' "$BUILD/inc.txt" 2>/dev/null)"
+	[ -n "$l" ] && { echo "warn	ft_$n.c : $l" > "$BUILD/proto/$n"; return; }
+	case " $(echo $PART2 $PART3) " in
+		*" $n "*)
+			a="$(tdf_noms_params "$decl")"; b="$(tdf_noms_params "$want")"
+			if [ -n "$a" ] && [ "$a" != "$b" ]; then
+				echo "warn	$(printf "$(tt "noms des paramètres différents du sujet : (%s) au lieu de (%s)" "parameter names differ from the subject: (%s) instead of (%s)")" "$a" "$b")" > "$BUILD/proto/$n"; return
+			fi
+			;;
+	esac
+	echo "ok" > "$BUILD/proto/$n"
 }
 
 DET=()
@@ -843,6 +861,9 @@ run_all() {
 
 	emit "S	vérification des 43 prototypes"
 	header
+	inc_fs=()
+	for f in "$ROOT"/*.c "$ROOT"/*.h; do [ -f "$f" ] && inc_fs+=("$f"); done
+	tdf_inclusions "$ROOT" ${inc_fs[@]+"${inc_fs[@]}"} > "$BUILD/inc.txt"
 	for n in $PART1 $PART2 $PART3; do
 		wait_slot
 		check_proto "$n" &
@@ -853,12 +874,32 @@ run_all() {
 	for n in $PART1 $PART2 $PART3; do
 		IFS=$'\t' read -r st msg < "$BUILD/proto/$n"
 		emit "P	$n	$st	$msg"
-		if [ "$st" != ok ]; then
+		if [ "$st" = warn ]; then
+			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_WN" NOTE)" "$TXT" "ft_$n" "$R" "$D" "$msg" "$R"
+		elif [ "$st" != ok ]; then
 			p=$((p + 1))
-			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_KO" PROTO)" "$TXT" "ft_$n" "$R" "$D" "$msg" "$R"
+			case "$msg" in "ft_$n.c : "*) lab=INCL ;; *) lab=PROTO ;; esac
+			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_KO" "$lab")" "$TXT" "ft_$n" "$R" "$D" "$msg" "$R"
 		fi
 	done
 	[ "$p" = 0 ] && say '  %s  %s43 prototypes conformes au sujet%s\n' "$(pill "$P_OK" OK)" "$TXT" "$R"
+	section "$(tt "Includes · chaque fichier trouve ses .h" "Includes · every file finds its .h")"
+	ni=0
+	while IFS=$'\t' read -r st f msg; do
+		case "$f" in ft_*.c) case "$ALL" in *" $(basename "$f" .c | sed 's/^ft_//') "*) continue ;; esac ;; esac
+		ni=$((ni + 1))
+		emit "G	$f : $msg"
+		if [ "$st" = ko ]; then
+			p=$((p + 1))
+			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_KO" INCL)" "$TXT" "$f" "$R" "$D" "$msg" "$R"
+		else
+			say '  %s  %s%-18s%s %s%s%s\n' "$(pill "$P_WN" NOTE)" "$TXT" "$f" "$R" "$D" "$msg" "$R"
+		fi
+	done < "$BUILD/inc.txt"
+	nf="$(grep -c "^ko	ft_" "$BUILD/inc.txt" 2>/dev/null)"
+	if [ "$ni" = 0 ] && [ "${nf:-0}" = 0 ]; then
+		say '  %s  %s%s%s\n' "$(pill "$P_OK" OK)" "$TXT" "$(printf "$(tt "%d fichiers : chaque include existe, aucune fonction sans déclaration" "%d files: every include exists, no undeclared function")" "${#inc_fs[@]}")" "$R"
+	fi
 	if [ -f "$ROOT/libft.h" ] && ! $CC -fsyntax-only -DF_t_list -I "$ROOT" "$SRC/protos.c" >/dev/null 2>&1; then
 		emit "G	t_list ne correspond pas au sujet : typedef struct s_list { void *content; struct s_list *next; } t_list;"
 		say '  %s  %st_list différent du sujet%s\n' "$(pill "$P_KO" PROTO)" "$TXT" "$R"

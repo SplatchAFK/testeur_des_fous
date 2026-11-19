@@ -129,11 +129,22 @@ if [ "$MANQUE" = 1 ]; then
 	tdf_journal "fichiers manquants"
 	exit 1
 fi
-if grep -Eq 'char[[:space:]]*\*[[:space:]]*get_next_line[[:space:]]*\([[:space:]]*int' "$PROJET/get_next_line.h"; then
+if printf '#include "%s"\n_Static_assert(_Generic(&get_next_line, char *(*)(int): 1, default: 0), "proto");\n' "$PROJET/get_next_line.h" \
+	| "$CC" -fsyntax-only -w -I "$PROJET" -x c - >/dev/null 2>&1; then
 	ligne OK "$(tt "prototype de get_next_line dans get_next_line.h" "get_next_line prototype in get_next_line.h")"
 else
-	ligne KO "$(tt "prototype de get_next_line dans get_next_line.h" "get_next_line prototype in get_next_line.h")" "$(tt "attendu : char *get_next_line(int fd);" "expected: char *get_next_line(int fd);")"
+	ligne KO "$(tt "prototype de get_next_line dans get_next_line.h" "get_next_line prototype in get_next_line.h")" "$(printf "$(tt "trouvé : %s · attendu : char *get_next_line(int fd);" "found: %s · expected: char *get_next_line(int fd);")" "$(grep -m1 'get_next_line[[:space:]]*(' "$PROJET/get_next_line.h" | tr -s '\t ' ' ' | sed 's/^ //')")"
 fi
+if tdf_inc_garde "$PROJET/get_next_line.h" && printf '#include "%s"\n#include "%s"\n' "$PROJET/get_next_line.h" "$PROJET/get_next_line.c" \
+	| LC_ALL=C "$CC" -fsyntax-only -w -I "$PROJET" -x c - 2>&1 | grep -qE "conflicting types for '?get_next_line'?"; then
+	ligne KO "$(tt "get_next_line.c : défini autrement que dans get_next_line.h" "get_next_line.c: defined differently than in get_next_line.h")" "$(grep -m1 -E '^[A-Za-z].*get_next_line[[:space:]]*\(' "$PROJET/get_next_line.c" | tr -s '\t ' ' ')"
+fi
+n_inc=0
+while IFS=$'\t' read -r st f msg; do
+	n_inc=$((n_inc + 1))
+	if [ "$st" = ko ]; then ligne KO "$f : $msg"; else ligne NOTE "$f : $msg"; fi
+done < <(tdf_inclusions "$PROJET" "$PROJET/get_next_line.c" "$PROJET/get_next_line_utils.c" "$PROJET/get_next_line.h")
+[ "$n_inc" = 0 ] && ligne OK "$(tt "includes : get_next_line.c, get_next_line_utils.c et get_next_line.h trouvent leurs .h" "includes: get_next_line.c, get_next_line_utils.c and get_next_line.h find their .h")"
 
 SRC=("$PROJET/get_next_line.c" "$PROJET/get_next_line_utils.c")
 if "$CC" -Wall -Wextra -Werror -I "$PROJET" -c "${SRC[0]}" -o "$BUILD/a.o" 2> "$BUILD/sans_d.err" \

@@ -510,11 +510,25 @@ mk_audit() {
 	HDR=$(student_find -name 'ft_printf.h' | head -1)
 	if [ -z "$HDR" ]; then
 		line KO "$(tt "ft_printf.h introuvable" "ft_printf.h not found")"
-	elif ! grep -Eq 'int[[:space:]]+ft_printf[[:space:]]*\([[:space:]]*const[[:space:]]+char[[:space:]]*\*' "$HDR"; then
+	elif ! printf '#include "%s"\n_Static_assert(_Generic(&ft_printf, int (*)(const char *, ...): 1, default: 0), "proto");\n' "$HDR" \
+		| ${CC:-cc} -fsyntax-only -w -I "$(dirname "$HDR")" -x c - >/dev/null 2>&1; then
 		line KO "$(tt "ft_printf.h : prototype 'int ft_printf(const char *, ...);' introuvable" "ft_printf.h: prototype 'int ft_printf(const char *, ...);' not found")"
 	else
 		line OK "$(tt "ft_printf.h et prototype" "ft_printf.h and prototype")"
 	fi
+	DEF="$(student_find -name '*.c' | while IFS= read -r f; do grep -lE '^int[[:space:]]+ft_printf[[:space:]]*\(' "$f"; done | head -1)"
+	if [ -n "$HDR" ] && [ -n "$DEF" ] && tdf_inc_garde "$HDR" && printf '#include "%s"\n#include "%s"\n' "$HDR" "$DEF" \
+		| LC_ALL=C ${CC:-cc} -fsyntax-only -w -I "$(dirname "$HDR")" -x c - 2>&1 | grep -qE "conflicting types for '?ft_printf'?"; then
+		line KO "$(printf "$(tt "%s : ft_printf y est défini autrement que dans ft_printf.h" "%s: ft_printf is defined there differently than in ft_printf.h")" "${DEF#"$COPY"/}")" "$(grep -m1 -E '^int[[:space:]]+ft_printf' "$DEF" | tr -s '\t ' ' ')"
+	fi
+	INC_FS=()
+	while IFS= read -r f; do INC_FS+=("$f"); done < <(student_find \( -name '*.c' -o -name '*.h' \))
+	n_inc=0
+	while IFS=$'\t' read -r st f msg; do
+		n_inc=$((n_inc + 1))
+		if [ "$st" = ko ]; then line KO "$f : $msg"; else line "~~" "$f : $msg"; fi
+	done < <(tdf_inclusions "$COPY" ${INC_FS[@]+"${INC_FS[@]}"})
+	[ "$n_inc" = 0 ] && line OK "$(printf "$(tt "includes : chaque fichier trouve ses .h (%d fichiers)" "includes: every file finds its .h (%d files)")" "${#INC_FS[@]}")"
 }
 if want makefile; then
 	MK_KEY=$(fingerprint "$COPY/Makefile" "$COPY/libft/Makefile" $(student_find -name '*.h') \

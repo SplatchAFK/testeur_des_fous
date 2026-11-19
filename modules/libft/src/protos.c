@@ -113,9 +113,7 @@ P(lstnew, t_list *(*)(void *));
 P(lstadd_front, void (*)(t_list **, t_list *));
 #endif
 #ifdef F_lstsize
-_Static_assert(_Generic(&ft_lstsize, int (*)(t_list *): 1,
-	unsigned int (*)(t_list *): 1, default: 0),
-	"ft_lstsize : int ou unsigned int ft_lstsize(t_list *lst)");
+P(lstsize, int (*)(t_list *));
 #endif
 #ifdef F_lstlast
 P(lstlast, t_list *(*)(t_list *));

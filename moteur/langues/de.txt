@@ -1924,3 +1924,28 @@ Every tested case is shown, with its comparison.	Jeder getestete Fall wird angez
 'Did you know?' bubbles	Blasen „Wusstest du schon?“
 Enter to show or hide them in the menu.	Enter, um sie im Menü zu zeigen oder auszublenden.
 limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: Grenzfälle (NULL, einzelnes Prozentzeichen am Ende, unbekannte Konvertierung).
+found: %s · expected: char *get_next_line(int fd);	gefunden: %s · erwartet: char *get_next_line(int fd);
+get_next_line.c: defined differently than in get_next_line.h	get_next_line.c: anders definiert als in get_next_line.h
+includes: get_next_line.c, get_next_line_utils.c and get_next_line.h find their .h	Includes: get_next_line.c, get_next_line_utils.c und get_next_line.h finden ihre .h
+restrict is forbidden by the subject	restrict ist laut Aufgabenstellung verboten
+defined differently in	anders definiert in
+parameter names differ from the subject: (%s) instead of (%s)	Parameternamen weichen von der Aufgabe ab: (%s) statt (%s)
+Includes · every file finds its .h	Includes · jede Datei findet ihre .h
+%d files: every include exists, no undeclared function	%d Dateien: jedes Include existiert, keine undeklarierte Funktion
+note:	Hinweis:
+%s: ft_printf is defined there differently than in ft_printf.h	%s: ft_printf ist dort anders definiert als in ft_printf.h
+includes: every file finds its .h (%d files)	Includes: jede Datei findet ihre .h (%d Dateien)
+includes a .c file (%s): only .h files are included	bindet eine .c-Datei ein (%s): eingebunden werden nur .h
+#include "%s" cannot be found from this file	#include "%s" ist von dieser Datei aus nicht auffindbar
+uses %s without declaring it: %s is missing	verwendet %s ohne Deklaration: %s fehlt
+uses %s without declaring it: the include of the .h that declares it is missing	verwendet %s ohne Deklaration: das Include der .h, die sie deklariert, fehlt
+includes no .h of the project: if its prototype changes, nothing compares it with the .h	bindet keine .h des Projekts ein: ändert sich ihr Prototyp, vergleicht ihn nichts mit der .h
+does not compile on its own or included twice: %s	kompiliert nicht allein oder doppelt eingebunden: %s
+no include guard (#ifndef ... #define ... at the top of the file)	kein Include-Guard (#ifndef ... #define ... am Dateianfang)
+<%s> included for nothing: none of its functions or types is used	<%s> umsonst eingebunden: keine seiner Funktionen oder Typen wird benutzt
+uses the restrict keyword: the subject forbids it in your prototypes	verwendet das Schlüsselwort restrict: die Aufgabe verbietet es in deinen Prototypen
+NEW IN 3.4.0	NEU IN 3.4.0
+• Prototypes compared with the real subject, in the .h and in every .c (restrict forbidden, ft_lstsize as int, parameter names).	• Prototypen mit der echten Aufgabe verglichen, in der .h und in jeder .c (restrict verboten, ft_lstsize als int, Parameternamen).
+• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Includes geprüft: fehlendes Include, eingebundene .c, undeklarierte Funktion, .h die allein nicht kompiliert, Include-Guard, unnötiges Include.
+• Libft, ft_printf and get_next_line.	• Libft, ft_printf und get_next_line.
+ALREADY IN 3.3.0	SCHON IN 3.3.0

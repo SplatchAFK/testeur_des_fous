@@ -1924,3 +1924,28 @@ Every tested case is shown, with its comparison.	Test edilen her durum karşıla
 'Did you know?' bubbles	«Biliyor muydun?» baloncukları
 Enter to show or hide them in the menu.	Menüde göstermek ya da gizlemek için Enter.
 limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: sınır durumları (NULL, sonda tek başına yüzde işareti, bilinmeyen dönüşüm).
+found: %s · expected: char *get_next_line(int fd);	bulunan: %s · beklenen: char *get_next_line(int fd);
+get_next_line.c: defined differently than in get_next_line.h	get_next_line.c: get_next_line.h içindekinden farklı tanımlanmış
+includes: get_next_line.c, get_next_line_utils.c and get_next_line.h find their .h	include'lar: get_next_line.c, get_next_line_utils.c ve get_next_line.h .h dosyalarını buluyor
+restrict is forbidden by the subject	restrict konu tarafından yasaklanmış
+defined differently in	farklı tanımlanmış:
+parameter names differ from the subject: (%s) instead of (%s)	parametre adları konudan farklı: (%s) yerine (%s)
+Includes · every file finds its .h	Include'lar · her dosya .h dosyasını buluyor
+%d files: every include exists, no undeclared function	%d dosya: her include mevcut, bildirilmemiş fonksiyon yok
+note:	not:
+%s: ft_printf is defined there differently than in ft_printf.h	%s: ft_printf burada ft_printf.h içindekinden farklı tanımlanmış
+includes: every file finds its .h (%d files)	include'lar: her dosya .h dosyasını buluyor (%d dosya)
+includes a .c file (%s): only .h files are included	bir .c dosyası içeriyor (%s): yalnızca .h dosyaları eklenir
+#include "%s" cannot be found from this file	#include "%s" bu dosyadan bulunamıyor
+uses %s without declaring it: %s is missing	%s fonksiyonunu bildirmeden kullanıyor: %s eksik
+uses %s without declaring it: the include of the .h that declares it is missing	%s fonksiyonunu bildirmeden kullanıyor: onu bildiren .h dosyasının include'u eksik
+includes no .h of the project: if its prototype changes, nothing compares it with the .h	projenin hiçbir .h dosyasını içermiyor: prototipi değişirse hiçbir şey onu .h ile karşılaştırmaz
+does not compile on its own or included twice: %s	tek başına ya da iki kez eklenince derlenmiyor: %s
+no include guard (#ifndef ... #define ... at the top of the file)	include koruması yok (dosyanın başında #ifndef ... #define ...)
+<%s> included for nothing: none of its functions or types is used	<%s> boşuna eklenmiş: fonksiyonlarının ya da türlerinin hiçbiri kullanılmıyor
+uses the restrict keyword: the subject forbids it in your prototypes	restrict anahtar sözcüğünü kullanıyor: konu bunu prototiplerinde yasaklıyor
+NEW IN 3.4.0	3.4.0 SÜRÜMÜNDE YENİ
+• Prototypes compared with the real subject, in the .h and in every .c (restrict forbidden, ft_lstsize as int, parameter names).	• Prototipler gerçek konuyla karşılaştırılıyor, .h içinde ve her .c içinde (restrict yasak, ft_lstsize int, parametre adları).
+• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Include'lar kontrol ediliyor: eksik include, eklenmiş .c, bildirilmemiş fonksiyon, tek başına derlenmeyen .h, include koruması, gereksiz include.
+• Libft, ft_printf and get_next_line.	• Libft, ft_printf ve get_next_line.
+ALREADY IN 3.3.0	3.3.0 SÜRÜMÜNDE ZATEN VAR

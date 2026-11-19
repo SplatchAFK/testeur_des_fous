@@ -2,6 +2,22 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
+## 3.4.0 · 2026-11-20
+
+### Prototypes
+
+- Libft : les prototypes sont comparés au sujet actuel dans libft.h, et maintenant aussi dans chaque ft_*.c : un .c qui définit la fonction autrement (même sans inclure libft.h) est signalé ;
+- ft_lstsize doit renvoyer int, comme dans le sujet (unsigned int n'est plus accepté) ;
+- restrict est refusé dans les prototypes (le sujet l'interdit) ;
+- parties 2 et 3 : une remarque si les noms des paramètres diffèrent de ceux du sujet ;
+- ft_printf et get_next_line : le prototype est vérifié par le compilateur (type exact), plus seulement par une recherche de texte, et le .c qui définit la fonction est comparé au .h.
+
+### Includes
+
+- nouvelle section dans les trois projets : chaque #include doit exister, aucun .c inclus, aucune fonction utilisée sans déclaration (avec l'en-tête à ajouter, par exemple <stdlib.h> pour malloc) ;
+- chaque .h doit compiler seul, même inclus deux fois, et avoir une garde d'inclusion ;
+- remarques : un en-tête système inclus pour rien, un .c qui n'inclut aucun .h du projet.
+
 ## 3.3.0 · 2026-11-19
 
 ### Mode correction

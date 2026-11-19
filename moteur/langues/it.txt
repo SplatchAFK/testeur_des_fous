@@ -1924,3 +1924,28 @@ Every tested case is shown, with its comparison.	Ogni caso testato viene mostrat
 'Did you know?' bubbles	Bolle «Lo sapevi?»
 Enter to show or hide them in the menu.	Invio per mostrarle o nasconderle nel menu.
 limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: casi limite (NULL, percentuale da solo alla fine, conversione sconosciuta).
+found: %s · expected: char *get_next_line(int fd);	trovato: %s · atteso: char *get_next_line(int fd);
+get_next_line.c: defined differently than in get_next_line.h	get_next_line.c: definita diversamente da get_next_line.h
+includes: get_next_line.c, get_next_line_utils.c and get_next_line.h find their .h	include: get_next_line.c, get_next_line_utils.c e get_next_line.h trovano i loro .h
+restrict is forbidden by the subject	restrict è vietato dal soggetto
+defined differently in	definita diversamente in
+parameter names differ from the subject: (%s) instead of (%s)	nomi dei parametri diversi dal soggetto: (%s) invece di (%s)
+Includes · every file finds its .h	Include · ogni file trova i suoi .h
+%d files: every include exists, no undeclared function	%d file: ogni include esiste, nessuna funzione non dichiarata
+note:	nota:
+%s: ft_printf is defined there differently than in ft_printf.h	%s: ft_printf è definita lì diversamente da ft_printf.h
+includes: every file finds its .h (%d files)	include: ogni file trova i suoi .h (%d file)
+includes a .c file (%s): only .h files are included	include un file .c (%s): si includono solo .h
+#include "%s" cannot be found from this file	#include "%s" non trovato da questo file
+uses %s without declaring it: %s is missing	usa %s senza dichiararla: manca %s
+uses %s without declaring it: the include of the .h that declares it is missing	usa %s senza dichiararla: manca l'include del .h che la dichiara
+includes no .h of the project: if its prototype changes, nothing compares it with the .h	non include nessun .h del progetto: se il suo prototipo cambia, niente lo confronta con il .h
+does not compile on its own or included twice: %s	non compila da solo o incluso due volte: %s
+no include guard (#ifndef ... #define ... at the top of the file)	nessuna guardia di inclusione (#ifndef ... #define ... in cima al file)
+<%s> included for nothing: none of its functions or types is used	<%s> incluso per niente: nessuna delle sue funzioni o dei suoi tipi è usata
+uses the restrict keyword: the subject forbids it in your prototypes	usa la parola chiave restrict: il soggetto la vieta nei tuoi prototipi
+NEW IN 3.4.0	NOVITÀ DELLA 3.4.0
+• Prototypes compared with the real subject, in the .h and in every .c (restrict forbidden, ft_lstsize as int, parameter names).	• Prototipi confrontati con il vero soggetto, nel .h e in ogni .c (restrict vietato, ft_lstsize in int, nomi dei parametri).
+• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Include controllati: include mancante, .c incluso, funzione non dichiarata, .h che non compila da solo, guardia di inclusione, include inutile.
+• Libft, ft_printf and get_next_line.	• Libft, ft_printf e get_next_line.
+ALREADY IN 3.3.0	GIÀ NELLA 3.3.0

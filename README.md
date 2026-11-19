@@ -1,6 +1,6 @@
 # Le testeur des fous
 
-> **Version 3.3.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
+> **Version 3.4.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
 
 **Un seul testeur pour Libft, ft_printf et get_next_line, un examshell en C, une banque d'exercices et un mode correction.** Il teste comme la moulinette, ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te montre où regarder. Tout se fait aux flèches, dans un seul menu.
 
@@ -33,7 +33,7 @@ Astuce : Paramètres › « Installer la commande tdf », puis `tdf` suffit dans
 
 | Projet | Ce qui est vérifié |
 |---|---|
-| Libft | 43 fonctions, fuites et erreurs mémoire (ASan, UBSan, valgrind en option), Norme, Makefile (règles, relink, flags), fichiers parasites, fonctions interdites |
+| Libft | 43 fonctions, prototypes comparés au sujet (.h et .c), includes, fuites et erreurs mémoire (ASan, UBSan, valgrind en option), Norme, Makefile (règles, relink, flags), fichiers parasites, fonctions interdites |
 | ft_printf | chaque conversion, valeur de retour, `write` et `malloc` qui échouent, stress aléatoire, trace au format de la moulinette |
 | get_next_line | 7 BUFFER_SIZE et sans `-D`, entrée standard, fd invalides, `read` et `malloc` qui échouent, fuites, Norme |
 | push_swap | plus tard |

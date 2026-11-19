@@ -575,18 +575,14 @@ void	tdf_nouveautes(void)
 	int			sel;
 
 	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
-		L("NOUVEAU DANS LA 3.3.0", "NEW IN 3.3.0"),
+	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
+		L("NOUVEAU DANS LA 3.4.0", "NEW IN 3.4.0"),
+		L("• Prototypes comparés au vrai sujet, dans le .h et dans chaque .c (restrict interdit, ft_lstsize en int, noms des paramètres).", "• Prototypes compared with the real subject, in the .h and in every .c (restrict forbidden, ft_lstsize as int, parameter names)."),
+		L("• Includes vérifiés : include introuvable, .c inclus, fonction sans déclaration, .h qui ne compile pas seul, garde d'inclusion, include inutile.", "• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include."),
+		L("• Libft, ft_printf et get_next_line.", "• Libft, ft_printf and get_next_line."),
+		L("DÉJÀ DANS LA 3.3.0", "ALREADY IN 3.3.0"),
 		L("• Mode correction (menu) : le dossier du corrigé seulement, vérifs de rendu en un écran et test précis avec le détail.", "• Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail."),
 		L("• Mode debug : une barre d'avancement avec le temps restant au lieu d'un écran vide.", "• Debug mode: a progress bar with the time left instead of an empty screen."),
-		L("DÉJÀ DANS LA 3.2.0", "ALREADY IN 3.2.0"),
-		L("• Erreurs norminette visibles dans Libft, ft_printf et get_next_line : bannière rouge et touche n pour le détail.", "• Norminette errors shown for Libft, ft_printf and get_next_line: red banner and key n for the details."),
-		L("• Nouvel écran de résultats get_next_line. Stats : onglet get_next_line, et ↓ pour les détails de chaque projet.", "• New get_next_line results screen. Stats: get_next_line tab, and ↓ for the details of each project."),
-		L("• Garde-robe : un rayon Tenues (jusqu'à 5), grand aperçu (touche v) et un pseudo plus simple à taper.", "• Wardrobe: an Outfits section (up to 5), big preview (key v) and a nickname that is easier to type."),
-		L("• Examshell : grademe refuse les fichiers en trop dans rendu/, seuls les fichiers demandés passent.", "• Examshell: grademe refuses extra files in rendu/, only the requested files pass."),
-		L("• Tester mon projet : options aux flèches (mode debug, audit complet, valgrind, sans cinématiques, sans animations).", "• Test my project: options with the arrows (debug mode, full audit, valgrind, no cutscenes, no animations)."),
-		L("• ft_lstclear : nouveau test repris de la moulinette (un maillon au content NULL).", "• ft_lstclear: new test taken from the moulinette (a node with a NULL content)."),
-		L("• Banque : les Octets de chaque exercice sont affichés. Credits refaits pour tout le testeur.", "• Bank: the Octets of each exercise are shown. Credits redone for the whole tester."),
 		L("Tu veux en savoir plus ? Viens sur le serveur Discord (Ctrl + clic sur le lien) :", "Want to know more? Join the Discord server (Ctrl + click on the link):"));
 	items[0] = L("Continuer|", "Continue|");
 	items[1] = L("Voir le tuto|", "See the tutorial|");

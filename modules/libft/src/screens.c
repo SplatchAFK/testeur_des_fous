@@ -141,7 +141,9 @@ static void	parse_line(char *line)
 		snprintf(g_run.warn[g_run.nwarn++], 200, "%s", f[1]);
 	else if (!strcmp(f[0], "P") && n > 2 && (k = fn_index(f[1])) >= 0)
 	{
-		g_run.fn[k].proto = !strcmp(f[2], "ok") ? 1 : (!strcmp(f[2], "missing") ? 3 : 2);
+		g_run.fn[k].proto = !strcmp(f[2], "ok") || !strcmp(f[2], "warn") ? 1 : (!strcmp(f[2], "missing") ? 3 : 2);
+		if (!strcmp(f[2], "warn") && n > 3 && g_run.fn[k].nd < 5)
+			snprintf(g_run.fn[k].detail[g_run.fn[k].nd++], 200, "%s %s", L("remarque :", "note:"), f[3]);
 		if (n > 3 && g_run.fn[k].proto != 1 && g_run.fn[k].nd < 5)
 		{
 			cut = strstr(f[3], "   attendu");

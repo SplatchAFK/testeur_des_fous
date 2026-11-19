@@ -1924,3 +1924,28 @@ Every tested case is shown, with its comparison.	Каждый проверенн
 'Did you know?' bubbles	Пузыри «А ты знал?»
 Enter to show or hide them in the menu.	Enter, чтобы показать или скрыть их в меню.
 limites: edge cases (NULL, lone percent sign at the end, unknown conversion).	limites: граничные случаи (NULL, одинокий знак процента в конце, неизвестная конверсия).
+found: %s · expected: char *get_next_line(int fd);	найдено: %s · ожидается: char *get_next_line(int fd);
+get_next_line.c: defined differently than in get_next_line.h	get_next_line.c: определена иначе, чем в get_next_line.h
+includes: get_next_line.c, get_next_line_utils.c and get_next_line.h find their .h	include: get_next_line.c, get_next_line_utils.c и get_next_line.h находят свои .h
+restrict is forbidden by the subject	restrict запрещён заданием
+defined differently in	определена иначе в
+parameter names differ from the subject: (%s) instead of (%s)	имена параметров отличаются от задания: (%s) вместо (%s)
+Includes · every file finds its .h	Include · каждый файл находит свои .h
+%d files: every include exists, no undeclared function	%d файлов: каждый include существует, нет необъявленных функций
+note:	примечание:
+%s: ft_printf is defined there differently than in ft_printf.h	%s: ft_printf определена здесь иначе, чем в ft_printf.h
+includes: every file finds its .h (%d files)	include: каждый файл находит свои .h (%d файлов)
+includes a .c file (%s): only .h files are included	подключает файл .c (%s): подключают только .h
+#include "%s" cannot be found from this file	#include "%s" не найден из этого файла
+uses %s without declaring it: %s is missing	использует %s без объявления: не хватает %s
+uses %s without declaring it: the include of the .h that declares it is missing	использует %s без объявления: не хватает include файла .h, который её объявляет
+includes no .h of the project: if its prototype changes, nothing compares it with the .h	не подключает ни одного .h проекта: если прототип изменится, ничто не сравнит его с .h
+does not compile on its own or included twice: %s	не компилируется сам по себе или при двойном подключении: %s
+no include guard (#ifndef ... #define ... at the top of the file)	нет защиты от повторного включения (#ifndef ... #define ... в начале файла)
+<%s> included for nothing: none of its functions or types is used	<%s> подключён зря: ни одна его функция или тип не используется
+uses the restrict keyword: the subject forbids it in your prototypes	использует ключевое слово restrict: задание запрещает его в прототипах
+NEW IN 3.4.0	НОВОЕ В 3.4.0
+• Prototypes compared with the real subject, in the .h and in every .c (restrict forbidden, ft_lstsize as int, parameter names).	• Прототипы сравниваются с настоящим заданием, в .h и в каждом .c (restrict запрещён, ft_lstsize как int, имена параметров).
+• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.	• Проверка include: отсутствующий include, подключённый .c, необъявленная функция, .h, который не компилируется сам, защита от повторного включения, лишний include.
+• Libft, ft_printf and get_next_line.	• Libft, ft_printf и get_next_line.
+ALREADY IN 3.3.0	УЖЕ В 3.3.0

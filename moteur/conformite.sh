@@ -216,3 +216,138 @@ tdf_portee() {
 		' "$f"
 	done
 }
+
+tdf_inc_symboles() {
+	case "$1" in
+		stdlib.h) printf '%s' 'malloc|free|calloc|realloc|exit|abort|atoi|atol|strtol|abs|labs|EXIT_SUCCESS|EXIT_FAILURE|NULL|size_t' ;;
+		unistd.h) printf '%s' 'write|read|close|lseek|ssize_t|STDIN_FILENO|STDOUT_FILENO|STDERR_FILENO|NULL|size_t' ;;
+		stddef.h) printf '%s' 'size_t|NULL|ptrdiff_t|offsetof|wchar_t' ;;
+		stdarg.h) printf '%s' 'va_list|va_start|va_arg|va_end|va_copy' ;;
+		limits.h) printf '%s' '[A-Z]+_(MAX|MIN|BIT)' ;;
+		stdint.h) printf '%s' 'u?int[0-9]+_t|u?intptr_t|u?intmax_t|[A-Z0-9]+_MAX|[A-Z0-9]+_MIN' ;;
+		fcntl.h) printf '%s' 'open|O_[A-Z]+' ;;
+		stdio.h) printf '%s' 'printf|fprintf|dprintf|sprintf|snprintf|puts|perror|FILE|EOF|BUFSIZ|fopen|fclose|getchar|putchar' ;;
+		string.h) printf '%s' '(mem|str)(cpy|ncpy|cmp|ncmp|len|chr|rchr|dup|ndup|cat|ncat|set|move|str|nstr|lcpy|lcat|tok|error|sep)' ;;
+		ctype.h) printf '%s' 'is(alpha|digit|alnum|ascii|print|space|upper|lower|punct|xdigit)|toupper|tolower' ;;
+		errno.h) printf '%s' 'errno|E[A-Z]+' ;;
+		stdbool.h) printf '%s' 'bool|true|false' ;;
+	esac
+}
+
+tdf_inc_conseil() {
+	case "$1" in
+		malloc|free|calloc|realloc|exit|abort|atoi|atol|strtol) printf '<stdlib.h>' ;;
+		write|read|close|lseek) printf '<unistd.h>' ;;
+		va_start|va_arg|va_end|va_copy) printf '<stdarg.h>' ;;
+		open) printf '<fcntl.h>' ;;
+		printf|fprintf|dprintf|perror|puts) printf '<stdio.h>' ;;
+		mem*|str*) printf '<string.h>' ;;
+	esac
+}
+
+tdf_inc_code() {
+	awk '
+	{
+		l = $0; o = ""
+		while (l != "") {
+			if (dans) {
+				i = index(l, "*/")
+				if (i == 0) { l = ""; break }
+				l = substr(l, i + 2); dans = 0
+			} else {
+				i = index(l, "/*")
+				if (i == 0) { o = o l; l = ""; break }
+				o = o substr(l, 1, i - 1); l = substr(l, i + 2); dans = 1
+			}
+		}
+		sub(/\/\/.*/, "", o)
+		if (o !~ /^[ \t]*#[ \t]*include/)
+			print o
+	}' "$@" 2>/dev/null
+}
+
+tdf_inc_garde() {
+	tdf_inc_code "$1" | grep -v '^[[:space:]]*$' | head -2 | awk '
+		NR == 1 && /^[ \t]*#[ \t]*pragma[ \t]+once/ { ok = 1 }
+		NR == 1 && /^[ \t]*#[ \t]*ifndef[ \t]+/ { m = $NF; if ($1 == "#") m = $3 }
+		NR == 2 && m != "" && $0 ~ ("^[ \t]*#[ \t]*define[ \t]+" m "([ \t]|$)") { ok = 1 }
+		END { exit !ok }'
+}
+
+tdf_inclusions() {
+	local d="$1" f rel inc out err dirs=() fn h sym tout n
+	shift
+	local fs=("$@")
+	while IFS= read -r h; do dirs+=(-I "$h"); done < <(for f in "${fs[@]}"; do case "$f" in *.h) dirname "$f" ;; esac; done | sort -u)
+	tout="$(tdf_inc_code "${fs[@]}")"
+	for f in "${fs[@]}"; do
+		[ -f "$f" ] || continue
+		rel="${f#"$d"/}"
+		while IFS= read -r inc; do
+			[ -n "$inc" ] || continue
+			case "$inc" in
+				*.c) printf 'ko\t%s\t%s\n' "$rel" "$(printf "$(tt "inclut un fichier .c (%s) : on n'inclut que des .h" "includes a .c file (%s): only .h files are included")" "$inc")" ;;
+			esac
+		done < <(sed -n 's/^[[:space:]]*#[[:space:]]*include[[:space:]]*"\([^"]*\)".*/\1/p' "$f")
+		if [ "${f##*.}" = c ]; then
+			out="$(LC_ALL=C ${CC:-cc} -fsyntax-only -H -Werror=implicit-function-declaration "${dirs[@]}" "$f" 2>&1)"
+		else
+			out="$(printf '#include "%s"\n#include "%s"\n' "$f" "$f" | LC_ALL=C ${CC:-cc} -fsyntax-only -Wall -Wextra -Werror "${dirs[@]}" -x c - 2>&1)"
+		fi
+		err="$(printf '%s\n' "$out" | grep -m1 'fatal error: .*No such file' | sed -E 's/.*fatal error: ([^:]*):.*/\1/')"
+		[ -n "$err" ] && printf 'ko\t%s\t%s\n' "$rel" "$(printf "$(tt "#include \"%s\" introuvable depuis ce fichier" "#include \"%s\" cannot be found from this file")" "$err")"
+		if [ "${f##*.}" = c ]; then
+			while IFS= read -r fn; do
+				[ -n "$fn" ] || continue
+				h="$(tdf_inc_conseil "$fn")"
+				if [ -n "$h" ]; then
+					printf 'ko\t%s\t%s\n' "$rel" "$(printf "$(tt "utilise %s sans l'avoir déclarée : il manque %s" "uses %s without declaring it: %s is missing")" "$fn" "$h")"
+				else
+					printf 'ko\t%s\t%s\n' "$rel" "$(printf "$(tt "utilise %s sans l'avoir déclarée : il manque l'include du .h qui la déclare" "uses %s without declaring it: the include of the .h that declares it is missing")" "$fn")"
+				fi
+			done < <(printf '%s\n' "$out" | grep -oE "implicit declaration of function '[^']+'" | sed -E "s/.*'([^']+)'/\1/" | sort -u)
+			if [ -z "$err" ] && ! printf '%s\n' "$out" | grep -E '^\.+ ' | sed -E 's/^\.+ //' | grep -q "^$d/\|^\./\|^[^/]"; then
+				printf 'warn\t%s\t%s\n' "$rel" "$(tt "n'inclut aucun .h du projet : si son prototype change, rien ne le compare au .h" "includes no .h of the project: if its prototype changes, nothing compares it with the .h")"
+			fi
+		else
+			if [ -z "$err" ] && printf '%s\n' "$out" | grep -q 'error'; then
+				printf 'ko\t%s\t%s\n' "$rel" "$(printf "$(tt "ne compile pas seul ou inclus deux fois : %s" "does not compile on its own or included twice: %s")" "$(printf '%s\n' "$out" | grep -m1 'error' | sed -E 's/^[^:]*:[0-9]+:[0-9]+: //' | cut -c1-90)")"
+			fi
+			tdf_inc_garde "$f" || printf 'warn\t%s\t%s\n' "$rel" "$(tt "pas de garde d'inclusion (#ifndef ... #define ... en tête du fichier)" "no include guard (#ifndef ... #define ... at the top of the file)")"
+		fi
+		while IFS= read -r inc; do
+			[ -n "$inc" ] || continue
+			sym="$(tdf_inc_symboles "$inc")"
+			[ -n "$sym" ] || continue
+			if [ "${f##*.}" = c ]; then
+				tdf_inc_code "$f" | grep -Eqw "($sym)" && continue
+			else
+				printf '%s\n' "$tout" | grep -Eqw "($sym)" && continue
+			fi
+			printf 'warn\t%s\t%s\n' "$rel" "$(printf "$(tt "<%s> inclus pour rien : aucune de ses fonctions ni de ses types n'est utilisé" "<%s> included for nothing: none of its functions or types is used")" "$inc")"
+		done < <(sed -n 's/^[[:space:]]*#[[:space:]]*include[[:space:]]*<\([^>]*\)>.*/\1/p' "$f")
+		if grep -qw restrict "$f"; then
+			printf 'ko\t%s\t%s\n' "$rel" "$(tt "utilise le mot-clé restrict : le sujet l'interdit dans tes prototypes" "uses the restrict keyword: the subject forbids it in your prototypes")"
+		fi
+	done
+}
+
+tdf_noms_params() {
+	printf '%s\n' "$1" | awk '
+	{
+		s = $0; i = index(s, "("); if (i == 0) exit
+		s = substr(s, i + 1); p = 1; cur = ""; out = ""
+		for (k = 1; k <= length(s) && p > 0; k++) {
+			c = substr(s, k, 1)
+			if (c == "(") p++
+			if (c == ")") p--
+			if ((c == "," && p == 1) || p == 0) { out = out nom(cur) ","; cur = ""; continue }
+			cur = cur c
+		}
+		sub(/,$/, "", out); print out
+	}
+	function nom(t,   m) {
+		if (match(t, /\(\*[ \t]*[A-Za-z_][A-Za-z0-9_]*/)) { m = substr(t, RSTART + 2, RLENGTH - 2); gsub(/[ \t]/, "", m); return m }
+		gsub(/[^A-Za-z0-9_]+/, " ", t); n = split(t, w, " "); return w[n]
+	}'
+}
