@@ -1980,3 +1980,23 @@ To send them: git add, git commit, then git push.	Para os enviar: git add, git c
 (the subject says int, but the moulinette declares unsigned int ft_lstsize(t_list *begin): with int, its build fails)	(o enunciado diz int, mas a moulinette declara unsigned int ft_lstsize(t_list *begin): com int, a compilação dela falha)
 • Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).	• Protótipos comparados com o enunciado e com traces reais da moulinette, no .h e em cada .c (restrict proibido, nomes dos parâmetros).
 tests your last git commit instead of the folder: a file forgotten in git shows up	testa o teu último commit git em vez da pasta: vê-se um ficheiro esquecido no git
+since last time: nothing changed	desde a última vez: nada mudou
+since last time: %d fixed%s%s%s · %d broken%s%s%s	desde a última vez: %d reparada(s)%s%s%s · %d partida(s)%s%s%s
+since last time: %d fixed · %d broken	desde a última vez: %d reparado(s) · %d partido(s)
+Change the date|YYYY-MM-DD or DD/MM/YYYY.	Mudar a data|AAAA-MM-DD ou DD/MM/AAAA.
+Rename|	Renomear|
+Delete|	Eliminar|
+Deadline date	Data limite
+YYYY-MM-DD or DD/MM/YYYY, for example 12/12/2026.	AAAA-MM-DD ou DD/MM/AAAA, por exemplo 12/12/2026.
+Deadline name	Nome do prazo
+%s · %.2s/%.2s/%.4s|%ld day(s) left. Enter: change the date, rename or delete.	%s · %.2s/%.2s/%.4s|Falta(m) %ld dia(s). Enter: mudar a data, renomear ou eliminar.
+＋ Add a deadline|A name and a date.	＋ Adicionar um prazo|Um nome e uma data.
+DEADLINES	PRAZOS
+Dates depend on your cohort and campus: check them on the intra. Exam sign-ups: Friday around 6:42 pm (42 Paris).	As datas dependem da tua promoção e do teu campus: verifica-as na intra. Inscrições nos exames: sexta-feira por volta das 18h42 (42 Paris).
+New deadline	Novo prazo
+!Deadlines|The dates of your milestones, shown in Stats (D-22…).	!Prazos|As datas das tuas milestones, mostradas nas Stats (D-22…).
+Deadlines|The dates of your milestones, shown in Stats (D-22…).	Prazos|As datas das tuas milestones, mostradas nas Stats (D-22…).
+Milestone 1 · Libft	Milestone 1 · Libft
+Milestone 2 · ft_printf and get_next_line	Milestone 2 · ft_printf e get_next_line
+%s: D-%ld (%.2s/%.2s)	%s: D-%ld (%.2s/%.2s)
+Friday: exam sign-ups around 6:42 pm on the intra.	Sexta-feira: inscrições nos exames por volta das 18h42 na intra.

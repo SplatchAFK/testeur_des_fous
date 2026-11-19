@@ -1376,6 +1376,90 @@ int	tdf_bulles(void)
 	return (g_bulles);
 }
 
+static void	ech_modifier(t_ech *e, int *n, int k)
+{
+	const char	*it[3];
+	char		buf[100];
+	char		iso[12];
+	int			sel;
+	int			r;
+
+	it[0] = L("Changer la date|AAAA-MM-JJ ou JJ/MM/AAAA.", "Change the date|YYYY-MM-DD or DD/MM/YYYY.");
+	it[1] = L("Renommer|", "Rename|");
+	it[2] = L("Supprimer|", "Delete|");
+	sel = 0;
+	r = tdf_list_menu(e[k].nom, it, 3, &sel, NULL);
+	if (r == 0)
+	{
+		snprintf(buf, sizeof(buf), "%s", e[k].date);
+		while (tdf_saisir(L("Date de l'échéance", "Deadline date"), L("AAAA-MM-JJ ou JJ/MM/AAAA, par exemple 12/12/2026.",
+					"YYYY-MM-DD or DD/MM/YYYY, for example 12/12/2026."), buf, sizeof(buf), 10, 0, 1))
+		{
+			if (tdf_date_ok(buf, iso, sizeof(iso)))
+			{
+				snprintf(e[k].date, sizeof(e[k].date), "%s", iso);
+				break ;
+			}
+		}
+	}
+	else if (r == 1)
+	{
+		snprintf(buf, sizeof(buf), "%s", e[k].nom);
+		if (tdf_saisir(L("Nom de l'échéance", "Deadline name"), "", buf, sizeof(buf), 60, 0, 1) && buf[0])
+			snprintf(e[k].nom, sizeof(e[k].nom), "%s", buf);
+	}
+	else if (r == 2)
+	{
+		memmove(e + k, e + k + 1, sizeof(t_ech) * (*n - k - 1));
+		(*n)--;
+	}
+	if (r >= 0)
+		tdf_echeances_ecrire(e, *n);
+}
+
+static void	ecran_echeances(void)
+{
+	static char	lab[13][200];
+	const char	*it[13];
+	t_ech		e[12];
+	int			n;
+	int			i;
+	int			sel;
+	int			r;
+
+	sel = 0;
+	while (1)
+	{
+		n = tdf_echeances(e, 12);
+		for (i = 0; i < n; i++)
+		{
+			snprintf(lab[i], sizeof(lab[i]), L("%s · %.2s/%.2s/%.4s|%ld jour(s) restant(s). Entrée : changer la date, renommer ou supprimer.",
+					"%s · %.2s/%.2s/%.4s|%ld day(s) left. Enter: change the date, rename or delete."),
+				e[i].nom, e[i].date + 8, e[i].date + 5, e[i].date, e[i].jours < 0 ? 0 : e[i].jours);
+			it[i] = lab[i];
+		}
+		snprintf(lab[n], sizeof(lab[n]), "%s", L("＋ Ajouter une échéance|Un nom et une date.", "＋ Add a deadline|A name and a date."));
+		it[n] = lab[n];
+		if (sel > n)
+			sel = n;
+		r = tdf_list_menu(L("ÉCHÉANCES", "DEADLINES"), it, n + 1, &sel,
+				L("Les dates dépendent de ta promo et de ton campus : vérifie-les sur l'intra. Inscriptions aux exams : le vendredi vers 18h42 (42 Paris).",
+					"Dates depend on your cohort and campus: check them on the intra. Exam sign-ups: Friday around 6:42 pm (42 Paris)."));
+		if (r < 0)
+			return ;
+		if (r == n && n < 12)
+		{
+			snprintf(e[n].nom, sizeof(e[n].nom), "%s", L("Nouvelle échéance", "New deadline"));
+			snprintf(e[n].date, sizeof(e[n].date), "2027-01-27");
+			n++;
+			tdf_echeances_ecrire(e, n);
+			ech_modifier(e, &n, n - 1);
+		}
+		else if (r < n)
+			ech_modifier(e, &n, r);
+	}
+}
+
 static void	bulles_basculer(void)
 {
 	char	p[700];
@@ -1589,6 +1673,8 @@ void	tdf_derniere_ecrire(const char *module, const char *fichier)
 	if (fichier)
 	{
 		snprintf(path, sizeof(path), "%s/derniere/%s.res", g_savedir, module);
+		snprintf(buf, sizeof(buf), "%s/derniere/%s.avant.res", g_savedir, module);
+		rename(path, buf);
 		in = fopen(fichier, "r");
 		o = in ? fopen(path, "w") : NULL;
 		while (in && o && (r = fread(buf, 1, sizeof(buf), in)) > 0)
@@ -1772,8 +1858,8 @@ void	tdf_rapport(const char *path, const char *titre)
 void	tdf_menu_params(void (*credits)(void))
 {
 	static int	sel;
-	const char	*items[10];
-	int			act[10];
+	const char	*items[11];
+	int			act[11];
 	char		bl[200];
 	int			n;
 	int			i;
@@ -1800,6 +1886,9 @@ void	tdf_menu_params(void (*credits)(void))
 			g_bulles ? L("oui", "yes") : L("non", "no"), L("Entrée pour les montrer ou les cacher dans le menu.", "Enter to show or hide them in the menu."));
 		act[n] = 8;
 		items[n++] = bl;
+		act[n] = 9;
+		items[n++] = tdf_nouveau("3.4") ? L("!Échéances|Les dates de tes milestones, affichées dans Stats (J-22…).", "!Deadlines|The dates of your milestones, shown in Stats (D-22…).")
+			: L("Échéances|Les dates de tes milestones, affichées dans Stats (J-22…).", "Deadlines|The dates of your milestones, shown in Stats (D-22…).");
 		act[n] = 1;
 		items[n++] = L("Sauvegarde et connexion|Exporter ta progression ou la retrouver sur un autre poste.", "Save and login|Export your progress or get it back on another computer.");
 		act[n] = 2;
@@ -1832,6 +1921,8 @@ void	tdf_menu_params(void (*credits)(void))
 			tdf_nouveautes();
 		else if (act[i] == 8)
 			bulles_basculer();
+		else if (act[i] == 9)
+			ecran_echeances();
 	}
 }
 

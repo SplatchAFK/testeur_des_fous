@@ -1980,3 +1980,23 @@ To send them: git add, git commit, then git push.	Чтобы отправить:
 (the subject says int, but the moulinette declares unsigned int ft_lstsize(t_list *begin): with int, its build fails)	(в задании int, но moulinette объявляет unsigned int ft_lstsize(t_list *begin): с int её сборка падает)
 • Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).	• Прототипы сравниваются с заданием и реальными трассами moulinette, в .h и в каждом .c (restrict запрещён, имена параметров).
 tests your last git commit instead of the folder: a file forgotten in git shows up	проверяет последний git-коммит вместо папки: забытый в git файл будет виден
+since last time: nothing changed	с прошлого раза: ничего не изменилось
+since last time: %d fixed%s%s%s · %d broken%s%s%s	с прошлого раза: исправлено %d%s%s%s · сломано %d%s%s%s
+since last time: %d fixed · %d broken	с прошлого раза: исправлено %d · сломано %d
+Change the date|YYYY-MM-DD or DD/MM/YYYY.	Изменить дату|ГГГГ-ММ-ДД или ДД/ММ/ГГГГ.
+Rename|	Переименовать|
+Delete|	Удалить|
+Deadline date	Дата срока
+YYYY-MM-DD or DD/MM/YYYY, for example 12/12/2026.	ГГГГ-ММ-ДД или ДД/ММ/ГГГГ, например 12/12/2026.
+Deadline name	Название срока
+%s · %.2s/%.2s/%.4s|%ld day(s) left. Enter: change the date, rename or delete.	%s · %.2s/%.2s/%.4s|Осталось дней: %ld. Enter: изменить дату, переименовать или удалить.
+＋ Add a deadline|A name and a date.	＋ Добавить срок|Название и дата.
+DEADLINES	СРОКИ
+Dates depend on your cohort and campus: check them on the intra. Exam sign-ups: Friday around 6:42 pm (42 Paris).	Даты зависят от твоего потока и кампуса: проверь их в intra. Запись на экзамены: в пятницу около 18:42 (42 Paris).
+New deadline	Новый срок
+!Deadlines|The dates of your milestones, shown in Stats (D-22…).	!Сроки|Даты твоих milestones, показаны в Stats (Д-22…).
+Deadlines|The dates of your milestones, shown in Stats (D-22…).	Сроки|Даты твоих milestones, показаны в Stats (Д-22…).
+Milestone 1 · Libft	Milestone 1 · Libft
+Milestone 2 · ft_printf and get_next_line	Milestone 2 · ft_printf и get_next_line
+%s: D-%ld (%.2s/%.2s)	%s: Д-%ld (%.2s/%.2s)
+Friday: exam sign-ups around 6:42 pm on the intra.	Пятница: запись на экзамены около 18:42 в intra.

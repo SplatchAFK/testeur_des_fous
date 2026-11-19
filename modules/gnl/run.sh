@@ -77,6 +77,7 @@ GNL_RES="$HOME/.testeur_des_fous/derniere/gnl.res"
 GNL_NORME="$HOME/.testeur_des_fous/derniere/norme_gnl.txt"
 mkdir -p "$(dirname "$GNL_RES")" 2>/dev/null
 rm -f "$GNL_NORME" 2>/dev/null
+[ -s "$GNL_RES" ] && cp "$GNL_RES" "${GNL_RES%.res}.avant.res" 2>/dev/null
 : > "$GNL_RES" 2>/dev/null || GNL_RES=/dev/null
 gnl_res() {
 	printf '%s\n' "$*" | tr -d '\r' | sed $'s/\x1b\\[[0-9;]*m//g' >> "$GNL_RES" 2>/dev/null

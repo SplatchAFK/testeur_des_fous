@@ -16,6 +16,19 @@ Le numéro de version est dans `moteur/version.h`.
 
 - nouvelle option du test « Ce qui est poussé » : le testeur teste ton dernier commit git au lieu du dossier, et liste d'abord les fichiers qui n'y sont pas ou ont changé depuis (ce que la moulinette ne verra pas).
 
+### Échéances
+
+- Stats › Résumé : les deux prochaines échéances avec le nombre de jours restants (Milestone 1 · Libft le 12/12/2026, Milestone 2 · ft_printf et get_next_line le 27/01/2027 par défaut), en orange à 3 semaines et en rouge à une semaine ; le vendredi, un rappel des inscriptions aux exams ;
+- Paramètres › Échéances : changer une date, renommer, ajouter ou supprimer (les dates dépendent de ta promo et de ton campus).
+
+### Comparer deux tentatives
+
+- résultats Libft et get_next_line : « depuis la dernière fois : 2 réparée(s) (split, itoa) · 1 cassée (strlcat) », aussi dans « Revoir la dernière tentative ».
+
+### Lenteur
+
+- Libft : une remarque si strtrim, strjoin, strmapi, striteri, strnstr, strlcat, substr ou strdup devient beaucoup plus lente sur une grande chaîne (16 fois plus de caractères, plus de 100 fois plus de temps : signe d'une boucle qui rappelle ft_strlen) ; mesure relative, donc indépendante de la vitesse de la machine ; ft_split n'est pas mesurée (le suivi mémoire du testeur fausserait la mesure).
+
 ### Includes
 
 - nouvelle section dans les trois projets : chaque #include doit exister, aucun .c inclus, aucune fonction utilisée sans déclaration (avec l'en-tête à ajouter, par exemple <stdlib.h> pour malloc) ;

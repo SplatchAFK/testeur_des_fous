@@ -14,6 +14,7 @@ typedef struct s_gl
 }	t_gl;
 
 static t_gl	g_gl[GMAX];
+static char	g_gcmp[300];
 static int	g_ngl;
 static char	g_gsec[24][120];
 static int	g_ngsec;
@@ -24,6 +25,65 @@ static int	g_ginfo;
 static char	g_gtailles[120];
 static char	g_gprojet[300];
 
+
+static int	gnl_bon(const char *st)
+{
+	return (!strcmp(st, "OK"));
+}
+
+static int	gnl_mauvais(const char *st)
+{
+	return (!strcmp(st, "KO") || !strcmp(st, "CRASH") || !strcmp(st, "BOUCLE") || !strcmp(st, "FUITE"));
+}
+
+static void	gnl_comparer(void)
+{
+	char	p[800];
+	char	l[1200];
+	char	*c[4];
+	char	*q;
+	FILE	*f;
+	int		i;
+	int		n;
+	int		nr;
+	int		nc;
+
+	g_gcmp[0] = '\0';
+	snprintf(p, sizeof(p), "%s/derniere/gnl.avant.res", g_savedir);
+	f = fopen(p, "r");
+	if (!f)
+		return ;
+	nr = 0;
+	nc = 0;
+	while (fgets(l, sizeof(l), f))
+	{
+		l[strcspn(l, "\r\n")] = '\0';
+		for (n = 0, q = l; n < 4; n++)
+		{
+			c[n] = q;
+			q = q ? strchr(q, '\t') : NULL;
+			if (q)
+				*q++ = '\0';
+		}
+		if (strcmp(c[0], "L") || !c[1] || !c[2])
+			continue ;
+		for (i = 0; i < g_ngl; i++)
+			if (!strcmp(g_gl[i].titre, c[2]))
+				break ;
+		if (i == g_ngl)
+			continue ;
+		if (gnl_mauvais(c[1]) && gnl_bon(g_gl[i].st))
+			nr++;
+		else if (gnl_bon(c[1]) && gnl_mauvais(g_gl[i].st))
+			nc++;
+	}
+	fclose(f);
+	if (nr + nc == 0)
+		snprintf(g_gcmp, sizeof(g_gcmp), "%s", L("depuis la dernière fois : rien n'a changé", "since last time: nothing changed"));
+	else
+		snprintf(g_gcmp, sizeof(g_gcmp), L("depuis la dernière fois : %d réparé(s) · %d cassé(s)",
+				"since last time: %d fixed · %d broken"), nr, nc);
+}
 static void	gnl_lire(const char *path)
 {
 	FILE	*f;
@@ -70,6 +130,7 @@ static void	gnl_lire(const char *path)
 	}
 	if (f)
 		fclose(f);
+	gnl_comparer();
 }
 
 static t_rgb	gnl_couleur(const char *st)
@@ -170,6 +231,8 @@ void	tdf_ecran_gnl(const char *path)
 		else if (g_gtailles[0])
 		{
 			snprintf(tmp, sizeof(tmp), L("BUFFER_SIZE testés : %s, et sans -D", "BUFFER_SIZE tested: %s, and without -D"), g_gtailles);
+			if (g_gcmp[0])
+				snprintf(tmp + strlen(tmp), sizeof(tmp) - strlen(tmp), "  ·  %s", g_gcmp);
 			center(2, theme()->dim, tmp);
 		}
 		gnl_anneaux(x, 3);

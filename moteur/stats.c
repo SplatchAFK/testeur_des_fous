@@ -699,6 +699,124 @@ static int	weak(int x, int y, int maxy, int mod, int max)
 	return (y);
 }
 
+static long	jours_avant(const char *iso)
+{
+	struct tm	t;
+	time_t		fin;
+
+	memset(&t, 0, sizeof(t));
+	if (sscanf(iso, "%d-%d-%d", &t.tm_year, &t.tm_mon, &t.tm_mday) != 3)
+		return (-100000);
+	t.tm_year -= 1900;
+	t.tm_mon -= 1;
+	t.tm_hour = 23;
+	t.tm_min = 59;
+	t.tm_isdst = -1;
+	fin = mktime(&t);
+	if (fin == (time_t)-1)
+		return (-100000);
+	return ((long)((fin - time(NULL)) / 86400));
+}
+
+int	tdf_date_ok(const char *s, char *iso, size_t n)
+{
+	int	a;
+	int	m;
+	int	j;
+
+	if (sscanf(s, "%d-%d-%d", &a, &m, &j) == 3 && a > 1999)
+		;
+	else if (sscanf(s, "%d/%d/%d", &j, &m, &a) == 3 && a > 1999)
+		;
+	else
+		return (0);
+	if (m < 1 || m > 12 || j < 1 || j > 31 || a > 2100)
+		return (0);
+	snprintf(iso, n, "%04d-%02d-%02d", a, m, j);
+	return (1);
+}
+
+int	tdf_echeances(t_ech *e, int max)
+{
+	char	p[700];
+	char	l[200];
+	char	*b;
+	FILE	*f;
+	int		n;
+
+	n = 0;
+	snprintf(p, sizeof(p), "%s/echeances.txt", g_savedir ? g_savedir : ".");
+	f = fopen(p, "r");
+	if (!f)
+	{
+		snprintf(e[0].date, sizeof(e[0].date), "2026-12-12");
+		snprintf(e[0].nom, sizeof(e[0].nom), "%s", L("Milestone 1 · Libft", "Milestone 1 · Libft"));
+		snprintf(e[1].date, sizeof(e[1].date), "2027-01-27");
+		snprintf(e[1].nom, sizeof(e[1].nom), "%s", L("Milestone 2 · ft_printf et get_next_line", "Milestone 2 · ft_printf and get_next_line"));
+		n = max < 2 ? max : 2;
+	}
+	while (f && n < max && fgets(l, sizeof(l), f))
+	{
+		l[strcspn(l, "\r\n")] = '\0';
+		b = strchr(l, '|');
+		if (!b || b - l != 10)
+			continue ;
+		*b = '\0';
+		snprintf(e[n].date, sizeof(e[n].date), "%s", l);
+		snprintf(e[n].nom, sizeof(e[n].nom), "%s", b + 1);
+		n++;
+	}
+	if (f)
+		fclose(f);
+	for (int i = 0; i < n; i++)
+		e[i].jours = jours_avant(e[i].date);
+	return (n);
+}
+
+void	tdf_echeances_ecrire(t_ech *e, int n)
+{
+	char	p[700];
+	FILE	*f;
+	int		i;
+
+	snprintf(p, sizeof(p), "%s/echeances.txt", g_savedir ? g_savedir : ".");
+	f = fopen(p, "w");
+	if (!f)
+		return ;
+	for (i = 0; i < n; i++)
+		fprintf(f, "%s|%s\n", e[i].date, e[i].nom);
+	fclose(f);
+}
+
+static void	draw_echeances(int x, int y)
+{
+	t_ech		e[12];
+	char		tmp[200];
+	struct tm	*tm;
+	time_t		now;
+	int			n;
+	int			i;
+	int			k;
+
+	n = tdf_echeances(e, 12);
+	now = time(NULL);
+	tm = localtime(&now);
+	k = 0;
+	for (i = 0; i < n && k < 2; i++)
+	{
+		if (e[i].jours < 0)
+			continue ;
+		if (k == 1 && tm && tm->tm_wday == 5)
+			break ;
+		snprintf(tmp, sizeof(tmp), L("%s : J-%ld (%.2s/%.2s)", "%s: D-%ld (%.2s/%.2s)"), e[i].nom, e[i].jours,
+			e[i].date + 8, e[i].date + 5);
+		text_at(x, y + k++, e[i].jours <= 7 ? rgb(255, 110, 110) : (e[i].jours <= 21 ? rgb(255, 200, 80) : theme()->text), tmp);
+	}
+	if (k < 2 && tm && tm->tm_wday == 5)
+		text_at(x, y + k, rgb(255, 200, 80), L("Vendredi : inscriptions aux exams vers 18h42 sur l'intra.",
+				"Friday: exam sign-ups around 6:42 pm on the intra."));
+}
+
 static void	page_resume(int x, int y, int maxy)
 {
 	char	tmp[200];
@@ -709,6 +827,7 @@ static void	page_resume(int x, int y, int maxy)
 	snprintf(tmp, sizeof(tmp), L("Plus longue série : %d j · lancements suivis : %d", "Longest streak: %d d · tracked runs: %d"),
 		g_sd.best, g_sd.nratio);
 	text_at(x + g_w / 2, y + 9, theme()->text, tmp);
+	draw_echeances(x + g_w / 2, y + 10);
 	spark(x, yy + 2, g_w - 4, -1, L("TES DERNIERS LANCEMENTS (tous modules)", "YOUR LATEST RUNS (all modules)"));
 	weak(x, yy + 7, maxy, -1, 8);
 }

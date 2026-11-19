@@ -1980,3 +1980,23 @@ To send them: git add, git commit, then git push.	Göndermek için: git add, git
 (the subject says int, but the moulinette declares unsigned int ft_lstsize(t_list *begin): with int, its build fails)	(konu int diyor, ama moulinette unsigned int ft_lstsize(t_list *begin) bildiriyor: int ile derlemesi başarısız olur)
 • Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).	• Prototipler konuyla ve gerçek moulinette izleriyle karşılaştırılıyor, .h içinde ve her .c içinde (restrict yasak, parametre adları).
 tests your last git commit instead of the folder: a file forgotten in git shows up	klasör yerine son git commit'ini test eder: git'te unutulan dosya görünür
+since last time: nothing changed	son seferden beri: hiçbir şey değişmedi
+since last time: %d fixed%s%s%s · %d broken%s%s%s	son seferden beri: %d düzeltildi%s%s%s · %d bozuldu%s%s%s
+since last time: %d fixed · %d broken	son seferden beri: %d düzeltildi · %d bozuldu
+Change the date|YYYY-MM-DD or DD/MM/YYYY.	Tarihi değiştir|YYYY-AA-GG ya da GG/AA/YYYY.
+Rename|	Yeniden adlandır|
+Delete|	Sil|
+Deadline date	Son tarih
+YYYY-MM-DD or DD/MM/YYYY, for example 12/12/2026.	YYYY-AA-GG ya da GG/AA/YYYY, örneğin 12/12/2026.
+Deadline name	Son tarih adı
+%s · %.2s/%.2s/%.4s|%ld day(s) left. Enter: change the date, rename or delete.	%s · %.2s/%.2s/%.4s|%ld gün kaldı. Enter: tarihi değiştir, yeniden adlandır ya da sil.
+＋ Add a deadline|A name and a date.	＋ Son tarih ekle|Bir ad ve bir tarih.
+DEADLINES	SON TARİHLER
+Dates depend on your cohort and campus: check them on the intra. Exam sign-ups: Friday around 6:42 pm (42 Paris).	Tarihler dönemine ve kampüsüne göre değişir: intra'dan kontrol et. Sınav kayıtları: cuma 18:42 civarı (42 Paris).
+New deadline	Yeni son tarih
+!Deadlines|The dates of your milestones, shown in Stats (D-22…).	!Son tarihler|Milestone tarihlerin, Stats'ta gösterilir (G-22…).
+Deadlines|The dates of your milestones, shown in Stats (D-22…).	Son tarihler|Milestone tarihlerin, Stats'ta gösterilir (G-22…).
+Milestone 1 · Libft	Milestone 1 · Libft
+Milestone 2 · ft_printf and get_next_line	Milestone 2 · ft_printf ve get_next_line
+%s: D-%ld (%.2s/%.2s)	%s: G-%ld (%.2s/%.2s)
+Friday: exam sign-ups around 6:42 pm on the intra.	Cuma: sınav kayıtları intra'da 18:42 civarı.

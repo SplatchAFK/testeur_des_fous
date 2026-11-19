@@ -721,6 +721,15 @@ int				tdf_correction_dossier(char *out, size_t n);
 int				tdf_correction_accueil(void);
 void			tdf_correction_titre(char *out, size_t n);
 int				tdf_bulles(void);
+typedef struct s_ech
+{
+	char	date[12];
+	char	nom[80];
+	long	jours;
+}	t_ech;
+int				tdf_echeances(t_ech *e, int max);
+void			tdf_echeances_ecrire(t_ech *e, int n);
+int				tdf_date_ok(const char *s, char *iso, size_t n);
 void			tdf_bulles_lire(void);
 int				tdf_choisir_test(const char *dossier, char *out, size_t n);
 int				tdf_derniere_existe(void);

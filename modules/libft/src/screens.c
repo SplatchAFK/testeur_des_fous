@@ -83,6 +83,52 @@ static int	st_parse(const char *s)
 	return (ST_KO);
 }
 
+static int	split_tab(char *s, char **f, int max);
+
+static void	comparer_avant(char *out, size_t n)
+{
+	char	p[800];
+	char	l[2048];
+	char	*f[8];
+	char	rep[300];
+	char	cas[300];
+	FILE	*fp;
+	int		k;
+	int		av;
+	int		nr;
+	int		nc;
+
+	out[0] = '\0';
+	snprintf(p, sizeof(p), getenv("TDF_REVOIR") ? "%s/derniere/libft.avant.res" : "%s/derniere/libft.res", g_savedir);
+	fp = fopen(p, "r");
+	if (!fp)
+		return ;
+	rep[0] = '\0';
+	cas[0] = '\0';
+	nr = 0;
+	nc = 0;
+	while (fgets(l, sizeof(l), fp))
+	{
+		l[strcspn(l, "\r\n")] = '\0';
+		if (split_tab(l, f, 8) < 3 || strcmp(f[0], "T") || (k = fn_index(f[1])) < 0)
+			continue ;
+		av = st_parse(f[2]);
+		if (av == ST_WAIT || g_run.fn[k].st == ST_WAIT)
+			continue ;
+		if (!st_pass(av) && st_pass(g_run.fn[k].st) && ++nr <= 4)
+			snprintf(rep + strlen(rep), sizeof(rep) - strlen(rep), "%s%s", nr > 1 ? ", " : "", f[1]);
+		else if (st_pass(av) && st_bad(g_run.fn[k].st) && ++nc <= 4)
+			snprintf(cas + strlen(cas), sizeof(cas) - strlen(cas), "%s%s", nc > 1 ? ", " : "", f[1]);
+	}
+	fclose(fp);
+	if (nr + nc == 0)
+		snprintf(out, n, "%s", L("depuis la dernière fois : rien n'a changé", "since last time: nothing changed"));
+	else
+		snprintf(out, n, L("depuis la dernière fois : %d réparée(s)%s%s%s · %d cassée(s)%s%s%s",
+				"since last time: %d fixed%s%s%s · %d broken%s%s%s"), nr, nr ? " (" : "", rep, nr ? ")" : "",
+			nc, nc ? " (" : "", cas, nc ? ")" : "");
+}
+
 static int	split_tab(char *s, char **f, int max)
 {
 	int	n;
@@ -1035,6 +1081,8 @@ static int	screen_fiche(int fn)
 
 int	screen_results(int after)
 {
+	char	cmp[300];
+	int		cmp_fait;
 	long	ouvert;
 	int		sel;
 	int		k;
@@ -1054,6 +1102,8 @@ int	screen_results(int after)
 			sel = k;
 			break ;
 		}
+	cmp[0] = '\0';
+	cmp_fait = 0;
 	cls();
 	tdf_key_vider();
 	ouvert = now_ms();
@@ -1068,7 +1118,18 @@ int	screen_results(int after)
 				"RESULTS  %d/%d  ·  estimated moulinette grade: %s"), ok, NFN, m ? "100" : "0");
 		discord_line(0);
 		center(1, m ? rgb(80, 230, 140) : rgb(255, 90, 100), tmp);
-		center(2, theme()->dim, why);
+		if (g_run.done && !cmp_fait)
+		{
+			comparer_avant(cmp, sizeof(cmp));
+			cmp_fait = 1;
+		}
+		if (cmp[0])
+		{
+			snprintf(tmp, sizeof(tmp), "%s  ·  %s", why, cmp);
+			center(2, theme()->dim, tmp);
+		}
+		else
+			center(2, theme()->dim, why);
 		draw_grid(now_ms(), sel);
 		if (!tdf_menu_unique())
 			draw_tour();

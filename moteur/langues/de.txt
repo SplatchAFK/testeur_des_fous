@@ -1980,3 +1980,23 @@ To send them: git add, git commit, then git push.	Zum Senden: git add, git commi
 (the subject says int, but the moulinette declares unsigned int ft_lstsize(t_list *begin): with int, its build fails)	(die Aufgabe sagt int, aber die Moulinette deklariert unsigned int ft_lstsize(t_list *begin): mit int schlägt ihr Build fehl)
 • Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).	• Prototypen mit der Aufgabe und echten Moulinette-Traces verglichen, in der .h und jeder .c (restrict verboten, Parameternamen).
 tests your last git commit instead of the folder: a file forgotten in git shows up	testet deinen letzten git-Commit statt des Ordners: eine in git vergessene Datei fällt auf
+since last time: nothing changed	seit dem letzten Mal: nichts geändert
+since last time: %d fixed%s%s%s · %d broken%s%s%s	seit dem letzten Mal: %d behoben%s%s%s · %d kaputt%s%s%s
+since last time: %d fixed · %d broken	seit dem letzten Mal: %d behoben · %d kaputt
+Change the date|YYYY-MM-DD or DD/MM/YYYY.	Datum ändern|JJJJ-MM-TT oder TT/MM/JJJJ.
+Rename|	Umbenennen|
+Delete|	Löschen|
+Deadline date	Termin
+YYYY-MM-DD or DD/MM/YYYY, for example 12/12/2026.	JJJJ-MM-TT oder TT/MM/JJJJ, zum Beispiel 12/12/2026.
+Deadline name	Name des Termins
+%s · %.2s/%.2s/%.4s|%ld day(s) left. Enter: change the date, rename or delete.	%s · %.2s/%.2s/%.4s|Noch %ld Tag(e). Enter: Datum ändern, umbenennen oder löschen.
+＋ Add a deadline|A name and a date.	＋ Termin hinzufügen|Ein Name und ein Datum.
+DEADLINES	TERMINE
+Dates depend on your cohort and campus: check them on the intra. Exam sign-ups: Friday around 6:42 pm (42 Paris).	Die Termine hängen von deinem Jahrgang und Campus ab: prüfe sie im Intra. Prüfungsanmeldung: freitags gegen 18:42 (42 Paris).
+New deadline	Neuer Termin
+!Deadlines|The dates of your milestones, shown in Stats (D-22…).	!Termine|Die Daten deiner Milestones, in den Stats angezeigt (T-22…).
+Deadlines|The dates of your milestones, shown in Stats (D-22…).	Termine|Die Daten deiner Milestones, in den Stats angezeigt (T-22…).
+Milestone 1 · Libft	Milestone 1 · Libft
+Milestone 2 · ft_printf and get_next_line	Milestone 2 · ft_printf und get_next_line
+%s: D-%ld (%.2s/%.2s)	%s: T-%ld (%.2s/%.2s)
+Friday: exam sign-ups around 6:42 pm on the intra.	Freitag: Prüfungsanmeldung gegen 18:42 im Intra.

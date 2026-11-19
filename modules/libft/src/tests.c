@@ -2454,6 +2454,129 @@ static void	run_test(void)
 }
 #endif
 
+#ifdef T_strtrim
+# define LENT_NOM "ft_strtrim"
+#endif
+#ifdef T_strjoin
+# define LENT_NOM "ft_strjoin"
+#endif
+#ifdef T_strmapi
+# define LENT_NOM "ft_strmapi"
+#endif
+#ifdef T_striteri
+# define LENT_NOM "ft_striteri"
+#endif
+#ifdef T_strnstr
+# define LENT_NOM "ft_strnstr"
+#endif
+#ifdef T_strlcat
+# define LENT_NOM "ft_strlcat"
+#endif
+#ifdef T_substr
+# define LENT_NOM "ft_substr"
+#endif
+#ifdef T_strdup
+# define LENT_NOM "ft_strdup"
+#endif
+
+#ifdef LENT_NOM
+static char	lent_maj(unsigned int i, char c)
+{
+	(void)i;
+	return (c);
+}
+
+static void	lent_iter(unsigned int i, char *c)
+{
+	(void)i;
+	(void)c;
+}
+
+static double	lent_ms(void)
+{
+	struct timeval	t;
+
+	gettimeofday(&t, NULL);
+	return (t.tv_sec * 1000.0 + t.tv_usec / 1000.0);
+}
+
+static void	lent_appel(size_t n)
+{
+	char	*s;
+	char	*r;
+	char	**t;
+	size_t	i;
+
+	s = tst_malloc(n * 2 + 1);
+	for (i = 0; i < n; i++)
+		s[i] = (i % 6 == 5) ? ' ' : (char)('a' + i % 26);
+	s[n] = '\0';
+	r = NULL;
+	t = NULL;
+	(void)t;
+	(void)lent_maj;
+	(void)lent_iter;
+# ifdef T_strtrim
+	r = ft_strtrim(s, "xyz");
+# endif
+# ifdef T_strjoin
+	r = ft_strjoin(s, s);
+# endif
+# ifdef T_strmapi
+	r = ft_strmapi(s, lent_maj);
+# endif
+# ifdef T_striteri
+	ft_striteri(s, lent_iter);
+# endif
+# ifdef T_strnstr
+	(void)ft_strnstr(s, "zzz", n);
+# endif
+# ifdef T_strlcat
+	s[n] = '\0';
+	r = tst_malloc(n * 2 + 1);
+	r[0] = '\0';
+	(void)ft_strlcat(r, s, n * 2 + 1);
+	tst_free(r);
+	r = NULL;
+# endif
+# ifdef T_substr
+	r = ft_substr(s, 0, n);
+# endif
+# ifdef T_strdup
+	r = ft_strdup(s);
+# endif
+	free(r);
+	tst_free(s);
+}
+
+static void	lenteur(void)
+{
+	double	t0;
+	double	a;
+	double	b;
+	int		k;
+
+	if (g_fails)
+		return ;
+	lent_appel(500);
+	t0 = lent_ms();
+	for (k = 0; k < 64; k++)
+		lent_appel(500);
+	a = (lent_ms() - t0) / 64;
+	t0 = lent_ms();
+	for (k = 0; k < 4; k++)
+		lent_appel(8000);
+	b = (lent_ms() - t0) / 4;
+	if (getenv("TDF_LENT_VOIR"))
+		printf("  lt| %s %.4f %.4f %.1f\n", LENT_NOM, a, b, b / (a < 0.0005 ? 0.0005 : a));
+	if (a < 0.0005)
+		a = 0.0005;
+	if (b / a > 100)
+		warn("%s semble lent sur les grandes chaînes : 16 fois plus de caractères prennent %.0f fois plus"
+			" de temps (normal : environ 16). Une boucle qui rappelle ft_strlen à chaque tour ?", LENT_NOM, b / a);
+}
+#endif
+
 int	main(void)
 {
 	struct timeval	a;
@@ -2464,6 +2587,10 @@ int	main(void)
 	gettimeofday(&a, NULL);
 	run_test();
 	gettimeofday(&b, NULL);
+#ifdef LENT_NOM
+	setcase("lenteur sur les grandes chaînes");
+	lenteur();
+#endif
 	alarm(0);
 	setcase("fin du test");
 	leak_report();
