@@ -577,7 +577,7 @@ void	tdf_nouveautes(void)
 	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
 	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
 		L("NOUVEAU DANS LA 3.4.0", "NEW IN 3.4.0"),
-		L("• Prototypes comparés au vrai sujet, dans le .h et dans chaque .c (restrict interdit, ft_lstsize en int, noms des paramètres).", "• Prototypes compared with the real subject, in the .h and in every .c (restrict forbidden, ft_lstsize as int, parameter names)."),
+		L("• Prototypes comparés au sujet et aux vraies traces de la moulinette, dans le .h et dans chaque .c (restrict interdit, noms des paramètres).", "• Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names)."),
 		L("• Includes vérifiés : include introuvable, .c inclus, fonction sans déclaration, .h qui ne compile pas seul, garde d'inclusion, include inutile.", "• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include."),
 		L("• Libft, ft_printf et get_next_line.", "• Libft, ft_printf and get_next_line."),
 		L("DÉJÀ DANS LA 3.3.0", "ALREADY IN 3.3.0"),
@@ -929,13 +929,13 @@ static void	dessiner_entrees(t_ent *e, int n, int sel, int x, int y, int h)
 	}
 }
 
-#define NOPT 5
+#define NOPT 6
 
 static int	g_opt[NOPT];
 
 static const char	*opt_cle(int i)
 {
-	static const char	*c[NOPT] = {"debug", "audit", "valgrind", "sans_histoire", "sans_anim"};
+	static const char	*c[NOPT] = {"debug", "audit", "valgrind", "sans_histoire", "sans_anim", "pousse"};
 
 	return (c[i]);
 }
@@ -992,6 +992,9 @@ static int	dessiner_options(int x, int y, int sel)
 	desc[3] = L("seulement les tests, sans histoire", "only the tests, no story");
 	nom[4] = L("Sans animations", "No animations");
 	desc[4] = L("affichage direct, sans effets", "direct display, no effects");
+	nom[5] = L("Ce qui est poussé", "What is pushed");
+	desc[5] = L("teste ton dernier commit git au lieu du dossier : un fichier oublié dans git se voit",
+			"tests your last git commit instead of the folder: a file forgotten in git shows up");
 	text_at(x, y, theme()->accent2, L("OPTIONS DU TEST", "TEST OPTIONS"));
 	if (tdf_nouveau("3.2"))
 	{
@@ -1013,7 +1016,14 @@ static int	dessiner_options(int x, int y, int sel)
 		fg(g_opt[i] ? rgb(80, 230, 140) : theme()->dim);
 		outf(" ◀ %-3s ▶ ", g_opt[i] ? L("oui", "yes") : L("non", "no"));
 		bgc(theme()->bg);
-		text_clip(x + 36, y, theme()->dim, desc[i], term_cols() - x - 38);
+		if (i == 5 && tdf_nouveau("3.4"))
+		{
+			at(x + 36, y);
+			tdf_badge_new();
+			text_clip(x + 42, y, theme()->dim, desc[i], term_cols() - x - 44);
+		}
+		else
+			text_clip(x + 36, y, theme()->dim, desc[i], term_cols() - x - 38);
 	}
 	return (y);
 }

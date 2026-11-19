@@ -1972,3 +1972,11 @@ norminette (%s files)	norminette (%s Dateien)
 norminette: %s file(s) out of %s with errors	norminette: %s von %s Datei(en) mit Fehlern
 Menu › Test my project, then the folder of your Libft.	Menü › Mein Projekt testen, dann der Ordner deiner Libft.
 files	Dateien
+%s is not a git repository: the tester tests the folder as it is.	%s ist kein git-Repository: der Tester testet den Ordner so, wie er ist.
+What is pushed	Was gepusht ist
+No commit in %s: the tester tests the folder as it is.	Kein Commit in %s: der Tester testet den Ordner so, wie er ist.
+The tester tests your last commit (%s). These files are not in it, or changed since: the moulinette will not see them as they are in your folder.	Der Tester testet deinen letzten Commit (%s). Diese Dateien fehlen darin oder haben sich seitdem geändert: die Moulinette sieht sie nicht so wie in deinem Ordner.
+To send them: git add, git commit, then git push.	Zum Senden: git add, git commit, dann git push.
+(the subject says int, but the moulinette declares unsigned int ft_lstsize(t_list *begin): with int, its build fails)	(die Aufgabe sagt int, aber die Moulinette deklariert unsigned int ft_lstsize(t_list *begin): mit int schlägt ihr Build fehl)
+• Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).	• Prototypen mit der Aufgabe und echten Moulinette-Traces verglichen, in der .h und jeder .c (restrict verboten, Parameternamen).
+tests your last git commit instead of the folder: a file forgotten in git shows up	testet deinen letzten git-Commit statt des Ordners: eine in git vergessene Datei fällt auf

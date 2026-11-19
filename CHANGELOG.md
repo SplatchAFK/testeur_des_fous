@@ -7,10 +7,14 @@ Le numéro de version est dans `moteur/version.h`.
 ### Prototypes
 
 - Libft : les prototypes sont comparés au sujet actuel dans libft.h, et maintenant aussi dans chaque ft_*.c : un .c qui définit la fonction autrement (même sans inclure libft.h) est signalé ;
-- ft_lstsize doit renvoyer int, comme dans le sujet (unsigned int n'est plus accepté) ;
+- ft_lstsize doit renvoyer unsigned int : le sujet écrit int, mais une vraie trace de la moulinette montre que son main déclare unsigned int ft_lstsize(t_list *begin), et une Libft en int n'y compile pas ;
 - restrict est refusé dans les prototypes (le sujet l'interdit) ;
 - parties 2 et 3 : une remarque si les noms des paramètres diffèrent de ceux du sujet ;
 - ft_printf et get_next_line : le prototype est vérifié par le compilateur (type exact), plus seulement par une recherche de texte, et le .c qui définit la fonction est comparé au .h.
+
+### Ce qui est poussé
+
+- nouvelle option du test « Ce qui est poussé » : le testeur teste ton dernier commit git au lieu du dossier, et liste d'abord les fichiers qui n'y sont pas ou ont changé depuis (ce que la moulinette ne verra pas).
 
 ### Includes
 
@@ -21,6 +25,7 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Corrections
 
+- ft_lstmap : nouveau test repris d'une vraie trace de la moulinette, un maillon au content NULL au milieu de la liste ; f renvoie NULL pour ce maillon, qui doit rester dans la nouvelle liste (la liste ne doit pas être libérée) ;
 - fiche d'une fonction Libft : la commande de terminal héritée de l'ancien testeur (« bash libft/run.sh --ci -v … », qui ne marchait plus) est remplacée par l'action « r : relancer les tests sans quitter le testeur » ;
 - écran d'accueil de ft_printf : plus de commande de terminal, il indique le chemin dans le menu ;
 - 21 messages des tests (fichiers en trop, hors git, norminette, nm, sanitizers, plantages, boucle infinie…) étaient seulement en français : ils sont traduits dans les 8 langues ;

@@ -113,7 +113,7 @@ P(lstnew, t_list *(*)(void *));
 P(lstadd_front, void (*)(t_list **, t_list *));
 #endif
 #ifdef F_lstsize
-P(lstsize, int (*)(t_list *));
+P(lstsize, unsigned int (*)(t_list *));
 #endif
 #ifdef F_lstlast
 P(lstlast, t_list *(*)(t_list *));

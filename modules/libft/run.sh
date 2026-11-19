@@ -172,7 +172,7 @@ proto_of() {
 		putnbr_fd) echo "void ft_putnbr_fd(int n, int fd);" ;;
 		lstnew) echo "t_list *ft_lstnew(void *content);" ;;
 		lstadd_front) echo "void ft_lstadd_front(t_list **lst, t_list *new);" ;;
-		lstsize) echo "int ft_lstsize(t_list *lst);" ;;
+		lstsize) echo "unsigned int ft_lstsize(t_list *lst); $(tt "(le sujet écrit int, mais la moulinette déclare unsigned int ft_lstsize(t_list *begin) : avec int, sa compilation échoue)" "(the subject says int, but the moulinette declares unsigned int ft_lstsize(t_list *begin): with int, its build fails)")" ;;
 		lstlast) echo "t_list *ft_lstlast(t_list *lst);" ;;
 		lstadd_back) echo "void ft_lstadd_back(t_list **lst, t_list *new);" ;;
 		lstdelone) echo "void ft_lstdelone(t_list *lst, void (*del)(void *));" ;;

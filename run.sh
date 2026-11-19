@@ -362,6 +362,39 @@ correction_preparer() {
 	return 0
 }
 
+pousse_preparer() {
+	local top rel t d msg="$DOSSIER/derniere/message.txt"
+	PROJET_VRAI="$PROJET"
+	mkdir -p "$DOSSIER/derniere"
+	if ! git -C "$PROJET" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+		printf "$(tt "%s n'est pas un dépôt git : le testeur teste le dossier tel quel." "%s is not a git repository: the tester tests the folder as it is.")\n" "$PROJET" > "$msg"
+		voir_rapport "$msg" "$(tt "Ce qui est poussé" "What is pushed")"
+		return 0
+	fi
+	top="$(git -C "$PROJET" rev-parse --show-toplevel)"
+	rel="$(git -C "$PROJET" rev-parse --show-prefix)"
+	t="$(mktemp -d "${TMPDIR:-/tmp}/tdf_pousse.XXXXXX")" || return 0
+	if ! git -C "$top" archive HEAD 2>/dev/null | tar -x -C "$t" 2>/dev/null; then
+		rm -rf "$t"
+		printf "$(tt "Aucun commit dans %s : le testeur teste le dossier tel quel." "No commit in %s: the tester tests the folder as it is.")\n" "$top" > "$msg"
+		voir_rapport "$msg" "$(tt "Ce qui est poussé" "What is pushed")"
+		return 0
+	fi
+	POUSSE_TMP="$t"
+	PROJET="$t/${rel%/}"
+	PROJET="${PROJET%/}"
+	d="$(cd "$PROJET_VRAI" && { git ls-files --others --exclude-standard . ; git diff --name-only --relative HEAD ; } 2>/dev/null | sort -u | grep -Ev '^(testeur_des_fous|tdf)/' | head -25)"
+	if [ -n "$d" ]; then
+		{
+			printf "$(tt "Le testeur teste ton dernier commit (%s). Ces fichiers ne sont pas dedans, ou ont changé depuis : la moulinette ne les verra pas tels qu'ils sont dans ton dossier." "The tester tests your last commit (%s). These files are not in it, or changed since: the moulinette will not see them as they are in your folder.")\n\n" "$(git -C "$top" log -1 --format='%h %s' | cut -c1-60)"
+			printf '%s\n' "$d" | sed 's/^/  /'
+			printf "\n$(tt "Pour les envoyer : git add, git commit, puis git push." "To send them: git add, git commit, then git push.")\n"
+		} > "$msg"
+		voir_rapport "$msg" "$(tt "Ce qui est poussé" "What is pushed")"
+	fi
+	return 0
+}
+
 options_test() {
 	local f="$DOSSIER/options_test.txt"
 	[ -n "${CORR_TITRE:-}" ] && return 0
@@ -374,6 +407,7 @@ options_test() {
 	grep -q '^valgrind=1' "$f" && { [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; } && SUITE+=(--valgrind)
 	grep -q '^sans_anim=1' "$f" && SUITE+=(--fast)
 	grep -q '^sans_histoire=1' "$f" && export TDF_SANS_HISTOIRE=1
+	grep -q '^pousse=1' "$f" && pousse_preparer
 	return 0
 }
 
@@ -400,6 +434,7 @@ noter_historique() {
 choisir_au_menu() {
 	local code l a p projets=""
 	unset TDF_SANS_STATS TDF_CAS TDF_BANDEAU
+	PROJET_VRAI=""
 	if [ ! -f "$DOSSIER/correction.txt" ] && [ -d "$DOSSIER/derniere_hors_correction" ]; then
 		rm -rf "$DOSSIER/derniere"
 		mv "$DOSSIER/derniere_hors_correction" "$DOSSIER/derniere"
@@ -929,8 +964,8 @@ export TDF_LIBFT="${LIBFTS[0]:-}"
 debug_ouvrir ${ARGS_ORIG[@]+"${ARGS_ORIG[@]}"}
 TDF_JOURNAL_MOD="lanceur"
 tdf_journal "projets trouvés : libft ${#LIBFTS[@]}, ft_printf ${#PRINTFS[@]}, gnl ${#GNLS[@]} · module $MODULE · projet ${PROJET:-aucun}"
-trap 'tdf_journal "interrompu (Ctrl+C)"; debug_fermer "interrompu"; exit 130' INT
-trap 'debug_fermer "arrêté"; exit 143' TERM HUP
+trap 'tdf_journal "interrompu (Ctrl+C)"; debug_fermer "interrompu"; [ -n "${POUSSE_TMP:-}" ] && rm -rf "$POUSSE_TMP"; exit 130' INT
+trap 'debug_fermer "arrêté"; [ -n "${POUSSE_TMP:-}" ] && rm -rf "$POUSSE_TMP"; exit 143' TERM HUP
 
 garde_reprendre() {
 	[ "$MENU_UNIQUE" = 1 ] && [ -t 1 ] || return 0
@@ -970,7 +1005,12 @@ while :; do
 		code=$?
 	fi
 	tdf_chrono_fin mod "module $MODULE" "code $code"
-	[ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && noter_historique "$MODULE" "$PROJET"
+	[ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && noter_historique "$MODULE" "${PROJET_VRAI:-$PROJET}"
+	if [ -n "${POUSSE_TMP:-}" ]; then
+		rm -rf "$POUSSE_TMP"
+		POUSSE_TMP=""
+		PROJET="${PROJET_VRAI:-$PROJET}"
+	fi
 	if [ "$code" != 0 ] && [ "$code" != 1 ] && [ "$code" != 45 ] && [ "$code" != 130 ]; then
 		tdf_journal "ERREUR : le module $MODULE s'est arrêté avec le code $code"
 	fi

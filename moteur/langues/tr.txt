@@ -1972,3 +1972,11 @@ norminette (%s files)	norminette (%s dosya)
 norminette: %s file(s) out of %s with errors	norminette: %s/%s dosyada hata var
 Menu › Test my project, then the folder of your Libft.	Menü › Projemi test et, sonra Libft klasörün.
 files	dosya
+%s is not a git repository: the tester tests the folder as it is.	%s bir git deposu değil: test aracı klasörü olduğu gibi test ediyor.
+What is pushed	Gönderilmiş olan
+No commit in %s: the tester tests the folder as it is.	%s içinde commit yok: test aracı klasörü olduğu gibi test ediyor.
+The tester tests your last commit (%s). These files are not in it, or changed since: the moulinette will not see them as they are in your folder.	Test aracı son commit'ini test ediyor (%s). Bu dosyalar içinde yok ya da o zamandan beri değişti: moulinette onları klasöründeki haliyle görmeyecek.
+To send them: git add, git commit, then git push.	Göndermek için: git add, git commit, sonra git push.
+(the subject says int, but the moulinette declares unsigned int ft_lstsize(t_list *begin): with int, its build fails)	(konu int diyor, ama moulinette unsigned int ft_lstsize(t_list *begin) bildiriyor: int ile derlemesi başarısız olur)
+• Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).	• Prototipler konuyla ve gerçek moulinette izleriyle karşılaştırılıyor, .h içinde ve her .c içinde (restrict yasak, parametre adları).
+tests your last git commit instead of the folder: a file forgotten in git shows up	klasör yerine son git commit'ini test eder: git'te unutulan dosya görünür

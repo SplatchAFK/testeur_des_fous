@@ -2327,6 +2327,79 @@ static void	*f_double(void *p)
 	return (mkint(*(int *)p * 2));
 }
 
+static void	*f_double_nul(void *p)
+{
+	if (p == NULL)
+		return (NULL);
+	return (mkint(*(int *)p * 2));
+}
+
+static void	del_int_nul(void *p)
+{
+	g_del_count++;
+	if (p == NULL)
+		return ;
+	g_live--;
+	free(p);
+}
+
+static int	list_trou(t_list *l, int mul)
+{
+	int	i;
+
+	for (i = 1; i <= 5; i++)
+	{
+		if (l == NULL)
+			return (0);
+		if (i == 3 && l->content != NULL)
+			return (0);
+		if (i != 3 && (l->content == NULL || *(int *)l->content != i * mul))
+			return (0);
+		l = l->next;
+	}
+	return (l == NULL);
+}
+
+static void	free_trou(t_list *l)
+{
+	t_list	*nx;
+
+	while (l)
+	{
+		nx = l->next;
+		if (l->content)
+		{
+			free(l->content);
+			g_live--;
+		}
+		free(l);
+		l = nx;
+	}
+}
+
+static void	lstmap_null(void)
+{
+	t_list	*l;
+	t_list	*m;
+
+	setcase("lstmap avec un maillon au content NULL au milieu (cas de la moulinette)");
+	l = mknode(mkint(1));
+	l->next = mknode(mkint(2));
+	l->next->next = mknode(NULL);
+	l->next->next->next = mknode(mkint(4));
+	l->next->next->next->next = mknode(mkint(5));
+	g_del_count = 0;
+	m = ft_lstmap(l, f_double_nul, del_int_nul);
+	check(m != NULL, "lstmap avec un content NULL au milieu : f renvoie NULL pour ce maillon,"
+		" mais la liste ne doit pas être libérée (la moulinette attend le maillon gardé, content NULL)");
+	if (m != NULL)
+		check(list_trou(m, 2), "lstmap avec un content NULL au milieu : attendu 2 -> 4 -> (null) -> 8 -> 10,"
+			" le maillon au content NULL doit rester à sa place");
+	check(list_trou(l, 1), "lstmap ne doit pas modifier la liste d'origine (avec un content NULL au milieu)");
+	free_trou(m);
+	free_trou(l);
+}
+
 static void	run_test(void)
 {
 	t_list	*l;
@@ -2377,6 +2450,7 @@ static void	run_test(void)
 	}
 	check(list_is(l, 5, 1), "lstmap en échec a abîmé la liste d'origine");
 	freelist(l, 1);
+	lstmap_null();
 }
 #endif
 
