@@ -4,6 +4,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 export TDF_RACINE="${TDF_RACINE:-$(cd "$HERE/../.." && pwd)}"
 ORIG_ARGS=("$@")
 ROOT="${TDF_PROJET:-$(cd "$HERE/.." && pwd)}"
+[ -n "${TDF_AUTO:-}" ] && export TDF_AUTO_DIR="$ROOT"
 TDF_DIR="${TDF_NOM:-$(basename "$HERE")}"
 TDF_ICI="$TDF_DIR"
 [ -n "${TDF_NOM:-}" ] && TDF_ICI="$TDF_NOM/modules/libft"

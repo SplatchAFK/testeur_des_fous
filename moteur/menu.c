@@ -929,13 +929,13 @@ static void	dessiner_entrees(t_ent *e, int n, int sel, int x, int y, int h)
 	}
 }
 
-#define NOPT 6
+#define NOPT 7
 
 static int	g_opt[NOPT];
 
 static const char	*opt_cle(int i)
 {
-	static const char	*c[NOPT] = {"debug", "audit", "valgrind", "sans_histoire", "sans_anim", "pousse"};
+	static const char	*c[NOPT] = {"debug", "audit", "valgrind", "sans_histoire", "sans_anim", "pousse", "auto"};
 
 	return (c[i]);
 }
@@ -995,6 +995,9 @@ static int	dessiner_options(int x, int y, int sel)
 	nom[5] = L("Ce qui est poussé", "What is pushed");
 	desc[5] = L("teste ton dernier commit git au lieu du dossier : un fichier oublié dans git se voit",
 			"tests your last git commit instead of the folder: a file forgotten in git shows up");
+	nom[6] = L("Relance automatique", "Automatic rerun");
+	desc[6] = L("Libft : les tests repartent à chaque sauvegarde de tes fichiers, laisse l'écran des résultats à côté de ton éditeur",
+			"Libft: the tests run again each time you save your files, keep the results screen next to your editor");
 	text_at(x, y, theme()->accent2, L("OPTIONS DU TEST", "TEST OPTIONS"));
 	if (tdf_nouveau("3.2"))
 	{
@@ -1016,7 +1019,7 @@ static int	dessiner_options(int x, int y, int sel)
 		fg(g_opt[i] ? rgb(80, 230, 140) : theme()->dim);
 		outf(" ◀ %-3s ▶ ", g_opt[i] ? L("oui", "yes") : L("non", "no"));
 		bgc(theme()->bg);
-		if (i == 5 && tdf_nouveau("3.4"))
+		if (i >= 5 && tdf_nouveau("3.4"))
 		{
 			at(x + 36, y);
 			tdf_badge_new();

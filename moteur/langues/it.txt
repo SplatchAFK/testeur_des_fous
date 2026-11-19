@@ -2061,3 +2061,6 @@ Why not free next?§What is the del function for?§What happens if the node is u
 Why keep next before freeing the node?§What is *lst at the end and why?§How do you reuse ft_lstdelone?	Perché tenere next prima di liberare il nodo?§Quanto vale *lst alla fine e perché?§Come riusi ft_lstdelone?
 What is the difference with ft_lstmap?§Can the function f change the content?§What happens for an empty list?	Che differenza c'è con ft_lstmap?§La funzione f può cambiare il contenuto?§Cosa succede con una lista vuota?
 What do you do if a malloc fails in the middle of the new list?§Why is del needed?§What happens to the content made by f if the new node cannot be created?	Cosa fai se un malloc fallisce a metà della nuova lista?§Perché serve del?§Che fine fa il contenuto creato da f se il nuovo nodo non può essere creato?
+arrows: pick   f: details   n: norminette   m: audit   auto rerun on save   Enter: continue	frecce: scegli   f: scheda   n: norminette   m: audit   rilancio a ogni salvataggio   Invio: continua
+Automatic rerun	Rilancio automatico
+Libft: the tests run again each time you save your files, keep the results screen next to your editor	Libft: i test ripartono a ogni salvataggio dei tuoi file, tieni la schermata dei risultati accanto al tuo editor

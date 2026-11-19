@@ -448,6 +448,7 @@ pousse_preparer() {
 
 options_test() {
 	local f="$DOSSIER/options_test.txt"
+	unset TDF_AUTO
 	[ -n "${CORR_TITRE:-}" ] && return 0
 	[ -f "$DOSSIER/correction.txt" ] && return 0
 	unset TDF_SANS_HISTOIRE
@@ -458,6 +459,7 @@ options_test() {
 	grep -q '^valgrind=1' "$f" && { [ "$MODULE" = libft ] || [ "$MODULE" = printf ]; } && SUITE+=(--valgrind)
 	grep -q '^sans_anim=1' "$f" && SUITE+=(--fast)
 	grep -q '^sans_histoire=1' "$f" && export TDF_SANS_HISTOIRE=1
+	grep -q '^auto=1' "$f" && [ "$MODULE" = libft ] && ! grep -q '^pousse=1' "$f" && export TDF_AUTO=1
 	grep -q '^pousse=1' "$f" && pousse_preparer
 	return 0
 }

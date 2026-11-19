@@ -2061,3 +2061,6 @@ Why not free next?§What is the del function for?§What happens if the node is u
 Why keep next before freeing the node?§What is *lst at the end and why?§How do you reuse ft_lstdelone?	Düğümü serbest bırakmadan önce neden next saklanır?§Sonunda *lst neye eşittir ve neden?§ft_lstdelone'u nasıl yeniden kullanırsın?
 What is the difference with ft_lstmap?§Can the function f change the content?§What happens for an empty list?	ft_lstmap ile farkı nedir?§f fonksiyonu içeriği değiştirebilir mi?§Boş bir listede ne olur?
 What do you do if a malloc fails in the middle of the new list?§Why is del needed?§What happens to the content made by f if the new node cannot be created?	Yeni listenin ortasında bir malloc başarısız olursa ne yaparsın?§del neden gerekli?§Yeni düğüm oluşturulamazsa f'nin oluşturduğu içeriğe ne olur?
+arrows: pick   f: details   n: norminette   m: audit   auto rerun on save   Enter: continue	oklar: seç   f: ayrıntı   n: norminette   m: denetim   kayıtta yeniden çalıştır   Enter: devam
+Automatic rerun	Otomatik yeniden çalıştırma
+Libft: the tests run again each time you save your files, keep the results screen next to your editor	Libft: dosyalarını her kaydettiğinde testler yeniden çalışır, sonuç ekranını editörünün yanında tut

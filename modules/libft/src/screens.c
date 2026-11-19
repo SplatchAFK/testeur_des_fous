@@ -1,8 +1,10 @@
+#include <dirent.h>
 #include <math.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 #include <time.h>
 #include "fous.h"
@@ -1230,8 +1232,38 @@ static int	screen_fiche(int fn)
 	return (fn);
 }
 
+static long	auto_date(const char *d)
+{
+	DIR				*dp;
+	struct dirent	*e;
+	struct stat		st;
+	char			p[1200];
+	long			m;
+	size_t			l;
+
+	m = 0;
+	dp = d ? opendir(d) : NULL;
+	if (!dp)
+		return (0);
+	while ((e = readdir(dp)))
+	{
+		l = strlen(e->d_name);
+		if (strcmp(e->d_name, "Makefile") && (l < 3 || e->d_name[l - 2] != '.'
+				|| (e->d_name[l - 1] != 'c' && e->d_name[l - 1] != 'h')))
+			continue ;
+		snprintf(p, sizeof(p), "%s/%s", d, e->d_name);
+		if (!stat(p, &st) && (long)st.st_mtime > m)
+			m = (long)st.st_mtime;
+	}
+	closedir(dp);
+	return (m);
+}
+
 int	screen_results(int after)
 {
+	const char	*auto_dir;
+	long		auto_ref;
+	long		auto_t;
 	char	cmp[300];
 	int		cmp_fait;
 	long	ouvert;
@@ -1258,8 +1290,17 @@ int	screen_results(int after)
 	cls();
 	tdf_key_vider();
 	ouvert = now_ms();
+	auto_dir = getenv("TDF_AUTO_DIR");
+	auto_ref = auto_date(auto_dir);
+	auto_t = ouvert;
 	while (1)
 	{
+		if (auto_dir && auto_ref && g_run.done && now_ms() - auto_t > 1000)
+		{
+			auto_t = now_ms();
+			if (auto_date(auto_dir) > auto_ref)
+				return (cls(), 42);
+		}
 		counts(&ok, &bad, &done);
 		m = moulinette_ok(why, sizeof(why));
 		layout(&x, &y);
@@ -1292,8 +1333,12 @@ int	screen_results(int after)
 					"NORMINETTE: %d error(s) in %d file(s) · n to see them"), bad, k);
 			center(term_rows() - 2, rgb(255, 110, 110), tmp);
 		}
-		foot_line(x, L("flèches : choisir   f : fiche   n : norminette   m : audit   r : corrigé ? relancer   Entrée : continuer",
-				"arrows: pick   f: details   n: norminette   m: audit   r: fixed? run again   Enter: continue"));
+		if (auto_dir && auto_ref)
+			foot_line(x, L("flèches : choisir   f : fiche   n : norminette   m : audit   relance auto à chaque sauvegarde   Entrée : continuer",
+					"arrows: pick   f: details   n: norminette   m: audit   auto rerun on save   Enter: continue"));
+		else
+			foot_line(x, L("flèches : choisir   f : fiche   n : norminette   m : audit   r : corrigé ? relancer   Entrée : continuer",
+					"arrows: pick   f: details   n: norminette   m: audit   r: fixed? run again   Enter: continue"));
 		flush();
 		k = key_read(60);
 		if (k >= 0 && now_ms() - ouvert < 500)

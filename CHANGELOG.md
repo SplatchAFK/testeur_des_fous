@@ -45,6 +45,10 @@ Le numéro de version est dans `moteur/version.h`.
 
 - Libft : chaque fiche propose 3 questions pour te préparer à la soutenance (cas limites, choix de types, mémoire), sans les réponses. Ce sont nos questions, pas celles d'une grille de correction.
 
+### Relance automatique
+
+- Options du test : « Relance automatique » (Libft) relance les tests dès que tu sauvegardes un .c, un .h ou le Makefile, tant que l'écran des résultats est ouvert à côté de ton éditeur.
+
 ### Includes
 
 - nouvelle section dans les trois projets : chaque #include doit exister, aucun .c inclus, aucune fonction utilisée sans déclaration (avec l'en-tête à ajouter, par exemple <stdlib.h> pour malloc) ;
