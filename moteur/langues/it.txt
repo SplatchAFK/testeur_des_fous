@@ -2000,3 +2000,18 @@ Milestone 1 · Libft	Milestone 1 · Libft
 Milestone 2 · ft_printf and get_next_line	Milestone 2 · ft_printf e get_next_line
 %s: D-%ld (%.2s/%.2s)	%s: G-%ld (%.2s/%.2s)
 Friday: exam sign-ups around 6:42 pm on the intra.	Venerdì: iscrizioni agli esami verso le 18:42 sull'intra.
+The testeur des fous	Il testeur des fous
+Result: %s/%s functions OK	Risultato: %s/%s funzioni OK
+No Libft, ft_printf or get_next_line attempt to summarise yet.	Ancora nessun tentativo di Libft, ft_printf o get_next_line da riassumere.
+(without your code or your paths: you can paste it on Discord to ask for help)	(senza il tuo codice né i tuoi percorsi: puoi incollarlo su Discord per chiedere aiuto)
+Summary to share	Riepilogo da condividere
+python3 not found: the norminette cannot be installed without it.	python3 non trovato: la norminette non può essere installata senza.
+Tester's Python environment	Ambiente Python del tester
+Environment impossible (python3-venv missing?), trying pip --user.	Ambiente impossibile (manca python3-venv?), provo con pip --user.
+Installing the norminette	Installazione della norminette
+The norminette is installed (%s), without sudo. The tester now uses it for Libft, ft_printf and get_next_line.	La norminette è installata (%s), senza sudo. Il tester ora la usa per Libft, ft_printf e get_next_line.
+The install did not work. On a 42 computer, the network or pip may be blocked: ask the staff, or try at home.	L'installazione non ha funzionato. Su un computer di 42, la rete o pip possono essere bloccati: chiedi allo staff o prova a casa.
+!Install the norminette|Not found on this computer: the tester installs it for you, without sudo.	!Installa la norminette|Non trovata su questo computer: il tester la installa per te, senza sudo.
+Install the norminette|Not found on this computer: the tester installs it for you, without sudo.	Installa la norminette|Non trovata su questo computer: il tester la installa per te, senza sudo.
+!Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	!Riepilogo da condividere|Il tuo ultimo tentativo in poche righe, senza codice né percorsi, da incollare su Discord per chiedere aiuto.
+Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	Riepilogo da condividere|Il tuo ultimo tentativo in poche righe, senza codice né percorsi, da incollare su Discord per chiedere aiuto.

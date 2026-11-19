@@ -1858,8 +1858,8 @@ void	tdf_rapport(const char *path, const char *titre)
 void	tdf_menu_params(void (*credits)(void))
 {
 	static int	sel;
-	const char	*items[11];
-	int			act[11];
+	const char	*items[13];
+	int			act[13];
 	char		bl[200];
 	int			n;
 	int			i;
@@ -1877,6 +1877,12 @@ void	tdf_menu_params(void (*credits)(void))
 				act[n] = 5;
 				items[n++] = L("Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo).", "Install the tdf command|Then you just type 'tdf' in any folder (no sudo).");
 			}
+			if (getenv("TDF_NORME_ABSENTE"))
+			{
+				act[n] = 10;
+				items[n++] = tdf_nouveau("3.4") ? L("!Installer la norminette|Introuvable sur ce poste : le testeur l'installe pour toi, sans sudo.", "!Install the norminette|Not found on this computer: the tester installs it for you, without sudo.")
+					: L("Installer la norminette|Introuvable sur ce poste : le testeur l'installe pour toi, sans sudo.", "Install the norminette|Not found on this computer: the tester installs it for you, without sudo.");
+			}
 			act[n] = 6;
 			items[n++] = L("Revoir le tuto|Les 6 écrans qui présentent le testeur.", "Replay the tutorial|The 6 screens that present the tester.");
 			act[n] = 7;
@@ -1886,6 +1892,14 @@ void	tdf_menu_params(void (*credits)(void))
 			g_bulles ? L("oui", "yes") : L("non", "no"), L("Entrée pour les montrer ou les cacher dans le menu.", "Enter to show or hide them in the menu."));
 		act[n] = 8;
 		items[n++] = bl;
+		if (tdf_derniere_existe())
+		{
+			act[n] = 11;
+			items[n++] = tdf_nouveau("3.4") ? L("!Résumé à partager|Ta dernière tentative en quelques lignes, sans ton code ni tes chemins, à coller sur Discord pour demander de l'aide.",
+					"!Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.")
+				: L("Résumé à partager|Ta dernière tentative en quelques lignes, sans ton code ni tes chemins, à coller sur Discord pour demander de l'aide.",
+					"Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.");
+		}
 		act[n] = 9;
 		items[n++] = tdf_nouveau("3.4") ? L("!Échéances|Les dates de tes milestones, affichées dans Stats (J-22…).", "!Deadlines|The dates of your milestones, shown in Stats (D-22…).")
 			: L("Échéances|Les dates de tes milestones, affichées dans Stats (J-22…).", "Deadlines|The dates of your milestones, shown in Stats (D-22…).");
@@ -1923,6 +1937,16 @@ void	tdf_menu_params(void (*credits)(void))
 			bulles_basculer();
 		else if (act[i] == 9)
 			ecran_echeances();
+		else if (act[i] == 10)
+		{
+			tdf_sortie("norminette", NULL);
+			return ;
+		}
+		else if (act[i] == 11)
+		{
+			tdf_sortie("resume", NULL);
+			return ;
+		}
 	}
 }
 

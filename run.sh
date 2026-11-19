@@ -28,6 +28,57 @@ lire_version() {
 TDF_VERSION="$(lire_version TDF_VERSION)"
 TDF_DATE="$(lire_version TDF_DATE)"
 . "$TDF_RACINE/moteur/chargement.sh"
+[ -x "$DOSSIER/norminette/bin/norminette" ] && export PATH="$DOSSIER/norminette/bin:$PATH"
+
+resume_partage() {
+	local m d="$DOSSIER/derniere" out="$DOSSIER/derniere/resume_partage.txt" os ok tot
+	m="$(head -1 "$d/module" 2>/dev/null)"
+	os="$( (. /etc/os-release 2>/dev/null; printf '%s' "${PRETTY_NAME:-}") )"
+	[ -n "$os" ] || os="$(uname -s)"
+	{
+		printf '%s %s · %s · %s · %s\n' "$(tt "Le testeur des fous" "The testeur des fous")" "$TDF_VERSION" "$(nom_module "$m")" "$os" "$(date +%d/%m/%Y)"
+		case "$m" in
+			libft)
+				ok="$(grep -cP '^T\t[^\t]+\t(ok|warn)\t' "$d/libft.res")"
+				tot="$(grep -cP '^T\t[^\t]+\t(ok|warn|ko|crash|leak|ub|time|build)\t' "$d/libft.res")"
+				printf "$(tt "Résultat : %s/%s fonctions OK" "Result: %s/%s functions OK")\n" "$ok" "$tot"
+				awk -F'\t' '$1 == "T" && $3 != "ok" && $3 != "warn" && $3 != "skip" { printf "- ft_%s : %s%s\n", $2, toupper($3), ($6 != "" ? " · " $6 : "") }' "$d/libft.res" | head -12
+				awk -F'\t' '$1 == "P" && $3 != "ok" && $3 != "warn" { printf "- prototype ft_%s : %s\n", $2, $4 }' "$d/libft.res" | head -5
+				awk -F'\t' '$1 == "A" && $2 == "ko" { printf "- audit : %s\n", $3 }' "$d/libft.res" | head -5
+				;;
+			printf)
+				awk -F'\t' '$1 == "S" && $2 == "KO" { printf "- KO : %s\n", $3 }' "$d/printf.res" | head -8
+				awk -F'\t' '$1 == "C" { t++; if ($5 > 0) { k++; printf "- %s : %s KO\n", $3, $5 } } END { printf "%d/%d catégories OK\n", t - k, t }' "$d/printf.res"
+				;;
+			gnl)
+				awk -F'\t' '$1 == "F" { printf "%s OK · %s KO · BUFFER_SIZE %s\n", $2, $3, $5 }' "$d/gnl.res"
+				awk -F'\t' '$1 == "L" && $2 != "OK" && $2 != "NOTE" && $2 != "INFO" { printf "- %s : %s\n", $2, $3 }' "$d/gnl.res" | head -12
+				;;
+			*)
+				printf "%s\n" "$(tt "Aucune tentative Libft, ft_printf ou get_next_line à résumer pour l'instant." "No Libft, ft_printf or get_next_line attempt to summarise yet.")"
+				;;
+		esac
+		printf "\n%s\n" "$(tt "(sans ton code ni tes chemins : tu peux le coller sur Discord pour demander de l'aide)" "(without your code or your paths: you can paste it on Discord to ask for help)")"
+	} | sed -e "s#$HOME#~#g" -e "s#/home/[^/ ]*#~#g" > "$out"
+	voir_rapport "$out" "$(tt "Résumé à partager" "Summary to share")"
+}
+
+norminette_etat() {
+	if tdf_norminette_ok; then unset TDF_NORME_ABSENTE; else export TDF_NORME_ABSENTE=1; fi
+}
+
+norminette_installer() {
+	local v="$DOSSIER/norminette"
+	command -v python3 >/dev/null 2>&1 || { tt "python3 introuvable : impossible d'installer la norminette sans lui." "python3 not found: the norminette cannot be installed without it."; echo; return 1; }
+	echo "$(tt "Environnement Python du testeur" "Tester's Python environment") : $v"
+	if python3 -m venv "$v" && "$v/bin/python" -m pip install -q --upgrade norminette; then
+		export PATH="$v/bin:$PATH"
+		return 0
+	fi
+	rm -rf "$v"
+	echo "$(tt "Environnement impossible (python3-venv manquant ?), essai avec pip --user." "Environment impossible (python3-venv missing?), trying pip --user.")"
+	python3 -m pip install -q --user --upgrade norminette
+}
 . "$TDF_RACINE/moteur/langue.sh"
 . "$TDF_RACINE/moteur/debug.sh"
 . "$TDF_RACINE/moteur/cli.sh"
@@ -433,6 +484,7 @@ noter_historique() {
 
 choisir_au_menu() {
 	local code l a p projets=""
+	norminette_etat
 	unset TDF_SANS_STATS TDF_CAS TDF_BANDEAU
 	PROJET_VRAI=""
 	if [ ! -f "$DOSSIER/correction.txt" ] && [ -d "$DOSSIER/derniere_hors_correction" ]; then
@@ -496,6 +548,27 @@ choisir_au_menu() {
 			mkdir -p "$DOSSIER/derniere"
 			tdf_cli_installer > "$DOSSIER/derniere/message.txt" 2>&1
 			voir_rapport "$DOSSIER/derniere/message.txt" "$(tt "Commande tdf" "tdf command")"
+			return 1
+			;;
+		resume)
+			resume_partage
+			return 1
+			;;
+		norminette)
+			mkdir -p "$DOSSIER/derniere"
+			: > "$DOSSIER/derniere/message.txt"
+			CORR_TITRE="$(tt "Installation de la norminette" "Installing the norminette")"
+			norminette_installer > "$DOSSIER/derniere/message.txt" 2>&1 < /dev/null &
+			attente_module $! "$DOSSIER/derniere/message.txt" "norminette_installation" "$CORR_TITRE"
+			CORR_TITRE=""
+			[ -x "$DOSSIER/norminette/bin/norminette" ] && export PATH="$DOSSIER/norminette/bin:$PATH"
+			if tdf_norminette_ok; then
+				printf "\n$(tt "La norminette est installée (%s), sans sudo. Le testeur l'utilise maintenant pour Libft, ft_printf et get_next_line." "The norminette is installed (%s), without sudo. The tester now uses it for Libft, ft_printf and get_next_line.")\n" "$(norminette --version 2>/dev/null | head -1)" >> "$DOSSIER/derniere/message.txt"
+			else
+				printf "\n$(tt "L'installation n'a pas marché. Sur un poste 42, le réseau ou pip peuvent être bloqués : demande au staff, ou essaie chez toi." "The install did not work. On a 42 computer, the network or pip may be blocked: ask the staff, or try at home.")\n" >> "$DOSSIER/derniere/message.txt"
+			fi
+			norminette_etat
+			voir_rapport "$DOSSIER/derniere/message.txt" "$(tt "Installation de la norminette" "Installing the norminette")"
 			return 1
 			;;
 		*) return 1 ;;

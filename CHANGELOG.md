@@ -29,6 +29,14 @@ Le numéro de version est dans `moteur/version.h`.
 
 - Libft : une remarque si strtrim, strjoin, strmapi, striteri, strnstr, strlcat, substr ou strdup devient beaucoup plus lente sur une grande chaîne (16 fois plus de caractères, plus de 100 fois plus de temps : signe d'une boucle qui rappelle ft_strlen) ; mesure relative, donc indépendante de la vitesse de la machine ; ft_split n'est pas mesurée (le suivi mémoire du testeur fausserait la mesure).
 
+### Norminette sans sudo
+
+- Paramètres : si la norminette est introuvable, « Installer la norminette » l'installe dans un environnement Python du testeur (sans sudo, pip --user en secours) ; le testeur l'utilise ensuite tout seul.
+
+### Résumé à partager
+
+- Paramètres : « Résumé à partager » écrit ta dernière tentative en quelques lignes (version, système, résultat, ce qui est faux), sans ton code ni tes chemins, à coller sur Discord pour demander de l'aide.
+
 ### Includes
 
 - nouvelle section dans les trois projets : chaque #include doit exister, aucun .c inclus, aucune fonction utilisée sans déclaration (avec l'en-tête à ajouter, par exemple <stdlib.h> pour malloc) ;

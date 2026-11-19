@@ -2000,3 +2000,18 @@ Milestone 1 · Libft	Milestone 1 · Libft
 Milestone 2 · ft_printf and get_next_line	Milestone 2 · ft_printf ve get_next_line
 %s: D-%ld (%.2s/%.2s)	%s: G-%ld (%.2s/%.2s)
 Friday: exam sign-ups around 6:42 pm on the intra.	Cuma: sınav kayıtları intra'da 18:42 civarı.
+The testeur des fous	testeur des fous
+Result: %s/%s functions OK	Sonuç: %s/%s fonksiyon OK
+No Libft, ft_printf or get_next_line attempt to summarise yet.	Özetlenecek Libft, ft_printf ya da get_next_line denemesi henüz yok.
+(without your code or your paths: you can paste it on Discord to ask for help)	(kodun ve yolların olmadan: yardım istemek için Discord'a yapıştırabilirsin)
+Summary to share	Paylaşılacak özet
+python3 not found: the norminette cannot be installed without it.	python3 bulunamadı: norminette onsuz kurulamaz.
+Tester's Python environment	Test aracının Python ortamı
+Environment impossible (python3-venv missing?), trying pip --user.	Ortam oluşturulamadı (python3-venv eksik mi?), pip --user deneniyor.
+Installing the norminette	Norminette kuruluyor
+The norminette is installed (%s), without sudo. The tester now uses it for Libft, ft_printf and get_next_line.	Norminette kuruldu (%s), sudo olmadan. Test aracı artık Libft, ft_printf ve get_next_line için onu kullanıyor.
+The install did not work. On a 42 computer, the network or pip may be blocked: ask the staff, or try at home.	Kurulum çalışmadı. 42 bilgisayarında ağ ya da pip engelli olabilir: staff'a sor ya da evde dene.
+!Install the norminette|Not found on this computer: the tester installs it for you, without sudo.	!Norminette'i kur|Bu bilgisayarda bulunamadı: test aracı senin için sudo olmadan kurar.
+Install the norminette|Not found on this computer: the tester installs it for you, without sudo.	Norminette'i kur|Bu bilgisayarda bulunamadı: test aracı senin için sudo olmadan kurar.
+!Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	!Paylaşılacak özet|Son denemen birkaç satırda, kodun ve yolların olmadan, yardım istemek için Discord'a yapıştır.
+Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	Paylaşılacak özet|Son denemen birkaç satırda, kodun ve yolların olmadan, yardım istemek için Discord'a yapıştır.

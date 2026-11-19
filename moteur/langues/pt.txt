@@ -2000,3 +2000,18 @@ Milestone 1 · Libft	Milestone 1 · Libft
 Milestone 2 · ft_printf and get_next_line	Milestone 2 · ft_printf e get_next_line
 %s: D-%ld (%.2s/%.2s)	%s: D-%ld (%.2s/%.2s)
 Friday: exam sign-ups around 6:42 pm on the intra.	Sexta-feira: inscrições nos exames por volta das 18h42 na intra.
+The testeur des fous	O testeur des fous
+Result: %s/%s functions OK	Resultado: %s/%s funções OK
+No Libft, ft_printf or get_next_line attempt to summarise yet.	Ainda não há nenhuma tentativa de Libft, ft_printf ou get_next_line para resumir.
+(without your code or your paths: you can paste it on Discord to ask for help)	(sem o teu código nem os teus caminhos: podes colá-lo no Discord para pedir ajuda)
+Summary to share	Resumo para partilhar
+python3 not found: the norminette cannot be installed without it.	python3 não encontrado: a norminette não pode ser instalada sem ele.
+Tester's Python environment	Ambiente Python do testeur
+Environment impossible (python3-venv missing?), trying pip --user.	Ambiente impossível (falta python3-venv?), a tentar com pip --user.
+Installing the norminette	Instalação da norminette
+The norminette is installed (%s), without sudo. The tester now uses it for Libft, ft_printf and get_next_line.	A norminette está instalada (%s), sem sudo. O testeur usa-a agora para Libft, ft_printf e get_next_line.
+The install did not work. On a 42 computer, the network or pip may be blocked: ask the staff, or try at home.	A instalação não funcionou. Num computador da 42, a rede ou o pip podem estar bloqueados: pergunta ao staff ou tenta em casa.
+!Install the norminette|Not found on this computer: the tester installs it for you, without sudo.	!Instalar a norminette|Não encontrada neste computador: o testeur instala-a por ti, sem sudo.
+Install the norminette|Not found on this computer: the tester installs it for you, without sudo.	Instalar a norminette|Não encontrada neste computador: o testeur instala-a por ti, sem sudo.
+!Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	!Resumo para partilhar|A tua última tentativa em poucas linhas, sem código nem caminhos, para colar no Discord e pedir ajuda.
+Summary to share|Your last attempt in a few lines, without your code or paths, to paste on Discord to ask for help.	Resumo para partilhar|A tua última tentativa em poucas linhas, sem código nem caminhos, para colar no Discord e pedir ajuda.
