@@ -29,16 +29,7 @@ Astuce : Paramètres › « Installer la commande tdf », puis `tdf` suffit dans
 
 « Tester mon projet », puis « . » pour le dossier où tu es, Tab pour parcourir comme dans zsh, ou un des projets trouvés. Les résultats s'affichent tout de suite ; « Revoir la dernière tentative » les rouvre plus tard.
 
-<table>
-<tr>
-<td width="50%"><img src="docs/captures/libft.png" alt="Résultats Libft"></td>
-<td width="50%"><img src="docs/captures/printf.png" alt="Résultats ft_printf"></td>
-</tr>
-<tr>
-<td><b>Libft</b> : les 43 fonctions, une fiche par fonction (f), la Norme (n), l'audit de la moulinette (m)</td>
-<td><b>ft_printf</b> : chaque conversion comparée au vrai <code>printf</code>, plus de 10 000 appels</td>
-</tr>
-</table>
+<p align="center"><img src="docs/captures/libft.png" width="720" alt="Résultats Libft : une case par fonction, fiche (f), Norme (n), audit de la moulinette (m)"></p>
 
 | Projet | Ce qui est vérifié |
 |---|---|
@@ -50,18 +41,6 @@ Astuce : Paramètres › « Installer la commande tdf », puis `tdf` suffit dans
 Le testeur compile ton projet comme la moulinette (`CFLAGS` imposés compris) et repère les fichiers qu'un `git add .` enverrait en trop.
 
 **Options du test** (sous la liste des dossiers) : mode debug, audit complet, valgrind en plus, sans cinématiques, sans animations. Le mode debug affiche tous les rapports détaillés, avec une barre d'avancement et le temps restant.
-
-<table>
-<tr>
-<td width="50%"><img src="docs/captures/gnl.png" alt="Résultats get_next_line"></td>
-<td width="50%"><img src="docs/captures/debug.png" alt="Barre d'avancement du mode debug"></td>
-</tr>
-<tr>
-<td><b>get_next_line</b> : chaque vérification et ce qu'il faut corriger, ici une erreur de Norme</td>
-<td><b>Mode debug</b> : l'étape en cours et le temps restant</td>
-</tr>
-</table>
-
 ## Mode correction
 
 Tu corriges quelqu'un ? Le bouton bleu « Mode correction » du menu, ou directement :
@@ -93,26 +72,9 @@ La correction compile avec `cc -Wall -Wextra -Werror`, refuse les fonctions non 
 ## La banque d'exercices
 
 94 exercices au choix, en 8 langues : 57 pour l'exam, 21 d'entraînement Libft, 16 d'entraînement printf. ◀ ▶ change d'onglet, Entrée ouvre le sujet, puis « Corriger mon code ».
-
-<table>
-<tr>
-<td width="50%"><img src="docs/captures/exam.png" alt="Réglages de l'examshell"></td>
-<td width="50%"><img src="docs/captures/banque.png" alt="Banque d'exercices"></td>
-</tr>
-</table>
-
 ## Ta progression
 
 Chaque test réussi rapporte de l'expérience et des Octets. Habille ton chevalier dans la garde-robe, suis tes courbes dans Stats, et découvre l'histoire de « la Cité qui compile » en pixel art (c'est un testeur, pas un jeu vidéo : tout se coupe dans les options).
-
-<table>
-<tr>
-<td width="33%"><img src="docs/captures/garderobe.png" alt="Garde-robe du chevalier"></td>
-<td width="33%"><img src="docs/captures/stats.png" alt="Stats"></td>
-<td width="33%"><img src="docs/captures/lore.png" alt="Cinématique du Puits"></td>
-</tr>
-</table>
-
 Ta sauvegarde est dans `~/.testeur_des_fous/`, hors du dossier du testeur : tu peux le supprimer ou le recloner sans rien perdre.
 
 ## Le menu en bref

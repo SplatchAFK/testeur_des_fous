@@ -36,7 +36,7 @@ Le numéro de version est dans `moteur/version.h`.
 ### Menu et README
 
 - la vague de lumière sur le titre et le fou ne se met plus en pause quand tu bouges les flèches ;
-- README refait : tout le testeur en un coup d'œil, avec des captures d'écran (docs/captures).
+- README refait : tout le testeur en un coup d'œil, avec 3 captures d'écran (docs/captures).
 
 ### Mode debug
 
