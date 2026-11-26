@@ -4,6 +4,12 @@ Le numéro de version est dans `moteur/version.h`.
 
 ## 3.5.0 · en préparation
 
+### Pages de nouveautés
+
+- Paramètres › Nouveautés : 8 grandes pages, une par nouveauté, avec à quoi ça sert, comment y aller pas à pas, une illustration animée et un bouton « Y aller » vers le bon rayon. ◀ ▶ pour tourner les pages.
+- Les mêmes pages, avec des captures annotées, dans `docs/nouveautes/3.5.md`.
+- Le menu texte affiche aussi les nouveautés de la 3.5.
+
 ### Boutique
 
 - Édition du voyageur galactique : 11 pièces (ciel, serviette, chausses, veste, bulle, regard, antenne, lame, guide, sonde, étoiles), 2 500 ◈ chacune.

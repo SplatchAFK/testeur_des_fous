@@ -2594,3 +2594,37 @@ All are taken: which one to replace?	Все заняты: какой замен�
 Personalisation	Персонализация
 Visible in the main menu	Видно в главном меню
 dye	покрасить
+• Galactic traveller edition (11 pieces, 2,500 ◈) and moulinette helmet (10,000 ◈).	• Издание галактического странника (11 предметов, 2 500 ◈) и шлем мулинетты (10 000 ◈).
+• 16 full collections, 'Collections' aisle and search by name (key /).	• 16 полных коллекций, отдел «Коллекции» и поиск по названию (клавиша /).
+• A story for every item, under the list of the shop and the wardrobe.	• История у каждого предмета, под списком в магазине и в гардеробе.
+• 'Personalisation' aisle: wave, title, fool, bubbles, cursor, dyes, emblems, frames, outfit slots.	• Отдел «Персонализация»: волна, заголовок, шут, пузыри, курсор, красители, эмблемы, рамки, слоты нарядов.
+• Animated knight in the graphical menu, the wardrobe and the shop.	• Анимированный рыцарь в графическом меню, гардеробе и магазине.
+• Results: Enter opens a small menu; Settings fits in 80x24; q no longer quits; 'Reinstall the tdf command'.	• Результаты: Enter открывает маленькое меню; Настройки помещаются в 80x24; q больше не выходит; «Переустановить команду tdf».
+Light wave	Волна света
+Cursors	Курсоры
+Emblems	Эмблемы
+Dyes	Красители
+Frames	Рамки
+WHAT'S NEW	ЧТО НОВОГО
+◀ ▶ page   ▲ ▼ pick   Enter: confirm   Esc: close	◀ ▶ страница   ▲ ▼ выбрать   Enter: подтвердить   Esc: закрыть
+Every item now has its story, shown under the list in the shop and the wardrobe. They all take place during the Long Silence, before your knight arrived.	Теперь у каждого предмета есть своя история, она видна под списком в магазине и гардеробе. Все они происходят во время Долгого Безмолвия, до прихода твоего рыцаря.
+The moulinette helmet's one:	История шлема мулинетты:
+Thanks for using the testeur des fous. An idea, a bug, a question?	Спасибо, что пользуешься testeur des fous. Идея, баг, вопрос?
+Join the Discord server (Ctrl + click on the link):	Заходи на сервер Discord (Ctrl + клик по ссылке):
+This update dresses your knight, makes it move, and makes the tester easier to use.\n\nInside:\n• the galactic traveller edition and the moulinette helmet\n• 16 full collections and search by name\n• a story for every item\n• the Personalisation aisle, to spend your Octets another way\n• an animated knight\n• an easier tester\n\n◀ ▶ to turn the pages.	Это обновление одевает твоего рыцаря, оживляет его и делает тестер удобнее.\n\nВ программе:\n• издание галактического странника и шлем мулинетты\n• 16 полных коллекций и поиск по названию\n• история у каждого предмета\n• отдел Персонализация, чтобы тратить Октеты по-другому\n• анимированный рыцарь\n• более удобный тестер\n\n◀ ▶ чтобы листать страницы.
+A rare edition of 11 pieces, from the bubble to the familiar, at 2,500 ◈ each. And a unique item: the moulinette helmet, at 10,000 ◈.\n\nTo get there:\n1. Main menu › Knight › Shop\n2. ◀ ▶ to the 'Collections' aisle\n3. Pick 'The galactic traveller': the full outfit shows on your knight\n4. Enter: 'Buy the missing pieces' or 'Wear the whole outfit'	Редкое издание из 11 предметов, от пузыря до фамильяра, по 2 500 ◈. И уникальный предмет: шлем мулинетты за 10 000 ◈.\n\nКак туда попасть:\n1. Главное меню › Рыцарь › Магазин\n2. ◀ ▶ до отдела «Коллекции»\n3. Выбери «Галактический странник»: весь наряд появится на рыцаре\n4. Enter: «Купить недостающие предметы» или «Надеть весь наряд»
+16 collections and search	16 коллекций и поиск
+Astronaut, Neon, Cyberpunk, the Fool, Carnival, Circus, Mad scientist, Hatter, Sad clown, Cook, Pyjamas, Rubber duck, Fruits, Cardboard and tape, Bad idea, Failed costume: 11 pieces each.\n\nIn the 'Collections' aisle, every outfit can be tried on your knight before buying.\n\nTo find an item: press / in the shop or the wardrobe, then type part of its name ('moulinette', 'neon'). Accents do not matter.	Астронавт, Неон, Киберпанк, Шут, Карнавал, Цирк, Безумный учёный, Шляпник, Грустный клоун, Повар, Пижама, Резиновая уточка, Фрукты, Картон и скотч, Плохая идея, Неудачный костюм: по 11 предметов.\n\nВ отделе «Коллекции» каждый наряд можно целиком примерить на рыцаре перед покупкой.\n\nЧтобы найти предмет: нажми / в магазине или гардеробе и набери часть названия («moulinette», «neon»). Акценты не важны.
+A story for every item	История у каждого предмета
+A new shop aisle, to change the tester itself:\n• the colour of the menu's light wave\n• the style of the big title\n• the fool's costume\n• the frame of the 'Did you know?' bubbles\n• the selection cursor\n• an emblem and a frame around your profile\n• dyes: key C on a worn item\n• up to 10 outfit slots\n\nTo get there: Knight › Shop › 'Personalisation' aisle. Enter buys, then Enter picks.	Новый отдел магазина, чтобы менять сам тестер:\n• цвет волны света в меню\n• стиль большого заголовка\n• костюм шута\n• рамку пузырей «А ты знал?»\n• курсор выбора\n• эмблему и рамку вокруг профиля\n• красители: клавиша C на надетом предмете\n• до 10 слотов нарядов\n\nКак попасть: Рыцарь › Магазин › отдел «Персонализация». Enter покупает, затем Enter выбирает.
+Your knight is animated	Твой рыцарь ожил
+In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats. The menu's fool sways.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'.	В меню, гардеробе и магазине твой рыцарь дышит, его плащ колышется, глаза моргают, а фамильяр парит. Шут в меню покачивается.\n\nЭто легко: не больше 5 кадров в секунду, и перерисовываются только изменившиеся клетки.\n\nЧтобы выключить анимации: Настройки › Параметры › Анимации › «нет».
+Easier to use	Проще в использовании
+• Libft and ft_printf results: Enter opens a small menu next to the function (sheet, norminette, audit, run again).\n• Settings fits whole in an 80x24 terminal.\n• The q key no longer quits by mistake: Esc goes back everywhere.\n• The tdf command stopped working after a new clone? Settings › 'Reinstall the tdf command'.\n• A fool slipped into the 'Did you know?' bubbles. Keep your eyes open.	• Результаты Libft и ft_printf: Enter открывает маленькое меню рядом с функцией (карточка, norminette, аудит, перезапуск).\n• Настройки целиком помещаются в терминал 80x24.\n• Клавиша q больше не выходит случайно: Esc везде возвращает назад.\n• Команда tdf перестала работать после нового клона? Настройки › «Переустановить команду tdf».\n• В пузыри «А ты знал?» пробрался шут. Смотри в оба.
+What now?	Что дальше?
+Go there: Collections aisle|	Перейти: отдел Коллекции|
+Go there: Personalisation aisle|	Перейти: отдел Персонализация|
+Next page|	Следующая страница|
+Close|	Закрыть|
+!What's new|The update pages: what changes, where to find it, and the Discord.	!Что нового|Страницы обновления: что изменилось, где это найти, и Discord.
+What's new|The update pages: what changes, where to find it, and the Discord.	Что нового|Страницы обновления: что изменилось, где это найти, и Discord.

@@ -225,9 +225,12 @@ tuto() {
 
 nouveautes() {
 	local t
-	t="$(tt "• Prototypes comparés au sujet et aux vraies traces de la moulinette, dans le .h et dans chaque .c (restrict interdit, noms des paramètres)." "• Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).")"
-	t+=$'\n'"$(tt "• Includes vérifiés : include introuvable, .c inclus, fonction sans déclaration, .h qui ne compile pas seul, garde d'inclusion, include inutile." "• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.")"
-	t+=$'\n'"$(tt "• Libft, ft_printf et get_next_line." "• Libft, ft_printf and get_next_line.")"
+	t="$(tt "• Édition du voyageur galactique (11 pièces, 2 500 ◈) et casque moulinette (10 000 ◈)." "• Galactic traveller edition (11 pieces, 2,500 ◈) and moulinette helmet (10,000 ◈).")"
+	t+=$'\n'"$(tt "• 16 collections complètes, rayon « Collections » et recherche par nom (touche /)." "• 16 full collections, 'Collections' aisle and search by name (key /).")"
+	t+=$'\n'"$(tt "• Une histoire pour chaque objet, sous la liste de la boutique et de la garde-robe." "• A story for every item, under the list of the shop and the wardrobe.")"
+	t+=$'\n'"$(tt "• Rayon « Personnalisation » : vague, titre, fou, bulles, curseur, teintures, emblèmes, cadres, emplacements de tenues." "• 'Personalisation' aisle: wave, title, fool, bubbles, cursor, dyes, emblems, frames, outfit slots.")"
+	t+=$'\n'"$(tt "• Chevalier animé dans le menu graphique, la garde-robe et la boutique." "• Animated knight in the graphical menu, the wardrobe and the shop.")"
+	t+=$'\n'"$(tt "• Résultats : Entrée ouvre un petit menu ; Paramètres tient en 80x24 ; q ne quitte plus ; « Réinstaller la commande tdf »." "• Results: Enter opens a small menu; Settings fits in 80x24; q no longer quits; 'Reinstall the tdf command'.")"
 	tdf_page "$(printf "$(tt "Nouveautés de la version %s" "What's new in version %s")" "$TDF_VERSION")" "$t" \
 		"$(tt "Continuer|" "Continue|")" "$(tt "Voir le tuto|" "See the tutorial|")"
 	[ "$CHOIX_MENU" = 1 ] && tuto

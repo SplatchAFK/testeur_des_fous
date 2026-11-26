@@ -2594,3 +2594,37 @@ All are taken: which one to replace?	Hepsi dolu: hangisini değiştirelim?
 Personalisation	Kişiselleştirme
 Visible in the main menu	Ana menüde görünür
 dye	boya
+• Galactic traveller edition (11 pieces, 2,500 ◈) and moulinette helmet (10,000 ◈).	• Galaktik gezgin sürümü (11 parça, 2 500 ◈) ve moulinette miğferi (10 000 ◈).
+• 16 full collections, 'Collections' aisle and search by name (key /).	• 16 tam koleksiyon, «Koleksiyonlar» reyonu ve isimle arama (/ tuşu).
+• A story for every item, under the list of the shop and the wardrobe.	• Her eşya için bir hikâye, mağaza ve gardırop listesinin altında.
+• 'Personalisation' aisle: wave, title, fool, bubbles, cursor, dyes, emblems, frames, outfit slots.	• «Kişiselleştirme» reyonu: dalga, başlık, soytarı, balonlar, imleç, boyalar, amblemler, çerçeveler, kıyafet yuvaları.
+• Animated knight in the graphical menu, the wardrobe and the shop.	• Grafik menüde, gardıropta ve mağazada hareketli şövalye.
+• Results: Enter opens a small menu; Settings fits in 80x24; q no longer quits; 'Reinstall the tdf command'.	• Sonuçlar: Enter küçük bir menü açar; Ayarlar 80x24'e sığar; q artık çıkmaz; «tdf komutunu yeniden kur».
+Light wave	Işık dalgası
+Cursors	İmleçler
+Emblems	Amblemler
+Dyes	Boyalar
+Frames	Çerçeveler
+WHAT'S NEW	YENİLİKLER
+◀ ▶ page   ▲ ▼ pick   Enter: confirm   Esc: close	◀ ▶ sayfa   ▲ ▼ seç   Enter: onayla   Esc: kapat
+Every item now has its story, shown under the list in the shop and the wardrobe. They all take place during the Long Silence, before your knight arrived.	Her eşyanın artık bir hikâyesi var, mağaza ve gardıropta listenin altında görünür. Hepsi Uzun Sessizlik sırasında, şövalyen gelmeden önce geçer.
+The moulinette helmet's one:	Moulinette miğferininki:
+Thanks for using the testeur des fous. An idea, a bug, a question?	testeur des fous'u kullandığın için teşekkürler. Bir fikir, bir hata, bir soru?
+Join the Discord server (Ctrl + click on the link):	Discord sunucusuna katıl (bağlantıya Ctrl + tık):
+This update dresses your knight, makes it move, and makes the tester easier to use.\n\nInside:\n• the galactic traveller edition and the moulinette helmet\n• 16 full collections and search by name\n• a story for every item\n• the Personalisation aisle, to spend your Octets another way\n• an animated knight\n• an easier tester\n\n◀ ▶ to turn the pages.	Bu güncelleme şövalyeni giydiriyor, hareket ettiriyor ve test aracını kullanmayı kolaylaştırıyor.\n\nİçerik:\n• galaktik gezgin sürümü ve moulinette miğferi\n• 16 tam koleksiyon ve isimle arama\n• her eşya için bir hikâye\n• Oktetlerini başka şekilde harcamak için Kişiselleştirme reyonu\n• hareketli bir şövalye\n• kullanımı daha kolay bir test aracı\n\nSayfaları çevirmek için ◀ ▶.
+A rare edition of 11 pieces, from the bubble to the familiar, at 2,500 ◈ each. And a unique item: the moulinette helmet, at 10,000 ◈.\n\nTo get there:\n1. Main menu › Knight › Shop\n2. ◀ ▶ to the 'Collections' aisle\n3. Pick 'The galactic traveller': the full outfit shows on your knight\n4. Enter: 'Buy the missing pieces' or 'Wear the whole outfit'	Baloncuktan yol arkadaşına 11 parçalık nadir bir sürüm, her biri 2 500 ◈. Ve tek bir eşya: 10 000 ◈ değerinde moulinette miğferi.\n\nOraya gitmek için:\n1. Ana menü › Şövalye › Mağaza\n2. ◀ ▶ ile «Koleksiyonlar» reyonuna\n3. «Galaktik gezgin»i seç: tüm kıyafet şövalyende görünür\n4. Enter: «Eksik parçaları satın al» ya da «Tüm kıyafeti giy»
+16 collections and search	16 koleksiyon ve arama
+Astronaut, Neon, Cyberpunk, the Fool, Carnival, Circus, Mad scientist, Hatter, Sad clown, Cook, Pyjamas, Rubber duck, Fruits, Cardboard and tape, Bad idea, Failed costume: 11 pieces each.\n\nIn the 'Collections' aisle, every outfit can be tried on your knight before buying.\n\nTo find an item: press / in the shop or the wardrobe, then type part of its name ('moulinette', 'neon'). Accents do not matter.	Astronot, Neon, Siberpunk, Soytarı, Karnaval, Sirk, Çılgın bilim insanı, Şapkacı, Hüzünlü palyaço, Aşçı, Pijama, Lastik ördek, Meyveler, Karton ve bant, Kötü fikir, Başarısız kostüm: her biri 11 parça.\n\n«Koleksiyonlar» reyonunda her kıyafet satın almadan önce şövalyenin üzerinde tamamen denenebilir.\n\nBir eşya bulmak için: mağazada ya da gardıropta / tuşuna bas, sonra adının bir kısmını yaz («moulinette», «neon»). Aksanlar önemli değil.
+A story for every item	Her eşyaya bir hikâye
+A new shop aisle, to change the tester itself:\n• the colour of the menu's light wave\n• the style of the big title\n• the fool's costume\n• the frame of the 'Did you know?' bubbles\n• the selection cursor\n• an emblem and a frame around your profile\n• dyes: key C on a worn item\n• up to 10 outfit slots\n\nTo get there: Knight › Shop › 'Personalisation' aisle. Enter buys, then Enter picks.	Test aracının kendisini değiştirmek için yeni bir mağaza reyonu:\n• menüdeki ışık dalgasının rengi\n• büyük başlığın stili\n• soytarının kostümü\n• «Biliyor muydun?» balonlarının çerçevesi\n• seçim imleci\n• profilinin etrafında bir amblem ve bir çerçeve\n• boyalar: giyilen bir eşyada C tuşu\n• en fazla 10 kıyafet yuvası\n\nOraya gitmek için: Şövalye › Mağaza › «Kişiselleştirme» reyonu. Enter satın alır, sonra Enter seçer.
+Your knight is animated	Şövalyen artık hareketli
+In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats. The menu's fool sways.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'.	Menüde, gardıropta ve mağazada şövalyen nefes alıyor, pelerini dalgalanıyor, gözleri kırpışıyor ve yol arkadaşı süzülüyor. Menüdeki soytarı sallanıyor.\n\nHafif: saniyede en fazla 5 kare ve yalnızca değişen hücreler yeniden çiziliyor.\n\nAnimasyonları kapatmak için: Ayarlar › Seçenekler › Animasyonlar › «hiçbiri».
+Easier to use	Kullanımı daha kolay
+• Libft and ft_printf results: Enter opens a small menu next to the function (sheet, norminette, audit, run again).\n• Settings fits whole in an 80x24 terminal.\n• The q key no longer quits by mistake: Esc goes back everywhere.\n• The tdf command stopped working after a new clone? Settings › 'Reinstall the tdf command'.\n• A fool slipped into the 'Did you know?' bubbles. Keep your eyes open.	• Libft ve ft_printf sonuçları: Enter, fonksiyonun yanında küçük bir menü açar (fiş, norminette, denetim, yeniden çalıştır).\n• Ayarlar 80x24 bir terminale tamamen sığar.\n• q tuşu artık yanlışlıkla çıkmaz: Esc her yerde geri döner.\n• Yeni bir klondan sonra tdf komutu çalışmıyor mu? Ayarlar › «tdf komutunu yeniden kur».\n• «Biliyor muydun?» balonlarına bir soytarı sızdı. Gözünü dört aç.
+What now?	Şimdi ne var?
+Go there: Collections aisle|	Git: Koleksiyonlar reyonu|
+Go there: Personalisation aisle|	Git: Kişiselleştirme reyonu|
+Next page|	Sonraki sayfa|
+Close|	Kapat|
+!What's new|The update pages: what changes, where to find it, and the Discord.	!Yenilikler|Güncelleme sayfaları: neler değişti, nerede bulunur ve Discord.
+What's new|The update pages: what changes, where to find it, and the Discord.	Yenilikler|Güncelleme sayfaları: neler değişti, nerede bulunur ve Discord.

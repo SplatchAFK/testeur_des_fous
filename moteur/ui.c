@@ -1334,6 +1334,31 @@ static void	coll_entree(const t_shopst *s, int code, int x, int y)
 	save_write();
 }
 
+static int	g_onglet_depart = -1;
+
+void	tdf_look_collection(int c, t_look *lk)
+{
+	look_default(lk);
+	if (c > 0 && c < g_ncollections)
+		coll_look(c, 0, lk);
+}
+
+int	item_par_id(const char *id)
+{
+	int	i;
+
+	for (i = 0; i < g_nitems; i++)
+		if (!strcmp(g_items[i].id, id))
+			return (i);
+	return (-1);
+}
+
+void	tdf_boutique(int onglet)
+{
+	g_onglet_depart = onglet;
+	screen_shop(0);
+}
+
 void	screen_shop(int wardrobe)
 {
 	t_shopst	s;
@@ -1365,6 +1390,12 @@ void	screen_shop(int wardrobe)
 		s.tab = NTAB;
 		s.jump = 0;
 	}
+	if (g_onglet_depart > 0)
+	{
+		s.tab = g_onglet_depart == 1 ? TAB_COLL : TAB_PERSO;
+		s.jump = 0;
+	}
+	g_onglet_depart = -1;
 	shake = 0;
 	cls();
 	while (1)

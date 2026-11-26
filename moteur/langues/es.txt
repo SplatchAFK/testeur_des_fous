@@ -2594,3 +2594,37 @@ All are taken: which one to replace?	Todos están ocupados: ¿cuál reemplazar?
 Personalisation	Personalización
 Visible in the main menu	Visible en el menú principal
 dye	teñir
+• Galactic traveller edition (11 pieces, 2,500 ◈) and moulinette helmet (10,000 ◈).	• Edición del viajero galáctico (11 piezas, 2 500 ◈) y casco moulinette (10 000 ◈).
+• 16 full collections, 'Collections' aisle and search by name (key /).	• 16 colecciones completas, sección «Colecciones» y búsqueda por nombre (tecla /).
+• A story for every item, under the list of the shop and the wardrobe.	• Una historia para cada objeto, bajo la lista de la tienda y del vestuario.
+• 'Personalisation' aisle: wave, title, fool, bubbles, cursor, dyes, emblems, frames, outfit slots.	• Sección «Personalización»: ola, título, bufón, burbujas, cursor, tintes, emblemas, marcos, huecos de traje.
+• Animated knight in the graphical menu, the wardrobe and the shop.	• Caballero animado en el menú gráfico, el vestuario y la tienda.
+• Results: Enter opens a small menu; Settings fits in 80x24; q no longer quits; 'Reinstall the tdf command'.	• Resultados: Intro abre un pequeño menú; Ajustes cabe en 80x24; q ya no sale; «Reinstalar el comando tdf».
+Light wave	Ola de luz
+Cursors	Cursores
+Emblems	Emblemas
+Dyes	Tintes
+Frames	Marcos
+WHAT'S NEW	NOVEDADES
+◀ ▶ page   ▲ ▼ pick   Enter: confirm   Esc: close	◀ ▶ página   ▲ ▼ elegir   Intro: validar   Esc: cerrar
+Every item now has its story, shown under the list in the shop and the wardrobe. They all take place during the Long Silence, before your knight arrived.	Cada objeto tiene ahora su historia, mostrada bajo la lista en la tienda y el vestuario. Todas ocurren durante el Largo Silencio, antes de la llegada de tu caballero.
+The moulinette helmet's one:	La del casco moulinette:
+Thanks for using the testeur des fous. An idea, a bug, a question?	Gracias por usar el testeur des fous. ¿Una idea, un bug, una pregunta?
+Join the Discord server (Ctrl + click on the link):	Únete al servidor de Discord (Ctrl + clic en el enlace):
+This update dresses your knight, makes it move, and makes the tester easier to use.\n\nInside:\n• the galactic traveller edition and the moulinette helmet\n• 16 full collections and search by name\n• a story for every item\n• the Personalisation aisle, to spend your Octets another way\n• an animated knight\n• an easier tester\n\n◀ ▶ to turn the pages.	Esta actualización viste a tu caballero, lo hace moverse y hace el tester más fácil de usar.\n\nEn el programa:\n• la edición del viajero galáctico y el casco moulinette\n• 16 colecciones completas y la búsqueda por nombre\n• una historia para cada objeto\n• la sección Personalización, para gastar tus Octetos de otra forma\n• un caballero animado\n• un tester más fácil de usar\n\n◀ ▶ para pasar las páginas.
+A rare edition of 11 pieces, from the bubble to the familiar, at 2,500 ◈ each. And a unique item: the moulinette helmet, at 10,000 ◈.\n\nTo get there:\n1. Main menu › Knight › Shop\n2. ◀ ▶ to the 'Collections' aisle\n3. Pick 'The galactic traveller': the full outfit shows on your knight\n4. Enter: 'Buy the missing pieces' or 'Wear the whole outfit'	Una edición rara de 11 piezas, de la burbuja al familiar, a 2 500 ◈ cada una. Y un objeto único: el casco moulinette, a 10 000 ◈.\n\nPara llegar:\n1. Menú principal › Caballero › Tienda\n2. ◀ ▶ hasta la sección «Colecciones»\n3. Elige «El viajero galáctico»: el traje completo aparece en tu caballero\n4. Intro: «Comprar las piezas que faltan» o «Llevar todo el traje»
+16 collections and search	16 colecciones y la búsqueda
+Astronaut, Neon, Cyberpunk, the Fool, Carnival, Circus, Mad scientist, Hatter, Sad clown, Cook, Pyjamas, Rubber duck, Fruits, Cardboard and tape, Bad idea, Failed costume: 11 pieces each.\n\nIn the 'Collections' aisle, every outfit can be tried on your knight before buying.\n\nTo find an item: press / in the shop or the wardrobe, then type part of its name ('moulinette', 'neon'). Accents do not matter.	Astronauta, Neón, Cyberpunk, el Bufón, Carnaval, Circo, Científico loco, Sombrerero, Payaso triste, Cocinero, Pijama, Patito de goma, Frutas, Cartón y cinta, Mala idea, Disfraz fallido: 11 piezas cada una.\n\nEn la sección «Colecciones», cada traje se prueba entero en tu caballero antes de comprar.\n\nPara encontrar un objeto: pulsa / en la tienda o el vestuario y escribe parte de su nombre («moulinette», «neon»). Los acentos no cuentan.
+A story for every item	Una historia por objeto
+A new shop aisle, to change the tester itself:\n• the colour of the menu's light wave\n• the style of the big title\n• the fool's costume\n• the frame of the 'Did you know?' bubbles\n• the selection cursor\n• an emblem and a frame around your profile\n• dyes: key C on a worn item\n• up to 10 outfit slots\n\nTo get there: Knight › Shop › 'Personalisation' aisle. Enter buys, then Enter picks.	Una nueva sección de la tienda, para cambiar el propio tester:\n• el color de la ola de luz del menú\n• el estilo del gran título\n• el traje del bufón\n• el marco de las burbujas «¿Sabías que…?»\n• el cursor de selección\n• un emblema y un marco alrededor de tu perfil\n• tintes: tecla C sobre un objeto puesto\n• hasta 10 huecos de traje\n\nPara llegar: Caballero › Tienda › sección «Personalización». Intro compra, luego Intro elige.
+Your knight is animated	Tu caballero está animado
+In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats. The menu's fool sways.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'.	En el menú, el vestuario y la tienda, tu caballero respira, su capa ondea, sus ojos parpadean y su familiar flota. El bufón del menú se balancea.\n\nEs ligero: 5 imágenes por segundo como máximo, y solo se redibujan las casillas que cambian.\n\nPara quitar las animaciones: Ajustes › Opciones › Animaciones › «ninguna».
+Easier to use	Más fácil de usar
+• Libft and ft_printf results: Enter opens a small menu next to the function (sheet, norminette, audit, run again).\n• Settings fits whole in an 80x24 terminal.\n• The q key no longer quits by mistake: Esc goes back everywhere.\n• The tdf command stopped working after a new clone? Settings › 'Reinstall the tdf command'.\n• A fool slipped into the 'Did you know?' bubbles. Keep your eyes open.	• Resultados de Libft y ft_printf: Intro abre un pequeño menú junto a la función (ficha, norminette, auditoría, relanzar).\n• Ajustes cabe entero en un terminal de 80x24.\n• La tecla q ya no sale por error: Esc vuelve atrás en todas partes.\n• ¿El comando tdf ya no funciona tras un nuevo clon? Ajustes › «Reinstalar el comando tdf».\n• Un bufón se ha colado en las burbujas «¿Sabías que…?». Abre bien los ojos.
+What now?	¿Y ahora?
+Go there: Collections aisle|	Ir allí: sección Colecciones|
+Go there: Personalisation aisle|	Ir allí: sección Personalización|
+Next page|	Página siguiente|
+Close|	Cerrar|
+!What's new|The update pages: what changes, where to find it, and the Discord.	!Novedades|Las páginas de la actualización: qué cambia, dónde encontrarlo y el Discord.
+What's new|The update pages: what changes, where to find it, and the Discord.	Novedades|Las páginas de la actualización: qué cambia, dónde encontrarlo y el Discord.

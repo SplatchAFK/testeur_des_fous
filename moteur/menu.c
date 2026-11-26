@@ -588,29 +588,224 @@ void	tdf_tuto(void)
 	}
 }
 
+typedef struct s_news
+{
+	const char	*titre;
+	const char	*texte;
+	int			illu;
+	int			coll;
+	int			aller;
+}	t_news;
+
+static void	news_perso(int x, int y)
+{
+	static const t_rgb	v[6] = {{255, 255, 255}, {255, 215, 90}, {255, 120, 200}, {120, 255, 150}, {190, 130, 255}, {90, 220, 255}};
+	static const t_rgb	t[6] = {{230, 60, 60}, {60, 120, 230}, {60, 190, 90}, {240, 196, 78}, {160, 80, 220}, {50, 50, 62}};
+	static const t_rgb	c[3] = {{240, 196, 78}, {90, 220, 255}, {255, 120, 200}};
+	int					i;
+
+	text_at(x, y, theme()->dim, L("Vague de lumière", "Light wave"));
+	for (i = 0; i < 6; i++)
+	{
+		at(x + i * 4, y + 1);
+		fg(v[i]);
+		out(i < 5 ? "███" : "");
+	}
+	for (i = 0; i < 3; i++)
+	{
+		fg(hue(i / 3.0));
+		out("█");
+	}
+	text_at(x, y + 3, theme()->dim, L("Curseurs", "Cursors"));
+	text_at(x, y + 4, theme()->accent2, "▶  ◆  ★  ➤  ●  ♦");
+	text_at(x, y + 6, theme()->dim, L("Emblèmes", "Emblems"));
+	text_at(x, y + 7, rgb(255, 215, 90), "★  ♛  ☾  ✿  ♞  ♥");
+	text_at(x, y + 9, theme()->dim, L("Teintures", "Dyes"));
+	for (i = 0; i < 6; i++)
+	{
+		at(x + i * 4, y + 10);
+		fg(t[i]);
+		out("███");
+	}
+	text_at(x, y + 12, theme()->dim, L("Cadres", "Frames"));
+	for (i = 0; i < 3; i++)
+		box(x + i * 8, y + 13, 6, 3, c[i]);
+}
+
+static void	news_illu(const t_news *p, int x, int y, long t)
+{
+	t_canvas	cv;
+	t_look		lk;
+	int			c;
+
+	if (p->illu == 2)
+	{
+		news_perso(x, y);
+		return ;
+	}
+	if (p->illu == 3)
+	{
+		c = 2 + (int)((t / 1500) % (g_ncollections - 2));
+		tdf_look_collection(c, &lk);
+		text_at(x, y + 16, theme()->accent2, "                            ");
+		text_clip(x, y + 16, theme()->accent2, L(g_collections[c].fr, g_collections[c].en), 28);
+	}
+	else if (p->coll > 0)
+		tdf_look_collection(p->coll, &lk);
+	else
+		lk = g_save.look;
+	cv_init(&cv, 28, 32);
+	avatar_draw(&cv, 0, 0, &lk, t);
+	cv_print(&cv, x, y, theme()->bg);
+	cv_free(&cv);
+}
+
+static int	news_page(const t_news *p, int k, int np, const char **items, int n, int *sel)
+{
+	char	tt[200];
+	char	lab[160];
+	int		w;
+	int		tw;
+	int		x;
+	int		y;
+	int		i;
+	int		key;
+	int		illu;
+
+	cls();
+	while (1)
+	{
+		w = term_cols() - 8 < 104 ? term_cols() - 8 : 104;
+		x = (term_cols() - w) / 2;
+		if (x < 1)
+			x = 1;
+		illu = w >= 84 && term_rows() >= 24;
+		tw = illu ? w - 34 : w;
+		bgc(theme()->bg);
+		frame();
+		snprintf(tt, sizeof(tt), "%s %s · %d/%d · %s", L("NOUVEAUTÉS", "WHAT'S NEW"), TDF_VERSION, k + 1, np, p->titre);
+		center(2, theme()->accent2, tt);
+		y = text_wrap(x, 5, term_rows() - 5 - n, tw, theme()->text, p->texte) + 1;
+		for (i = 0; i < n; i++)
+		{
+			at(x, y + i);
+			if (i == *sel)
+			{
+				bgc(mix(theme()->bg, theme()->accent, 0.22));
+				fg(theme()->accent2);
+			}
+			else
+				fg(theme()->text);
+			label_of(items[i], lab, sizeof(lab));
+			outf(" %s %s ", i == *sel ? tdf_curseur() : " ", lab);
+			bgc(theme()->bg);
+			outf("%*s", 20, "");
+		}
+		if (illu)
+			news_illu(p, x + w - 30, 5, now_ms());
+		if (g_lien)
+			tdf_lien(x, y - 2, g_lien);
+		foot_line(x, L("◀ ▶ page   ▲ ▼ choisir   Entrée : valider   Échap : fermer",
+				"◀ ▶ page   ▲ ▼ pick   Enter: confirm   Esc: close"));
+		flush();
+		key = key_dir(key_read(200));
+		if (key_quit(key))
+			return (cls(), -1);
+		if (key == 1000)
+			*sel = (*sel + n - 1) % n;
+		else if (key == 1001)
+			*sel = (*sel + 1) % n;
+		else if (key == 1003 && k > 0)
+			return (cls(), -2);
+		else if (key == 1002 && k < np - 1)
+			return (cls(), -3);
+		else if (key == '\r' || key == '\n' || key == ' ')
+			return (cls(), *sel);
+	}
+}
+
 void	tdf_nouveautes(void)
 {
-	char		titre[120];
-	char		texte[4000];
-	const char	*items[2];
-	int			sel;
+	static char		hist[1400];
+	static char		discord[400];
+	t_news			p[8];
+	const char		*items[3];
+	int				act[3];
+	int				k;
+	int				n;
+	int				r;
+	int				sel;
+	int				h;
 
-	snprintf(titre, sizeof(titre), L("CHANGELOG · VERSION %s", "CHANGELOG · VERSION %s"), TDF_VERSION);
-	snprintf(texte, sizeof(texte), "%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n\n%s\n" TDF_DISCORD,
-		L("NOUVEAU DANS LA 3.4.0", "NEW IN 3.4.0"),
-		L("• Prototypes comparés au sujet et aux vraies traces de la moulinette, dans le .h et dans chaque .c (restrict interdit, noms des paramètres).", "• Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names)."),
-		L("• Includes vérifiés : include introuvable, .c inclus, fonction sans déclaration, .h qui ne compile pas seul, garde d'inclusion, include inutile.", "• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include."),
-		L("• Libft, ft_printf et get_next_line.", "• Libft, ft_printf and get_next_line."),
-		L("DÉJÀ DANS LA 3.3.0", "ALREADY IN 3.3.0"),
-		L("• Mode correction (menu) : le dossier du corrigé seulement, vérifs de rendu en un écran et test précis avec le détail.", "• Grading mode (menu): only the graded folder, submission checks on one screen and single tests with every detail."),
-		L("• Mode debug : une barre d'avancement avec le temps restant au lieu d'un écran vide.", "• Debug mode: a progress bar with the time left instead of an empty screen."),
-		L("Tu veux en savoir plus ? Viens sur le serveur Discord (Ctrl + clic sur le lien) :", "Want to know more? Join the Discord server (Ctrl + click on the link):"));
-	items[0] = L("Continuer|", "Continue|");
-	items[1] = L("Voir le tuto|", "See the tutorial|");
-	g_lien = TDF_DISCORD;
+	h = item_par_id("casque_moulinette");
+	snprintf(hist, sizeof(hist), "%s\n\n%s\n« %s »",
+		L("Chaque objet a maintenant son histoire, affichée sous la liste dans la boutique et la garde-robe. Toutes se passent pendant le Long Silence, avant l'arrivée de ton chevalier.",
+			"Every item now has its story, shown under the list in the shop and the wardrobe. They all take place during the Long Silence, before your knight arrived."),
+		L("Celle du casque moulinette :", "The moulinette helmet's one:"),
+		h >= 0 ? item_histoire(h) : "");
+	snprintf(discord, sizeof(discord), "%s\n\n%s\n\n" TDF_DISCORD,
+		L("Merci d'utiliser le testeur des fous. Une idée, un bug, une question ?", "Thanks for using the testeur des fous. An idea, a bug, a question?"),
+		L("Viens sur le serveur Discord (Ctrl + clic sur le lien) :", "Join the Discord server (Ctrl + click on the link):"));
+	p[0] = (t_news){L("Bienvenue", "Welcome"),
+		L("Cette mise à jour habille ton chevalier, le fait bouger, et rend le testeur plus simple à utiliser.\n\nAu programme :\n• l'édition du voyageur galactique et le casque moulinette\n• 16 collections complètes et la recherche par nom\n• une histoire pour chaque objet\n• le rayon Personnalisation, pour dépenser tes Octets autrement\n• un chevalier animé\n• un testeur plus simple à utiliser\n\n◀ ▶ pour tourner les pages.",
+			"This update dresses your knight, makes it move, and makes the tester easier to use.\n\nInside:\n• the galactic traveller edition and the moulinette helmet\n• 16 full collections and search by name\n• a story for every item\n• the Personalisation aisle, to spend your Octets another way\n• an animated knight\n• an easier tester\n\n◀ ▶ to turn the pages."), 1, 1, 0};
+	p[1] = (t_news){L("Le voyageur galactique", "The galactic traveller"),
+		L("Une édition rare de 11 pièces, de la bulle au familier, à 2 500 ◈ chacune. Et un objet unique : le casque moulinette, à 10 000 ◈.\n\nPour y aller :\n1. Menu principal › Chevalier › Boutique\n2. ◀ ▶ jusqu'au rayon « Collections »\n3. Choisis « Le voyageur galactique » : la tenue complète s'affiche sur ton chevalier\n4. Entrée : « Acheter les pièces manquantes » ou « Porter toute la tenue »",
+			"A rare edition of 11 pieces, from the bubble to the familiar, at 2,500 ◈ each. And a unique item: the moulinette helmet, at 10,000 ◈.\n\nTo get there:\n1. Main menu › Knight › Shop\n2. ◀ ▶ to the 'Collections' aisle\n3. Pick 'The galactic traveller': the full outfit shows on your knight\n4. Enter: 'Buy the missing pieces' or 'Wear the whole outfit'"), 1, 1, 1};
+	p[2] = (t_news){L("16 collections et la recherche", "16 collections and search"),
+		L("Astronaute, Néon, Cyberpunk, le Fou, Carnaval, Cirque, Savant fou, Chapelier, Clown triste, Cuisinier, Pyjama, Canard en caoutchouc, Fruits, Carton et scotch, Mauvaise idée, Déguisement raté : 11 pièces chacune.\n\nDans le rayon « Collections », chaque tenue s'essaie en entier sur ton chevalier avant d'acheter.\n\nPour trouver un objet : appuie sur / dans la boutique ou la garde-robe, puis tape une partie de son nom (« casque m », « neon »). Les accents ne comptent pas.",
+			"Astronaut, Neon, Cyberpunk, the Fool, Carnival, Circus, Mad scientist, Hatter, Sad clown, Cook, Pyjamas, Rubber duck, Fruits, Cardboard and tape, Bad idea, Failed costume: 11 pieces each.\n\nIn the 'Collections' aisle, every outfit can be tried on your knight before buying.\n\nTo find an item: press / in the shop or the wardrobe, then type part of its name ('moulinette', 'neon'). Accents do not matter."), 3, 0, 1};
+	p[3] = (t_news){L("Une histoire par objet", "A story for every item"), hist, 1, 5, 0};
+	p[4] = (t_news){L("Personnalisation", "Personalisation"),
+		L("Un nouveau rayon de la boutique, pour changer le testeur lui-même :\n• la couleur de la vague de lumière du menu\n• le style du grand titre\n• le costume du fou\n• le cadre des bulles « Le savais-tu ? »\n• le curseur de sélection\n• un emblème et un cadre autour de ton profil\n• des teintures : touche C sur un objet porté\n• jusqu'à 10 emplacements de tenues\n\nPour y aller : Chevalier › Boutique › rayon « Personnalisation ». Entrée achète, puis Entrée choisit.",
+			"A new shop aisle, to change the tester itself:\n• the colour of the menu's light wave\n• the style of the big title\n• the fool's costume\n• the frame of the 'Did you know?' bubbles\n• the selection cursor\n• an emblem and a frame around your profile\n• dyes: key C on a worn item\n• up to 10 outfit slots\n\nTo get there: Knight › Shop › 'Personalisation' aisle. Enter buys, then Enter picks."), 2, 0, 2};
+	p[5] = (t_news){L("Ton chevalier est animé", "Your knight is animated"),
+		L("Dans le menu, la garde-robe et la boutique, ton chevalier respire, sa cape ondule, ses yeux clignent et son familier flotte. Le fou du menu se balance.\n\nC'est léger : 5 images par seconde au plus, et seules les cases qui changent sont redessinées.\n\nPour couper les animations : Paramètres › Réglages › Animations › « aucune ».",
+			"In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats. The menu's fool sways.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'."), 1, 0, 0};
+	p[6] = (t_news){L("Plus simple à utiliser", "Easier to use"),
+		L("• Résultats Libft et ft_printf : Entrée ouvre un petit menu près de la fonction (fiche, norminette, audit, relancer).\n• Paramètres tient en entier dans un terminal de 80x24.\n• La touche q ne quitte plus par erreur : Échap revient en arrière partout.\n• La commande tdf ne marche plus après un nouveau clone ? Paramètres › « Réinstaller la commande tdf ».\n• Un fou s'est glissé dans les bulles « Le savais-tu ? ». Ouvre l'œil.",
+			"• Libft and ft_printf results: Enter opens a small menu next to the function (sheet, norminette, audit, run again).\n• Settings fits whole in an 80x24 terminal.\n• The q key no longer quits by mistake: Esc goes back everywhere.\n• The tdf command stopped working after a new clone? Settings › 'Reinstall the tdf command'.\n• A fool slipped into the 'Did you know?' bubbles. Keep your eyes open."), 1, 0, 0};
+	p[7] = (t_news){L("Et maintenant ?", "What now?"), discord, 1, 0, 0};
+	k = 0;
 	sel = 0;
-	if (page(titre, texte, items, 2, &sel) == 1)
-		tdf_tuto();
+	while (k >= 0 && k < 8)
+	{
+		n = 0;
+		if (p[k].aller)
+		{
+			act[n] = 2;
+			items[n++] = p[k].aller == 1 ? L("Y aller : rayon Collections|", "Go there: Collections aisle|")
+				: L("Y aller : rayon Personnalisation|", "Go there: Personalisation aisle|");
+		}
+		act[n] = k < 7 ? 0 : 1;
+		items[n++] = k < 7 ? L("Page suivante|", "Next page|") : L("Voir le tuto|", "See the tutorial|");
+		act[n] = 3;
+		items[n++] = L("Fermer|", "Close|");
+		if (sel >= n)
+			sel = 0;
+		g_lien = k == 7 ? TDF_DISCORD : NULL;
+		r = news_page(&p[k], k, 8, items, n, &sel);
+		g_lien = NULL;
+		if (r == -1 || (r >= 0 && act[r] == 3))
+			return ;
+		if (r == -2 || r == -3)
+		{
+			k += r == -2 ? -1 : 1;
+			sel = 0;
+		}
+		else if (act[r] == 2)
+			tdf_boutique(p[k].aller);
+		else if (act[r] == 1)
+		{
+			tdf_tuto();
+			return ;
+		}
+		else
+		{
+			k++;
+			sel = 0;
+		}
+	}
 }
 
 static int	interface_texte(void)
@@ -1954,7 +2149,8 @@ void	tdf_menu_params(void (*credits)(void))
 			act[n] = 6;
 			items[n++] = L("Revoir le tuto|Les 7 écrans qui présentent le testeur.", "Replay the tutorial|The 7 screens that present the tester.");
 			act[n] = 7;
-			items[n++] = L("Changelog|Ce qui a changé dans cette version, et le Discord pour en savoir plus.", "Changelog|What changed in this version, and the Discord to learn more.");
+			items[n++] = tdf_nouveau("3.5") ? L("!Nouveautés|Les pages de la mise à jour : ce qui change, où le trouver, et le Discord.", "!What's new|The update pages: what changes, where to find it, and the Discord.")
+				: L("Nouveautés|Les pages de la mise à jour : ce qui change, où le trouver, et le Discord.", "What's new|The update pages: what changes, where to find it, and the Discord.");
 		}
 		snprintf(bl, sizeof(bl), "%s%s : %s|%s", tdf_nouveau("3.3") ? "!" : "", L("Bulles « Le savais-tu ? »", "'Did you know?' bubbles"),
 			g_bulles ? L("oui", "yes") : L("non", "no"), L("Entrée pour les montrer ou les cacher dans le menu.", "Enter to show or hide them in the menu."));
