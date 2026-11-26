@@ -2158,3 +2158,75 @@ Cyberpunk	Cyberpunk
 Lunar gaze	Mondblick
 Neon gaze	Neonblick
 Augmented gaze	Erweiterter Blick
+The Fool's stage	Bühne des Narren
+Diamond cape	Rautenumhang
+Two-tone hose	Zweifarbige Beinkleider
+Bell doublet	Schellenwams
+Fool's cap	Narrenkappe
+Fool's gaze	Narrenblick
+Golden bell	Goldene Schelle
+Fool's bauble	Narrenstab
+Comedy mask	Komödienmaske
+Jack-in-the-box	Springteufel
+Fool's laughter	Narrenlachen
+Carnival night	Karnevalsnacht
+Feather cape	Federumhang
+Striped tights	Gestreifte Strumpfhose
+Sequin bodice	Paillettenmieder
+Venetian mask	Venezianische Maske
+Golden gaze	Goldener Blick
+Plume crest	Federbusch
+Ribbon stick	Bänderstab
+Maracas	Maracas
+Parrot	Papagei
+Confetti	Konfetti
+Big top	Zirkuszelt
+Red tailcoat	Roter Frack
+Tamer's breeches	Dompteurhose
+Frogged jacket	Jacke mit Schnurverschluss
+Top hat	Zylinder
+Tamer's gaze	Dompteurblick
+Ring plume	Manegenfeder
+Whip	Peitsche
+Hoop	Reifen
+Seal with a ball	Robbe mit Ball
+Ring sparkles	Manegenglitzer
+Laboratory	Labor
+Long lab coat	Langer Laborkittel
+Trousers and slippers	Hose und Pantoffeln
+Stained lab coat	Fleckiger Kittel
+Electric hair	Elektrisches Haar
+Genius gaze	Genieblick
+Sparks	Funken
+Tesla coil	Teslaspule
+Bubbling flask	Blubbernder Kolben
+Brain in a jar	Gehirn im Glas
+Chemical bubbles	Chemische Blasen
+Endless tea party	Endlose Teegesellschaft
+Checked coat	Karierter Rock
+Checkerboard trousers	Schachbretthose
+Bow-tie waistcoat	Weste mit Fliege
+Towering hat	Riesiger Hut
+Sparkling gaze	Funkelnder Blick
+Buttonhole flower	Knopflochblume
+Umbrella	Regenschirm
+Teapot	Teekanne
+Clockwork bird	Mechanischer Vogel
+Tea steam	Teedampf
+Rainy alley	Regnerische Gasse
+Rain cape	Regenumhang
+Baggy trousers	Pluderhose
+Ruffled blouse	Bluse mit Halskrause
+Teardrop face	Gesicht mit Träne
+Wet gaze	Feuchter Blick
+Wilted flower	Welke Blume
+Thornless rose	Rose ohne Dornen
+Deflated balloon	Schlaffer Ballon
+Grey pigeon	Graue Taube
+Light rain	Nieselregen
+The Fool	Der Narr
+Carnival	Karneval
+Circus	Zirkus
+Mad scientist	Verrückter Wissenschaftler
+Hatter	Hutmacher
+Sad clown	Trauriger Clown

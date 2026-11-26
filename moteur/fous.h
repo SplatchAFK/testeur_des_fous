@@ -840,6 +840,8 @@ void			hd_text(t_hd *d, int cx, int cy, t_rgb c, t_rgb bg, const char *s);
 void			hd_bubble(t_hd *d, int cx, int cy, const char *s, t_rgb ink);
 void			hd_big(t_hd *d, int x, int y, const char *s, double t, int mode);
 const t_pic		*art_pic(const char *name);
+t_pic			*art_pic_temp(const char *name);
+void			art_pic_liberer(t_pic *p);
 void			hd_pic(t_hd *d, const t_pic *p, int fw, int frame, int x, int y, int k, int flip);
 void			stage_fit(t_hd *d, t_stage *s, int shake);
 void			stage_bg(t_hd *d, const t_stage *s, const char *name, int sy, t_rgb top, t_rgb bot);

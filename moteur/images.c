@@ -839,23 +839,15 @@ typedef struct s_slot
 static t_slot	g_pics[96];
 static int		g_npics;
 
-const t_pic	*art_pic(const char *name)
+static int	pic_charger(const char *name, t_pic *out)
 {
 	char			path[700];
 	unsigned char	*d;
 	size_t			n;
 	t_img			im;
 	const char		*err;
-	int				i;
 	int				k;
 
-	for (i = 0; i < g_npics; i++)
-		if (!strcmp(g_pics[i].name, name))
-			return (g_pics[i].ok ? &g_pics[i].pic : NULL);
-	if (g_npics >= 96)
-		return (NULL);
-	i = g_npics++;
-	snprintf(g_pics[i].name, sizeof(g_pics[i].name), "%s", name);
 	snprintf(path, sizeof(path), "%s/assets/%s.png", g_tester_dir, name);
 	memset(&im, 0, sizeof(im));
 	d = read_all(path, &n);
@@ -875,15 +867,51 @@ const t_pic	*art_pic(const char *name)
 		free(d);
 		free(im.px);
 		free(im.a);
-		return (NULL);
+		return (0);
 	}
 	free(d);
-	g_pics[i].pic.w = im.w;
-	g_pics[i].pic.h = im.h;
-	g_pics[i].pic.rgb = im.px;
-	g_pics[i].pic.a = im.a;
-	g_pics[i].ok = 1;
-	return (&g_pics[i].pic);
+	out->w = im.w;
+	out->h = im.h;
+	out->rgb = im.px;
+	out->a = im.a;
+	return (1);
+}
+
+const t_pic	*art_pic(const char *name)
+{
+	int	i;
+
+	for (i = 0; i < g_npics; i++)
+		if (!strcmp(g_pics[i].name, name))
+			return (g_pics[i].ok ? &g_pics[i].pic : NULL);
+	if (g_npics >= 96)
+		return (NULL);
+	i = g_npics++;
+	snprintf(g_pics[i].name, sizeof(g_pics[i].name), "%s", name);
+	g_pics[i].ok = pic_charger(name, &g_pics[i].pic);
+	return (g_pics[i].ok ? &g_pics[i].pic : NULL);
+}
+
+t_pic	*art_pic_temp(const char *name)
+{
+	t_pic	*p;
+
+	p = calloc(1, sizeof(t_pic));
+	if (p && !pic_charger(name, p))
+	{
+		free(p);
+		p = NULL;
+	}
+	return (p);
+}
+
+void	art_pic_liberer(t_pic *p)
+{
+	if (!p)
+		return ;
+	free(p->rgb);
+	free(p->a);
+	free(p);
 }
 
 void	hd_pic(t_hd *d, const t_pic *p, int fw, int frame, int x, int y, int k, int flip)

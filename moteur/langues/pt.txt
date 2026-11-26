@@ -2158,3 +2158,75 @@ Cyberpunk	Cyberpunk
 Lunar gaze	Olhar lunar
 Neon gaze	Olhar de néon
 Augmented gaze	Olhar aumentado
+The Fool's stage	Palco do Bobo
+Diamond cape	Capa de losangos
+Two-tone hose	Calças bicolores
+Bell doublet	Gibão de guizos
+Fool's cap	Barrete do Bobo
+Fool's gaze	Olhar do Bobo
+Golden bell	Guizo de ouro
+Fool's bauble	Marota
+Comedy mask	Máscara de comédia
+Jack-in-the-box	Caixa-surpresa
+Fool's laughter	Risos do Bobo
+Carnival night	Noite de carnaval
+Feather cape	Capa de penas
+Striped tights	Collants às riscas
+Sequin bodice	Corpete de lantejoulas
+Venetian mask	Máscara veneziana
+Golden gaze	Olhar dourado
+Plume crest	Penacho
+Ribbon stick	Bastão de fitas
+Maracas	Maracas
+Parrot	Papagaio
+Confetti	Confetes
+Big top	Tenda de circo
+Red tailcoat	Fraque vermelho
+Tamer's breeches	Calções de domador
+Frogged jacket	Casaco com alamares
+Top hat	Cartola
+Tamer's gaze	Olhar de domador
+Ring plume	Pena de pista
+Whip	Chicote
+Hoop	Arco
+Seal with a ball	Foca com bola
+Ring sparkles	Brilhos da pista
+Laboratory	Laboratório
+Long lab coat	Bata comprida
+Trousers and slippers	Calças e chinelos
+Stained lab coat	Bata manchada
+Electric hair	Cabelo elétrico
+Genius gaze	Olhar de génio
+Sparks	Faíscas
+Tesla coil	Bobina de Tesla
+Bubbling flask	Frasco borbulhante
+Brain in a jar	Cérebro num frasco
+Chemical bubbles	Bolhas químicas
+Endless tea party	Lanche sem fim
+Checked coat	Casaca aos quadrados
+Checkerboard trousers	Calças xadrez
+Bow-tie waistcoat	Colete com laço
+Towering hat	Chapéu desmedido
+Sparkling gaze	Olhar cintilante
+Buttonhole flower	Flor da lapela
+Umbrella	Guarda-chuva
+Teapot	Bule
+Clockwork bird	Pássaro mecânico
+Tea steam	Vapor de chá
+Rainy alley	Beco à chuva
+Rain cape	Capa de chuva
+Baggy trousers	Calças largas
+Ruffled blouse	Blusa com gola franzida
+Teardrop face	Rosto da lágrima
+Wet gaze	Olhar molhado
+Wilted flower	Flor murcha
+Thornless rose	Rosa sem espinhos
+Deflated balloon	Balão vazio
+Grey pigeon	Pombo cinzento
+Light rain	Chuvisco
+The Fool	O Bobo
+Carnival	Carnaval
+Circus	Circo
+Mad scientist	Cientista louco
+Hatter	Chapeleiro
+Sad clown	Palhaço triste

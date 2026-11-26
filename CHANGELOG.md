@@ -13,6 +13,8 @@ Le numéro de version est dans `moteur/version.h`.
 - Sous la liste, l'emplacement et la collection de l'objet choisi.
 - La sauvegarde peut maintenant garder plus de 1 000 objets.
 - 3 nouvelles collections de 11 pièces : Astronaute, Néon, Cyberpunk.
+- 6 collections folles de 11 pièces : le Fou, Carnaval, Cirque, Savant fou, Chapelier, Clown triste.
+- Correction : le chevalier ne disparaît plus de l'aperçu après avoir parcouru beaucoup d'objets (les images étaient limitées à 96 en mémoire).
 - La recherche ignore les accents : « neon » trouve « Néon ».
 - Les auras des collections scintillent aux couleurs de leur thème.
 

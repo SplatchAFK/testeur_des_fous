@@ -2158,3 +2158,75 @@ Cyberpunk	Киберпанк
 Lunar gaze	Лунный взгляд
 Neon gaze	Неоновый взгляд
 Augmented gaze	Дополненный взгляд
+The Fool's stage	Сцена шута
+Diamond cape	Плащ в ромбы
+Two-tone hose	Двухцветные чулки
+Bell doublet	Камзол с бубенцами
+Fool's cap	Колпак шута
+Fool's gaze	Взгляд шута
+Golden bell	Золотой бубенец
+Fool's bauble	Шутовской жезл
+Comedy mask	Комическая маска
+Jack-in-the-box	Чёртик из табакерки
+Fool's laughter	Смех шута
+Carnival night	Карнавальная ночь
+Feather cape	Плащ из перьев
+Striped tights	Полосатые колготки
+Sequin bodice	Лиф с блёстками
+Venetian mask	Венецианская маска
+Golden gaze	Золотой взгляд
+Plume crest	Плюмаж
+Ribbon stick	Жезл с лентами
+Maracas	Маракасы
+Parrot	Попугай
+Confetti	Конфетти
+Big top	Шапито
+Red tailcoat	Красный фрак
+Tamer's breeches	Бриджи укротителя
+Frogged jacket	Куртка со шнурами
+Top hat	Цилиндр
+Tamer's gaze	Взгляд укротителя
+Ring plume	Перо арены
+Whip	Кнут
+Hoop	Обруч
+Seal with a ball	Тюлень с мячом
+Ring sparkles	Блёстки арены
+Laboratory	Лаборатория
+Long lab coat	Длинный халат
+Trousers and slippers	Брюки и тапочки
+Stained lab coat	Халат в пятнах
+Electric hair	Наэлектризованные волосы
+Genius gaze	Взгляд гения
+Sparks	Искры
+Tesla coil	Катушка Теслы
+Bubbling flask	Бурлящая колба
+Brain in a jar	Мозг в банке
+Chemical bubbles	Химические пузыри
+Endless tea party	Бесконечное чаепитие
+Checked coat	Клетчатый сюртук
+Checkerboard trousers	Брюки в шахматную клетку
+Bow-tie waistcoat	Жилет с бабочкой
+Towering hat	Огромная шляпа
+Sparkling gaze	Искристый взгляд
+Buttonhole flower	Цветок в петлице
+Umbrella	Зонт
+Teapot	Чайник
+Clockwork bird	Заводная птица
+Tea steam	Пар от чая
+Rainy alley	Переулок под дождём
+Rain cape	Дождевой плащ
+Baggy trousers	Шаровары
+Ruffled blouse	Блуза с жабо
+Teardrop face	Лицо со слезой
+Wet gaze	Влажный взгляд
+Wilted flower	Увядший цветок
+Thornless rose	Роза без шипов
+Deflated balloon	Сдувшийся шарик
+Grey pigeon	Серый голубь
+Light rain	Моросящий дождь
+The Fool	Шут
+Carnival	Карнавал
+Circus	Цирк
+Mad scientist	Безумный учёный
+Hatter	Шляпник
+Sad clown	Грустный клоун

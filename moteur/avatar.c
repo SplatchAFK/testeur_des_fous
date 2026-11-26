@@ -252,6 +252,7 @@ static int	composer_av(const t_look *lk)
 		SL_ARME, SL_MAIN, SL_FAMILIER};
 	unsigned long		cle;
 	const t_pic			*p;
+	t_pic				*tp;
 	unsigned char		*fig;
 	unsigned char		*fd;
 	char				nom[64];
@@ -289,7 +290,9 @@ static int	composer_av(const t_look *lk)
 	if (it >= 0 && strcmp(g_items[it].id, "fond_aucun"))
 	{
 		snprintf(nom, sizeof(nom), "av_%s", g_items[it].id);
-		empiler(fd, art_pic(nom), w, h);
+		tp = art_pic_temp(nom);
+		empiler(fd, tp, w, h);
+		art_pic_liberer(tp);
 	}
 	for (k = 0; k < (int)(sizeof(ordre) / sizeof(ordre[0])); k++)
 	{
@@ -297,7 +300,9 @@ static int	composer_av(const t_look *lk)
 		if (it < 0 || strstr(g_items[it].id, "_aucun"))
 			continue ;
 		snprintf(nom, sizeof(nom), "av_%s", g_items[it].id);
-		empiler(fig, art_pic(nom), w, h);
+		tp = art_pic_temp(nom);
+		empiler(fig, tp, w, h);
+		art_pic_liberer(tp);
 	}
 	g_av.w = w;
 	g_av.h = h;

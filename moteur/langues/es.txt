@@ -2158,3 +2158,75 @@ Cyberpunk	Cyberpunk
 Lunar gaze	Mirada lunar
 Neon gaze	Mirada de neón
 Augmented gaze	Mirada aumentada
+The Fool's stage	Escenario del Bufón
+Diamond cape	Capa de rombos
+Two-tone hose	Calzas bicolores
+Bell doublet	Jubón de cascabeles
+Fool's cap	Gorro del Bufón
+Fool's gaze	Mirada del Bufón
+Golden bell	Cascabel de oro
+Fool's bauble	Marotte
+Comedy mask	Máscara de comedia
+Jack-in-the-box	Caja sorpresa
+Fool's laughter	Risas del Bufón
+Carnival night	Noche de carnaval
+Feather cape	Capa de plumas
+Striped tights	Medias a rayas
+Sequin bodice	Corpiño de lentejuelas
+Venetian mask	Máscara veneciana
+Golden gaze	Mirada dorada
+Plume crest	Penacho
+Ribbon stick	Bastón de cintas
+Maracas	Maracas
+Parrot	Loro
+Confetti	Confeti
+Big top	Carpa de circo
+Red tailcoat	Frac rojo
+Tamer's breeches	Calzón de domador
+Frogged jacket	Chaqueta con alamares
+Top hat	Sombrero de copa
+Tamer's gaze	Mirada de domador
+Ring plume	Pluma de pista
+Whip	Látigo
+Hoop	Aro
+Seal with a ball	Foca con pelota
+Ring sparkles	Destellos de pista
+Laboratory	Laboratorio
+Long lab coat	Bata larga
+Trousers and slippers	Pantalón y zapatillas
+Stained lab coat	Bata manchada
+Electric hair	Pelo eléctrico
+Genius gaze	Mirada de genio
+Sparks	Chispas
+Tesla coil	Bobina de Tesla
+Bubbling flask	Matraz burbujeante
+Brain in a jar	Cerebro en un frasco
+Chemical bubbles	Burbujas químicas
+Endless tea party	Merienda sin fin
+Checked coat	Levita a cuadros
+Checkerboard trousers	Pantalón de damero
+Bow-tie waistcoat	Chaleco con pajarita
+Towering hat	Sombrero desmesurado
+Sparkling gaze	Mirada chispeante
+Buttonhole flower	Flor del ojal
+Umbrella	Paraguas
+Teapot	Tetera
+Clockwork bird	Pájaro mecánico
+Tea steam	Vapor de té
+Rainy alley	Callejón bajo la lluvia
+Rain cape	Capa de lluvia
+Baggy trousers	Pantalón bombacho
+Ruffled blouse	Blusa con gorguera
+Teardrop face	Rostro de la lágrima
+Wet gaze	Mirada mojada
+Wilted flower	Flor marchita
+Thornless rose	Rosa sin espinas
+Deflated balloon	Globo desinflado
+Grey pigeon	Paloma gris
+Light rain	Llovizna
+The Fool	El Bufón
+Carnival	Carnaval
+Circus	Circo
+Mad scientist	Científico loco
+Hatter	Sombrerero
+Sad clown	Payaso triste

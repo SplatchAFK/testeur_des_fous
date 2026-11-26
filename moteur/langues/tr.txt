@@ -2158,3 +2158,75 @@ Cyberpunk	Siberpunk
 Lunar gaze	Ay bakışı
 Neon gaze	Neon bakış
 Augmented gaze	Güçlendirilmiş bakış
+The Fool's stage	Soytarının sahnesi
+Diamond cape	Baklava desenli pelerin
+Two-tone hose	İki renkli tayt
+Bell doublet	Çıngıraklı yelek
+Fool's cap	Soytarı külahı
+Fool's gaze	Soytarının bakışı
+Golden bell	Altın çıngırak
+Fool's bauble	Soytarı asası
+Comedy mask	Komedi maskesi
+Jack-in-the-box	Kutudan çıkan palyaço
+Fool's laughter	Soytarının kahkahası
+Carnival night	Karnaval gecesi
+Feather cape	Tüylü pelerin
+Striped tights	Çizgili tayt
+Sequin bodice	Pullu korsaj
+Venetian mask	Venedik maskesi
+Golden gaze	Altın bakış
+Plume crest	Tüy sorguç
+Ribbon stick	Kurdeleli çubuk
+Maracas	Marakas
+Parrot	Papağan
+Confetti	Konfeti
+Big top	Sirk çadırı
+Red tailcoat	Kırmızı frak
+Tamer's breeches	Terbiyeci pantolonu
+Frogged jacket	Kordonlu ceket
+Top hat	Silindir şapka
+Tamer's gaze	Terbiyecinin bakışı
+Ring plume	Pist tüyü
+Whip	Kırbaç
+Hoop	Çember
+Seal with a ball	Toplu fok
+Ring sparkles	Pist pırıltıları
+Laboratory	Laboratuvar
+Long lab coat	Uzun önlük
+Trousers and slippers	Pantolon ve terlik
+Stained lab coat	Lekeli önlük
+Electric hair	Elektrikli saç
+Genius gaze	Dâhi bakışı
+Sparks	Kıvılcımlar
+Tesla coil	Tesla bobini
+Bubbling flask	Fokurdayan şişe
+Brain in a jar	Kavanozda beyin
+Chemical bubbles	Kimyasal baloncuklar
+Endless tea party	Bitmeyen çay partisi
+Checked coat	Ekose ceket
+Checkerboard trousers	Dama desenli pantolon
+Bow-tie waistcoat	Papyonlu yelek
+Towering hat	Devasa şapka
+Sparkling gaze	Işıl ışıl bakış
+Buttonhole flower	Yaka çiçeği
+Umbrella	Şemsiye
+Teapot	Çaydanlık
+Clockwork bird	Kurmalı kuş
+Tea steam	Çay buharı
+Rainy alley	Yağmurlu sokak
+Rain cape	Yağmur pelerini
+Baggy trousers	Bol pantolon
+Ruffled blouse	Fırfırlı bluz
+Teardrop face	Gözyaşlı yüz
+Wet gaze	Islak bakış
+Wilted flower	Solgun çiçek
+Thornless rose	Dikensiz gül
+Deflated balloon	Sönük balon
+Grey pigeon	Gri güvercin
+Light rain	Çisenti
+The Fool	Soytarı
+Carnival	Karnaval
+Circus	Sirk
+Mad scientist	Çılgın bilim insanı
+Hatter	Şapkacı
+Sad clown	Hüzünlü palyaço

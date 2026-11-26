@@ -2158,3 +2158,75 @@ Cyberpunk	Cyberpunk
 Lunar gaze	Sguardo lunare
 Neon gaze	Sguardo al neon
 Augmented gaze	Sguardo aumentato
+The Fool's stage	Palco del Giullare
+Diamond cape	Mantello a rombi
+Two-tone hose	Calzamaglia bicolore
+Bell doublet	Farsetto a sonagli
+Fool's cap	Berretto del Giullare
+Fool's gaze	Sguardo del Giullare
+Golden bell	Sonaglio d'oro
+Fool's bauble	Marotta
+Comedy mask	Maschera comica
+Jack-in-the-box	Scatola a sorpresa
+Fool's laughter	Risate del Giullare
+Carnival night	Notte di carnevale
+Feather cape	Mantello di piume
+Striped tights	Calzamaglia a righe
+Sequin bodice	Corpetto di paillettes
+Venetian mask	Maschera veneziana
+Golden gaze	Sguardo dorato
+Plume crest	Pennacchio
+Ribbon stick	Bastone a nastri
+Maracas	Maracas
+Parrot	Pappagallo
+Confetti	Coriandoli
+Big top	Tendone del circo
+Red tailcoat	Frac rosso
+Tamer's breeches	Calzoni da domatore
+Frogged jacket	Giacca con alamari
+Top hat	Cilindro
+Tamer's gaze	Sguardo da domatore
+Ring plume	Piuma da pista
+Whip	Frusta
+Hoop	Cerchio
+Seal with a ball	Foca con la palla
+Ring sparkles	Scintille della pista
+Laboratory	Laboratorio
+Long lab coat	Camice lungo
+Trousers and slippers	Pantaloni e pantofole
+Stained lab coat	Camice macchiato
+Electric hair	Capelli elettrici
+Genius gaze	Sguardo geniale
+Sparks	Scintille
+Tesla coil	Bobina di Tesla
+Bubbling flask	Ampolla gorgogliante
+Brain in a jar	Cervello in barattolo
+Chemical bubbles	Bolle chimiche
+Endless tea party	Merenda infinita
+Checked coat	Giacca a quadri
+Checkerboard trousers	Pantaloni a scacchiera
+Bow-tie waistcoat	Gilet con farfallino
+Towering hat	Cappello smisurato
+Sparkling gaze	Sguardo frizzante
+Buttonhole flower	Fiore all'occhiello
+Umbrella	Ombrello
+Teapot	Teiera
+Clockwork bird	Uccello meccanico
+Tea steam	Vapore di tè
+Rainy alley	Vicolo sotto la pioggia
+Rain cape	Mantella da pioggia
+Baggy trousers	Pantaloni larghi
+Ruffled blouse	Blusa con gorgiera
+Teardrop face	Volto della lacrima
+Wet gaze	Sguardo umido
+Wilted flower	Fiore appassito
+Thornless rose	Rosa senza spine
+Deflated balloon	Palloncino sgonfio
+Grey pigeon	Piccione grigio
+Light rain	Pioggerella
+The Fool	Il Giullare
+Carnival	Carnevale
+Circus	Circo
+Mad scientist	Scienziato pazzo
+Hatter	Cappellaio
+Sad clown	Clown triste
