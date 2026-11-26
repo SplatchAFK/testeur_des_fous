@@ -18,6 +18,7 @@ Le numéro de version est dans `moteur/version.h`.
 - Correction : le chevalier ne disparaît plus de l'aperçu après avoir parcouru beaucoup d'objets (les images étaient limitées à 96 en mémoire).
 - La recherche ignore les accents : « neon » trouve « Néon ».
 - Les auras des collections scintillent aux couleurs de leur thème.
+- Chaque objet a son histoire, affichée sous la liste dans la boutique et la garde-robe : toutes se passent pendant le Long Silence, avant l'arrivée de ton chevalier.
 - Images de la garde-robe allégées (palette réduite, aucune différence à l'écran) : 2,3 Mo deviennent 0,5 Mo.
 
 ### Animations

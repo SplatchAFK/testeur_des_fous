@@ -537,6 +537,7 @@ extern const t_spr		g_boss_spr[3];
 extern const t_idef		g_items[];
 extern const int		g_nitems;
 extern const t_coll		g_collections[];
+const char			*item_histoire(int i);
 extern const int		g_ncollections;
 extern const t_exo		g_exos[NEXO];
 extern const t_boss		g_bosses[3];

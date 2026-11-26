@@ -1348,7 +1348,7 @@ void	screen_shop(int wardrobe)
 			s.sel = n ? n - 1 : (srch ? -1 : 0);
 		if (s.sel < -1 || (s.sel == -1 && !srch))
 			s.sel = 0;
-		rows = term_rows() - (srch ? 12 : 9);
+		rows = term_rows() - (srch ? 16 : 9);
 		if (rows > 14)
 			rows = 14;
 		if (rows < 3)
@@ -1473,6 +1473,8 @@ void	screen_shop(int wardrobe)
 			snprintf(tn, sizeof(tn), "%s · %s", L(g_slot_fr[g_items[id].slot], g_slot_en[g_items[id].slot]),
 				coll_nom(g_items[id].collection));
 			text_clip(x + 1, i, theme()->dim, tn, 46);
+			if (item_histoire(id))
+				i = text_wrap(x + 1, i + 1, i + 5, 46, mix(theme()->text, theme()->dim, 0.35), item_histoire(id));
 			i += 2;
 		}
 		k = x;
