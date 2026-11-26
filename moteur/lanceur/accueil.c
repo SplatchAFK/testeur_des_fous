@@ -333,7 +333,7 @@ static int	boucle(t_acc *a)
 		}
 		if (k == -1)
 			continue ;
-		if (k == -2 || k == 'q' || k == 'Q' || k == 27 || k == 1003)
+		if (k == -2 || k == 27 || k == 1003)
 			return (255);
 		if (k == '\r' || k == '\n' || k == ' ' || k == 1002)
 			return (a->sel);
@@ -360,7 +360,7 @@ int	main(int ac, char **av)
 	memset(&a, 0, sizeof(a));
 	a.l1 = "TESTEUR";
 	a.l2 = "DES FOUS";
-	a.aide = "\xe2\x86\x91 \xe2\x86\x93 choisir   Entr\xc3\xa9" "e valider   \xc3\x89" "chap ou q : retour";
+	a.aide = "\xe2\x86\x91 \xe2\x86\x93 choisir   Entr\xc3\xa9" "e valider   \xc3\x89" "chap : retour";
 	for (i = 1; i < ac; i++)
 	{
 		if (!strcmp(av[i], "--titre") && i + 2 < ac)

@@ -2067,3 +2067,18 @@ Libft: the tests run again each time you save your files, keep the results scree
 !Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	!Befehl tdf neu installieren|Er zeigt auf einen anderen Ordner (alter Klon gelöscht oder verschoben): er startet diesen Tester.
 Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	Befehl tdf neu installieren|Er zeigt auf einen anderen Ordner (alter Klon gelöscht oder verschoben): er startet diesen Tester.
 Le Garde Fou ne marche pas >:)	Le Garde Fou ne marche pas >:)
+The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc to go back.	Der testeur des fous testet deine Libft, dein ft_printf und dein get_next_line wie die Moulinette und trainiert dich für die Prüfung. Alles geht mit den Pfeiltasten: ↑ ↓ wählen, Enter bestätigen, Esc zurück.
+Replay the tutorial|The 7 screens that present the tester	Tutorial erneut ansehen|Die 7 Seiten, die den Tester vorstellen
+Replay the tutorial|The 7 screens that present the tester.	Tutorial erneut ansehen|Die 7 Seiten, die den Tester vorstellen.
+↑ ↓ pick   Enter confirm   Esc: back	↑ ↓ wählen   Enter bestätigen   Esc: zurück
+See the function details   (f)	Details der Funktion ansehen   (f)
+Norminette   (n)	Norminette   (n)
+Moulinette audit   (m)	Audit der Moulinette   (m)
+Run the tests again   (r)	Tests erneut starten   (r)
+Continue	Weiter
+arrows: pick   Enter: actions   Esc: continue   · auto rerun on save	Pfeile: wählen   Enter: Aktionen   Esc: weiter   · neu bei jedem Speichern
+arrows: pick   Enter: actions   Esc: continue	Pfeile: wählen   Enter: Aktionen   Esc: weiter
+See the details	Details ansehen
+Back to the menu	Zurück zum Menü
+▲ ▼ pick   Enter: actions   Esc: menu	▲ ▼ wählen   Enter: Aktionen   Esc: Menü
+the tester resumes by itself  ·  Ctrl+C: quit	der Tester macht von selbst weiter  ·  Ctrl+C: beenden

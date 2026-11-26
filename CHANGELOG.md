@@ -8,6 +8,13 @@ Le numéro de version est dans `moteur/version.h`.
 
 - Si tu supprimes le testeur et le reclones ailleurs, Paramètres propose « Réinstaller la commande tdf » : l'ancienne commande pointait vers un dossier disparu. Marche aussi dans le menu texte.
 
+### Plus simple à utiliser
+
+- Résultats Libft et ft_printf : Entrée ouvre un petit menu près de la fonction (fiche, norminette, audit, relancer les tests, continuer). Le pied de page tient maintenant sur un terminal de 80 colonnes. Les touches f, n, m et r marchent toujours.
+- Les listes (Paramètres par exemple) s'adaptent à la hauteur du terminal : en 80x24, tout est visible.
+- La touche q ne sert plus à quitter (avec le réglage ZQSD, q veut dire gauche) : Échap revient en arrière partout, Ctrl+C quitte l'écran « Agrandis ton terminal ».
+- Le tuto annonce bien 7 écrans, et le menu texte affiche les nouveautés de la bonne version.
+
 ### Le savais-tu ?
 
 - Un nouvel easter egg.

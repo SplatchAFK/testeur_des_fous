@@ -144,7 +144,7 @@ void	tdf_grand_apercu(const t_look *lk, int title)
 	cls();
 }
 
-static int	tn_choix(int x, int y, const char *titre, const char **it, int n)
+int	tdf_choix(int x, int y, const char *titre, const char **it, int n)
 {
 	int	sel;
 	int	k;
@@ -263,7 +263,7 @@ void	tdf_tenues_entree(int sel, int x, int y)
 			;
 		if (i == NTENUE)
 		{
-			r = tn_choix(x, y, L("Les 5 sont prises : laquelle remplacer ?", "All 5 are taken: which one to replace?"),
+			r = tdf_choix(x, y, L("Les 5 sont prises : laquelle remplacer ?", "All 5 are taken: which one to replace?"),
 					(const char *[]){g_tn[0].nom, g_tn[1].nom, g_tn[2].nom, g_tn[3].nom, g_tn[4].nom}, NTENUE);
 			if (r < 0)
 				return ;
@@ -284,7 +284,7 @@ void	tdf_tenues_entree(int sel, int x, int y)
 	it[1] = L("La remplacer par ce que je porte", "Replace it with what I wear");
 	it[2] = L("Renommer", "Rename");
 	it[3] = L("Supprimer", "Delete");
-	r = tn_choix(x, y, g_tn[i].nom, it, 4);
+	r = tdf_choix(x, y, g_tn[i].nom, it, 4);
 	if (r == 0)
 	{
 		g_save.look = tn_porte(&g_tn[i].lk);
@@ -306,7 +306,7 @@ void	tdf_tenues_entree(int sel, int x, int y)
 			tn_ecrire();
 		}
 	}
-	else if (r == 3 && tn_choix(x, y, L("Supprimer cette tenue ?", "Delete this outfit?"),
+	else if (r == 3 && tdf_choix(x, y, L("Supprimer cette tenue ?", "Delete this outfit?"),
 			(const char *[]){L("Non, la garder", "No, keep it"), L("Oui, supprimer", "Yes, delete")}, 2) == 1)
 	{
 		g_tn[i].ok = 0;

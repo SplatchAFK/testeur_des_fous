@@ -2067,3 +2067,18 @@ Libft: the tests run again each time you save your files, keep the results scree
 !Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	!tdf komutunu yeniden kur|Başka bir klasöre işaret ediyor (eski klon silinmiş veya taşınmış): bu test aracını başlatacak.
 Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	tdf komutunu yeniden kur|Başka bir klasöre işaret ediyor (eski klon silinmiş veya taşınmış): bu test aracını başlatacak.
 Le Garde Fou ne marche pas >:)	Le Garde Fou ne marche pas >:)
+The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc to go back.	testeur des fous, Libft'ini, ft_printf'ini ve get_next_line'ını moulinette gibi test eder ve seni sınava hazırlar. Her şey ok tuşlarıyla: ↑ ↓ seç, Enter onayla, Esc geri.
+Replay the tutorial|The 7 screens that present the tester	Eğitimi tekrar aç|Testeri tanıtan 7 ekran
+Replay the tutorial|The 7 screens that present the tester.	Eğitimi tekrar aç|Testeri tanıtan 7 ekran.
+↑ ↓ pick   Enter confirm   Esc: back	↑ ↓ seç   Enter onayla   Esc: geri
+See the function details   (f)	Fonksiyonun ayrıntılarını gör   (f)
+Norminette   (n)	Norminette   (n)
+Moulinette audit   (m)	Moulinette denetimi   (m)
+Run the tests again   (r)	Testleri yeniden çalıştır   (r)
+Continue	Devam
+arrows: pick   Enter: actions   Esc: continue   · auto rerun on save	oklar: seç   Enter: işlemler   Esc: devam   · kayıtta yeniden çalıştır
+arrows: pick   Enter: actions   Esc: continue	oklar: seç   Enter: işlemler   Esc: devam
+See the details	Ayrıntıları gör
+Back to the menu	Menüye dön
+▲ ▼ pick   Enter: actions   Esc: menu	▲ ▼ seç   Enter: işlemler   Esc: menü
+the tester resumes by itself  ·  Ctrl+C: quit	tester kendiliğinden devam ediyor  ·  Ctrl+C: çık

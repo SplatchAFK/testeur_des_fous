@@ -74,14 +74,12 @@ void	term_poll(void)
 
 int	key_quit(int k)
 {
-	if (k == 27)
-		return (1);
-	return ((k == 'q' || k == 'Q') && key_dir(k) == k);
+	return (k == 27);
 }
 
 int	key_stop(int k)
 {
-	return (k == 27 || k == 'q' || k == 'Q');
+	return (k == 27);
 }
 
 #define MINW 80
@@ -689,12 +687,12 @@ static void	size_guard(void)
 					"  %d x %d minimum  (%s %d x %d)\033[%d;1H\033[2m  %s\033[0m", y,
 					L("AGRANDIS TON TERMINAL", "MAKE YOUR TERMINAL BIGGER"), y + 1, MINW, MINH,
 					L("actuel :", "now:"), lc, lr, y + 2,
-					L("le testeur reprend tout seul  ·  Q : quitter", "the tester resumes by itself  ·  Q: quit"));
+					L("le testeur reprend tout seul  ·  Ctrl+C : quitter", "the tester resumes by itself  ·  Ctrl+C: quit"));
 			(void)!write(1, b, c);
 		}
 		term_poll();
 		c = read_byte(120);
-		if (c == 3 || c == 'q' || c == 'Q')
+		if (c == 3)
 		{
 			g_quit_requested = SIGINT;
 			term_poll();

@@ -92,7 +92,6 @@ tdf_touche() {
 		'') TOUCHE=entree ;;
 		k|K|z|Z|w|W) TOUCHE=haut ;;
 		j|J|s|S) TOUCHE=bas ;;
-		q|Q) TOUCHE=q ;;
 		*) TOUCHE=autre ;;
 	esac
 }
@@ -120,7 +119,7 @@ tdf_menu_fleches() {
 		desc="${items[$sel]#*|}"
 		[ "$desc" = "${items[$sel]}" ] && desc=""
 		printf '\n  \033[2m%s\033[0m\n' "$desc"
-		printf '\n  \033[2m%s\033[0m\n' "$(tt "↑ ↓ choisir   Entrée valider   Échap ou q : retour" "↑ ↓ pick   Enter confirm   Esc or q: back")"
+		printf '\n  \033[2m%s\033[0m\n' "$(tt "↑ ↓ choisir   Entrée valider   Échap : retour" "↑ ↓ pick   Enter confirm   Esc: back")"
 		tdf_touche
 		case "$TOUCHE" in
 			haut) sel=$(( (sel + n - 1) % n )) ;;
@@ -154,7 +153,7 @@ tdf_choisir() {
 	shift 3
 	if [ -n "${ACCUEIL:-}" ] || tdf_accueil_bin; then
 		"$ACCUEIL" --titre "$l1" "$l2" --sous "$sous" \
-			--aide "$(tt "↑ ↓ choisir   Entrée valider   Échap ou q : retour" "↑ ↓ pick   Enter confirm   Esc or q: back")" "$@"
+			--aide "$(tt "↑ ↓ choisir   Entrée valider   Échap : retour" "↑ ↓ pick   Enter confirm   Esc: back")" "$@"
 		rc=$?
 		if [ "$rc" != 254 ]; then
 			if [ "$rc" = 255 ]; then CHOIX_MENU=-1; else CHOIX_MENU=$rc; fi
@@ -169,7 +168,7 @@ tdf_page() {
 	shift 2
 	if [ -n "${ACCUEIL:-}" ] || tdf_accueil_bin; then
 		"$ACCUEIL" --titre "TESTEUR" "DES FOUS" --sous "$sous" --texte "$texte" \
-			--aide "$(tt "↑ ↓ choisir   Entrée valider   Échap ou q : retour" "↑ ↓ pick   Enter confirm   Esc or q: back")" "$@"
+			--aide "$(tt "↑ ↓ choisir   Entrée valider   Échap : retour" "↑ ↓ pick   Enter confirm   Esc: back")" "$@"
 		rc=$?
 		if [ "$rc" != 254 ]; then
 			if [ "$rc" = 255 ]; then CHOIX_MENU=-1; else CHOIX_MENU=$rc; fi

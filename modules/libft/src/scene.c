@@ -547,7 +547,7 @@ int	scene_child(int boss, int replay)
 	g_maxhp = g_bosses[boss].last - g_bosses[boss].first + 1;
 	g_hp = g_maxhp;
 	FT(putstr_fd, "\033[0m\033[2J", 1);
-	FT(strlcpy, g_log, L(" Entrée : passer   Q / Échap : quitter les combats",
+	FT(strlcpy, g_log, L(" Entrée : passer   Échap : quitter les combats",
 			" Enter: skip   Q / Esc: leave the fights"), sizeof(g_log));
 	say(texte_trad(g_bosses[boss].intro), 0);
 	k = frame_wait(now_ms() + anim_ms(2600));

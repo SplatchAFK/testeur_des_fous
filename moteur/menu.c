@@ -60,19 +60,35 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 	int		i;
 	int		x;
 	int		y;
+	int		esp;
+	int		vis;
+	int		haut;
 
+	haut = 0;
 	cls();
 	while (1)
 	{
 		x = (term_cols() - 60) / 2;
 		if (x < 0)
 			x = 0;
+		esp = 5 + n * 2 + 7 <= term_rows() ? 2 : 1;
+		vis = (term_rows() - 12) / esp;
+		if (vis < 1)
+			vis = 1;
+		if (vis > n)
+			vis = n;
+		if (*sel < haut)
+			haut = *sel;
+		if (*sel >= haut + vis)
+			haut = *sel - vis + 1;
 		bgc(theme()->bg);
 		frame();
 		center(2, theme()->accent2, title);
-		for (i = 0; i < n; i++)
+		if (haut > 0)
+			text_at(x + 1, 4, theme()->dim, "▲");
+		for (i = haut; i < haut + vis; i++)
 		{
-			at(x, 5 + i * 2);
+			at(x, 5 + (i - haut) * esp);
 			if (i == *sel)
 			{
 				bgc(mix(theme()->bg, theme()->accent, 0.22));
@@ -86,11 +102,14 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 			bgc(theme()->bg);
 			if (items[i][0] == '!')
 			{
-				at(x + ulen(lab) + 5, 5 + i * 2);
+				at(x + ulen(lab) + 5, 5 + (i - haut) * esp);
 				tdf_badge_new();
 			}
 		}
-		y = 6 + n * 2;
+		y = 5 + vis * esp + (esp == 2 ? 1 : 0);
+		if (haut + vis < n)
+			text_at(x + 1, y - (esp == 2 ? 1 : 0), theme()->dim, "▼");
+		y++;
 		if (desc_of(items[*sel]))
 		{
 			fill(x, y, 60, 2, theme()->bg);
@@ -110,6 +129,8 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 			*sel = (*sel + tdf_touche_fleche(k)) % n;
 		else if (k == '\r' || k == '\n' || k == ' ')
 			return (cls(), *sel);
+		if (k == 1000 || k == 1001)
+			cls();
 	}
 }
 
@@ -532,8 +553,8 @@ void	tdf_tuto(void)
 	titres[4] = L("Chevalier, Lore et Stats", "Knight, Lore and Stats");
 	titres[5] = L("Mode correction", "Grading mode");
 	titres[6] = L("Paramètres", "Settings");
-	textes[0] = L("Le testeur des fous teste ta Libft, ton ft_printf et ton get_next_line comme la moulinette, et t'entraîne à l'exam. Tout se fait aux flèches : ↑ ↓ pour choisir, Entrée pour valider, Échap ou q pour revenir.",
-			"The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc or q to go back.");
+	textes[0] = L("Le testeur des fous teste ta Libft, ton ft_printf et ton get_next_line comme la moulinette, et t'entraîne à l'exam. Tout se fait aux flèches : ↑ ↓ pour choisir, Entrée pour valider, Échap pour revenir.",
+			"The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc to go back.");
 	textes[1] = L("Le menu liste les projets trouvés dans ce dossier ou à côté du testeur. Choisis-en un : tests des fonctions, fuites mémoire, Norme, fichiers parasites et audit de la moulinette. Pour un projet rangé ailleurs, « Tester un autre dossier » te laisse parcourir ton PC avec Tab, comme dans zsh.",
 			"The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. For a project stored elsewhere, 'Test another folder' lets you browse your PC with Tab, like in zsh.");
 	textes[2] = L("Examen blanc de 3 h, série d'exercices ou entraînement libre. Tu écris ton code dans un autre terminal, puis tu tapes grademe dans l'examshell. Une commande mal tapée ? Le testeur te propose la bonne.",
@@ -1931,7 +1952,7 @@ void	tdf_menu_params(void (*credits)(void))
 					: L("Installer la norminette|Introuvable sur ce poste : le testeur l'installe pour toi, sans sudo.", "Install the norminette|Not found on this computer: the tester installs it for you, without sudo.");
 			}
 			act[n] = 6;
-			items[n++] = L("Revoir le tuto|Les 6 écrans qui présentent le testeur.", "Replay the tutorial|The 6 screens that present the tester.");
+			items[n++] = L("Revoir le tuto|Les 7 écrans qui présentent le testeur.", "Replay the tutorial|The 7 screens that present the tester.");
 			act[n] = 7;
 			items[n++] = L("Changelog|Ce qui a changé dans cette version, et le Discord pour en savoir plus.", "Changelog|What changed in this version, and the Discord to learn more.");
 		}

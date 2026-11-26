@@ -2067,3 +2067,18 @@ Libft: the tests run again each time you save your files, keep the results scree
 !Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	!Reinstalla il comando tdf|Punta a un'altra cartella (vecchio clone eliminato o spostato): avvierà questo tester.
 Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	Reinstalla il comando tdf|Punta a un'altra cartella (vecchio clone eliminato o spostato): avvierà questo tester.
 Le Garde Fou ne marche pas >:)	Le Garde Fou ne marche pas >:)
+The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc to go back.	Il testeur des fous testa la tua Libft, il tuo ft_printf e il tuo get_next_line come la moulinette, e ti allena per l'esame. Tutto si fa con le frecce: ↑ ↓ per scegliere, Invio per confermare, Esc per tornare indietro.
+Replay the tutorial|The 7 screens that present the tester	Rivedi il tutorial|Le 7 schermate che presentano il tester
+Replay the tutorial|The 7 screens that present the tester.	Rivedi il tutorial|Le 7 schermate che presentano il tester.
+↑ ↓ pick   Enter confirm   Esc: back	↑ ↓ scegli   Invio conferma   Esc: indietro
+See the function details   (f)	Vedi la scheda della funzione   (f)
+Norminette   (n)	Norminette   (n)
+Moulinette audit   (m)	Audit della moulinette   (m)
+Run the tests again   (r)	Rilancia i test   (r)
+Continue	Continua
+arrows: pick   Enter: actions   Esc: continue   · auto rerun on save	frecce: scegli   Invio: azioni   Esc: continua   · rilancio a ogni salvataggio
+arrows: pick   Enter: actions   Esc: continue	frecce: scegli   Invio: azioni   Esc: continua
+See the details	Vedi il dettaglio
+Back to the menu	Torna al menu
+▲ ▼ pick   Enter: actions   Esc: menu	▲ ▼ scegli   Invio: azioni   Esc: menu
+the tester resumes by itself  ·  Ctrl+C: quit	il tester riprende da solo  ·  Ctrl+C: esci

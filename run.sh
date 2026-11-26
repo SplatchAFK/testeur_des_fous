@@ -193,7 +193,7 @@ tuto() {
 		"$(tt "Paramètres" "Settings")"
 	)
 	textes=(
-		"$(tt "Le testeur des fous teste ta Libft, ton ft_printf et ton get_next_line comme la moulinette, et t'entraîne à l'exam. Tout se fait aux flèches : ↑ ↓ pour choisir, Entrée pour valider, Échap ou q pour revenir." "The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc or q to go back.")"
+		"$(tt "Le testeur des fous teste ta Libft, ton ft_printf et ton get_next_line comme la moulinette, et t'entraîne à l'exam. Tout se fait aux flèches : ↑ ↓ pour choisir, Entrée pour valider, Échap pour revenir." "The testeur des fous tests your Libft, ft_printf and get_next_line like the moulinette, and trains you for the exam. Everything works with the arrows: ↑ ↓ to pick, Enter to confirm, Esc to go back.")"
 		"$(tt "Le menu liste les projets trouvés dans ce dossier ou à côté du testeur. Choisis-en un : tests des fonctions, fuites mémoire, Norme, fichiers parasites et audit de la moulinette. À la fin du rapport, Entrée te ramène au menu." "The menu lists the projects found in this folder or next to the tester. Pick one: function tests, memory leaks, the Norm, garbage files and the moulinette audit. At the end of the report, Enter brings you back to the menu.")"
 		"$(tt "Examen blanc de 3 h, série d'exercices ou entraînement libre. Tu écris ton code dans un autre terminal, puis tu tapes grademe dans l'examshell. Une commande mal tapée ? Le testeur te propose la bonne." "3-hour mock exam, exercise series or free training. You write your code in another terminal, then type grademe in the examshell. Mistyped a command? The tester suggests the right one.")"
 		"$(tt "Tous les exercices du testeur, dans l'ordre que tu veux. ◀ ▶ change d'onglet (Exam, Libft, printf), Entrée ouvre le sujet, puis « Corriger mon code ». Chaque sujet existe en 8 langues." "Every exercise of the tester, in any order. ◀ ▶ switches tabs (Exam, Libft, printf), Enter opens the subject, then 'Grade my code'. Every subject exists in 8 languages.")"
@@ -225,11 +225,9 @@ tuto() {
 
 nouveautes() {
 	local t
-	t="$(tt "• Un seul menu : bash run.sh ou tdf ouvre directement le menu, et tout s'y passe." "• One single menu: bash run.sh or tdf opens the menu directly, and everything happens there.")"
-	t+=$'\n'"$(tt "• Banque d'exercices aux flèches : onglets, sujet, correction en un clic." "• Exercise bank with the arrows: tabs, subject, grading in one click.")"
-	t+=$'\n'"$(tt "• Sujets de l'exam et de la banque en 8 langues." "• Exam and bank subjects in 8 languages.")"
-	t+=$'\n'"$(tt "• Une commande mal tapée dans l'examshell ? Le testeur propose la bonne." "• Mistyped a command in the examshell? The tester suggests the right one.")"
-	t+=$'\n'"$(tt "• Un tuto, à revoir depuis Paramètres." "• A tutorial, to replay from Settings.")"
+	t="$(tt "• Prototypes comparés au sujet et aux vraies traces de la moulinette, dans le .h et dans chaque .c (restrict interdit, noms des paramètres)." "• Prototypes compared with the subject and real moulinette traces, in the .h and in every .c (restrict forbidden, parameter names).")"
+	t+=$'\n'"$(tt "• Includes vérifiés : include introuvable, .c inclus, fonction sans déclaration, .h qui ne compile pas seul, garde d'inclusion, include inutile." "• Includes checked: missing include, included .c, undeclared function, .h that does not compile alone, include guard, useless include.")"
+	t+=$'\n'"$(tt "• Libft, ft_printf et get_next_line." "• Libft, ft_printf and get_next_line.")"
 	tdf_page "$(printf "$(tt "Nouveautés de la version %s" "What's new in version %s")" "$TDF_VERSION")" "$t" \
 		"$(tt "Continuer|" "Continue|")" "$(tt "Voir le tuto|" "See the tutorial|")"
 	[ "$CHOIX_MENU" = 1 ] && tuto
@@ -603,7 +601,7 @@ menu_params() {
 			acts+=("installer")
 			;;
 	esac
-	items+=("$(tt "Revoir le tuto|Les 6 écrans qui présentent le testeur" "Replay the tutorial|The 6 screens that present the tester")")
+	items+=("$(tt "Revoir le tuto|Les 7 écrans qui présentent le testeur" "Replay the tutorial|The 7 screens that present the tester")")
 	acts+=("tuto")
 	items+=("$(printf "$(tt "Nouveautés de la version %s|" "What's new in version %s|")" "$TDF_VERSION")")
 	acts+=("nouveautes")

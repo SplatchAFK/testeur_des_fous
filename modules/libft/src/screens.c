@@ -600,7 +600,7 @@ void	screen_scan(const char *path, int pid)
 		outf(L(" %2d/%d testées   %lds   %s         ", " %2d/%d tested   %lds   %s         "),
 			done, NFN, (now - t0) / 1000,
 			g_run.protos_done ? L("prototypes vérifiés", "prototypes checked") : L("prototypes...", "prototypes..."));
-		center(term_rows() - 1, theme()->dim, L("[ Q / Échap / Ctrl+C : arrêter l'analyse ]",
+		center(term_rows() - 1, theme()->dim, L("[ Échap / Ctrl+C : arrêter l'analyse ]",
 				"[ Q / Esc / Ctrl+C: stop the scan ]"));
 		flush();
 		k = key_read(33);
@@ -1259,6 +1259,23 @@ static long	auto_date(const char *d)
 	return (m);
 }
 
+static int	actions_resultats(int x, int y, int sel)
+{
+	static const int	code[5] = {'f', 'n', 'm', 'r', 'c'};
+	const char			*it[5];
+	char				titre[80];
+	int					r;
+
+	snprintf(titre, sizeof(titre), "ft_%s", g_fn_name[sel]);
+	it[0] = L("Voir la fiche de la fonction   (f)", "See the function details   (f)");
+	it[1] = L("Norminette   (n)", "Norminette   (n)");
+	it[2] = L("Audit de la moulinette   (m)", "Moulinette audit   (m)");
+	it[3] = L("Relancer les tests   (r)", "Run the tests again   (r)");
+	it[4] = L("Continuer", "Continue");
+	r = tdf_choix(x + 4, y + 6, titre, it, 5);
+	return (r < 0 ? -1 : code[r]);
+}
+
 int	screen_results(int after)
 {
 	const char	*auto_dir;
@@ -1334,17 +1351,26 @@ int	screen_results(int after)
 			center(term_rows() - 2, rgb(255, 110, 110), tmp);
 		}
 		if (auto_dir && auto_ref)
-			foot_line(x, L("flèches : choisir   f : fiche   n : norminette   m : audit   relance auto à chaque sauvegarde   Entrée : continuer",
-					"arrows: pick   f: details   n: norminette   m: audit   auto rerun on save   Enter: continue"));
+			foot_line(x, L("flèches : choisir   Entrée : actions   Échap : continuer   · relance auto à chaque sauvegarde",
+					"arrows: pick   Enter: actions   Esc: continue   · auto rerun on save"));
 		else
-			foot_line(x, L("flèches : choisir   f : fiche   n : norminette   m : audit   r : corrigé ? relancer   Entrée : continuer",
-					"arrows: pick   f: details   n: norminette   m: audit   r: fixed? run again   Enter: continue"));
+			foot_line(x, L("flèches : choisir   Entrée : actions   Échap : continuer",
+					"arrows: pick   Enter: actions   Esc: continue"));
 		flush();
 		k = key_read(60);
 		if (k >= 0 && now_ms() - ouvert < 500)
 			continue ;
-		if (k == '\r' || k == '\n' || k == ' ' || key_quit(k))
+		if (key_quit(k))
 			break ;
+		if (k == '\r' || k == '\n' || k == ' ')
+		{
+			k = actions_resultats(x, y, sel);
+			cls();
+			if (k == 'c')
+				break ;
+			if (k < 0)
+				continue ;
+		}
 		if (k == 'r' || k == 'R')
 		{
 			cls();
@@ -1363,7 +1389,7 @@ int	screen_results(int after)
 			tdf_norme_voir(norme_libft(), "Libft");
 			continue ;
 		}
-		if (k == 'm' || (k == 'a' && g_save.cfg.keys != 1))
+		if (k == 'm' || k == 'M')
 		{
 			audit_view();
 			continue ;

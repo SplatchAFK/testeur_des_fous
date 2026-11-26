@@ -228,7 +228,7 @@ static void	scan_draw(long t, int dead)
 	if (!tdf_menu_unique())
 		fonderie_maj(x + 78, 4, term_rows() - 9 > 22 ? 22 : term_rows() - 9);
 	if (!g_pr.done && !dead)
-		foot_line(x, L("[ Q / Échap / Ctrl+C : arrêter l'analyse ]",
+		foot_line(x, L("[ Échap / Ctrl+C : arrêter l'analyse ]",
 				"[ Q / Esc / Ctrl+C: stop the scan ]"));
 }
 
@@ -392,6 +392,22 @@ static void	detail_view(int sel)
 	cls();
 }
 
+static int	pf_actions(int x, int n)
+{
+	static const int	code[4] = {'v', 'n', 'r', 'x'};
+	const char			*it[4];
+	int					r;
+
+	it[0] = L("Voir le détail", "See the details");
+	it[1] = L("Norminette   (n)", "Norminette   (n)");
+	it[2] = L("Relancer les tests   (r)", "Run the tests again   (r)");
+	it[3] = L("Retour au menu", "Back to the menu");
+	r = n ? tdf_choix(x + 4, 6, "ft_printf", it, 4) : tdf_choix(x + 4, 6, "ft_printf", it + 1, 3);
+	if (r < 0)
+		return (-1);
+	return (n ? code[r] : code[r + 1]);
+}
+
 int	pf_results(int after)
 {
 	static int	sel;
@@ -462,8 +478,7 @@ int	pf_results(int after)
 		}
 		if (!n)
 			center(5, theme()->dim, L("Aucun résultat : lance « Relancer les tests » (touche r).", "No results: run \"Run the tests again\" (key r)."));
-		foot_line(x, L("Entrée : détail   n : norminette   r : corrigé ? relancer les tests   Échap : menu",
-				"Enter: details   n: norminette   r: fixed? run the tests again   Esc: menu"));
+		foot_line(x, L("▲ ▼ choisir   Entrée : actions   Échap : menu", "▲ ▼ pick   Enter: actions   Esc: menu"));
 		flush();
 		snprintf(np, sizeof(np), "%s/derniere/norme_printf.txt", g_savedir);
 		nb = tdf_norme_compte(np, &nf);
@@ -477,6 +492,18 @@ int	pf_results(int after)
 		k = key_read(80);
 		if (k >= 0 && now_ms() - ouvert < 500)
 			continue ;
+		if (k == '\r' || k == '\n' || k == ' ')
+		{
+			k = pf_actions(x, n);
+			cls();
+			if (k == 'v')
+			{
+				detail_view(sel);
+				continue ;
+			}
+			if (k == 'x')
+				break ;
+		}
 		if (k == 'n' || k == 'N')
 		{
 			tdf_norme_voir(np, "ft_printf");
@@ -495,8 +522,6 @@ int	pf_results(int after)
 			sel--;
 		else if (k == 1001 && sel < n - 1)
 			sel++;
-		else if ((k == '\r' || k == '\n' || k == ' ') && n)
-			detail_view(sel);
 	}
 	cls();
 	return (0);
