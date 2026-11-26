@@ -2628,3 +2628,4 @@ Next page|	Página seguinte|
 Close|	Fechar|
 !What's new|The update pages: what changes, where to find it, and the Discord.	!Novidades|As páginas da atualização: o que muda, onde encontrar e o Discord.
 What's new|The update pages: what changes, where to find it, and the Discord.	Novidades|As páginas da atualização: o que muda, onde encontrar e o Discord.
+In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'.	No menu, no guarda-roupa e na loja, o teu cavaleiro respira, a capa ondula, os olhos piscam e o familiar flutua.\n\nÉ leve: no máximo 5 imagens por segundo, e só são redesenhadas as casas que mudam.\n\nPara desligar as animações: Definições › Opções › Animações › «nenhuma».

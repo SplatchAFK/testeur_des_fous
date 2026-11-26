@@ -758,9 +758,7 @@ static int	mu_ecran(t_mu *m, int *sel)
 			x = (cols - (tw + 4 + g_fou_petit_w)) / 2;
 			titre_bloc(x, 3, "TESTEUR", 0);
 			titre_bloc(x, 9, "DES FOUS", 0);
-			k = g_save.cfg.anim == 2 ? 0 : (int)((now_ms() / 1300) % 2);
-			fill(x + tw + 4 + (k ? 0 : g_fou_bloc_w), 1, 1, g_fou_bloc_h, theme()->bg);
-			fou_petit(x + tw + 4 + k, 1);
+			fou_petit(x + tw + 4, 1);
 			haut = 16;
 		}
 		else if (rows >= 13 + m->n)

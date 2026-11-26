@@ -41,7 +41,7 @@ Le numéro de version est dans `moteur/version.h`.
 
 ### Animations
 
-- Ton chevalier est animé, dans le menu, la garde-robe et la boutique : sa tête respire, sa cape ondule, ses yeux clignent, sa plume bouge, sa lanterne scintille, un reflet glisse sur son arme et son familier flotte. Le fou du menu se balance.
+- Ton chevalier est animé, dans le menu, la garde-robe et la boutique : sa tête respire, sa cape ondule, ses yeux clignent, sa plume bouge, sa lanterne scintille, un reflet glisse sur son arme et son familier flotte.
 - Léger : 5 images par seconde au plus, et seules les cases qui changent sont redessinées. Réglages › Animations « aucune » les coupe.
 
 ### Commande tdf
