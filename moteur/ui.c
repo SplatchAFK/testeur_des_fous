@@ -942,21 +942,49 @@ static int	tab_slot(int tab)
 	return (tab < NSLOT ? order[tab] : -1);
 }
 
-static int	contient(const char *h, const char *q)
+static char	plier_c3(unsigned char c)
+{
+	static const char	t[] = "aaaaaaaceeeeiiiidnooooo/ouuuuyty";
+
+	if (c >= 0x80 && c <= 0x9F)
+		return (t[c - 0x80]);
+	if (c >= 0xA0 && c <= 0xBF)
+		return (t[c - 0xA0]);
+	return (0);
+}
+
+static void	plier(const char *src, char *dst, size_t n)
 {
 	size_t	i;
 	size_t	j;
+	char	c;
+
+	for (i = 0, j = 0; src[i] && j + 1 < n; i++)
+	{
+		c = 0;
+		if ((unsigned char)src[i] == 0xC3 && src[i + 1])
+			c = plier_c3((unsigned char)src[i + 1]);
+		if (c)
+		{
+			dst[j++] = c;
+			i++;
+		}
+		else
+			dst[j++] = (char)tolower((unsigned char)src[i]);
+	}
+	dst[j] = '\0';
+}
+
+static int	contient(const char *h, const char *q)
+{
+	char	ph[256];
+	char	pq[64];
 
 	if (!q[0])
 		return (1);
-	for (i = 0; h[i]; i++)
-	{
-		for (j = 0; q[j] && h[i + j] && tolower((unsigned char)h[i + j]) == tolower((unsigned char)q[j]); j++)
-			;
-		if (!q[j])
-			return (1);
-	}
-	return (0);
+	plier(h, ph, sizeof(ph));
+	plier(q, pq, sizeof(pq));
+	return (strstr(ph, pq) != NULL);
 }
 
 static const char	*coll_nom(int c)

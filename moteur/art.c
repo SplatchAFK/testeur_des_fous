@@ -230,17 +230,53 @@ const t_idef	g_items[] = {
 	{"main_guide", "Guide du voyageur", "Traveller's guide", 8, 2500, {180, 50, 60}, {0, 0, 0, 0, NULL}, 1, 0},
 	{"fam_sonde", "Sonde du voyageur", "Traveller's probe", 9, 2500, {200, 206, 222}, {0, 0, 0, 0, NULL}, 1, 0},
 	{"aura_etoiles", "Étoiles du voyageur", "Traveller's stars", 10, 2500, {240, 236, 255}, {0, 0, 0, 0, NULL}, 1, 0},
-	{"casque_moulinette", "Le casque moulinette", "The moulinette helmet", 4, 10000, {186, 176, 156}, {0, 0, 0, 0, NULL}, 0, 0}
+	{"casque_moulinette", "Le casque moulinette", "The moulinette helmet", 4, 10000, {186, 176, 156}, {0, 0, 0, 0, NULL}, 0, 0},
+	{"fond_astro", "Mer de la Lune", "Moon sea", 0, 400, {120, 124, 134}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"arme_astro", "Clé spatiale", "Space wrench", 7, 300, {190, 196, 210}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"main_astro", "Drapeau 42", "42 flag", 8, 200, {50, 100, 200}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"fam_astro", "Mini-satellite", "Mini satellite", 9, 350, {40, 90, 200}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"aura_astro", "Bulles d'apesanteur", "Zero-g bubbles", 10, 300, {190, 220, 255}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"yeux_astro", "Regard lunaire", "Lunar gaze", 5, 150, {120, 200, 255}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"casque_astro", "Casque de mission", "Mission helmet", 4, 300, {240, 190, 60}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"armure_astro", "Combinaison de mission", "Mission suit", 3, 300, {40, 80, 170}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"jambes_astro", "Pantalon de mission", "Mission trousers", 2, 200, {220, 224, 232}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"cape_astro", "Sac à oxygène", "Oxygen pack", 1, 250, {80, 140, 230}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"deco_astro", "Antenne de mission", "Mission antenna", 6, 150, {255, 60, 60}, {0, 0, 0, 0, NULL}, 2, 0},
+	{"fond_neon", "Grille rétro", "Retro grid", 0, 400, {255, 80, 160}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"arme_neon", "Sabre néon", "Neon sabre", 7, 300, {255, 60, 170}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"main_neon", "Radio néon", "Neon radio", 8, 200, {40, 240, 255}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"fam_neon", "Chat néon", "Neon cat", 9, 350, {40, 240, 255}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"aura_neon", "Lueurs néon", "Neon glows", 10, 300, {255, 60, 170}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"yeux_neon", "Regard néon", "Neon gaze", 5, 150, {255, 60, 170}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"casque_neon", "Lunettes néon", "Neon shades", 4, 300, {40, 240, 255}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"armure_neon", "Blouson néon", "Neon jacket", 3, 300, {40, 240, 255}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"jambes_neon", "Pantalon néon", "Neon trousers", 2, 200, {40, 240, 255}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"cape_neon", "Manteau néon", "Neon coat", 1, 250, {40, 240, 255}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"deco_neon", "Crête néon", "Neon crest", 6, 150, {255, 60, 170}, {0, 0, 0, 0, NULL}, 3, 0},
+	{"fond_cyber", "Ville sous la pluie", "City in the rain", 0, 400, {80, 255, 140}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"arme_cyber", "Katana à lame verte", "Green-edged katana", 7, 300, {80, 255, 140}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"main_cyber", "Tablette holo", "Holo tablet", 8, 200, {40, 200, 110}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"fam_cyber", "Drone espion", "Spy drone", 9, 350, {255, 40, 60}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"aura_cyber", "Bruit numérique", "Digital noise", 10, 300, {80, 255, 140}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"yeux_cyber", "Regard augmenté", "Augmented gaze", 5, 150, {80, 255, 140}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"casque_cyber", "Capuche à visière", "Visor hood", 4, 300, {80, 255, 140}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"armure_cyber", "Veste à circuits", "Circuit jacket", 3, 300, {250, 220, 40}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"jambes_cyber", "Pantalon cargo", "Cargo trousers", 2, 200, {120, 124, 136}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"cape_cyber", "Long manteau", "Long coat", 1, 250, {80, 255, 140}, {0, 0, 0, 0, NULL}, 4, 0},
+	{"deco_cyber", "Antenne d'oreille", "Ear antenna", 6, 150, {80, 255, 140}, {0, 0, 0, 0, NULL}, 4, 0}
 };
 
-const int	g_nitems = 61;
+const int	g_nitems = 94;
 
 const t_coll	g_collections[] = {
 	{"cite", "La Cité", "The City"},
-	{"voyageur", "Le voyageur galactique", "The galactic traveller"}
+	{"voyageur", "Le voyageur galactique", "The galactic traveller"},
+	{"astronaute", "Astronaute", "Astronaut"},
+	{"neon", "Néon", "Neon"},
+	{"cyberpunk", "Cyberpunk", "Cyberpunk"}
 };
 
-const int	g_ncollections = 2;
+const int	g_ncollections = 5;
 
 int	item_find(const char *id)
 {

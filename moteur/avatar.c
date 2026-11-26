@@ -153,6 +153,14 @@ static void	aura(t_canvas *c, int x, int y, int item, long t)
 			if (k % 2)
 				cv_px(c, px, py + 1, mix(rgb(234, 142, 72), rgb(90, 30, 14), ph));
 		}
+		else if (g_items[item].collection > 1)
+		{
+			if (k % 2)
+				cv_px(c, px, py, mix(g_items[item].base, rgb(20, 20, 40), ph));
+			else
+				cv_px(c, x + (int)(h % 28), y + (int)((h >> 8) % 30),
+					mix(g_items[item].base, rgb(20, 20, 40), 0.5 + 0.5 * sin(t / 200.0 + (double)(h % 628) / 100.0)));
+		}
 		else if (!strcmp(id, "aura_etoiles"))
 		{
 			ph = 0.5 + 0.5 * sin(t / 260.0 + (double)(h % 628) / 100.0);

@@ -2107,3 +2107,54 @@ Search: 	Cerca:
 complete	completa
 No item has this name.	Nessun oggetto ha questo nome.
 search	cerca
+Moon sea	Mare della Luna
+Space wrench	Chiave spaziale
+42 flag	Bandiera 42
+Mini satellite	Minisatellite
+Zero-g bubbles	Bolle a gravità zero
+Explorer's helmet	Casco da esploratrice
+Explorer's suit	Tuta da esploratrice
+Explorer's skirt	Gonna da esploratrice
+Explorer's tanks	Bombole da esploratrice
+Explorer's star	Stella da esploratrice
+Mission helmet	Casco da missione
+Mission suit	Tuta da missione
+Mission trousers	Pantaloni da missione
+Oxygen pack	Zaino d'ossigeno
+Mission antenna	Antenna da missione
+Retro grid	Griglia rétro
+Neon sabre	Sciabola al neon
+Neon radio	Radio al neon
+Neon cat	Gatto al neon
+Neon glows	Bagliori al neon
+Neon locks	Ciocche al neon
+Neon top	Top al neon
+Neon skirt	Gonna al neon
+Neon cape	Mantello al neon
+Neon halo	Aureola al neon
+Neon shades	Occhiali al neon
+Neon jacket	Giubbotto al neon
+Neon trousers	Pantaloni al neon
+Neon coat	Cappotto al neon
+Neon crest	Cresta al neon
+City in the rain	Città sotto la pioggia
+Green-edged katana	Katana dalla lama verde
+Holo tablet	Tablet olografico
+Spy drone	Drone spia
+Digital noise	Rumore digitale
+Magenta bob	Caschetto magenta
+Circuit corset	Corsetto a circuiti
+Skirt and high boots	Gonna e stivali alti
+Half cape	Mezzo mantello
+Cat-ear headset	Cuffie con orecchie
+Visor hood	Cappuccio con visore
+Circuit jacket	Giacca a circuiti
+Cargo trousers	Pantaloni cargo
+Long coat	Cappotto lungo
+Ear antenna	Antenna d'orecchio
+Astronaut	Astronauta
+Neon	Neon
+Cyberpunk	Cyberpunk
+Lunar gaze	Sguardo lunare
+Neon gaze	Sguardo al neon
+Augmented gaze	Sguardo aumentato

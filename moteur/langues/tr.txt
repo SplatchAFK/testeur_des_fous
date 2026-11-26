@@ -2107,3 +2107,54 @@ Search: 	Ara:
 complete	tamam
 No item has this name.	Bu adda eşya yok.
 search	ara
+Moon sea	Ay denizi
+Space wrench	Uzay anahtarı
+42 flag	42 bayrağı
+Mini satellite	Mini uydu
+Zero-g bubbles	Yerçekimsiz baloncuklar
+Explorer's helmet	Kaşif kaskı
+Explorer's suit	Kaşif giysisi
+Explorer's skirt	Kaşif eteği
+Explorer's tanks	Kaşif tüpleri
+Explorer's star	Kaşif yıldızı
+Mission helmet	Görev kaskı
+Mission suit	Görev giysisi
+Mission trousers	Görev pantolonu
+Oxygen pack	Oksijen sırt çantası
+Mission antenna	Görev anteni
+Retro grid	Retro ızgara
+Neon sabre	Neon kılıç
+Neon radio	Neon radyo
+Neon cat	Neon kedi
+Neon glows	Neon parıltılar
+Neon locks	Neon perçemler
+Neon top	Neon üst
+Neon skirt	Neon etek
+Neon cape	Neon pelerin
+Neon halo	Neon hale
+Neon shades	Neon gözlük
+Neon jacket	Neon ceket
+Neon trousers	Neon pantolon
+Neon coat	Neon palto
+Neon crest	Neon ibik
+City in the rain	Yağmurda şehir
+Green-edged katana	Yeşil ağızlı katana
+Holo tablet	Holo tablet
+Spy drone	Casus drone
+Digital noise	Dijital parazit
+Magenta bob	Magenta küt saç
+Circuit corset	Devreli korse
+Skirt and high boots	Etek ve uzun çizme
+Half cape	Yarım pelerin
+Cat-ear headset	Kedi kulaklı kulaklık
+Visor hood	Vizörlü kapüşon
+Circuit jacket	Devreli ceket
+Cargo trousers	Kargo pantolon
+Long coat	Uzun palto
+Ear antenna	Kulak anteni
+Astronaut	Astronot
+Neon	Neon
+Cyberpunk	Siberpunk
+Lunar gaze	Ay bakışı
+Neon gaze	Neon bakış
+Augmented gaze	Güçlendirilmiş bakış

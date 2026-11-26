@@ -12,6 +12,9 @@ Le numéro de version est dans `moteur/version.h`.
 - Nouveau rayon « Collections » : chaque tenue complète en aperçu sur ton chevalier, puis « Porter toute la tenue » ou « Acheter les pièces manquantes ».
 - Sous la liste, l'emplacement et la collection de l'objet choisi.
 - La sauvegarde peut maintenant garder plus de 1 000 objets.
+- 3 nouvelles collections de 11 pièces : Astronaute, Néon, Cyberpunk.
+- La recherche ignore les accents : « neon » trouve « Néon ».
+- Les auras des collections scintillent aux couleurs de leur thème.
 
 ### Commande tdf
 

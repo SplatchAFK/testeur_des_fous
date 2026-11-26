@@ -2107,3 +2107,54 @@ Search: 	Поиск:
 complete	собран
 No item has this name.	Нет предмета с таким названием.
 search	поиск
+Moon sea	Лунное море
+Space wrench	Космический ключ
+42 flag	Флаг 42
+Mini satellite	Мини-спутник
+Zero-g bubbles	Невесомые пузыри
+Explorer's helmet	Шлем исследовательницы
+Explorer's suit	Костюм исследовательницы
+Explorer's skirt	Юбка исследовательницы
+Explorer's tanks	Баллоны исследовательницы
+Explorer's star	Звезда исследовательницы
+Mission helmet	Шлем миссии
+Mission suit	Костюм миссии
+Mission trousers	Брюки миссии
+Oxygen pack	Кислородный ранец
+Mission antenna	Антенна миссии
+Retro grid	Ретро-сетка
+Neon sabre	Неоновая сабля
+Neon radio	Неоновое радио
+Neon cat	Неоновый кот
+Neon glows	Неоновые отблески
+Neon locks	Неоновые пряди
+Neon top	Неоновый топ
+Neon skirt	Неоновая юбка
+Neon cape	Неоновый плащ
+Neon halo	Неоновый нимб
+Neon shades	Неоновые очки
+Neon jacket	Неоновая куртка
+Neon trousers	Неоновые брюки
+Neon coat	Неоновое пальто
+Neon crest	Неоновый ирокез
+City in the rain	Город под дождём
+Green-edged katana	Катана с зелёным лезвием
+Holo tablet	Голопланшет
+Spy drone	Шпионский дрон
+Digital noise	Цифровой шум
+Magenta bob	Пурпурное каре
+Circuit corset	Корсет с микросхемами
+Skirt and high boots	Юбка и высокие сапоги
+Half cape	Полуплащ
+Cat-ear headset	Наушники с ушками
+Visor hood	Капюшон с визором
+Circuit jacket	Куртка с микросхемами
+Cargo trousers	Брюки карго
+Long coat	Длинное пальто
+Ear antenna	Ушная антенна
+Astronaut	Астронавт
+Neon	Неон
+Cyberpunk	Киберпанк
+Lunar gaze	Лунный взгляд
+Neon gaze	Неоновый взгляд
+Augmented gaze	Дополненный взгляд

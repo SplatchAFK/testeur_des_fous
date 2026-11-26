@@ -2107,3 +2107,54 @@ Search: 	Buscar:
 complete	completa
 No item has this name.	Ningún objeto tiene este nombre.
 search	buscar
+Moon sea	Mar de la Luna
+Space wrench	Llave espacial
+42 flag	Bandera 42
+Mini satellite	Minisatélite
+Zero-g bubbles	Burbujas de ingravidez
+Explorer's helmet	Casco de exploradora
+Explorer's suit	Traje de exploradora
+Explorer's skirt	Falda de exploradora
+Explorer's tanks	Bombonas de exploradora
+Explorer's star	Estrella de exploradora
+Mission helmet	Casco de misión
+Mission suit	Traje de misión
+Mission trousers	Pantalón de misión
+Oxygen pack	Mochila de oxígeno
+Mission antenna	Antena de misión
+Retro grid	Cuadrícula retro
+Neon sabre	Sable de neón
+Neon radio	Radio de neón
+Neon cat	Gato de neón
+Neon glows	Destellos de neón
+Neon locks	Mechones de neón
+Neon top	Top de neón
+Neon skirt	Falda de neón
+Neon cape	Capa de neón
+Neon halo	Aureola de neón
+Neon shades	Gafas de neón
+Neon jacket	Cazadora de neón
+Neon trousers	Pantalón de neón
+Neon coat	Abrigo de neón
+Neon crest	Cresta de neón
+City in the rain	Ciudad bajo la lluvia
+Green-edged katana	Katana de filo verde
+Holo tablet	Tableta holo
+Spy drone	Dron espía
+Digital noise	Ruido digital
+Magenta bob	Melena magenta
+Circuit corset	Corsé de circuitos
+Skirt and high boots	Falda y botas altas
+Half cape	Media capa
+Cat-ear headset	Cascos con orejas
+Visor hood	Capucha con visor
+Circuit jacket	Chaqueta de circuitos
+Cargo trousers	Pantalón cargo
+Long coat	Abrigo largo
+Ear antenna	Antena de oreja
+Astronaut	Astronauta
+Neon	Neón
+Cyberpunk	Cyberpunk
+Lunar gaze	Mirada lunar
+Neon gaze	Mirada de neón
+Augmented gaze	Mirada aumentada

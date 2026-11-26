@@ -2107,3 +2107,54 @@ Search: 	Suchen:
 complete	komplett
 No item has this name.	Kein Gegenstand trägt diesen Namen.
 search	suchen
+Moon sea	Mondmeer
+Space wrench	Weltraumschlüssel
+42 flag	Flagge 42
+Mini satellite	Mini-Satellit
+Zero-g bubbles	Schwerelosigkeitsblasen
+Explorer's helmet	Helm der Forscherin
+Explorer's suit	Anzug der Forscherin
+Explorer's skirt	Rock der Forscherin
+Explorer's tanks	Flaschen der Forscherin
+Explorer's star	Stern der Forscherin
+Mission helmet	Missionshelm
+Mission suit	Missionsanzug
+Mission trousers	Missionshose
+Oxygen pack	Sauerstoffrucksack
+Mission antenna	Missionsantenne
+Retro grid	Retro-Gitter
+Neon sabre	Neonsäbel
+Neon radio	Neonradio
+Neon cat	Neonkatze
+Neon glows	Neonleuchten
+Neon locks	Neonsträhnen
+Neon top	Neon-Oberteil
+Neon skirt	Neonrock
+Neon cape	Neonumhang
+Neon halo	Neon-Heiligenschein
+Neon shades	Neonbrille
+Neon jacket	Neonjacke
+Neon trousers	Neonhose
+Neon coat	Neonmantel
+Neon crest	Neonkamm
+City in the rain	Stadt im Regen
+Green-edged katana	Katana mit grüner Klinge
+Holo tablet	Holo-Tablet
+Spy drone	Spionagedrohne
+Digital noise	Digitales Rauschen
+Magenta bob	Magenta-Bob
+Circuit corset	Schaltkreis-Korsett
+Skirt and high boots	Rock und Overknees
+Half cape	Halbumhang
+Cat-ear headset	Katzenohr-Headset
+Visor hood	Visierkapuze
+Circuit jacket	Schaltkreis-Jacke
+Cargo trousers	Cargohose
+Long coat	Langer Mantel
+Ear antenna	Ohrantenne
+Astronaut	Astronaut
+Neon	Neon
+Cyberpunk	Cyberpunk
+Lunar gaze	Mondblick
+Neon gaze	Neonblick
+Augmented gaze	Erweiterter Blick
