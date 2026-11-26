@@ -2543,3 +2543,54 @@ A bound book the traveller must have read often. Most pages are blank now. On th
 A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Un piccolo apparecchio rotondo che fluttuava sulle rovine e seguiva chiunque camminasse. Cercava il suo padrone. Lo cerca ancora.
 A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Una polvere che brilla senza calore. Cadeva dalla crepa da cui era arrivato il viaggiatore, e non si è mai posata del tutto.
 Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Fatto a immagine della guardiana prima che scendesse. Chi lo porta sente la pietra storta prima di vederla. Nessuno l'ha tenuto a lungo.
+Light wave · white	Onda di luce · bianca
+Light wave · gold	Onda di luce · oro
+Light wave · pink	Onda di luce · rosa
+Light wave · green	Onda di luce · verde
+Light wave · violet	Onda di luce · viola
+Light wave · rainbow	Onda di luce · arcobaleno
+Big title · upright	Grande titolo · dritto
+Big title · slanted	Grande titolo · inclinato
+Big title · shadowed	Grande titolo · ombreggiato
+Big title · dotted	Grande titolo · retinato
+Fool's costume · original	Costume del giullare · originale
+Fool's costume · gold	Costume del giullare · oro
+Fool's costume · night	Costume del giullare · notte
+Fool's costume · neon	Costume del giullare · neon
+Fool's costume · frost	Costume del giullare · brina
+Bubbles · no frame	Bolle · senza cornice
+Bubbles · golden frame	Bolle · cornice dorata
+Bubbles · cyan frame	Bolle · cornice ciano
+Bubbles · pink frame	Bolle · cornice rosa
+Cursor · ▶	Cursore · ▶
+Cursor · ◆	Cursore · ◆
+Cursor · ★	Cursore · ★
+Cursor · ➤	Cursore · ➤
+Cursor · ●	Cursore · ●
+Cursor · ♦	Cursore · ♦
+Red dye	Tintura rossa
+Blue dye	Tintura blu
+Green dye	Tintura verde
+Gold dye	Tintura oro
+Violet dye	Tintura viola
+Black dye	Tintura nera
+Emblem · none	Emblema · nessuno
+Emblem · ★	Emblema · ★
+Emblem · ♛	Emblema · ♛
+Emblem · ☾	Emblema · ☾
+Emblem · ✿	Emblema · ✿
+Emblem · ♞	Emblema · ♞
+Emblem · ♥	Emblema · ♥
+Profile frame · none	Cornice del profilo · nessuna
+Profile frame · gold	Cornice del profilo · oro
+Profile frame · cyan	Cornice del profilo · ciano
+Profile frame · pink	Cornice del profilo · rosa
+6th outfit slot	6° spazio per tenuta
+7th outfit slot	7° spazio per tenuta
+8th outfit slot	8° spazio per tenuta
+9th outfit slot	9° spazio per tenuta
+10th outfit slot	10° spazio per tenuta
+All are taken: which one to replace?	Sono tutti occupati: quale sostituire?
+Personalisation	Personalizzazione
+Visible in the main menu	Visibile nel menu principale
+dye	tingi

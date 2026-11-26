@@ -265,7 +265,7 @@ static int	composer_av(const t_look *lk)
 
 	cle = 5381;
 	for (k = 0; k < NSLOT; k++)
-		cle = cle * 33 + (unsigned long)(lk->eq[k] + 2);
+		cle = cle * 33 + (unsigned long)(lk->eq[k] + 2) * 7 + (unsigned long)lk->col[k];
 	if (g_av.cle == cle && g_av.fig)
 		return (g_av.ok);
 	g_av.cle = cle;
@@ -308,6 +308,8 @@ static int	composer_av(const t_look *lk)
 			continue ;
 		snprintf(nom, sizeof(nom), "av_%s", g_items[it].id);
 		tp = art_pic_temp(nom);
+		if (tp && lk->col[ordre[k]] > 0)
+			perso_teindre(tp->rgb, tp->a, tp->w * tp->h, lk->col[ordre[k]]);
 		empiler(fig, tp, w, h);
 		un = calloc((size_t)w * h, 4);
 		if (un)

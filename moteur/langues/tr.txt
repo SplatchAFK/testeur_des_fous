@@ -2543,3 +2543,54 @@ A bound book the traveller must have read often. Most pages are blank now. On th
 A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Harabelerin üstünde süzülen ve geçen herkesi izleyen küçük, yuvarlak bir alet. Sahibini arıyordu. Hâlâ arıyor.
 A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Isısız parlayan bir toz. Yolcunun geldiği çatlaktan düşerdi ve hiçbir zaman tam yere konmadı.
 Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Bekçi aşağı inmeden önce onun suretinde yapıldı. Takan eğri taşı görmeden önce hisseder. Kimse onu uzun süre tutmadı.
+Light wave · white	Işık dalgası · beyaz
+Light wave · gold	Işık dalgası · altın
+Light wave · pink	Işık dalgası · pembe
+Light wave · green	Işık dalgası · yeşil
+Light wave · violet	Işık dalgası · mor
+Light wave · rainbow	Işık dalgası · gökkuşağı
+Big title · upright	Büyük başlık · dik
+Big title · slanted	Büyük başlık · eğik
+Big title · shadowed	Büyük başlık · gölgeli
+Big title · dotted	Büyük başlık · noktalı
+Fool's costume · original	Soytarı kostümü · orijinal
+Fool's costume · gold	Soytarı kostümü · altın
+Fool's costume · night	Soytarı kostümü · gece
+Fool's costume · neon	Soytarı kostümü · neon
+Fool's costume · frost	Soytarı kostümü · kırağı
+Bubbles · no frame	Balonlar · çerçevesiz
+Bubbles · golden frame	Balonlar · altın çerçeve
+Bubbles · cyan frame	Balonlar · camgöbeği çerçeve
+Bubbles · pink frame	Balonlar · pembe çerçeve
+Cursor · ▶	İmleç · ▶
+Cursor · ◆	İmleç · ◆
+Cursor · ★	İmleç · ★
+Cursor · ➤	İmleç · ➤
+Cursor · ●	İmleç · ●
+Cursor · ♦	İmleç · ♦
+Red dye	Kırmızı boya
+Blue dye	Mavi boya
+Green dye	Yeşil boya
+Gold dye	Altın boya
+Violet dye	Mor boya
+Black dye	Siyah boya
+Emblem · none	Amblem · yok
+Emblem · ★	Amblem · ★
+Emblem · ♛	Amblem · ♛
+Emblem · ☾	Amblem · ☾
+Emblem · ✿	Amblem · ✿
+Emblem · ♞	Amblem · ♞
+Emblem · ♥	Amblem · ♥
+Profile frame · none	Profil çerçevesi · yok
+Profile frame · gold	Profil çerçevesi · altın
+Profile frame · cyan	Profil çerçevesi · camgöbeği
+Profile frame · pink	Profil çerçevesi · pembe
+6th outfit slot	6. kıyafet yuvası
+7th outfit slot	7. kıyafet yuvası
+8th outfit slot	8. kıyafet yuvası
+9th outfit slot	9. kıyafet yuvası
+10th outfit slot	10. kıyafet yuvası
+All are taken: which one to replace?	Hepsi dolu: hangisini değiştirelim?
+Personalisation	Kişiselleştirme
+Visible in the main menu	Ana menüde görünür
+dye	boya

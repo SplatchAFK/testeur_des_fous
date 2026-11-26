@@ -2543,3 +2543,54 @@ A bound book the traveller must have read often. Most pages are blank now. On th
 A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Ein kleines rundes Gerät, das über den Ruinen schwebte und jedem folgte, der vorbeiging. Es suchte seinen Besitzer. Es sucht ihn noch.
 A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Ein Staub, der ohne Wärme leuchtet. Er fiel aus dem Riss, durch den der Reisende kam, und hat sich nie ganz gelegt.
 Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Nach dem Bild der Wächterin gemacht, bevor sie hinabstieg. Wer ihn trägt, spürt den schiefen Stein, bevor er ihn sieht. Niemand hat ihn lange behalten.
+Light wave · white	Lichtwelle · weiß
+Light wave · gold	Lichtwelle · gold
+Light wave · pink	Lichtwelle · rosa
+Light wave · green	Lichtwelle · grün
+Light wave · violet	Lichtwelle · violett
+Light wave · rainbow	Lichtwelle · Regenbogen
+Big title · upright	Großer Titel · gerade
+Big title · slanted	Großer Titel · schräg
+Big title · shadowed	Großer Titel · mit Schatten
+Big title · dotted	Großer Titel · gerastert
+Fool's costume · original	Kostüm des Narren · original
+Fool's costume · gold	Kostüm des Narren · gold
+Fool's costume · night	Kostüm des Narren · Nacht
+Fool's costume · neon	Kostüm des Narren · Neon
+Fool's costume · frost	Kostüm des Narren · Frost
+Bubbles · no frame	Blasen · ohne Rahmen
+Bubbles · golden frame	Blasen · goldener Rahmen
+Bubbles · cyan frame	Blasen · cyanfarbener Rahmen
+Bubbles · pink frame	Blasen · rosa Rahmen
+Cursor · ▶	Cursor · ▶
+Cursor · ◆	Cursor · ◆
+Cursor · ★	Cursor · ★
+Cursor · ➤	Cursor · ➤
+Cursor · ●	Cursor · ●
+Cursor · ♦	Cursor · ♦
+Red dye	Rote Färbung
+Blue dye	Blaue Färbung
+Green dye	Grüne Färbung
+Gold dye	Goldene Färbung
+Violet dye	Violette Färbung
+Black dye	Schwarze Färbung
+Emblem · none	Emblem · keines
+Emblem · ★	Emblem · ★
+Emblem · ♛	Emblem · ♛
+Emblem · ☾	Emblem · ☾
+Emblem · ✿	Emblem · ✿
+Emblem · ♞	Emblem · ♞
+Emblem · ♥	Emblem · ♥
+Profile frame · none	Profilrahmen · keiner
+Profile frame · gold	Profilrahmen · gold
+Profile frame · cyan	Profilrahmen · cyan
+Profile frame · pink	Profilrahmen · rosa
+6th outfit slot	6. Outfit-Platz
+7th outfit slot	7. Outfit-Platz
+8th outfit slot	8. Outfit-Platz
+9th outfit slot	9. Outfit-Platz
+10th outfit slot	10. Outfit-Platz
+All are taken: which one to replace?	Alle sind belegt: welchen ersetzen?
+Personalisation	Personalisierung
+Visible in the main menu	Im Hauptmenü sichtbar
+dye	färben

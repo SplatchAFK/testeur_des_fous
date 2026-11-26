@@ -18,11 +18,16 @@ void	avatar_panel(int x, int y, const t_look *lk, int title, long t)
 	char		tn[80];
 	int			lv;
 
+	t_rgb		cc;
+
 	cv_init(&cv, 28, 32);
 	avatar_draw(&cv, 0, 0, lk, t);
 	cv_print(&cv, x, y, theme()->bg);
 	cv_free(&cv);
-	text_at(x, y + 16, pseudo_color(), g_save.login);
+	if (perso_couleur_cadre(PC_CADRE, &cc))
+		box(x - 2, y - 1, 32, 22, cc);
+	snprintf(tmp, sizeof(tmp), "%s%s", perso_embleme(), g_save.login);
+	text_at(x, y + 16, pseudo_color(), tmp);
 	title_name(title, tn, sizeof(tn));
 	snprintf(tmp, sizeof(tmp), "« %.24s »", tn);
 	text_at(x, y + 17, theme()->dim, tmp);
@@ -85,7 +90,7 @@ int	screen_menu(void)
 			{
 				bgc(mix(theme()->bg, theme()->accent, 0.22));
 				fg(theme()->accent2);
-				outf(" ▶ %-34s ", items[i]);
+				outf(" %s %-34s ", tdf_curseur(), items[i]);
 				bgc(theme()->bg);
 			}
 			else
@@ -139,13 +144,15 @@ static t_rgb	lumiere(int x, int y, int r, int g, int b)
 	k = 0.85 * exp(-(p * p) / 40.0) * 0.75;
 	if (k < 0.02)
 		return (rgb(r, g, b));
-	return (rgb((int)(r + (255 - r) * k), (int)(g + (255 - g) * k), (int)(b + (255 - b) * k)));
+	return (rgb((int)(r + (perso_vague(x).r - r) * k), (int)(g + (perso_vague(x).g - g) * k), (int)(b + (perso_vague(x).b - b) * k)));
 }
 
 static void	fou_petit(int x, int y)
 {
 	const unsigned char	*h;
 	const unsigned char	*b;
+	t_rgb				ch;
+	t_rgb				cb;
 	int					r;
 	int					c;
 
@@ -156,15 +163,17 @@ static void	fou_petit(int x, int y)
 		{
 			h = g_fou_bloc[r][c][0];
 			b = g_fou_bloc[r][c][1];
-			bgc(b[3] && h[3] ? lumiere(x + c, y + r, b[0], b[1], b[2]) : theme()->bg);
+			ch = perso_fou(rgb(h[0], h[1], h[2]));
+			cb = perso_fou(rgb(b[0], b[1], b[2]));
+			bgc(b[3] && h[3] ? lumiere(x + c, y + r, cb.r, cb.g, cb.b) : theme()->bg);
 			if (h[3])
 			{
-				fg(lumiere(x + c, y + r, h[0], h[1], h[2]));
+				fg(lumiere(x + c, y + r, ch.r, ch.g, ch.b));
 				out("▀");
 			}
 			else if (b[3])
 			{
-				fg(lumiere(x + c, y + r, b[0], b[1], b[2]));
+				fg(lumiere(x + c, y + r, cb.r, cb.g, cb.b));
 				out("▄");
 			}
 			else
@@ -174,36 +183,42 @@ static void	fou_petit(int x, int y)
 	}
 }
 
-static void	titre_bloc(int x, int y, const char *mot, long t)
+static void	titre_passe(int x, int y, const char *mot, int ombre)
 {
 	const char	*l;
 	const char	*s;
+	int			st;
 	int			r;
 	int			i;
 	int			dx;
 
-	(void)t;
+	st = perso_val(PC_TITRE);
 	for (r = 0; r < 5; r++)
 	{
-		at(x, y + r);
 		dx = 0;
 		for (s = mot; *s; s++)
 		{
 			l = entete_police(*s, r);
 			for (i = 0; l[i]; i++, dx++)
 			{
-				if (l[i] == '#')
-				{
-					fg(lumiere(x + dx, y + r, 100 + 60 * dx / 44, 200, 238 - 40 * dx / 44));
-					out("█");
-				}
-				else
-					out(" ");
+				if (l[i] != '#')
+					continue ;
+				at(x + dx + (st == 1 ? (4 - r) / 2 : 0) + ombre, y + r + ombre);
+				fg(ombre ? mix(theme()->bg, rgb(0, 0, 0), 0.6)
+					: lumiere(x + dx, y + r, 100 + 60 * dx / 44, 200, 238 - 40 * dx / 44));
+				out(st == 3 && !ombre ? "▓" : "█");
 			}
-			out(" ");
 			dx++;
 		}
 	}
+}
+
+static void	titre_bloc(int x, int y, const char *mot, long t)
+{
+	(void)t;
+	if (perso_val(PC_TITRE) == 2)
+		titre_passe(x, y, mot, 1);
+	titre_passe(x, y, mot, 0);
 }
 
 static void	label_of_item(const char *item, char *b, size_t n)
@@ -663,6 +678,8 @@ static void	bulle(t_zone *z, int nz, long anim)
 	}
 	cx = g_bulle.x + g_bulle.w / 2;
 	k = 0.10 + 0.10 * sin(anim / 300.0);
+	if (perso_couleur_cadre(PC_BULLE, &c) && dt > 350 && dt < 14000)
+		box(g_bulle.x - 1, g_bulle.y - 1, g_bulle.w + 2, g_bulle.n + 2, c);
 	for (i = 0; i < g_bulle.n; i++)
 	{
 		base = g_bulle.cur >= NB_ASTUCES ? rgb(255, 140, 220) : (i == 0 ? rgb(255, 190, 70) : rgb(255, 255, 85));
@@ -790,7 +807,7 @@ static int	mu_ecran(t_mu *m, int *sel)
 			}
 			else
 				fg(i == 0 ? theme()->accent : theme()->text);
-			outf(" %s %-*s", i == *sel ? "▶" : !strcmp(m->act[i], "correction") ? "◆" : " ", iw - 4, lab);
+			outf(" %s %-*s", i == *sel ? tdf_curseur() : !strcmp(m->act[i], "correction") ? "◆" : " ", iw - 4, lab);
 			bgc(theme()->bg);
 			if (m->items[i][0] == '!')
 			{
@@ -935,6 +952,7 @@ typedef struct s_shopst
 
 #define NTAB (NSLOT + 2)
 #define TAB_COLL (NTAB + 1)
+#define TAB_PERSO (NTAB + 2)
 
 static int	tab_slot(int tab)
 {
@@ -1073,7 +1091,14 @@ static int	list_items(const t_shopst *s, int *ids, int max)
 
 	n = 0;
 	slot = tab_slot(s->tab);
-	if (s->tab == TAB_COLL)
+	if (s->tab == TAB_PERSO)
+	{
+		for (i = 0; i < g_nperso && n < max; i++)
+			if ((!s->wardrobe || perso_possede(i)) && !(g_perso[i].cat == PC_TENUE && g_perso[i].val > 1
+				&& !perso_possede(i) && !perso_possede(i - 1)))
+				ids[n++] = i;
+	}
+	else if (s->tab == TAB_COLL)
 	{
 		for (i = 1; i < g_ncollections; i++)
 			for (g = 0; g < 3; g++)
@@ -1103,6 +1128,8 @@ static const char	*tab_name(int tab)
 {
 	if (tab == TAB_COLL)
 		return (L("Collections", "Collections"));
+	if (tab == TAB_PERSO)
+		return (L("Personnalisation", "Personalisation"));
 	if (tab < NSLOT)
 		return (L(g_slot_fr[tab_slot(tab)], g_slot_en[tab_slot(tab)]));
 	if (tab == NSLOT)
@@ -1133,12 +1160,13 @@ static int	ordre_onglets(const t_shopst *s, int *t)
 	t[n++] = TAB_COLL;
 	for (i = 0; i < NTAB; i++)
 		t[n++] = i;
+	t[n++] = TAB_PERSO;
 	return (n);
 }
 
 static int	rang_onglet(const t_shopst *s, int *total)
 {
-	int	t[NTAB + 2];
+	int	t[NTAB + 3];
 	int	i;
 
 	*total = ordre_onglets(s, t);
@@ -1150,7 +1178,7 @@ static int	rang_onglet(const t_shopst *s, int *total)
 
 static int	onglet_suivant(const t_shopst *s, int sens)
 {
-	int	t[NTAB + 2];
+	int	t[NTAB + 3];
 	int	n;
 	int	i;
 
@@ -1189,6 +1217,8 @@ static int	price_of(const t_shopst *s, int id)
 {
 	if (s->tab == TAB_COLL)
 		return (0);
+	if (s->tab == TAB_PERSO)
+		return (g_perso[id].prix);
 	if (tab_slot(s->tab) >= 0)
 		return (g_items[id].price);
 	if (s->tab == NSLOT)
@@ -1200,6 +1230,8 @@ static int	owns(const t_shopst *s, int id)
 {
 	if (s->tab == TAB_COLL)
 		return (0);
+	if (s->tab == TAB_PERSO)
+		return (perso_possede(id));
 	if (tab_slot(s->tab) >= 0)
 		return (item_owned(id));
 	if (s->tab == NSLOT)
@@ -1211,6 +1243,8 @@ static int	equipped(const t_shopst *s, int id)
 {
 	if (s->tab == TAB_COLL)
 		return (0);
+	if (s->tab == TAB_PERSO)
+		return (perso_choisi(id));
 	if (tab_slot(s->tab) >= 0)
 		return (g_save.look.eq[g_items[id].slot] == id);
 	if (s->tab == NSLOT)
@@ -1242,7 +1276,9 @@ static void	count_achs(void)
 
 static void	equip(const t_shopst *s, int id)
 {
-	if (tab_slot(s->tab) >= 0)
+	if (s->tab == TAB_PERSO)
+		perso_choisir(id);
+	else if (tab_slot(s->tab) >= 0)
 		g_save.look.eq[g_items[id].slot] = id;
 	else if (s->tab == NSLOT)
 		snprintf(g_save.theme, sizeof(g_save.theme), "%s", g_themes[id].id);
@@ -1334,7 +1370,7 @@ void	screen_shop(int wardrobe)
 	while (1)
 	{
 		t = now_ms();
-		n = s.tab == NTAB ? 6 : list_items(&s, ids, NTITLE);
+		n = s.tab == NTAB ? 1 + perso_tenues() : list_items(&s, ids, NTITLE);
 		srch = tab_slot(s.tab) >= 0;
 		y0 = srch ? 5 : 4;
 		if (s.jump && s.tab != NTAB && s.tab != TAB_COLL)
@@ -1399,7 +1435,7 @@ void	screen_shop(int wardrobe)
 			if (s.sel == -1)
 				bgc(mix(theme()->bg, theme()->accent, 0.2));
 			fg(s.q[0] || s.sel == -1 ? theme()->accent2 : theme()->dim);
-			snprintf(tn, sizeof(tn), "%s %s%s", s.sel == -1 ? "▶" : " ", L("Rechercher : ", "Search: "), s.q);
+			snprintf(tn, sizeof(tn), "%s %s%s", s.sel == -1 ? tdf_curseur() : " ", L("Rechercher : ", "Search: "), s.q);
 			outf(" %s%s", tn, s.sel == -1 && (t / 500) % 2 ? "_" : " ");
 			outf("%*s", 42 - ulen(tn) > 0 ? 42 - ulen(tn) : 1, "");
 			bgc(theme()->bg);
@@ -1414,11 +1450,13 @@ void	screen_shop(int wardrobe)
 				snprintf(tn, sizeof(tn), "%s", L(g_items[ids[i]].fr, g_items[ids[i]].en));
 			else if (s.tab == TAB_COLL)
 				coll_libelle(ids[i], tn, sizeof(tn));
+			else if (s.tab == TAB_PERSO)
+				snprintf(tn, sizeof(tn), "%s", L(g_perso[ids[i]].fr, g_perso[ids[i]].en));
 			else if (s.tab == NSLOT)
 				snprintf(tn, sizeof(tn), "%s", g_themes[ids[i]].name);
 			else
 				title_name(ids[i], tn, sizeof(tn));
-			outf(" %s ", i == s.sel ? "▶" : " ");
+			outf(" %s ", i == s.sel ? tdf_curseur() : " ");
 			out(tn);
 			outf("%*s", 30 - ulen(tn) > 0 ? 30 - ulen(tn) : 1, "");
 			if (s.tab == TAB_COLL)
@@ -1460,6 +1498,9 @@ void	screen_shop(int wardrobe)
 		else if (id >= 0 && tab_slot(s.tab) >= 0)
 			text_at(x + 50, 24 > term_rows() - 3 ? term_rows() - 3 : 24, rgb(80, 230, 140),
 				L("Ton chevalier, tel qu'il est équipé", "Your knight, as equipped"));
+		if (s.tab == TAB_PERSO && id >= 0 && g_perso[id].cat <= PC_CURSEUR)
+			text_at(x + 50, 24 > term_rows() - 3 ? term_rows() - 3 : 24, rgb(255, 200, 80),
+				L("Visible dans le menu principal", "Visible in the main menu"));
 		if (s.tab == NSLOT && id >= 0)
 		{
 			for (i = 0; i < 6; i++)
@@ -1486,6 +1527,8 @@ void	screen_shop(int wardrobe)
 			: L("autres rayons", "other sections"));
 		if (srch)
 			puce(&k, i + 2, "/", L("rechercher", "search"));
+		if (srch && perso_teinte_suivante(0))
+			puce(&k, i + 2, "C", L("teinture", "dye"));
 		foot_line(x, L("▲ ▼ choisir   Échap : retour", "▲ ▼ pick   Esc: back"));
 		if (s.tab == NSLOT + 1)
 			foot_line(x, L("+ / - : sauter de 20   r : titre au hasard", "+ / -: jump 20   r: random title"));
@@ -1556,6 +1599,12 @@ void	screen_shop(int wardrobe)
 			s.sel = s.sel + 20 < n ? s.sel + 20 : n - 1;
 		else if (k == '-')
 			s.sel = s.sel - 20 > 0 ? s.sel - 20 : 0;
+		else if ((k == 'c' || k == 'C') && id >= 0 && srch && item_owned(id)
+			&& g_save.look.eq[g_items[id].slot] == id && perso_teinte_suivante(g_save.look.col[g_items[id].slot]) != g_save.look.col[g_items[id].slot])
+		{
+			g_save.look.col[g_items[id].slot] = perso_teinte_suivante(g_save.look.col[g_items[id].slot]);
+			save_write();
+		}
 		else if (k == 'v' || k == 'V')
 		{
 			tdf_grand_apercu(&lk, title);
@@ -1580,7 +1629,9 @@ void	screen_shop(int wardrobe)
 					continue ;
 				}
 				g_save.octets -= price_of(&s, id);
-				if (tab_slot(s.tab) >= 0)
+				if (s.tab == TAB_PERSO)
+					perso_acheter(id);
+				else if (tab_slot(s.tab) >= 0)
 					item_own(id);
 				else if (s.tab == NSLOT)
 					g_save.themes[id] = '1';
@@ -1754,7 +1805,7 @@ void	screen_settings(void)
 			if (i == sel)
 				bgc(mix(theme()->bg, theme()->accent, 0.2));
 			fg(i == 14 ? rgb(255, 120, 120) : theme()->text);
-			outf(" %s %s%*s", i == sel ? "▶" : " ", lab[i], 33 - ulen(lab[i]), "");
+			outf(" %s %s%*s", i == sel ? tdf_curseur() : " ", lab[i], 33 - ulen(lab[i]), "");
 			fg(theme()->accent);
 			if (i < 13 || i == 15 || i == 16)
 				outf("◀ %s ▶", opt_val(i, buf));
@@ -2172,7 +2223,7 @@ void	screen_save(void)
 			}
 			else
 				fg(theme()->text);
-			outf(" %s %-52s ", i == sel ? "▶" : " ", it[i]);
+			outf(" %s %-52s ", i == sel ? tdf_curseur() : " ", it[i]);
 			bgc(theme()->bg);
 		}
 		snprintf(tmp, sizeof(tmp), L("Ta sauvegarde : %s/save.txt (dans ton dossier personnel, pas dans le dossier du testeur).",

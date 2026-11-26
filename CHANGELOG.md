@@ -21,6 +21,18 @@ Le numéro de version est dans `moteur/version.h`.
 - Chaque objet a son histoire, affichée sous la liste dans la boutique et la garde-robe : toutes se passent pendant le Long Silence, avant l'arrivée de ton chevalier.
 - Images de la garde-robe allégées (palette réduite, aucune différence à l'écran) : 2,3 Mo deviennent 0,5 Mo.
 
+### Personnalisation
+
+- Nouveau rayon « Personnalisation » dans la boutique : d'autres façons de dépenser tes Octets que les tenues.
+- Vague de lumière du menu : or, rose, verte, violette (150 ◈) ou arc-en-ciel (300 ◈).
+- Grand titre : penché, ombré ou tramé (250 ◈).
+- Costume du fou : or, nuit, néon ou givre (200 ◈).
+- Cadre des bulles « Le savais-tu ? » : doré, cyan ou rose (120 ◈).
+- Curseur de sélection : ◆ ★ ➤ ● ♦ (80 ◈), partout dans les menus.
+- Teintures : rouge, bleue, verte, or, violette, noire (200 ◈). Touche C sur un objet porté pour le teindre.
+- Emblème devant ton login (★ ♛ ☾ ✿ ♞ ♥, 100 ◈) et cadre du profil or, cyan ou rose (150 ◈).
+- Emplacements de tenues 6 à 10 (300 ◈ chacun), à acheter dans l'ordre.
+
 ### Animations
 
 - Ton chevalier est animé, dans le menu, la garde-robe et la boutique : sa tête respire, sa cape ondule, ses yeux clignent, sa plume bouge, sa lanterne scintille, un reflet glisse sur son arme et son familier flotte. Le fou du menu se balance.

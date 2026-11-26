@@ -2543,3 +2543,54 @@ A bound book the traveller must have read often. Most pages are blank now. On th
 A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Um pequeno aparelho redondo que flutuava sobre as ruínas e seguia quem passava. Procurava o dono. Ainda procura.
 A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Um pó que brilha sem calor. Caía da fenda por onde o viajante chegou, e nunca chegou a assentar.
 Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Feito à imagem da guardiã antes de ela descer. Quem o usa sente a pedra torta antes de a ver. Ninguém o guardou muito tempo.
+Light wave · white	Onda de luz · branca
+Light wave · gold	Onda de luz · dourada
+Light wave · pink	Onda de luz · rosa
+Light wave · green	Onda de luz · verde
+Light wave · violet	Onda de luz · violeta
+Light wave · rainbow	Onda de luz · arco-íris
+Big title · upright	Grande título · direito
+Big title · slanted	Grande título · inclinado
+Big title · shadowed	Grande título · com sombra
+Big title · dotted	Grande título · tracejado
+Fool's costume · original	Traje do bobo · original
+Fool's costume · gold	Traje do bobo · ouro
+Fool's costume · night	Traje do bobo · noite
+Fool's costume · neon	Traje do bobo · néon
+Fool's costume · frost	Traje do bobo · geada
+Bubbles · no frame	Bolhas · sem moldura
+Bubbles · golden frame	Bolhas · moldura dourada
+Bubbles · cyan frame	Bolhas · moldura ciano
+Bubbles · pink frame	Bolhas · moldura rosa
+Cursor · ▶	Cursor · ▶
+Cursor · ◆	Cursor · ◆
+Cursor · ★	Cursor · ★
+Cursor · ➤	Cursor · ➤
+Cursor · ●	Cursor · ●
+Cursor · ♦	Cursor · ♦
+Red dye	Tinta vermelha
+Blue dye	Tinta azul
+Green dye	Tinta verde
+Gold dye	Tinta dourada
+Violet dye	Tinta violeta
+Black dye	Tinta preta
+Emblem · none	Emblema · nenhum
+Emblem · ★	Emblema · ★
+Emblem · ♛	Emblema · ♛
+Emblem · ☾	Emblema · ☾
+Emblem · ✿	Emblema · ✿
+Emblem · ♞	Emblema · ♞
+Emblem · ♥	Emblema · ♥
+Profile frame · none	Moldura do perfil · nenhuma
+Profile frame · gold	Moldura do perfil · dourada
+Profile frame · cyan	Moldura do perfil · ciano
+Profile frame · pink	Moldura do perfil · rosa
+6th outfit slot	6.º espaço de traje
+7th outfit slot	7.º espaço de traje
+8th outfit slot	8.º espaço de traje
+9th outfit slot	9.º espaço de traje
+10th outfit slot	10.º espaço de traje
+All are taken: which one to replace?	Estão todos ocupados: qual substituir?
+Personalisation	Personalização
+Visible in the main menu	Visível no menu principal
+dye	tingir

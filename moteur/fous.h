@@ -380,6 +380,21 @@ typedef struct s_idef
 	int			genre;
 }	t_idef;
 
+enum e_pc
+{
+	PC_VAGUE, PC_TITRE, PC_FOU, PC_BULLE, PC_CURSEUR, PC_TEINTURE, PC_EMBLEME, PC_CADRE, PC_TENUE, NPC
+};
+
+typedef struct s_perso
+{
+	const char	*id;
+	int			cat;
+	int			val;
+	int			prix;
+	const char	*fr;
+	const char	*en;
+}	t_perso;
+
 typedef struct s_coll
 {
 	const char	*id;
@@ -476,6 +491,8 @@ typedef struct s_save
 	char		themes[16];
 	char		theme[24];
 	t_look		look;
+	char		perso[65];
+	char		perso_sel[NPC + 1];
 	int			boss[3];
 	char		exo[NEXO + 1];
 	char		ach[33];
@@ -538,6 +555,22 @@ extern const t_idef		g_items[];
 extern const int		g_nitems;
 extern const t_coll		g_collections[];
 const char			*item_histoire(int i);
+extern const t_perso	g_perso[];
+extern const int		g_nperso;
+int					perso_possede(int i);
+void				perso_acheter(int i);
+int					perso_val(int cat);
+void				perso_choisir(int i);
+int					perso_choisi(int i);
+int					perso_tenues(void);
+t_rgb				perso_vague(int x);
+t_rgb				perso_fou(t_rgb c);
+int					perso_couleur_cadre(int cat, t_rgb *c);
+const char			*tdf_curseur(void);
+const char			*perso_embleme(void);
+int					perso_teinte_possede(int t);
+int					perso_teinte_suivante(int t);
+void				perso_teindre(unsigned char *rgbv, const unsigned char *a, int n, int t);
 extern const int		g_ncollections;
 extern const t_exo		g_exos[NEXO];
 extern const t_boss		g_bosses[3];

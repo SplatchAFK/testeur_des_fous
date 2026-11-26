@@ -284,9 +284,12 @@ static void	profile_text(char *b, size_t sz, const t_save *s)
 
 	n = snprintf(b, sz, "login=%s\nbio=%s\npcol=%d\nbadges=%s\nvitrine=%d,%d,%d\nbanner=%s\n"
 			"pfp=%s\nxp=%ld\noctets=%ld\nitems=%s\ntitles=%s\ntitle=%d\n"
-			"themes=%s\ntheme=%s\neq=", s->login, s->bio, s->pcol, s->badges, s->vitrine[0],
+			"themes=%s\ntheme=%s\n%s%s%s%s%s%seq=", s->login, s->bio, s->pcol, s->badges, s->vitrine[0],
 			s->vitrine[1], s->vitrine[2], s->banner, s->pfp, s->xp, s->octets, s->items,
-			s->titles, s->title, s->themes, s->theme);
+			s->titles, s->title, s->themes, s->theme,
+			strchr(s->perso, '1') ? "perso=" : "", strchr(s->perso, '1') ? s->perso : "", strchr(s->perso, '1') ? "\n" : "",
+			strpbrk(s->perso_sel, "123456789") ? "perso_sel=" : "", strpbrk(s->perso_sel, "123456789") ? s->perso_sel : "",
+			strpbrk(s->perso_sel, "123456789") ? "\n" : "");
 	for (i = 0; i < NSLOT && n < sz - 16; i++)
 		n += snprintf(b + n, sz - n, "%d%s", s->look.eq[i], i + 1 < NSLOT ? "," : "\ncol=");
 	for (i = 0; i < NSLOT && n < sz - 16; i++)
@@ -325,6 +328,10 @@ static void	fill_default(t_save *s)
 	s->titles[1] = '1';
 	s->title = 1;
 	strcpy(s->theme, "nuit");
+	memset(s->perso, '0', 64);
+	s->perso[64] = '\0';
+	memset(s->perso_sel, '0', NPC);
+	s->perso_sel[NPC] = '\0';
 	look_default(&s->look);
 	s->cfg.tmo = 30;
 	s->cfg.asan = 1;
@@ -349,6 +356,14 @@ static void	set_bits(char *dst, const char *v, int n)
 
 	for (i = 0; i < n && v[i]; i++)
 		dst[i] = v[i] == '1' ? '1' : '0';
+}
+
+static void	set_digits(char *dst, const char *v, int n)
+{
+	int	i;
+
+	for (i = 0; i < n && v[i]; i++)
+		dst[i] = v[i] >= '0' && v[i] <= '9' ? v[i] : '0';
 }
 
 static void	clean_text(char *dst, size_t n, const char *v)
@@ -443,6 +458,10 @@ static int	kv_profile(const char *k, const char *v)
 		set_bits(cur->themes, v, 15);
 	else if (!strcmp(k, "theme"))
 		snprintf(cur->theme, sizeof(cur->theme), "%s", v);
+	else if (!strcmp(k, "perso"))
+		set_bits(cur->perso, v, 64);
+	else if (!strcmp(k, "perso_sel"))
+		set_digits(cur->perso_sel, v, NPC);
 	else if (!strcmp(k, "eq"))
 		read_look(v, cur->look.eq);
 	else if (!strcmp(k, "col"))

@@ -97,7 +97,7 @@ int	tdf_list_menu(const char *title, const char **items, int n, int *sel, const 
 			else
 				fg(items[i][0] == '~' ? theme()->dim : theme()->text);
 			label_of(items[i], lab, sizeof(lab));
-			outf(" %s %s", i == *sel ? "▶" : " ", lab);
+			outf(" %s %s", i == *sel ? tdf_curseur() : " ", lab);
 			outf("%*s", 55 - ulen(lab) > 0 ? 55 - ulen(lab) : 1, "");
 			bgc(theme()->bg);
 			if (items[i][0] == '!')
@@ -514,7 +514,7 @@ static int	page(const char *titre, const char *texte, const char **items, int n,
 			else
 				fg(theme()->text);
 			label_of(items[i], lab, sizeof(lab));
-			outf(" %s %s ", i == *sel ? "▶" : " ", lab);
+			outf(" %s %s ", i == *sel ? tdf_curseur() : " ", lab);
 			bgc(theme()->bg);
 			outf("%*s", 30, "");
 		}
@@ -961,7 +961,7 @@ static void	dessiner_entrees(t_ent *e, int n, int sel, int x, int y, int h)
 		}
 		else
 			fg(e[i].tag[0] ? theme()->text : theme()->dim);
-		outf(" %s %s ", i == sel ? "▶" : " ", e[i].lab);
+		outf(" %s %s ", i == sel ? tdf_curseur() : " ", e[i].lab);
 		bgc(theme()->bg);
 		if (e[i].tag[0])
 			text_at(x + ulen(e[i].lab) + 5, y, theme()->accent2, e[i].tag);
@@ -1059,7 +1059,7 @@ static int	dessiner_options(int x, int y, int sel)
 		}
 		else
 			fg(theme()->text);
-		outf(" %s %-20s", i == sel ? "▶" : " ", nom[i]);
+		outf(" %s %-20s", i == sel ? tdf_curseur() : " ", nom[i]);
 		fg(g_opt[i] ? rgb(80, 230, 140) : theme()->dim);
 		outf(" ◀ %-3s ▶ ", g_opt[i] ? L("oui", "yes") : L("non", "no"));
 		bgc(theme()->bg);
@@ -1190,7 +1190,7 @@ int	tdf_choisir_dossier(char *out, size_t n)
 				}
 				else
 					fg(c[i].tag[0] ? theme()->accent : theme()->text);
-				outf(" %s %s/ ", i == csel ? "▶" : " ", c[i].nom);
+				outf(" %s %s/ ", i == csel ? tdf_curseur() : " ", c[i].nom);
 				bgc(theme()->bg);
 				if (c[i].tag[0])
 					text_at(x + ulen(c[i].nom) + 7, 6 + i - ctop, theme()->accent2, c[i].tag);
@@ -1678,7 +1678,7 @@ int	tdf_choisir_test(const char *dossier, char *out, size_t n)
 				snprintf(lab, sizeof(lab), "%%%s", noms[i]);
 			else
 				snprintf(lab, sizeof(lab), "%s", noms[i]);
-			outf(" %s %-*s", i == sel ? "▶" : " ", cw - 3, lab);
+			outf(" %s %-*s", i == sel ? tdf_curseur() : " ", cw - 3, lab);
 			bgc(theme()->bg);
 		}
 		y = 7 + (nb - 1) / nc + 1;

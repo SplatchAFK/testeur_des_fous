@@ -2543,3 +2543,54 @@ A bound book the traveller must have read often. Most pages are blank now. On th
 A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Маленький круглый аппарат, паривший над руинами и следовавший за каждым прохожим. Он искал своего хозяина. Он ищет до сих пор.
 A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Пыль, которая светится без тепла. Она падала из трещины, через которую пришёл путник, и так и не осела до конца.
 Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Сделан по образу хранительницы, прежде чем она спустилась. Кто его носит, чувствует кривой камень раньше, чем видит. Никто не носил его долго.
+Light wave · white	Волна света · белая
+Light wave · gold	Волна света · золотая
+Light wave · pink	Волна света · розовая
+Light wave · green	Волна света · зелёная
+Light wave · violet	Волна света · фиолетовая
+Light wave · rainbow	Волна света · радуга
+Big title · upright	Большой заголовок · прямой
+Big title · slanted	Большой заголовок · наклонный
+Big title · shadowed	Большой заголовок · с тенью
+Big title · dotted	Большой заголовок · растровый
+Fool's costume · original	Костюм шута · исходный
+Fool's costume · gold	Костюм шута · золотой
+Fool's costume · night	Костюм шута · ночной
+Fool's costume · neon	Костюм шута · неоновый
+Fool's costume · frost	Костюм шута · иней
+Bubbles · no frame	Пузыри · без рамки
+Bubbles · golden frame	Пузыри · золотая рамка
+Bubbles · cyan frame	Пузыри · бирюзовая рамка
+Bubbles · pink frame	Пузыри · розовая рамка
+Cursor · ▶	Курсор · ▶
+Cursor · ◆	Курсор · ◆
+Cursor · ★	Курсор · ★
+Cursor · ➤	Курсор · ➤
+Cursor · ●	Курсор · ●
+Cursor · ♦	Курсор · ♦
+Red dye	Красный краситель
+Blue dye	Синий краситель
+Green dye	Зелёный краситель
+Gold dye	Золотой краситель
+Violet dye	Фиолетовый краситель
+Black dye	Чёрный краситель
+Emblem · none	Эмблема · нет
+Emblem · ★	Эмблема · ★
+Emblem · ♛	Эмблема · ♛
+Emblem · ☾	Эмблема · ☾
+Emblem · ✿	Эмблема · ✿
+Emblem · ♞	Эмблема · ♞
+Emblem · ♥	Эмблема · ♥
+Profile frame · none	Рамка профиля · нет
+Profile frame · gold	Рамка профиля · золотая
+Profile frame · cyan	Рамка профиля · бирюзовая
+Profile frame · pink	Рамка профиля · розовая
+6th outfit slot	6-й слот наряда
+7th outfit slot	7-й слот наряда
+8th outfit slot	8-й слот наряда
+9th outfit slot	9-й слот наряда
+10th outfit slot	10-й слот наряда
+All are taken: which one to replace?	Все заняты: какой заменить?
+Personalisation	Персонализация
+Visible in the main menu	Видно в главном меню
+dye	покрасить

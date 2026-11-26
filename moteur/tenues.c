@@ -3,7 +3,7 @@
 #include <string.h>
 #include "fous.h"
 
-#define NTENUE 5
+#define NTENUE 10
 
 typedef struct s_tenue
 {
@@ -224,9 +224,9 @@ void	tdf_tenues_lister(int x, int y, int sel)
 	if (sel == 0)
 		bgc(mix(theme()->bg, theme()->accent, 0.2));
 	fg(sel == 0 ? theme()->accent2 : rgb(80, 230, 140));
-	outf(" %s %-40s", sel == 0 ? "▶" : " ", L("＋ Enregistrer ce que je porte", "＋ Save what I am wearing"));
+	outf(" %s %-40s", sel == 0 ? tdf_curseur() : " ", L("＋ Enregistrer ce que je porte", "＋ Save what I am wearing"));
 	bgc(theme()->bg);
-	for (i = 0; i < NTENUE; i++)
+	for (i = 0; i < perso_tenues(); i++)
 	{
 		at(x, y + 2 + i);
 		if (sel == i + 1)
@@ -236,14 +236,14 @@ void	tdf_tenues_lister(int x, int y, int sel)
 			snprintf(tmp, sizeof(tmp), "%d. %s", i + 1, g_tn[i].nom);
 		else
 			snprintf(tmp, sizeof(tmp), L("%d. (emplacement libre)", "%d. (free slot)"), i + 1);
-		outf(" %s %-40s", sel == i + 1 ? "▶" : " ", tmp);
+		outf(" %s %-40s", sel == i + 1 ? tdf_curseur() : " ", tmp);
 		bgc(theme()->bg);
 	}
 }
 
 int	tdf_tenues_apercu(int sel, t_look *lk)
 {
-	if (sel < 1 || sel > NTENUE || !g_tn[sel - 1].ok)
+	if (sel < 1 || sel > perso_tenues() || !g_tn[sel - 1].ok)
 		return (0);
 	*lk = tn_porte(&g_tn[sel - 1].lk);
 	return (1);
@@ -252,6 +252,7 @@ int	tdf_tenues_apercu(int sel, t_look *lk)
 void	tdf_tenues_entree(int sel, int x, int y)
 {
 	const char	*it[4];
+	const char	*noms[NTENUE];
 	char		nom[24];
 	int			i;
 	int			r;
@@ -259,12 +260,14 @@ void	tdf_tenues_entree(int sel, int x, int y)
 	tn_lire();
 	if (sel == 0)
 	{
-		for (i = 0; i < NTENUE && g_tn[i].ok; i++)
+		for (i = 0; i < perso_tenues() && g_tn[i].ok; i++)
 			;
-		if (i == NTENUE)
+		if (i == perso_tenues())
 		{
-			r = tdf_choix(x, y, L("Les 5 sont prises : laquelle remplacer ?", "All 5 are taken: which one to replace?"),
-					(const char *[]){g_tn[0].nom, g_tn[1].nom, g_tn[2].nom, g_tn[3].nom, g_tn[4].nom}, NTENUE);
+			for (r = 0; r < perso_tenues(); r++)
+				noms[r] = g_tn[r].nom;
+			r = tdf_choix(x, y, L("Toutes sont prises : laquelle remplacer ?", "All are taken: which one to replace?"),
+					noms, perso_tenues());
 			if (r < 0)
 				return ;
 			i = r;
@@ -273,7 +276,7 @@ void	tdf_tenues_entree(int sel, int x, int y)
 		return ;
 	}
 	i = sel - 1;
-	if (i < 0 || i >= NTENUE)
+	if (i < 0 || i >= perso_tenues())
 		return ;
 	if (!g_tn[i].ok)
 	{
