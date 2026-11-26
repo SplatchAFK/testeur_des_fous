@@ -741,7 +741,9 @@ static int	mu_ecran(t_mu *m, int *sel)
 			x = (cols - (tw + 4 + g_fou_petit_w)) / 2;
 			titre_bloc(x, 3, "TESTEUR", 0);
 			titre_bloc(x, 9, "DES FOUS", 0);
-			fou_petit(x + tw + 4, 1);
+			k = g_save.cfg.anim == 2 ? 0 : (int)((now_ms() / 1300) % 2);
+			fill(x + tw + 4 + (k ? 0 : g_fou_bloc_w), 1, 1, g_fou_bloc_h, theme()->bg);
+			fou_petit(x + tw + 4 + k, 1);
 			haut = 16;
 		}
 		else if (rows >= 13 + m->n)
@@ -770,7 +772,7 @@ static int	mu_ecran(t_mu *m, int *sel)
 		if (bx < 1)
 			bx = 1;
 		if (av)
-			avatar_panel(bx, y, &g_save.look, g_save.title, 0);
+			avatar_panel(bx, y, &g_save.look, g_save.title, now_ms());
 		ix = bx + (av ? 32 : 0);
 		for (i = 0; i < m->n; i++)
 		{

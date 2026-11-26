@@ -183,6 +183,7 @@ typedef struct s_avcache
 	int				h;
 	unsigned char	*fond;
 	unsigned char	*fig;
+	unsigned char	*cal[NSLOT];
 	unsigned char	*grand;
 }	t_avcache;
 
@@ -253,6 +254,7 @@ static int	composer_av(const t_look *lk)
 	unsigned long		cle;
 	const t_pic			*p;
 	t_pic				*tp;
+	unsigned char		*un;
 	unsigned char		*fig;
 	unsigned char		*fd;
 	char				nom[64];
@@ -267,6 +269,11 @@ static int	composer_av(const t_look *lk)
 	if (g_av.cle == cle && g_av.fig)
 		return (g_av.ok);
 	g_av.cle = cle;
+	for (k = 0; k < NSLOT; k++)
+	{
+		free(g_av.cal[k]);
+		g_av.cal[k] = NULL;
+	}
 	free(g_av.fond);
 	free(g_av.fig);
 	free(g_av.grand);
@@ -302,6 +309,13 @@ static int	composer_av(const t_look *lk)
 		snprintf(nom, sizeof(nom), "av_%s", g_items[it].id);
 		tp = art_pic_temp(nom);
 		empiler(fig, tp, w, h);
+		un = calloc((size_t)w * h, 4);
+		if (un)
+		{
+			empiler(un, tp, w, h);
+			g_av.cal[ordre[k]] = reduire_av(un, w, h, 23, 32);
+			free(un);
+		}
 		art_pic_liberer(tp);
 	}
 	g_av.w = w;
@@ -334,14 +348,76 @@ static void	poser(t_canvas *c, const unsigned char *s, int w, int h, int x, int 
 				cv_px(c, x + i, y + j, rgb(s[(j * w + i) * 4], s[(j * w + i) * 4 + 1], s[(j * w + i) * 4 + 2]));
 }
 
+static t_rgb	anim_couleur(int slot, int j, t_rgb col, long t)
+{
+	int	g;
+
+	if (slot == SL_MAIN && col.r + col.g + col.b > 480)
+		return (mix(col, rgb(255, 255, 255), 0.12 + 0.12 * sin(t / 170.0)));
+	if (slot == SL_ARME)
+	{
+		g = (int)((t / 200) % 40) - 8;
+		if (j == g || j == g + 1)
+			return (mix(col, rgb(255, 255, 255), 0.6));
+	}
+	return (col);
+}
+
+static int	anim_dx(int slot, int j, long t)
+{
+	if (slot == SL_CAPE && j >= 18)
+		return ((int)lround(sin(t / 420.0 + j * 0.35) * 0.9 * (j - 17) / 14.0));
+	if (slot == SL_DECO)
+		return ((t / 700) % 6 == 2 ? 1 : 0);
+	return (0);
+}
+
+static void	poser_anim(t_canvas *c, const unsigned char *s, int x, int y, int slot, long t)
+{
+	int		i;
+	int		j;
+	t_rgb	col;
+
+	for (j = 0; j < 32; j++)
+		for (i = 0; i < 23; i++)
+		{
+			if (s[(j * 23 + i) * 4 + 3] < 110)
+				continue ;
+			col = rgb(s[(j * 23 + i) * 4], s[(j * 23 + i) * 4 + 1], s[(j * 23 + i) * 4 + 2]);
+			if (t)
+				col = anim_couleur(slot, j, col, t);
+			cv_px(c, x + i + (t ? anim_dx(slot, j, t) : 0), y + j, col);
+		}
+}
+
 void	avatar_draw(t_canvas *c, int x, int y, const t_look *lk, long t)
 {
-	int	bob;
+	static const int	ordre[] = {SL_CAPE, SL_JAMBES, SL_ARMURE, SL_CASQUE, SL_YEUX, SL_DECO,
+		SL_ARME, SL_MAIN, SL_FAMILIER};
+	int					bob;
+	int					k;
+	int					dy;
 
-	bob = (t / 600) % 2;
+	if (g_save.cfg.anim == 2)
+		t = 0;
+	if (t)
+		t -= t % 200 - 1;
+	bob = (t / 1200) % 2;
 	if (!composer_av(lk))
 		return ;
 	poser(c, g_av.fond, 28, 32, x, y, 100);
 	aura(c, x, y, lk->eq[SL_AURA], t);
-	poser(c, g_av.fig, 23, 32, x + 2, y + bob, 110);
+	for (k = 0; k < (int)(sizeof(ordre) / sizeof(ordre[0])); k++)
+	{
+		if (!g_av.cal[ordre[k]])
+			continue ;
+		if (ordre[k] == SL_YEUX && t && t % 4800 < 200)
+			continue ;
+		dy = 0;
+		if (ordre[k] == SL_FAMILIER)
+			dy = t && ((t + 250) / 900) % 2 ? -1 : 0;
+		else if (ordre[k] == SL_CASQUE || ordre[k] == SL_YEUX || ordre[k] == SL_DECO)
+			dy = bob;
+		poser_anim(c, g_av.cal[ordre[k]], x + 2, y + dy, ordre[k], t);
+	}
 }

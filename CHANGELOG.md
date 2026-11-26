@@ -19,6 +19,11 @@ Le numéro de version est dans `moteur/version.h`.
 - La recherche ignore les accents : « neon » trouve « Néon ».
 - Les auras des collections scintillent aux couleurs de leur thème.
 
+### Animations
+
+- Ton chevalier est animé, dans le menu, la garde-robe et la boutique : sa tête respire, sa cape ondule, ses yeux clignent, sa plume bouge, sa lanterne scintille, un reflet glisse sur son arme et son familier flotte. Le fou du menu se balance.
+- Léger : 5 images par seconde au plus, et seules les cases qui changent sont redessinées. Réglages › Animations « aucune » les coupe.
+
 ### Commande tdf
 
 - Si tu supprimes le testeur et le reclones ailleurs, Paramètres propose « Réinstaller la commande tdf » : l'ancienne commande pointait vers un dossier disparu. Marche aussi dans le menu texte.
