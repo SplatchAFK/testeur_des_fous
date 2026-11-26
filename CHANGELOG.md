@@ -8,6 +8,10 @@ Le numéro de version est dans `moteur/version.h`.
 
 - Édition du voyageur galactique : 11 pièces (ciel, serviette, chausses, veste, bulle, regard, antenne, lame, guide, sonde, étoiles), 2 500 ◈ chacune.
 - Le casque moulinette : un seul objet, 10 000 ◈.
+- Rechercher : « / » (ou la ligne « Rechercher » en haut de la liste) filtre tous les rayons pendant que tu tapes, par nom d'objet ou de collection.
+- Nouveau rayon « Collections » : chaque tenue complète en aperçu sur ton chevalier, puis « Porter toute la tenue » ou « Acheter les pièces manquantes ».
+- Sous la liste, l'emplacement et la collection de l'objet choisi.
+- La sauvegarde peut maintenant garder plus de 1 000 objets.
 
 ### Commande tdf
 

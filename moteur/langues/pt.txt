@@ -2094,3 +2094,16 @@ Traveller's guide	Guia do viajante
 Traveller's probe	Sonda do viajante
 Traveller's stars	Estrelas do viajante
 The moulinette helmet	O capacete moulinette
+The galactic traveller	O viajante galáctico
+girl	rapariga
+boy	rapaz
+Collections	Coleções
+Wear the whole outfit (%d/%d pieces)	Vestir o traje todo (%d/%d peças)
+Buy the missing pieces (%ld ◈)	Comprar as peças em falta (%ld ◈)
+Cancel	Cancelar
+NOT ENOUGH OCTETS	OCTETOS INSUFICIENTES
+Search '%s': %d item(s)	Pesquisa «%s»: %d objeto(s)
+Search: 	Pesquisar: 
+complete	completa
+No item has this name.	Nenhum objeto tem este nome.
+search	pesquisar

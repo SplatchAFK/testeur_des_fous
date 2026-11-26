@@ -2094,3 +2094,16 @@ Traveller's guide	Guida del viaggiatore
 Traveller's probe	Sonda del viaggiatore
 Traveller's stars	Stelle del viaggiatore
 The moulinette helmet	L'elmo moulinette
+The galactic traveller	Il viaggiatore galattico
+girl	ragazza
+boy	ragazzo
+Collections	Collezioni
+Wear the whole outfit (%d/%d pieces)	Indossa tutta la tenuta (%d/%d pezzi)
+Buy the missing pieces (%ld ◈)	Compra i pezzi mancanti (%ld ◈)
+Cancel	Annulla
+NOT ENOUGH OCTETS	OTTETTI INSUFFICIENTI
+Search '%s': %d item(s)	Ricerca «%s»: %d oggetto/i
+Search: 	Cerca: 
+complete	completa
+No item has this name.	Nessun oggetto ha questo nome.
+search	cerca

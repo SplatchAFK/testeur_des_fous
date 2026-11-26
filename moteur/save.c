@@ -213,7 +213,7 @@ static const t_ancien	g_anciens[120] = {
 	{"casque_pourcent", 120}
 };
 
-static char	g_items_brut[256];
+static char	g_items_brut[1024];
 
 static int	nouvel_objet(const char *id)
 {

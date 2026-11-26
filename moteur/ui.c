@@ -926,11 +926,13 @@ typedef struct s_shopst
 	int	tab;
 	int	sel;
 	int	top;
-	int	wardrobe;
-	int	jump;
+	int		wardrobe;
+	int		jump;
+	char	q[48];
 }	t_shopst;
 
 #define NTAB (NSLOT + 2)
+#define TAB_COLL (NTAB + 1)
 
 static int	tab_slot(int tab)
 {
@@ -940,18 +942,118 @@ static int	tab_slot(int tab)
 	return (tab < NSLOT ? order[tab] : -1);
 }
 
+static int	contient(const char *h, const char *q)
+{
+	size_t	i;
+	size_t	j;
+
+	if (!q[0])
+		return (1);
+	for (i = 0; h[i]; i++)
+	{
+		for (j = 0; q[j] && h[i + j] && tolower((unsigned char)h[i + j]) == tolower((unsigned char)q[j]); j++)
+			;
+		if (!q[j])
+			return (1);
+	}
+	return (0);
+}
+
+static const char	*coll_nom(int c)
+{
+	if (c < 0 || c >= g_ncollections)
+		c = 0;
+	return (L(g_collections[c].fr, g_collections[c].en));
+}
+
+static int	objet_cherche(const t_shopst *s, int i)
+{
+	return (contient(L(g_items[i].fr, g_items[i].en), s->q) || contient(coll_nom(g_items[i].collection), s->q));
+}
+
+static int	coll_a_genre(int c, int g)
+{
+	int	i;
+	int	autre;
+	int	trouve;
+
+	autre = 0;
+	trouve = 0;
+	for (i = 0; i < g_nitems; i++)
+		if (g_items[i].collection == c)
+		{
+			trouve |= g_items[i].genre == g;
+			autre |= g_items[i].genre != 0;
+		}
+	return (g == 0 ? trouve && !autre : trouve);
+}
+
+static int	coll_piece(int c, int g, int i)
+{
+	return (g_items[i].collection == c && (g_items[i].genre == g || g_items[i].genre == 0));
+}
+
+static void	coll_look(int c, int g, t_look *lk)
+{
+	int	pris[NSLOT];
+	int	i;
+
+	memset(pris, 0, sizeof(pris));
+	for (i = 0; i < g_nitems; i++)
+		if (coll_piece(c, g, i) && !pris[g_items[i].slot])
+		{
+			lk->eq[g_items[i].slot] = i;
+			pris[g_items[i].slot] = 1;
+		}
+}
+
+static void	coll_compte(int c, int g, int *own, int *tot, long *manque)
+{
+	int	i;
+
+	*own = 0;
+	*tot = 0;
+	*manque = 0;
+	for (i = 0; i < g_nitems; i++)
+		if (coll_piece(c, g, i))
+		{
+			(*tot)++;
+			if (item_owned(i))
+				(*own)++;
+			else if (g_items[i].price > 0)
+				*manque += g_items[i].price;
+		}
+}
+
+static void	coll_libelle(int code, char *b, size_t n)
+{
+	int	g;
+
+	g = code % 3;
+	snprintf(b, n, "%s%s%s", coll_nom(code / 3), g ? " · " : "",
+		g == 1 ? L("fille", "girl") : (g == 2 ? L("garçon", "boy") : ""));
+}
+
 static int	list_items(const t_shopst *s, int *ids, int max)
 {
 	int	n;
 	int	i;
+	int	g;
 	int	slot;
 
 	n = 0;
 	slot = tab_slot(s->tab);
-	if (slot >= 0)
+	if (s->tab == TAB_COLL)
+	{
+		for (i = 1; i < g_ncollections; i++)
+			for (g = 0; g < 3; g++)
+				if (n < max && coll_a_genre(i, g))
+					ids[n++] = i * 3 + g;
+	}
+	else if (slot >= 0)
 	{
 		for (i = 0; i < g_nitems && n < max; i++)
-			if (g_items[i].slot == slot && (!s->wardrobe || item_owned(i)))
+			if ((s->q[0] || g_items[i].slot == slot) && (!s->wardrobe || item_owned(i)) && objet_cherche(s, i))
 				ids[n++] = i;
 	}
 	else if (s->tab == NSLOT)
@@ -969,6 +1071,8 @@ static int	list_items(const t_shopst *s, int *ids, int max)
 
 static const char	*tab_name(int tab)
 {
+	if (tab == TAB_COLL)
+		return (L("Collections", "Collections"));
 	if (tab < NSLOT)
 		return (L(g_slot_fr[tab_slot(tab)], g_slot_en[tab_slot(tab)]));
 	if (tab == NSLOT)
@@ -988,13 +1092,44 @@ static void	puce(int *x, int y, const char *touche, const char *quoi)
 	*x += ulen(touche) + ulen(quoi) + 6;
 }
 
+static int	ordre_onglets(const t_shopst *s, int *t)
+{
+	int	n;
+	int	i;
+
+	n = 0;
+	if (s->wardrobe)
+		t[n++] = NTAB;
+	t[n++] = TAB_COLL;
+	for (i = 0; i < NTAB; i++)
+		t[n++] = i;
+	return (n);
+}
+
+static int	rang_onglet(const t_shopst *s, int *total)
+{
+	int	t[NTAB + 2];
+	int	i;
+
+	*total = ordre_onglets(s, t);
+	for (i = 0; i < *total; i++)
+		if (t[i] == s->tab)
+			return (i + 1);
+	return (1);
+}
+
 static int	onglet_suivant(const t_shopst *s, int sens)
 {
-	if (!s->wardrobe)
-		return ((s->tab + (sens > 0 ? 1 : NTAB - 1)) % NTAB);
-	if (sens > 0)
-		return (s->tab == NTAB ? 0 : (s->tab == NTAB - 1 ? NTAB : s->tab + 1));
-	return (s->tab == NTAB ? NTAB - 1 : (s->tab == 0 ? NTAB : s->tab - 1));
+	int	t[NTAB + 2];
+	int	n;
+	int	i;
+
+	n = ordre_onglets(s, t);
+	for (i = 0; i < n && t[i] != s->tab; i++)
+		;
+	if (i == n)
+		i = 0;
+	return (t[(i + (sens > 0 ? 1 : n - 1)) % n]);
 }
 
 static void	coins(int x, int y, int amount)
@@ -1022,6 +1157,8 @@ static void	coins(int x, int y, int amount)
 
 static int	price_of(const t_shopst *s, int id)
 {
+	if (s->tab == TAB_COLL)
+		return (0);
 	if (tab_slot(s->tab) >= 0)
 		return (g_items[id].price);
 	if (s->tab == NSLOT)
@@ -1031,6 +1168,8 @@ static int	price_of(const t_shopst *s, int id)
 
 static int	owns(const t_shopst *s, int id)
 {
+	if (s->tab == TAB_COLL)
+		return (0);
 	if (tab_slot(s->tab) >= 0)
 		return (item_owned(id));
 	if (s->tab == NSLOT)
@@ -1040,8 +1179,10 @@ static int	owns(const t_shopst *s, int id)
 
 static int	equipped(const t_shopst *s, int id)
 {
+	if (s->tab == TAB_COLL)
+		return (0);
 	if (tab_slot(s->tab) >= 0)
-		return (g_save.look.eq[tab_slot(s->tab)] == id);
+		return (g_save.look.eq[g_items[id].slot] == id);
 	if (s->tab == NSLOT)
 		return (!strcmp(g_save.theme, g_themes[id].id));
 	return (g_save.title == id);
@@ -1072,11 +1213,59 @@ static void	count_achs(void)
 static void	equip(const t_shopst *s, int id)
 {
 	if (tab_slot(s->tab) >= 0)
-		g_save.look.eq[tab_slot(s->tab)] = id;
+		g_save.look.eq[g_items[id].slot] = id;
 	else if (s->tab == NSLOT)
 		snprintf(g_save.theme, sizeof(g_save.theme), "%s", g_themes[id].id);
 	else
 		g_save.title = id;
+}
+
+static void	coll_entree(const t_shopst *s, int code, int x, int y)
+{
+	const char	*it[3];
+	char		a[120];
+	char		b[120];
+	char		titre[120];
+	int			own;
+	int			tot;
+	long		manque;
+	int			n;
+	int			r;
+	int			i;
+
+	coll_compte(code / 3, code % 3, &own, &tot, &manque);
+	coll_libelle(code, titre, sizeof(titre));
+	n = 0;
+	snprintf(a, sizeof(a), L("Porter toute la tenue (%d/%d pièces)", "Wear the whole outfit (%d/%d pieces)"), own, tot);
+	it[n++] = a;
+	if (!s->wardrobe && manque > 0)
+	{
+		snprintf(b, sizeof(b), L("Acheter les pièces manquantes (%ld ◈)", "Buy the missing pieces (%ld ◈)"), manque);
+		it[n++] = b;
+	}
+	it[n++] = L("Annuler", "Cancel");
+	r = tdf_choix(x, y, titre, it, n);
+	if (r < 0 || r == n - 1)
+		return ;
+	if (r == 1)
+	{
+		if (g_save.octets < manque)
+		{
+			toast(L("PAS ASSEZ D'OCTETS", "NOT ENOUGH OCTETS"), titre, rgb(255, 90, 100));
+			return ;
+		}
+		for (i = 0; i < g_nitems; i++)
+			if (coll_piece(code / 3, code % 3, i) && !item_owned(i) && g_items[i].price > 0)
+			{
+				g_save.octets -= g_items[i].price;
+				item_own(i);
+			}
+	}
+	for (i = 0; i < g_nitems; i++)
+		if (coll_piece(code / 3, code % 3, i) && item_owned(i))
+			g_save.look.eq[g_items[i].slot] = i;
+	count_achs();
+	save_write();
 }
 
 void	screen_shop(int wardrobe)
@@ -1096,6 +1285,11 @@ void	screen_shop(int wardrobe)
 	char		tmp[200];
 	char		tn[80];
 	int			apercu;
+	int			srch;
+	int			y0;
+	int			r1;
+	int			rt;
+	size_t		lq;
 
 	memset(&s, 0, sizeof(s));
 	s.wardrobe = wardrobe != 0;
@@ -1111,7 +1305,9 @@ void	screen_shop(int wardrobe)
 	{
 		t = now_ms();
 		n = s.tab == NTAB ? 6 : list_items(&s, ids, NTITLE);
-		if (s.jump && s.tab != NTAB)
+		srch = tab_slot(s.tab) >= 0;
+		y0 = srch ? 5 : 4;
+		if (s.jump && s.tab != NTAB && s.tab != TAB_COLL)
 		{
 			s.jump = 0;
 			for (i = 0; i < n; i++)
@@ -1119,20 +1315,28 @@ void	screen_shop(int wardrobe)
 					s.sel = i;
 		}
 		if (s.sel >= n)
-			s.sel = n ? n - 1 : 0;
-		rows = term_rows() - 9;
+			s.sel = n ? n - 1 : (srch ? -1 : 0);
+		if (s.sel < -1 || (s.sel == -1 && !srch))
+			s.sel = 0;
+		rows = term_rows() - (srch ? 12 : 9);
 		if (rows > 14)
 			rows = 14;
-		if (s.sel < s.top)
+		if (rows < 3)
+			rows = 3;
+		if (s.sel >= 0 && s.sel < s.top)
 			s.top = s.sel;
 		if (s.sel >= s.top + rows)
 			s.top = s.sel - rows + 1;
-		id = n && s.tab != NTAB ? ids[s.sel] : -1;
+		if (s.top < 0)
+			s.top = 0;
+		id = n && s.tab != NTAB && s.sel >= 0 ? ids[s.sel] : -1;
 		lk = g_save.look;
 		title = g_save.title;
 		apercu = s.tab == NTAB && tdf_tenues_apercu(s.sel, &lk);
 		if (id >= 0 && tab_slot(s.tab) >= 0)
-			lk.eq[tab_slot(s.tab)] = id;
+			lk.eq[g_items[id].slot] = id;
+		else if (id >= 0 && s.tab == TAB_COLL)
+			coll_look(id / 3, id % 3, &lk);
 		else if (id >= 0 && s.tab == NSLOT + 1)
 			title = id;
 		x = (term_cols() - 78) / 2;
@@ -1146,8 +1350,11 @@ void	screen_shop(int wardrobe)
 		snprintf(tmp, sizeof(tmp), "%ld ◈", g_save.octets);
 		text_at(x + 78 - ulen(tmp) + (shake > t ? rand() % 3 - 1 : 0), 0,
 			shake > t ? rgb(255, 80, 90) : rgb(255, 215, 0), tmp);
-		snprintf(tmp, sizeof(tmp), "◀  %s  ▶   (%d/%d)", s.tab == NTAB ? L("Tenues", "Outfits") : tab_name(s.tab),
-			s.tab == NTAB ? 1 : s.tab + (wardrobe ? 2 : 1), wardrobe ? NTAB + 1 : NTAB);
+		r1 = rang_onglet(&s, &rt);
+		if (s.q[0])
+			snprintf(tmp, sizeof(tmp), L("Recherche « %s » : %d objet(s)", "Search '%s': %d item(s)"), s.q, n);
+		else
+			snprintf(tmp, sizeof(tmp), "◀  %s  ▶   (%d/%d)", s.tab == NTAB ? L("Tenues", "Outfits") : tab_name(s.tab), r1, rt);
 		text_at(x, 2, theme()->accent, tmp);
 		if (s.tab == NTAB && tdf_nouveau("3.2"))
 		{
@@ -1156,14 +1363,27 @@ void	screen_shop(int wardrobe)
 		}
 		if (s.tab == NTAB)
 			tdf_tenues_lister(x, 4, s.sel);
+		if (srch)
+		{
+			at(x, 4);
+			if (s.sel == -1)
+				bgc(mix(theme()->bg, theme()->accent, 0.2));
+			fg(s.q[0] || s.sel == -1 ? theme()->accent2 : theme()->dim);
+			snprintf(tn, sizeof(tn), "%s %s%s", s.sel == -1 ? "▶" : " ", L("Rechercher : ", "Search: "), s.q);
+			outf(" %s%s", tn, s.sel == -1 && (t / 500) % 2 ? "_" : " ");
+			outf("%*s", 42 - ulen(tn) > 0 ? 42 - ulen(tn) : 1, "");
+			bgc(theme()->bg);
+		}
 		for (i = s.top; s.tab != NTAB && i < n && i < s.top + rows; i++)
 		{
-			at(x, 4 + i - s.top);
+			at(x, y0 + i - s.top);
 			if (i == s.sel)
 				bgc(mix(theme()->bg, theme()->accent, 0.2));
 			fg(equipped(&s, ids[i]) ? rgb(80, 230, 140) : theme()->text);
 			if (tab_slot(s.tab) >= 0)
 				snprintf(tn, sizeof(tn), "%s", L(g_items[ids[i]].fr, g_items[ids[i]].en));
+			else if (s.tab == TAB_COLL)
+				coll_libelle(ids[i], tn, sizeof(tn));
 			else if (s.tab == NSLOT)
 				snprintf(tn, sizeof(tn), "%s", g_themes[ids[i]].name);
 			else
@@ -1171,7 +1391,17 @@ void	screen_shop(int wardrobe)
 			outf(" %s ", i == s.sel ? "▶" : " ");
 			out(tn);
 			outf("%*s", 30 - ulen(tn) > 0 ? 30 - ulen(tn) : 1, "");
-			if (equipped(&s, ids[i]))
+			if (s.tab == TAB_COLL)
+			{
+				coll_compte(ids[i] / 3, ids[i] % 3, &r1, &rt, &shake);
+				shake = 0;
+				fg(r1 == rt ? rgb(80, 230, 140) : theme()->dim);
+				if (r1 == rt)
+					out(L("complète", "complete"));
+				else
+					outf("%d/%d", r1, rt);
+			}
+			else if (equipped(&s, ids[i]))
 				out(L("ÉQUIPÉ  ", "EQUIPPED"));
 			else if (owns(&s, ids[i]))
 				out(L("possédé ", "owned   "));
@@ -1188,8 +1418,8 @@ void	screen_shop(int wardrobe)
 			bgc(theme()->bg);
 		}
 		if (!n)
-			text_at(x, 4, theme()->dim, L("Rien ici pour l'instant. Passe à la boutique !",
-					"Nothing here yet. Visit the shop!"));
+			text_at(x, y0, theme()->dim, s.q[0] ? L("Aucun objet ne porte ce nom.", "No item has this name.")
+				: L("Rien ici pour l'instant. Passe à la boutique !", "Nothing here yet. Visit the shop!"));
 		avatar_panel(x + 50, 3, &lk, title, t);
 		if (s.tab == NTAB)
 			text_at(x + 50, 24 > term_rows() - 3 ? term_rows() - 3 : 24, apercu ? rgb(255, 200, 80) : rgb(80, 230, 140),
@@ -1207,24 +1437,68 @@ void	screen_shop(int wardrobe)
 					((t_rgb[]){g_themes[id].accent, g_themes[id].accent2, g_themes[id].wall,
 						g_themes[id].floor, g_themes[id].text, g_themes[id].bg})[i]);
 		}
-		i = s.tab == NTAB ? 12 : 5 + (n < rows ? n : rows);
+		i = s.tab == NTAB ? 12 : y0 + 1 + (n < rows ? n : rows);
+		if (id >= 0 && srch)
+		{
+			snprintf(tn, sizeof(tn), "%s · %s", L(g_slot_fr[g_items[id].slot], g_slot_en[g_items[id].slot]),
+				coll_nom(g_items[id].collection));
+			text_clip(x + 1, i, theme()->dim, tn, 46);
+			i += 2;
+		}
 		k = x;
-		puce(&k, i, L("Entrée", "Enter"), s.tab == NTAB ? L("choisir", "choose")
+		puce(&k, i, L("Entrée", "Enter"), s.tab == NTAB || s.tab == TAB_COLL ? L("choisir", "choose")
 			: wardrobe ? L("équiper", "equip") : L("acheter / équiper", "buy / equip"));
 		puce(&k, i, "V", L("voir en grand", "see it large"));
 		k = x;
 		puce(&k, i + 2, "◀ ▶", wardrobe ? L("autres rayons, dont Tenues", "other sections, Outfits included")
 			: L("autres rayons", "other sections"));
+		if (srch)
+			puce(&k, i + 2, "/", L("rechercher", "search"));
 		foot_line(x, L("▲ ▼ choisir   Échap : retour", "▲ ▼ pick   Esc: back"));
 		if (s.tab == NSLOT + 1)
 			foot_line(x, L("+ / - : sauter de 20   r : titre au hasard", "+ / -: jump 20   r: random title"));
 		flush();
-		k = key_dir(key_read(40));
+		k = key_read(40);
+		if (srch && k == '/' && s.sel != -1)
+		{
+			s.sel = -1;
+			s.top = 0;
+			continue ;
+		}
+		if (srch && s.sel == -1 && k >= 32 && k != 127 && k < 1000 && strlen(s.q) + 4 < sizeof(s.q))
+		{
+			lq = strlen(s.q);
+			s.q[lq] = (char)k;
+			s.q[lq + 1] = '\0';
+			s.top = 0;
+			cls();
+			continue ;
+		}
+		if (srch && s.sel == -1 && (k == 127 || k == 8))
+		{
+			lq = strlen(s.q);
+			while (lq > 0 && ((unsigned char)s.q[lq - 1] & 0xC0) == 0x80)
+				lq--;
+			if (lq > 0)
+				lq--;
+			s.q[lq] = '\0';
+			cls();
+			continue ;
+		}
+		if (k == 27 && s.q[0])
+		{
+			s.q[0] = '\0';
+			s.sel = -1;
+			cls();
+			continue ;
+		}
+		k = key_dir(k);
 		if (key_quit(k) || k == 127 || k == 8)
 			break ;
 		if (k == 1002 || k == 1003)
 		{
 			s.tab = onglet_suivant(&s, k == 1002 ? 1 : -1);
+			s.q[0] = '\0';
 			s.sel = 0;
 			s.top = 0;
 			s.jump = 1;
@@ -1235,7 +1509,14 @@ void	screen_shop(int wardrobe)
 			tdf_tenues_entree(s.sel, x + 30, 5 + s.sel);
 			cls();
 		}
-		else if (k == 1000 && s.sel > 0)
+		else if (s.tab == TAB_COLL && (k == '\r' || k == '\n' || k == ' ') && id >= 0)
+		{
+			coll_entree(&s, id, x + 20, y0 + s.sel - s.top);
+			cls();
+		}
+		else if (srch && s.sel == -1 && (k == '\r' || k == '\n') && n)
+			s.sel = 0;
+		else if (k == 1000 && s.sel > (srch ? -1 : 0))
 			s.sel--;
 		else if (k == 1001 && s.sel < n - 1)
 			s.sel++;

@@ -2094,3 +2094,16 @@ Traveller's guide	Yolcunun rehberi
 Traveller's probe	Yolcunun sondası
 Traveller's stars	Yolcunun yıldızları
 The moulinette helmet	Moulinette kaskı
+The galactic traveller	Galaktik yolcu
+girl	kız
+boy	erkek
+Collections	Koleksiyonlar
+Wear the whole outfit (%d/%d pieces)	Kıyafetin tamamını giy (%d/%d parça)
+Buy the missing pieces (%ld ◈)	Eksik parçaları satın al (%ld ◈)
+Cancel	İptal
+NOT ENOUGH OCTETS	YETERSİZ OKTET
+Search '%s': %d item(s)	Arama '%s': %d eşya
+Search: 	Ara: 
+complete	tamam
+No item has this name.	Bu adda eşya yok.
+search	ara

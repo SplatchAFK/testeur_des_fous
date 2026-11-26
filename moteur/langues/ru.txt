@@ -2094,3 +2094,16 @@ Traveller's guide	Путеводитель путника
 Traveller's probe	Зонд путника
 Traveller's stars	Звёзды путника
 The moulinette helmet	Шлем moulinette
+The galactic traveller	Галактический путник
+girl	девушка
+boy	парень
+Collections	Коллекции
+Wear the whole outfit (%d/%d pieces)	Надеть весь наряд (%d/%d предметов)
+Buy the missing pieces (%ld ◈)	Купить недостающие предметы (%ld ◈)
+Cancel	Отмена
+NOT ENOUGH OCTETS	НЕДОСТАТОЧНО ОКТЕТОВ
+Search '%s': %d item(s)	Поиск «%s»: предметов: %d
+Search: 	Поиск: 
+complete	собран
+No item has this name.	Нет предмета с таким названием.
+search	поиск

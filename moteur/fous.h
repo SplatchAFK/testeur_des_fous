@@ -376,7 +376,16 @@ typedef struct s_idef
 	int			price;
 	t_rgb		base;
 	t_spr		spr;
+	int			collection;
+	int			genre;
 }	t_idef;
+
+typedef struct s_coll
+{
+	const char	*id;
+	const char	*fr;
+	const char	*en;
+}	t_coll;
 
 typedef struct s_look
 {
@@ -461,7 +470,7 @@ typedef struct s_save
 	long		octets;
 	int			runs;
 	char		cleared[NFN + 1];
-	char		items[256];
+	char		items[1024];
 	char		titles[NTITLE + 1];
 	int			title;
 	char		themes[16];
@@ -527,6 +536,8 @@ extern const t_rgb		g_pal_vals[];
 extern const t_spr		g_boss_spr[3];
 extern const t_idef		g_items[];
 extern const int		g_nitems;
+extern const t_coll		g_collections[];
+extern const int		g_ncollections;
 extern const t_exo		g_exos[NEXO];
 extern const t_boss		g_bosses[3];
 extern const char		*g_ach_fr[NACH][2];

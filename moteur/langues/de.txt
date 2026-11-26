@@ -2094,3 +2094,16 @@ Traveller's guide	Führer des Reisenden
 Traveller's probe	Sonde des Reisenden
 Traveller's stars	Sterne des Reisenden
 The moulinette helmet	Der Moulinette-Helm
+The galactic traveller	Der galaktische Reisende
+girl	Mädchen
+boy	Junge
+Collections	Kollektionen
+Wear the whole outfit (%d/%d pieces)	Ganzes Outfit tragen (%d/%d Teile)
+Buy the missing pieces (%ld ◈)	Fehlende Teile kaufen (%ld ◈)
+Cancel	Abbrechen
+NOT ENOUGH OCTETS	NICHT GENUG OKTETTE
+Search '%s': %d item(s)	Suche „%s“: %d Gegenstand/Gegenstände
+Search: 	Suchen: 
+complete	komplett
+No item has this name.	Kein Gegenstand trägt diesen Namen.
+search	suchen
