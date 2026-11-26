@@ -627,10 +627,33 @@ static void	interface_basculer(void)
 
 static int	tdf_installee(void)
 {
-	char	path[700];
+	char		path[700];
+	char		l[900];
+	char		lance[760];
+	FILE		*f;
+	const char	*racine;
+	int			etat;
 
 	snprintf(path, sizeof(path), "%s/.local/bin/tdf", getenv("HOME") ? getenv("HOME") : "/tmp");
-	return (access(path, X_OK) == 0);
+	if (access(path, X_OK) != 0)
+		return (0);
+	racine = getenv("TDF_RACINE");
+	if (!racine || !racine[0])
+		return (1);
+	snprintf(lance, sizeof(lance), "%s/run.sh", racine);
+	f = fopen(path, "r");
+	etat = 2;
+	while (f && fgets(l, sizeof(l), f))
+	{
+		l[strcspn(l, "\n")] = '\0';
+		if ((!strncmp(l, "# racine=", 9) && !strcmp(l + 9, racine))
+			|| (!strncmp(l, "exec bash ", 10) && !strncmp(l + 10, lance, strlen(lance))
+				&& l[10 + strlen(lance)] == ' '))
+			etat = 1;
+	}
+	if (f)
+		fclose(f);
+	return (etat);
 }
 
 typedef struct s_cand
@@ -1890,10 +1913,16 @@ void	tdf_menu_params(void (*credits)(void))
 		items[n++] = L("Réglages|Langue, animations, histoire, niveau d'aide, outils de test.", "Options|Language, animations, story, help level, test tools.");
 		if (tdf_menu_unique())
 		{
-			if (!tdf_installee())
+			if (tdf_installee() == 0)
 			{
 				act[n] = 5;
 				items[n++] = L("Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo).", "Install the tdf command|Then you just type 'tdf' in any folder (no sudo).");
+			}
+			else if (tdf_installee() == 2)
+			{
+				act[n] = 5;
+				items[n++] = tdf_nouveau("3.5") ? L("!Réinstaller la commande tdf|Elle pointe vers un autre dossier (ancien clone supprimé ou déplacé) : elle lancera ce testeur-ci.", "!Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.")
+					: L("Réinstaller la commande tdf|Elle pointe vers un autre dossier (ancien clone supprimé ou déplacé) : elle lancera ce testeur-ci.", "Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.");
 			}
 			if (getenv("TDF_NORME_ABSENTE"))
 			{

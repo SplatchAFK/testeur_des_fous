@@ -38,6 +38,18 @@ while IFS= read -r f; do
 	fi
 done < <(find . -type f -not -path './.git/*' -not -path './.banc/*' -not -path '*/.build/*' -not -path '*/.build_jeu/*' -not -path './exam/*')
 
+if command -v cc >/dev/null 2>&1; then
+	for f in moteur/*.c modules/libft/src/*.c modules/exam/src/*.c; do
+		case "$f" in
+			*/exos.c|*/protos.c|*/tests.c) continue ;;
+		esac
+		cc -fsyntax-only -w -I moteur -I modules/libft/src -I modules/exam/src "$f" 2>/dev/null || signaler "ne compile pas : $f"
+	done
+	for f in modules/printf/game/*.c; do
+		cc -fsyntax-only -w -DTDF_PRINTF -I modules/printf/game -I moteur "$f" 2>/dev/null || signaler "ne compile pas : $f"
+	done
+fi
+
 [ -f LICENSE ] || signaler "LICENSE absent"
 [ -f moteur/version.h ] || signaler "moteur/version.h absent"
 

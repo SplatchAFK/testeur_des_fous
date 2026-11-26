@@ -593,10 +593,16 @@ menu_params() {
 		items+=("$(tt "Interface : graphique|Entrée pour passer au mode texte (les tests seuls, sans animation)" "Interface: graphical|Enter to switch to text mode (tests only, no animation)")")
 	fi
 	acts+=("interface")
-	if ! tdf_cli_installee; then
-		items+=("$(tt "Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo)" "Install the tdf command|Then you just type \"tdf\" in any folder (no sudo)")")
-		acts+=("installer")
-	fi
+	case "$(tdf_cli_etat)" in
+		0)
+			items+=("$(tt "Installer la commande tdf|Ensuite tu tapes seulement « tdf » dans n'importe quel dossier (sans sudo)" "Install the tdf command|Then you just type \"tdf\" in any folder (no sudo)")")
+			acts+=("installer")
+			;;
+		2)
+			items+=("$(tt "Réinstaller la commande tdf|Elle pointe vers un autre dossier (ancien clone supprimé ou déplacé) : elle lancera ce testeur-ci." "Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.")")
+			acts+=("installer")
+			;;
+	esac
 	items+=("$(tt "Revoir le tuto|Les 6 écrans qui présentent le testeur" "Replay the tutorial|The 6 screens that present the tester")")
 	acts+=("tuto")
 	items+=("$(printf "$(tt "Nouveautés de la version %s|" "What's new in version %s|")" "$TDF_VERSION")")

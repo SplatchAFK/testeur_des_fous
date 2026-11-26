@@ -14,7 +14,7 @@ tdf_cli_installer() {
 			"%s already exists and does not belong to the testeur des fous: nothing was changed." "$cible"
 		return 1
 	fi
-	printf '\043!/usr/bin/env bash\nexport TDF_CLI=1\nexec bash %q "$@"\n' "$TDF_RACINE/run.sh" > "$cible" || return 1
+	printf '\043!/usr/bin/env bash\nexport TDF_CLI=1\nexec bash %q "$@"\n\043 racine=%s\n' "$TDF_RACINE/run.sh" "$TDF_RACINE" > "$cible" || return 1
 	chmod 755 "$cible" || return 1
 	tl "Commande installée : %s (sans sudo)" "Command installed: %s (no sudo)" "$cible"
 	tl "Elle lance le testeur rangé dans : %s" "It runs the tester stored in: %s" "$TDF_RACINE"
@@ -62,6 +62,12 @@ tdf_cli_maj() {
 
 tdf_cli_installee() {
 	[ -f "$TDF_BIN/$TDF_CMD_NOM" ] && grep -q 'TDF_CLI=1' "$TDF_BIN/$TDF_CMD_NOM" 2>/dev/null
+}
+
+tdf_cli_etat() {
+	tdf_cli_installee || { echo 0; return 0; }
+	if grep -qxF "# racine=$TDF_RACINE" "$TDF_BIN/$TDF_CMD_NOM" 2>/dev/null \
+		|| grep -qF "exec bash $TDF_RACINE/run.sh " "$TDF_BIN/$TDF_CMD_NOM" 2>/dev/null; then echo 1; else echo 2; fi
 }
 
 tdf_touche() {

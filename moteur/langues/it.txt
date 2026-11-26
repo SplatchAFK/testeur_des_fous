@@ -2064,3 +2064,6 @@ What do you do if a malloc fails in the middle of the new list?§Why is del need
 arrows: pick   f: details   n: norminette   m: audit   auto rerun on save   Enter: continue	frecce: scegli   f: scheda   n: norminette   m: audit   rilancio a ogni salvataggio   Invio: continua
 Automatic rerun	Rilancio automatico
 Libft: the tests run again each time you save your files, keep the results screen next to your editor	Libft: i test ripartono a ogni salvataggio dei tuoi file, tieni la schermata dei risultati accanto al tuo editor
+!Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	!Reinstalla il comando tdf|Punta a un'altra cartella (vecchio clone eliminato o spostato): avvierà questo tester.
+Reinstall the tdf command|It points to another folder (old clone deleted or moved): it will run this tester.	Reinstalla il comando tdf|Punta a un'altra cartella (vecchio clone eliminato o spostato): avvierà questo tester.
+Le Garde Fou ne marche pas >:)	Le Garde Fou ne marche pas >:)

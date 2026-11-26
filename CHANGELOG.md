@@ -2,6 +2,20 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
+## 3.5.0 · en préparation
+
+### Commande tdf
+
+- Si tu supprimes le testeur et le reclones ailleurs, Paramètres propose « Réinstaller la commande tdf » : l'ancienne commande pointait vers un dossier disparu. Marche aussi dans le menu texte.
+
+### Le savais-tu ?
+
+- Un nouvel easter egg.
+
+### Maintenance
+
+- `outils/verif.sh` vérifie aussi que le code C compile.
+
 ## 3.4.0 · 2026-11-20
 
 ### Prototypes
