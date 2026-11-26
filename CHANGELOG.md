@@ -2,7 +2,7 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
-## 3.5.0 · en préparation
+## 3.5.0 · 2026-11-26
 
 ### Pages de nouveautés
 

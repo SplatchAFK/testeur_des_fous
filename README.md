@@ -1,6 +1,6 @@
 # Le testeur des fous
 
-> **Version 3.4.0** · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
+> **Version 3.5.0** · [nouveautés](docs/nouveautes/3.5.md) · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
 
 **Un seul testeur pour Libft, ft_printf et get_next_line, un examshell en C, une banque d'exercices et un mode correction.** Il teste comme la moulinette, ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te montre où regarder. Tout se fait aux flèches, dans un seul menu.
 
@@ -74,7 +74,7 @@ La correction compile avec `cc -Wall -Wextra -Werror`, refuse les fonctions non 
 94 exercices au choix, en 8 langues : 57 pour l'exam, 21 d'entraînement Libft, 16 d'entraînement printf. ◀ ▶ change d'onglet, Entrée ouvre le sujet, puis « Corriger mon code ».
 ## Ta progression
 
-Chaque test réussi rapporte de l'expérience et des Octets. Habille ton chevalier dans la garde-robe, suis tes courbes dans Stats, et découvre l'histoire de « la Cité qui compile » en pixel art (c'est un testeur, pas un jeu vidéo : tout se coupe dans les options).
+Chaque test réussi rapporte de l'expérience et des Octets. Dépense-les dans la boutique : 17 collections de tenues (dont le voyageur galactique) à essayer en entier, une recherche par nom (touche /), et un rayon Personnalisation qui change le testeur lui-même (couleurs du menu, curseur, emblème, teintures). Habille ton chevalier dans la garde-robe, suis tes courbes dans Stats, et découvre l'histoire de « la Cité qui compile » en pixel art (c'est un testeur, pas un jeu vidéo : tout se coupe dans les options).
 Ta sauvegarde est dans `~/.testeur_des_fous/`, hors du dossier du testeur : tu peux le supprimer ou le recloner sans rien perdre.
 
 ## Le menu en bref
