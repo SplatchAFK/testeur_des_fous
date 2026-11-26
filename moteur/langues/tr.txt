@@ -2313,3 +2313,233 @@ Fruits	Meyveler
 Cardboard and tape	Karton ve bant
 Bad idea	Kötü fikir
 Failed costume	Başarısız kostüm
+The great cavern as the watchers saw it: the Tower in the distance, its windows going dark one by one.	Nöbetçilerin gördüğü haliyle büyük mağara: uzakta Kule ve tek tek sönen pencereleri.
+The furnaces never fully cooled. Through the Long Silence, the Foundry kept burning for no one.	Fırınlar hiçbir zaman tam soğumadı. Uzun Sessizlik boyunca Dökümhane kimse için yanmaya devam etti.
+The still water at the bottom of the Well. The rope-walkers said it remembered every line they climbed down.	Kuyunun dibindeki durgun su. İpçiler, indikleri her satırı hatırladığını söylerdi.
+Some nights a pale moon drifted behind the Tower. No one knew where that light came from, so far below the surface.	Bazı geceler Kule'nin arkasından solgun bir ay geçerdi. Yüzeyin bu kadar altında bu ışığın nereden geldiğini kimse bilmezdi.
+The cloak of the one who arrives at the end of the Long Silence. It carries the dust of every road before this one.	Uzun Sessizliğin sonunda gelenin pelerini. Önceki tüm yolların tozunu taşır.
+A cloak found at the edge of the cavern, torn by gears that spun for nothing.	Mağaranın kıyısında bulunmuş, boşa dönen dişlilerin yırttığı bir pelerin.
+Woven from the mist that leaked from the walls. It weighs nothing, and lets the cold through.	Duvarlardan sızan sisten dokunmuş. Hiç ağırlığı yoktur ve soğuğu geçirir.
+The founders draped it over the moulds so they would not cool too fast. It still smells of hot metal.	Dökümcüler kalıplar çok çabuk soğumasın diye üstüne örterdi. Hâlâ sıcak metal kokar.
+It cannot be bought. It is given to those who went through the Foundry and came back.	Satın alınmaz. Dökümhaneden geçip geri dönenlere verilir.
+Plain greaves, made to walk a long time on stone without a sound.	Taşın üzerinde uzun süre ses çıkarmadan yürümek için yapılmış sade tozluklar.
+The watchers wore them out walking the streets, again and again, waiting for someone to come.	Nöbetçiler sokakları defalarca dolaşıp birinin gelmesini beklerken onları eskitti.
+Forged for the Tower guards. The guards left; the greaves were still standing in a corner.	Kule muhafızları için dövüldü. Muhafızlar gitti, tozluklar bir köşede ayakta kaldı.
+Every ring was closed by hand. A few are missing: no one was there to replace them.	Her halka elle kapatıldı. Birkaçı eksik: onları değiştirecek kimse yoktu.
+A padded coat, warm and quiet, worn by those who kept watch at night.	Gece nöbet tutanların giydiği, sıcak ve sessiz, dolgulu bir giysi.
+Cut from the walls of the Tower, where the moss had already begun to grow.	Kule'nin duvarlarından, yosunun çoktan büyümeye başladığı yerden yontulmuş.
+Hot-riveted by the founders, to work by the crucibles without getting burned.	Dökümcüler potaların yanında yanmadan çalışmak için sıcak perçinlediler.
+A closed helm with a narrow slit. Whoever wears it sees little, but does not step back.	Dar yarıklı kapalı bir miğfer. Takan az görür ama geri adım atmaz.
+The watchers pulled it over their eyes when the mist grew too thick to see through.	Sis görülemeyecek kadar koyulaşınca nöbetçiler onu gözlerinin üstüne çekerdi.
+Cast in a Foundry mould, the one for the sign that announces every form. Only veterans wear it.	Dökümhanenin bir kalıbında, her biçimi duyuran işaretin kalıbında dökülmüş. Sadece kıdemliler takar.
+The helm of those who held on to the end of the Foundry. Its gold has not tarnished.	Dökümhanenin sonuna kadar dayananların miğferi. Altını kararmadı.
+A calm white glow, like that of the watchers who no longer slept.	Artık uyumayan nöbetçilerinki gibi sakin, beyaz bir parıltı.
+The light of stones that still work. It shines brighter near a Tower that stands.	Hâlâ çalışan taşların ışığı. Ayakta kalan bir Kule'nin yakınında daha parlak yanar.
+The gaze of those who stared too long into the Foundry's crucibles.	Dökümhanenin potalarına çok uzun bakanların bakışı.
+An ember-coloured feather, picked up near the cavern entrance on the last night of the Long Silence.	Uzun Sessizliğin son gecesi mağara girişinin yakınında bulunmuş köz renginde bir tüy.
+It glows softly when you pass near a well-laid stone.	İyi yerleştirilmiş bir taşın yanından geçince usulca yanar.
+Woven with gold thread by a builder, to find her own people in the mist.	Bir yapı ustası tarafından altın iplikle dokunmuş, sisin içinde kendi insanlarını tanımak için.
+An edge sword with a worn guard. It never struck a guardian: it only opened the way.	Kıyıdan bir kılıç, kabzası aşınmış. Hiçbir bekçiye vurmadı: sadece yolu açtı.
+The Tower guards held it upright at the entrance. The last one stayed planted there, alone.	Kule muhafızları onu girişte dik tutardı. Sonuncusu orada saplı kaldı, yapayalnız.
+It was used to set fallen stones back. During the Long Silence, more fell than it could ever set back.	Düşen taşları yerine koymaya yarardı. Uzun Sessizlik sırasında koyabileceğinden fazlası düştü.
+A thread pulled from the Weaver. It goes taut on its own when something is cut wrong.	Dokumacıdan koparılmış bir iplik. Bir şey yanlış kesildiğinde kendiliğinden gerilir.
+An oak shield, from a time when trees still grew above the cavern.	Mağaranın üstünde hâlâ ağaçların büyüdüğü bir zamandan kalma meşe bir kalkan.
+An ember taken from the lukewarm furnace. It never goes out, and keeps your hands warm.	Ilık fırından alınmış bir köz. Hiç sönmez ve elleri sıcak tutar.
+She went from gear to gear and felt what was wrong. They say she sometimes comes back to sit beside those who repair.	Dişliden dişliye gezer ve neyin aksadığını hissederdi. Bazen onaranların yanına oturmaya geldiği söylenir.
+A firefly born from a Tower window that stayed lit. It follows those who light the others again.	Yanık kalan bir Kule penceresinden doğmuş bir ateşböceği. Diğerlerini yeniden yakanların peşinden gider.
+A small gear fallen from a City clock, which learned to roll on its own to find its place again.	Şehrin bir saatinden düşmüş, yerini bulmak için kendi kendine yuvarlanmayı öğrenmiş küçük bir dişli.
+The City crows flew between the floors. This one saw the whole Long Silence and says nothing.	Şehrin kuzgunları katlar arasında uçardı. Bu, Uzun Sessizliğin tamamını gördü ve hiçbir şey söylemiyor.
+Spores from the cavern moss, which light up when something that works passes by.	Çalışan bir şey geçtiğinde yanan mağara yosununun sporları.
+Embers that escaped the Foundry and kept floating, never coming down.	Dökümhaneden kaçmış, hiç düşmeden süzülmeye devam eden közler.
+The mist of the leaks, tamed. It follows its bearer instead of escaping from the walls.	Sızıntıların sisi, evcilleştirilmiş. Duvarlardan kaçmak yerine taşıyanı izler.
+After the traveller, the crack let through one more piece of sky: a grey plain, and a blue planet above it.	Yolcudan sonra çatlak bir parça gökyüzü daha geçirdi: gri bir ova ve üstünde mavi bir gezegen.
+A wrench that fell through the crack, made to tighten bolts that no City mechanism has.	Çatlaktan düşmüş, Şehrin hiçbir mekanizmasında olmayan somunları sıkmak için yapılmış bir anahtar.
+A small flag planted on a ledge. It bears the same number as the traveller's belongings.	Bir çıkıntıya dikilmiş küçük bir bayrak. Yolcunun eşyalarındaki sayıyı taşır.
+It circles above the ruins, blinking, as if waiting for an answer from above.	Yukarıdan bir yanıt bekler gibi yanıp sönerek harabelerin üstünde döner.
+Bubbles that never fall. Here, something forgot what weight meant.	Düşmeyen baloncuklar. Burada bir şey ağırlığın ne demek olduğunu unutmuş.
+A calm blue gaze, that of someone who has already seen the City from above.	Şehri yukarıdan görmüş birinin sakin mavi bakışı.
+A sealed helmet with a golden visor. It kept inside an air that does not come from the cavern.	Altın vizörlü kapalı bir kask. İçinde mağaradan gelmeyen bir hava sakladı.
+A white suit covered in buttons. The watchers never found out what the red one was for.	Düğmelerle kaplı beyaz bir giysi. Nöbetçiler kırmızının ne işe yaradığını hiç çözemedi.
+Heavy leggings, made to walk where nothing holds you to the ground.	Hiçbir şeyin seni yerde tutmadığı yerlerde yürümek için yapılmış ağır tozluklar.
+A pack that hisses softly. It holds air from elsewhere, and no one dared open it.	Usulca ıslık çalan bir sırt çantası. Başka yerden hava taşır ve kimse açmaya cesaret edemedi.
+An antenna with a red light. It blinks faster when you look toward the crack.	Kırmızı ışıklı bir anten. Çatlağa doğru bakınca daha hızlı yanıp söner.
+A violet night, a striped sun, a grid running to the horizon. None of it exists below the surface.	Mor bir gece, çizgili bir güneş, ufka koşan bir ızgara. Bunların hiçbiri yüzeyin altında yok.
+A sabre of pink light. It cuts nothing, but it shines better than any lantern.	Pembe ışıktan bir kılıç. Hiçbir şey kesmez ama her fenerden iyi aydınlatır.
+A radio that fell through the crack, still playing music no one here knows.	Çatlaktan düşmüş, burada kimsenin bilmediği bir müziği hâlâ çalan bir radyo.
+A cat made only of light. Moulinette watched it for a long time, then let it pass.	Sadece ışıktan yapılmış bir kedi. Moulinette ona uzun uzun baktı, sonra geçmesine izin verdi.
+Pink and blue glows that crackle a little, like a tired sign.	Yorgun bir tabela gibi biraz cızırdayan pembe ve mavi parıltılar.
+A pink gaze that does not blink.	Göz kırpmayan pembe bir bakış.
+Wide shades and a crest of light. Whoever wore them did not want to go unnoticed.	Geniş gözlük ve ışıktan bir ibik. Takan fark edilmemek istemezdi.
+A jacket sewn with glowing threads. In the mist, you see it before you see the wearer.	Işıklı ipliklerle dikilmiş bir ceket. Sisin içinde, giyenden önce görünür.
+Trousers striped with blue light, made to be seen from afar.	Mavi ışık çizgili, uzaktan görülmek için yapılmış bir pantolon.
+A long coat with a glowing hem. It leaves a bright trail behind every step.	Etek ucu parlayan uzun bir palto. Her adımın ardında açık bir iz bırakır.
+A pink crest that crackles above the helmet.	Kaskın üstünde cızırdayan pembe bir ibik.
+A city in the rain, with lit windows everywhere. The watchers saw it only once, at the bottom of the crack.	Her yerde ışıklı pencereleri olan, yağmur altında bir şehir. Nöbetçiler onu çatlağın dibinde yalnızca bir kez gördü.
+A green-edged blade. It hums softly when it nears a broken mechanism.	Yeşil ağızlı bir bıçak. Bozuk bir mekanizmaya yaklaşınca usulca vızıldar.
+A tablet showing scrolling lines. No one can read them, but they never stop.	Akan satırlar gösteren bir tablet. Kimse onları okuyamaz ama hiç durmazlar.
+A red-eyed drone. It watches the City as if surveying it for someone.	Kırmızı gözlü bir drone. Şehri sanki biri için haritalıyormuş gibi izler.
+Squares of green light that appear and vanish, like a picture reloading.	Yeniden yüklenen bir resim gibi beliren ve kaybolan yeşil ışık kareleri.
+A sharp green gaze that finds cracks before they open.	Çatlakları açılmadan önce bulan keskin, yeşil bir bakış.
+A hood with a green visor. You never see the face, only the light.	Yeşil vizörlü bir kapüşon. Yüz hiç görünmez, sadece ışık.
+A jacket lined with green tracks, as if a circuit had grown into the fabric.	Kumaşın içinde bir devre büyümüş gibi yeşil çizgilerle kaplı bir ceket.
+Trousers with pockets and yellow knee pads, made to run and climb.	Koşmak ve tırmanmak için yapılmış, cepli ve sarı dizlikli bir pantolon.
+A long grey coat with a green edge, wet from a rain that does not fall here.	Burada yağmayan bir yağmurla ıslanmış, yeşil kenarlı uzun gri bir palto.
+An ear antenna that picks up distant voices. They all talk at once.	Uzak sesleri yakalayan bir kulak anteni. Hepsi aynı anda konuşur.
+A stage with violet curtains, set up who knows when in the middle of the City. No one ever performed on it.	Şehrin ortasına ne zaman kurulduğu bilinmeyen mor perdeli bir sahne. Üzerinde hiç kimse oynamadı.
+A diamond-patterned cape, mended so many times the colours no longer line up.	O kadar çok yamanmış baklava desenli bir pelerin ki renkler artık sırayla gitmiyor.
+One violet leg, one golden leg, and pointed shoes that jingle at every step.	Bir bacak mor, bir bacak altın ve her adımda çınlayan sivri ayakkabılar.
+A doublet with bells. During the Long Silence, it was the only cheerful sound in the City.	Çıngıraklı bir yelek. Uzun Sessizlik boyunca Şehrin tek neşeli sesiydi.
+The Fool's three-pointed cap. They say it laughs to itself when someone gets it wrong.	Soytarının üç uçlu külahı. Biri hata yapınca kendi kendine güldüğü söylenir.
+A twinkling gaze. It is not mocking: it just saw the mistake coming.	Işıl ışıl bir bakış. Alay etmez: sadece hatanın geldiğini görmüştür.
+A golden bell, the clearest of all. You can hear it even at the bottom of the Well.	Altın bir çıngırak, hepsinin en berrağı. Kuyunun dibinden bile duyulur.
+A bauble, a stick topped with a little head. It always has the last word.	Ucunda küçük bir kafa olan soytarı asası. Son sözü hep o söyler.
+A comedy mask with a fixed smile. It was worn to say what no one wanted to hear.	Donuk gülümsemeli bir komedi maskesi. Kimsenin duymak istemediğini söylemek için takılırdı.
+A box that opens when you no longer expect it. The little spring fool never missed its moment.	Artık beklemediğin anda açılan bir kutu. Yaylı küçük soytarı etkisini hiç kaçırmadı.
+Bursts of laughter in violet light, lingering a little after the laughing stops.	Gülme sustuktan sonra biraz daha kalan mor ışıktan kahkahalar.
+A night of garlands and confetti. The crack dropped it all at once, party included.	Süsler ve konfetilerle dolu bir gece. Çatlak onu bir anda, partisiyle birlikte düşürdü.
+A cape trimmed with feathers of every colour. It leaves a trail of colour in the mist.	Her renkten tüylerle süslü bir pelerin. Sisin içinde renkli bir iz bırakır.
+Red and yellow striped tights, impossible to mistake for anything else.	Kırmızı sarı çizgili, başka hiçbir şeyle karıştırılamayacak bir tayt.
+A green bodice covered in sequins. It throws back the faintest lantern light.	Pullarla kaplı yeşil bir korsaj. En küçük fener ışığını bile geri yansıtır.
+A golden diamond-patterned mask. Behind it, you can be anyone.	Baklava desenli altın bir maske. Arkasında herkes olabilirsin.
+A golden gaze that gives nothing away.	Hiçbir şey belli etmeyen altın bir bakış.
+A crest of three plumes, red, blue and green. It dances even when you stand still.	Kırmızı, mavi ve yeşil üç tüylü bir sorguç. Sen kıpırdamasan da dans eder.
+A stick with twirling ribbons. It scares no one, and that is the point.	Dönen kurdeleli bir çubuk. Kimseyi korkutmaz, bilerek böyle.
+Maracas that keep the beat of a party that ended long ago.	Çoktan bitmiş bir partinin ritmini tutan marakaslar.
+A parrot that repeats the words it hears. During the Long Silence, it learned nothing.	Duyduğu kelimeleri tekrarlayan bir papağan. Uzun Sessizlik boyunca hiçbir şey öğrenmedi.
+Confetti that never finishes falling.	Düşmeyi hiç bitirmeyen konfetiler.
+A red and white striped big top, pitched in the cavern dust. The ring is still waiting.	Mağaranın tozuna kurulmuş kırmızı beyaz çizgili bir sirk çadırı. Pist hâlâ bekliyor.
+A red tailcoat trimmed with gold. It silenced the crowd before every act.	Altın işlemeli kırmızı bir frak. Her gösteriden önce salonu susturur.
+White breeches and polished black boots, made to hold the centre of the ring.	Pistin ortasını tutmak için yapılmış beyaz pantolon ve cilalı siyah çizmeler.
+A red jacket with golden frogging, sewn for someone who was never afraid.	Hiç korkmayan biri için dikilmiş, altın kordonlu kırmızı bir ceket.
+A black top hat with a red band. Sometimes things come out of it that were never put in.	Kırmızı bantlı siyah bir silindir şapka. Bazen içinden kimsenin koymadığı şeyler çıkar.
+A steady gaze that never takes its eyes off the beast.	Hayvanı asla gözden kaçırmayan emin bir bakış.
+A tall red plume, so the tamer can be seen from the back row.	Terbiyeci son sıradan görünsün diye büyük kırmızı bir tüy.
+A whip that cracks without ever touching. It gives the signal; it does not punish.	Hiç dokunmadan şaklayan bir kırbaç. İşaret verir, cezalandırmaz.
+A golden hoop. It has been seen going through things far more dangerous than itself.	Altın bir çember. Kendisinden çok daha tehlikeli şeylerin içinden geçtiği görüldü.
+A seal that has balanced a ball since the start of the Long Silence. It never dropped it.	Uzun Sessizliğin başından beri bir topu dengede tutan bir fok. Onu hiç düşürmedi.
+Ring sparkles floating in the spotlight.	Spot ışığında süzülen pist pırıltıları.
+A laboratory whose shelves are full of flasks bubbling on their own. No one knows what was being sought there.	Rafları kendi kendine fokurdayan şişelerle dolu bir laboratuvar. Orada ne arandığını kimse bilmiyor.
+A long lab coat, stained by everything that went wrong.	Ters giden her şeyle lekelenmiş uzun bir önlük.
+Wool trousers and red slippers. You do not leave your laboratory for so little.	Yün pantolon ve kırmızı terlikler. Bu kadarı için laboratuvardan çıkılmaz.
+A lab coat with pockets full of pencils. One green stain refuses to come out.	Cepleri kalemle dolu bir önlük. Yeşil bir leke çıkmayı reddediyor.
+Hair standing on end from electricity, and big goggles. An experiment went very well, or very badly.	Elektrikten dikilmiş saçlar ve kocaman gözlükler. Bir deney ya çok iyi gitti ya çok kötü.
+A green gaze, that of someone who has just had an idea.	Az önce bir fikir bulmuş birinin yeşil bakışı.
+Sparks crackling above the head, never burning anything.	Başın üstünde hiçbir şeyi yakmadan çıtırdayan kıvılcımlar.
+A hissing electric coil. It once lit a Tower window again, by accident.	Islık çalan bir elektrik bobini. Bir keresinde kazara bir Kule penceresini yeniden yaktı.
+A green flask bubbling without fire. Above all, do not drink it.	Ateşsiz fokurdayan yeşil bir şişe. Sakın içme.
+A brain in a jar. It thinks a lot, and never says what about.	Kavanozda bir beyin. Çok düşünür ve ne hakkında olduğunu hiç söylemez.
+Bubbles escaping from the flasks and rising forever.	Şişelerden kaçıp sonsuza dek yükselen baloncuklar.
+A tea table set for a tea that never ends. The cups are always full.	Hiç bitmeyen bir çay için kurulmuş bir ikindi sofrası. Fincanlar hep dolu.
+A green coat with golden checks, worn by someone who always had an appointment.	Hep bir randevusu olan birinin giydiği, altın kareli yeşil bir ceket.
+Black and white checkerboard trousers, impossible to wear without looking in a hurry.	Siyah beyaz dama desenli, aceleci görünmeden giyilemeyen bir pantolon.
+A pink waistcoat with a blue bow, and a watch chain that leads to no watch.	Mavi fiyonklu pembe bir yelek ve hiçbir saate çıkmayan bir saat zinciri.
+A towering hat with a card marked with a question mark. The question was never asked.	Üzerinde soru işareti olan bir kart takılı devasa bir şapka. Soru hiç sorulmadı.
+A sparkling gaze, as if someone had just told it a riddle.	Sanki az önce bir bilmece anlatılmış gibi ışıl ışıl bir bakış.
+A pink flower pinned to the hat. It does not wilt; it waits.	Şapkaya iğnelenmiş pembe bir çiçek. Solmaz, bekler.
+An umbrella that is always closed. It never rains in the City, but you never know.	Hep kapalı bir şemsiye. Şehirde hiç yağmur yağmaz ama belli olmaz.
+A teapot that always pours hot tea. No one ever filled it.	Hep sıcak çay döken bir çaydanlık. Kimse onu doldurmadı.
+A clockwork bird that needs winding. It sings teatime at any time.	Kurulması gereken mekanik bir kuş. Her saatte çay saatini öter.
+A tea steam that floats in spirals and smells of cinnamon.	Spiraller halinde süzülen, tarçın kokan çay buharı.
+An alley under a light rain, lit by a single moon. It fell through the crack one sad evening.	Tek bir ayın aydınlattığı, ince yağmur altında bir sokak. Hüzünlü bir akşam çatlaktan düştü.
+A blue rain cape, always slightly damp, which never really dries.	Hep biraz nemli, hiç tam kurumayan mavi bir yağmur pelerini.
+Baggy white trousers with black pompoms, made for dancing even when you do not feel like it.	Siyah ponponlu bol beyaz pantolon, istemesen de dans etmek için.
+A white ruffled blouse with big black buttons. It only suits sad people.	Fırfırlı yakalı, büyük siyah düğmeli beyaz bir bluz. Sadece hüzünlü insanlara yakışır.
+A white face with a painted tear. Whoever wears it cries no more: the tear does it for them.	Boyalı bir gözyaşlı beyaz bir yüz. Takan artık ağlamaz: gözyaşı onun yerine ağlar.
+A wet blue gaze, always looking a little farther than others.	Hep diğerlerinden biraz daha uzağa bakan ıslak mavi bir bakış.
+A wilted flower pinned to the head. It was beautiful, once.	Başa iğnelenmiş solgun bir çiçek. Bir zamanlar güzeldi.
+A thornless rose. It hurts no one, not even the one holding it.	Dikensiz bir gül. Kimseyi incitmez, tutanı bile.
+A deflated red balloon, kept anyway. You do not throw away what once flew high.	Sönmüş kırmızı bir balon, yine de saklanmış. Bir zamanlar yükseğe uçan şey atılmaz.
+A grey pigeon that follows sad people, never bothering them.	Hüzünlü insanları hiç rahatsız etmeden izleyen gri bir güvercin.
+A light rain that falls only on its bearer.	Sadece taşıyanın üstüne yağan ince bir yağmur.
+A tiled kitchen with pots still warm. It fell through the crack at mealtime.	Tencereleri hâlâ sıcak, fayanslı bir mutfak. Yemek saatinde çatlaktan düştü.
+A red checked tea towel tied as a cape. It has dried many pots and a few tears.	Pelerin gibi bağlanmış kırmızı kareli bir bez. Çok tencere ve birkaç gözyaşı kuruladı.
+Houndstooth trousers and white clogs, to stay on your feet through a whole evening service.	Bütün bir akşam servisinde ayakta durmak için kazayağı pantolon ve beyaz takunyalar.
+A double-breasted chef's jacket, still white despite everything.	Her şeye rağmen hâlâ beyaz, kruvaze bir aşçı ceketi.
+A tall pleated chef's hat. The taller it is, the more people listen to the wearer.	Uzun, pilili bir aşçı şapkası. Ne kadar uzunsa takan o kadar dinlenir.
+A hungry gaze that already knows what is simmering.	Neyin piştiğini şimdiden bilen aç bir bakış.
+A handlebar moustache, curled at both ends. It twitches when something is burning.	İki ucu kıvrık pala bıyık. Bir şey yandığında titrer.
+A ladle that tasted every soup in the City. It remembers them all.	Şehrin bütün çorbalarını tatmış bir kepçe. Hepsini hatırlar.
+A heavy black frying pan. It blocks blows better than many shields.	Siyah, ağır bir tava. Darbeleri birçok kalkandan iyi durdurur.
+A lobster that escaped the pot and never forgot it.	Tencereden kaçmış ve bunu hiç unutmamış bir ıstakoz.
+Pot steam that smells good and warms whoever walks by.	Güzel kokan ve geçeni ısıtan tencere buharı.
+A bedroom at night, with a moon in the window. It fell through the crack while someone was asleep.	Penceresinde ay olan gece bir yatak odası. Biri uyurken çatlaktan düştü.
+A checked plaid blanket, warm and a little worn. It covered many sleepless nights.	Sıcak ve biraz yıpranmış ekose bir battaniye. Birçok uykusuz geceyi örttü.
+Polka-dot pyjama bottoms and bunny slippers. You do not run in them, and that is fine.	Puantiyeli pijama altı ve tavşan terlikler. Onlarla koşulmaz, böylesi iyi.
+A blue pyjama top with white dots. It protects from nothing, except the cold.	Beyaz puantiyeli mavi bir pijama üstü. Soğuk dışında hiçbir şeyden korumaz.
+A nightcap with a pompom. Whoever wears it no longer wants to fight, only to sleep.	Ponponlu bir gece başlığı. Takan artık savaşmak istemez, sadece uyumak ister.
+Closed eyes. They are not really asleep: they are listening.	Kapalı gözler. Gerçekten uyumazlar: dinlerler.
+A pink sleep mask pushed up on the forehead. You never know when you will need to sleep.	Alına kaldırılmış pembe bir uyku maskesi. Ne zaman uyumak gerekeceği belli olmaz.
+A pillow. The softest fight in the City, and the only one that always ends in laughter.	Bir yastık. Şehrin en yumuşak dövüşü ve her zaman kahkahayla biten tek dövüşü.
+A teddy bear, worn a little at the ears. It saw every nightmare and was never afraid.	Kulakları biraz aşınmış bir oyuncak ayı. Bütün kâbusları gördü ve hiç korkmadı.
+A round little sheep to count when sleep will not come. You never reach the end.	Uyku gelmeyince saymak için yusyuvarlak küçük bir koyun. Sonuna hiç varılmaz.
+Blue dreams floating around the head, gone on waking.	Başın etrafında süzülen ve uyanınca kaybolan mavi rüyalar.
+A tiled bathroom full of bubbles. It fell through the crack, the water still warm.	Baloncuklarla dolu fayanslı bir banyo. Suyu hâlâ ılıkken çatlaktan düştü.
+A pink striped bath towel, soft and a little too big.	Pembe çizgili, yumuşak ve biraz fazla büyük bir banyo havlusu.
+Yellow boots and blue shorts, ready for a puddle that does not exist here.	Burada olmayan bir su birikintisine hazır sarı çizmeler ve mavi şort.
+A duck-shaped float, blown up to float on water that is still awaited.	Hâlâ beklenen bir suda yüzmek için şişirilmiş ördek şeklinde bir simit.
+A yellow duck head with an orange beak. It is not scary, but it makes you think.	Turuncu gagalı sarı bir ördek kafası. Korkutmaz ama düşündürür.
+Two round black eyes that look at everything with the same calm.	Her şeye aynı sakinlikle bakan iki yuvarlak siyah göz.
+A duckling perched on the head, refusing to come down.	Başa tünemiş, inmeyi reddeden bir ördek yavrusu.
+A long bath brush. It scrubs everything, even what did not want to be scrubbed.	Uzun bir banyo fırçası. Her şeyi ovar, ovulmak istemeyeni bile.
+A pink bar of soap that always slips at the wrong moment.	Hep yanlış anda kayan pembe bir sabun.
+A rubber duck. They say it helps you understand a mistake when you explain it out loud to it.	Lastik bir ördek. Bir hatayı ona yüksek sesle anlatınca anlamaya yardım ettiği söylenir.
+Soap bubbles that pop in silence.	Sessizce patlayan sabun köpükleri.
+A market stall under a striped awning. The fruit fell through the crack, still fresh.	Çizgili bir tentenin altında bir pazar tezgâhı. Meyveler çatlaktan hâlâ tazeyken düştü.
+A big banana leaf, wide enough to shelter from the mist.	Sisten korunacak kadar geniş büyük bir muz yaprağı.
+Green trousers striped like a watermelon rind.	Karpuz kabuğu gibi çizgili yeşil bir pantolon.
+Armour carved from a watermelon, red and scattered with seeds.	Bir karpuzdan oyulmuş, kırmızı ve çekirdek dolu bir zırh.
+A pineapple helmet, with its crown of leaves. It prickles a little, but it smells nice.	Yaprak taçlı bir ananas kask. Biraz batar ama güzel kokar.
+Two eyes as black as pips.	Çekirdek gibi kapkara iki göz.
+Two cherries hanging from the helmet, always shiny.	Kaska asılı, hep parlak iki kiraz.
+A banana sword, curved and yellow. It cuts nothing, but it can be eaten if needed.	Kıvrık ve sarı bir muz kılıç. Hiçbir şey kesmez ama gerekirse yenir.
+A shield cut from an orange. It still smells good after the blows.	Bir portakaldan kesilmiş kalkan. Darbelerden sonra bile güzel kokar.
+A strawberry with eyes that follows its bearer. It no longer ripens; it lives.	Taşıyanı izleyen gözlü bir çilek. Artık olgunlaşmaz: yaşar.
+Drops of juice that float and shine like candied fruit.	Şekerlenmiş meyve gibi süzülüp parlayan meyve suyu damlaları.
+An attic full of boxes, fallen through the crack with everything no one dared throw away.	Kimsenin atmaya cesaret edemediği her şeyle birlikte çatlaktan düşmüş, kutularla dolu bir tavan arası.
+A newspaper cape. You can read news from a world that is not this one.	Gazete kâğıdından bir pelerin. Üzerinde bu dünya olmayan bir dünyanın haberleri okunur.
+Greaves made of stacked cardboard tubes. They hold, and that is already a lot.	Üst üste dizilmiş karton tüplerden yapılmış tozluklar. Dayanıyorlar, bu bile çok.
+Cardboard armour marked \"FRAGILE\". At least it is honest.	Üzerinde «FRAGILE» yazan karton bir zırh. En azından dürüst.
+A cardboard box on the head, with eyes drawn in marker. No one recognises the wearer, and that is the idea.	Keçeli kalemle göz çizilmiş, başa geçirilmiş bir karton kutu. Kimse takanı tanımaz, fikir de bu.
+Eyes drawn in marker, a little crooked, but full of good will.	Keçeli kalemle çizilmiş, biraz yamuk ama iyi niyet dolu gözler.
+A coat hanger bent into an antenna. Mostly it picks up the draught.	Anten gibi bükülmüş bir askı. Çoğunlukla hava akımını yakalar.
+A paper-towel-roll sword. It bends but does not break.	Kâğıt havlu rulosundan bir kılıç. Eğilir ama kırılmaz.
+A bin lid used as a shield. It has seen use, and it shows.	Kalkan yerine bir çöp kutusu kapağı. Kullanılmış, belli oluyor.
+A cat that settled into a box and refuses to come out. It was the cat's choice.	Bir kutuya yerleşmiş ve çıkmayı reddeden bir kedi. Bunu kendisi seçti.
+Bits of tape that float and stick to everything.	Süzülen ve her şeye yapışan bant parçaları.
+A forbidden building site, with cones and barriers. It fell through the crack before anyone said it was a bad idea.	Konileri ve bariyerleriyle yasak bir şantiye. Biri bunun kötü bir fikir olduğunu söyleyemeden çatlaktan düştü.
+A blue tarp tied as a cape. It makes a lot of noise in the slightest draught.	Pelerin gibi bağlanmış mavi bir branda. En ufak hava akımında çok gürültü yapar.
+A striped sock on one side, a flipper on the other. There was no choice left.	Bir yanda çizgili bir çorap, diğer yanda bir palet. Başka seçenek kalmamıştı.
+A hi-vis vest, to be seen from afar. In the cavern, it is useful, all the same.	Uzaktan görülmek için reflektörlü bir yelek. Mağarada yine de işe yarar.
+A traffic cone on the head. It started as a joke.	Başa geçirilmiş bir trafik konisi. Şaka olarak başladı.
+A lost gaze, still wondering how it came to this.	Buraya nasıl gelindiğini hâlâ merak eden kaybolmuş bir bakış.
+A propeller on top of the cone. It spins, but it does not make you fly.	Koninin tepesinde bir pervane. Döner ama uçurmaz.
+An umbrella turned inside out by a gust that should never have blown underground.	Yer altında hiç esmemesi gereken bir rüzgârla ters dönmüş bir şemsiye.
+A folding chair held like a shield. It sometimes folds at the worst moment.	Kalkan gibi tutulan katlanır bir sandalye. Bazen en kötü anda katlanır.
+A toaster with wings. No one knows how it flies, not even the toaster.	Kanatlı bir ekmek kızartıcı. Nasıl uçtuğunu kimse bilmiyor, kendisi bile.
+Orange sparks of dubious origin. Better not to look into it.	Kaynağı şüpheli turuncu kıvılcımlar. Araştırmamak daha iyi.
+A slightly sad party, with balloons that no longer rise. It fell through the crack at exactly midnight.	Artık yükselmeyen balonlarıyla biraz hüzünlü bir parti. Tam gece yarısı çatlaktan düştü.
+A flowery shower curtain, turned into a cape for lack of anything better.	Daha iyisi olmadığı için pelerine dönüşmüş çiçekli bir duş perdesi.
+Laddered tights, worn anyway, because the party had already started.	Kaçık bir tayt, parti çoktan başladığı için yine de giyilmiş.
+A sheet with two eye holes. A very sincere ghost.	İki göz deliği olan bir çarşaf. Çok içten bir hayalet.
+A golden paper crown, cut a little too fast. It holds with tape.	Biraz aceleyle kesilmiş altın kâğıttan bir taç. Bantla duruyor.
+An awkward gaze, from someone who thought it was a costume ball.	Bunun bir kostüm balosu olduğunu sanan birinin mahcup bakışı.
+A fake nose with a moustache and glasses. The bravest disguise in the City.	Bıyıklı ve gözlüklü takma bir burun. Şehrin en cesur kılığı.
+A cardboard wand topped with a star. It grants nothing, but it believes.	Ucunda yıldız olan karton bir asa. Hiçbir dileği gerçekleştirmez ama inanır.
+A paper plate, kept from the party as a shield.	Partiden kalkan olarak saklanmış karton bir tabak.
+A dog dressed as a lion, doing its best to roar.	Kükremek için elinden geleni yapan, aslan kılığında bir köpek.
+Sad confetti, falling slowly and silently.	Yavaşça ve sessizce düşen hüzünlü konfetiler.
+It lit up by itself on the night the Long Silence ended. No one had filled it. It burns with whatever still works.	Uzun Sessizliğin bittiği gece kendi kendine yandı. Onu kimse doldurmamıştı. Hâlâ çalışanlarla yanar.
+Every dent is a fall in the cavern. Its wearer never hammered it straight: it tells where they come from.	Her göçük mağarada bir düşüş. Takan onu hiç düzeltmedi: nereden geldiğini anlatır.
+The builders wrote in it how to lay each stone. During the Long Silence no one opened it, and the Tower began to lean.	Yapı ustaları her taşın nasıl konacağını ona yazardı. Uzun Sessizlik boyunca kimse açmadı ve Kule eğilmeye başladı.
+Through a crack in the cavern ceiling, a sky without stone was seen one day. It stayed one night, then the crack closed. The traveller had come through there.	Mağara tavanındaki bir çatlaktan bir gün taşsız bir gökyüzü göründü. Bir gece kaldı, sonra çatlak kapandı. Yolcu oradan geçmişti.
+Fallen from above the surface, carefully folded, embroidered with a single number: 42. No one in the City ever knew what it counted.	Yüzeyin üstünden düşmüş, özenle katlanmış, tek bir sayı işlenmiş: 42. Şehirde kimse neyi saydığını hiç bilemedi.
+A fabric the mist could not wet. The watchers found them on a ledge, sewn with stars, as if laid out to dry.	Sisin ıslatamadığı bir kumaş. Nöbetçiler onları bir çıkıntıda, yıldızlarla dikilmiş, kurusun diye serilmiş gibi buldu.
+A jacket too light for the City, with a golden 42 badge over the heart. The founders tried to melt it down. The metal refused to melt.	Şehir için fazla hafif, kalbinin üstünde altın bir 42 rozeti olan bir ceket. Dökümcüler onu eritmeye çalıştı. Metal erimeyi reddetti.
+A clear bubble without a seam. The rope-walkers lowered it into the Well to see under the water: it came back dry, full of an air that was not from here.	Dikişsiz, berrak bir fanus. İpçiler suyun altını görmek için onu Kuyuya indirdi: kuru çıktı, buradan olmayan bir havayla dolu.
+They said the traveller could see in the dark as in daylight. Those who wore this gaze speak of golden dots that never go out.	Yolcunun karanlıkta gündüz gibi gördüğü söylenirdi. Onun bakışını taşıyanlar hiç sönmeyen altın noktalardan söz eder.
+A thin rod that crackled at night, pointing upwards. No one knew what it listened to. During the Long Silence, it was the only thing that spoke.	Geceleri cızırdayan, yukarıyı gösteren ince bir çubuk. Neyi dinlediğini kimse bilmedi. Uzun Sessizlik boyunca konuşan tek şey oydu.
+A blade that keeps the colour of a sky you cannot see from here. It does not cut stone. It shines just enough to keep going.	Buradan görülmeyen bir göğün rengini taşıyan bir bıçak. Taşı kesmez. İlerlemeye yetecek kadar aydınlatır.
+A bound book the traveller must have read often. Most pages are blank now. On the first one, in gold letters: 42.	Yolcunun sık sık baktığı belli ciltli bir kitap. Sayfaların çoğu boş. İlk sayfada altın harflerle: 42.
+A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Harabelerin üstünde süzülen ve geçen herkesi izleyen küçük, yuvarlak bir alet. Sahibini arıyordu. Hâlâ arıyor.
+A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Isısız parlayan bir toz. Yolcunun geldiği çatlaktan düşerdi ve hiçbir zaman tam yere konmadı.
+Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Bekçi aşağı inmeden önce onun suretinde yapıldı. Takan eğri taşı görmeden önce hisseder. Kimse onu uzun süre tutmadı.

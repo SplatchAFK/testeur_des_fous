@@ -2313,3 +2313,233 @@ Fruits	Früchte
 Cardboard and tape	Pappe und Klebeband
 Bad idea	Schlechte Idee
 Failed costume	Misslungenes Kostüm
+The great cavern as the watchers saw it: the Tower in the distance, its windows going dark one by one.	Die große Höhle, wie die Wächter sie sahen: der Turm in der Ferne, dessen Fenster eines nach dem anderen erloschen.
+The furnaces never fully cooled. Through the Long Silence, the Foundry kept burning for no one.	Die Öfen kühlten nie ganz ab. Während der Langen Stille brannte die Gießerei für niemanden weiter.
+The still water at the bottom of the Well. The rope-walkers said it remembered every line they climbed down.	Das stille Wasser am Grund des Brunnens. Die Seiler sagten, es erinnere sich an jede Zeile, die sie hinabstiegen.
+Some nights a pale moon drifted behind the Tower. No one knew where that light came from, so far below the surface.	In manchen Nächten zog ein blasser Mond hinter dem Turm vorbei. Niemand wusste, woher dieses Licht kam, so tief unter der Oberfläche.
+The cloak of the one who arrives at the end of the Long Silence. It carries the dust of every road before this one.	Der Umhang dessen, der am Ende der Langen Stille ankommt. Er trägt den Staub aller Wege davor.
+A cloak found at the edge of the cavern, torn by gears that spun for nothing.	Ein Umhang, gefunden am Rand der Höhle, zerrissen von Zahnrädern, die ins Leere liefen.
+Woven from the mist that leaked from the walls. It weighs nothing, and lets the cold through.	Gewebt aus dem Nebel, der aus den Mauern drang. Er wiegt nichts und lässt die Kälte durch.
+The founders draped it over the moulds so they would not cool too fast. It still smells of hot metal.	Die Gießer deckten damit die Formen ab, damit sie nicht zu schnell abkühlten. Er riecht noch nach heißem Metall.
+It cannot be bought. It is given to those who went through the Foundry and came back.	Man kauft ihn nicht. Man bekommt ihn, wenn man durch die Gießerei gegangen und zurückgekehrt ist.
+Plain greaves, made to walk a long time on stone without a sound.	Einfache Beinschienen, gemacht, um lange lautlos über Stein zu gehen.
+The watchers wore them out walking the streets, again and again, waiting for someone to come.	Die Wächter liefen sie ab, immer wieder durch die Straßen, und warteten, dass jemand käme.
+Forged for the Tower guards. The guards left; the greaves were still standing in a corner.	Geschmiedet für die Turmwachen. Die Wachen gingen, die Schienen blieben in einer Ecke stehen.
+Every ring was closed by hand. A few are missing: no one was there to replace them.	Jeder Ring wurde von Hand geschlossen. Einige fehlen: Niemand war da, um sie zu ersetzen.
+A padded coat, warm and quiet, worn by those who kept watch at night.	Ein gepolstertes Gewand, warm und leise, getragen von denen, die nachts Wache hielten.
+Cut from the walls of the Tower, where the moss had already begun to grow.	Gehauen aus den Mauern des Turms, dort, wo schon das Moos zu wachsen begann.
+Hot-riveted by the founders, to work by the crucibles without getting burned.	Von den Gießern heiß vernietet, um an den Tiegeln zu arbeiten, ohne sich zu verbrennen.
+A closed helm with a narrow slit. Whoever wears it sees little, but does not step back.	Ein geschlossener Helm mit schmalem Schlitz. Wer ihn trägt, sieht wenig, weicht aber nicht zurück.
+The watchers pulled it over their eyes when the mist grew too thick to see through.	Die Wächter zogen sie über die Augen, wenn der Nebel zu dicht zum Sehen wurde.
+Cast in a Foundry mould, the one for the sign that announces every form. Only veterans wear it.	Gegossen in einer Form der Gießerei, der des Zeichens, das jede Form ankündigt. Nur Veteranen tragen ihn.
+The helm of those who held on to the end of the Foundry. Its gold has not tarnished.	Der Helm derer, die bis zum Ende der Gießerei durchhielten. Sein Gold ist nicht angelaufen.
+A calm white glow, like that of the watchers who no longer slept.	Ein ruhiges weißes Leuchten, wie das der Wächter, die nicht mehr schliefen.
+The light of stones that still work. It shines brighter near a Tower that stands.	Das Licht der Steine, die noch funktionieren. Es leuchtet heller nahe einem Turm, der steht.
+The gaze of those who stared too long into the Foundry's crucibles.	Der Blick derer, die zu lange in die Tiegel der Gießerei gestarrt haben.
+An ember-coloured feather, picked up near the cavern entrance on the last night of the Long Silence.	Eine glutfarbene Feder, aufgelesen nahe dem Höhleneingang in der letzten Nacht der Langen Stille.
+It glows softly when you pass near a well-laid stone.	Sie leuchtet sanft, wenn man an einem gut gesetzten Stein vorbeigeht.
+Woven with gold thread by a builder, to find her own people in the mist.	Mit Goldfaden gewebt von einer Baumeisterin, um die Ihren im Nebel zu erkennen.
+An edge sword with a worn guard. It never struck a guardian: it only opened the way.	Ein Schwert vom Rand, mit abgenutzter Parierstange. Es traf nie einen Wächter: Es öffnete nur den Weg.
+The Tower guards held it upright at the entrance. The last one stayed planted there, alone.	Die Turmwachen hielten sie aufrecht am Eingang. Die letzte blieb dort stecken, allein.
+It was used to set fallen stones back. During the Long Silence, more fell than it could ever set back.	Er diente dazu, herabgefallene Steine wieder zu setzen. In der Langen Stille fielen mehr, als er setzen konnte.
+A thread pulled from the Weaver. It goes taut on its own when something is cut wrong.	Ein Faden, dem Weber entrissen. Er spannt sich von selbst, wenn etwas falsch geschnitten ist.
+An oak shield, from a time when trees still grew above the cavern.	Ein Eichenschild aus einer Zeit, in der über der Höhle noch Bäume wuchsen.
+An ember taken from the lukewarm furnace. It never goes out, and keeps your hands warm.	Eine Glut aus dem lauwarmen Ofen. Sie erlischt nie und hält die Hände warm.
+She went from gear to gear and felt what was wrong. They say she sometimes comes back to sit beside those who repair.	Sie ging von Zahnrad zu Zahnrad und spürte, was nicht stimmte. Man sagt, sie setzt sich manchmal zu denen, die reparieren.
+A firefly born from a Tower window that stayed lit. It follows those who light the others again.	Ein Glühwürmchen, geboren aus einem Turmfenster, das hell blieb. Es folgt denen, die die anderen wieder anzünden.
+A small gear fallen from a City clock, which learned to roll on its own to find its place again.	Ein kleines Zahnrad aus einer Uhr der Stadt, das lernte, allein zu rollen, um seinen Platz wiederzufinden.
+The City crows flew between the floors. This one saw the whole Long Silence and says nothing.	Die Raben der Stadt flogen zwischen den Stockwerken. Dieser sah die ganze Lange Stille und sagt nichts.
+Spores from the cavern moss, which light up when something that works passes by.	Die Sporen des Höhlenmooses, die aufleuchten, wenn etwas vorbeikommt, das funktioniert.
+Embers that escaped the Foundry and kept floating, never coming down.	Aus der Gießerei entkommene Glut, die weiterschwebte, ohne je herabzufallen.
+The mist of the leaks, tamed. It follows its bearer instead of escaping from the walls.	Der Nebel der Lecks, gezähmt. Er folgt seinem Träger, statt aus den Mauern zu entweichen.
+After the traveller, the crack let through one more piece of sky: a grey plain, and a blue planet above it.	Nach dem Reisenden ließ der Riss noch ein Stück Himmel durch: eine graue Ebene und darüber ein blauer Planet.
+A wrench that fell through the crack, made to tighten bolts that no City mechanism has.	Ein durch den Riss gefallener Schlüssel, gemacht für Muttern, die kein Mechanismus der Stadt hat.
+A small flag planted on a ledge. It bears the same number as the traveller's belongings.	Ein kleines Fähnchen auf einem Felsvorsprung. Es trägt dieselbe Zahl wie die Sachen des Reisenden.
+It circles above the ruins, blinking, as if waiting for an answer from above.	Er kreist blinkend über den Ruinen, als warte er auf eine Antwort von oben.
+Bubbles that never fall. Here, something forgot what weight meant.	Blasen, die nicht fallen. Hier hat etwas vergessen, was Gewicht bedeutet.
+A calm blue gaze, that of someone who has already seen the City from above.	Ein ruhiger blauer Blick, der eines Menschen, der die Stadt schon von oben gesehen hat.
+A sealed helmet with a golden visor. It kept inside an air that does not come from the cavern.	Ein geschlossener Helm mit goldenem Visier. Er bewahrte innen eine Luft, die nicht aus der Höhle stammt.
+A white suit covered in buttons. The watchers never found out what the red one was for.	Ein weißer Anzug voller Knöpfe. Die Wächter fanden nie heraus, wozu der rote diente.
+Heavy leggings, made to walk where nothing holds you to the ground.	Schwere Beinkleider, gemacht, um dort zu gehen, wo nichts dich am Boden hält.
+A pack that hisses softly. It holds air from elsewhere, and no one dared open it.	Ein Rucksack, der leise zischt. Er enthält Luft von anderswo, und niemand wagte, ihn zu öffnen.
+An antenna with a red light. It blinks faster when you look toward the crack.	Eine Antenne mit rotem Licht. Sie blinkt schneller, wenn man zum Riss blickt.
+A violet night, a striped sun, a grid running to the horizon. None of it exists below the surface.	Eine violette Nacht, eine gestreifte Sonne, ein Gitter, das zum Horizont läuft. Nichts davon gibt es unter der Oberfläche.
+A sabre of pink light. It cuts nothing, but it shines better than any lantern.	Ein Säbel aus rosa Licht. Er schneidet nichts, leuchtet aber besser als jede Laterne.
+A radio that fell through the crack, still playing music no one here knows.	Ein durch den Riss gefallenes Radio, das noch Musik spielt, die hier niemand kennt.
+A cat made only of light. Moulinette watched it for a long time, then let it pass.	Eine Katze nur aus Licht. Moulinette sah sie lange an und ließ sie dann vorbei.
+Pink and blue glows that crackle a little, like a tired sign.	Rosa und blaue Lichter, die ein wenig knistern, wie ein müdes Schild.
+A pink gaze that does not blink.	Ein rosa Blick, der nicht blinzelt.
+Wide shades and a crest of light. Whoever wore them did not want to go unnoticed.	Eine breite Brille und ein Kamm aus Licht. Wer sie trug, wollte nicht unbemerkt bleiben.
+A jacket sewn with glowing threads. In the mist, you see it before you see the wearer.	Eine mit leuchtenden Fäden genähte Jacke. Im Nebel sieht man sie vor dem, der sie trägt.
+Trousers striped with blue light, made to be seen from afar.	Eine Hose mit blauen Lichtstreifen, gemacht, um von weitem gesehen zu werden.
+A long coat with a glowing hem. It leaves a bright trail behind every step.	Ein langer Mantel mit leuchtendem Saum. Er hinterlässt hinter jedem Schritt eine helle Spur.
+A pink crest that crackles above the helmet.	Ein rosa Kamm, der über dem Helm knistert.
+A city in the rain, with lit windows everywhere. The watchers saw it only once, at the bottom of the crack.	Eine Stadt im Regen, überall erleuchtete Fenster. Die Wächter sahen sie nur einmal, am Grund des Risses.
+A green-edged blade. It hums softly when it nears a broken mechanism.	Eine Klinge mit grüner Schneide. Sie summt leise, wenn sie einem kaputten Mechanismus nahekommt.
+A tablet showing scrolling lines. No one can read them, but they never stop.	Ein Tablet mit vorbeiziehenden Zeilen. Niemand kann sie lesen, aber sie hören nie auf.
+A red-eyed drone. It watches the City as if surveying it for someone.	Eine Drohne mit rotem Auge. Sie beobachtet die Stadt, als vermesse sie sie für jemanden.
+Squares of green light that appear and vanish, like a picture reloading.	Quadrate aus grünem Licht, die erscheinen und verschwinden, wie ein Bild, das neu lädt.
+A sharp green gaze that finds cracks before they open.	Ein scharfer grüner Blick, der Risse findet, bevor sie sich öffnen.
+A hood with a green visor. You never see the face, only the light.	Eine Kapuze mit grünem Visier. Man sieht nie das Gesicht, nur das Licht.
+A jacket lined with green tracks, as if a circuit had grown into the fabric.	Eine Jacke voller grüner Linien, als wäre ein Schaltkreis in den Stoff gewachsen.
+Trousers with pockets and yellow knee pads, made to run and climb.	Eine Hose mit Taschen und gelben Knieschonern, gemacht zum Laufen und Klettern.
+A long grey coat with a green edge, wet from a rain that does not fall here.	Ein langer grauer Mantel mit grünem Rand, nass von einem Regen, der hier nicht fällt.
+An ear antenna that picks up distant voices. They all talk at once.	Eine Ohrantenne, die ferne Stimmen auffängt. Alle sprechen gleichzeitig.
+A stage with violet curtains, set up who knows when in the middle of the City. No one ever performed on it.	Eine Bühne mit violetten Vorhängen, wer weiß wann mitten in der Stadt aufgebaut. Niemand hat je darauf gespielt.
+A diamond-patterned cape, mended so many times the colours no longer line up.	Ein Rautenumhang, so oft geflickt, dass die Farben nicht mehr in Reihe sind.
+One violet leg, one golden leg, and pointed shoes that jingle at every step.	Ein violettes Bein, ein goldenes Bein und spitze Schuhe, die bei jedem Schritt klingeln.
+A doublet with bells. During the Long Silence, it was the only cheerful sound in the City.	Ein Wams mit Schellen. In der Langen Stille war es das einzige fröhliche Geräusch der Stadt.
+The Fool's three-pointed cap. They say it laughs to itself when someone gets it wrong.	Die dreizipflige Narrenkappe. Man sagt, sie lacht von selbst, wenn sich jemand irrt.
+A twinkling gaze. It is not mocking: it just saw the mistake coming.	Ein funkelnder Blick. Er spottet nicht: Er hat den Fehler nur kommen sehen.
+A golden bell, the clearest of all. You can hear it even at the bottom of the Well.	Eine goldene Schelle, die hellste von allen. Man hört sie sogar am Grund des Brunnens.
+A bauble, a stick topped with a little head. It always has the last word.	Ein Narrenstab, ein Stock mit einem kleinen Kopf. Er hat immer das letzte Wort.
+A comedy mask with a fixed smile. It was worn to say what no one wanted to hear.	Eine Komödienmaske mit starrem Lächeln. Man trug sie, um zu sagen, was niemand hören wollte.
+A box that opens when you no longer expect it. The little spring fool never missed its moment.	Eine Schachtel, die aufspringt, wenn man nicht mehr damit rechnet. Der kleine Federnarr verfehlte nie seine Wirkung.
+Bursts of laughter in violet light, lingering a little after the laughing stops.	Lachsalven aus violettem Licht, die noch ein wenig bleiben, wenn das Lachen verstummt.
+A night of garlands and confetti. The crack dropped it all at once, party included.	Eine Nacht voller Girlanden und Konfetti. Der Riss ließ sie auf einmal fallen, samt Fest.
+A cape trimmed with feathers of every colour. It leaves a trail of colour in the mist.	Ein Umhang mit Federn in allen Farben. Er hinterlässt eine farbige Spur im Nebel.
+Red and yellow striped tights, impossible to mistake for anything else.	Rot-gelb gestreifte Strumpfhosen, mit nichts anderem zu verwechseln.
+A green bodice covered in sequins. It throws back the faintest lantern light.	Ein grünes Mieder voller Pailletten. Es wirft den schwächsten Laternenschein zurück.
+A golden diamond-patterned mask. Behind it, you can be anyone.	Eine goldene Rautenmaske. Dahinter kann man jeder sein.
+A golden gaze that gives nothing away.	Ein goldener Blick, der nichts verrät.
+A crest of three plumes, red, blue and green. It dances even when you stand still.	Ein Federbusch aus drei Federn, rot, blau und grün. Er tanzt, selbst wenn man stillsteht.
+A stick with twirling ribbons. It scares no one, and that is the point.	Ein Stab mit wirbelnden Bändern. Er macht niemandem Angst, und das ist Absicht.
+Maracas that keep the beat of a party that ended long ago.	Maracas, die den Takt eines längst vorbeigegangenen Festes halten.
+A parrot that repeats the words it hears. During the Long Silence, it learned nothing.	Ein Papagei, der die Wörter wiederholt, die er hört. In der Langen Stille lernte er nichts.
+Confetti that never finishes falling.	Konfetti, das nie aufhört zu fallen.
+A red and white striped big top, pitched in the cavern dust. The ring is still waiting.	Ein rot-weiß gestreiftes Zirkuszelt im Staub der Höhle. Die Manege wartet noch.
+A red tailcoat trimmed with gold. It silenced the crowd before every act.	Ein roter Frack mit Goldbesatz. Er brachte den Saal vor jeder Nummer zum Schweigen.
+White breeches and polished black boots, made to hold the centre of the ring.	Eine weiße Hose und polierte schwarze Stiefel, gemacht, um die Mitte der Manege zu halten.
+A red jacket with golden frogging, sewn for someone who was never afraid.	Eine rote Jacke mit goldenen Schnüren, genäht für jemanden, der nie Angst hatte.
+A black top hat with a red band. Sometimes things come out of it that were never put in.	Ein schwarzer Zylinder mit rotem Band. Manchmal kommt heraus, was nie hineingelegt wurde.
+A steady gaze that never takes its eyes off the beast.	Ein sicherer Blick, der das Tier nie aus den Augen lässt.
+A tall red plume, so the tamer can be seen from the back row.	Eine große rote Feder, damit man den Dompteur aus der letzten Reihe sieht.
+A whip that cracks without ever touching. It gives the signal; it does not punish.	Eine Peitsche, die knallt, ohne je zu treffen. Sie gibt das Zeichen, sie straft nicht.
+A golden hoop. It has been seen going through things far more dangerous than itself.	Ein goldener Reifen. Man sah ihn durch viel Gefährlicheres gehen als sich selbst.
+A seal that has balanced a ball since the start of the Long Silence. It never dropped it.	Eine Robbe, die seit Beginn der Langen Stille einen Ball balanciert. Sie hat ihn nie fallen lassen.
+Ring sparkles floating in the spotlight.	Manegenglitzer, das im Scheinwerferlicht schwebt.
+A laboratory whose shelves are full of flasks bubbling on their own. No one knows what was being sought there.	Ein Labor mit Regalen voller Kolben, die von selbst blubbern. Niemand weiß, was man dort suchte.
+A long lab coat, stained by everything that went wrong.	Ein langer Kittel, befleckt von allem, was schiefging.
+Wool trousers and red slippers. You do not leave your laboratory for so little.	Eine Wollhose und rote Pantoffeln. Für so wenig verlässt man sein Labor nicht.
+A lab coat with pockets full of pencils. One green stain refuses to come out.	Ein Kittel mit Taschen voller Stifte. Ein grüner Fleck will nicht weggehen.
+Hair standing on end from electricity, and big goggles. An experiment went very well, or very badly.	Elektrisch aufgestellte Haare und eine große Brille. Ein Experiment ging sehr gut, oder sehr schlecht.
+A green gaze, that of someone who has just had an idea.	Ein grüner Blick, der eines Menschen, der gerade eine Idee hatte.
+Sparks crackling above the head, never burning anything.	Funken, die über dem Kopf knistern, ohne je etwas zu verbrennen.
+A hissing electric coil. It once lit a Tower window again, by accident.	Eine zischende elektrische Spule. Sie hat einmal ein Turmfenster wieder angezündet, aus Versehen.
+A green flask bubbling without fire. Above all, do not drink it.	Ein grüner Kolben, der ohne Feuer blubbert. Auf keinen Fall trinken.
+A brain in a jar. It thinks a lot, and never says what about.	Ein Gehirn im Glas. Es denkt viel nach und sagt nie, worüber.
+Bubbles escaping from the flasks and rising forever.	Blasen, die aus den Kolben entweichen und endlos aufsteigen.
+A tea table set for a tea that never ends. The cups are always full.	Ein Teetisch, gedeckt für einen Tee, der nie endet. Die Tassen sind immer voll.
+A green coat with golden checks, worn by someone who always had an appointment.	Ein grüner Rock mit goldenen Karos, getragen von jemandem, der immer eine Verabredung hatte.
+Black and white checkerboard trousers, impossible to wear without looking in a hurry.	Eine schwarz-weiße Schachbretthose, unmöglich zu tragen, ohne eilig zu wirken.
+A pink waistcoat with a blue bow, and a watch chain that leads to no watch.	Eine rosa Weste mit blauer Schleife und einer Uhrkette, die zu keiner Uhr führt.
+A towering hat with a card marked with a question mark. The question was never asked.	Ein riesiger Hut mit einer Karte, auf der ein Fragezeichen steht. Die Frage wurde nie gestellt.
+A sparkling gaze, as if someone had just told it a riddle.	Ein funkelnder Blick, als hätte man ihm gerade ein Rätsel erzählt.
+A pink flower pinned to the hat. It does not wilt; it waits.	Eine rosa Blume am Hut. Sie welkt nicht, sie wartet.
+An umbrella that is always closed. It never rains in the City, but you never know.	Ein stets geschlossener Regenschirm. In der Stadt regnet es nie, aber man weiß ja nie.
+A teapot that always pours hot tea. No one ever filled it.	Eine Teekanne, die immer heißen Tee einschenkt. Niemand hat sie je gefüllt.
+A clockwork bird that needs winding. It sings teatime at any time.	Ein mechanischer Vogel zum Aufziehen. Er singt Teezeit, zu jeder Stunde.
+A tea steam that floats in spirals and smells of cinnamon.	Teedampf, der in Spiralen schwebt und nach Zimt duftet.
+An alley under a light rain, lit by a single moon. It fell through the crack one sad evening.	Eine Gasse im feinen Regen, von einem einzigen Mond beleuchtet. Sie fiel an einem traurigen Abend durch den Riss.
+A blue rain cape, always slightly damp, which never really dries.	Ein blauer Regenumhang, immer etwas feucht, der nie ganz trocknet.
+Baggy white trousers with black pompoms, made for dancing even when you do not feel like it.	Eine weiße Pluderhose mit schwarzen Bommeln, zum Tanzen, auch wenn man keine Lust hat.
+A white ruffled blouse with big black buttons. It only suits sad people.	Eine weiße Bluse mit Halskrause und großen schwarzen Knöpfen. Sie steht nur traurigen Menschen.
+A white face with a painted tear. Whoever wears it cries no more: the tear does it for them.	Ein weißes Gesicht mit gemalter Träne. Wer es trägt, weint nicht mehr: Die Träne tut es für ihn.
+A wet blue gaze, always looking a little farther than others.	Ein nasser blauer Blick, der immer etwas weiter schaut als die anderen.
+A wilted flower pinned to the head. It was beautiful, once.	Eine welke Blume am Kopf. Sie war einmal schön.
+A thornless rose. It hurts no one, not even the one holding it.	Eine Rose ohne Dornen. Sie tut niemandem weh, nicht einmal dem, der sie hält.
+A deflated red balloon, kept anyway. You do not throw away what once flew high.	Ein schlaffer roter Ballon, trotzdem aufbewahrt. Man wirft nicht weg, was einmal hoch geflogen ist.
+A grey pigeon that follows sad people, never bothering them.	Eine graue Taube, die traurigen Menschen folgt, ohne sie je zu stören.
+A light rain that falls only on its bearer.	Ein feiner Regen, der nur auf seinen Träger fällt.
+A tiled kitchen with pots still warm. It fell through the crack at mealtime.	Eine geflieste Küche mit noch warmen Töpfen. Sie fiel zur Essenszeit durch den Riss.
+A red checked tea towel tied as a cape. It has dried many pots and a few tears.	Ein rot kariertes Geschirrtuch, als Umhang geknotet. Es hat viele Töpfe und einige Tränen getrocknet.
+Houndstooth trousers and white clogs, to stay on your feet through a whole evening service.	Eine Hahnentritthose und weiße Clogs, um einen ganzen Abendservice durchzustehen.
+A double-breasted chef's jacket, still white despite everything.	Eine zweireihige Kochjacke, trotz allem noch weiß.
+A tall pleated chef's hat. The taller it is, the more people listen to the wearer.	Eine hohe, gefaltete Kochmütze. Je höher sie ist, desto mehr hört man auf den, der sie trägt.
+A hungry gaze that already knows what is simmering.	Ein hungriger Blick, der schon weiß, was köchelt.
+A handlebar moustache, curled at both ends. It twitches when something is burning.	Ein an beiden Enden gezwirbelter Schnurrbart. Er zuckt, wenn etwas anbrennt.
+A ladle that tasted every soup in the City. It remembers them all.	Eine Schöpfkelle, die alle Suppen der Stadt gekostet hat. Sie erinnert sich an jede.
+A heavy black frying pan. It blocks blows better than many shields.	Eine schwere schwarze Pfanne. Sie hält Schläge besser ab als viele Schilde.
+A lobster that escaped the pot and never forgot it.	Ein Hummer, der dem Topf entkam und es nie vergaß.
+Pot steam that smells good and warms whoever walks by.	Topfdampf, der gut riecht und jeden wärmt, der vorbeigeht.
+A bedroom at night, with a moon in the window. It fell through the crack while someone was asleep.	Ein Schlafzimmer bei Nacht, mit einem Mond im Fenster. Es fiel durch den Riss, während jemand schlief.
+A checked plaid blanket, warm and a little worn. It covered many sleepless nights.	Eine karierte Decke, warm und etwas abgenutzt. Sie hat viele schlaflose Nächte bedeckt.
+Polka-dot pyjama bottoms and bunny slippers. You do not run in them, and that is fine.	Eine gepunktete Pyjamahose und Hasenhausschuhe. Darin rennt man nicht, und das ist gut so.
+A blue pyjama top with white dots. It protects from nothing, except the cold.	Ein blaues Pyjamaoberteil mit weißen Punkten. Es schützt vor nichts, außer vor Kälte.
+A nightcap with a pompom. Whoever wears it no longer wants to fight, only to sleep.	Eine Schlafmütze mit Bommel. Wer sie trägt, will nicht mehr kämpfen, nur noch schlafen.
+Closed eyes. They are not really asleep: they are listening.	Geschlossene Augen. Sie schlafen nicht wirklich: Sie hören zu.
+A pink sleep mask pushed up on the forehead. You never know when you will need to sleep.	Eine rosa Schlafmaske, auf die Stirn geschoben. Man weiß nie, wann man schlafen muss.
+A pillow. The softest fight in the City, and the only one that always ends in laughter.	Ein Kopfkissen. Der sanfteste Kampf der Stadt und der einzige, der immer im Lachen endet.
+A teddy bear, worn a little at the ears. It saw every nightmare and was never afraid.	Ein Teddybär, an den Ohren etwas abgenutzt. Er sah alle Albträume und hatte nie Angst.
+A round little sheep to count when sleep will not come. You never reach the end.	Ein rundes Schäfchen zum Zählen, wenn der Schlaf nicht kommt. Man kommt nie ans Ende.
+Blue dreams floating around the head, gone on waking.	Blaue Träume, die um den Kopf schweben und beim Aufwachen verschwinden.
+A tiled bathroom full of bubbles. It fell through the crack, the water still warm.	Ein gefliestes Badezimmer voller Blasen. Es fiel durch den Riss, das Wasser noch lauwarm.
+A pink striped bath towel, soft and a little too big.	Ein rosa gestreiftes Badetuch, weich und etwas zu groß.
+Yellow boots and blue shorts, ready for a puddle that does not exist here.	Gelbe Stiefel und blaue Shorts, bereit für eine Pfütze, die es hier nicht gibt.
+A duck-shaped float, blown up to float on water that is still awaited.	Ein Schwimmring in Entenform, aufgeblasen für ein Wasser, auf das man noch wartet.
+A yellow duck head with an orange beak. It is not scary, but it makes you think.	Ein gelber Entenkopf mit orangem Schnabel. Er macht keine Angst, aber er bringt zum Nachdenken.
+Two round black eyes that look at everything with the same calm.	Zwei runde schwarze Augen, die alles mit derselben Ruhe ansehen.
+A duckling perched on the head, refusing to come down.	Ein Entenküken auf dem Kopf, das nicht herunter will.
+A long bath brush. It scrubs everything, even what did not want to be scrubbed.	Eine lange Badebürste. Sie schrubbt alles, auch was nicht geschrubbt werden wollte.
+A pink bar of soap that always slips at the wrong moment.	Ein rosa Seifenstück, das immer im falschen Moment wegrutscht.
+A rubber duck. They say it helps you understand a mistake when you explain it out loud to it.	Eine Quietscheente. Man sagt, sie hilft, einen Fehler zu verstehen, wenn man ihn ihr laut erklärt.
+Soap bubbles that pop in silence.	Seifenblasen, die lautlos platzen.
+A market stall under a striped awning. The fruit fell through the crack, still fresh.	Ein Marktstand unter einer gestreiften Markise. Das Obst fiel durch den Riss, noch frisch.
+A big banana leaf, wide enough to shelter from the mist.	Ein großes Bananenblatt, breit genug, um sich vor dem Nebel zu schützen.
+Green trousers striped like a watermelon rind.	Eine grüne Hose, gestreift wie eine Wassermelonenschale.
+Armour carved from a watermelon, red and scattered with seeds.	Eine aus einer Wassermelone geschnitzte Rüstung, rot und voller Kerne.
+A pineapple helmet, with its crown of leaves. It prickles a little, but it smells nice.	Ein Ananashelm mit seiner Blätterkrone. Er sticht ein wenig, riecht aber gut.
+Two eyes as black as pips.	Zwei Augen, schwarz wie Kerne.
+Two cherries hanging from the helmet, always shiny.	Zwei Kirschen am Helm, immer glänzend.
+A banana sword, curved and yellow. It cuts nothing, but it can be eaten if needed.	Ein Bananenschwert, krumm und gelb. Es schneidet nichts, lässt sich aber im Notfall essen.
+A shield cut from an orange. It still smells good after the blows.	Ein aus einer Orange geschnittener Schild. Er riecht auch nach den Schlägen noch gut.
+A strawberry with eyes that follows its bearer. It no longer ripens; it lives.	Eine Erdbeere mit Augen, die ihrem Träger folgt. Sie reift nicht mehr, sie lebt.
+Drops of juice that float and shine like candied fruit.	Safttropfen, die schweben und glänzen wie kandierte Früchte.
+An attic full of boxes, fallen through the crack with everything no one dared throw away.	Ein Dachboden voller Kartons, durch den Riss gefallen mit allem, was niemand wegzuwerfen wagte.
+A newspaper cape. You can read news from a world that is not this one.	Ein Umhang aus Zeitungspapier. Man kann Nachrichten aus einer anderen Welt darauf lesen.
+Greaves made of stacked cardboard tubes. They hold, and that is already a lot.	Beinschienen aus gestapelten Papprollen. Sie halten, und das ist schon viel.
+Cardboard armour marked \"FRAGILE\". At least it is honest.	Eine Rüstung aus Karton mit der Aufschrift „FRAGILE“. Wenigstens ist sie ehrlich.
+A cardboard box on the head, with eyes drawn in marker. No one recognises the wearer, and that is the idea.	Ein Karton auf dem Kopf mit aufgemalten Filzstiftaugen. Niemand erkennt den Träger, und genau das ist die Idee.
+Eyes drawn in marker, a little crooked, but full of good will.	Mit Filzstift gemalte Augen, ein bisschen schief, aber voller guten Willens.
+A coat hanger bent into an antenna. Mostly it picks up the draught.	Ein zur Antenne gebogener Kleiderbügel. Meist empfängt er den Luftzug.
+A paper-towel-roll sword. It bends but does not break.	Ein Schwert aus einer Küchenrolle. Es biegt sich, bricht aber nicht.
+A bin lid used as a shield. It has seen use, and it shows.	Ein Mülltonnendeckel als Schild. Er wurde schon benutzt, und das sieht man.
+A cat that settled into a box and refuses to come out. It was the cat's choice.	Eine Katze, die sich in einem Karton eingerichtet hat und nicht herauskommen will. Sie hat es so gewählt.
+Bits of tape that float and stick to everything.	Klebebandstücke, die schweben und an allem kleben bleiben.
+A forbidden building site, with cones and barriers. It fell through the crack before anyone said it was a bad idea.	Eine verbotene Baustelle mit Kegeln und Absperrungen. Sie fiel durch den Riss, bevor jemand sagen konnte, dass es eine schlechte Idee war.
+A blue tarp tied as a cape. It makes a lot of noise in the slightest draught.	Eine blaue Plane, als Umhang geknotet. Beim kleinsten Luftzug macht sie viel Lärm.
+A striped sock on one side, a flipper on the other. There was no choice left.	Auf der einen Seite eine gestreifte Socke, auf der anderen eine Flosse. Es gab keine Wahl mehr.
+A hi-vis vest, to be seen from afar. In the cavern, it is useful, all the same.	Eine Warnweste, um von weitem gesehen zu werden. In der Höhle ist das trotz allem nützlich.
+A traffic cone on the head. It started as a joke.	Ein Leitkegel auf dem Kopf. Es fing als Witz an.
+A lost gaze, still wondering how it came to this.	Ein verlorener Blick, der sich noch fragt, wie es so weit kommen konnte.
+A propeller on top of the cone. It spins, but it does not make you fly.	Ein Propeller oben auf dem Kegel. Er dreht sich, aber er lässt nicht fliegen.
+An umbrella turned inside out by a gust that should never have blown underground.	Ein Regenschirm, umgestülpt von einer Böe, die unter der Erde nie hätte wehen dürfen.
+A folding chair held like a shield. It sometimes folds at the worst moment.	Ein Klappstuhl, als Schild gehalten. Manchmal klappt er im schlimmsten Moment zusammen.
+A toaster with wings. No one knows how it flies, not even the toaster.	Ein Toaster mit Flügeln. Niemand weiß, wie er fliegt, nicht einmal er selbst.
+Orange sparks of dubious origin. Better not to look into it.	Orange Funken zweifelhafter Herkunft. Besser nicht nachforschen.
+A slightly sad party, with balloons that no longer rise. It fell through the crack at exactly midnight.	Eine etwas traurige Party mit Ballons, die nicht mehr steigen. Sie fiel genau um Mitternacht durch den Riss.
+A flowery shower curtain, turned into a cape for lack of anything better.	Ein geblümter Duschvorhang, mangels Besserem zum Umhang geworden.
+Laddered tights, worn anyway, because the party had already started.	Strumpfhosen mit Laufmaschen, trotzdem angezogen, weil die Party schon begonnen hatte.
+A sheet with two eye holes. A very sincere ghost.	Ein Laken mit zwei Augenlöchern. Ein sehr aufrichtiges Gespenst.
+A golden paper crown, cut a little too fast. It holds with tape.	Eine goldene Papierkrone, etwas zu schnell ausgeschnitten. Sie hält mit Klebeband.
+An awkward gaze, from someone who thought it was a costume ball.	Ein verlegener Blick von jemandem, der dachte, es sei ein Kostümball.
+A fake nose with a moustache and glasses. The bravest disguise in the City.	Eine falsche Nase mit Schnurrbart und Brille. Die mutigste Verkleidung der Stadt.
+A cardboard wand topped with a star. It grants nothing, but it believes.	Ein Zauberstab aus Pappe mit einem Stern. Er erfüllt nichts, aber er glaubt daran.
+A paper plate, kept from the party as a shield.	Ein Pappteller, von der Party als Schild aufbewahrt.
+A dog dressed as a lion, doing its best to roar.	Ein als Löwe verkleideter Hund, der sein Bestes gibt, um zu brüllen.
+Sad confetti, falling slowly and silently.	Traurige Konfetti, die langsam und lautlos fallen.
+It lit up by itself on the night the Long Silence ended. No one had filled it. It burns with whatever still works.	Sie ging in der Nacht, in der die Lange Stille endete, von selbst an. Niemand hatte sie gefüllt. Sie brennt mit dem, was noch funktioniert.
+Every dent is a fall in the cavern. Its wearer never hammered it straight: it tells where they come from.	Jede Delle ist ein Sturz in der Höhle. Wer ihn trägt, hat ihn nie ausgebeult: Er erzählt, woher er kommt.
+The builders wrote in it how to lay each stone. During the Long Silence no one opened it, and the Tower began to lean.	Die Baumeister schrieben darin auf, wie jeder Stein zu setzen ist. In der Langen Stille schlug ihn niemand auf, und der Turm begann sich zu neigen.
+Through a crack in the cavern ceiling, a sky without stone was seen one day. It stayed one night, then the crack closed. The traveller had come through there.	Durch einen Riss in der Höhlendecke sah man eines Tages einen Himmel ohne Stein. Er blieb eine Nacht, dann schloss sich der Riss. Der Reisende war dort hindurchgekommen.
+Fallen from above the surface, carefully folded, embroidered with a single number: 42. No one in the City ever knew what it counted.	Von oberhalb der Oberfläche gefallen, sorgfältig gefaltet, mit einer einzigen Zahl bestickt: 42. Niemand in der Stadt erfuhr je, was sie zählte.
+A fabric the mist could not wet. The watchers found them on a ledge, sewn with stars, as if laid out to dry.	Ein Stoff, den der Nebel nicht nass machte. Die Wächter fanden sie auf einem Vorsprung, mit Sternen bestickt, wie zum Trocknen ausgelegt.
+A jacket too light for the City, with a golden 42 badge over the heart. The founders tried to melt it down. The metal refused to melt.	Eine für die Stadt zu leichte Jacke mit einem goldenen 42-Abzeichen über dem Herzen. Die Gießer versuchten, sie einzuschmelzen. Das Metall weigerte sich.
+A clear bubble without a seam. The rope-walkers lowered it into the Well to see under the water: it came back dry, full of an air that was not from here.	Eine klare Blase ohne Naht. Die Seiler ließen sie in den Brunnen hinab, um unter das Wasser zu sehen: Sie kam trocken zurück, voller Luft, die nicht von hier war.
+They said the traveller could see in the dark as in daylight. Those who wore this gaze speak of golden dots that never go out.	Man sagte, der Reisende sehe im Dunkeln wie am Tag. Wer seinen Blick trug, spricht von goldenen Punkten, die nicht erlöschen.
+A thin rod that crackled at night, pointing upwards. No one knew what it listened to. During the Long Silence, it was the only thing that spoke.	Ein dünner Stab, der nachts knisterte und nach oben zeigte. Niemand wusste, worauf er hörte. In der Langen Stille war er das Einzige, das sprach.
+A blade that keeps the colour of a sky you cannot see from here. It does not cut stone. It shines just enough to keep going.	Eine Klinge, die die Farbe eines Himmels bewahrt, den man von hier nicht sieht. Sie schneidet keinen Stein. Sie leuchtet gerade genug, um weiterzugehen.
+A bound book the traveller must have read often. Most pages are blank now. On the first one, in gold letters: 42.	Ein gebundenes Buch, das der Reisende oft gelesen haben muss. Die meisten Seiten sind leer. Auf der ersten, in Goldbuchstaben: 42.
+A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Ein kleines rundes Gerät, das über den Ruinen schwebte und jedem folgte, der vorbeiging. Es suchte seinen Besitzer. Es sucht ihn noch.
+A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Ein Staub, der ohne Wärme leuchtet. Er fiel aus dem Riss, durch den der Reisende kam, und hat sich nie ganz gelegt.
+Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Nach dem Bild der Wächterin gemacht, bevor sie hinabstieg. Wer ihn trägt, spürt den schiefen Stein, bevor er ihn sieht. Niemand hat ihn lange behalten.

@@ -2313,3 +2313,233 @@ Fruits	Фрукты
 Cardboard and tape	Картон и скотч
 Bad idea	Плохая идея
 Failed costume	Неудачный костюм
+The great cavern as the watchers saw it: the Tower in the distance, its windows going dark one by one.	Большая пещера такой, какой её видели дозорные: Башня вдали, и её окна гаснут одно за другим.
+The furnaces never fully cooled. Through the Long Silence, the Foundry kept burning for no one.	Печи так и не остыли до конца. Во время Долгого Безмолвия Литейная продолжала гореть ни для кого.
+The still water at the bottom of the Well. The rope-walkers said it remembered every line they climbed down.	Тихая вода на дне Колодца. Канатчики говорили, что она помнит каждую строку, по которой они спускались.
+Some nights a pale moon drifted behind the Tower. No one knew where that light came from, so far below the surface.	Иногда по ночам за Башней проплывала бледная луна. Никто не знал, откуда этот свет так глубоко под поверхностью.
+The cloak of the one who arrives at the end of the Long Silence. It carries the dust of every road before this one.	Плащ того, кто приходит в конце Долгого Безмолвия. На нём пыль всех прежних дорог.
+A cloak found at the edge of the cavern, torn by gears that spun for nothing.	Плащ, найденный на краю пещеры, изорванный шестернями, что крутились впустую.
+Woven from the mist that leaked from the walls. It weighs nothing, and lets the cold through.	Сотканный из тумана, что сочился из стен. Он ничего не весит и пропускает холод.
+The founders draped it over the moulds so they would not cool too fast. It still smells of hot metal.	Литейщики накрывали им формы, чтобы те не остывали слишком быстро. Он до сих пор пахнет горячим металлом.
+It cannot be bought. It is given to those who went through the Foundry and came back.	Его не купить. Его получают те, кто прошёл через Литейную и вернулся.
+Plain greaves, made to walk a long time on stone without a sound.	Простые поножи, чтобы долго и бесшумно ходить по камню.
+The watchers wore them out walking the streets, again and again, waiting for someone to come.	Дозорные стоптали их, обходя улицы снова и снова в ожидании, что кто-нибудь придёт.
+Forged for the Tower guards. The guards left; the greaves were still standing in a corner.	Выкованы для стражей Башни. Стражи ушли, а поножи так и остались стоять в углу.
+Every ring was closed by hand. A few are missing: no one was there to replace them.	Каждое кольцо замкнуто вручную. Нескольких не хватает: заменить их было некому.
+A padded coat, warm and quiet, worn by those who kept watch at night.	Стёганая одежда, тёплая и тихая, её носили те, кто стоял в ночном дозоре.
+Cut from the walls of the Tower, where the moss had already begun to grow.	Вырублен из стен Башни, там, где уже начал расти мох.
+Hot-riveted by the founders, to work by the crucibles without getting burned.	Склёпан литейщиками вгорячую, чтобы работать у тиглей и не обжигаться.
+A closed helm with a narrow slit. Whoever wears it sees little, but does not step back.	Закрытый шлем с узкой прорезью. Кто его носит, видит мало, но не отступает.
+The watchers pulled it over their eyes when the mist grew too thick to see through.	Дозорные надвигали его на глаза, когда туман становился слишком густым.
+Cast in a Foundry mould, the one for the sign that announces every form. Only veterans wear it.	Отлит в форме Литейной, той, что для знака, предвещающего каждую форму. Его носят только ветераны.
+The helm of those who held on to the end of the Foundry. Its gold has not tarnished.	Шлем тех, кто продержался до конца Литейной. Его золото не потускнело.
+A calm white glow, like that of the watchers who no longer slept.	Спокойное белое сияние, как у дозорных, которые больше не спали.
+The light of stones that still work. It shines brighter near a Tower that stands.	Свет камней, которые ещё работают. Он ярче рядом с Башней, что стоит.
+The gaze of those who stared too long into the Foundry's crucibles.	Взгляд тех, кто слишком долго смотрел в тигли Литейной.
+An ember-coloured feather, picked up near the cavern entrance on the last night of the Long Silence.	Перо цвета углей, подобранное у входа в пещеру в последнюю ночь Долгого Безмолвия.
+It glows softly when you pass near a well-laid stone.	Оно мягко светится, когда проходишь мимо хорошо уложенного камня.
+Woven with gold thread by a builder, to find her own people in the mist.	Сотканный золотой нитью строительницей, чтобы узнавать своих в тумане.
+An edge sword with a worn guard. It never struck a guardian: it only opened the way.	Меч с края, со стёртой гардой. Он ни разу не ударил стража: он только открывал путь.
+The Tower guards held it upright at the entrance. The last one stayed planted there, alone.	Стражи Башни держали её прямо у входа. Последняя так и осталась там, одна.
+It was used to set fallen stones back. During the Long Silence, more fell than it could ever set back.	Им ставили на место упавшие камни. За Долгое Безмолвие их упало больше, чем он мог поставить.
+A thread pulled from the Weaver. It goes taut on its own when something is cut wrong.	Нить, вырванная у Ткача. Она сама натягивается, когда что-то разрезано неправильно.
+An oak shield, from a time when trees still grew above the cavern.	Дубовый щит из времён, когда над пещерой ещё росли деревья.
+An ember taken from the lukewarm furnace. It never goes out, and keeps your hands warm.	Уголёк из тёплой печи. Он никогда не гаснет и греет руки.
+She went from gear to gear and felt what was wrong. They say she sometimes comes back to sit beside those who repair.	Она ходила от шестерни к шестерне и чувствовала, что не так. Говорят, она иногда возвращается и садится рядом с теми, кто чинит.
+A firefly born from a Tower window that stayed lit. It follows those who light the others again.	Светлячок, рождённый из окна Башни, что так и не погасло. Он следует за теми, кто зажигает остальные.
+A small gear fallen from a City clock, which learned to roll on its own to find its place again.	Маленькая шестерёнка, упавшая с часов Города, которая научилась катиться сама, чтобы найти своё место.
+The City crows flew between the floors. This one saw the whole Long Silence and says nothing.	Вороны Города летали между этажами. Этот видел всё Долгое Безмолвие и ничего не говорит.
+Spores from the cavern moss, which light up when something that works passes by.	Споры пещерного мха, которые вспыхивают, когда мимо проходит то, что работает.
+Embers that escaped the Foundry and kept floating, never coming down.	Угли, сбежавшие из Литейной, которые продолжают парить и никогда не падают.
+The mist of the leaks, tamed. It follows its bearer instead of escaping from the walls.	Туман утечек, приручённый. Он следует за владельцем, а не сочится из стен.
+After the traveller, the crack let through one more piece of sky: a grey plain, and a blue planet above it.	После путника трещина пропустила ещё кусок неба: серую равнину и голубую планету над ней.
+A wrench that fell through the crack, made to tighten bolts that no City mechanism has.	Ключ, упавший сквозь трещину, для гаек, которых нет ни в одном механизме Города.
+A small flag planted on a ledge. It bears the same number as the traveller's belongings.	Маленький флажок на уступе. На нём то же число, что на вещах путника.
+It circles above the ruins, blinking, as if waiting for an answer from above.	Он кружит над руинами и мигает, будто ждёт ответа сверху.
+Bubbles that never fall. Here, something forgot what weight meant.	Пузыри, которые не падают. Здесь что-то забыло, что значит вес.
+A calm blue gaze, that of someone who has already seen the City from above.	Спокойный голубой взгляд того, кто уже видел Город сверху.
+A sealed helmet with a golden visor. It kept inside an air that does not come from the cavern.	Закрытый шлем с золотым визором. Внутри он сохранил воздух не из пещеры.
+A white suit covered in buttons. The watchers never found out what the red one was for.	Белый костюм, весь в кнопках. Дозорные так и не узнали, для чего красная.
+Heavy leggings, made to walk where nothing holds you to the ground.	Тяжёлые штаны, чтобы ходить там, где ничто не держит тебя у земли.
+A pack that hisses softly. It holds air from elsewhere, and no one dared open it.	Ранец, который тихо шипит. В нём воздух из другого места, и никто не решился его открыть.
+An antenna with a red light. It blinks faster when you look toward the crack.	Антенна с красным огоньком. Она мигает чаще, когда смотришь в сторону трещины.
+A violet night, a striped sun, a grid running to the horizon. None of it exists below the surface.	Фиолетовая ночь, полосатое солнце, сетка, бегущая к горизонту. Ничего этого нет под поверхностью.
+A sabre of pink light. It cuts nothing, but it shines better than any lantern.	Сабля из розового света. Она ничего не режет, но светит лучше любого фонаря.
+A radio that fell through the crack, still playing music no one here knows.	Радио, упавшее сквозь трещину, которое до сих пор играет музыку, которую здесь никто не знает.
+A cat made only of light. Moulinette watched it for a long time, then let it pass.	Кот, сделанный только из света. Moulinette долго смотрела на него, а потом пропустила.
+Pink and blue glows that crackle a little, like a tired sign.	Розовые и голубые отблески, слегка потрескивающие, как усталая вывеска.
+A pink gaze that does not blink.	Розовый взгляд, который не моргает.
+Wide shades and a crest of light. Whoever wore them did not want to go unnoticed.	Широкие очки и гребень из света. Тот, кто их носил, не хотел остаться незамеченным.
+A jacket sewn with glowing threads. In the mist, you see it before you see the wearer.	Куртка, прошитая светящимися нитями. В тумане её видно раньше, чем того, кто в ней.
+Trousers striped with blue light, made to be seen from afar.	Брюки в полосках голубого света, чтобы их было видно издалека.
+A long coat with a glowing hem. It leaves a bright trail behind every step.	Длинное пальто со светящимся подолом. Оно оставляет светлый след за каждым шагом.
+A pink crest that crackles above the helmet.	Розовый гребень, потрескивающий над шлемом.
+A city in the rain, with lit windows everywhere. The watchers saw it only once, at the bottom of the crack.	Город под дождём, повсюду освещённые окна. Дозорные видели его лишь однажды, на дне трещины.
+A green-edged blade. It hums softly when it nears a broken mechanism.	Клинок с зелёной кромкой. Он тихо гудит рядом со сломанным механизмом.
+A tablet showing scrolling lines. No one can read them, but they never stop.	Планшет с бегущими строками. Никто не умеет их читать, но они никогда не останавливаются.
+A red-eyed drone. It watches the City as if surveying it for someone.	Дрон с красным глазом. Он наблюдает за Городом, будто составляет его карту для кого-то.
+Squares of green light that appear and vanish, like a picture reloading.	Квадраты зелёного света, которые появляются и исчезают, как картинка при загрузке.
+A sharp green gaze that finds cracks before they open.	Острый зелёный взгляд, который находит трещины до того, как они откроются.
+A hood with a green visor. You never see the face, only the light.	Капюшон с зелёным визором. Лица никогда не видно, только свет.
+A jacket lined with green tracks, as if a circuit had grown into the fabric.	Куртка в зелёных линиях, будто в ткани выросла микросхема.
+Trousers with pockets and yellow knee pads, made to run and climb.	Брюки с карманами и жёлтыми наколенниками, чтобы бегать и лазать.
+A long grey coat with a green edge, wet from a rain that does not fall here.	Длинное серое пальто с зелёной кромкой, мокрое от дождя, который здесь не идёт.
+An ear antenna that picks up distant voices. They all talk at once.	Ушная антенна, ловящая далёкие голоса. Все они говорят одновременно.
+A stage with violet curtains, set up who knows when in the middle of the City. No one ever performed on it.	Сцена с фиолетовым занавесом, поставленная неизвестно когда посреди Города. На ней никто никогда не играл.
+A diamond-patterned cape, mended so many times the colours no longer line up.	Плащ в ромбы, зашитый столько раз, что цвета уже не идут по порядку.
+One violet leg, one golden leg, and pointed shoes that jingle at every step.	Одна нога фиолетовая, другая золотая, и острые туфли, звенящие при каждом шаге.
+A doublet with bells. During the Long Silence, it was the only cheerful sound in the City.	Камзол с бубенцами. В Долгое Безмолвие это был единственный весёлый звук Города.
+The Fool's three-pointed cap. They say it laughs to itself when someone gets it wrong.	Трёхконечный колпак Шута. Говорят, он сам смеётся, когда кто-то ошибается.
+A twinkling gaze. It is not mocking: it just saw the mistake coming.	Искрящийся взгляд. Он не насмехается: он просто видел, как приближается ошибка.
+A golden bell, the clearest of all. You can hear it even at the bottom of the Well.	Золотой бубенец, самый звонкий из всех. Его слышно даже на дне Колодца.
+A bauble, a stick topped with a little head. It always has the last word.	Шутовской жезл с маленькой головой на конце. За ним всегда последнее слово.
+A comedy mask with a fixed smile. It was worn to say what no one wanted to hear.	Комическая маска с застывшей улыбкой. Её надевали, чтобы говорить то, чего никто не хотел слышать.
+A box that opens when you no longer expect it. The little spring fool never missed its moment.	Коробка, которая открывается, когда уже не ждёшь. Маленький шут на пружине ни разу не промахнулся.
+Bursts of laughter in violet light, lingering a little after the laughing stops.	Взрывы смеха из фиолетового света, которые держатся ещё немного после того, как смех стих.
+A night of garlands and confetti. The crack dropped it all at once, party included.	Ночь гирлянд и конфетти. Трещина уронила её разом, вместе с праздником.
+A cape trimmed with feathers of every colour. It leaves a trail of colour in the mist.	Плащ, отороченный перьями всех цветов. Он оставляет в тумане цветной след.
+Red and yellow striped tights, impossible to mistake for anything else.	Колготки в красно-жёлтую полоску, их ни с чем не спутать.
+A green bodice covered in sequins. It throws back the faintest lantern light.	Зелёный лиф, весь в блёстках. Он отражает малейший отблеск фонаря.
+A golden diamond-patterned mask. Behind it, you can be anyone.	Золотая маска в ромбах. За ней можно быть кем угодно.
+A golden gaze that gives nothing away.	Золотой взгляд, который ничего не выдаёт.
+A crest of three plumes, red, blue and green. It dances even when you stand still.	Плюмаж из трёх перьев: красного, синего и зелёного. Он танцует, даже когда стоишь на месте.
+A stick with twirling ribbons. It scares no one, and that is the point.	Жезл с кружащимися лентами. Он никого не пугает, и так задумано.
+Maracas that keep the beat of a party that ended long ago.	Маракасы, которые держат ритм давно закончившегося праздника.
+A parrot that repeats the words it hears. During the Long Silence, it learned nothing.	Попугай, повторяющий услышанные слова. За Долгое Безмолвие он ничему не научился.
+Confetti that never finishes falling.	Конфетти, которое никак не закончит падать.
+A red and white striped big top, pitched in the cavern dust. The ring is still waiting.	Шапито в красно-белую полоску посреди пещерной пыли. Арена всё ещё ждёт.
+A red tailcoat trimmed with gold. It silenced the crowd before every act.	Красный фрак с золотой отделкой. Перед каждым номером зал затихал.
+White breeches and polished black boots, made to hold the centre of the ring.	Белые бриджи и начищенные чёрные сапоги, чтобы держать центр арены.
+A red jacket with golden frogging, sewn for someone who was never afraid.	Красная куртка с золотыми шнурами, сшитая для того, кто никогда не боялся.
+A black top hat with a red band. Sometimes things come out of it that were never put in.	Чёрный цилиндр с красной лентой. Иногда из него появляется то, что туда никто не клал.
+A steady gaze that never takes its eyes off the beast.	Уверенный взгляд, который никогда не упускает зверя из виду.
+A tall red plume, so the tamer can be seen from the back row.	Большое красное перо, чтобы укротителя было видно с последнего ряда.
+A whip that cracks without ever touching. It gives the signal; it does not punish.	Кнут, который щёлкает, никогда не касаясь. Он подаёт знак, а не наказывает.
+A golden hoop. It has been seen going through things far more dangerous than itself.	Золотой обруч. Через него проходило то, что гораздо опаснее его самого.
+A seal that has balanced a ball since the start of the Long Silence. It never dropped it.	Тюлень, который удерживает мяч с начала Долгого Безмолвия. Он ни разу его не уронил.
+Ring sparkles floating in the spotlight.	Блёстки арены, парящие в свете прожекторов.
+A laboratory whose shelves are full of flasks bubbling on their own. No one knows what was being sought there.	Лаборатория с полками колб, которые бурлят сами по себе. Никто не знает, что здесь искали.
+A long lab coat, stained by everything that went wrong.	Длинный халат в пятнах от всего, что пошло не так.
+Wool trousers and red slippers. You do not leave your laboratory for so little.	Шерстяные брюки и красные тапочки. Ради такого из лаборатории не выходят.
+A lab coat with pockets full of pencils. One green stain refuses to come out.	Халат с карманами, полными карандашей. Одно зелёное пятно никак не отстирывается.
+Hair standing on end from electricity, and big goggles. An experiment went very well, or very badly.	Волосы дыбом от электричества и большие очки. Опыт удался очень хорошо, или очень плохо.
+A green gaze, that of someone who has just had an idea.	Зелёный взгляд того, кому только что пришла идея.
+Sparks crackling above the head, never burning anything.	Искры, потрескивающие над головой и ничего не поджигающие.
+A hissing electric coil. It once lit a Tower window again, by accident.	Шипящая электрическая катушка. Однажды она случайно снова зажгла окно Башни.
+A green flask bubbling without fire. Above all, do not drink it.	Зелёная колба, бурлящая без огня. Только не пей.
+A brain in a jar. It thinks a lot, and never says what about.	Мозг в банке. Он много думает и никогда не говорит о чём.
+Bubbles escaping from the flasks and rising forever.	Пузыри, вырывающиеся из колб и бесконечно поднимающиеся.
+A tea table set for a tea that never ends. The cups are always full.	Стол, накрытый для чаепития, которое никогда не кончается. Чашки всегда полны.
+A green coat with golden checks, worn by someone who always had an appointment.	Зелёный сюртук в золотую клетку, его носил тот, у кого всегда была встреча.
+Black and white checkerboard trousers, impossible to wear without looking in a hurry.	Брюки в чёрно-белую шахматную клетку, в них невозможно не выглядеть спешащим.
+A pink waistcoat with a blue bow, and a watch chain that leads to no watch.	Розовый жилет с синим бантом и цепочкой от часов, которая не ведёт ни к каким часам.
+A towering hat with a card marked with a question mark. The question was never asked.	Огромная шляпа с карточкой, на которой знак вопроса. Вопрос так и не задали.
+A sparkling gaze, as if someone had just told it a riddle.	Искристый взгляд, будто ему только что загадали загадку.
+A pink flower pinned to the hat. It does not wilt; it waits.	Розовый цветок на шляпе. Он не вянет: он ждёт.
+An umbrella that is always closed. It never rains in the City, but you never know.	Зонт, который всегда закрыт. В Городе никогда не бывает дождя, но мало ли.
+A teapot that always pours hot tea. No one ever filled it.	Чайник, который всегда наливает горячий чай. Его никто никогда не наполнял.
+A clockwork bird that needs winding. It sings teatime at any time.	Заводная птица. Она поёт время чая в любой час.
+A tea steam that floats in spirals and smells of cinnamon.	Чайный пар, кружащийся спиралями и пахнущий корицей.
+An alley under a light rain, lit by a single moon. It fell through the crack one sad evening.	Переулок под мелким дождём, освещённый одной луной. Он упал сквозь трещину в грустный вечер.
+A blue rain cape, always slightly damp, which never really dries.	Синий дождевой плащ, всегда немного влажный, который никогда не высыхает до конца.
+Baggy white trousers with black pompoms, made for dancing even when you do not feel like it.	Белые шаровары с чёрными помпонами, чтобы танцевать, даже когда не хочется.
+A white ruffled blouse with big black buttons. It only suits sad people.	Белая блуза с жабо и большими чёрными пуговицами. Она идёт только грустным людям.
+A white face with a painted tear. Whoever wears it cries no more: the tear does it for them.	Белое лицо с нарисованной слезой. Кто его носит, больше не плачет: слеза плачет за него.
+A wet blue gaze, always looking a little farther than others.	Влажный голубой взгляд, всегда смотрящий чуть дальше других.
+A wilted flower pinned to the head. It was beautiful, once.	Увядший цветок на голове. Когда-то он был красив.
+A thornless rose. It hurts no one, not even the one holding it.	Роза без шипов. Она никому не делает больно, даже тому, кто её держит.
+A deflated red balloon, kept anyway. You do not throw away what once flew high.	Сдувшийся красный шарик, всё равно сохранённый. Не выбрасывают то, что когда-то летало высоко.
+A grey pigeon that follows sad people, never bothering them.	Серый голубь, который следует за грустными людьми, никогда им не мешая.
+A light rain that falls only on its bearer.	Мелкий дождь, который падает только на своего владельца.
+A tiled kitchen with pots still warm. It fell through the crack at mealtime.	Кафельная кухня с ещё тёплыми кастрюлями. Она упала сквозь трещину во время обеда.
+A red checked tea towel tied as a cape. It has dried many pots and a few tears.	Полотенце в красную клетку, завязанное как плащ. Оно вытерло много кастрюль и несколько слёз.
+Houndstooth trousers and white clogs, to stay on your feet through a whole evening service.	Брюки в «гусиную лапку» и белые сабо, чтобы выстоять целый вечер работы.
+A double-breasted chef's jacket, still white despite everything.	Двубортный поварской китель, всё ещё белый, несмотря ни на что.
+A tall pleated chef's hat. The taller it is, the more people listen to the wearer.	Высокий плиссированный колпак. Чем он выше, тем больше слушают того, кто его носит.
+A hungry gaze that already knows what is simmering.	Голодный взгляд, который уже знает, что тушится.
+A handlebar moustache, curled at both ends. It twitches when something is burning.	Усы-руль, закрученные на обоих концах. Они дрожат, когда что-то пригорает.
+A ladle that tasted every soup in the City. It remembers them all.	Половник, перепробовавший все супы Города. Он помнит каждый.
+A heavy black frying pan. It blocks blows better than many shields.	Тяжёлая чёрная сковорода. Удары она держит лучше многих щитов.
+A lobster that escaped the pot and never forgot it.	Омар, сбежавший из кастрюли и так этого и не забывший.
+Pot steam that smells good and warms whoever walks by.	Пар из кастрюли, который хорошо пахнет и греет прохожих.
+A bedroom at night, with a moon in the window. It fell through the crack while someone was asleep.	Ночная спальня с луной в окне. Она упала сквозь трещину, пока кто-то спал.
+A checked plaid blanket, warm and a little worn. It covered many sleepless nights.	Клетчатый плед, тёплый и немного потёртый. Он укрывал много бессонных ночей.
+Polka-dot pyjama bottoms and bunny slippers. You do not run in them, and that is fine.	Пижамные штаны в горошек и тапочки-зайцы. В них не бегают, и это хорошо.
+A blue pyjama top with white dots. It protects from nothing, except the cold.	Синяя пижамная рубашка в белый горошек. Она защищает только от холода.
+A nightcap with a pompom. Whoever wears it no longer wants to fight, only to sleep.	Ночной колпак с помпоном. Кто его носит, больше не хочет сражаться, только спать.
+Closed eyes. They are not really asleep: they are listening.	Закрытые глаза. Они не совсем спят: они слушают.
+A pink sleep mask pushed up on the forehead. You never know when you will need to sleep.	Розовая маска для сна, сдвинутая на лоб. Никогда не знаешь, когда понадобится поспать.
+A pillow. The softest fight in the City, and the only one that always ends in laughter.	Подушка. Самая мягкая битва Города и единственная, что всегда кончается смехом.
+A teddy bear, worn a little at the ears. It saw every nightmare and was never afraid.	Плюшевый мишка с немного потёртыми ушами. Он видел все кошмары и ни разу не испугался.
+A round little sheep to count when sleep will not come. You never reach the end.	Круглый барашек, которого считают, когда не идёт сон. До конца никто не досчитывает.
+Blue dreams floating around the head, gone on waking.	Голубые сны, парящие вокруг головы и исчезающие при пробуждении.
+A tiled bathroom full of bubbles. It fell through the crack, the water still warm.	Кафельная ванная, полная пузырей. Она упала сквозь трещину, вода ещё тёплая.
+A pink striped bath towel, soft and a little too big.	Розовое полосатое банное полотенце, мягкое и чуть великоватое.
+Yellow boots and blue shorts, ready for a puddle that does not exist here.	Жёлтые сапоги и синие шорты, готовые к луже, которой здесь нет.
+A duck-shaped float, blown up to float on water that is still awaited.	Надувной круг в виде утки, надутый для воды, которую всё ещё ждут.
+A yellow duck head with an orange beak. It is not scary, but it makes you think.	Жёлтая утиная голова с оранжевым клювом. Не страшно, но заставляет задуматься.
+Two round black eyes that look at everything with the same calm.	Два круглых чёрных глаза, смотрящих на всё с одинаковым спокойствием.
+A duckling perched on the head, refusing to come down.	Утёнок на макушке, который отказывается спускаться.
+A long bath brush. It scrubs everything, even what did not want to be scrubbed.	Длинная банная щётка. Она трёт всё, даже то, что не хотело, чтобы его тёрли.
+A pink bar of soap that always slips at the wrong moment.	Розовое мыло, которое всегда выскальзывает в самый неподходящий момент.
+A rubber duck. They say it helps you understand a mistake when you explain it out loud to it.	Резиновая уточка. Говорят, она помогает понять ошибку, если объяснить её ей вслух.
+Soap bubbles that pop in silence.	Мыльные пузыри, которые лопаются бесшумно.
+A market stall under a striped awning. The fruit fell through the crack, still fresh.	Рыночный прилавок под полосатым навесом. Фрукты упали сквозь трещину ещё свежими.
+A big banana leaf, wide enough to shelter from the mist.	Большой банановый лист, достаточно широкий, чтобы укрыться от тумана.
+Green trousers striped like a watermelon rind.	Зелёные брюки в полоску, как арбузная корка.
+Armour carved from a watermelon, red and scattered with seeds.	Броня, вырезанная из арбуза, красная и вся в семечках.
+A pineapple helmet, with its crown of leaves. It prickles a little, but it smells nice.	Шлем-ананас с короной из листьев. Немного колется, но хорошо пахнет.
+Two eyes as black as pips.	Два глаза, чёрные, как косточки.
+Two cherries hanging from the helmet, always shiny.	Две вишни на шлеме, всегда блестящие.
+A banana sword, curved and yellow. It cuts nothing, but it can be eaten if needed.	Меч-банан, изогнутый и жёлтый. Он ничего не режет, зато в крайнем случае его можно съесть.
+A shield cut from an orange. It still smells good after the blows.	Щит, вырезанный из апельсина. Он хорошо пахнет даже после ударов.
+A strawberry with eyes that follows its bearer. It no longer ripens; it lives.	Клубника с глазами, которая следует за владельцем. Она больше не зреет: она живёт.
+Drops of juice that float and shine like candied fruit.	Капли сока, парящие и блестящие, как цукаты.
+An attic full of boxes, fallen through the crack with everything no one dared throw away.	Чердак, полный коробок, упавших сквозь трещину вместе со всем, что никто не решался выбросить.
+A newspaper cape. You can read news from a world that is not this one.	Плащ из газеты. На нём можно прочесть новости мира, который не этот.
+Greaves made of stacked cardboard tubes. They hold, and that is already a lot.	Поножи из сложенных картонных трубок. Они держатся, и это уже немало.
+Cardboard armour marked \"FRAGILE\". At least it is honest.	Картонная броня с надписью «FRAGILE». По крайней мере, честно.
+A cardboard box on the head, with eyes drawn in marker. No one recognises the wearer, and that is the idea.	Картонная коробка на голове с глазами, нарисованными фломастером. Никто не узнаёт того, кто в ней, в этом и смысл.
+Eyes drawn in marker, a little crooked, but full of good will.	Глаза, нарисованные фломастером, немного кривые, но полные добрых намерений.
+A coat hanger bent into an antenna. Mostly it picks up the draught.	Вешалка, согнутая в антенну. В основном она ловит сквозняк.
+A paper-towel-roll sword. It bends but does not break.	Меч из рулона бумажных полотенец. Он гнётся, но не ломается.
+A bin lid used as a shield. It has seen use, and it shows.	Крышка от мусорного бака вместо щита. Ею уже пользовались, и это видно.
+A cat that settled into a box and refuses to come out. It was the cat's choice.	Кот, который устроился в коробке и отказывается вылезать. Это его выбор.
+Bits of tape that float and stick to everything.	Кусочки скотча, которые парят и липнут ко всему.
+A forbidden building site, with cones and barriers. It fell through the crack before anyone said it was a bad idea.	Запретная стройка с конусами и ограждениями. Она упала сквозь трещину раньше, чем кто-то сказал, что это плохая идея.
+A blue tarp tied as a cape. It makes a lot of noise in the slightest draught.	Синий брезент, завязанный как плащ. Он сильно шумит от малейшего сквозняка.
+A striped sock on one side, a flipper on the other. There was no choice left.	С одной стороны полосатый носок, с другой ласта. Выбора уже не было.
+A hi-vis vest, to be seen from afar. In the cavern, it is useful, all the same.	Светоотражающий жилет, чтобы было видно издалека. В пещере это всё-таки полезно.
+A traffic cone on the head. It started as a joke.	Дорожный конус на голове. Всё началось как шутка.
+A lost gaze, still wondering how it came to this.	Потерянный взгляд, который до сих пор не понимает, как до этого дошло.
+A propeller on top of the cone. It spins, but it does not make you fly.	Пропеллер на верхушке конуса. Он крутится, но летать не помогает.
+An umbrella turned inside out by a gust that should never have blown underground.	Зонт, вывернутый порывом ветра, которого под землёй не должно было быть.
+A folding chair held like a shield. It sometimes folds at the worst moment.	Складной стул, который держат как щит. Иногда он складывается в самый неподходящий момент.
+A toaster with wings. No one knows how it flies, not even the toaster.	Тостер с крыльями. Никто не знает, как он летает, даже он сам.
+Orange sparks of dubious origin. Better not to look into it.	Оранжевые искры сомнительного происхождения. Лучше не выяснять.
+A slightly sad party, with balloons that no longer rise. It fell through the crack at exactly midnight.	Немного грустная вечеринка с шариками, которые больше не поднимаются. Она упала сквозь трещину ровно в полночь.
+A flowery shower curtain, turned into a cape for lack of anything better.	Занавеска для душа в цветочек, ставшая плащом за неимением лучшего.
+Laddered tights, worn anyway, because the party had already started.	Колготки со стрелками, надетые всё равно, потому что вечеринка уже началась.
+A sheet with two eye holes. A very sincere ghost.	Простыня с двумя дырками для глаз. Очень искреннее привидение.
+A golden paper crown, cut a little too fast. It holds with tape.	Корона из золотой бумаги, вырезанная немного второпях. Держится на скотче.
+An awkward gaze, from someone who thought it was a costume ball.	Смущённый взгляд того, кто думал, что это бал-маскарад.
+A fake nose with a moustache and glasses. The bravest disguise in the City.	Накладной нос с усами и очками. Самая смелая маскировка Города.
+A cardboard wand topped with a star. It grants nothing, but it believes.	Картонная палочка со звездой на конце. Она ничего не исполняет, но верит.
+A paper plate, kept from the party as a shield.	Бумажная тарелка, оставшаяся с вечеринки вместо щита.
+A dog dressed as a lion, doing its best to roar.	Собака в костюме льва, которая изо всех сил старается рычать.
+Sad confetti, falling slowly and silently.	Грустное конфетти, падающее медленно и бесшумно.
+It lit up by itself on the night the Long Silence ended. No one had filled it. It burns with whatever still works.	Он зажёгся сам в ночь, когда закончилось Долгое Безмолвие. Его никто не заправлял. Он горит тем, что ещё работает.
+Every dent is a fall in the cavern. Its wearer never hammered it straight: it tells where they come from.	Каждая вмятина — падение в пещере. Его владелец так и не выправил его: он рассказывает, откуда тот пришёл.
+The builders wrote in it how to lay each stone. During the Long Silence no one opened it, and the Tower began to lean.	Строители записывали в неё, как класть каждый камень. В Долгое Безмолвие её никто не открывал, и Башня начала крениться.
+Through a crack in the cavern ceiling, a sky without stone was seen one day. It stayed one night, then the crack closed. The traveller had come through there.	Однажды сквозь трещину в своде пещеры увидели небо без камня. Оно продержалось одну ночь, потом трещина закрылась. Через неё прошёл путник.
+Fallen from above the surface, carefully folded, embroidered with a single number: 42. No one in the City ever knew what it counted.	Упало сверху, из-над поверхности, аккуратно сложенное, с одним вышитым числом: 42. Никто в Городе так и не узнал, что оно считало.
+A fabric the mist could not wet. The watchers found them on a ledge, sewn with stars, as if laid out to dry.	Ткань, которую не мочил туман. Дозорные нашли их на уступе, расшитые звёздами, будто разложенные сушиться.
+A jacket too light for the City, with a golden 42 badge over the heart. The founders tried to melt it down. The metal refused to melt.	Слишком лёгкая для Города куртка с золотым значком 42 на сердце. Литейщики пытались её переплавить. Металл отказался плавиться.
+A clear bubble without a seam. The rope-walkers lowered it into the Well to see under the water: it came back dry, full of an air that was not from here.	Прозрачный пузырь без единого шва. Канатчики опустили его в Колодец, чтобы заглянуть под воду: он вернулся сухим, полным воздуха не отсюда.
+They said the traveller could see in the dark as in daylight. Those who wore this gaze speak of golden dots that never go out.	Говорили, что путник видел в темноте, как днём. Те, кто носил его взгляд, рассказывают о золотых точках, которые не гаснут.
+A thin rod that crackled at night, pointing upwards. No one knew what it listened to. During the Long Silence, it was the only thing that spoke.	Тонкий стержень, потрескивавший по ночам и смотревший вверх. Никто не знал, что он слушает. В Долгое Безмолвие он был единственным, кто говорил.
+A blade that keeps the colour of a sky you cannot see from here. It does not cut stone. It shines just enough to keep going.	Клинок, хранящий цвет неба, которого отсюда не видно. Он не режет камень. Он светит ровно настолько, чтобы идти дальше.
+A bound book the traveller must have read often. Most pages are blank now. On the first one, in gold letters: 42.	Переплетённая книга, в которую путник, видимо, часто заглядывал. Почти все страницы пусты. На первой золотыми буквами: 42.
+A small round device that floated above the ruins and followed whoever walked by. It was looking for its owner. It still is.	Маленький круглый аппарат, паривший над руинами и следовавший за каждым прохожим. Он искал своего хозяина. Он ищет до сих пор.
+A dust that shines without warmth. It fell from the crack the traveller came through, and never quite settled.	Пыль, которая светится без тепла. Она падала из трещины, через которую пришёл путник, и так и не осела до конца.
+Made in the image of the guardian, before she went down. Whoever wears it feels the crooked stone before seeing it. No one has kept it long.	Сделан по образу хранительницы, прежде чем она спустилась. Кто его носит, чувствует кривой камень раньше, чем видит. Никто не носил его долго.
