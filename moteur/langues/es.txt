@@ -2082,3 +2082,15 @@ See the details	Ver el detalle
 Back to the menu	Volver al menú
 ▲ ▼ pick   Enter: actions   Esc: menu	▲ ▼ elegir   Intro: acciones   Esc: menú
 the tester resumes by itself  ·  Ctrl+C: quit	el tester sigue solo  ·  Ctrl+C: salir
+Traveller's sky	Cielo del viajero
+Traveller's towel	Toalla del viajero
+Traveller's hose	Calzas del viajero
+Traveller's coat	Chaqueta del viajero
+Traveller's bubble	Burbuja del viajero
+Traveller's gaze	Mirada del viajero
+Traveller's antenna	Antena del viajero
+Traveller's blade	Hoja del viajero
+Traveller's guide	Guía del viajero
+Traveller's probe	Sonda del viajero
+Traveller's stars	Estrellas del viajero
+The moulinette helmet	El casco moulinette

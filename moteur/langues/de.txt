@@ -2082,3 +2082,15 @@ See the details	Details ansehen
 Back to the menu	Zurück zum Menü
 ▲ ▼ pick   Enter: actions   Esc: menu	▲ ▼ wählen   Enter: Aktionen   Esc: Menü
 the tester resumes by itself  ·  Ctrl+C: quit	der Tester macht von selbst weiter  ·  Ctrl+C: beenden
+Traveller's sky	Himmel des Reisenden
+Traveller's towel	Handtuch des Reisenden
+Traveller's hose	Beinkleider des Reisenden
+Traveller's coat	Jacke des Reisenden
+Traveller's bubble	Blase des Reisenden
+Traveller's gaze	Blick des Reisenden
+Traveller's antenna	Antenne des Reisenden
+Traveller's blade	Klinge des Reisenden
+Traveller's guide	Führer des Reisenden
+Traveller's probe	Sonde des Reisenden
+Traveller's stars	Sterne des Reisenden
+The moulinette helmet	Der Moulinette-Helm

@@ -4,6 +4,11 @@ Le numéro de version est dans `moteur/version.h`.
 
 ## 3.5.0 · en préparation
 
+### Boutique
+
+- Édition du voyageur galactique : 11 pièces (ciel, serviette, chausses, veste, bulle, regard, antenne, lame, guide, sonde, étoiles), 2 500 ◈ chacune.
+- Le casque moulinette : un seul objet, 10 000 ◈.
+
 ### Commande tdf
 
 - Si tu supprimes le testeur et le reclones ailleurs, Paramètres propose « Réinstaller la commande tdf » : l'ancienne commande pointait vers un dossier disparu. Marche aussi dans le menu texte.

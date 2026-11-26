@@ -2082,3 +2082,15 @@ See the details	Ayrıntıları gör
 Back to the menu	Menüye dön
 ▲ ▼ pick   Enter: actions   Esc: menu	▲ ▼ seç   Enter: işlemler   Esc: menü
 the tester resumes by itself  ·  Ctrl+C: quit	tester kendiliğinden devam ediyor  ·  Ctrl+C: çık
+Traveller's sky	Yolcunun göğü
+Traveller's towel	Yolcunun havlusu
+Traveller's hose	Yolcunun pantolonu
+Traveller's coat	Yolcunun ceketi
+Traveller's bubble	Yolcunun fanusu
+Traveller's gaze	Yolcunun bakışı
+Traveller's antenna	Yolcunun anteni
+Traveller's blade	Yolcunun kılıcı
+Traveller's guide	Yolcunun rehberi
+Traveller's probe	Yolcunun sondası
+Traveller's stars	Yolcunun yıldızları
+The moulinette helmet	Moulinette kaskı

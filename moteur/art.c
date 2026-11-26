@@ -218,10 +218,22 @@ const t_idef	g_items[] = {
 	{"aura_aucune", "Aucune", "None", 10, 0, {0, 0, 0}, {0, 0, 0, 0, NULL}},
 	{"aura_spores", "Spores d'âme", "Soul spores", 10, 90, {118, 222, 238}, {0, 0, 0, 0, NULL}},
 	{"aura_braises", "Braises", "Embers", 10, 110, {234, 142, 72}, {0, 0, 0, 0, NULL}},
-	{"aura_brume", "Brume", "Mist", 10, 100, {200, 214, 222}, {0, 0, 0, 0, NULL}}
+	{"aura_brume", "Brume", "Mist", 10, 100, {200, 214, 222}, {0, 0, 0, 0, NULL}},
+	{"fond_galactique", "Ciel du voyageur", "Traveller's sky", 0, 2500, {60, 30, 120}, {0, 0, 0, 0, NULL}},
+	{"cape_serviette", "Serviette du voyageur", "Traveller's towel", 1, 2500, {236, 226, 196}, {0, 0, 0, 0, NULL}},
+	{"jambes_galactiques", "Chausses du voyageur", "Traveller's hose", 2, 2500, {150, 160, 210}, {0, 0, 0, 0, NULL}},
+	{"armure_galactique", "Veste du voyageur", "Traveller's coat", 3, 2500, {150, 110, 200}, {0, 0, 0, 0, NULL}},
+	{"casque_bulle", "Bulle du voyageur", "Traveller's bubble", 4, 2500, {150, 230, 255}, {0, 0, 0, 0, NULL}},
+	{"yeux_etoiles", "Regard du voyageur", "Traveller's gaze", 5, 2500, {240, 196, 78}, {0, 0, 0, 0, NULL}},
+	{"deco_antenne", "Antenne du voyageur", "Traveller's antenna", 6, 2500, {255, 110, 180}, {0, 0, 0, 0, NULL}},
+	{"arme_etoile", "Lame du voyageur", "Traveller's blade", 7, 2500, {235, 225, 255}, {0, 0, 0, 0, NULL}},
+	{"main_guide", "Guide du voyageur", "Traveller's guide", 8, 2500, {180, 50, 60}, {0, 0, 0, 0, NULL}},
+	{"fam_sonde", "Sonde du voyageur", "Traveller's probe", 9, 2500, {200, 206, 222}, {0, 0, 0, 0, NULL}},
+	{"aura_etoiles", "Étoiles du voyageur", "Traveller's stars", 10, 2500, {240, 236, 255}, {0, 0, 0, 0, NULL}},
+	{"casque_moulinette", "Le casque moulinette", "The moulinette helmet", 4, 10000, {186, 176, 156}, {0, 0, 0, 0, NULL}}
 };
 
-const int	g_nitems = 49;
+const int	g_nitems = 61;
 
 int	item_find(const char *id)
 {

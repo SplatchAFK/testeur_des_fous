@@ -2082,3 +2082,15 @@ See the details	Подробнее
 Back to the menu	Назад в меню
 ▲ ▼ pick   Enter: actions   Esc: menu	▲ ▼ выбор   Enter: действия   Esc: меню
 the tester resumes by itself  ·  Ctrl+C: quit	тестер продолжит сам  ·  Ctrl+C: выйти
+Traveller's sky	Небо путника
+Traveller's towel	Полотенце путника
+Traveller's hose	Штаны путника
+Traveller's coat	Куртка путника
+Traveller's bubble	Пузырь путника
+Traveller's gaze	Взгляд путника
+Traveller's antenna	Антенна путника
+Traveller's blade	Клинок путника
+Traveller's guide	Путеводитель путника
+Traveller's probe	Зонд путника
+Traveller's stars	Звёзды путника
+The moulinette helmet	Шлем moulinette
