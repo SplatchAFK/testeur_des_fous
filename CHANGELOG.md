@@ -14,6 +14,7 @@ Le numéro de version est dans `moteur/version.h`.
 - La sauvegarde peut maintenant garder plus de 1 000 objets.
 - 3 nouvelles collections de 11 pièces : Astronaute, Néon, Cyberpunk.
 - 6 collections folles de 11 pièces : le Fou, Carnaval, Cirque, Savant fou, Chapelier, Clown triste.
+- 7 collections drôles de 11 pièces : Cuisinier, Pyjama, Canard en caoutchouc, Fruits, Carton et scotch, Mauvaise idée, Déguisement raté.
 - Correction : le chevalier ne disparaît plus de l'aperçu après avoir parcouru beaucoup d'objets (les images étaient limitées à 96 en mémoire).
 - La recherche ignore les accents : « neon » trouve « Néon ».
 - Les auras des collections scintillent aux couleurs de leur thème.

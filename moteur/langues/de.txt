@@ -2230,3 +2230,86 @@ Circus	Zirkus
 Mad scientist	Verrückter Wissenschaftler
 Hatter	Hutmacher
 Sad clown	Trauriger Clown
+Tiled kitchen	Geflieste Küche
+Checked tea towel	Kariertes Geschirrtuch
+Houndstooth trousers	Hahnentrittmuster-Hose
+Chef's jacket	Kochjacke
+Chef's hat	Kochmütze
+Hungry gaze	Hungriger Blick
+Handlebar moustache	Schnurrbart mit Zwirbeln
+Ladle	Schöpfkelle
+Frying pan	Bratpfanne
+Lobster	Hummer
+Pot steam	Topfdampf
+Night bedroom	Nächtliches Schlafzimmer
+Plaid blanket	Karierte Decke
+Pyjama bottoms and bunny slippers	Pyjamahose und Hasenhausschuhe
+Pyjama top	Pyjamaoberteil
+Nightcap	Schlafmütze
+Closed eyes	Geschlossene Augen
+Sleep mask	Schlafmaske
+Pillow	Kopfkissen
+Teddy bear	Teddybär
+Counting sheep	Schäfchen zum Zählen
+Blue dreams	Blaue Träume
+Bathroom	Badezimmer
+Bath towel	Badetuch
+Yellow boots	Gelbe Stiefel
+Duck float	Entenschwimmring
+Duck head	Entenkopf
+Duck eyes	Entenaugen
+Perched duckling	Sitzendes Entenküken
+Bath brush	Badebürste
+Bar of soap	Seifenstück
+Rubber duck	Quietscheente
+Soap bubbles	Seifenblasen
+Market stall	Marktstand
+Banana leaf	Bananenblatt
+Rind trousers	Schalenhose
+Watermelon armour	Wassermelonenrüstung
+Pineapple helmet	Ananashelm
+Pip gaze	Kernblick
+Cherries	Kirschen
+Banana sword	Bananenschwert
+Orange shield	Orangenschild
+Living strawberry	Lebende Erdbeere
+Fruit juice	Fruchtsaft
+Attic full of boxes	Dachboden voller Kartons
+Newspaper cape	Zeitungsumhang
+Cardboard-tube greaves	Beinschienen aus Papprollen
+Cardboard armour	Pappkarton-Rüstung
+Box on the head	Karton auf dem Kopf
+Marker eyes	Filzstiftaugen
+Coat-hanger antenna	Kleiderbügelantenne
+Paper-roll sword	Papierrollenschwert
+Bin-lid shield	Mülltonnendeckel-Schild
+Cat in a box	Katze im Karton
+Bits of tape	Klebebandstücke
+Forbidden building site	Verbotene Baustelle
+Blue tarp	Blaue Plane
+Sock and flipper	Socke und Flosse
+Hi-vis vest	Warnweste
+Traffic cone	Leitkegel
+Lost gaze	Verlorener Blick
+Propeller	Propeller
+Inside-out umbrella	Umgestülpter Regenschirm
+Folding chair	Klappstuhl
+Flying toaster	Fliegender Toaster
+Dubious sparks	Fragwürdige Funken
+Slightly sad party	Etwas traurige Party
+Shower curtain	Duschvorhang
+Laddered tights	Strumpfhose mit Laufmaschen
+Bedsheet ghost	Bettlaken-Gespenst
+Paper crown	Papierkrone
+Awkward gaze	Verlegener Blick
+Fake nose and moustache	Falsche Nase mit Schnurrbart
+Cardboard wand	Zauberstab aus Pappe
+Paper plate	Pappteller
+Dog dressed as a lion	Als Löwe verkleideter Hund
+Sad confetti	Traurige Konfetti
+Cook	Koch
+Pyjamas	Pyjama
+Fruits	Früchte
+Cardboard and tape	Pappe und Klebeband
+Bad idea	Schlechte Idee
+Failed costume	Misslungenes Kostüm

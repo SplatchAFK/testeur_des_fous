@@ -2230,3 +2230,86 @@ Circus	Circo
 Mad scientist	Científico loco
 Hatter	Sombrerero
 Sad clown	Payaso triste
+Tiled kitchen	Cocina alicatada
+Checked tea towel	Paño de cuadros
+Houndstooth trousers	Pantalón de pata de gallo
+Chef's jacket	Chaqueta de chef
+Chef's hat	Gorro de chef
+Hungry gaze	Mirada golosa
+Handlebar moustache	Bigote manillar
+Ladle	Cucharón
+Frying pan	Sartén
+Lobster	Langosta
+Pot steam	Vapor de olla
+Night bedroom	Dormitorio de noche
+Plaid blanket	Manta de cuadros
+Pyjama bottoms and bunny slippers	Pantalón de pijama y zapatillas de conejo
+Pyjama top	Parte de arriba del pijama
+Nightcap	Gorro de dormir
+Closed eyes	Ojos cerrados
+Sleep mask	Antifaz para dormir
+Pillow	Almohada
+Teddy bear	Osito de peluche
+Counting sheep	Oveja para contar
+Blue dreams	Sueños azules
+Bathroom	Cuarto de baño
+Bath towel	Toalla de baño
+Yellow boots	Botas amarillas
+Duck float	Flotador de pato
+Duck head	Cabeza de pato
+Duck eyes	Ojos de pato
+Perched duckling	Patito posado
+Bath brush	Cepillo de baño
+Bar of soap	Pastilla de jabón
+Rubber duck	Patito de goma
+Soap bubbles	Pompas de jabón
+Market stall	Puesto del mercado
+Banana leaf	Hoja de bananero
+Rind trousers	Pantalón de corteza
+Watermelon armour	Armadura de sandía
+Pineapple helmet	Casco piña
+Pip gaze	Mirada de pepita
+Cherries	Cerezas
+Banana sword	Espada plátano
+Orange shield	Escudo naranja
+Living strawberry	Fresa viva
+Fruit juice	Zumo de fruta
+Attic full of boxes	Desván lleno de cajas
+Newspaper cape	Capa de periódico
+Cardboard-tube greaves	Grebas de tubos de cartón
+Cardboard armour	Armadura de cartón
+Box on the head	Caja en la cabeza
+Marker eyes	Ojos de rotulador
+Coat-hanger antenna	Antena de percha
+Paper-roll sword	Espada de rollo de papel
+Bin-lid shield	Escudo tapa de cubo
+Cat in a box	Gato en una caja
+Bits of tape	Trozos de cinta
+Forbidden building site	Obra prohibida
+Blue tarp	Lona azul
+Sock and flipper	Calcetín y aleta
+Hi-vis vest	Chaleco reflectante
+Traffic cone	Cono de tráfico
+Lost gaze	Mirada perdida
+Propeller	Hélice
+Inside-out umbrella	Paraguas del revés
+Folding chair	Silla plegable
+Flying toaster	Tostadora voladora
+Dubious sparks	Chispas dudosas
+Slightly sad party	Fiesta algo triste
+Shower curtain	Cortina de ducha
+Laddered tights	Medias con carreras
+Bedsheet ghost	Fantasma de sábana
+Paper crown	Corona de papel
+Awkward gaze	Mirada incómoda
+Fake nose and moustache	Nariz y bigote falsos
+Cardboard wand	Varita de cartón
+Paper plate	Plato de cartón
+Dog dressed as a lion	Perro disfrazado de león
+Sad confetti	Confeti triste
+Cook	Cocinero
+Pyjamas	Pijama
+Fruits	Frutas
+Cardboard and tape	Cartón y cinta
+Bad idea	Mala idea
+Failed costume	Disfraz fallido

@@ -2230,3 +2230,86 @@ Circus	Circo
 Mad scientist	Cientista louco
 Hatter	Chapeleiro
 Sad clown	Palhaço triste
+Tiled kitchen	Cozinha azulejada
+Checked tea towel	Pano aos quadrados
+Houndstooth trousers	Calças pied-de-poule
+Chef's jacket	Jaleca de chef
+Chef's hat	Chapéu de chef
+Hungry gaze	Olhar guloso
+Handlebar moustache	Bigode guiador
+Ladle	Concha
+Frying pan	Frigideira
+Lobster	Lagosta
+Pot steam	Vapor da panela
+Night bedroom	Quarto à noite
+Plaid blanket	Manta xadrez
+Pyjama bottoms and bunny slippers	Calças de pijama e chinelos de coelho
+Pyjama top	Parte de cima do pijama
+Nightcap	Barrete de dormir
+Closed eyes	Olhos fechados
+Sleep mask	Máscara de dormir
+Pillow	Almofada
+Teddy bear	Ursinho de peluche
+Counting sheep	Ovelha para contar
+Blue dreams	Sonhos azuis
+Bathroom	Casa de banho
+Bath towel	Toalha de banho
+Yellow boots	Botas amarelas
+Duck float	Boia de pato
+Duck head	Cabeça de pato
+Duck eyes	Olhos de pato
+Perched duckling	Patinho empoleirado
+Bath brush	Escova de banho
+Bar of soap	Sabonete
+Rubber duck	Patinho de borracha
+Soap bubbles	Bolas de sabão
+Market stall	Banca do mercado
+Banana leaf	Folha de bananeira
+Rind trousers	Calças de casca
+Watermelon armour	Armadura de melancia
+Pineapple helmet	Capacete ananás
+Pip gaze	Olhar de caroço
+Cherries	Cerejas
+Banana sword	Espada banana
+Orange shield	Escudo laranja
+Living strawberry	Morango vivo
+Fruit juice	Sumo de fruta
+Attic full of boxes	Sótão cheio de caixas
+Newspaper cape	Capa de jornal
+Cardboard-tube greaves	Grevas de tubos de cartão
+Cardboard armour	Armadura de cartão
+Box on the head	Caixa na cabeça
+Marker eyes	Olhos de marcador
+Coat-hanger antenna	Antena de cabide
+Paper-roll sword	Espada de rolo de papel
+Bin-lid shield	Escudo tampa de caixote
+Cat in a box	Gato numa caixa
+Bits of tape	Pedaços de fita
+Forbidden building site	Obra proibida
+Blue tarp	Lona azul
+Sock and flipper	Meia e barbatana
+Hi-vis vest	Colete refletor
+Traffic cone	Cone de sinalização
+Lost gaze	Olhar perdido
+Propeller	Hélice
+Inside-out umbrella	Guarda-chuva virado
+Folding chair	Cadeira dobrável
+Flying toaster	Torradeira voadora
+Dubious sparks	Faíscas duvidosas
+Slightly sad party	Festa um pouco triste
+Shower curtain	Cortina de duche
+Laddered tights	Collants rasgados
+Bedsheet ghost	Fantasma de lençol
+Paper crown	Coroa de papel
+Awkward gaze	Olhar envergonhado
+Fake nose and moustache	Nariz e bigode falsos
+Cardboard wand	Varinha de cartão
+Paper plate	Prato de cartão
+Dog dressed as a lion	Cão mascarado de leão
+Sad confetti	Confetes tristes
+Cook	Cozinheiro
+Pyjamas	Pijama
+Fruits	Frutas
+Cardboard and tape	Cartão e fita
+Bad idea	Má ideia
+Failed costume	Disfarce falhado

@@ -2230,3 +2230,86 @@ Circus	Цирк
 Mad scientist	Безумный учёный
 Hatter	Шляпник
 Sad clown	Грустный клоун
+Tiled kitchen	Кафельная кухня
+Checked tea towel	Клетчатое полотенце
+Houndstooth trousers	Брюки в «гусиную лапку»
+Chef's jacket	Китель повара
+Chef's hat	Поварской колпак
+Hungry gaze	Голодный взгляд
+Handlebar moustache	Усы-руль
+Ladle	Половник
+Frying pan	Сковорода
+Lobster	Омар
+Pot steam	Пар из кастрюли
+Night bedroom	Ночная спальня
+Plaid blanket	Клетчатый плед
+Pyjama bottoms and bunny slippers	Пижамные штаны и тапочки-зайцы
+Pyjama top	Пижамная рубашка
+Nightcap	Ночной колпак
+Closed eyes	Закрытые глаза
+Sleep mask	Маска для сна
+Pillow	Подушка
+Teddy bear	Плюшевый мишка
+Counting sheep	Барашек для счёта
+Blue dreams	Голубые сны
+Bathroom	Ванная
+Bath towel	Банное полотенце
+Yellow boots	Жёлтые сапоги
+Duck float	Круг-утка
+Duck head	Утиная голова
+Duck eyes	Утиные глаза
+Perched duckling	Утёнок на макушке
+Bath brush	Банная щётка
+Bar of soap	Кусок мыла
+Rubber duck	Резиновая уточка
+Soap bubbles	Мыльные пузыри
+Market stall	Рыночный прилавок
+Banana leaf	Банановый лист
+Rind trousers	Брюки-корка
+Watermelon armour	Арбузная броня
+Pineapple helmet	Шлем-ананас
+Pip gaze	Взгляд-косточка
+Cherries	Вишни
+Banana sword	Меч-банан
+Orange shield	Щит-апельсин
+Living strawberry	Живая клубника
+Fruit juice	Фруктовый сок
+Attic full of boxes	Чердак, полный коробок
+Newspaper cape	Плащ из газеты
+Cardboard-tube greaves	Поножи из картонных труб
+Cardboard armour	Картонная броня
+Box on the head	Коробка на голове
+Marker eyes	Глаза фломастером
+Coat-hanger antenna	Антенна из вешалки
+Paper-roll sword	Меч из бумажного рулона
+Bin-lid shield	Щит-крышка от бака
+Cat in a box	Кот в коробке
+Bits of tape	Кусочки скотча
+Forbidden building site	Запретная стройка
+Blue tarp	Синий брезент
+Sock and flipper	Носок и ласта
+Hi-vis vest	Светоотражающий жилет
+Traffic cone	Дорожный конус
+Lost gaze	Потерянный взгляд
+Propeller	Пропеллер
+Inside-out umbrella	Вывернутый зонт
+Folding chair	Складной стул
+Flying toaster	Летающий тостер
+Dubious sparks	Сомнительные искры
+Slightly sad party	Немного грустная вечеринка
+Shower curtain	Занавеска для душа
+Laddered tights	Колготки со стрелками
+Bedsheet ghost	Привидение из простыни
+Paper crown	Бумажная корона
+Awkward gaze	Смущённый взгляд
+Fake nose and moustache	Накладной нос с усами
+Cardboard wand	Картонная палочка
+Paper plate	Бумажная тарелка
+Dog dressed as a lion	Собака в костюме льва
+Sad confetti	Грустное конфетти
+Cook	Повар
+Pyjamas	Пижама
+Fruits	Фрукты
+Cardboard and tape	Картон и скотч
+Bad idea	Плохая идея
+Failed costume	Неудачный костюм

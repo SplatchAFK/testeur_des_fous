@@ -2230,3 +2230,86 @@ Circus	Circo
 Mad scientist	Scienziato pazzo
 Hatter	Cappellaio
 Sad clown	Clown triste
+Tiled kitchen	Cucina piastrellata
+Checked tea towel	Strofinaccio a quadri
+Houndstooth trousers	Pantaloni pied-de-poule
+Chef's jacket	Giacca da chef
+Chef's hat	Cappello da chef
+Hungry gaze	Sguardo goloso
+Handlebar moustache	Baffi a manubrio
+Ladle	Mestolo
+Frying pan	Padella
+Lobster	Aragosta
+Pot steam	Vapore di pentola
+Night bedroom	Camera di notte
+Plaid blanket	Plaid
+Pyjama bottoms and bunny slippers	Pantaloni del pigiama e pantofole coniglio
+Pyjama top	Parte sopra del pigiama
+Nightcap	Berretto da notte
+Closed eyes	Occhi chiusi
+Sleep mask	Mascherina per dormire
+Pillow	Cuscino
+Teddy bear	Orsacchiotto
+Counting sheep	Pecorella da contare
+Blue dreams	Sogni blu
+Bathroom	Bagno
+Bath towel	Telo da bagno
+Yellow boots	Stivali gialli
+Duck float	Ciambella a papera
+Duck head	Testa di papera
+Duck eyes	Occhi di papera
+Perched duckling	Paperella appollaiata
+Bath brush	Spazzola da bagno
+Bar of soap	Saponetta
+Rubber duck	Paperella di gomma
+Soap bubbles	Bolle di sapone
+Market stall	Bancarella del mercato
+Banana leaf	Foglia di banano
+Rind trousers	Pantaloni a buccia
+Watermelon armour	Armatura di anguria
+Pineapple helmet	Elmo ananas
+Pip gaze	Sguardo di seme
+Cherries	Ciliegie
+Banana sword	Spada banana
+Orange shield	Scudo arancia
+Living strawberry	Fragola viva
+Fruit juice	Succo di frutta
+Attic full of boxes	Soffitta piena di scatole
+Newspaper cape	Mantello di giornale
+Cardboard-tube greaves	Schinieri di tubi di cartone
+Cardboard armour	Armatura di cartone
+Box on the head	Scatola in testa
+Marker eyes	Occhi a pennarello
+Coat-hanger antenna	Antenna di gruccia
+Paper-roll sword	Spada di rotolo di carta
+Bin-lid shield	Scudo coperchio del bidone
+Cat in a box	Gatto nella scatola
+Bits of tape	Pezzi di nastro
+Forbidden building site	Cantiere vietato
+Blue tarp	Telone blu
+Sock and flipper	Calzino e pinna
+Hi-vis vest	Gilet catarifrangente
+Traffic cone	Cono stradale
+Lost gaze	Sguardo perso
+Propeller	Elica
+Inside-out umbrella	Ombrello rovesciato
+Folding chair	Sedia pieghevole
+Flying toaster	Tostapane volante
+Dubious sparks	Scintille dubbie
+Slightly sad party	Festa un po triste
+Shower curtain	Tenda della doccia
+Laddered tights	Collant smagliati
+Bedsheet ghost	Fantasma di lenzuolo
+Paper crown	Corona di carta
+Awkward gaze	Sguardo imbarazzato
+Fake nose and moustache	Naso e baffi finti
+Cardboard wand	Bacchetta di cartone
+Paper plate	Piatto di carta
+Dog dressed as a lion	Cane travestito da leone
+Sad confetti	Coriandoli tristi
+Cook	Cuoco
+Pyjamas	Pigiama
+Fruits	Frutta
+Cardboard and tape	Cartone e nastro
+Bad idea	Pessima idea
+Failed costume	Travestimento fallito

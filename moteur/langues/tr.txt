@@ -2230,3 +2230,86 @@ Circus	Sirk
 Mad scientist	Çılgın bilim insanı
 Hatter	Şapkacı
 Sad clown	Hüzünlü palyaço
+Tiled kitchen	Fayanslı mutfak
+Checked tea towel	Ekose bez
+Houndstooth trousers	Kazayağı pantolon
+Chef's jacket	Aşçı ceketi
+Chef's hat	Aşçı şapkası
+Hungry gaze	Aç bakış
+Handlebar moustache	Pala bıyık
+Ladle	Kepçe
+Frying pan	Tava
+Lobster	Istakoz
+Pot steam	Tencere buharı
+Night bedroom	Gece yatak odası
+Plaid blanket	Ekose battaniye
+Pyjama bottoms and bunny slippers	Pijama altı ve tavşan terlik
+Pyjama top	Pijama üstü
+Nightcap	Gece başlığı
+Closed eyes	Kapalı gözler
+Sleep mask	Uyku maskesi
+Pillow	Yastık
+Teddy bear	Oyuncak ayı
+Counting sheep	Sayılan koyun
+Blue dreams	Mavi rüyalar
+Bathroom	Banyo
+Bath towel	Banyo havlusu
+Yellow boots	Sarı çizmeler
+Duck float	Ördek simidi
+Duck head	Ördek kafası
+Duck eyes	Ördek gözleri
+Perched duckling	Tünemiş ördek yavrusu
+Bath brush	Banyo fırçası
+Bar of soap	Kalıp sabun
+Rubber duck	Lastik ördek
+Soap bubbles	Sabun köpükleri
+Market stall	Pazar tezgâhı
+Banana leaf	Muz yaprağı
+Rind trousers	Kabuk pantolon
+Watermelon armour	Karpuz zırh
+Pineapple helmet	Ananas kask
+Pip gaze	Çekirdek bakış
+Cherries	Kirazlar
+Banana sword	Muz kılıç
+Orange shield	Portakal kalkan
+Living strawberry	Canlı çilek
+Fruit juice	Meyve suyu
+Attic full of boxes	Kutu dolu tavan arası
+Newspaper cape	Gazete pelerin
+Cardboard-tube greaves	Karton tüp tozluk
+Cardboard armour	Karton zırh
+Box on the head	Başta kutu
+Marker eyes	Keçeli kalem gözler
+Coat-hanger antenna	Askı anten
+Paper-roll sword	Kâğıt rulo kılıç
+Bin-lid shield	Çöp kapağı kalkan
+Cat in a box	Kutudaki kedi
+Bits of tape	Bant parçaları
+Forbidden building site	Yasak şantiye
+Blue tarp	Mavi branda
+Sock and flipper	Çorap ve palet
+Hi-vis vest	Reflektörlü yelek
+Traffic cone	Trafik konisi
+Lost gaze	Kaybolmuş bakış
+Propeller	Pervane
+Inside-out umbrella	Ters dönmüş şemsiye
+Folding chair	Katlanır sandalye
+Flying toaster	Uçan ekmek kızartıcı
+Dubious sparks	Şüpheli kıvılcımlar
+Slightly sad party	Biraz hüzünlü parti
+Shower curtain	Duş perdesi
+Laddered tights	Kaçık tayt
+Bedsheet ghost	Çarşaf hayalet
+Paper crown	Kâğıt taç
+Awkward gaze	Mahcup bakış
+Fake nose and moustache	Takma burun ve bıyık
+Cardboard wand	Karton asa
+Paper plate	Karton tabak
+Dog dressed as a lion	Aslan kılığında köpek
+Sad confetti	Hüzünlü konfeti
+Cook	Aşçı
+Pyjamas	Pijama
+Fruits	Meyveler
+Cardboard and tape	Karton ve bant
+Bad idea	Kötü fikir
+Failed costume	Başarısız kostüm
