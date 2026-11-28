@@ -2629,3 +2629,7 @@ Close|	Закрыть|
 !What's new|The update pages: what changes, where to find it, and the Discord.	!Что нового|Страницы обновления: что изменилось, где это найти, и Discord.
 What's new|The update pages: what changes, where to find it, and the Discord.	Что нового|Страницы обновления: что изменилось, где это найти, и Discord.
 In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'.	В меню, гардеробе и магазине твой рыцарь дышит, его плащ колышется, глаза моргают, а фамильяр парит.\n\nЭто легко: не больше 5 кадров в секунду, и перерисовываются только изменившиеся клетки.\n\nЧтобы выключить анимации: Настройки › Параметры › Анимации › «нет».
+Exported: %s	Экспортировано: %s
+Cannot write %s	Не удалось записать %s
+Put it in your GitHub repository, then in your README: <img src=\"chevalier_des_fous.svg\">	Положи его в свой репозиторий GitHub, затем в README: <img src=\"chevalier_des_fous.svg\">
+export my knight as SVG	экспортировать моего рыцаря в SVG

@@ -244,10 +244,7 @@ int	main(int ac, char **av)
 	if (g_accueil == 1)
 		tdf_tuto();
 	else if (g_accueil == 2)
-	{
-		tdf_tuto();
 		tdf_nouveautes();
-	}
 	if (results && !relance && first && !unique)
 		story_libft_intro();
 	code = 0;

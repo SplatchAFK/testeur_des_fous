@@ -2629,3 +2629,7 @@ Close|	Kapat|
 !What's new|The update pages: what changes, where to find it, and the Discord.	!Yenilikler|Güncelleme sayfaları: neler değişti, nerede bulunur ve Discord.
 What's new|The update pages: what changes, where to find it, and the Discord.	Yenilikler|Güncelleme sayfaları: neler değişti, nerede bulunur ve Discord.
 In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'.	Menüde, gardıropta ve mağazada şövalyen nefes alıyor, pelerini dalgalanıyor, gözleri kırpışıyor ve yol arkadaşı süzülüyor.\n\nHafif: saniyede en fazla 5 kare ve yalnızca değişen hücreler yeniden çiziliyor.\n\nAnimasyonları kapatmak için: Ayarlar › Seçenekler › Animasyonlar › «hiçbiri».
+Exported: %s	Dışa aktarıldı: %s
+Cannot write %s	%s yazılamıyor
+Put it in your GitHub repository, then in your README: <img src=\"chevalier_des_fous.svg\">	GitHub deposuna koy, sonra README dosyana ekle: <img src=\"chevalier_des_fous.svg\">
+export my knight as SVG	şövalyemi SVG olarak dışa aktar

@@ -1,6 +1,6 @@
 # Le testeur des fous
 
-> **Version 3.5.0** · [nouveautés](docs/nouveautes/3.5.md) · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
+> **Version 3.5.1** · [nouveautés](docs/nouveautes/3.5.md) · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
 
 **Un seul testeur pour Libft, ft_printf et get_next_line, un examshell en C, une banque d'exercices et un mode correction.** Il teste comme la moulinette, ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te montre où regarder. Tout se fait aux flèches, dans un seul menu.
 

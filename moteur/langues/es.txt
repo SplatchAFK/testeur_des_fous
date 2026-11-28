@@ -2629,3 +2629,7 @@ Close|	Cerrar|
 !What's new|The update pages: what changes, where to find it, and the Discord.	!Novedades|Las páginas de la actualización: qué cambia, dónde encontrarlo y el Discord.
 What's new|The update pages: what changes, where to find it, and the Discord.	Novedades|Las páginas de la actualización: qué cambia, dónde encontrarlo y el Discord.
 In the menu, the wardrobe and the shop, your knight breathes, its cape waves, its eyes blink and its familiar floats.\n\nIt is light: 5 frames per second at most, and only the cells that change are redrawn.\n\nTo turn animations off: Settings › Options › Animations › 'none'.	En el menú, el vestuario y la tienda, tu caballero respira, su capa ondea, sus ojos parpadean y su familiar flota.\n\nEs ligero: 5 imágenes por segundo como máximo, y solo se redibujan las casillas que cambian.\n\nPara quitar las animaciones: Ajustes › Opciones › Animaciones › «ninguna».
+Exported: %s	Exportado: %s
+Cannot write %s	No se puede escribir %s
+Put it in your GitHub repository, then in your README: <img src=\"chevalier_des_fous.svg\">	Ponlo en tu repositorio de GitHub y luego en tu README: <img src=\"chevalier_des_fous.svg\">
+export my knight as SVG	exportar mi caballero en SVG

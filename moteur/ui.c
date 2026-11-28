@@ -1333,6 +1333,98 @@ static void	coll_entree(const t_shopst *s, int code, int x, int y)
 }
 
 static int	g_onglet_depart = -1;
+static char	g_svg_msg[2][400];
+static long	g_svg_fin;
+
+static void	puce_nouveau(int *x, int y)
+{
+	if (!tdf_nouveau("3.5"))
+		return ;
+	at(*x - 2, y);
+	tdf_badge_new();
+	*x += 5;
+}
+
+static t_rgb	svg_couleur(const t_canvas *c, int i)
+{
+	if (!c->a[i])
+		return (rgb(13, 17, 23));
+	return (c->px[i]);
+}
+
+static int	svg_meme(t_rgb a, t_rgb b)
+{
+	return (a.r == b.r && a.g == b.g && a.b == b.b);
+}
+
+static int	svg_garde(const t_canvas *c, const t_canvas *base, int i)
+{
+	if (!base)
+		return (c->a[i] != 0);
+	return (!svg_meme(svg_couleur(c, i), svg_couleur(base, i)));
+}
+
+static void	svg_pixels(FILE *f, const t_canvas *c, const t_canvas *base)
+{
+	t_rgb	a;
+	int		x;
+	int		y;
+	int		d;
+
+	for (y = 0; y < c->h; y++)
+		for (x = 0; x < c->w; x = d)
+		{
+			d = x + 1;
+			if (!svg_garde(c, base, y * c->w + x))
+				continue ;
+			a = svg_couleur(c, y * c->w + x);
+			while (d < c->w && svg_garde(c, base, y * c->w + d) && svg_meme(svg_couleur(c, y * c->w + d), a))
+				d++;
+			fprintf(f, "<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"1\" fill=\"#%02x%02x%02x\"/>",
+				x, y, d - x, a.r & 255, a.g & 255, a.b & 255);
+		}
+}
+
+static void	exporter_svg(void)
+{
+	t_canvas	cv[12];
+	char		path[700];
+	FILE		*f;
+	int			ok;
+	int			i;
+
+	snprintf(path, sizeof(path), "%s/chevalier_des_fous.svg", getenv("HOME") ? getenv("HOME") : ".");
+	for (i = 0; i < 12; i++)
+	{
+		cv_init(&cv[i], 28, 32);
+		avatar_draw(&cv[i], 0, 0, &g_save.look, 1 + i * 400L);
+	}
+	f = fopen(path, "w");
+	ok = f != NULL;
+	if (f)
+	{
+		fprintf(f, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"224\" height=\"256\" viewBox=\"0 0 28 32\" shape-rendering=\"crispEdges\">\n<rect width=\"28\" height=\"32\" fill=\"#0d1117\"/>\n");
+		svg_pixels(f, &cv[0], NULL);
+		for (i = 1; i < 12; i++)
+		{
+			fprintf(f, "\n<g visibility=\"hidden\"><animate attributeName=\"visibility\" values=\"hidden;visible;hidden\" keyTimes=\"0;%.4f;%.4f\" calcMode=\"discrete\" dur=\"4.8s\" repeatCount=\"indefinite\"/>",
+				i / 12.0, (i + 1) / 12.0);
+			svg_pixels(f, &cv[i], &cv[0]);
+			fprintf(f, "</g>");
+		}
+		fprintf(f, "\n</svg>\n");
+		fclose(f);
+	}
+	for (i = 0; i < 12; i++)
+		cv_free(&cv[i]);
+	snprintf(g_svg_msg[0], sizeof(g_svg_msg[0]), ok ? L("Exporté : %s", "Exported: %s")
+		: L("Impossible d'écrire %s", "Cannot write %s"), path);
+	snprintf(g_svg_msg[1], sizeof(g_svg_msg[1]), "%s",
+		L("Mets-le dans ton dépôt GitHub, puis dans ton README : <img src=\"chevalier_des_fous.svg\">",
+			"Put it in your GitHub repository, then in your README: <img src=\"chevalier_des_fous.svg\">"));
+	g_svg_fin = now_ms() + 9000;
+}
+
 
 void	tdf_look_collection(int c, t_look *lk)
 {
@@ -1402,7 +1494,7 @@ void	screen_shop(int wardrobe)
 		n = s.tab == NTAB ? 1 + perso_tenues() : list_items(&s, ids, NTITLE);
 		srch = tab_slot(s.tab) >= 0;
 		y0 = srch ? 5 : 4;
-		if (s.jump && s.tab != NTAB && s.tab != TAB_COLL)
+		if (s.jump && s.tab != NTAB && s.tab != TAB_COLL && s.tab != TAB_PERSO)
 		{
 			s.jump = 0;
 			for (i = 0; i < n; i++)
@@ -1451,7 +1543,8 @@ void	screen_shop(int wardrobe)
 		else
 			snprintf(tmp, sizeof(tmp), "◀  %s  ▶   (%d/%d)", s.tab == NTAB ? L("Tenues", "Outfits") : tab_name(s.tab), r1, rt);
 		text_at(x, 2, theme()->accent, tmp);
-		if (s.tab == NTAB && tdf_nouveau("3.2"))
+		if (!s.q[0] && ((s.tab == NTAB && tdf_nouveau("3.2"))
+			|| ((s.tab == TAB_COLL || s.tab == TAB_PERSO) && tdf_nouveau("3.5"))))
 		{
 			at(x + ulen(tmp) + 2, 2);
 			tdf_badge_new();
@@ -1548,16 +1641,36 @@ void	screen_shop(int wardrobe)
 			i += 2;
 		}
 		k = x;
-		puce(&k, i, L("Entrée", "Enter"), s.tab == NTAB || s.tab == TAB_COLL ? L("choisir", "choose")
-			: wardrobe ? L("équiper", "equip") : L("acheter / équiper", "buy / equip"));
-		puce(&k, i, "V", L("voir en grand", "see it large"));
+		if (!(srch && s.q[0] && !n))
+		{
+			puce(&k, i, L("Entrée", "Enter"), s.tab == NTAB || s.tab == TAB_COLL ? L("choisir", "choose")
+				: wardrobe ? L("équiper", "equip") : L("acheter / équiper", "buy / equip"));
+			puce(&k, i, "V", L("voir en grand", "see it large"));
+		}
 		k = x;
 		puce(&k, i + 2, "◀ ▶", wardrobe ? L("autres rayons, dont Tenues", "other sections, Outfits included")
 			: L("autres rayons", "other sections"));
 		if (srch)
+		{
 			puce(&k, i + 2, "/", L("rechercher", "search"));
+			puce_nouveau(&k, i + 2);
+		}
 		if (srch && perso_teinte_suivante(0))
+		{
 			puce(&k, i + 2, "C", L("teinture", "dye"));
+			puce_nouveau(&k, i + 2);
+		}
+		if (wardrobe && i + 4 < term_rows() - 1)
+		{
+			k = x;
+			puce(&k, i + 4, "E", L("exporter mon chevalier en SVG", "export my knight as SVG"));
+			puce_nouveau(&k, i + 4);
+		}
+		if (wardrobe && g_svg_fin > t && i + 7 < term_rows() - 1)
+		{
+			k = text_wrap(x, i + 6, term_rows() - 2, 46, rgb(80, 230, 140), g_svg_msg[0]);
+			text_wrap(x, k + 1, term_rows() - 2, 46, theme()->dim, g_svg_msg[1]);
+		}
 		foot_line(x, L("▲ ▼ choisir   Échap : retour", "▲ ▼ pick   Esc: back"));
 		if (s.tab == NSLOT + 1)
 			foot_line(x, L("+ / - : sauter de 20   r : titre au hasard", "+ / -: jump 20   r: random title"));
@@ -1634,6 +1747,8 @@ void	screen_shop(int wardrobe)
 			g_save.look.col[g_items[id].slot] = perso_teinte_suivante(g_save.look.col[g_items[id].slot]);
 			save_write();
 		}
+		else if ((k == 'e' || k == 'E') && wardrobe)
+			exporter_svg();
 		else if (k == 'v' || k == 'V')
 		{
 			tdf_grand_apercu(&lk, title);

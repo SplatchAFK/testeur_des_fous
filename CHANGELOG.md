@@ -2,6 +2,14 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
+## 3.5.1 · 2026-11-28
+
+- Après une mise à jour, les pages de nouveautés s'ouvrent directement : le tuto n'est plus rejoué (il reste dans Paramètres).
+- Badges NEW sur les nouveautés de la 3.5 : rayons Collections et Personnalisation, boutons « / rechercher » et « C teinture ».
+- Le rayon Personnalisation s'ouvre en haut de la liste, sur la vague de lumière, au lieu de la dernière option.
+- Une recherche sans résultat n'affiche plus les boutons « Entrée » et « V ».
+- Garde-robe : E exporte ton chevalier, avec sa tenue et ses animations, en image SVG (`~/chevalier_des_fous.svg`), à mettre dans le README de ton profil GitHub.
+
 ## 3.5.0 · 2026-11-26
 
 ### Pages de nouveautés
