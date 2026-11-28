@@ -2633,3 +2633,4 @@ Exported: %s	Dışa aktarıldı: %s
 Cannot write %s	%s yazılamıyor
 Put it in your GitHub repository, then in your README: <img src=\"chevalier_des_fous.svg\">	GitHub deposuna koy, sonra README dosyana ekle: <img src=\"chevalier_des_fous.svg\">
 export my knight as SVG	şövalyemi SVG olarak dışa aktar
+\n  %s◆ New version of the testeur des fous: %sv%s%s  →  %sv%s%s, automatic update...%s\n	\n  %s◆ testeur des fous yeni sürüm: %sv%s%s  →  %sv%s%s, otomatik güncelleme...%s\n

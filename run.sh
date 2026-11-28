@@ -503,6 +503,7 @@ choisir_au_menu() {
 	[ "$SANS_ANIM" = 1 ] && a="--fast"
 	TDF_PROJETS="$projets" TDF_DEPART="$DEPART" TDF_PROJET="" bash "$TDF_RACINE/modules/libft/run.sh" --menu $a
 	code=$?
+	[ "$code" = 47 ] && exec env TDF_NO_UPDATE=1 bash "$TDF_RACINE/run.sh" ${ARGS_ORIG[@]+"${ARGS_ORIG[@]}"}
 	unset TDF_CORR_ACCUEIL
 	export TDF_NO_UPDATE=1
 	tdf_langue_lire
@@ -1088,6 +1089,7 @@ while :; do
 		code=$?
 	fi
 	tdf_chrono_fin mod "module $MODULE" "code $code"
+	[ "$code" = 47 ] && exec env TDF_NO_UPDATE=1 bash "$TDF_RACINE/run.sh" ${ARGS_ORIG[@]+"${ARGS_ORIG[@]}"}
 	[ "$MENU_UNIQUE" = 1 ] && [ "$code" != 130 ] && noter_historique "$MODULE" "${PROJET_VRAI:-$PROJET}"
 	if [ -n "${POUSSE_TMP:-}" ]; then
 		rm -rf "$POUSSE_TMP"

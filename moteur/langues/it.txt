@@ -2633,3 +2633,4 @@ Exported: %s	Esportato: %s
 Cannot write %s	Impossibile scrivere %s
 Put it in your GitHub repository, then in your README: <img src=\"chevalier_des_fous.svg\">	Mettilo nel tuo repository GitHub, poi nel tuo README: <img src=\"chevalier_des_fous.svg\">
 export my knight as SVG	esporta il mio cavaliere in SVG
+\n  %s◆ New version of the testeur des fous: %sv%s%s  →  %sv%s%s, automatic update...%s\n	\n  %s◆ Nuova versione del testeur des fous: %sv%s%s  →  %sv%s%s, aggiornamento automatico...%s\n

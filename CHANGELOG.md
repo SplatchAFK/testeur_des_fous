@@ -2,6 +2,13 @@
 
 Le numéro de version est dans `moteur/version.h`.
 
+## 3.5.2 · 2026-11-28
+
+- Mises à jour automatiques : au lancement, le testeur vérifie GitHub (une fois par heure au plus, 2 secondes maximum) et se met à jour tout seul, sans question. Le clone reste le même : sauvegarde, commande `tdf` et réglages ne bougent pas.
+- Si la nouvelle version ne compile pas sur le poste, le testeur revient à l'ancienne et continue. Si le testeur a été modifié à la main, rien n'est écrasé.
+- Après la mise à jour, le testeur se relance dans le menu habituel et ouvre les pages de nouveautés (avant : ancien menu du module Libft).
+- `--no-update` et `--update off` ne coupent plus les mises à jour : tout le monde reste sur la dernière version.
+
 ## 3.5.1 · 2026-11-28
 
 - Après une mise à jour, les pages de nouveautés s'ouvrent directement : le tuto n'est plus rejoué (il reste dans Paramètres).

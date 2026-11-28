@@ -25,8 +25,6 @@ MACHINE=""
 DEBUG=0
 NOLORE=0
 FAST=0
-NO_UPDATE=0
-UPDATE_SET=""
 if [ -f "$HOME/.testeur_des_fous/reglages.txt" ]; then
 	while IFS='=' read -r k v; do
 		case "$k=$v" in AIDE=[012]) AIDE="$v" ;; esac
@@ -62,8 +60,6 @@ usage : ./run.sh [options]
   --no-lore         les tests seuls, sans boss, sans animation, sans lore
                     (synonyme : --lore-off)
   --fast            sans animation ni cinématique (synonyme : --no-anim)
-  --no-update       ne pas chercher de mise à jour à ce lancement
-  --update off|on   couper ou remettre la recherche de mise à jour
 
 Dans le menu : Q, Échap ou Ctrl+C arrêtent un run ; Ctrl+C deux fois quitte tout.
 EOF
@@ -91,8 +87,8 @@ while [ $# -gt 0 ]; do
 		--machine) shift; MACHINE="${1:-}" ;;
 		--no-lore|--lore-off) NOLORE=1 ;;
 		--fast|--no-anim) FAST=1 ;;
-		--no-update) NO_UPDATE=1 ;;
-		--update) shift; UPDATE_SET="${1:-}" ;;
+		--no-update) ;;
+		--update) shift ;;
 		--debug) DEBUG=1 ;;
 		--rendu) ONLY="makefile,nm,norme"; NOLORE=1 ;;
 		--menu) MENU_SEUL=1 ;;
@@ -188,7 +184,7 @@ update_remote() {
 update_check() {
 	local dir="$HOME/.testeur_des_fous" st now last what remote p i ans old out
 	local A=$'\033[38;5;213m' Y=$'\033[38;5;220m' V=$'\033[38;5;84m' E=$'\033[38;5;203m' G=$'\033[2m' Z=$'\033[0m'
-	if [ "${NO_UPDATE:-0}" = 1 ] || [ -n "${TDF_NO_UPDATE:-}" ] || [ -f "$dir/no_update" ]; then return 0; fi
+	if [ -n "${TDF_NO_UPDATE:-}" ]; then return 0; fi
 	{ [ -t 0 ] && [ -t 1 ]; } || return 0
 	mkdir -p "$dir" 2>/dev/null
 	st="$dir/maj_$UPD_GAME.txt"
@@ -200,7 +196,7 @@ update_check() {
 		if [ "$what" = "-" ]; then
 			[ $((now - last)) -lt 3600 ] && return 0
 		else
-			[ $((now - last)) -lt 21600 ] && return 0
+			[ $((now - last)) -lt 3600 ] && return 0
 		fi
 	fi
 	update_remote > "$st.tmp" 2>/dev/null &
@@ -213,17 +209,7 @@ update_check() {
 	rm -f "$st.tmp"
 	printf '%s %s\n' "$now" "${remote:--}" > "$st"
 	{ [ -n "$remote" ] && ver_gt "$remote" "$UPD_VER"; } || return 0
-	printf '\n  %s╭──────────── NOUVELLE VERSION DISPONIBLE ────────────%s\n' "$A" "$Z"
-	printf "$(tt "  %s│%s  Le testeur des fous · %s   %sv%s%s  →  %sv%s%s\n" "  %s│%s  The testeur des fous · %s   %sv%s%s  →  %sv%s%s\n")" "$A" "$Z" "$UPD_NAME" "$G" "$UPD_VER" "$Z" "$V" "$remote" "$Z"
-	printf "$(tt "  %s│%s  Mettre à jour maintenant ? %s[O/n]%s   %s(sans réponse dans 20 s : plus tard)%s\n" "  %s│%s  Update now? %s[Y/n]%s   %s(no answer within 20 s: later)%s\n")" "$A" "$Z" "$Y" "$Z" "$G" "$Z"
-	printf '  %s╰─▶%s ' "$A" "$Z"
-	ans="n"
-	if read -r -t 20 -n 1 ans; then [ -n "$ans" ] || ans="o"; else ans="n"; fi
-	printf '\n'
-	case "$ans" in
-		o|O|y|Y) ;;
-		*) printf "$(tt "  %s   plus tard : on continue en v%s (pas de nouvelle question avant 6 h)%s\n" "  %s   later: we carry on with v%s (no new question for 6 h)%s\n")" "$G" "$UPD_VER" "$Z"; return 0 ;;
-	esac
+	printf "$(tt "\n  %s◆ Nouvelle version du testeur des fous : %sv%s%s  →  %sv%s%s, mise à jour automatique...%s\n" "\n  %s◆ New version of the testeur des fous: %sv%s%s  →  %sv%s%s, automatic update...%s\n")" "$A" "$G" "$UPD_VER" "$Z" "$V" "$remote" "$A" "$Z"
 	if ! old=$(git -C "$UPD_DIR" rev-parse HEAD 2>/dev/null); then
 		printf "$(tt "  %s   ce dossier n'est pas un clone git : retélécharge le testeur depuis GitHub.%s\n" "  %s   this folder is not a git clone: download the tester again from GitHub.%s\n")" "$E" "$Z"
 		sleep 2
@@ -247,16 +233,8 @@ update_check() {
 	rm -f "$st"
 	printf "$(tt "  %s   mise à jour réussie : v%s. Relance du testeur...%s\n" "  %s   update done: v%s. Restarting the tester...%s\n")" "$V" "$remote" "$Z"
 	sleep 1
+	[ -n "${TDF_RACINE:-}" ] && exit 47
 	TDF_NO_UPDATE=1 exec bash "$UPD_DIR/run.sh" printf ${UPD_ARGS[@]+"${UPD_ARGS[@]}"}
-}
-update_setting() {
-	mkdir -p "$HOME/.testeur_des_fous" 2>/dev/null
-	case "$1" in
-		off|non|0) : > "$HOME/.testeur_des_fous/no_update"; echo "recherche de mise à jour : coupée (--update on pour la remettre)" ;;
-		on|oui|1) rm -f "$HOME/.testeur_des_fous/no_update"; echo "recherche de mise à jour : activée" ;;
-		*) echo "$(tt "--update : on ou off" "--update: on or off")"; exit 2 ;;
-	esac
-	exit 0
 }
 UPD_DIR="$(cd "$TDF_DIR/../.." && pwd)"; UPD_GAME="testeur"; UPD_NAME="printf"
 UPD_VER="$(sed -n 's/^# *define TDF_VERSION "\(.*\)"/\1/p' "$MOT/version.h" 2>/dev/null | head -1)"
@@ -266,7 +244,6 @@ upd_build_ok() {
 	bash -n "$TDF_DIR/run.sh" || return 1
 	cc -fsyntax-only -w -DTDF_PRINTF -I "$TDF_DIR/game" -I "$MOT" "$TDF_DIR"/game/*.c "$MOT"/*.c
 }
-[ -n "$UPDATE_SET" ] && update_setting "$UPDATE_SET"
 
 if [ -z "${TDF_ENGINE:-}" ] && [ "$NOLORE" = 0 ] && [ "$DEBUG" = 0 ] && [ -z "$VERBOSE" ] && [ -z "$ONLY" ] \
 	&& [ -z "$MACHINE" ] && [ -t 0 ] && [ -t 1 ]; then

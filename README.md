@@ -1,6 +1,6 @@
 # Le testeur des fous
 
-> **Version 3.5.1** · [nouveautés](docs/nouveautes/3.5.md) · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
+> **Version 3.5.2** · [nouveautés](docs/nouveautes/3.5.md) · [historique](CHANGELOG.md) · créé et vibe-codé par **Splatch** (`romasant`) pour les étudiants de 42 Next · projet étudiant non officiel.
 
 **Un seul testeur pour Libft, ft_printf et get_next_line, un examshell en C, une banque d'exercices et un mode correction.** Il teste comme la moulinette, ne contient aucune solution et n'écrit rien à ta place : il casse ton code et te montre où regarder. Tout se fait aux flèches, dans un seul menu.
 
@@ -23,7 +23,7 @@ ton_dossier/
 
 Mets ton terminal en plein écran, choisis ta langue, suis le tuto (7 écrans, tu peux le passer). Il te faut seulement `bash`, `cc` et `make`, sans `sudo`. `norminette` et `valgrind` servent s'ils sont installés.
 
-Astuce : Paramètres › « Installer la commande tdf », puis `tdf` suffit dans n'importe quel dossier. `tdf maj` met le testeur à jour. Tu as supprimé puis recloné le testeur ailleurs ? Paramètres › « Réinstaller la commande tdf ».
+Astuce : Paramètres › « Installer la commande tdf », puis `tdf` suffit dans n'importe quel dossier. Le testeur se met à jour tout seul au lancement (une vérification par heure au plus) ; `tdf maj` force la mise à jour. Tu as supprimé puis recloné le testeur ailleurs ? Paramètres › « Réinstaller la commande tdf ».
 
 Après chaque mise à jour, Paramètres › « Nouveautés » montre ce qui a changé, page par page, avec un bouton pour y aller ([nouveautés de la 3.5](docs/nouveautes/3.5.md)).
 

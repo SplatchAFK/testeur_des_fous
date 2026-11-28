@@ -1,7 +1,7 @@
 #ifndef TDF_VERSION_H
 # define TDF_VERSION_H
 
-# define TDF_VERSION "3.5.1"
+# define TDF_VERSION "3.5.2"
 # define TDF_DATE "2026-11-28"
 # define TDF_NEW_ACTIFS " 3.4 3.5 "
 
