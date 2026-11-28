@@ -76,7 +76,10 @@ La correction compile avec `cc -Wall -Wextra -Werror`, refuse les fonctions non 
 94 exercices au choix, en 8 langues : 57 pour l'exam, 21 d'entraînement Libft, 16 d'entraînement printf. ◀ ▶ change d'onglet, Entrée ouvre le sujet, puis « Corriger mon code ».
 ## Ta progression
 
-Chaque test réussi rapporte de l'expérience et des Octets. Dépense-les dans la boutique : 17 collections de tenues (dont le voyageur galactique) à essayer en entier, une recherche par nom (touche /), et un rayon Personnalisation qui change le testeur lui-même (couleurs du menu, curseur, emblème, teintures). Habille ton chevalier dans la garde-robe (il est animé, ça se coupe dans Paramètres › Réglages › Animations), suis tes courbes dans Stats, et découvre l'histoire de « la Cité qui compile » en pixel art (c'est un testeur, pas un jeu vidéo : tout se coupe dans les options).
+Chaque test réussi rapporte de l'expérience et des Octets. Dépense-les dans la boutique : 17 collections de tenues (dont le voyageur galactique) à essayer en entier, une recherche par nom (touche /), et un rayon Personnalisation qui change le testeur lui-même (couleurs du menu, curseur, emblème, teintures). Habille ton chevalier dans la garde-robe (il est animé, ça se coupe dans Paramètres › Réglages › Animations) et exporte-le en image SVG animée avec la touche E pour ton profil GitHub, suis tes courbes dans Stats, et découvre l'histoire de « la Cité qui compile » en pixel art (c'est un testeur, pas un jeu vidéo : tout se coupe dans les options).
+
+<p align="center"><img src="docs/captures/boutique.png" width="720" alt="La boutique : chaque collection s'essaie en entier sur ton chevalier avant l'achat"></p>
+
 Ta sauvegarde est dans `~/.testeur_des_fous/`, hors du dossier du testeur : tu peux le supprimer ou le recloner sans rien perdre.
 
 ## Le menu en bref
